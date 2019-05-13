@@ -1,10 +1,12 @@
 {
+  "name": "_example",
+  "version": "0.3.2",
   "main": "server.js",
   "scripts": {
     "start": "node ."
   },
   "dependencies": {
-    "goldssr": "workspace:goldssr",
+    "goldssr": "0.3.2",
     "hapi": "^18.1.0"
   }
 }
