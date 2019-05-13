@@ -5151,27 +5151,6 @@ function $$SETUP_STATE(hydrateRuntimeState) {
         ]
       ],
       [
-        "_example",
-        [
-          [
-            "workspace:example",
-            {
-              "packageLocation": "./example/",
-              "packageDependencies": [
-                [
-                  "_example",
-                  "workspace:example"
-                ],
-                [
-                  "hapi",
-                  "npm:18.1.0"
-                ]
-              ]
-            }
-          ]
-        ]
-      ],
-      [
         "_example-rebuild",
         [
           [
@@ -8698,6 +8677,27 @@ function $$SETUP_STATE(hydrateRuntimeState) {
                 [
                   "safe-buffer",
                   "npm:5.1.2"
+                ]
+              ]
+            }
+          ]
+        ]
+      ],
+      [
+        "example-bcf259",
+        [
+          [
+            "workspace:example",
+            {
+              "packageLocation": "./example/",
+              "packageDependencies": [
+                [
+                  "example-bcf259",
+                  "workspace:example"
+                ],
+                [
+                  "hapi",
+                  "npm:18.1.0"
                 ]
               ]
             }

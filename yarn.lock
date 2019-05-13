@@ -1409,14 +1409,6 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"_example@workspace:example":
-  version: 0.0.0-use.local
-  resolution: "_example@workspace:example"
-  dependencies:
-    hapi: "npm:^18.1.0"
-  languageName: unknown
-  linkType: soft
-
 "abbrev@npm:1":
   version: 1.1.1
   resolution: "abbrev@npm:1.1.1"
@@ -2733,6 +2725,14 @@ __metadata:
   checksum: ed8fad3c3e3cf4956120a4b56c77ad6bc05836ec1b422837ae0104d0d965c3df0ba11c708167ba0827ab1bcf557b3ed4cfb48d8b1c3fb09f6a7aa772e1b24518
   languageName: node
   linkType: hard
+
+"example-bcf259@workspace:example":
+  version: 0.0.0-use.local
+  resolution: "example-bcf259@workspace:example"
+  dependencies:
+    hapi: "npm:^18.1.0"
+  languageName: unknown
+  linkType: soft
 
 "expand-brackets@npm:^2.1.4":
   version: 2.1.4
