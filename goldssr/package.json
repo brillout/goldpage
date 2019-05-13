@@ -6,6 +6,8 @@
     "@reframe/browser": "^0.3.2",
     "@reframe/build": "^0.3.2",
     "@reframe/path-to-regexp": "^0.3.2",
-    "@reframe/react": "^0.3.2"
+    "@reframe/react": "^0.3.2",
+    "@universal-adapter/hapi": "^0.1.2",
+    "reassert": "^1.1.21"
   }
 }
