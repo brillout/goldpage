@@ -8696,6 +8696,10 @@ function $$SETUP_STATE(hydrateRuntimeState) {
                   "workspace:example"
                 ],
                 [
+                  "goldssr",
+                  "workspace:."
+                ],
+                [
                   "hapi",
                   "npm:18.1.0"
                 ]
