@@ -17,13 +17,15 @@ async function start() {
       debug: {request: ['internal']},
   });
 
+  /*
   server.route({
     method: 'GET',
     path: '/',
     handler: (request, h) => 'Hello fro',
   });
+  */
 
-  //await server.register(ssr.hapi);
+  await server.register(ssr.hapi);
 
   await server.start();
 

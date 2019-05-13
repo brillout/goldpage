@@ -7,5 +7,5 @@ module.exports = {
       Hello from easy-ssr.
     </div>
   ),
-  renderHtmlAtBuildTime: true,
+//renderHtmlAtBuildTime: true,
 };
