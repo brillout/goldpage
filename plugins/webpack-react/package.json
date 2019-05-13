@@ -1,5 +1,5 @@
 {
-  "name": "goldssr-webpack-react",
+  "name": "@reframe/react",
   "version": "0.3.2",
   "dependencies": {
     "@babel/preset-react": "^7.0.0",

@@ -11,6 +11,6 @@ module.exports = {
     */
 
     require('@reframe/path-to-regexp'),
-    require('@reframe/webpack'),
+    require('@reframe/build'),
   ],
 };
