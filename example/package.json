@@ -1,9 +1,7 @@
 {
-  "private": true,
-  "name": "_example",
   "main": "server.js",
   "scripts": {
-    "te": "node ./"
+    "start": "node ."
   },
   "dependencies": {
     "hapi": "^18.1.0"
