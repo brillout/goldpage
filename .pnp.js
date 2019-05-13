@@ -8697,7 +8697,7 @@ function $$SETUP_STATE(hydrateRuntimeState) {
                 ],
                 [
                   "goldssr",
-                  "workspace:."
+                  "workspace:goldssr"
                 ],
                 [
                   "hapi",
@@ -9616,13 +9616,13 @@ function $$SETUP_STATE(hydrateRuntimeState) {
         "goldssr",
         [
           [
-            "workspace:.",
+            "workspace:goldssr",
             {
-              "packageLocation": "./",
+              "packageLocation": "./goldssr/",
               "packageDependencies": [
                 [
                   "goldssr",
-                  "workspace:."
+                  "workspace:goldssr"
                 ]
               ]
             }
@@ -15185,6 +15185,23 @@ function $$SETUP_STATE(hydrateRuntimeState) {
                 [
                   "inherits",
                   "npm:2.0.3"
+                ]
+              ]
+            }
+          ]
+        ]
+      ],
+      [
+        "root-workspace-988eec",
+        [
+          [
+            "workspace:.",
+            {
+              "packageLocation": "./",
+              "packageDependencies": [
+                [
+                  "root-workspace-988eec",
+                  "workspace:."
                 ]
               ]
             }

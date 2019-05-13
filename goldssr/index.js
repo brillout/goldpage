@@ -1,5 +1,6 @@
+const config = require('@brillout/reconfig').getConfig({configFileName: 'reframe.config.js'});
+
 module.exports = GoldSSR;
-console.log(222);
 
 function GoldSSR(options) {
 
@@ -12,5 +13,6 @@ function GoldSSR(options) {
   );
 
   async function build() {
+    await config.runBuild();
   }
 }

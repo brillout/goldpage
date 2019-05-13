@@ -1,10 +1,9 @@
 {
-  "name": "goldssr",
   "scripts": {
     "clean": "git clean -Xdf"
   },
   "workspaces": [
-    "./",
+    "goldssr/",
     "example/",
     "plugins/path-to-regexp",
     "plugins/browser",

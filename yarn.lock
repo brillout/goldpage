@@ -2730,7 +2730,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "example-bcf259@workspace:example"
   dependencies:
-    goldssr: "workspace:."
+    goldssr: "workspace:goldssr"
     hapi: "npm:^18.1.0"
   languageName: unknown
   linkType: soft
@@ -3077,9 +3077,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"goldssr@workspace:.":
+"goldssr@workspace:goldssr":
   version: 0.0.0-use.local
-  resolution: "goldssr@workspace:."
+  resolution: "goldssr@workspace:goldssr"
   languageName: unknown
   linkType: soft
 
@@ -5273,6 +5273,12 @@ __metadata:
   checksum: 8d8d6ed30acf99086916792874f410aec381f7cbaa3060722d0ff7fc129f98600b19e3a07b8caec575943fa9b290870d397f0fe38cbce6d9b3918b063a8e7a9a
   languageName: node
   linkType: hard
+
+"root-workspace-988eec@workspace:.":
+  version: 0.0.0-use.local
+  resolution: "root-workspace-988eec@workspace:."
+  languageName: unknown
+  linkType: soft
 
 "run-queue@npm:^1.0.0, run-queue@npm:^1.0.3":
   version: 1.0.3

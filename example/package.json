@@ -4,7 +4,7 @@
     "start": "node ."
   },
   "dependencies": {
-    "goldssr": "workspace:.",
+    "goldssr": "workspace:goldssr",
     "hapi": "^18.1.0"
   }
 }
