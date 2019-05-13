@@ -1,0 +1,23 @@
+{
+  "private": true,
+  "scripts": {
+  },
+  "devDependencies": {
+  },
+  "workspaces": [
+    "plugins/path-to-regexp",
+
+    "plugins/webpack-react",
+    "plugins/webpack",
+    "helpers/webpack-ssr",
+    "helpers/webpack-config-mod",
+
+    "helpers/file-sets",
+    "helpers/repage",
+    "helpers/rebuild/config",
+    "helpers/rebuild/build",
+    "helpers/rebuild/iso",
+    "helpers/rebuild/example",
+    "helpers/rebuild/serve"
+  ]
+}

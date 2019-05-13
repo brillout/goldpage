@@ -1,0 +1,8 @@
+{
+  "name": "_example",
+  "main": "server.js",
+  "dependencies": {
+    "hapi": "^18.1.0",
+    "goldssr": "file:../"
+  }
+}
