@@ -1,3 +1,5 @@
+console.log('rloa');
+
 module.exports = {
   $plugins: [
     /*
@@ -19,5 +21,5 @@ module.exports = {
     buildOutputDir: __dirname+'/dist',
   },
 
-  getPageConfigFiles: () => ({welciPagi: require.resolve('./pages/landing-page')}),
+  getPageConfigFiles: () => ({welciPagi: require.resolve('../example/pages/landing-page')}),
 };

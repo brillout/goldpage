@@ -4121,13 +4121,13 @@ function $$SETUP_STATE(hydrateRuntimeState) {
         "@brillout/reconfig",
         [
           [
-            "npm:0.3.2",
+            "workspace:helpers/reconfig",
             {
-              "packageLocation": "./.yarn/cache/@brillout-reconfig-npm-0.3.2-61e8e37fc7f0472504ae89bbce02dcf07d38dc4f25151c2820c2122998296bcc.zip/node_modules/@brillout/reconfig/",
+              "packageLocation": "./helpers/reconfig/",
               "packageDependencies": [
                 [
                   "@brillout/reconfig",
-                  "npm:0.3.2"
+                  "workspace:helpers/reconfig"
                 ],
                 [
                   "@brillout/get-user-dir",
@@ -4135,7 +4135,7 @@ function $$SETUP_STATE(hydrateRuntimeState) {
                 ],
                 [
                   "find-up",
-                  "npm:2.1.0"
+                  "npm:3.0.0"
                 ],
                 [
                   "reassert",
@@ -4455,7 +4455,7 @@ function $$SETUP_STATE(hydrateRuntimeState) {
                 ],
                 [
                   "@brillout/reconfig",
-                  "npm:0.3.2"
+                  "workspace:helpers/reconfig"
                 ],
                 [
                   "@brillout/repage",
@@ -4484,7 +4484,7 @@ function $$SETUP_STATE(hydrateRuntimeState) {
                 ],
                 [
                   "@brillout/reconfig",
-                  "npm:0.3.2"
+                  "workspace:helpers/reconfig"
                 ],
                 [
                   "@brillout/repage",
@@ -4521,7 +4521,7 @@ function $$SETUP_STATE(hydrateRuntimeState) {
                 ],
                 [
                   "@brillout/reconfig",
-                  "npm:0.3.2"
+                  "workspace:helpers/reconfig"
                 ],
                 [
                   "react-router",
@@ -4562,7 +4562,7 @@ function $$SETUP_STATE(hydrateRuntimeState) {
                 ],
                 [
                   "@brillout/reconfig",
-                  "npm:0.3.2"
+                  "workspace:helpers/reconfig"
                 ],
                 [
                   "react",
@@ -9623,6 +9623,26 @@ function $$SETUP_STATE(hydrateRuntimeState) {
                 [
                   "goldssr",
                   "workspace:goldssr"
+                ],
+                [
+                  "@brillout/reconfig",
+                  "workspace:helpers/reconfig"
+                ],
+                [
+                  "@reframe/browser",
+                  "workspace:plugins/browser"
+                ],
+                [
+                  "@reframe/build",
+                  "workspace:plugins/webpack"
+                ],
+                [
+                  "@reframe/path-to-regexp",
+                  "workspace:plugins/path-to-regexp"
+                ],
+                [
+                  "@reframe/react",
+                  "workspace:plugins/webpack-react"
                 ]
               ]
             }
@@ -18036,6 +18056,7 @@ function $$SETUP_STATE(hydrateRuntimeState) {
       24,
       22,
       20,
+      19,
       18,
       17,
       10,

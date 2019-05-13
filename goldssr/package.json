@@ -1,3 +1,10 @@
 {
-  "name": "goldssr"
+  "name": "goldssr",
+  "dependencies": {
+    "@brillout/reconfig": "^0.3.2",
+    "@reframe/browser": "workspace:plugins/browser",
+    "@reframe/build": "workspace:plugins/webpack",
+    "@reframe/path-to-regexp": "workspace:plugins/path-to-regexp",
+    "@reframe/react": "workspace:plugins/webpack-react"
+  }
 }

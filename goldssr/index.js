@@ -1,4 +1,4 @@
-const config = require('@brillout/reconfig').getConfig({configFileName: 'reframe.config.js'});
+const config = require('@brillout/reconfig').getConfig({configFileName: require.resolve('./reframe.config.js')});
 
 module.exports = GoldSSR;
 
