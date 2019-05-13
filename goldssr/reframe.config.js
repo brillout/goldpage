@@ -1,5 +1,3 @@
-console.log('rloa');
-
 module.exports = {
   $plugins: [
     /*

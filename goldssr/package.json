@@ -2,6 +2,7 @@
   "name": "goldssr",
   "version": "0.3.2",
   "dependencies": {
+    "@brillout/autoload": "^0.3.2",
     "@brillout/reconfig": "^0.3.2",
     "@reframe/browser": "^0.3.2",
     "@reframe/build": "^0.3.2",

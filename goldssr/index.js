@@ -6,6 +6,8 @@ const autoload = require('@brillout/autoload');
 
 autoload();
 
+  process.exit();
+
 module.exports = GoldSSR;
 
 function GoldSSR(options) {
