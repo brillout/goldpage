@@ -7,6 +7,7 @@
   },
   "workspaces": [
     "plugins/path-to-regexp",
+    "plugins/browser",
 
     "plugins/webpack-react",
     "plugins/webpack",
