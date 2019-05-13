@@ -1,9 +1,13 @@
 {
+  "name": "goldssr",
+  "version": "0.0.0-alpha.0",
   "private": true,
   "scripts": {
     "clean": "git clean -Xdf"
   },
   "workspaces": [
+    "./",
+    "example/",
     "plugins/path-to-regexp",
     "plugins/browser",
     "plugins/webpack-react",

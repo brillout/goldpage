@@ -1,8 +1,8 @@
-const config = require('@brillout/reconfig').getConfig({configFileName: 'reframe.config.js'});
+//const config = require('@brillout/reconfig').getConfig({configFileName: 'reframe.config.js'});
 
 const Hapi = require('hapi');
-//const GoldSSR = require('goldssr');
-const GoldSSR = require('../');
+const GoldSSR = require('goldssr');
+//const GoldSSR = require('../');
 
 const ssr = new GoldSSR({
   pages: [

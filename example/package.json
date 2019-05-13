@@ -2,6 +2,9 @@
   "private": true,
   "name": "_example",
   "main": "server.js",
+  "scripts": {
+    "te": "node ./"
+  },
   "dependencies": {
     "hapi": "^18.1.0"
   }

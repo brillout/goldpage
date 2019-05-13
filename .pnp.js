@@ -5151,6 +5151,27 @@ function $$SETUP_STATE(hydrateRuntimeState) {
         ]
       ],
       [
+        "_example",
+        [
+          [
+            "workspace:example",
+            {
+              "packageLocation": "./example/",
+              "packageDependencies": [
+                [
+                  "_example",
+                  "workspace:example"
+                ],
+                [
+                  "hapi",
+                  "npm:18.1.0"
+                ]
+              ]
+            }
+          ]
+        ]
+      ],
+      [
         "_example-rebuild",
         [
           [
@@ -5194,6 +5215,31 @@ function $$SETUP_STATE(hydrateRuntimeState) {
                 [
                   "abbrev",
                   "npm:1.1.1"
+                ]
+              ]
+            }
+          ]
+        ]
+      ],
+      [
+        "accept",
+        [
+          [
+            "npm:3.1.3",
+            {
+              "packageLocation": "./.yarn/cache/accept-npm-3.1.3-c1194e1bdbd4b80e9dda35ba3d6f6eecf1927f3ff94d5ea6d75f17e808e8078f.zip/node_modules/accept/",
+              "packageDependencies": [
+                [
+                  "accept",
+                  "npm:3.1.3"
+                ],
+                [
+                  "boom",
+                  "npm:7.3.0"
+                ],
+                [
+                  "hoek",
+                  "npm:6.1.3"
                 ]
               ]
             }
@@ -5376,6 +5422,27 @@ function $$SETUP_STATE(hydrateRuntimeState) {
                 [
                   "ajv",
                   "npm:6.10.0"
+                ]
+              ]
+            }
+          ]
+        ]
+      ],
+      [
+        "ammo",
+        [
+          [
+            "npm:3.0.3",
+            {
+              "packageLocation": "./.yarn/cache/ammo-npm-3.0.3-d6ed20676343826d6709551a3fca77d5b35068b65e38ab60e3ab71d6660ef9c4.zip/node_modules/ammo/",
+              "packageDependencies": [
+                [
+                  "ammo",
+                  "npm:3.0.3"
+                ],
+                [
+                  "hoek",
+                  "npm:6.1.3"
                 ]
               ]
             }
@@ -5796,6 +5863,27 @@ function $$SETUP_STATE(hydrateRuntimeState) {
         ]
       ],
       [
+        "b64",
+        [
+          [
+            "npm:4.1.2",
+            {
+              "packageLocation": "./.yarn/cache/b64-npm-4.1.2-5bf7087ec953f01c049fcc563774e515c555bc9daef879ae4e6dda4fa90d413e.zip/node_modules/b64/",
+              "packageDependencies": [
+                [
+                  "b64",
+                  "npm:4.1.2"
+                ],
+                [
+                  "hoek",
+                  "npm:6.1.3"
+                ]
+              ]
+            }
+          ]
+        ]
+      ],
+      [
         "babel-loader",
         [
           [
@@ -6026,6 +6114,69 @@ function $$SETUP_STATE(hydrateRuntimeState) {
                 [
                   "bn.js",
                   "npm:4.11.8"
+                ]
+              ]
+            }
+          ]
+        ]
+      ],
+      [
+        "boom",
+        [
+          [
+            "npm:7.3.0",
+            {
+              "packageLocation": "./.yarn/cache/boom-npm-7.3.0-8d84bd8054a22e8420fa993921f8504599af73299d145d984e8d601d4af593ac.zip/node_modules/boom/",
+              "packageDependencies": [
+                [
+                  "boom",
+                  "npm:7.3.0"
+                ],
+                [
+                  "hoek",
+                  "npm:6.1.3"
+                ]
+              ]
+            }
+          ]
+        ]
+      ],
+      [
+        "bounce",
+        [
+          [
+            "npm:1.2.3",
+            {
+              "packageLocation": "./.yarn/cache/bounce-npm-1.2.3-0162ba4ee4247638e71863ae07851d1fc599a930b823746c17a78910ba1f30a2.zip/node_modules/bounce/",
+              "packageDependencies": [
+                [
+                  "bounce",
+                  "npm:1.2.3"
+                ],
+                [
+                  "boom",
+                  "npm:7.3.0"
+                ],
+                [
+                  "hoek",
+                  "npm:6.1.3"
+                ]
+              ]
+            }
+          ]
+        ]
+      ],
+      [
+        "bourne",
+        [
+          [
+            "npm:1.1.2",
+            {
+              "packageLocation": "./.yarn/cache/bourne-npm-1.1.2-b53ec77c35d6f9e25f9f2040f05e84342e19acf9dea485ea03dd8993a2a94856.zip/node_modules/bourne/",
+              "packageDependencies": [
+                [
+                  "bourne",
+                  "npm:1.1.2"
                 ]
               ]
             }
@@ -6561,6 +6712,31 @@ function $$SETUP_STATE(hydrateRuntimeState) {
         ]
       ],
       [
+        "call",
+        [
+          [
+            "npm:5.0.3",
+            {
+              "packageLocation": "./.yarn/cache/call-npm-5.0.3-b719132daacbd3e83d29a48b5092674852968d45c9b5e7b70efd9c5b8e96a96f.zip/node_modules/call/",
+              "packageDependencies": [
+                [
+                  "call",
+                  "npm:5.0.3"
+                ],
+                [
+                  "boom",
+                  "npm:7.3.0"
+                ],
+                [
+                  "hoek",
+                  "npm:6.1.3"
+                ]
+              ]
+            }
+          ]
+        ]
+      ],
+      [
         "callsites",
         [
           [
@@ -6634,6 +6810,60 @@ function $$SETUP_STATE(hydrateRuntimeState) {
                 [
                   "caseless",
                   "npm:0.12.0"
+                ]
+              ]
+            }
+          ]
+        ]
+      ],
+      [
+        "catbox",
+        [
+          [
+            "npm:10.0.6",
+            {
+              "packageLocation": "./.yarn/cache/catbox-npm-10.0.6-855dc3e2afab883c5a6c87bda352e4e78f48d024d062e13d614e7192f5a4f4fd.zip/node_modules/catbox/",
+              "packageDependencies": [
+                [
+                  "catbox",
+                  "npm:10.0.6"
+                ],
+                [
+                  "boom",
+                  "npm:7.3.0"
+                ],
+                [
+                  "hoek",
+                  "npm:6.1.3"
+                ],
+                [
+                  "joi",
+                  "npm:14.3.1"
+                ]
+              ]
+            }
+          ]
+        ]
+      ],
+      [
+        "catbox-memory",
+        [
+          [
+            "npm:4.0.1",
+            {
+              "packageLocation": "./.yarn/cache/catbox-memory-npm-4.0.1-c3c39256c2469f32be59fa5f47871ff208df37500a0c1a2f46599c850fec567b.zip/node_modules/catbox-memory/",
+              "packageDependencies": [
+                [
+                  "catbox-memory",
+                  "npm:4.0.1"
+                ],
+                [
+                  "boom",
+                  "npm:7.3.0"
+                ],
+                [
+                  "hoek",
+                  "npm:6.1.3"
                 ]
               ]
             }
@@ -7143,6 +7373,27 @@ function $$SETUP_STATE(hydrateRuntimeState) {
         ]
       ],
       [
+        "content",
+        [
+          [
+            "npm:4.0.6",
+            {
+              "packageLocation": "./.yarn/cache/content-npm-4.0.6-02614497a6e8f5b0fede4fff0241682e283772ab69ea2ade498ae0c9a7edf21f.zip/node_modules/content/",
+              "packageDependencies": [
+                [
+                  "content",
+                  "npm:4.0.6"
+                ],
+                [
+                  "boom",
+                  "npm:7.3.0"
+                ]
+              ]
+            }
+          ]
+        ]
+      ],
+      [
         "convert-source-map",
         [
           [
@@ -7512,6 +7763,27 @@ function $$SETUP_STATE(hydrateRuntimeState) {
                 [
                   "which",
                   "npm:1.3.1"
+                ]
+              ]
+            }
+          ]
+        ]
+      ],
+      [
+        "cryptiles",
+        [
+          [
+            "npm:4.1.3",
+            {
+              "packageLocation": "./.yarn/cache/cryptiles-npm-4.1.3-1b99928fc41061012fdee52b8db72c937098e8b4d14e1839f27b97efeb38142a.zip/node_modules/cryptiles/",
+              "packageDependencies": [
+                [
+                  "cryptiles",
+                  "npm:4.1.3"
+                ],
+                [
+                  "boom",
+                  "npm:7.3.0"
                 ]
               ]
             }
@@ -9337,6 +9609,23 @@ function $$SETUP_STATE(hydrateRuntimeState) {
         ]
       ],
       [
+        "goldssr",
+        [
+          [
+            "workspace:.",
+            {
+              "packageLocation": "./",
+              "packageDependencies": [
+                [
+                  "goldssr",
+                  "workspace:."
+                ]
+              ]
+            }
+          ]
+        ]
+      ],
+      [
         "graceful-fs",
         [
           [
@@ -9364,6 +9653,95 @@ function $$SETUP_STATE(hydrateRuntimeState) {
                 [
                   "gud",
                   "npm:1.0.0"
+                ]
+              ]
+            }
+          ]
+        ]
+      ],
+      [
+        "hapi",
+        [
+          [
+            "npm:18.1.0",
+            {
+              "packageLocation": "./.yarn/cache/hapi-npm-18.1.0-b1136e5cdee3f7fb2f90e0673549e12a35ec23bf509aba6eb9d435ba65d119f0.zip/node_modules/hapi/",
+              "packageDependencies": [
+                [
+                  "hapi",
+                  "npm:18.1.0"
+                ],
+                [
+                  "accept",
+                  "npm:3.1.3"
+                ],
+                [
+                  "ammo",
+                  "npm:3.0.3"
+                ],
+                [
+                  "boom",
+                  "npm:7.3.0"
+                ],
+                [
+                  "bounce",
+                  "npm:1.2.3"
+                ],
+                [
+                  "call",
+                  "npm:5.0.3"
+                ],
+                [
+                  "catbox",
+                  "npm:10.0.6"
+                ],
+                [
+                  "catbox-memory",
+                  "npm:4.0.1"
+                ],
+                [
+                  "heavy",
+                  "npm:6.1.2"
+                ],
+                [
+                  "hoek",
+                  "npm:6.1.3"
+                ],
+                [
+                  "joi",
+                  "npm:14.3.1"
+                ],
+                [
+                  "mimos",
+                  "npm:4.0.2"
+                ],
+                [
+                  "podium",
+                  "npm:3.2.0"
+                ],
+                [
+                  "shot",
+                  "npm:4.0.7"
+                ],
+                [
+                  "somever",
+                  "npm:2.0.0"
+                ],
+                [
+                  "statehood",
+                  "npm:6.0.9"
+                ],
+                [
+                  "subtext",
+                  "npm:6.0.12"
+                ],
+                [
+                  "teamwork",
+                  "npm:3.2.0"
+                ],
+                [
+                  "topo",
+                  "npm:3.0.3"
                 ]
               ]
             }
@@ -9587,6 +9965,35 @@ function $$SETUP_STATE(hydrateRuntimeState) {
         ]
       ],
       [
+        "heavy",
+        [
+          [
+            "npm:6.1.2",
+            {
+              "packageLocation": "./.yarn/cache/heavy-npm-6.1.2-736850b580174ccd40ea7f950864e1cd7da1fd013632ff6d61bb5f0725c8ae03.zip/node_modules/heavy/",
+              "packageDependencies": [
+                [
+                  "heavy",
+                  "npm:6.1.2"
+                ],
+                [
+                  "boom",
+                  "npm:7.3.0"
+                ],
+                [
+                  "hoek",
+                  "npm:6.1.3"
+                ],
+                [
+                  "joi",
+                  "npm:14.3.1"
+                ]
+              ]
+            }
+          ]
+        ]
+      ],
+      [
         "history",
         [
           [
@@ -9650,6 +10057,23 @@ function $$SETUP_STATE(hydrateRuntimeState) {
                 [
                   "minimalistic-crypto-utils",
                   "npm:1.0.1"
+                ]
+              ]
+            }
+          ]
+        ]
+      ],
+      [
+        "hoek",
+        [
+          [
+            "npm:6.1.3",
+            {
+              "packageLocation": "./.yarn/cache/hoek-npm-6.1.3-27f3d9507f2b60f1fbdba43679a80b70afbec9a2eb7603f3a2bb59291640572a.zip/node_modules/hoek/",
+              "packageDependencies": [
+                [
+                  "hoek",
+                  "npm:6.1.3"
                 ]
               ]
             }
@@ -10020,6 +10444,39 @@ function $$SETUP_STATE(hydrateRuntimeState) {
                 [
                   "loose-envify",
                   "npm:1.4.0"
+                ]
+              ]
+            }
+          ]
+        ]
+      ],
+      [
+        "iron",
+        [
+          [
+            "npm:5.0.6",
+            {
+              "packageLocation": "./.yarn/cache/iron-npm-5.0.6-51f94cecca35c03cc01816a1cf22097ac976bdba57a9493d857c1e3717df8eec.zip/node_modules/iron/",
+              "packageDependencies": [
+                [
+                  "iron",
+                  "npm:5.0.6"
+                ],
+                [
+                  "b64",
+                  "npm:4.1.2"
+                ],
+                [
+                  "boom",
+                  "npm:7.3.0"
+                ],
+                [
+                  "cryptiles",
+                  "npm:4.1.3"
+                ],
+                [
+                  "hoek",
+                  "npm:6.1.3"
                 ]
               ]
             }
@@ -10451,6 +10908,27 @@ function $$SETUP_STATE(hydrateRuntimeState) {
         ]
       ],
       [
+        "isemail",
+        [
+          [
+            "npm:3.2.0",
+            {
+              "packageLocation": "./.yarn/cache/isemail-npm-3.2.0-28198fda207e72d1436012fa9860a7355a861a69c4ad0544eb442d07cdbe90f7.zip/node_modules/isemail/",
+              "packageDependencies": [
+                [
+                  "isemail",
+                  "npm:3.2.0"
+                ],
+                [
+                  "punycode",
+                  "npm:2.1.1"
+                ]
+              ]
+            }
+          ]
+        ]
+      ],
+      [
         "isexe",
         [
           [
@@ -10536,6 +11014,35 @@ function $$SETUP_STATE(hydrateRuntimeState) {
                 [
                   "isstream",
                   "npm:0.1.2"
+                ]
+              ]
+            }
+          ]
+        ]
+      ],
+      [
+        "joi",
+        [
+          [
+            "npm:14.3.1",
+            {
+              "packageLocation": "./.yarn/cache/joi-npm-14.3.1-7de0f8ea44e5e433d7cf5fee00996f6cd529e5a226953e4985f0b2c3e3f35fdd.zip/node_modules/joi/",
+              "packageDependencies": [
+                [
+                  "joi",
+                  "npm:14.3.1"
+                ],
+                [
+                  "hoek",
+                  "npm:6.1.3"
+                ],
+                [
+                  "isemail",
+                  "npm:3.2.0"
+                ],
+                [
+                  "topo",
+                  "npm:3.0.3"
                 ]
               ]
             }
@@ -11382,6 +11889,31 @@ function $$SETUP_STATE(hydrateRuntimeState) {
         ]
       ],
       [
+        "mimos",
+        [
+          [
+            "npm:4.0.2",
+            {
+              "packageLocation": "./.yarn/cache/mimos-npm-4.0.2-3f25523cd3ac2128ba752cb39082398e81032ab63a46a392b7cacba919bada78.zip/node_modules/mimos/",
+              "packageDependencies": [
+                [
+                  "mimos",
+                  "npm:4.0.2"
+                ],
+                [
+                  "hoek",
+                  "npm:6.1.3"
+                ],
+                [
+                  "mime-db",
+                  "npm:1.40.0"
+                ]
+              ]
+            }
+          ]
+        ]
+      ],
+      [
         "mini-css-extract-plugin",
         [
           [
@@ -11888,6 +12420,31 @@ function $$SETUP_STATE(hydrateRuntimeState) {
                 [
                   "nice-try",
                   "npm:1.0.5"
+                ]
+              ]
+            }
+          ]
+        ]
+      ],
+      [
+        "nigel",
+        [
+          [
+            "npm:3.0.4",
+            {
+              "packageLocation": "./.yarn/cache/nigel-npm-3.0.4-03d8ceb9b508c241a8a0ef9d50a5f79c98707220d27ae50b9e1872f6ae71f341.zip/node_modules/nigel/",
+              "packageDependencies": [
+                [
+                  "nigel",
+                  "npm:3.0.4"
+                ],
+                [
+                  "hoek",
+                  "npm:6.1.3"
+                ],
+                [
+                  "vise",
+                  "npm:3.0.2"
                 ]
               ]
             }
@@ -13048,6 +13605,43 @@ function $$SETUP_STATE(hydrateRuntimeState) {
         ]
       ],
       [
+        "pez",
+        [
+          [
+            "npm:4.0.5",
+            {
+              "packageLocation": "./.yarn/cache/pez-npm-4.0.5-222b111bd32524311b9f994f01a1299347f1e6562b672ebf9040a8f69d4fa783.zip/node_modules/pez/",
+              "packageDependencies": [
+                [
+                  "pez",
+                  "npm:4.0.5"
+                ],
+                [
+                  "b64",
+                  "npm:4.1.2"
+                ],
+                [
+                  "boom",
+                  "npm:7.3.0"
+                ],
+                [
+                  "content",
+                  "npm:4.0.6"
+                ],
+                [
+                  "hoek",
+                  "npm:6.1.3"
+                ],
+                [
+                  "nigel",
+                  "npm:3.0.4"
+                ]
+              ]
+            }
+          ]
+        ]
+      ],
+      [
         "pify",
         [
           [
@@ -13079,6 +13673,31 @@ function $$SETUP_STATE(hydrateRuntimeState) {
                 [
                   "find-up",
                   "npm:3.0.0"
+                ]
+              ]
+            }
+          ]
+        ]
+      ],
+      [
+        "podium",
+        [
+          [
+            "npm:3.2.0",
+            {
+              "packageLocation": "./.yarn/cache/podium-npm-3.2.0-f756ca8768e58d8b381f3f669be9b7faad4c2e6a1acb696d9fd8ae2d00dc9998.zip/node_modules/podium/",
+              "packageDependencies": [
+                [
+                  "podium",
+                  "npm:3.2.0"
+                ],
+                [
+                  "hoek",
+                  "npm:6.1.3"
+                ],
+                [
+                  "joi",
+                  "npm:14.3.1"
                 ]
               ]
             }
@@ -14569,23 +15188,6 @@ function $$SETUP_STATE(hydrateRuntimeState) {
         ]
       ],
       [
-        "root-workspace-988eec",
-        [
-          [
-            "workspace:.",
-            {
-              "packageLocation": "./",
-              "packageDependencies": [
-                [
-                  "root-workspace-988eec",
-                  "workspace:."
-                ]
-              ]
-            }
-          ]
-        ]
-      ],
-      [
         "run-queue",
         [
           [
@@ -14949,6 +15551,31 @@ function $$SETUP_STATE(hydrateRuntimeState) {
         ]
       ],
       [
+        "shot",
+        [
+          [
+            "npm:4.0.7",
+            {
+              "packageLocation": "./.yarn/cache/shot-npm-4.0.7-5b6f21105c48a7443d7f410b4150d60ef7e7501bc2c9e934fd12bddece29b701.zip/node_modules/shot/",
+              "packageDependencies": [
+                [
+                  "shot",
+                  "npm:4.0.7"
+                ],
+                [
+                  "hoek",
+                  "npm:6.1.3"
+                ],
+                [
+                  "joi",
+                  "npm:14.3.1"
+                ]
+              ]
+            }
+          ]
+        ]
+      ],
+      [
         "signal-exit",
         [
           [
@@ -15079,6 +15706,31 @@ function $$SETUP_STATE(hydrateRuntimeState) {
                 [
                   "kind-of",
                   "npm:3.2.2"
+                ]
+              ]
+            }
+          ]
+        ]
+      ],
+      [
+        "somever",
+        [
+          [
+            "npm:2.0.0",
+            {
+              "packageLocation": "./.yarn/cache/somever-npm-2.0.0-de195594950b0c1df28247a84b5da78eac5bfb6fe239d2436f9dd6a909cc0fa4.zip/node_modules/somever/",
+              "packageDependencies": [
+                [
+                  "somever",
+                  "npm:2.0.0"
+                ],
+                [
+                  "bounce",
+                  "npm:1.2.3"
+                ],
+                [
+                  "hoek",
+                  "npm:6.1.3"
                 ]
               ]
             }
@@ -15320,6 +15972,51 @@ function $$SETUP_STATE(hydrateRuntimeState) {
                 [
                   "figgy-pudding",
                   "npm:3.5.1"
+                ]
+              ]
+            }
+          ]
+        ]
+      ],
+      [
+        "statehood",
+        [
+          [
+            "npm:6.0.9",
+            {
+              "packageLocation": "./.yarn/cache/statehood-npm-6.0.9-8a1a60dbf45f71c0e0fc270e7b21fee5ac833a79bddc0ea94330d95fb048a215.zip/node_modules/statehood/",
+              "packageDependencies": [
+                [
+                  "statehood",
+                  "npm:6.0.9"
+                ],
+                [
+                  "boom",
+                  "npm:7.3.0"
+                ],
+                [
+                  "bounce",
+                  "npm:1.2.3"
+                ],
+                [
+                  "bourne",
+                  "npm:1.1.2"
+                ],
+                [
+                  "cryptiles",
+                  "npm:4.1.3"
+                ],
+                [
+                  "hoek",
+                  "npm:6.1.3"
+                ],
+                [
+                  "iron",
+                  "npm:5.0.6"
+                ],
+                [
+                  "joi",
+                  "npm:14.3.1"
                 ]
               ]
             }
@@ -15638,6 +16335,47 @@ function $$SETUP_STATE(hydrateRuntimeState) {
         ]
       ],
       [
+        "subtext",
+        [
+          [
+            "npm:6.0.12",
+            {
+              "packageLocation": "./.yarn/cache/subtext-npm-6.0.12-7da863e28aea30caa90228afe77379a854ca084b1f10b2c61db453ff6b423c90.zip/node_modules/subtext/",
+              "packageDependencies": [
+                [
+                  "subtext",
+                  "npm:6.0.12"
+                ],
+                [
+                  "boom",
+                  "npm:7.3.0"
+                ],
+                [
+                  "bourne",
+                  "npm:1.1.2"
+                ],
+                [
+                  "content",
+                  "npm:4.0.6"
+                ],
+                [
+                  "hoek",
+                  "npm:6.1.3"
+                ],
+                [
+                  "pez",
+                  "npm:4.0.5"
+                ],
+                [
+                  "wreck",
+                  "npm:14.2.0"
+                ]
+              ]
+            }
+          ]
+        ]
+      ],
+      [
         "supports-color",
         [
           [
@@ -15730,6 +16468,23 @@ function $$SETUP_STATE(hydrateRuntimeState) {
                 [
                   "yallist",
                   "npm:3.0.3"
+                ]
+              ]
+            }
+          ]
+        ]
+      ],
+      [
+        "teamwork",
+        [
+          [
+            "npm:3.2.0",
+            {
+              "packageLocation": "./.yarn/cache/teamwork-npm-3.2.0-7a3390df8eb547416aaabe33e34f30826d5a5b97ee88f3e4fac0010575a01d87.zip/node_modules/teamwork/",
+              "packageDependencies": [
+                [
+                  "teamwork",
+                  "npm:3.2.0"
                 ]
               ]
             }
@@ -16049,6 +16804,27 @@ function $$SETUP_STATE(hydrateRuntimeState) {
                 [
                   "repeat-string",
                   "npm:1.6.1"
+                ]
+              ]
+            }
+          ]
+        ]
+      ],
+      [
+        "topo",
+        [
+          [
+            "npm:3.0.3",
+            {
+              "packageLocation": "./.yarn/cache/topo-npm-3.0.3-43026a511067aedeec26e295db6abede50d6831f6a0dd70bf3c1813f1465eed9.zip/node_modules/topo/",
+              "packageDependencies": [
+                [
+                  "topo",
+                  "npm:3.0.3"
+                ],
+                [
+                  "hoek",
+                  "npm:6.1.3"
                 ]
               ]
             }
@@ -16666,6 +17442,27 @@ function $$SETUP_STATE(hydrateRuntimeState) {
         ]
       ],
       [
+        "vise",
+        [
+          [
+            "npm:3.0.2",
+            {
+              "packageLocation": "./.yarn/cache/vise-npm-3.0.2-10527fee770987408eb6d61591d688603c1882b7e67b5463be4be97de62ae2c2.zip/node_modules/vise/",
+              "packageDependencies": [
+                [
+                  "vise",
+                  "npm:3.0.2"
+                ],
+                [
+                  "hoek",
+                  "npm:6.1.3"
+                ]
+              ]
+            }
+          ]
+        ]
+      ],
+      [
         "vm-browserify",
         [
           [
@@ -17041,6 +17838,35 @@ function $$SETUP_STATE(hydrateRuntimeState) {
         ]
       ],
       [
+        "wreck",
+        [
+          [
+            "npm:14.2.0",
+            {
+              "packageLocation": "./.yarn/cache/wreck-npm-14.2.0-4e4ffecf60684794f1d96321c7a4a23cc19b22654b657575b69ae873e4f3fee6.zip/node_modules/wreck/",
+              "packageDependencies": [
+                [
+                  "wreck",
+                  "npm:14.2.0"
+                ],
+                [
+                  "boom",
+                  "npm:7.3.0"
+                ],
+                [
+                  "bourne",
+                  "npm:1.1.2"
+                ],
+                [
+                  "hoek",
+                  "npm:6.1.3"
+                ]
+              ]
+            }
+          ]
+        ]
+      ],
+      [
         "ws",
         [
           [
@@ -17191,6 +18017,7 @@ function $$SETUP_STATE(hydrateRuntimeState) {
       20,
       18,
       17,
+      10,
       2
     ]
   }, {basePath: __dirname});
