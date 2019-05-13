@@ -16,6 +16,7 @@ module.exports = {
 
         // TODO
         transparentGetter('projectFiles'),
+        transparentGetter('getPageConfigFiles'),
 
         transparentGetter('defaultPageConfig'),
         transparentGetter('transpileServerCode'),

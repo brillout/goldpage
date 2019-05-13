@@ -17,5 +17,6 @@ module.exports = {
   projectFiles: {
     pagesDir: __dirname+'/pages',
     buildOutputDir: __dirname+'/dist',
+    getPageConfigFiles: () => ({welciPagi: require.resolve('./pages/landing-page')});
   },
 };
