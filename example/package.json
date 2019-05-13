@@ -1,8 +1,9 @@
 {
+  "private": true,
   "name": "_example",
   "main": "server.js",
   "dependencies": {
-    "hapi": "^18.1.0",
-    "goldssr": "file:../"
+    "@reframe/browser": "^0.3.2",
+    "hapi": "^18.1.0"
   }
 }

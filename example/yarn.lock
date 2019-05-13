@@ -2,6 +2,70 @@
 # yarn lockfile v1
 
 
+"@brillout/browser-config@0.3.2":
+  version "0.3.2"
+  resolved "https://registry.yarnpkg.com/@brillout/browser-config/-/browser-config-0.3.2.tgz#4f31fb86e0790f4a167797327a7c03da9679efd8"
+  integrity sha512-rthxBm8TXURfPppq6qvXsG5O0y/3tNG4cej6JA7LEonc8Vw8m4AzvToNddrDsdl66UbxFef/xYx6tjEMPSEkzw==
+
+"@brillout/format-text@^0.1.3":
+  version "0.1.3"
+  resolved "https://registry.yarnpkg.com/@brillout/format-text/-/format-text-0.1.3.tgz#882996ffe8c774f4a56fd20c5964037d641b935f"
+  integrity sha512-79/JKUOr+POW3XAfRDDxoxCjGBeD5KVwkzBWhK7KPA66HCTwEqb7unqxfVGSJZ9MnL/NiMb0shhzRkydMC/YFg==
+  dependencies:
+    reassert "^1.1.14"
+    string-width "^2.1.1"
+
+"@brillout/get-user-dir@^0.2.1":
+  version "0.2.2"
+  resolved "https://registry.yarnpkg.com/@brillout/get-user-dir/-/get-user-dir-0.2.2.tgz#10530f81c3a66401d9dbb27d31c0b1641554c183"
+  integrity sha512-6gA9fWc8CfXMOizDF1QJLjsF71jDbfDTq9O4t1huHqRaOz8kBX/dvv263F8iauPBTJLbuIA2l4M/cfPoaFJw2w==
+  dependencies:
+    callsites "^2.0.0"
+    reassert "^1.1.9"
+
+"@brillout/index-html@^0.1.2":
+  version "0.1.4"
+  resolved "https://registry.yarnpkg.com/@brillout/index-html/-/index-html-0.1.4.tgz#3bc4a7aab09e94ad85da0f847b4a1e453efb904e"
+  integrity sha512-RaQqkGn1msy1AHhQHtyaG/DwNG26uL6RwfjQKtpgnjuHmB2CdAyeWYCT2YMPsJPYkNmazrAAguO5QGdUG4/7BQ==
+  dependencies:
+    "@brillout/get-user-dir" "^0.2.1"
+    find-up "^2.1.0"
+    reassert "^1.1.8"
+
+"@brillout/parse-uri@^0.1.1":
+  version "0.1.1"
+  resolved "https://registry.yarnpkg.com/@brillout/parse-uri/-/parse-uri-0.1.1.tgz#d4f765af19ae0da4b5b80fae19a4e40ec4cc6541"
+  integrity sha512-RPSYmQvRcdllpLh4d7rA727QZPSX7cjymRI9QdRrj/vvDMqgeuPeXii8jzZCobiTI8kpFHkf85mBdQxhXKrOBQ==
+  dependencies:
+    reassert "^1.1.11"
+
+"@brillout/reconfig@0.3.2":
+  version "0.3.2"
+  resolved "https://registry.yarnpkg.com/@brillout/reconfig/-/reconfig-0.3.2.tgz#a1366b79fe6d50980e61494b0bf146c30fac4857"
+  integrity sha512-5qNpztNy1+SCLdc+lgRifAFznbBZBiaKuwV+F2cUHfUOJP0U2feKRC4gAtuhBwRkOt4vNLL06x1mjV1sVlAuJw==
+  dependencies:
+    "@brillout/get-user-dir" "^0.2.1"
+    find-up "^2.1.0"
+    reassert "^1.1.12"
+
+"@brillout/repage@0.3.2":
+  version "0.3.2"
+  resolved "https://registry.yarnpkg.com/@brillout/repage/-/repage-0.3.2.tgz#cdda386fe34f00205558b0148ebbdd54ee4a4f0f"
+  integrity sha512-8KVJiPCvPvo0pANBOOLbb2wKIW3F66jTPe6AGe8Vtpcr+O9Z26eReRc47Ufe0ddQPwBaZ0t5gYZJI9Us0Dj5Ag==
+  dependencies:
+    "@brillout/index-html" "^0.1.2"
+    "@brillout/parse-uri" "^0.1.1"
+    reassert "^1.1.12"
+
+"@reframe/browser@^0.3.2":
+  version "0.3.2"
+  resolved "https://registry.yarnpkg.com/@reframe/browser/-/browser-0.3.2.tgz#8d13ab1a1151bae029b92f05323bcb8927a68f83"
+  integrity sha512-QUmbKA0ahDUpe2Cpnuo1lTNKPpEnsssKJmPz76E0a1HjFKzs/EFdy7X6paI+1q6f3dcEexdYuyz0ttvQVrgKFA==
+  dependencies:
+    "@brillout/browser-config" "0.3.2"
+    "@brillout/reconfig" "0.3.2"
+    "@brillout/repage" "0.3.2"
+
 accept@3.x.x:
   version "3.1.3"
   resolved "https://registry.yarnpkg.com/accept/-/accept-3.1.3.tgz#29c3e2b3a8f4eedbc2b690e472b9ebbdc7385e87"
@@ -16,6 +80,11 @@ ammo@3.x.x:
   integrity sha512-vo76VJ44MkUBZL/BzpGXaKzMfroF4ZR6+haRuw9p+eSWfoNaH2AxVc8xmiEPC08jhzJSeM6w7/iMUGet8b4oBQ==
   dependencies:
     hoek "6.x.x"
+
+ansi-regex@^3.0.0:
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/ansi-regex/-/ansi-regex-3.0.0.tgz#ed0317c322064f79466c02966bddb605ab37d998"
+  integrity sha1-7QMXwyIGT3lGbAKWa922Bas32Zg=
 
 b64@4.x.x:
   version "4.1.2"
@@ -52,6 +121,11 @@ call@5.x.x:
     boom "7.x.x"
     hoek "6.x.x"
 
+callsites@^2.0.0:
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/callsites/-/callsites-2.0.0.tgz#06eb84f00eea413da86affefacbffb36093b3c50"
+  integrity sha1-BuuE8A7qQT2oav/vrL/7Ngk7PFA=
+
 catbox-memory@4.x.x:
   version "4.0.1"
   resolved "https://registry.yarnpkg.com/catbox-memory/-/catbox-memory-4.0.1.tgz#3371ae0dd91bbf5d9dd88dcab5332470354cbd1f"
@@ -83,8 +157,12 @@ cryptiles@4.x.x:
   dependencies:
     boom "7.x.x"
 
-"goldssr@file:..":
-  version "0.0.0"
+find-up@^2.1.0:
+  version "2.1.0"
+  resolved "https://registry.yarnpkg.com/find-up/-/find-up-2.1.0.tgz#45d1b7e506c717ddd482775a2b77920a3c0c57a7"
+  integrity sha1-RdG35QbHF93UgndaK3eSCjwMV6c=
+  dependencies:
+    locate-path "^2.0.0"
 
 hapi@^18.1.0:
   version "18.1.0"
@@ -134,6 +212,11 @@ iron@5.x.x:
     cryptiles "4.x.x"
     hoek "6.x.x"
 
+is-fullwidth-code-point@^2.0.0:
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/is-fullwidth-code-point/-/is-fullwidth-code-point-2.0.0.tgz#a3b30a5c4f199183167aaab93beefae3ddfb654f"
+  integrity sha1-o7MKXE8ZkYMWeqq5O+764937ZU8=
+
 isemail@3.x.x:
   version "3.2.0"
   resolved "https://registry.yarnpkg.com/isemail/-/isemail-3.2.0.tgz#59310a021931a9fb06bbb51e155ce0b3f236832c"
@@ -149,6 +232,14 @@ joi@14.x.x:
     hoek "6.x.x"
     isemail "3.x.x"
     topo "3.x.x"
+
+locate-path@^2.0.0:
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/locate-path/-/locate-path-2.0.0.tgz#2b568b265eec944c6d9c0de9c3dbbbca0354cd8e"
+  integrity sha1-K1aLJl7slExtnA3pw9u7ygNUzY4=
+  dependencies:
+    p-locate "^2.0.0"
+    path-exists "^3.0.0"
 
 mime-db@1.x.x:
   version "1.40.0"
@@ -170,6 +261,30 @@ nigel@3.x.x:
   dependencies:
     hoek "6.x.x"
     vise "3.x.x"
+
+p-limit@^1.1.0:
+  version "1.3.0"
+  resolved "https://registry.yarnpkg.com/p-limit/-/p-limit-1.3.0.tgz#b86bd5f0c25690911c7590fcbfc2010d54b3ccb8"
+  integrity sha512-vvcXsLAJ9Dr5rQOPk7toZQZJApBl2K4J6dANSsEuh6QI41JYcsS/qhTGa9ErIUUgK3WNQoJYvylxvjqmiqEA9Q==
+  dependencies:
+    p-try "^1.0.0"
+
+p-locate@^2.0.0:
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/p-locate/-/p-locate-2.0.0.tgz#20a0103b222a70c8fd39cc2e580680f3dde5ec43"
+  integrity sha1-IKAQOyIqcMj9OcwuWAaA893l7EM=
+  dependencies:
+    p-limit "^1.1.0"
+
+p-try@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/p-try/-/p-try-1.0.0.tgz#cbc79cdbaf8fd4228e13f621f2b1a237c1b207b3"
+  integrity sha1-y8ec26+P1CKOE/Yh8rGiN8GyB7M=
+
+path-exists@^3.0.0:
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/path-exists/-/path-exists-3.0.0.tgz#ce0ebeaa5f78cb18925ea7d810d7b59b010fd515"
+  integrity sha1-zg6+ql94yxiSXqfYENe1mwEP1RU=
 
 pez@4.x.x:
   version "4.0.5"
@@ -194,6 +309,13 @@ punycode@2.x.x:
   version "2.1.1"
   resolved "https://registry.yarnpkg.com/punycode/-/punycode-2.1.1.tgz#b58b010ac40c22c5657616c8d2c2c02c7bf479ec"
   integrity sha512-XRsRjdf+j5ml+y/6GKHPZbrF/8p2Yga0JPtdqTIY2Xe5ohJPD9saDJJLPvp9+NSBprVvevdXZybnj2cv8OEd0A==
+
+reassert@^1.1.11, reassert@^1.1.12, reassert@^1.1.14, reassert@^1.1.8, reassert@^1.1.9:
+  version "1.1.21"
+  resolved "https://registry.yarnpkg.com/reassert/-/reassert-1.1.21.tgz#0e61cde7d2dde876d301342153cd9b1c7459649f"
+  integrity sha512-Ff2/AaIE5LDTrsEBUDKFb65klJki9xibTKi7loj9bGxBrQBb4BubgvJLEyKRlzrr4SFmg0QzfdcTojU9NHn0Zw==
+  dependencies:
+    "@brillout/format-text" "^0.1.3"
 
 shot@4.x.x:
   version "4.0.7"
@@ -223,6 +345,21 @@ statehood@6.x.x:
     hoek "6.x.x"
     iron "5.x.x"
     joi "14.x.x"
+
+string-width@^2.1.1:
+  version "2.1.1"
+  resolved "https://registry.yarnpkg.com/string-width/-/string-width-2.1.1.tgz#ab93f27a8dc13d28cac815c462143a6d9012ae9e"
+  integrity sha512-nOqH59deCq9SRHlxq1Aw85Jnt4w6KvLKqWVik6oA9ZklXLNIOlqg4F2yrT1MVaTjAqvVwdfeZ7w7aCvJD7ugkw==
+  dependencies:
+    is-fullwidth-code-point "^2.0.0"
+    strip-ansi "^4.0.0"
+
+strip-ansi@^4.0.0:
+  version "4.0.0"
+  resolved "https://registry.yarnpkg.com/strip-ansi/-/strip-ansi-4.0.0.tgz#a8479022eb1ac368a871389b635262c505ee368f"
+  integrity sha1-qEeQIusaw2iocTibY1JixQXuNo8=
+  dependencies:
+    ansi-regex "^3.0.0"
 
 subtext@6.x.x:
   version "6.0.12"

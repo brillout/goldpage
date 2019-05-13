@@ -3,13 +3,13 @@ module.exports = {
     /*
     require('@reframe/hapi'),
     require('@reframe/server'),
-    require('@reframe/browser'),
-    require('@reframe/react'),
     require('@reframe/project-files'),
     require('@reframe/start'),
     require('@reframe/eject'),
     */
 
+    require('@reframe/browser'),
+    require('@reframe/react'),
     require('@reframe/path-to-regexp'),
     require('@reframe/build'),
   ],
@@ -17,6 +17,7 @@ module.exports = {
   projectFiles: {
     pagesDir: __dirname+'/pages',
     buildOutputDir: __dirname+'/dist',
-    getPageConfigFiles: () => ({welciPagi: require.resolve('./pages/landing-page')});
   },
+
+  getPageConfigFiles: () => ({welciPagi: require.resolve('./pages/landing-page')}),
 };
