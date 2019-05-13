@@ -3,17 +3,13 @@
   "scripts": {
     "clean": "git clean -Xdf"
   },
-  "devDependencies": {
-  },
   "workspaces": [
     "plugins/path-to-regexp",
     "plugins/browser",
-
     "plugins/webpack-react",
     "plugins/webpack",
     "helpers/webpack-ssr",
     "helpers/webpack-config-mod",
-
     "helpers/file-sets",
     "helpers/repage",
     "helpers/rebuild/config",
