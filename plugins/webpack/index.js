@@ -13,6 +13,10 @@ module.exports = {
         requireFileGetter('getPageHtmlsFile'),
         requireFileGetter('getPageBrowserEntriesFile'),
         transparentGetter('doNotWatchBuildFiles'),
+
+        // TODO
+        transparentGetter('projectFiles'),
+
         transparentGetter('defaultPageConfig'),
         transparentGetter('transpileServerCode'),
         transparentGetter('log'),
