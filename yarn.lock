@@ -731,7 +731,7 @@
     reassert "^1.1.14"
     string-width "^2.1.1"
 
-"@brillout/get-user-dir@^0.2.1":
+"@brillout/get-user-dir@^0.2.1", "@brillout/get-user-dir@^0.2.2":
   version "0.2.2"
   resolved "https://registry.yarnpkg.com/@brillout/get-user-dir/-/get-user-dir-0.2.2.tgz#10530f81c3a66401d9dbb27d31c0b1641554c183"
   integrity sha512-6gA9fWc8CfXMOizDF1QJLjsF71jDbfDTq9O4t1huHqRaOz8kBX/dvv263F8iauPBTJLbuIA2l4M/cfPoaFJw2w==
