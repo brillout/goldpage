@@ -2,6 +2,10 @@ const config = require('@brillout/reconfig').getConfig({configFileName: require.
 const HapiAdapter = require('@universal-adapter/hapi');
 const assert = require('reassert');
 
+const autoload = require('@brillout/autoload');
+
+autoload();
+
 module.exports = GoldSSR;
 
 function GoldSSR(options) {
