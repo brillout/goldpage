@@ -117,7 +117,7 @@ function getAllBrowserConfigs({browserEntrySpec, pageConfig, pageFile, pageName}
 
     function addBrowserConfigs() {
         projectConfig
-        .browserConfigs
+        .getBrowserConfigs()
         .forEach(({configName, configFile, configFiles}) => {
             assert_internal(!configFiles === !!configFile);
 

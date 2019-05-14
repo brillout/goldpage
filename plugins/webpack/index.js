@@ -35,14 +35,13 @@ module.exports = {
         transparentGetter('defaultPageConfig'),
         transparentGetter('transpileServerCode'),
         transparentGetter('log'),
-        {
-            prop: 'browserConfigs',
-            getter: getBrowserConfigs,
-        },
+        arrayGetter('browserConfigs'),
+        transparentGetter('getBrowserConfigs'),
         arrayGetter('browserInitFunctions'),
         arrayGetter('webpackNodejsConfig'),
         arrayGetter('webpackBrowserConfig'),
     ],
+    getBrowserConfigs,
     runBuildFile,
     getBuildInfoFile,
     getPageHtmlsFile,
@@ -50,21 +49,21 @@ module.exports = {
     ejectables: getEjectables(),
 };
 
-function getBrowserConfigs(configParts) {
+function getBrowserConfigs() {
+    const projectConfig = require('@brillout/reconfig').getConfig({configFileName: 'reframe.config.js'});
     const assert_plugin = require('reassert/usage');
 
     const configPaths = {};
-    configParts.forEach(configPart => {
-        (configPart.browserConfigs||[])
-        .forEach(browserConfigSpec => {
-            if( browserConfigSpec.constructor === String ) {
-                browserConfigSpec = {
-                    configPath: browserConfigSpec,
-                };
-            }
-            assert_plugin(browserConfigSpec.configPath);
-            configPaths[browserConfigSpec.configPath] = browserConfigSpec;
-        });
+    projectConfig
+    .browserConfigs
+    .forEach(browserConfigSpec => {
+        if( browserConfigSpec.constructor === String ) {
+            browserConfigSpec = {
+                configPath: browserConfigSpec,
+            };
+        }
+        assert_plugin(browserConfigSpec.configPath);
+        configPaths[browserConfigSpec.configPath] = browserConfigSpec;
     });
 
     const browserConfigs = (
@@ -78,8 +77,8 @@ function getBrowserConfigs(configParts) {
 
             const configFile = (() => {
                 if( configIsList ) return null;
-                let filePath = configParts.slice().reverse().find(configPart => configPart[configPath])[configPath];
-                assert_plugin(filePath);
+                let filePath = projectConfig[configPath];
+                assert_plugin(filePath.constructor===String);
                 filePath = require.resolve(filePath);
                 assert_plugin(filePath);
                 return filePath;
@@ -87,14 +86,15 @@ function getBrowserConfigs(configParts) {
 
             const configFiles = (() => {
                 if( ! configIsList ) return null;
-                const filePaths = [];
-                configParts.forEach(configPart => {
-                    let filePath = configPart[configPath];
-                    if( ! filePath ) return;
+                const filePaths = (
+                  projectConfig[configPath]
+                  .map(filePath => {
+                    assert_plugin(filePath);
                     filePath = require.resolve(filePath);
                     assert_plugin(filePath);
-                    filePaths.push(filePath);
-                });
+                  })
+                );
+                assert_plugin(filePaths.length>=1);
                 return filePaths;
             })();
 
