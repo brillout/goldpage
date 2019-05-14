@@ -2,7 +2,6 @@ const assert_usage = require('reassert/usage');
 
 module.exports = {
     transparentGetter,
-    requireFileGetter,
     arrayGetter,
 };
 
@@ -14,21 +13,6 @@ function transparentGetter(prop) {
         prop,
         getter: configParts => {
             return findLast(configParts, prop);
-        },
-    };
-}
-
-function requireFileGetter(propOld, prop) {
-    if( ! prop ) {
-        const suffix = 'File';
-        assert_usage(propOld.endsWith(suffix));
-        prop = propOld.slice(0, -suffix.length);
-    }
-    return {
-        prop,
-        getter: configParts => {
-            const filePath = findLast(configParts, propOld);
-            return filePath && require(filePath);
         },
     };
 }
