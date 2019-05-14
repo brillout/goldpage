@@ -1,6 +1,7 @@
 const ServerRenderingFile = require.resolve('./ServerRendering');
 const StaticAssetsFile = require.resolve('./StaticAssets');
 const packageName = require('./package.json').name;
+const {transparentGetter} = require('@brillout/reconfig/getters');
 
 /*
 const ServerRenderingHandler = {

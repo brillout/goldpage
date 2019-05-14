@@ -12,15 +12,19 @@ module.exports = GoldSSR;
 
 function GoldSSR(options) {
 
+  assert(config.ServerRenderingFile);
+  assert(config.StaticAssetsFile);
   const ServerRendering = require(config.ServerRenderingFile);
   const StaticAssets = require(config.StaticAssetsFile);
+  assert(ServerRendering);
+  assert(StaticAssets);
 
   const hapi = (
     new HapiAdapter([
       // Run `$ reframe eject server-rendering` to eject the server rendering code
-      config.ServerRendering,
+      ServerRendering,
       // Run `$ reframe eject server-assets` to eject the static asset serving code
-      config.StaticAssets,
+      StaticAssets,
     ])
   );
 
