@@ -8,11 +8,11 @@ const outputDir = projectConfig.projectFiles.buildOutputDir;
 const getPageFiles = () => projectConfig.getPageConfigFiles();
 const getWebpackBrowserConfig = ({config, ...utils}) => {
   const webpackBrowserConfigModifier = assemble_modifiers('webpackBrowserConfig');
-  webpackBrowserConfigModifier({config, ...utils});
+  return webpackBrowserConfigModifier({config, ...utils});
 };
 const getWebpackNodejsConfig = ({config, ...utils}) => {
   const webpackNodejsConfigModifier = assemble_modifiers('webpackNodejsConfig');
-  webpackNodejsConfigModifier({config, ...utils});
+  return webpackNodejsConfigModifier({config, ...utils});
 };
 const {log, doNotWatchBuildFiles} = projectConfig;
 const {pagesDir} = projectConfig.projectFiles;

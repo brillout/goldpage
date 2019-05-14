@@ -14,8 +14,8 @@ module.exports = {
     renderToDomFile,
     browserConfigs: ['renderToDomFile'],
 
-    webpackBrowserConfig,
-    webpackNodejsConfig,
+    webpackBrowserConfig: [webpackBrowserConfig],
+    webpackNodejsConfig: [webpackNodejsConfig],
 
     ejectables: [
         {
