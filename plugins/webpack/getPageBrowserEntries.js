@@ -4,7 +4,7 @@ const pathModule = require('path');
 
 const assert_pageConfig = require('@reframe/utils/assert_pageConfig');
 
-const config = require('@brillout/reconfig').getConfig({configFileName: 'reframe.config.js'});
+const projectConfig = require('@brillout/reconfig').getConfig({configFileName: 'reframe.config.js'});
 
 
 module.exports = getPageBrowserEntries;
@@ -26,10 +26,10 @@ function getPageBrowserEntries(pageModules) {
 
 function assert_usage__defaultPageConfig() {
     const configsUsedInBrowser = ['route', 'view', 'getInitialProps'];
-    const {defaultPageConfig} = config;
+    const {defaultPageConfig} = projectConfig;
     configsUsedInBrowser.forEach(prop => {
         assert_usage(
-            !(prop in defaultPageConfig),
+            !defaultPageConfig || !(prop in defaultPageConfig),
             "Reframe doesn't support setting a default `"+prop+"` page configuration via `defaultPageConfig`.",
             "Open a GitHub issue if you need to do that."
         );
@@ -116,7 +116,7 @@ function getAllBrowserConfigs({browserEntrySpec, pageConfig, pageFile, pageName}
     return allBrowserConfigs;
 
     function addBrowserConfigs() {
-        config
+        projectConfig
         .browserConfigs
         .forEach(({configName, configFile, configFiles}) => {
             assert_internal(!configFiles === !!configFile);
@@ -163,7 +163,7 @@ function getAllBrowserConfigs({browserEntrySpec, pageConfig, pageFile, pageName}
     }
 
     function addInitFunctions() {
-        let initFcts = config.browserInitFunctions.slice();
+        let initFcts = projectConfig.browserInitFunctions.slice();
         initFcts = initFcts.filter(({doNotInclude}) => !doNotInclude || !doNotInclude({pageConfig}));
         initFcts.sort((f1, f2) => f1.executionOrder - f2.executionOrder);
         initFcts.forEach(({initFunctionFile, name, browserConfigsNeeded}) => {
@@ -193,9 +193,10 @@ function getBrowserEntrySpec({pageConfig, pageFile, pageName}) {
         browserInitPath = pathModule.resolve(pageDir, initFile);
         assert_browserInitPath({browserInitPath, initFile, pageName, pageDir});
     } else {
-        assert_usage(config.browserInitFile);
-        assert_usage(pathModule.isAbsolute(config.browserInitFile));
-        browserInitPath = config.browserInitFile;
+        const {browserInitFile} = projectConfig;
+        assert_usage(browserInitFile);
+        assert_usage(pathModule.isAbsolute(browserInitFile));
+        browserInitPath = browserInitFile;
     }
 
     const browserEntrySpec = {
