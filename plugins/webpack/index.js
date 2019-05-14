@@ -5,6 +5,20 @@ const getPageBrowserEntriesFile = require.resolve('./getPageBrowserEntries');
 const getPageHtmlsFile = require.resolve('./getPageHtmls');
 const packageName = require('./package.json').name;
 
+
+/*
+const config = require('@brillout/reconfig');
+Object.assign(
+  config,
+  {
+    runBuildFile,
+    getBuildInfoFile,
+    getPageHtmlsFile,
+    getPageBrowserEntriesFile,
+  },
+);
+*/
+
 module.exports = {
     $name: packageName,
     $getters: [

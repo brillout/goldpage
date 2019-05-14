@@ -18,22 +18,27 @@ const StaticAssetsHandler = {
 module.exports = {
     $name: packageName,
     $getters: [
+        /*
         {
             prop: 'applyRequestHandlers',
             getter: applyRequestHandlers_getter,
         },
+        */
         requireFileGetter('ServerRenderingFile', 'ServerRendering'),
         requireFileGetter('StaticAssetsFile', 'StaticAssets'),
     ],
     ServerRenderingFile,
     StaticAssetsFile,
+    /*
     httpRequestHandlerFiles: [
         ServerRenderingHandler,
         StaticAssetsHandler,
     ],
+    */
     ejectables: getEjectables(),
 };
 
+/*
 function applyRequestHandlers_getter(configParts) {
     const assert_usage = require('reassert/usage');
     const parseUri = require('@brillout/parse-uri');
@@ -82,6 +87,7 @@ function applyRequestHandlers_getter(configParts) {
         return handlerFiles;
     }
 }
+*/
 
 function getEjectables() {
     return [
