@@ -10,7 +10,8 @@ async function getPageHtmls() {
     const projectConfig = reconfig.getConfig({configFileName: 'reframe.config.js'});
     const {pageConfigs} = projectConfig.getBuildInfo();
 
-    const {routerFile, renderToHtml} = projectConfig;
+    const {routerFile, renderToHtmlFile} = projectConfig;
+    const renderToHtml = require(renderToHtmlFile);
     const router = require(routerFile);
     assert_usage(router);
     assert_usage(renderToHtml);
