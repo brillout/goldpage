@@ -1,8 +1,8 @@
 const ServerRenderingFile = require.resolve('./ServerRendering');
 const StaticAssetsFile = require.resolve('./StaticAssets');
-const {requireFileGetter} = require('@brillout/reconfig/getters');
 const packageName = require('./package.json').name;
 
+/*
 const ServerRenderingHandler = {
     name: 'ServerRendering',
     prio: 10,
@@ -14,6 +14,7 @@ const StaticAssetsHandler = {
     prio: 20,
     handlerFile: StaticAssetsFile,
 };
+*/
 
 module.exports = {
     $name: packageName,
@@ -24,8 +25,8 @@ module.exports = {
             getter: applyRequestHandlers_getter,
         },
         */
-        requireFileGetter('ServerRenderingFile', 'ServerRendering'),
-        requireFileGetter('StaticAssetsFile', 'StaticAssets'),
+        transparentGetter('ServerRenderingFile'),
+        transparentGetter('StaticAssetsFile'),
     ],
     ServerRenderingFile,
     StaticAssetsFile,
@@ -34,8 +35,8 @@ module.exports = {
         ServerRenderingHandler,
         StaticAssetsHandler,
     ],
-    */
     ejectables: getEjectables(),
+    */
 };
 
 /*
@@ -87,7 +88,6 @@ function applyRequestHandlers_getter(configParts) {
         return handlerFiles;
     }
 }
-*/
 
 function getEjectables() {
     return [
@@ -121,3 +121,4 @@ function getEjectables() {
         };
     }
 }
+*/

@@ -12,8 +12,8 @@ module.exports = GoldSSR;
 
 function GoldSSR(options) {
 
-  assert(config.ServerRendering);
-  assert(config.StaticAssets);
+  const ServerRendering = require(config.ServerRenderingFile);
+  const StaticAssets = require(config.StaticAssetsFile);
 
   const hapi = (
     new HapiAdapter([
