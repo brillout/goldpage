@@ -16,7 +16,9 @@ const getWebpackNodejsConfig = ({config, ...utils}) => {
 };
 const {log, doNotWatchBuildFiles} = projectConfig;
 const {pagesDir} = projectConfig.projectFiles;
-const {getPageHtmls, getPageBrowserEntries} = projectConfig;
+const {getPageHtmlsFile, getPageBrowserEntriesFile} = projectConfig;
+const getPageHtmls = require(getPageHtmlsFile);
+const getPageBrowserEntries = require(getPageBrowserEntriesFile);
 const serverEntryFile = projectConfig.transpileServerCode && projectConfig.serverStartFile;
 
 const build = new Build({
