@@ -32,7 +32,8 @@ async function getHtml(requestContext) {
     const config = reconfig.getConfig({configFileName: 'reframe.config.js'});
 
     const {pageConfigs} = config.getBuildInfo();
-    const {renderToHtml, router} = config;
+    const {renderToHtml, routerFile} = config;
+    const router = require(routerFile);
 
     const html = await getPageHtml({pageConfigs, uri, renderToHtml, router, requestContext});
     assert_internal(html===null || html.constructor===String, html);

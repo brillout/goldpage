@@ -7,6 +7,7 @@ module.exports = {
     $getters,
     routerFile,
     browserConfigs: ['routerFile'],
+    /*
     ejectables: [
         {
             name: 'router',
@@ -20,4 +21,5 @@ module.exports = {
             ],
         },
     ],
+    */
 };

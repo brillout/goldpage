@@ -7,10 +7,11 @@ const getStaticPageHtmls = require('@brillout/repage/getStaticPageHtmls');
 module.exports = getPageHtmls;
 
 async function getPageHtmls() {
-    const reframeConfig = reconfig.getConfig({configFileName: 'reframe.config.js'});
-    const {pageConfigs} = reframeConfig.getBuildInfo();
+    const projectConfig = reconfig.getConfig({configFileName: 'reframe.config.js'});
+    const {pageConfigs} = projectConfig.getBuildInfo();
 
-    const {router, renderToHtml} = reframeConfig;
+    const {routerFile, renderToHtml} = projectConfig;
+    const router = require(routerFile);
     assert_usage(router);
     assert_usage(renderToHtml);
 
