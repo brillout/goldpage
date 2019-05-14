@@ -8,7 +8,8 @@ module.exports = getPageHtmls;
 
 async function getPageHtmls() {
     const projectConfig = reconfig.getConfig({configFileName: 'reframe.config.js'});
-    const {pageConfigs} = projectConfig.getBuildInfo();
+    const getBuildInfo = require(projectConfig.getBuildInfoFile);
+    const {pageConfigs} = getBuildInfo();
 
     const {routerFile, renderToHtmlFile} = projectConfig;
     const renderToHtml = require(renderToHtmlFile);

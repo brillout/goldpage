@@ -29,10 +29,11 @@ async function getHtml(requestContext) {
     const uri = requestContext.url;
     assert_internal(uri && uri.constructor===String, uri);
 
-    const config = reconfig.getConfig({configFileName: 'reframe.config.js'});
+    const projectConfig = reconfig.getConfig({configFileName: 'reframe.config.js'});
 
-    const {pageConfigs} = config.getBuildInfo();
-    const {renderToHtmlFile, routerFile} = config;
+    const getBuildInfo = require(projectConfig.getBuildInfoFile);
+    const {pageConfigs} = getBuildInfo();
+    const {renderToHtmlFile, routerFile} = projectConfig;
     const renderToHtml = require(renderToHtmlFile);
     const router = require(routerFile);
 

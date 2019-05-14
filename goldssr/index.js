@@ -37,6 +37,7 @@ function GoldSSR(options) {
   );
 
   async function build() {
-    await config.runBuild();
+    const runBuild = require(config.runBuildFile);
+    await runBuild();
   }
 }

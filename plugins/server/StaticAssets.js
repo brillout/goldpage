@@ -68,8 +68,9 @@ function getCacheHeader(filePath, fileContent) {
 }
 
 function getFilePath({pathname}) {
-    const config = reconfig.getConfig({configFileName: 'reframe.config.js'});
-    const {staticAssetsDir} = config.getBuildInfo();
+    const projectConfig = reconfig.getConfig({configFileName: 'reframe.config.js'});
+    const getBuildInfo = require(projectConfig.getBuildInfoFile);
+    const {staticAssetsDir} = getBuildInfo();
 
     const filename = (
         pathname==='/' && '/index.html' ||

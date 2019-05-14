@@ -1,3 +1,4 @@
+//const {transparentGetter, arrayGetter} = require('@brillout/reconfig/getters');
 const {transparentGetter, requireFileGetter, arrayGetter} = require('@brillout/reconfig/getters');
 const runBuildFile = require.resolve('./runBuild');
 const getBuildInfoFile = require.resolve('./getBuildInfo');
@@ -22,10 +23,11 @@ Object.assign(
 module.exports = {
     $name: packageName,
     $getters: [
-        requireFileGetter('runBuildFile'),
-        requireFileGetter('getBuildInfoFile'),
+        transparentGetter('runBuildFile'),
+        transparentGetter('getBuildInfoFile'),
         requireFileGetter('getPageHtmlsFile'),
         requireFileGetter('getPageBrowserEntriesFile'),
+
         transparentGetter('doNotWatchBuildFiles'),
 
         // TODO
