@@ -7,11 +7,11 @@ const projectConfig = require('@brillout/reconfig').getConfig({configFileName: '
 const outputDir = projectConfig.projectFiles.buildOutputDir;
 const getPageFiles = () => projectConfig.getPageConfigFiles();
 const getWebpackBrowserConfig = ({config, ...utils}) => {
-  const webpackBrowserConfigModifier = assemble_modifiers('webpackBrowserConfig'),
+  const webpackBrowserConfigModifier = assemble_modifiers('webpackBrowserConfig');
   webpackBrowserConfigModifier({config, ...utils});
 };
 const getWebpackNodejsConfig = ({config, ...utils}) => {
-  const webpackNodejsConfigModifier = assemble_modifiers('webpackNodejsConfig'),
+  const webpackNodejsConfigModifier = assemble_modifiers('webpackNodejsConfig');
   webpackNodejsConfigModifier({config, ...utils});
 };
 const {log, doNotWatchBuildFiles} = projectConfig;

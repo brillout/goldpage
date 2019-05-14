@@ -49,8 +49,13 @@ function arrayGetter(prop) {
             const array = [];
             configParts.forEach(configPart => {
                 if(prop in configPart) {
-                    assert_usage(configPart[prop].length>=0);
-                    return array.push(...configPart[prop]);
+                    const conf = configPart[prop];
+                    assert_usage(
+                      conf.length>=0 && !(conf instanceof Function),
+                      {conf, prop},
+                      configPart.$name,
+                    );
+                    array.push(...configPart[prop]);
                 }
             });
             return array;
