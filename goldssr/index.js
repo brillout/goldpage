@@ -4,12 +4,6 @@ const assert = require('reassert');
 
 const autoload = require('@brillout/autoload');
 
-require('@reframe/server'),
-require('@reframe/browser'),
-require('@reframe/react'),
-require('@reframe/path-to-regexp'),
-require('@reframe/build'),
-
 Object.assign(
   config,
   {

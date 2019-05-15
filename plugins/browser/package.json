@@ -1,6 +1,7 @@
 {
   "name": "@reframe/browser",
   "version": "0.3.2",
+  "@brillout/autoload": true,
   "dependencies": {
     "@brillout/browser-config": "0.3.2",
     "@brillout/reconfig": "0.3.2",
