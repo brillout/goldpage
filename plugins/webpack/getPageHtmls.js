@@ -1,17 +1,16 @@
 const assert_internal = require('reassert/internal');
 const assert_usage = require('reassert/usage');
 const assert_pageConfig = require('@reframe/utils/assert_pageConfig');
-const reconfig = require('@brillout/reconfig');
+const config = require('@brillout/reconfig');
 const getStaticPageHtmls = require('@brillout/repage/getStaticPageHtmls');
 
 module.exports = getPageHtmls;
 
 async function getPageHtmls() {
-    const projectConfig = reconfig.getConfig({configFileName: 'reframe.config.js'});
-    const getBuildInfo = require(projectConfig.getBuildInfoFile);
+    const getBuildInfo = require(config.getBuildInfoFile);
     const {pageConfigs} = getBuildInfo();
 
-    const {routerFile, renderToHtmlFile} = projectConfig;
+    const {routerFile, renderToHtmlFile} = config;
     const renderToHtml = require(renderToHtmlFile);
     const router = require(routerFile);
     assert_usage(router);

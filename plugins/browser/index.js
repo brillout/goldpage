@@ -1,33 +1,33 @@
-const {transparentGetter} = require('@brillout/reconfig/getters');
-const $name = require('./package.json').name;
-const $getters = [
-    transparentGetter('browserInitFile'),
-];
 const browserInitFile = require.resolve('./browserInit');
 const hydratePageFile = require.resolve('./hydratePage');
 
-module.exports = {
-    $name,
-    $getters,
+const config = require('@brillout/reconfig');
+const {AppendArray} = require('@brillout/reconfig');
 
+Object.assign(
+  config,
+  {
     browserInitFile,
+    browserInitFunctions: AppendArray([
+      {
+          name: 'hydratePage',
+          initFunctionFile: hydratePageFile,
+          doNotInclude: ({pageConfig}) => !!pageConfig.doNotRenderInBrowser,
+          // -50 is fairly aggressive to ensure that hydration is
+          // one of the first thing that happens in the browser
+          executionOrder: -50,
+          browserConfigsNeeded: [
+              'renderToDom',
+              'pageConfig',
+              'router',
+          ],
+      }
+    ]),
+  },
+);
 
-    browserInitFunctions: [
-        {
-            name: 'hydratePage',
-            initFunctionFile: hydratePageFile,
-            doNotInclude: ({pageConfig}) => !!pageConfig.doNotRenderInBrowser,
-            // -50 is fairly aggressive to ensure that hydration is
-            // one of the first thing that happens in the browser
-            executionOrder: -50,
-            browserConfigsNeeded: [
-                'renderToDom',
-                'pageConfig',
-                'router',
-            ],
-        }
-    ],
-
+/*
+module.exports = {
     ejectables: [
         {
             name: 'browser',
@@ -59,3 +59,4 @@ module.exports = {
         },
     ],
 };
+*/

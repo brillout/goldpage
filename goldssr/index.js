@@ -1,8 +1,25 @@
-const config = require('@brillout/reconfig').getConfig({configFileName: require.resolve('./reframe.config.js')});
+const config = require('@brillout/reconfig');
 const HapiAdapter = require('@universal-adapter/hapi');
 const assert = require('reassert');
 
 const autoload = require('@brillout/autoload');
+
+require('@reframe/server'),
+require('@reframe/browser'),
+require('@reframe/react'),
+require('@reframe/path-to-regexp'),
+require('@reframe/build'),
+
+Object.assign(
+  config,
+  {
+    projectFiles: {
+      pagesDir: __dirname+'/pages',
+      buildOutputDir: __dirname+'/dist',
+    },
+    getPageConfigFiles: () => ({welciPagi: require.resolve('../example/pages/landing-page')}),
+  }
+);
 
 autoload();
 

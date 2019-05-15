@@ -5,10 +5,6 @@ const config = {};
 const configs__plugins = [];
 const configs__plain = [];
 const pluginList = [];
-Object.defineProperty(config, '$getPluginList', {value: getPluginList});
-Object.defineProperty(config, '$addPlugin', {value: addPlugin});
-Object.defineProperty(config, '$addGetter', {value: addGetter});
-Object.defineProperty(config, '$addConfig', {value: addConfig});
 let rootConfigLoaded = false;
 
 module.exports = {getConfig};

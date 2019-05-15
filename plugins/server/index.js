@@ -1,7 +1,7 @@
 const ServerRenderingFile = require.resolve('./ServerRendering');
 const StaticAssetsFile = require.resolve('./StaticAssets');
 const packageName = require('./package.json').name;
-const {transparentGetter} = require('@brillout/reconfig/getters');
+const config = require('@brillout/reconfig');
 
 /*
 const ServerRenderingHandler = {
@@ -17,28 +17,13 @@ const StaticAssetsHandler = {
 };
 */
 
-module.exports = {
-    $name: packageName,
-    $getters: [
-        /*
-        {
-            prop: 'applyRequestHandlers',
-            getter: applyRequestHandlers_getter,
-        },
-        */
-        transparentGetter('ServerRenderingFile'),
-        transparentGetter('StaticAssetsFile'),
-    ],
+Object.assign(
+  config,
+  {
     ServerRenderingFile,
     StaticAssetsFile,
-    /*
-    httpRequestHandlerFiles: [
-        ServerRenderingHandler,
-        StaticAssetsHandler,
-    ],
-    ejectables: getEjectables(),
-    */
-};
+  },
+);
 
 /*
 function applyRequestHandlers_getter(configParts) {

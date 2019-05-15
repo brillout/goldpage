@@ -1,5 +1,5 @@
 const assert_internal = require('reassert/internal');
-const reconfig = require('@brillout/reconfig');
+const config = require('@brillout/reconfig');
 const pathModule = require('path');
 const crypto = require('crypto');
 const parseUri = require('@brillout/parse-uri');
@@ -68,8 +68,7 @@ function getCacheHeader(filePath, fileContent) {
 }
 
 function getFilePath({pathname}) {
-    const projectConfig = reconfig.getConfig({configFileName: 'reframe.config.js'});
-    const getBuildInfo = require(projectConfig.getBuildInfoFile);
+    const getBuildInfo = require(config.getBuildInfoFile);
     const {staticAssetsDir} = getBuildInfo();
 
     const filename = (

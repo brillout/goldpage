@@ -2,37 +2,19 @@ const renderToDomFile = require.resolve('./renderToDom');
 const renderToHtmlFile = require.resolve('./renderToHtml');
 const webpackBrowserConfig = require('./webpackBrowserConfig');
 const webpackNodejsConfig = require('./webpackNodejsConfig');
-const $getters = require('./getters');
-const $name = require('./package.json').name;
 
-module.exports = {
-    $name,
-    $getters,
+const config = require('@brillout/reconfig');
+const {AppendArray} = require('@brillout/reconfig');
 
+Object.assign(
+  config,
+  {
     renderToHtmlFile,
 
     renderToDomFile,
-    browserConfigs: ['renderToDomFile'],
+    browserConfigs: AppendArray(['renderToDomFile']),
 
-    webpackBrowserConfig: [webpackBrowserConfig],
-    webpackNodejsConfig: [webpackNodejsConfig],
-
-    ejectables: [
-        {
-            name: 'renderer',
-            description: 'Eject the React renderer (which runs `ReactDOM.hydrate` and `ReactDOMServer.renderToStaticMarkup`).',
-            actions: [
-                {
-                    targetDir: 'renderer/',
-                    configIsFilePath: true,
-                    configPath: 'renderToDomFile',
-                },
-                {
-                    targetDir: 'renderer/',
-                    configIsFilePath: true,
-                    configPath: 'renderToHtmlFile',
-                },
-            ],
-        }
-    ],
-};
+    webpackBrowserConfig: AppendArray([webpackBrowserConfig]),
+    webpackNodejsConfig: AppendArray([webpackNodejsConfig]),
+  },
+);

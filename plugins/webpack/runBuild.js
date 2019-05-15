@@ -2,7 +2,7 @@ const Build = require('webpack-ssr/Build');
 const watchDir = require('webpack-ssr/watchDir');
 const assert = require('reassert');
 
-const projectConfig = require('@brillout/reconfig').getConfig({configFileName: 'reframe.config.js'});
+const projectConfig = require('@brillout/reconfig');
 
 const outputDir = projectConfig.projectFiles.buildOutputDir;
 const getPageFiles = () => projectConfig.getPageConfigFiles();

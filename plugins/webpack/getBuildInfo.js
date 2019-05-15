@@ -1,5 +1,5 @@
 const getAssetInfos = require('webpack-ssr/getAssetInfos');
-const config = require('@brillout/reconfig').getConfig({configFileName: 'reframe.config.js'});
+const config = require('@brillout/reconfig');
 const assert = require('reassert');
 
 module.exports = getBuildInfo;

@@ -1,12 +1,15 @@
-const $name = require('./package.json').name;
-const $getters = require('./getters');
 const routerFile = require.resolve('./router');
+const config = require('@brillout/reconfig');
+const {AppendArray} = require('@brillout/reconfig');
 
-module.exports = {
-    $name,
-    $getters,
+Object.assign(
+  config,
+  {
     routerFile,
-    browserConfigs: ['routerFile'],
+    browserConfigs: AppendArray(['routerFile']),
+  },
+);
+
     /*
     ejectables: [
         {
@@ -22,4 +25,3 @@ module.exports = {
         },
     ],
     */
-};
