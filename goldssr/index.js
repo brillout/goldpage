@@ -1,4 +1,4 @@
-const config = require('@brillout/reconfig');
+const {config} = require('@brillout/reconfig');
 const HapiAdapter = require('@universal-adapter/hapi');
 const assert = require('reassert');
 

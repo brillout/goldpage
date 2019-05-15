@@ -4,7 +4,7 @@ const pathModule = require('path');
 
 const assert_pageConfig = require('@reframe/utils/assert_pageConfig');
 
-const config = require('@brillout/reconfig');
+const {config} = require('@brillout/reconfig');
 
 
 module.exports = getPageBrowserEntries;

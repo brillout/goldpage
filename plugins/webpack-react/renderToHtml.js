@@ -1,6 +1,6 @@
 const ReactDOMServer = require('react-dom/server');
 const generateHtml = require('@brillout/index-html');
-const config = require('@brillout/reconfig');
+const {config} = require('@brillout/reconfig');
 const {CONTAINER_ID, getReactElement} = require('./common');
 
 module.exports = renderToHtml;

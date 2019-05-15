@@ -1,5 +1,3 @@
-//const reconfig = require('./reconfig');
-
 const assert = require('reassert');
 
 const config_object_interface = {};
@@ -7,19 +5,11 @@ const config = new Proxy(config_object_interface, {get, set});
 
 const arrayKey = Symbol();
 
-module.exports = config;
+module.exports = {config, AppendArray};
 
-Object.defineProperty(module.exports, 'ArrayAppend', {value: ArrayAppend});
-/*
-Object.assign(
-  module.exports,
-  {ArrayAppend}
-);
-*/
-
-function ArrayAppend(array) {
-  if( this.constructor!==ArrayAppend ) {
-    return new ArrayAppend(array);
+function AppendArray(array) {
+  if( this.constructor!==AppendArray ) {
+    return new AppendArray(array);
   }
   this[arrayKey] = array;
 //Object.defineProperty(this, arrayKey, {value: array, enumerable: false});
@@ -31,7 +21,7 @@ function get(config_object_interface, prop) {
 }
 
 function set(config_object_interface, prop, value) {
-  if( value.constructor!==ArrayAppend ) {
+  if( value.constructor!==AppendArray ) {
     config_object_interface[prop] = value;
   } else {
     const array = value[arrayKey];

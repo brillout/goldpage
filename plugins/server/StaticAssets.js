@@ -1,5 +1,5 @@
 const assert_internal = require('reassert/internal');
-const config = require('@brillout/reconfig');
+const {config} = require('@brillout/reconfig');
 const pathModule = require('path');
 const crypto = require('crypto');
 const parseUri = require('@brillout/parse-uri');

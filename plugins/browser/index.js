@@ -1,8 +1,7 @@
 const browserInitFile = require.resolve('./browserInit');
 const hydratePageFile = require.resolve('./hydratePage');
 
-const config = require('@brillout/reconfig');
-const {AppendArray} = require('@brillout/reconfig');
+const {config, AppendArray} = require('@brillout/reconfig');
 
 Object.assign(
   config,
@@ -21,7 +20,7 @@ Object.assign(
               'pageConfig',
               'router',
           ],
-      }
+      },
     ]),
   },
 );

@@ -1,12 +1,11 @@
-const config = require('../');
-const {ArrayAppend} = require('../');
+const {config, AppendArray} = require('../');
 const assert = require('assert');
 
 config.newVal = {someProp: 42};
 assert(config.newVal.someProp===42);
 
-config.aList = ArrayAppend([123, 234]);
-config.aList = ArrayAppend([432, 321]);
+config.aList = AppendArray([123, 234]);
+config.aList = AppendArray([432, 321]);
 console.log(config.aList);
 assert(config.aList.length===4);
 assert(config.aList[0]=123);

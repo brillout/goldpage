@@ -1,7 +1,7 @@
 const assert_internal = require('reassert/internal');
 const crypto = require('crypto');
 const getPageHtml = require('@brillout/repage/getPageHtml');
-const config = require('@brillout/reconfig');
+const {config} = require('@brillout/reconfig');
 
 
 module.exports = ServerRendering;

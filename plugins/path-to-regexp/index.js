@@ -1,6 +1,5 @@
 const routerFile = require.resolve('./router');
-const config = require('@brillout/reconfig');
-const {AppendArray} = require('@brillout/reconfig');
+const {config, AppendArray} = require('@brillout/reconfig');
 
 Object.assign(
   config,

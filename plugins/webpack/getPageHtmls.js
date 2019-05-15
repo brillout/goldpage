@@ -1,7 +1,7 @@
 const assert_internal = require('reassert/internal');
 const assert_usage = require('reassert/usage');
 const assert_pageConfig = require('@reframe/utils/assert_pageConfig');
-const config = require('@brillout/reconfig');
+const {config} = require('@brillout/reconfig');
 const getStaticPageHtmls = require('@brillout/repage/getStaticPageHtmls');
 
 module.exports = getPageHtmls;

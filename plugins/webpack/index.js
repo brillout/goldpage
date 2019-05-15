@@ -1,4 +1,4 @@
-const config = require('@brillout/reconfig');
+const {config} = require('@brillout/reconfig');
 const runBuildFile = require.resolve('./runBuild');
 const getBuildInfoFile = require.resolve('./getBuildInfo');
 const getPageBrowserEntriesFile = require.resolve('./getPageBrowserEntries');
