@@ -1,139 +1,44 @@
-const assert_internal = require('reassert/internal');
-const assert_usage = require('reassert/usage');
+//const reconfig = require('./reconfig');
 
-const config = {};
-const configs__plugins = [];
-const configs__plain = [];
-const pluginList = [];
-let rootConfigLoaded = false;
+const assert = require('reassert');
 
-module.exports = {getConfig};
+const config_object_interface = {};
+const config = new Proxy(config_object_interface, {get, set});
 
-function getConfig({configFileName}={}) {
-    assert_usage(
-        configFileName
-    );
+const arrayKey = Symbol();
 
-    if( ! rootConfigLoaded ) {
-        loadRootConfig({configFileName});
-        rootConfigLoaded = true;
-    }
+module.exports = config;
 
-    return config;
+Object.defineProperty(module.exports, 'ArrayAppend', {value: ArrayAppend});
+/*
+Object.assign(
+  module.exports,
+  {ArrayAppend}
+);
+*/
+
+function ArrayAppend(array) {
+  if( this.constructor!==ArrayAppend ) {
+    return new ArrayAppend(array);
+  }
+  this[arrayKey] = array;
+//Object.defineProperty(this, arrayKey, {value: array, enumerable: false});
+  return this;
 }
 
-function getPluginList() {
-    return pluginList;
+function get(config_object_interface, prop) {
+  return config_object_interface[prop];
 }
 
-function loadRootConfig({configFileName}) {
-    const rootConfigObject = loadConfigFile({configFileName});
-    if( ! rootConfigObject ) {
-        return null;
-    }
-    rootConfigObject.$name = rootConfigObject.$name || configFileName;
-
-    configs__plain.push(rootConfigObject);
-    parseConfigObject(rootConfigObject, {isRoot: true});
-}
-
-function parseConfigObject(configObject, {isRoot=false}={}) {
-    assert_internal(configObject.$name);
-
-    if( configObject.$plugins ) {
-        addPlugins(configObject.$plugins, {isRoot});
-    }
-
-    if( configObject.$getters ) {
-        addGetters(configObject.$getters);
-    }
-}
-
-function addPlugins($plugins, {isRoot}) {
-    $plugins.forEach(configObject => addPlugin(configObject, {isRoot}));
-}
-
-function addPlugin(configObject, {isRoot=true}={}) {
-    assert_usage(
-        configObject.$name,
-        "A plugin is missing a `$name` but it is required.",
-        {
-           IS_REASSERT_OPTS: true,
-           details: [
-                "The plugin in question is:",
-                configObject
-           ],
-        }
-    );
-
-    pluginList.push({
-        $name: configObject.$name,
-        $isRootPlugin: isRoot,
-    });
-
-    configs__plugins.push(configObject);
-    parseConfigObject(configObject);
-}
-
-function addConfig(configObject) {
-    assert_usage(
-        configObject.$name,
-        "A added config is missing a `$name` but it is required.",
-        {
-           IS_REASSERT_OPTS: true,
-           details: [
-                "The config in question is:",
-                configObject
-           ],
-        }
-    );
-
-    configs__plain.push(configObject);
-    parseConfigObject(configObject);
-}
-
-function addGetters($getters) {
-    $getters.forEach(addGetter);
-}
-
-function addGetter(getterSpec) {
-    const {prop, getter} = getterSpec;
-    Object.defineProperty(
-        config,
-        prop,
-        {
-            get: () => getter([...configs__plugins, ...configs__plain]),
-            enumerable: true,
-            configurable: true,
-        }
-    );
-}
-
-function loadConfigFile({configFileName}) {
-    const getUserDir = require('@brillout/get-user-dir');
-    const findUp = require('find-up');
-    const pathModule = require('path');
-
-    const userDir = getUserDir();
-
-    /*
-    const configFile = findUp.sync(configFileName, {cwd: userDir});
-    */
-    const configFile = configFileName;
-    console.log('cccc', configFileName, configFile);
-    assert_internal(configFile===null || pathModule.isAbsolute(configFile));
-
-    Object.defineProperty(config, '$configFile', {value: configFile});
-
-    if( ! configFile ) {
-        return null;
-    }
-
-    const rootConfigObject = eval('require')(configFile);
-
-    assert_usage(
-        rootConfigObject && rootConfigObject.constructor===Object
-    );
-
-    return rootConfigObject;
+function set(config_object_interface, prop, value) {
+  if( value.constructor!==ArrayAppend ) {
+    config_object_interface[prop] = value;
+  } else {
+    const array = value[arrayKey];
+    assert.usage(array.constructor===Array);
+    config_object_interface[prop] = config_object_interface[prop] || [];
+    assert.internal(config_object_interface[prop].constructor===Array);
+    config_object_interface[prop].push(...array);
+  }
+  return true;
 }
