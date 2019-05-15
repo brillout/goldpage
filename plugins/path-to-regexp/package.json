@@ -1,5 +1,5 @@
 {
-  "name": "@reframe/path-to-regexp",
+  "name": "@goldssr/path-to-regexp",
   "version": "0.3.2",
   "@brillout/autoload": true,
   "dependencies": {
@@ -9,5 +9,6 @@
   },
   "publishConfig": {
     "access": "public"
-  }
+  },
+  "repository": "github:brillout/goldssr"
 }

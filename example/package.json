@@ -6,11 +6,11 @@
     "start": "node ."
   },
   "dependencies": {
-    "@reframe/server": "0.3.2",
-    "@reframe/browser": "0.3.2",
-    "@reframe/react": "0.3.2",
-    "@reframe/path-to-regexp": "0.3.2",
-    "@reframe/build": "0.3.2",
+    "@goldssr/server": "0.3.2",
+    "@goldssr/browser": "0.3.2",
+    "@goldssr/react": "0.3.2",
+    "@goldssr/path-to-regexp": "0.3.2",
+    "@goldssr/build": "0.3.2",
     "goldssr": "0.3.2",
     "hapi": "^18.1.0"
   }

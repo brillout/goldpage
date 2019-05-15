@@ -45,7 +45,7 @@ function getBrowserEntryString({pageConfig, pageFile, pageName}) {
 
     const isDefaultBrowserInit = (
         require.resolve(browserEntrySpec.browserInitPath) ===
-        require.resolve('@reframe/browser/browserInit')
+        require.resolve('@goldssr/browser/browserInit')
     );
 
     const browserEntries = [];
