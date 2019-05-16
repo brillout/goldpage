@@ -17,8 +17,6 @@ Object.assign(
 
 autoload();
 
-//  process.exit();
-
 module.exports = GoldSSR;
 
 function GoldSSR(options) {

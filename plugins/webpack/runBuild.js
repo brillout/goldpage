@@ -2,10 +2,10 @@ const Build = require('webpack-ssr/Build');
 const watchDir = require('webpack-ssr/watchDir');
 const assert = require('reassert');
 
-const {config: projectConfig} = require('@brillout/reconfig');
+const {reconfig} = require('@brillout/reconfig');
 
-const outputDir = projectConfig.projectFiles.buildOutputDir;
-const getPageFiles = () => projectConfig.getPageConfigFiles();
+const outputDir = reconfig.projectFiles.buildOutputDir;
+const getPageFiles = () => reconfig.getPageConfigFiles();
 const getWebpackBrowserConfig = ({config, ...utils}) => {
   const webpackBrowserConfigModifier = assemble_modifiers('webpackBrowserConfig');
   return webpackBrowserConfigModifier({config, ...utils});
@@ -14,12 +14,12 @@ const getWebpackNodejsConfig = ({config, ...utils}) => {
   const webpackNodejsConfigModifier = assemble_modifiers('webpackNodejsConfig');
   return webpackNodejsConfigModifier({config, ...utils});
 };
-const {log, doNotWatchBuildFiles} = projectConfig;
-const {pagesDir} = projectConfig.projectFiles;
-const {getPageHtmlsFile, getPageBrowserEntriesFile} = projectConfig;
+const {log, doNotWatchBuildFiles} = reconfig;
+const {pagesDir} = reconfig.projectFiles;
+const {getPageHtmlsFile, getPageBrowserEntriesFile} = reconfig;
 const getPageHtmls = require(getPageHtmlsFile);
 const getPageBrowserEntries = require(getPageBrowserEntriesFile);
-const serverEntryFile = projectConfig.transpileServerCode && projectConfig.serverStartFile;
+const serverEntryFile = reconfig.transpileServerCode && reconfig.serverStartFile;
 
 const build = new Build({
     outputDir,
@@ -46,7 +46,7 @@ function assemble_modifiers(modifier_name) {
     // `config` holds a webpack config
     let supra_modifier = ({config}) => config;
 
-    const modifiers = projectConfig[modifier_name];
+    const modifiers = reconfig[modifier_name];
 
     // We assemble all `configParts`'s config modifiers into one `supra_modifier`
     modifiers

@@ -5,7 +5,7 @@ const config = new Proxy(config_object_interface, {get, set});
 
 const arrayKey = Symbol();
 
-module.exports = {config, AppendArray};
+module.exports = {config, reconfig: config, AppendArray};
 
 function AppendArray(array) {
   if( this.constructor!==AppendArray ) {

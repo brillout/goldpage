@@ -1,4 +1,4 @@
-const {config} = require('@brillout/reconfig');
+const {reconfig} = require('@brillout/reconfig');
 const runBuildFile = require.resolve('./runBuild');
 const getBuildInfoFile = require.resolve('./getBuildInfo');
 const getPageBrowserEntriesFile = require.resolve('./getPageBrowserEntries');
@@ -6,7 +6,7 @@ const getPageHtmlsFile = require.resolve('./getPageHtmls');
 const packageName = require('./package.json').name;
 
 Object.assign(
-  config,
+  reconfig,
   {
     runBuildFile,
     getBuildInfoFile,
@@ -20,7 +20,7 @@ function getBrowserConfigs() {
     const assert_plugin = require('reassert/usage');
 
     const configPaths = {};
-    config
+    reconfig
     .browserConfigs
     .forEach(browserConfigSpec => {
         if( browserConfigSpec.constructor === String ) {
@@ -43,7 +43,7 @@ function getBrowserConfigs() {
 
             const configFile = (() => {
                 if( configIsList ) return null;
-                let filePath = config[configPath];
+                let filePath = reconfig[configPath];
                 assert_plugin(filePath.constructor===String);
                 filePath = require.resolve(filePath);
                 assert_plugin(filePath);
@@ -53,7 +53,7 @@ function getBrowserConfigs() {
             const configFiles = (() => {
                 if( ! configIsList ) return null;
                 const filePaths = (
-                  config[configPath]
+                  reconfig[configPath]
                   .map(filePath => {
                     assert_plugin(filePath);
                     filePath = require.resolve(filePath);
