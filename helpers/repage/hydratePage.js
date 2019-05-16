@@ -3,14 +3,14 @@ const {getInitialProps} = require('./common/getInitialProps');
 
 module.exports = hydratePage;
 
-async function hydratePage({pageConfig, router, navigator=getDefaultNavigator(), renderToDom}) {
+async function hydratePage({pageConfig, router, navigator=getDefaultNavigator(), renderPageToDom}) {
     const uri = navigator.getCurrentRoute();
 
     const url = getUrl({uri});
 
     const initialProps = await getInitialProps({pageConfig, url, router});
 
-    await renderToDom({pageConfig, initialProps});
+    await renderPageToDom({pageConfig, initialProps});
 }
 
 function getDefaultNavigator() {

@@ -5,6 +5,7 @@
   "dependencies": {
     "@brillout/browser-config": "0.3.2",
     "@brillout/index-html": "^0.1.2",
+    "@brillout/reassert": "0.0.1",
     "@brillout/reconfig": "0.3.2"
   },
   "publishConfig": {

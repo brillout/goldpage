@@ -3,8 +3,9 @@
   "version": "0.3.2",
   "@brillout/autoload": true,
   "dependencies": {
-    "@goldssr/webpack-react": "0.3.2",
-    "@goldssr/render-react": "0.3.2"
+    "@goldssr/index-html": "0.3.2",
+    "@goldssr/render-react": "0.3.2",
+    "@goldssr/webpack-react": "0.3.2"
   },
   "publishConfig": {
     "access": "public"

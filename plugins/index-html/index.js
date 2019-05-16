@@ -8,7 +8,6 @@ Object.assign(
   {
     renderPageToHtmlFile,
     renderPageToDomFile,
-    browserConfigs: AppendArray(['renderPageToDomFile']),
-    browserConfigs: AppendArray(['renderToDomFile']),
+    browserConfigs: AppendArray(['renderPageToDomFile', 'renderToDomFile']),
   },
 );
