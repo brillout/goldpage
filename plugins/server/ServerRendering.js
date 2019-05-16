@@ -32,8 +32,8 @@ async function getHtml(requestContext) {
 
     const getBuildInfo = require(config.getBuildInfoFile);
     const {pageConfigs} = getBuildInfo();
-    const {renderToHtmlFile, routerFile} = config;
-    const renderToHtml = require(renderToHtmlFile);
+    const {renderPageToHtmlFile, routerFile} = config;
+    const renderToHtml = require(renderPageToHtmlFile);
     const router = require(routerFile);
 
     const html = await getPageHtml({pageConfigs, uri, renderToHtml, router, requestContext});

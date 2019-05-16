@@ -1,10 +1,11 @@
 {
-  "name": "@goldssr/webpack-react",
+  "name": "@goldssr/render-react",
   "version": "0.3.2",
   "@brillout/autoload": true,
   "dependencies": {
     "@brillout/reconfig": "0.3.2",
-    "@babel/preset-react": "^7.0.0"
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6"
   },
   "publishConfig": {
     "access": "public"

@@ -10,8 +10,8 @@ async function getPageHtmls() {
     const getBuildInfo = require(config.getBuildInfoFile);
     const {pageConfigs} = getBuildInfo();
 
-    const {routerFile, renderToHtmlFile} = config;
-    const renderToHtml = require(renderToHtmlFile);
+    const {routerFile, renderPageToHtmlFile} = config;
+    const renderToHtml = require(renderPageToHtmlFile);
     const router = require(routerFile);
     assert_usage(router);
     assert_usage(renderToHtml);

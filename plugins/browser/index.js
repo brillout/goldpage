@@ -16,6 +16,7 @@ Object.assign(
           // one of the first thing that happens in the browser
           executionOrder: -50,
           browserConfigsNeeded: [
+              'renderPageToDom',
               'renderToDom',
               'pageConfig',
               'router',

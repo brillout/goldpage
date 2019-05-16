@@ -11,7 +11,12 @@
     "plugins/browser",
     "plugins/server",
 
+    "plugins/index-html",
+
+    "plugins/react",
+    "plugins/render-react",
     "plugins/webpack-react",
+
     "plugins/webpack",
     "helpers/webpack-ssr",
     "helpers/webpack-config-mod",
