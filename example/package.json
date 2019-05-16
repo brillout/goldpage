@@ -13,5 +13,8 @@
     "@goldssr/build": "0.3.2",
     "goldssr": "0.3.2",
     "hapi": "^18.1.0"
+  },
+  "checkDeps": {
+    "skip": true
   }
 }
