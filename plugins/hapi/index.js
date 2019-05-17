@@ -1,11 +1,7 @@
 const {reconfig} = require('@brillout/reconfig');
 
 reconfig.serverAdapters = reconfig.serverAdapters || {};
-Object.defineProperty(
-  reconfig.serverAdapters,
-  'hapi',
-  {get: getHapiPlugin},
-);
+reconfig.serverAdapters.getHapiPlugin = getHapiPlugin;
 /*
 Object.assign(
   reconfig,
@@ -20,10 +16,10 @@ Object.assign(
 let hapiPlugin;
 
 function getHapiPlugin() {
-  console.log('g', hapi);
+  const assert = require('reassert');
+
   if( !hapiPlugin ) {
     const HapiAdapter = require('@universal-adapter/hapi');
-    const assert = require('reassert');
 
     assert(reconfig.ServerRenderingFile);
     assert(reconfig.StaticAssetsFile);
@@ -41,5 +37,7 @@ function getHapiPlugin() {
   }
 
   assert.internal(hapiPlugin);
+  assert.internal(hapiPlugin.name);
+  assert.internal(hapiPlugin.register);
   return hapiPlugin;
 }

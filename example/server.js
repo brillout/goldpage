@@ -23,7 +23,6 @@ async function start() {
   });
   */
 
-  console.log(ssr.hapi);
   await server.register(ssr.hapi);
 
   await server.start();

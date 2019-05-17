@@ -54,11 +54,20 @@ function GoldSSR({
     reconfig.serverAdapters,
     {build},
   );
+  Object.defineProperty(
+    this,
+    'hapi',
+    {get: getHapiPlugin},
+  )
 }
 
 async function build() {
   const runBuild = require(reconfig.runBuildFile);
   await runBuild();
+}
+
+function getHapiPlugin() {
+  return reconfig.serverAdapters.getHapiPlugin();
 }
 
 /*
