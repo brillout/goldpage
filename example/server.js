@@ -2,9 +2,7 @@ const Hapi = require('hapi');
 const GoldSSR = require('goldssr');
 
 const ssr = new GoldSSR({
-  pages: [
-    require.resolve('./pages/landing-page'),
-  ],
+  pagesDir: __dirname+'/pages',
 });
 
 module.exports = start();

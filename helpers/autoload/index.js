@@ -19,12 +19,16 @@ function autoload() {
     return;
   }
 
+  const loaded = [];
   Object.keys(dependencies)
   .forEach(depName => {
     const dep = require.resolve(depName+'/package.json', {paths: [userDir]});
     const depPackageJson = require(dep);
     if( depPackageJson['@brillout/autoload'] ) {
+      loaded.push(depName);
       require(depName);
     }
   });
+
+  return {loaded, packageJsonFile};
 }

@@ -4,7 +4,7 @@ const assert = require('reassert');
 
 const {reconfig} = require('@brillout/reconfig');
 
-const outputDir = reconfig.projectFiles.buildOutputDir;
+const outputDir = reconfig.buildDir;
 const getPageFiles = () => reconfig.getPageConfigFiles();
 const getWebpackBrowserConfig = ({config, ...utils}) => {
   const webpackBrowserConfigModifier = assemble_modifiers('webpackBrowserConfig');
@@ -15,7 +15,7 @@ const getWebpackNodejsConfig = ({config, ...utils}) => {
   return webpackNodejsConfigModifier({config, ...utils});
 };
 const {log, doNotWatchBuildFiles} = reconfig;
-const {pagesDir} = reconfig.projectFiles;
+const {pagesDir} = reconfig;
 const {getPageHtmlsFile, getPageBrowserEntriesFile} = reconfig;
 const getPageHtmls = require(getPageHtmlsFile);
 const getPageBrowserEntries = require(getPageBrowserEntriesFile);

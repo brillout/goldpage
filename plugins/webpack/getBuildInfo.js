@@ -5,7 +5,7 @@ const assert = require('reassert');
 module.exports = getBuildInfo;
 
 function getBuildInfo({shouldBeProductionBuild}={}) {
-    const outputDir = reconfig.projectFiles.buildOutputDir;
+    const outputDir = reconfig.buildDir;
     assert.internal(outputDir);
 
     const assetInfos = getAssetInfos({outputDir, shouldBeProductionBuild});

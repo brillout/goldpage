@@ -3,5 +3,5 @@ lerna-debug.log
 yarn-error.log
 package-lock.json
 
-dist/
+.build/
 node_modules/

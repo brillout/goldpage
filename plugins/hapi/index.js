@@ -3,7 +3,11 @@ const HapiAdapter = require('@universal-adapter/hapi');
 const assert = require('reassert');
 
 reconfig.serverAdapters = reconfig.serverAdapters || {};
-reconfig.serverAdapters.hapi = getHapiPlugin();
+Object.defineProperty(
+  reconfig.serverAdapters,
+  'hap',
+  {get: getHapiPlugin},
+);
 /*
 Object.assign(
   reconfig,

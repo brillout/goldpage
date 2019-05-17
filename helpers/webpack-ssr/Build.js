@@ -204,8 +204,7 @@ function assert_config({config, webpackEntries, outputPath, getterName}) {
     assert_internal(configEntries.length>=0, configEntries);
     assert_usage(
         configEntries.length>0 || Object.keys(webpackEntries).length>0,
-        colorError("No pages found."),
-        "Do your page config file names end with `.config.js`?"
+        colorError("No pages provided to `webpack-ssr`."),
     );
     assert_usage(
         configEntries.length>0,
