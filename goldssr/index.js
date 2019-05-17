@@ -29,7 +29,13 @@ function GoldSSR({
       pagesDir,
       buildDir,
       getPageConfigFiles: () => {
-        return findProjectFiles('.page-config.js', {within: buildDir});
+        const pageConfigs = findProjectFiles('*.page-config.js', {within: buildDir});
+        assert.usage(
+          pageConfigs.length>=1,
+          "No files ending with `.page-config.js` found in `"+pagesDir+"`.",
+          "You need to define at least one page config file.",
+        );
+        return pageConfigs;
       },
       /*
       projectFiles: {

@@ -50,7 +50,6 @@ function get_ignore({cwd, ignoreSubProjects}) {
       '.*/',
       '',
     ].join('\n');
-    console.log(gitignore_content);
     ignore.add(gitignore_content);
 
     if( ignoreSubProjects ) {

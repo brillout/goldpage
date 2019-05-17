@@ -64,16 +64,23 @@ function IsoBuilder() {
 
     return this;
 
-    function startAll() {
-        return (
-            buildAll({
-                isoBuilder,
-                latestRun,
-                nodejsBuild,
-                browserBuild,
-                isRebuild,
-            })
-        );
+    async function startAll() {
+        try {
+          return (
+              await buildAll({
+                  isoBuilder,
+                  latestRun,
+                  nodejsBuild,
+                  browserBuild,
+                  isRebuild,
+              })
+          );
+        } catch(err) {
+          console.error(err);
+          // We have to manually terminate the process because webpack won't do so.
+          // (startAll is run in a Webpack callback.)
+          process.exit();
+        }
     }
 
     function onBuildFail() {
