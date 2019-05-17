@@ -703,15 +703,15 @@
   resolved "https://registry.yarnpkg.com/@brillout/browser-config/-/browser-config-0.3.2.tgz#4f31fb86e0790f4a167797327a7c03da9679efd8"
   integrity sha512-rthxBm8TXURfPppq6qvXsG5O0y/3tNG4cej6JA7LEonc8Vw8m4AzvToNddrDsdl66UbxFef/xYx6tjEMPSEkzw==
 
-"@brillout/check-deps@^0.1.3":
-  version "0.1.3"
-  resolved "https://registry.yarnpkg.com/@brillout/check-deps/-/check-deps-0.1.3.tgz#8b8e9259254e6260490f027fe67c6c257e90a958"
-  integrity sha512-1s1SMEEp36HCbPpq+BRLJCIcDsAOPHDOqdjthoXDBtFJ2Kl4mqlFrxq5zyDkLlrPeCKqfQwLLin+BQL917Ywjw==
+"@brillout/check-deps@^0.1.5":
+  version "0.1.5"
+  resolved "https://registry.yarnpkg.com/@brillout/check-deps/-/check-deps-0.1.5.tgz#b5af1ef51c555f8c4ad04caf29c194424b01071b"
+  integrity sha512-Gq8WVVx5mOc3q2PxkwresBLjqGFvi6bk9oPYej8OMi9xhOi4yy807lRrfqgIs0q99QVBTn1Dz9VPT/JfTpR2tw==
   dependencies:
     "@brillout/find-package-files" "^0.1.1"
+    "@brillout/reassert" "0.0.2"
     chalk "^2.4.0"
     dependency-check "^3.1.0"
-    reassert "^1.1.8"
 
 "@brillout/cli-theme@0.3.2":
   version "0.3.2"
@@ -769,6 +769,13 @@
   version "0.0.1"
   resolved "https://registry.yarnpkg.com/@brillout/reassert/-/reassert-0.0.1.tgz#68c4bf06f3676d11cda26ee6f8a62a0e2ad4876c"
   integrity sha512-q1n2oUmLycK9oghaQmfa2dOL4iNQ0JGIHzoB+1O16IZRFPN0nbY+HhBoPeAtCVZ2/XuTiP0HfcdKjtzNSMkhFw==
+  dependencies:
+    "@brillout/format-text" "^0.1.3"
+
+"@brillout/reassert@0.0.2":
+  version "0.0.2"
+  resolved "https://registry.yarnpkg.com/@brillout/reassert/-/reassert-0.0.2.tgz#0a010a6be8ec1bd71fa9c77f15d877fa5c54505a"
+  integrity sha512-M7Ag6lpEIscjcjOfK+vN6U/GcXpozb739IrBg2KiquHSwgAlmyikMrBUsGpM+O36D8cRI22yRka36iIzgXdb0g==
   dependencies:
     "@brillout/format-text" "^0.1.3"
 
