@@ -4,7 +4,6 @@
   "dependencies": {
     "@brillout/autoload": "0.3.2",
     "@brillout/reconfig": "0.3.2",
-    "@universal-adapter/hapi": "^0.1.2",
     "reassert": "^1.1.21"
   }
 }

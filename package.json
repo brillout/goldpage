@@ -10,7 +10,6 @@
   "workspaces": [
     "goldssr/",
     "example/",
-    "plugins/path-to-regexp",
 
     "plugins/core",
 
@@ -18,6 +17,8 @@
     "plugins/server",
 
     "plugins/index-html",
+    "plugins/path-to-regexp",
+    "plugins/hapi",
 
     "plugins/react",
     "plugins/render-react",

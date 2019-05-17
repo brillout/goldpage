@@ -1,5 +1,4 @@
 const {reconfig} = require('@brillout/reconfig');
-const HapiAdapter = require('@universal-adapter/hapi');
 const assert = require('reassert');
 
 require('@goldssr/core');
@@ -12,7 +11,6 @@ autoload();
 module.exports = GoldSSR;
 
 function GoldSSR(options) {
-
   Object.assign(
     reconfig,
     {
@@ -24,32 +22,14 @@ function GoldSSR(options) {
     }
   );
 
-  assert(reconfig.ServerRenderingFile);
-  assert(reconfig.StaticAssetsFile);
-  const ServerRendering = require(reconfig.ServerRenderingFile);
-  const StaticAssets = require(reconfig.StaticAssetsFile);
-  assert(ServerRendering);
-  assert(StaticAssets);
-
-  const hapi = (
-    new HapiAdapter([
-      // Run `$ reframe eject server-rendering` to eject the server rendering code
-      ServerRendering,
-      // Run `$ reframe eject server-assets` to eject the static asset serving code
-      StaticAssets,
-    ])
-  );
-
   Object.assign(
     this,
-    {
-      build,
-      hapi,
-    },
+    reconfig.serverAdapters,
+    {build},
   );
+}
 
-  async function build() {
-    const runBuild = require(reconfig.runBuildFile);
-    await runBuild();
-  }
+async function build() {
+  const runBuild = require(reconfig.runBuildFile);
+  await runBuild();
 }
