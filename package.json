@@ -12,6 +12,8 @@
     "example/",
     "plugins/path-to-regexp",
 
+    "plugins/core",
+
     "plugins/browser",
     "plugins/server",
 
