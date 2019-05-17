@@ -5,7 +5,7 @@ module.exports = {
   route: '/',
   view: () => (
     <div>
-      Hello from easy-ssr.
+      Hello from GoldSSR.
       <Time/>
     </div>
   ),
