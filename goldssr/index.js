@@ -1,19 +1,11 @@
-const {config} = require('@brillout/reconfig');
+const {reconfig} = require('@brillout/reconfig');
 const HapiAdapter = require('@universal-adapter/hapi');
 const assert = require('reassert');
 
+require('@goldssr/core');
+require('@goldssr/browser');
+require('@goldssr/server');
 const autoload = require('@brillout/autoload');
-
-Object.assign(
-  config,
-  {
-    projectFiles: {
-      pagesDir: __dirname+'/pages',
-      buildOutputDir: __dirname+'/dist',
-    },
-    getPageConfigFiles: () => ({welciPagi: require.resolve('../example/pages/landing-page')}),
-  }
-);
 
 autoload();
 
@@ -21,10 +13,21 @@ module.exports = GoldSSR;
 
 function GoldSSR(options) {
 
-  assert(config.ServerRenderingFile);
-  assert(config.StaticAssetsFile);
-  const ServerRendering = require(config.ServerRenderingFile);
-  const StaticAssets = require(config.StaticAssetsFile);
+  Object.assign(
+    reconfig,
+    {
+      projectFiles: {
+        pagesDir: __dirname+'/pages',
+        buildOutputDir: __dirname+'/dist',
+      },
+      getPageConfigFiles: () => ({welciPagi: require.resolve('../example/pages/landing-page')}),
+    }
+  );
+
+  assert(reconfig.ServerRenderingFile);
+  assert(reconfig.StaticAssetsFile);
+  const ServerRendering = require(reconfig.ServerRenderingFile);
+  const StaticAssets = require(reconfig.StaticAssetsFile);
   assert(ServerRendering);
   assert(StaticAssets);
 
@@ -46,7 +49,7 @@ function GoldSSR(options) {
   );
 
   async function build() {
-    const runBuild = require(config.runBuildFile);
+    const runBuild = require(reconfig.runBuildFile);
     await runBuild();
   }
 }

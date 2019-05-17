@@ -6,12 +6,9 @@
     "start": "node ."
   },
   "dependencies": {
-    "@goldssr/server": "0.3.2",
-    "@goldssr/browser": "0.3.2",
     "@goldssr/react": "0.3.2",
     "@goldssr/path-to-regexp": "0.3.2",
     "@goldssr/webpack": "0.3.2",
-    "@goldssr/core": "0.3.2",
     "goldssr": "0.3.2",
     "hapi": "^18.1.0"
   },
