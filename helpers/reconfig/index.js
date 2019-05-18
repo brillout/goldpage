@@ -21,7 +21,7 @@ function get(config_object_interface, prop) {
 }
 
 function set(config_object_interface, prop, value) {
-  if( value.constructor!==AppendArray ) {
+  if( !value || value.constructor!==AppendArray ) {
     config_object_interface[prop] = value;
   } else {
     const array = value[arrayKey];

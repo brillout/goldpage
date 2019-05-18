@@ -8,8 +8,13 @@ const {colorEmphasis, strDir, colorWarning, colorError, symbolSuccess, symbolErr
 module.exports = {Logger};
 
 function Logger(opts) {
+    if( this.constructor!==Logger ) {
+      return new Logger(opts);
+    }
+
     Object.assign(
-        this, {
+        this,
+        {
             onNewBuildState: new BuildStateManager(this),
 
             symbols: {
@@ -25,19 +30,22 @@ function Logger(opts) {
             getBuildStartText,
             getBuildEndText,
             getEnvText,
-            getRebuildText,
+            getRebuildingText,
+            getRebuiltText,
             on_first_compilation_result,
             on_compilation_fail,
             on_first_compilation_success,
             on_re_compilation_success,
+            log_config_and_stats: false,
+            showLoadingSpinner: false,
         },
-        opts
+        opts,
     );
 
     return this;
 
     function on_first_compilation_result({compilation_info, is_failure}) {
-        if( log_config_and_stats ) {
+        if( this.log_config_and_stats ) {
             log_compilation_info({compilation_info});
             return;
         }
@@ -61,7 +69,14 @@ function Logger(opts) {
     }
 
     function on_re_compilation_success() {
-        console.log(this.symbols.success_symbol+'Re-built');
+        console.log(add_sucess_symbol.call(this, this.getRebuiltText()));
+    }
+
+    function add_sucess_symbol(text) {
+        if( ! this.showLoadingSpinner ) {
+          return text;
+        }
+        return this.symbols.success_symbol + text;
     }
 
     function log_compilation_info({compilation_info}) {
@@ -113,12 +128,14 @@ function Logger(opts) {
         const output_directory__base = commondir(output_directories);
         process.stdout.write(
             [
-                log_config_and_stats && '\n',
-                this.symbols.success_symbol,
-                this.getBuildEndText(),
+                this.log_config_and_stats && '\n',
+                add_sucess_symbol.call(this, this.getBuildEndText()),
+                /*
                 output_directory__base && ' '+strDir(output_directory__base),
                 this.getEnvText(),
-                '\n\n'
+                '\n\n',
+                */
+                '\n',
             ]
             .filter(Boolean).join('')
         );
@@ -139,11 +156,16 @@ function getBuildEndText() {
     return 'Code built';
 }
 function getEnvText() {
+    assert_tmp(false);
     return ' (for '+colorEmphasis(get_build_env())+')';
 }
 
-function getRebuildText() {
+function getRebuildingText() {
     return 'Re-building';
+}
+
+function getRebuiltText() {
+    return 'Re-built';
 }
 
 function get_build_env() {
@@ -206,11 +228,15 @@ function log_webpack_output(output) {
     log(output);
 }
 
-function print() {
-    /*
+function clearLine() {
+    const readline = require('readline');
     readline.clearLine(process.stdout);
     readline.cursorTo(process.stdout, 0);
-    */
+}
+
+
+function print() {
+    //clearLine();
     console.log.apply(console, arguments);
 }
 
@@ -242,12 +268,16 @@ function BuildStateManager(logger) {
             let spinner_text;
             if( ! logging_state.has_logged_first_compilation_start ) {
                 logging_state.has_logged_first_compilation_start = true;
-                spinner_text = logger.getBuildStartText()+logger.getEnvText();
+                spinner_text = logger.getBuildStartText();//+logger.getEnvText();
             } else {
-                spinner_text = logger.getRebuildText();
+                spinner_text = logger.getRebuildingText();
             }
             assert_tmp(spinner_text);
-            spinner_text && logger.loading_spinner.start_spinner(spinner_text);
+            if( logger.showLoadingSpinner ) {
+              logger.loading_spinner.start_spinner(spinner_text);
+            } else {
+              process.stdout.write(spinner_text);
+            }
         }
 
         if( ! is_compiling && ! logging_state.has_logged_first_compilation_start ) {
@@ -258,7 +288,11 @@ function BuildStateManager(logger) {
 
         if( ! is_compiling && logging_state.logging_is_compiling ) {
             logging_state.logging_is_compiling = false;
-            logger.loading_spinner.stop_spinner();
+            if( logger.showLoadingSpinner ) {
+              logger.loading_spinner.stop_spinner();
+            } else {
+              clearLine();
+            }
         }
 
         if( ! is_compiling && ! logging_state.has_finished_compiled_before ) {

@@ -14,7 +14,7 @@ const getWebpackNodejsConfig = ({config, ...utils}) => {
   const webpackNodejsConfigModifier = assemble_modifiers('webpackNodejsConfig');
   return webpackNodejsConfigModifier({config, ...utils});
 };
-const {log, doNotWatchBuildFiles} = reconfig;
+const {logOptions, doNotWatchBuildFiles} = reconfig;
 const {pagesDir} = reconfig;
 const {getPageHtmlsFile, getPageBrowserEntriesFile} = reconfig;
 const getPageHtmls = require(getPageHtmlsFile);
@@ -28,7 +28,7 @@ const build = new Build({
     getPageHtmls,
     getWebpackBrowserConfig,
     getWebpackNodejsConfig,
-    log,
+    logOptions,
     doNotWatchBuildFiles,
     serverEntryFile,
 });

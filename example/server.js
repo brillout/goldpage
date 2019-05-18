@@ -3,6 +3,12 @@ const GoldSSR = require('goldssr');
 
 const ssr = new GoldSSR({
   pagesDir: __dirname+'/pages',
+  log: {
+    buildingText: 'Building pages...',
+    builtText: 'Pages built',
+    showLoadingSpinner: false,
+    verbose: false,
+  },
 });
 
 module.exports = start();

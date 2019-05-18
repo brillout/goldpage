@@ -37,11 +37,7 @@ function WebpackSSR(opts) {
 function BuildInstance() {
     const isoBuilder = new IsoBuilder();
 
-    isoBuilder.logger = Logger({
-        log_config_and_stats: (this.log||{}).verbose,
-        getBuildStartText: () => 'Building pages',
-        getBuildEndText: () => 'Pages built',
-    });
+    isoBuilder.logger = get_logger.call(this);
     isoBuilder.doNotWatchBuildFiles = this.doNotWatchBuildFiles;
     isoBuilder.loadNodejsEntryPoints = {
         skipEntryPoints: [ENTRY_NAME__SERVER],
@@ -100,6 +96,33 @@ function BuildInstance() {
         const ret = await isoBuilder.build();
         assert_internal(ret===undefined);
     };
+}
+
+function get_logger() {
+  const logger_opts = {};
+
+  const {logOptions={}} = this;
+
+  if( logOptions.verbose ) {
+    logger_opts.log_config_and_stats = true;
+  }
+
+  if( logOptions.buildingText ) {
+    logger_opts.getBuildStartText = () => logOptions.buildingText;
+    logger_opts.getRebuildingText = () => logOptions.buildingText;
+  } else {
+    logger_opts.getBuildStartText = () => 'Building pages';
+  }
+  if( logOptions.builtText ) {
+    logger_opts.getBuildEndText = () => logOptions.builtText;
+    logger_opts.getRebuiltText = () => logOptions.builtText;
+  } else {
+    logger_opts.getBuildEndText = () => 'Pages built';
+  }
+
+  logger_opts.showLoadingSpinner = logOptions.showLoadingSpinner;
+
+  return Logger(logger_opts);
 }
 
 function getNodejsConfig({getWebpackNodejsConfig, serverEntryFile, pageFiles__by_interface, outputDir}) {

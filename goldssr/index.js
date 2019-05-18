@@ -16,6 +16,7 @@ module.exports = GoldSSR;
 function GoldSSR({
   pagesDir='pages/',
   buildDir='.build/',
+  log,
 }={}) {
 
   const {projectDir, findProjectFiles} = new ProjectFiles();
@@ -26,6 +27,7 @@ function GoldSSR({
   Object.assign(
     reconfig,
     {
+      logOptions: log,
       pagesDir,
       buildDir,
       getPageConfigFiles: () => {
