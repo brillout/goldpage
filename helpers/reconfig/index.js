@@ -1,3 +1,5 @@
+module.exports = {};
+/*
 const assert = require('reassert');
 
 const config_object_interface = {};
@@ -32,3 +34,4 @@ function set(config_object_interface, prop, value) {
   }
   return true;
 }
+*/
