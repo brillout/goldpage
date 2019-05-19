@@ -6,12 +6,17 @@ const ProjectFiles = require('@brillout/project-files');
 config.GoldSSR = {};
 
 const autoload = require('@brillout/autoload');
-//const {packageJsonFile, loaded: loadedPlugins} = autoload();
-autoload();
+const {packageJsonFile, loaded: loadedPlugins} = autoload();
 
 require('@goldssr/core');
 require('@goldssr/browser');
 require('@goldssr/server');
+//*
+require('@goldssr/react');
+require('@goldssr/path-to-regexp');
+require('@goldssr/webpack');
+require('@goldssr/hapi');
+//*/
 
 module.exports = GoldSSR;
 
@@ -66,6 +71,18 @@ function GoldSSR({
 }
 
 async function build() {
+  /*
+  assert.usage(
+    loadedPlugins.length>0,
+    "No GoldSSR Plugins loaded. Add some to "+packageJsonFile,
+  );
+  */
+  const buildConfigMissing = !config.GoldSSR.runBuild;
+  assert.usage(
+    buildConfigMissing,
+    {loadedPlugins},
+    "A builder plugin is missing. Add one, such as `@goldssr/webpack`, to "+packageJsonFile,
+  );
   const runBuild = require(config.GoldSSR.runBuildFile);
   await runBuild();
 }
@@ -76,17 +93,6 @@ function getHapiPlugin() {
 
 /*
 function assert_reconfig() {
-  const buildConfigMissing = !config.GoldSSR.runBuild;
-  const 
-  assert_usage(
-    loadedPlugins.length>0,
-    "No GoldSSR Plugins loaded. Add some to "+packageJsonFile,
-  );
-  assert_usage(
-    buildConfigMissing,
-    {loadedPlugins},
-    "A builder plugin is missing. Add one, such as `@goldssr/webpack`, to "+packageJsonFile,
-  );
   assert_usage(
     config.GoldSSR.rend,
     {loadedPlugins},
