@@ -1,9 +1,9 @@
 const ServerRenderingFile = require.resolve('./ServerRendering');
 const StaticAssetsFile = require.resolve('./StaticAssets');
-const {config} = require('@brillout/reconfig');
+const config = require('@brillout/reconfig');
 
 Object.assign(
-  config,
+  config.GoldSSR,
   {
     ServerRenderingFile,
     StaticAssetsFile,

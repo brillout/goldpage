@@ -1,7 +1,7 @@
 const assert_internal = require('reassert/internal');
 const crypto = require('crypto');
 const getPageHtml = require('@brillout/repage/getPageHtml');
-const {config} = require('@brillout/reconfig');
+const config = require('@brillout/reconfig');
 
 
 module.exports = ServerRendering;
@@ -30,9 +30,9 @@ async function getHtml(requestContext) {
     const uri = requestContext.url;
     assert_internal(uri && uri.constructor===String, uri);
 
-    const getBuildInfo = require(config.getBuildInfoFile);
+    const getBuildInfo = require(config.GoldSSR.getBuildInfoFile);
     const {pageConfigs} = getBuildInfo();
-    const {renderPageToHtmlFile, routerFile} = config;
+    const {renderPageToHtmlFile, routerFile} = config.GoldSSR;
     const renderToHtml = require(renderPageToHtmlFile);
     const router = require(routerFile);
 

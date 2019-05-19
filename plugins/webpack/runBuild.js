@@ -2,10 +2,10 @@ const Build = require('webpack-ssr/Build');
 const watchDir = require('webpack-ssr/watchDir');
 const assert = require('reassert');
 
-const {reconfig} = require('@brillout/reconfig');
+const reconfig = require('@brillout/reconfig');
 
-const outputDir = reconfig.buildDir;
-const getPageFiles = () => reconfig.getPageConfigFiles();
+const outputDir = reconfig.GoldSSR.buildDir;
+const getPageFiles = () => reconfig.GoldSSR.getPageConfigFiles();
 const getWebpackBrowserConfig = ({config, ...utils}) => {
   const webpackBrowserConfigModifier = assemble_modifiers('webpackBrowserConfig');
   return webpackBrowserConfigModifier({config, ...utils});
@@ -14,12 +14,12 @@ const getWebpackNodejsConfig = ({config, ...utils}) => {
   const webpackNodejsConfigModifier = assemble_modifiers('webpackNodejsConfig');
   return webpackNodejsConfigModifier({config, ...utils});
 };
-const {logOptions, doNotWatchBuildFiles} = reconfig;
-const {pagesDir} = reconfig;
-const {getPageHtmlsFile, getPageBrowserEntriesFile} = reconfig;
+const {logOptions, doNotWatchBuildFiles} = reconfig.GoldSSR;
+const {pagesDir} = reconfig.GoldSSR;
+const {getPageHtmlsFile, getPageBrowserEntriesFile} = reconfig.GoldSSR;
 const getPageHtmls = require(getPageHtmlsFile);
 const getPageBrowserEntries = require(getPageBrowserEntriesFile);
-const serverEntryFile = reconfig.transpileServerCode && reconfig.serverStartFile;
+const serverEntryFile = reconfig.GoldSSR.transpileServerCode && reconfig.GoldSSR.serverStartFile;
 
 const build = new Build({
     outputDir,
@@ -46,7 +46,7 @@ function assemble_modifiers(modifier_name) {
     // `config` holds a webpack config
     let supra_modifier = ({config}) => config;
 
-    const modifiers = reconfig[modifier_name];
+    const modifiers = reconfig.GoldSSR[modifier_name];
 
     // We assemble all `configParts`'s config modifiers into one `supra_modifier`
     modifiers

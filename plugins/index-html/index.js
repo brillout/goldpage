@@ -1,13 +1,15 @@
 const renderPageToDomFile = require.resolve('./renderPageToDom');
 const renderPageToHtmlFile = require.resolve('./renderPageToHtml');
 
-const {config, AppendArray} = require('@brillout/reconfig');
+const config = require('@brillout/reconfig');
 
 Object.assign(
-  config,
+  config.GoldSSR,
   {
     renderPageToHtmlFile,
     renderPageToDomFile,
-    browserConfigs: AppendArray(['renderPageToDomFile', 'renderToDomFile']),
   },
 );
+
+config.GoldSSR.browserConfigs = config.GoldSSR.browserConfigs || [];
+config.GoldSSR.browserConfigs.push('renderPageToDomFile', 'renderToDomFile');

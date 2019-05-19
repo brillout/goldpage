@@ -1,10 +1,10 @@
 const renderToDomFile = require.resolve('./renderToDom');
 const renderToHtmlFile = require.resolve('./renderToHtml');
 
-const {config, AppendArray} = require('@brillout/reconfig');
+const config = require('@brillout/reconfig');
 
 Object.assign(
-  config,
+  config.GoldSSR,
   {
     renderToHtmlFile,
     renderToDomFile,

@@ -1,9 +1,9 @@
-const {reconfig} = require('@brillout/reconfig');
+const config = require('@brillout/reconfig');
 const getPageBrowserEntriesFile = require.resolve('./getPageBrowserEntries');
 const getPageHtmlsFile = require.resolve('./getPageHtmls');
 
 Object.assign(
-  reconfig,
+  config.GoldSSR,
   {
     getPageHtmlsFile,
     getPageBrowserEntriesFile,
@@ -15,7 +15,8 @@ function getBrowserConfigs() {
     const assert_plugin = require('reassert/usage');
 
     const configPaths = {};
-    reconfig
+    config
+    .GoldSSR
     .browserConfigs
     .forEach(browserConfigSpec => {
         if( browserConfigSpec.constructor === String ) {
@@ -38,7 +39,7 @@ function getBrowserConfigs() {
 
             const configFile = (() => {
                 if( configIsList ) return null;
-                let filePath = reconfig[configPath];
+                let filePath = config.GoldSSR[configPath];
                 assert_plugin(filePath.constructor===String);
                 filePath = require.resolve(filePath);
                 assert_plugin(filePath);
@@ -48,7 +49,7 @@ function getBrowserConfigs() {
             const configFiles = (() => {
                 if( ! configIsList ) return null;
                 const filePaths = (
-                  reconfig[configPath]
+                  config.GoldSSR[configPath]
                   .map(filePath => {
                     assert_plugin(filePath);
                     filePath = require.resolve(filePath);

@@ -1,10 +1,6 @@
 const routerFile = require.resolve('./router');
-const {config, AppendArray} = require('@brillout/reconfig');
+const config = require('@brillout/reconfig');
 
-Object.assign(
-  config,
-  {
-    routerFile,
-    browserConfigs: AppendArray(['routerFile']),
-  },
-);
+config.GoldSSR.routerFile = routerFile;
+config.GoldSSR.browserConfigs = config.GoldSSR.browserConfigs || [];
+config.GoldSSR.browserConfigs.push('routerFile');

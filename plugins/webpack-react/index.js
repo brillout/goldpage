@@ -1,12 +1,10 @@
 const webpackBrowserConfig = require('./webpackBrowserConfig');
 const webpackNodejsConfig = require('./webpackNodejsConfig');
 
-const {config, AppendArray} = require('@brillout/reconfig');
+const config = require('@brillout/reconfig');
 
-Object.assign(
-  config,
-  {
-    webpackBrowserConfig: AppendArray([webpackBrowserConfig]),
-    webpackNodejsConfig: AppendArray([webpackNodejsConfig]),
-  },
-);
+config.GoldSSR.webpackBrowserConfig = config.GoldSSR.webpackBrowserConfig || [];
+config.GoldSSR.webpackBrowserConfig.push(webpackBrowserConfig);
+
+config.GoldSSR.webpackNodejsConfig = config.GoldSSR.webpackNodejsConfig || [];
+config.GoldSSR.webpackNodejsConfig.push(webpackNodejsConfig);

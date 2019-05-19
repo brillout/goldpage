@@ -1,17 +1,7 @@
-const {reconfig} = require('@brillout/reconfig');
+const config = require('@brillout/reconfig');
 
-reconfig.serverAdapters = reconfig.serverAdapters || {};
-reconfig.serverAdapters.getHapiPlugin = getHapiPlugin;
-/*
-Object.assign(
-  reconfig,
-  {
-    serverAdapters: ObjectExtend({
-      hapi: getHapiPlugin(),
-    }),
-  },
-);
-*/
+config.GoldSSR.serverAdapters = config.GoldSSR.serverAdapters || {};
+config.GoldSSR.serverAdapters.getHapiPlugin = getHapiPlugin;
 
 let hapiPlugin;
 
@@ -21,10 +11,10 @@ function getHapiPlugin() {
   if( !hapiPlugin ) {
     const HapiAdapter = require('@universal-adapter/hapi');
 
-    assert(reconfig.ServerRenderingFile);
-    assert(reconfig.StaticAssetsFile);
-    const ServerRendering = require(reconfig.ServerRenderingFile);
-    const StaticAssets = require(reconfig.StaticAssetsFile);
+    assert(config.GoldSSR.ServerRenderingFile);
+    assert(config.GoldSSR.StaticAssetsFile);
+    const ServerRendering = require(config.GoldSSR.ServerRenderingFile);
+    const StaticAssets = require(config.GoldSSR.StaticAssetsFile);
     assert(ServerRendering);
     assert(StaticAssets);
 

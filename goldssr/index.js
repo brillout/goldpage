@@ -1,7 +1,9 @@
-const {reconfig} = require('@brillout/reconfig');
+const config = require('@brillout/reconfig');
 const assert = require('reassert');
 const path = require('path');
 const ProjectFiles = require('@brillout/project-files');
+
+config.GoldSSR = {};
 
 const autoload = require('@brillout/autoload');
 //const {packageJsonFile, loaded: loadedPlugins} = autoload();
@@ -25,7 +27,7 @@ function GoldSSR({
   buildDir = path.resolve(projectDir, buildDir);
 
   Object.assign(
-    reconfig,
+    config.GoldSSR,
     {
       logOptions: log,
       pagesDir,
@@ -53,7 +55,7 @@ function GoldSSR({
 
   Object.assign(
     this,
-    reconfig.serverAdapters,
+    config.GoldSSR.serverAdapters,
     {build},
   );
   Object.defineProperty(
@@ -64,17 +66,17 @@ function GoldSSR({
 }
 
 async function build() {
-  const runBuild = require(reconfig.runBuildFile);
+  const runBuild = require(config.GoldSSR.runBuildFile);
   await runBuild();
 }
 
 function getHapiPlugin() {
-  return reconfig.serverAdapters.getHapiPlugin();
+  return config.GoldSSR.serverAdapters.getHapiPlugin();
 }
 
 /*
 function assert_reconfig() {
-  const buildConfigMissing = !reconfig.runBuild;
+  const buildConfigMissing = !config.GoldSSR.runBuild;
   const 
   assert_usage(
     loadedPlugins.length>0,
@@ -86,7 +88,7 @@ function assert_reconfig() {
     "A builder plugin is missing. Add one, such as `@goldssr/webpack`, to "+packageJsonFile,
   );
   assert_usage(
-    reconfig.rend,
+    config.GoldSSR.rend,
     {loadedPlugins},
     "A builder plugin is missing. Add one, such as `@goldssr/webpack`, to "+packageJsonFile,
   );

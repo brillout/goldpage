@@ -1,5 +1,5 @@
 const assert_internal = require('reassert/internal');
-const {config} = require('@brillout/reconfig');
+const config = require('@brillout/reconfig');
 const pathModule = require('path');
 const crypto = require('crypto');
 const parseUri = require('@brillout/parse-uri');
@@ -68,7 +68,7 @@ function getCacheHeader(filePath, fileContent) {
 }
 
 function getFilePath({pathname}) {
-    const getBuildInfo = require(config.getBuildInfoFile);
+    const getBuildInfo = require(config.GoldSSR.getBuildInfoFile);
     const {staticAssetsDir} = getBuildInfo();
 
     const filename = (

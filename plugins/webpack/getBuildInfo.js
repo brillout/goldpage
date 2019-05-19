@@ -1,11 +1,11 @@
 const getAssetInfos = require('webpack-ssr/getAssetInfos');
-const {reconfig} = require('@brillout/reconfig');
+const config = require('@brillout/reconfig');
 const assert = require('reassert');
 
 module.exports = getBuildInfo;
 
 function getBuildInfo({shouldBeProductionBuild}={}) {
-    const outputDir = reconfig.buildDir;
+    const outputDir = config.GoldSSR.buildDir;
     assert.internal(outputDir);
 
     const assetInfos = getAssetInfos({outputDir, shouldBeProductionBuild});
@@ -24,7 +24,7 @@ function getPageConfigs({pageAssets}) {
 
             Object.assign(
                 pageConfig,
-                reconfig.defaultPageConfig,
+                config.GoldSSR.defaultPageConfig,
                 pageExport,
             );
 

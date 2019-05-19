@@ -4,7 +4,7 @@ const pathModule = require('path');
 
 const assert_pageConfig = require('@reframe/utils/assert_pageConfig');
 
-const {reconfig} = require('@brillout/reconfig');
+const config = require('@brillout/reconfig');
 
 
 module.exports = getPageBrowserEntries;
@@ -26,7 +26,7 @@ function getPageBrowserEntries(pageModules) {
 
 function assert_usage__defaultPageConfig() {
     const configsUsedInBrowser = ['route', 'view', 'getInitialProps'];
-    const {defaultPageConfig} = reconfig;
+    const {defaultPageConfig} = config.GoldSSR;
     configsUsedInBrowser.forEach(prop => {
         assert_usage(
             !defaultPageConfig || !(prop in defaultPageConfig),
@@ -116,7 +116,8 @@ function getAllBrowserConfigs({browserEntrySpec, pageConfig, pageFile, pageName}
     return allBrowserConfigs;
 
     function addBrowserConfigs() {
-        reconfig
+        config
+        .GoldSSR
         .getBrowserConfigs()
         .forEach(({configName, configFile, configFiles}) => {
             assert_internal(!configFiles === !!configFile);
@@ -163,7 +164,7 @@ function getAllBrowserConfigs({browserEntrySpec, pageConfig, pageFile, pageName}
     }
 
     function addInitFunctions() {
-        let initFcts = reconfig.browserInitFunctions.slice();
+        let initFcts = config.GoldSSR.browserInitFunctions.slice();
         initFcts = initFcts.filter(({doNotInclude}) => !doNotInclude || !doNotInclude({pageConfig}));
         initFcts.sort((f1, f2) => f1.executionOrder - f2.executionOrder);
         initFcts.forEach(({initFunctionFile, name, browserConfigsNeeded}) => {
@@ -193,7 +194,7 @@ function getBrowserEntrySpec({pageConfig, pageFile, pageName}) {
         browserInitPath = pathModule.resolve(pageDir, initFile);
         assert_browserInitPath({browserInitPath, initFile, pageName, pageDir});
     } else {
-        const {browserInitFile} = reconfig;
+        const {browserInitFile} = config.GoldSSR;
         assert_usage(browserInitFile);
         assert_usage(pathModule.isAbsolute(browserInitFile));
         browserInitPath = browserInitFile;
