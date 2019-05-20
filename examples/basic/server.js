@@ -1,33 +1,13 @@
 const Hapi = require('hapi');
-const GoldSSR = require('goldssr');
+const ssr = require('goldssr');
 
-const ssr = new GoldSSR({
-  pagesDir: __dirname+'/pages',
-  log: {
-    buildingText: 'Building pages...',
-    builtText: 'Pages built',
-    showLoadingSpinner: false,
-    verbose: false,
-  },
-});
+module.exports = startServer;
 
-module.exports = start();
-
-async function start() {
-  await ssr.build();
-
+async function startServer() {
   const server = Hapi.Server({
-      port: process.env.PORT || 3000,
-      debug: {request: ['internal']},
+    port: process.env.PORT || 3000,
+    debug: {request: ['internal']},
   });
-
-  /*
-  server.route({
-    method: 'GET',
-    path: '/',
-    handler: (request, h) => 'Hello fro',
-  });
-  */
 
   await server.register(ssr.hapi);
 

@@ -1,11 +1,11 @@
 const config = require('@brillout/reconfig');
 
 config.GoldSSR.serverAdapters = config.GoldSSR.serverAdapters || {};
-config.GoldSSR.serverAdapters.getHapiPlugin = getHapiPlugin;
+config.GoldSSR.serverAdapters.get_hapi = get_hapi;
 
 let hapiPlugin;
 
-function getHapiPlugin() {
+function get_hapi() {
   const assert = require('reassert');
 
   if( !hapiPlugin ) {
