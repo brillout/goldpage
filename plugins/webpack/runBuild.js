@@ -19,7 +19,7 @@ const {pagesDir} = reconfig.GoldSSR;
 const {getPageHtmlsFile, getPageBrowserEntriesFile} = reconfig.GoldSSR;
 const getPageHtmls = require(getPageHtmlsFile);
 const getPageBrowserEntries = require(getPageBrowserEntriesFile);
-const serverEntryFile = reconfig.GoldSSR.transpileServerCode && reconfig.GoldSSR.serverStartFile;
+const entryFileServer = reconfig.GoldSSR.transpileServerCode && reconfig.GoldSSR.serverEntryFile;
 
 const build = new Build({
     outputDir,
@@ -30,7 +30,7 @@ const build = new Build({
     getWebpackNodejsConfig,
     logOptions,
     doNotWatchBuildFiles,
-    serverEntryFile,
+    entryFileServer,
 });
 
 watchDir(pagesDir, () => {build()});

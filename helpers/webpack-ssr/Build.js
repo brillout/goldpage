@@ -66,9 +66,9 @@ function BuildInstance() {
     isoBuilder.builder = (function* ({buildForNodejs, buildForBrowser}) {
         const pageFiles__by_interface = that.getPageFiles();
 
-        const {serverEntryFile, getWebpackNodejsConfig} = that;
+        const {entryFileServer, getWebpackNodejsConfig} = that;
         assert_usage(getWebpackNodejsConfig);
-        const configNodejs = getNodejsConfig({getWebpackNodejsConfig, serverEntryFile, pageFiles__by_interface, outputDir});
+        const configNodejs = getNodejsConfig({getWebpackNodejsConfig, entryFileServer, pageFiles__by_interface, outputDir});
         const nodejsEntryPoints = yield buildForNodejs(configNodejs);
         assert_internal(Object.keys(nodejsEntryPoints).length>0, nodejsEntryPoints);
 
@@ -125,8 +125,8 @@ function get_logger() {
   return Logger(logger_opts);
 }
 
-function getNodejsConfig({getWebpackNodejsConfig, serverEntryFile, pageFiles__by_interface, outputDir}) {
-    const nodejsEntries = getNodejsEntries({serverEntryFile, pageFiles__by_interface});
+function getNodejsConfig({getWebpackNodejsConfig, entryFileServer, pageFiles__by_interface, outputDir}) {
+    const nodejsEntries = getNodejsEntries({entryFileServer, pageFiles__by_interface});
     const nodejsOutputPath = pathModule.resolve(outputDir, NODEJS_OUTPUT);
     const defaultNodejsConfig = getDefaultNodejsConfig({entries: nodejsEntries, outputPath: nodejsOutputPath, filename: '[name]-nodejs.js'});
     const configNodejs = getWebpackNodejsConfig({config: defaultNodejsConfig, entries: nodejsEntries, outputPath: nodejsOutputPath, ...webpackConfigMod});
@@ -147,7 +147,7 @@ function getBrowserConfig({pageBrowserEntries, outputDir, getWebpackBrowserConfi
     return configBrowser;
 }
 
-function getNodejsEntries({serverEntryFile, pageFiles__by_interface}) {
+function getNodejsEntries({entryFileServer, pageFiles__by_interface}) {
     const server_entries = {};
 
     Object.entries(pageFiles__by_interface)
@@ -156,10 +156,10 @@ function getNodejsEntries({serverEntryFile, pageFiles__by_interface}) {
         server_entries[pageName] = [pageFile];
     });
 
-    if( serverEntryFile ) {
-        assert_usage(pathModule.isAbsolute(serverEntryFile));
+    if( entryFileServer ) {
+        assert_usage(pathModule.isAbsolute(entryFileServer));
         assert_usage(!server_entries[ENTRY_NAME__SERVER]);
-        server_entries[ENTRY_NAME__SERVER] = [serverEntryFile];
+        server_entries[ENTRY_NAME__SERVER] = [entryFileServer];
     }
 
     return server_entries;
