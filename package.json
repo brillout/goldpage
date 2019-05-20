@@ -8,8 +8,10 @@
     "@brillout/check-deps": "^0.1.5"
   },
   "workspaces": [
+    "examples/basic",
+    "examples/typescript",
+
     "goldssr/",
-    "example/",
 
     "plugins/core",
 
@@ -19,6 +21,8 @@
     "plugins/index-html",
     "plugins/path-to-regexp",
     "plugins/hapi",
+
+    "plugins/typescript",
 
     "plugins/react",
     "plugins/render-react",

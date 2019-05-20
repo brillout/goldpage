@@ -1,0 +1,21 @@
+{
+  "name": "examples_basic",
+  "private": true,
+  "version": "0.3.2",
+  "main": "server.js",
+  "scripts": {
+    "start": "node ."
+  },
+  "dependencies": {
+    "@goldssr/react": "0.3.2",
+    "@goldssr/path-to-regexp": "0.3.2",
+    "@goldssr/webpack": "0.3.2",
+    "@goldssr/hapi": "0.3.2",
+    "goldssr": "0.3.2",
+    "hapi": "^18.1.0",
+    "react": "^16.8.6"
+  },
+  "checkDeps": {
+    "skip": true
+  }
+}

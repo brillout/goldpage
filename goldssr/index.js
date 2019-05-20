@@ -11,7 +11,7 @@ const {packageJsonFile, loaded: loadedPlugins} = autoload();
 require('@goldssr/core');
 require('@goldssr/browser');
 require('@goldssr/server');
-//*
+/*
 require('@goldssr/react');
 require('@goldssr/path-to-regexp');
 require('@goldssr/webpack');
@@ -24,6 +24,7 @@ function GoldSSR({
   pagesDir='pages/',
   buildDir='.build/',
   log,
+  ...opts
 }={}) {
 
   const {projectDir, findProjectFiles} = new ProjectFiles();
@@ -38,24 +39,16 @@ function GoldSSR({
       pagesDir,
       buildDir,
       getPageConfigFiles: () => {
-        const pageConfigs = findProjectFiles('*.page-config.js', {within: buildDir});
+        const pageConfigs = findProjectFiles('*\.page-config\.*', {within: buildDir});
         assert.usage(
           pageConfigs.length>=1,
-          "No files ending with `.page-config.js` found in `"+pagesDir+"`.",
+          "No files with the `.page-config.` suffix found in `"+pagesDir+"`.",
           "You need to define at least one page config file.",
         );
         return pageConfigs;
       },
-      /*
-      projectFiles: {
-        pagesDir,
-        buildOutputDir: __dirname+'/dist',
-      },
-      getPageConfigFiles: () => {
-        ({welciPagi: require.resolve('../example/pages/landing-page')}),
-      },
-      */
-    }
+    },
+    opts,
   );
 
   Object.assign(
