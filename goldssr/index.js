@@ -37,7 +37,7 @@ function create_ssr() {
         ssr.pagesDir,
         "You need to set `pagesDir`",
       );
-      const pageConfigs = findProjectFiles('*\.page-config\.*', {within: ssr.pagesDir+'/ewqeui'});
+      const pageConfigs = findProjectFiles('*\.page-config\.*', {within: ssr.pagesDir});
       assert.usage(
         pageConfigs.length>=1,
         "No files with the `.page-config.` suffix found in `"+ssr.pagesDir+"`.",

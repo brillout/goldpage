@@ -27,7 +27,7 @@ function ProjectFiles() {
 
   return this;
 
-  function findProjectFiles(filename, ...opts) {
+  function findProjectFiles(filename, opts) {
     return findProjectFiles_(filename, {projectDir, ...opts})
   }
 }

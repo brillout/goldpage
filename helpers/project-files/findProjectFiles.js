@@ -9,7 +9,7 @@ const fs = require('fs');
 
 module.exports = findProjectFiles;
 
-function findProjectFiles(filename, {projectDir, onlyDirectories, noDirectories, within, ignoreSubProjects}) {
+function findProjectFiles(filename, {projectDir, onlyDirectories, noDirectories, within, ignoreSubProjects}={}) {
     assert_usage(!filename.includes('/'));
     assert_usage(!within || path_module.isAbsolute(within));
     assert_usage(!projectDir || path_module.isAbsolute(projectDir));
