@@ -9,7 +9,7 @@ function ProjectFiles() {
 
   const userDir = getUserDir();
   assert.internal(userDir);
-  const packageJsonFile = find_up.sync('package.json', {cwd: userDir});
+  const packageJsonFile = find_up.sync('package.json', {cwd: userDir+'/'});
   assert.usage(
     packageJsonFile,
     "Could not find package.json between `/` and `"+userDir+"`",
@@ -20,6 +20,7 @@ function ProjectFiles() {
   Object.assign(
     this,
     {
+      packageJsonFile,
       projectDir,
       findProjectFiles,
     }

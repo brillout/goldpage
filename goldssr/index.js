@@ -2,7 +2,7 @@ const config = require('@brillout/reconfig');
 const assert = require('reassert');
 const path = require('path');
 const ProjectFiles = require('@brillout/project-files');
-const autoload = require('@brillout/autoload');
+const {loadDependencies, loadFile} = require('@brillout/autoload');
 
 const ssr = create_ssr();
 
@@ -12,10 +12,13 @@ ssr.buildDir = '.build/';
 
 module.exports = ssr;
 
+loadFile('goldssr.config.js', {regexSearch: true});
+
 function create_ssr() {
   config.GoldSSR = {};
 
-  const {packageJsonFile, loaded: loadedPlugins} = autoload();
+  // TODO non-regexp search
+  const {packageJsonFile, loaded: loadedPlugins} = loadDependencies();
 
   require('@goldssr/core');
   require('@goldssr/browser');
@@ -37,7 +40,7 @@ function create_ssr() {
         ssr.pagesDir,
         "You need to set `pagesDir`",
       );
-      const pageConfigs = findProjectFiles('*\.page-config\.*', {within: ssr.pagesDir});
+      const pageConfigs = findProjectFiles('*\.page-config\.*', {regexSearch: true, within: ssr.pagesDir});
       assert.usage(
         pageConfigs.length>=1,
         "No files with the `.page-config.` suffix found in `"+ssr.pagesDir+"`.",

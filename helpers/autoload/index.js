@@ -1,13 +1,26 @@
 const assert = require('reassert');
-const getUserDir = require('@brillout/get-user-dir');
+const ProjectFiles = require('@brillout/project-files');
 const findUp = require('find-up');
+const path = require('path');
 
-module.exports = autoload;
+module.exports = {loadDependencies, loadFile};
 
-function autoload() {
-  const userDir = getUserDir();
+function loadFile(filename, opts) {
+  const projectFiles = new ProjectFiles();
+  const {findProjectFiles} = projectFiles;
+  const files = findProjectFiles(filename, opts);
+  files.forEach(filePath => {
+    assert.internal(path.isAbsolute(filePath));
+    require(filePath);
+  });
+  return {loaded: files, ...projectFiles};
+}
 
-  const packageJsonFile = findUp.sync('package.json', {cwd: userDir+'/'});
+function loadDependencies() {
+  const projectFiles = new ProjectFiles();
+  const {packageJsonFile, projectDir} = projectFiles;
+  assert.internal(packageJsonFile);
+  assert.internal(projectDir);
 
   const packageJson = require(packageJsonFile);
   if( !packageJsonFile ) {
@@ -22,7 +35,7 @@ function autoload() {
   const loaded = [];
   Object.keys(dependencies)
   .forEach(depName => {
-    const dep = require.resolve(depName+'/package.json', {paths: [userDir]});
+    const dep = require.resolve(depName+'/package.json', {paths: [projectDir]});
     const depPackageJson = require(dep);
     if( depPackageJson['@brillout/autoload'] ) {
       loaded.push(depName);
@@ -30,5 +43,5 @@ function autoload() {
     }
   });
 
-  return {loaded, packageJsonFile};
+  return {loaded, ...projectFiles};
 }

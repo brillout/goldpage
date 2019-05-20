@@ -9,7 +9,8 @@ const fs = require('fs');
 
 module.exports = findProjectFiles;
 
-function findProjectFiles(filename, {projectDir, onlyDirectories, noDirectories, within, ignoreSubProjects}={}) {
+function findProjectFiles(filename, {regexSearch, projectDir, onlyDirectories, noDirectories, within, ignoreSubProjects}={}) {
+    assert_usage(regexSearch===true);
     assert_usage(!filename.includes('/'));
     assert_usage(!within || path_module.isAbsolute(within));
     assert_usage(!projectDir || path_module.isAbsolute(projectDir));
@@ -53,7 +54,8 @@ function get_ignore({cwd, ignoreSubProjects}) {
     ignore.add(gitignore_content);
 
     if( ignoreSubProjects ) {
-        const packageJsonFiles = findProjectFiles('package.json', {cwd, noDirectories: true});
+        // TODO non-regexp search
+        const packageJsonFiles = findProjectFiles('package\.json', {regexSearch: true, cwd, noDirectories: true});
         const subPackages = (
             packageJsonFiles
             .map(packageJsonFile => path_module.dirname(packageJsonFile))
