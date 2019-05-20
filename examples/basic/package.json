@@ -2,10 +2,7 @@
   "name": "examples_basic",
   "private": true,
   "version": "0.3.2",
-  "main": "server.js",
-  "scripts": {
-    "start": "node ."
-  },
+  "main": "build.js",
   "dependencies": {
     "@goldssr/react": "0.3.2",
     "@goldssr/path-to-regexp": "0.3.2",
