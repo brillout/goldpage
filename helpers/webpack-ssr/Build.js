@@ -15,12 +15,12 @@ const FileSets = require('@brillout/file-sets');
 
 const SOURCE_CODE_OUTPUT = 'generated-source-code';
 const BROWSER_OUTPUT = 'browser';
-const NODEJS_OUTPUT = 'server';
+const NODEJS_OUTPUT = 'nodejs';
 
 const CSS_ONLY = '-CSS_ONLY';
 
 const ENTRY_NAME__AUTORELOAD = 'autoreload_client';
-const ENTRY_NAME__SERVER = 'server_start_entry';
+const ENTRY_NAME__SERVER = 'server';
 
 
 module.exports = WebpackSSR;
@@ -155,6 +155,9 @@ function getNodejsEntries({entryFileServer, pageFiles__by_interface}) {
         assert_internal(!server_entries[pageName]);
         server_entries[pageName] = [pageFile];
     });
+    // Ensure that pageName are the actual page names
+    assert_internal(pageFiles__by_interface.constructor!==Array);
+    assert_internal(pageFiles__by_interface.constructor===Object);
 
     if( entryFileServer ) {
         assert_usage(pathModule.isAbsolute(entryFileServer));

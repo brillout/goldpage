@@ -2,7 +2,7 @@
   "name": "examples_basic",
   "private": true,
   "version": "0.3.2",
-  "main": "build.js",
+  "main": "dev.js",
   "scripts": {
     "dev": "node ./dev.js",
     "build": "export NODE_ENV='production' && node ./build.js",

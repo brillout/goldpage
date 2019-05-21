@@ -2,7 +2,7 @@ const assert_internal = require('reassert/internal');
 const assert_usage = require('reassert/usage');
 const pathModule = require('path');
 
-const assert_pageConfig = require('@reframe/utils/assert_pageConfig');
+const assert_pageConfig = require('./assert_pageConfig');
 
 const config = require('@brillout/reconfig');
 
