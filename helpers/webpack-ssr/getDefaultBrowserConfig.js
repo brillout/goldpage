@@ -3,7 +3,7 @@ const assert_internal = require('reassert/internal');
 
 module.exports = getDefaultBrowserConfig;
 
-function getDefaultBrowserConfig({entries=[], outputPath}) {
+function getDefaultBrowserConfig({entries=[], outputPath, filename}) {
     assert_internal(outputPath);
 
     const config = new Config();
@@ -12,6 +12,7 @@ function getDefaultBrowserConfig({entries=[], outputPath}) {
         new StandardConfig({
             entry: entries,
             outputPath,
+            filename,
         }),
     ]);
 

@@ -44,8 +44,6 @@ module.exports = build;
 
 // We assemble several webpack config modifiers into one supra modifier
 function assemble_modifiers(modifier_name) {
-    const assert_usage = require('reassert/usage');
-
     // `config` holds a webpack config
     let supra_modifier = ({config}) => config;
 
@@ -54,13 +52,13 @@ function assemble_modifiers(modifier_name) {
     // We assemble all `configParts`'s config modifiers into one `supra_modifier`
     modifiers
     .forEach(modifier => {
-        assert_usage(modifier instanceof Function, modifier);
+        assert.usage(modifier instanceof Function, modifier);
         const previous_modifier = supra_modifier;
         supra_modifier = (
             args => {
                 const config = previous_modifier(args);
                 const config__new = modifier({...args, config});
-                assert_usage(
+                assert.usage(
                     config__new,
                     "A `"+modifier_name+"`" +
                     " is returning `"+config__new+"` but it should be returning a webpack config instead."
@@ -74,20 +72,22 @@ function assemble_modifiers(modifier_name) {
 }
 
 function getPageConfigs(configFileNames) {
+    const pathModule = require('path');
+
     assert.usage(configFileNames.constructor===Array);
-    const pageConfigFile = {};
+    const pageConfigFiles = {};
 
     configFileNames
     .filter(isNotDraft)
     .forEach(pageConfigFile => {
-        assert_internal(pageConfigFile);
+        assert.internal(pageConfigFile);
         const pageName = getPageName(pageConfigFile, pagesDir);
-        assert_usage(
+        assert.usage(
             !pageConfigFiles[pageName],
             "The page configs `"+pageConfigFiles[pageName]+"` and `"+pageConfigFile+"` have the same page name `"+pageName+"`.",
             "Rename one of the two page files."
         );
-        assert_internal(pageName);
+        assert.internal(pageName);
         pageConfigFiles[pageName] = pageConfigFile;
     });
 
@@ -103,10 +103,10 @@ function getPageConfigs(configFileNames) {
 
   function getPageName(pageConfigFile, pagesDir) {
       const endPath = pathModule.relative(pagesDir, pageConfigFile);
-      assert_internal(!endPath.startsWith(pathModule.sep), endPath, pageConfigFile);
-      assert_internal(!endPath.startsWith('.'), endPath, pageConfigFile);
+      assert.internal(!endPath.startsWith(pathModule.sep), endPath, pageConfigFile);
+      assert.internal(!endPath.startsWith('.'), endPath, pageConfigFile);
       const pageName = endPath.split(pathModule.sep).slice(-1)[0].split('.')[0];
-      assert_internal(pageName, endPath, pageConfigFile);
+      assert.internal(pageName, endPath, pageConfigFile);
       return pageName;
   }
 }

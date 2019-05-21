@@ -13,10 +13,12 @@ const {colorError} = require('@brillout/cli-theme');
 const handleOutputDir = require('./handleOutputDir');
 const FileSets = require('@brillout/file-sets');
 
-const SOURCE_CODE_OUTPUT = 'generated-source-code';
-const BROWSER_OUTPUT = 'browser';
-const NODEJS_OUTPUT = 'nodejs';
-
+const SOURCE_CODE_OUTPUT_DIR = 'generated-source-code';
+const SOURCE_CODE_OUTPUT_SUFFIX = '.browser-entry';
+const BROWSER_OUTPUT_DIR = 'browser';
+const BROWSER_OUTPUT_SUFFIX = '.browser-entry';
+const NODEJS_OUTPUT_DIR = 'nodejs';
+const NODEJS_OUTPUT_SUFFIX = '.page-config';
 const CSS_ONLY = '-CSS_ONLY';
 
 const ENTRY_NAME__AUTORELOAD = 'autoreload_client';
@@ -127,8 +129,8 @@ function get_logger() {
 
 function getNodejsConfig({getWebpackNodejsConfig, entryFileServer, pageFiles__by_interface, outputDir}) {
     const nodejsEntries = getNodejsEntries({entryFileServer, pageFiles__by_interface});
-    const nodejsOutputPath = pathModule.resolve(outputDir, NODEJS_OUTPUT);
-    const defaultNodejsConfig = getDefaultNodejsConfig({entries: nodejsEntries, outputPath: nodejsOutputPath, filename: '[name]-nodejs.js'});
+    const nodejsOutputPath = pathModule.resolve(outputDir, NODEJS_OUTPUT_DIR);
+    const defaultNodejsConfig = getDefaultNodejsConfig({entries: nodejsEntries, outputPath: nodejsOutputPath, filename: '[name]'+NODEJS_OUTPUT_SUFFIX+'.js'});
     const configNodejs = getWebpackNodejsConfig({config: defaultNodejsConfig, entries: nodejsEntries, outputPath: nodejsOutputPath, ...webpackConfigMod});
     assert_config({config: configNodejs, webpackEntries: nodejsEntries, outputPath: nodejsOutputPath, getterName: 'getWebpackNodejsConfig'});
     addContext(configNodejs);
@@ -138,8 +140,8 @@ function getNodejsConfig({getWebpackNodejsConfig, entryFileServer, pageFiles__by
 function getBrowserConfig({pageBrowserEntries, outputDir, getWebpackBrowserConfig, fileSets, autoReloadEnabled}) {
     const generatedEntries = generateBrowserEntries({pageBrowserEntries, fileSets});
     const browserEntries = getBrowserEntries({generatedEntries, autoReloadEnabled});
-    const browserOutputPath = pathModule.resolve(outputDir, BROWSER_OUTPUT);
-    const defaultBrowserConfig = getDefaultBrowserConfig({entries: browserEntries, outputPath: browserOutputPath});
+    const browserOutputPath = pathModule.resolve(outputDir, BROWSER_OUTPUT_DIR);
+    const defaultBrowserConfig = getDefaultBrowserConfig({entries: browserEntries, outputPath: browserOutputPath, filename: '[name]'+BROWSER_OUTPUT_SUFFIX+'.js'});
     assert_internal(Object.keys(browserEntries).length>0);
     const configBrowser = getWebpackBrowserConfig({config: defaultBrowserConfig, entries: browserEntries, outputPath: browserOutputPath, ...webpackConfigMod});
     assert_config({config: configBrowser, webpackEntries: browserEntries, outputPath: browserOutputPath, getterName: 'getWebpackBrowserConfig'});
@@ -332,11 +334,11 @@ function generateBrowserEntries({pageBrowserEntries, fileSets}) {
 
         assert_usage(browserEntryString && browserEntryString.constructor===String);
 
-        const filename = pageName+'-browser'+(doNotIncludeJavaScript?'-css':'')+'.js';
+        const filename = pageName+SOURCE_CODE_OUTPUT_SUFFIX+(doNotIncludeJavaScript?'.css':'')+'.js';
 
         const fileAbsolutePath = fileSets.writeFile({
             fileContent: browserEntryString,
-            filePath: pathModule.join(SOURCE_CODE_OUTPUT, 'browser-entries', filename),
+            filePath: pathModule.join(SOURCE_CODE_OUTPUT_DIR, 'browser-entries', filename),
         });
         assert_internal(fileAbsolutePath);
 
@@ -373,7 +375,7 @@ async function writeHtmlFiles({pageModules, getPageHtmls, fileSets}) {
     function get_file_path(pathname) {
         assert_internal(pathname.startsWith('/'));
         const filePath__relative = (pathname === '/' ? 'index' : pathname.slice(1))+'.html'
-        const filePath = pathModule.join(BROWSER_OUTPUT, filePath__relative)
+        const filePath = pathModule.join(BROWSER_OUTPUT_DIR, filePath__relative)
         return filePath;
     }
 
@@ -392,7 +394,7 @@ function writeAssetMap({pageBrowserEntries, pageModules, outputDir, browserEntry
 
     let buildTime = new Date();
     let buildEnv = process.env.NODE_ENV || 'development';
-    let staticAssetsDir = pathModule.resolve(outputDir, BROWSER_OUTPUT);
+    let staticAssetsDir = pathModule.resolve(outputDir, BROWSER_OUTPUT_DIR);
     staticAssetsDir = makeBuildPathRelative(staticAssetsDir, {outputDir});
     const server = getServerInfos({nodejsEntryPoints, outputDir});
     const assetInfos = {
