@@ -3,6 +3,11 @@
   "private": true,
   "version": "0.3.2",
   "main": "build.js",
+  "scripts": {
+    "dev": "goldssr",
+    "build": "export NODE_ENV='production' && goldssr",
+    "start": "export NODE_ENV='production' && node .build/server"
+  },
   "dependencies": {
     "@goldssr/react": "0.3.2",
     "@goldssr/path-to-regexp": "0.3.2",

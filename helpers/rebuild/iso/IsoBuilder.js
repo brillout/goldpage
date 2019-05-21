@@ -45,16 +45,31 @@ function IsoBuilder() {
 
     const nodejsBuild = new BuildManager({
         buildName: 'nodejsBuild',
-        buildFunction: ({webpackConfig, onCompilationStateChange}) => (
-            build(webpackConfig, {
-                watch: !isoBuilder.doNotWatchBuildFiles,
-                doNotGenerateIndexHtml: true,
-                logger: null,
-                onCompilationStateChange,
-                compilationName: 'nodejsCompilation',
-                loadEntryPoints: isoBuilder.loadNodejsEntryPoints,
-            })
-        ),
+        buildFunction: ({webpackConfig, onCompilationStateChange}) => {
+            assert_usage(
+              [true, false, undefined].includes(isoBuilder.doNotWatchBuildFiles)
+            );
+            assert_warning(
+              !(
+                isProduction() &&
+                isoBuilder.doNotWatchBuildFiles===false
+              ),
+              "You can't enable watching when building for production.",
+            );
+            const watch = (
+              !isProduction() && !isoBuilder.doNotWatchBuildFiles
+            );
+            return (
+              build(webpackConfig, {
+                  watch,
+                  doNotGenerateIndexHtml: true,
+                  logger: null,
+                  onCompilationStateChange,
+                  compilationName: 'nodejsCompilation',
+                  loadEntryPoints: isoBuilder.loadNodejsEntryPoints,
+              })
+            );
+        },
         onBuildStart,
         onBuildFail,
         onSuccessfullWatchChange,
@@ -464,3 +479,6 @@ function sleep({seconds}) {
     return promise;
 }
 */
+function isProduction() {
+   return process.env.NODE_ENV === 'production';
+}
