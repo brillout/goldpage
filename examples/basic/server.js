@@ -1,7 +1,7 @@
 const Hapi = require('hapi');
 const ssr = require('goldssr');
 
-module.exports = startServer;
+module.exports = startServer();
 
 async function startServer() {
   const server = Hapi.Server({

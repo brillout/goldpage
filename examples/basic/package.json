@@ -4,9 +4,13 @@
   "version": "0.3.2",
   "main": "build.js",
   "scripts": {
-    "dev": "goldssr",
-    "build": "export NODE_ENV='production' && goldssr",
-    "start": "export NODE_ENV='production' && node .build/server"
+    "dev": "node ./dev.js",
+    "build": "export NODE_ENV='production' && node ./build.js",
+    "start": "export NODE_ENV='production' && node ./.build/server"
+  },
+  "scripts-new": {
+    "dev": "goldssr && node .build/server",
+    "build": "export NODE_ENV='production' && goldssr"
   },
   "dependencies": {
     "@goldssr/react": "0.3.2",

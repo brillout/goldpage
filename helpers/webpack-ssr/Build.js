@@ -13,9 +13,9 @@ const {colorError} = require('@brillout/cli-theme');
 const handleOutputDir = require('./handleOutputDir');
 const FileSets = require('@brillout/file-sets');
 
-const SOURCE_CODE_OUTPUT = 'source-code';
+const SOURCE_CODE_OUTPUT = 'generated-source-code';
 const BROWSER_OUTPUT = 'browser';
-const NODEJS_OUTPUT = 'nodejs';
+const NODEJS_OUTPUT = 'server';
 
 const CSS_ONLY = '-CSS_ONLY';
 

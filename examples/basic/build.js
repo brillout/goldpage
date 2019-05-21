@@ -1,10 +1,8 @@
+const assert = require('reassert');
 const ssr = require('goldssr');
-const startServer = require('./server');
 
-process.env.NODE_ENV = 'production';
+assert.usage(
+  ['development', undefined, 'production'].includes(process.env.NODE_ENV)
+);
 
-main();
-
-async function main() {
-  await ssr.build();
-}
+module.exports = ssr.build();

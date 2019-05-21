@@ -1,10 +1,12 @@
 const ssr = require('goldssr');
 
-ssr.pagesDir = __dirname+'/pages';
-ssr.log = {
-  buildingText: 'Building pages...',
-  builtText: 'Pages built',
-  showLoadingSpinner: true,
-  verbose: false,
-};
-
+Object.assign(ssr, {
+  pagesDir: __dirname+'/pages',
+  log: {
+    buildingText: 'Building pages...',
+    builtText: 'Pages built',
+    showLoadingSpinner: true,
+    verbose: false,
+  },
+  serverEntryFile: __dirname+'/server',
+});
