@@ -45,7 +45,7 @@ function Logger(opts) {
     return this;
 
     function on_first_compilation_result({compilation_info, is_failure}) {
-        if( this.log_config_and_stats ) {
+        if( this.log_config_and_stats || (global.DEBUG||{}).WEBPACK_CONFIG ) {
             log_compilation_info({compilation_info});
             return;
         }

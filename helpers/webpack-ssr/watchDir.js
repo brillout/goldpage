@@ -12,7 +12,7 @@ function watchDir(dirPath, listener) {
     const watcher = chokidar.watch(dirPath, {ignoreInitial: true});
 
     const cb = () => {
-        if( global.DEBUG_WATCH ) {
+        if( (global.DEBUG||{}).WATCH ) {
             console.log('REBUILD-REASON: new/removed file at `'+dirPath+'`');
         }
         listener();

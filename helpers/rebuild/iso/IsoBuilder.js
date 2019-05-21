@@ -9,10 +9,6 @@ const serve = require('@rebuild/serve');
 const build = require('@rebuild/build');
 const {Logger} = require('@rebuild/build/utils/Logger');
 
-/*
-global.DEBUG_WATCH = true;
-//*/
-
 
 module.exports = {IsoBuilder};
 
@@ -111,7 +107,7 @@ function IsoBuilder() {
     }
 
     function onSuccessfullWatchChange(buildName) {
-        global.DEBUG_WATCH && console.log('REBUILD-REASON: webpack-watch for `'+buildName+'`');
+        (global.DEBUG||{}).WATCH && console.log('REBUILD-REASON: webpack-watch for `'+buildName+'`');
         startAll();
     }
 }
@@ -130,7 +126,7 @@ function BuildManager({buildName, buildFunction, onSuccessfullWatchChange, onBui
         assert_usage(webpackConfig);
         assert_internal(runIsOutdated);
 
-        global.DEBUG_WATCH && console.log(chalk.bold.cyan('RUN-START ')+buildName);
+        (global.DEBUG||{}).WATCH && console.log(chalk.bold.cyan('RUN-START ')+buildName);
 
         that.getCompilationInfo = () => {
             if( runIsOutdated() ) {
@@ -158,7 +154,7 @@ function BuildManager({buildName, buildFunction, onSuccessfullWatchChange, onBui
             return abortRun({dontAssertRunIsOutdated: true});
         }
 
-        global.DEBUG_WATCH && console.log(chalk.bold.blue('RUN-END ')+buildName+' '+_compiler.getCompilerId());
+        (global.DEBUG||{}).WATCH && console.log(chalk.bold.blue('RUN-END ')+buildName+' '+_compiler.getCompilerId());
 
         const entryPoints = getEntryPoints(compilationInfo);
         return entryPoints;
@@ -175,7 +171,7 @@ function BuildManager({buildName, buildFunction, onSuccessfullWatchChange, onBui
             }
 
             if( ! is_compiling && is_failure ) {
-                global.DEBUG_WATCH && console.log(chalk.bold.red('RUN-FAIL ')+_compiler.getCompilerId());
+                (global.DEBUG||{}).WATCH && console.log(chalk.bold.red('RUN-FAIL ')+_compiler.getCompilerId());
                 onBuildFail();
             }
 
@@ -186,7 +182,7 @@ function BuildManager({buildName, buildFunction, onSuccessfullWatchChange, onBui
 
         function abortRun({dontAssertRunIsOutdated}={}) {
             assert_internal(dontAssertRunIsOutdated || runIsOutdated());
-            global.DEBUG_WATCH && console.log(chalk.bold.magenta('RUN-ABORT ')+buildName);
+            (global.DEBUG||{}).WATCH && console.log(chalk.bold.magenta('RUN-ABORT ')+buildName);
             return Promise.resolve({abortBuilder: true});
         }
 
@@ -245,10 +241,10 @@ function WebpackCompilerWithCache() {
     async function getCompiler({webpackConfig, getWebpackCompiler}) {
         if( webpackCompiler_last ) {
             if( deepEqual(webpackCompiler_last.webpack_config, webpackConfig) && getWebpackCompiler===getWebpackCompiler_last ) {
-                global.DEBUG_WATCH && console.log('WEBPACK-COMPILER-REUSE '+getCompilerId());
+                (global.DEBUG||{}).WATCH && console.log('WEBPACK-COMPILER-REUSE '+getCompilerId());
                 return webpackCompiler_last;
             } else {
-                global.DEBUG_WATCH && console.log('WEPACK-COMPILER-STOP '+getCompilerId());
+                (global.DEBUG||{}).WATCH && console.log('WEPACK-COMPILER-STOP '+getCompilerId());
                 const resolveTimeout = gen_timeout({desc: 'Stop Compiler '+getCompilerId()});
                 await webpackCompiler_last.stop_compilation();
                 resolveTimeout();
@@ -271,7 +267,7 @@ function WebpackCompilerWithCache() {
 
                     const {is_compiling, is_failure, is_first_success} = compilationInfo;
 
-                    global.DEBUG_WATCH && console.log('COMPILATION-STATE-CHANGE '+JSON.stringify({is_compiling, is_failure, is_first_success, compilerId, compilerId__last}));
+                    (global.DEBUG||{}).WATCH && console.log('COMPILATION-STATE-CHANGE '+JSON.stringify({is_compiling, is_failure, is_first_success, compilerId, compilerId__last}));
 
                     if( compilerId !== compilerId__last ) {
                         return;
@@ -292,14 +288,14 @@ function WebpackCompilerWithCache() {
 
         let build_function_called = true;
 
-        global.DEBUG_WATCH && console.log('WEBPACK-COMPILER-NEW '+webpackCompiler.compilerId.toString());
+        (global.DEBUG||{}).WATCH && console.log('WEBPACK-COMPILER-NEW '+webpackCompiler.compilerId.toString());
 
         return webpackCompiler;
     }
 }
 
 async function buildAll({isoBuilder, latestRun, browserBuild, nodejsBuild, isRebuild}) {
-    global.DEBUG_WATCH && console.log(chalk.bold('START-OVERALL-BUILDER'));
+    (global.DEBUG||{}).WATCH && console.log(chalk.bold('START-OVERALL-BUILDER'));
 
     await waitOnLatestRun(latestRun);
 
@@ -353,7 +349,7 @@ async function buildAll({isoBuilder, latestRun, browserBuild, nodejsBuild, isReb
     await waitOnLatestRun(latestRun);
 
     const isOutdated = runIsOutdated();
-    global.DEBUG_WATCH && console.log(chalk.bold("END-OVERALL-BUILDER "+(isOutdated?"[OUTDATED]":"[LATEST]")));
+    (global.DEBUG||{}).WATCH && console.log(chalk.bold("END-OVERALL-BUILDER "+(isOutdated?"[OUTDATED]":"[LATEST]")));
     if( ! isOutdated ) {
         log_state_end({logger, nodejsBuild, browserBuild});
 
@@ -460,7 +456,7 @@ function fs__file_exists(path) {
     }
 }
 function gen_timeout({timeoutSeconds=30, desc}={}) {
-    if( ! global.DEBUG_WATCH ) return () => {};
+    if( ! (global.DEBUG||{}).WATCH ) return () => {};
     const timeout = setTimeout(() => {
         assert_warning(false, "Promise \""+desc+"\" still not resolved after "+timeoutSeconds+" seconds");
     }, timeoutSeconds*1000)

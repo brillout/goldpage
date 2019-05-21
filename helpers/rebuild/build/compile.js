@@ -13,10 +13,6 @@ const deep_copy = require('./utils/deep_copy');
 const {titleFormat} = require('@brillout/format-text');
 const forceRequire = require('@reframe/utils/forceRequire');
 
-/*
-global.DEBUG_WATCH = true;
-//*/
-
 module.exports = compile;
 
 function compile(
@@ -159,7 +155,7 @@ function run({
 
     const stop_compilation = async () => {
      // clearTimeout(compilation_timeout);
-        global.DEBUG_WATCH && console.log('WEBPACK-ABORT-START '+compilationName);
+        (global.DEBUG||{}).WATCH && console.log('WEBPACK-ABORT-START '+compilationName);
         //*
         if( watching ) {
             const {promise, resolvePromise} = gen_promise();
@@ -167,7 +163,7 @@ function run({
             await promise;
         }
         //*/
-        global.DEBUG_WATCH && console.log('WEBPACK-ABORT-END '+compilationName);
+        (global.DEBUG||{}).WATCH && console.log('WEBPACK-ABORT-END '+compilationName);
     };
 
     return {stop_compilation, wait_compilation, wait_successfull_compilation, server_start_promise};
@@ -248,14 +244,14 @@ function get_webpack_compiler(webpack_config, compilationName) {
     // - https://github.com/webpack/webpack-dev-server/issues/847
     // - https://github.com/webpack/webpack-dev-server/blob/master/lib/Server.js
     webpack_compiler.hooks.compile.tap('weDontNeedToNameThis_aueipvuwivxp', () => {
-        global.DEBUG_WATCH && console.log('WEBPACK-COMPILE-START '+compilationName);
+        (global.DEBUG||{}).WATCH && console.log('WEBPACK-COMPILE-START '+compilationName);
 
         avoidErrorSwallowing(() => {
             onCompileStartListeners.forEach(fn => fn());
         });
     });
 
-    global.DEBUG_WATCH && print_changed_files(webpack_compiler);
+    (global.DEBUG||{}).WATCH && print_changed_files(webpack_compiler);
 
     /*
     catch_webpack_not_terminating(webpack_compiler, {timeout_seconds: 30, compilationName});
@@ -278,7 +274,7 @@ function get_webpack_compiler(webpack_config, compilationName) {
         console.log(emittedAssets.length);
         */
 
-        global.DEBUG_WATCH && console.log('WEBPACK-COMPILE-DONE '+compilationName);
+        (global.DEBUG||{}).WATCH && console.log('WEBPACK-COMPILE-DONE '+compilationName);
 
         resolve_first_compilation(webpack_stats);
 
@@ -678,7 +674,7 @@ function gen_promise() {
 }
 
 function gen_timeout({timeoutSeconds=30, name}={}) {
-    if( ! global.DEBUG_WATCH ) return () => {};
+    if( ! (global.DEBUG||{}).WATCH ) return () => {};
     const timeout = setTimeout(() => {
         assert_warning(false, "Promise \""+name+"\" still not resolved after "+timeoutSeconds+" seconds");
     }, timeoutSeconds*1000)

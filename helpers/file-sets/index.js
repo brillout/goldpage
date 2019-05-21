@@ -57,7 +57,7 @@ function FileSets({pathBase}={}) {
             return filePath;
         }
 
-        global.DEBUG_WATCH && console.log('FILE-CHANGED: '+filePath);
+        (global.DEBUG||{}).WATCH && console.log('FILE-CHANGED: '+filePath);
 
         fs__write_file(filePath, fileContent);
 
@@ -77,7 +77,7 @@ function FileSets({pathBase}={}) {
     function removePreviouslyWrittenFiles(session_object) {
         session_object.written_files__previously.forEach(filePath => {
             if( ! session_object.written_files__current.includes(filePath) ) {
-                global.DEBUG_WATCH && console.log('FILE-REMOVED: '+filePath);
+                (global.DEBUG||{}).WATCH && console.log('FILE-REMOVED: '+filePath);
                 fs__remove(filePath);
             }
         });

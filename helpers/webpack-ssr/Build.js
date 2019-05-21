@@ -24,6 +24,13 @@ const CSS_ONLY = '-CSS_ONLY';
 const ENTRY_NAME__AUTORELOAD = 'autoreload_client';
 const ENTRY_NAME__SERVER = 'server';
 
+//*
+global.DEBUG = {
+  WEBPACK_CONFIG: true,
+  WATCH: true,
+};
+//*/
+
 
 module.exports = WebpackSSR;
 
