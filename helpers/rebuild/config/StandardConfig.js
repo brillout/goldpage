@@ -285,18 +285,14 @@ function config_ignore_node_modules() {
     };
 
     function skip_node_modules(context, request, callback) {
-        /*
-        console.log('r', request);
-        console.log('c', context);
-        const p = require.resolve.paths(request, {paths: [context]});
-        console.log('p', p);
-
-        if( !request.startsWith('.') && !request.includes('examples') ) {
+        if( ['.', pathModule.sep].includes(request[0]) ){
+          include();
+        } else {
           skip();
-          return;
         }
-        */
+        return;
 
+        /*
         let filePath;
         try {
             filePath = require.resolve(request, {paths: [context]});
@@ -312,6 +308,7 @@ function config_ignore_node_modules() {
 
         include();
         return;
+        */
 
         function skip() {
             callback(null, "commonjs " + request);
