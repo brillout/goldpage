@@ -55,6 +55,7 @@ function StandardNodeConfig(args) {
         config_target({libraryTarget: 'commonjs2'}),
         config_ignore_css,
         config_ignore_node_modules,
+        () => ({optimization: {minimize: false}}),
     ];
 }
 
