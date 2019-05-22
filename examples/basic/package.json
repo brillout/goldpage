@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "node ./dev.js",
     "build": "export NODE_ENV='production' && node ./build.js",
-    "start": "export NODE_ENV='production' && node ./.build/server"
+    "start": "export NODE_ENV='production' && node ./.build/nodejs/server"
   },
   "scripts-new": {
     "dev": "goldssr && node .build/server",
