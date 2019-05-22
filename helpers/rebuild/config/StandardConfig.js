@@ -285,6 +285,11 @@ function config_ignore_node_modules() {
     };
 
     function skip_node_modules(context, request, callback) {
+        // TODO implement a proper solution with require resolve.
+        //  - For node_modules:
+        //    - https://github.com/browserify/resolve
+        //    - https://github.com/nodejs/node/issues/18009
+        //  - For pnp??
         if( ['.', pathModule.sep].includes(request[0]) ){
           include();
         } else {
