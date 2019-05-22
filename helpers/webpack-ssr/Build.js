@@ -16,12 +16,12 @@ const FileSets = require('@brillout/file-sets');
 const SOURCE_CODE_OUTPUT_DIR = 'generated-source-code';
 const SOURCE_CODE_OUTPUT_SUFFIX = '.browser-entry';
 const BROWSER_OUTPUT_DIR = 'browser';
-const BROWSER_OUTPUT_SUFFIX = '.browser-entry';
+const BROWSER_OUTPUT_BROWSER_ENTRY_SUFFIX = '.browser-entry';
+const NODEJS_OUTPUT_PAGE_CONFIG_SUFFIX = '.page-config';
 const NODEJS_OUTPUT_DIR = 'nodejs';
-const NODEJS_OUTPUT_SUFFIX = '.page-config';
 const CSS_ONLY = '-CSS_ONLY';
 
-const ENTRY_NAME__AUTORELOAD = 'autoreload_client';
+const ENTRY_NAME__AUTORELOAD = 'autoreload-client';
 const ENTRY_NAME__SERVER = 'server';
 
 /*
@@ -137,7 +137,7 @@ function get_logger() {
 function getNodejsConfig({getWebpackNodejsConfig, entryFileServer, pageFiles__by_interface, outputDir}) {
     const nodejsEntries = getNodejsEntries({entryFileServer, pageFiles__by_interface});
     const nodejsOutputPath = pathModule.resolve(outputDir, NODEJS_OUTPUT_DIR);
-    const defaultNodejsConfig = getDefaultNodejsConfig({entries: nodejsEntries, outputPath: nodejsOutputPath, filename: '[name]'+NODEJS_OUTPUT_SUFFIX+'.js'});
+    const defaultNodejsConfig = getDefaultNodejsConfig({entries: nodejsEntries, outputPath: nodejsOutputPath});
     const configNodejs = getWebpackNodejsConfig({config: defaultNodejsConfig, entries: nodejsEntries, outputPath: nodejsOutputPath, ...webpackConfigMod});
     assert_config({config: configNodejs, webpackEntries: nodejsEntries, outputPath: nodejsOutputPath, getterName: 'getWebpackNodejsConfig'});
     addContext(configNodejs);
@@ -161,8 +161,9 @@ function getNodejsEntries({entryFileServer, pageFiles__by_interface}) {
 
     Object.entries(pageFiles__by_interface)
     .forEach(([pageName, pageFile]) => {
-        assert_internal(!server_entries[pageName]);
-        server_entries[pageName] = [pageFile];
+        const entry_name = pageName + NODEJS_OUTPUT_PAGE_CONFIG_SUFFIX;
+        assert_internal(!server_entries[entry_name]);
+        server_entries[entry_name] = [pageFile];
     });
     // Ensure that pageName are the actual page names
     assert_internal(pageFiles__by_interface.constructor!==Array);
@@ -349,7 +350,7 @@ function generateBrowserEntries({pageBrowserEntries, fileSets}) {
         });
         assert_internal(fileAbsolutePath);
 
-        const entryName = pageName + (doNotIncludeJavaScript?CSS_ONLY:'');
+        const entryName = pageName + (doNotIncludeJavaScript?CSS_ONLY:'') + BROWSER_OUTPUT_BROWSER_ENTRY_SUFFIX;
         assert_internal(!generatedEntries[entryName]);
         generatedEntries[entryName] = fileAbsolutePath;
     });
