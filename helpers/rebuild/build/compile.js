@@ -317,28 +317,45 @@ function catch_webpack_not_terminating(webpack_compiler, {timeout_seconds, compi
 
 // Adapated from https://webpack.js.org/contribute/plugin-patterns/#monitoring-the-watch-graph
 function print_changed_files(webpack_compiler) {
-    const mem = {
-        startTime: Date.now(),
-        prevTimestamps: {},
-    };
-    webpack_compiler.hooks.emit.tap('weDontNeedToNameThis_aapmcjbzbzeldj', (compilation, cb) => {
-        const fileTs = {};
-        [...compilation.fileTimestamps.keys()].forEach(key => {
-            fileTs[key] = compilation.fileTimestamps.get(key);
-            assert_internal(key);
-            assert_internal(fileTs[key]);
-        });
-        var changedFiles = Object.keys(fileTs).filter(function(watchfile) {
-            const ts = fileTs[watchfile];
-            return (mem.prevTimestamps[watchfile] || mem.startTime) < (fileTs[watchfile] || Infinity);
-        });
+  const startTime = Date.now();
+  let file_timestamps__previous = {};
+  webpack_compiler.hooks.emit.tap('weDontNeedToNameThis_aapmcjbzbzeldj', (compilation, cb) => {
+    const file_timestamps = get_file_timestamps(compilation);
 
-        if( changedFiles.length > 0 ) {
-            console.log('\nFiles with new timestamps:\n', changedFiles);
+    console.log('Start time: ' + startTime);
+    const changedFiles = (
+      Object.entries(file_timestamps)
+      .map(([filePath, timestamp]) => ({filePath, timestamp}))
+      .filter(({filePath, timestamp}) => {
+        const hasChanged = (file_timestamps__previous[filePath] || startTime) < (timestamp || Infinity);
+        if( hasChanged ){
+          console.log(filePath);
+          console.log(new Date(timestamp));
         }
+        return hasChanged;
+      })
+      .map(({filePath}) => filePath)
+    );
 
-        mem.prevTimestamps = compilation.fileTimestamps;
+    file_timestamps__previous = file_timestamps;
+
+    if( changedFiles.length > 0 ) {
+      console.log('\nFiles with new timestamps:\n', changedFiles);
+    }
+  });
+
+  function get_file_timestamps(compilation) {
+    const file_timestamps = {};
+    [...compilation.fileTimestamps.keys()]
+    .forEach(filePath => {
+      const timestamp = compilation.fileTimestamps.get(filePath);
+      assert_internal(timestamp.constructor===Number);
+      assert_internal(filePath);
+      assert_internal(!(filePath in file_timestamps));
+      file_timestamps[filePath] = timestamp;
     });
+    return file_timestamps;
+  }
 }
 
 function call_webpack(webpack_config) {

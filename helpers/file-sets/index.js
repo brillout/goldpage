@@ -57,7 +57,7 @@ function FileSets({pathBase}={}) {
             return filePath;
         }
 
-        (global.DEBUG||{}).WATCH && console.log('FILE-CHANGED: '+filePath);
+        (global.DEBUG||{}).WATCH && console.log('NEW-FILE-CONTENT: '+filePath);
 
         fs__write_file(filePath, fileContent);
 

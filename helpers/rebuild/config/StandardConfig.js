@@ -284,8 +284,17 @@ function config_ignore_node_modules() {
     };
 
     function skip_node_modules(context, request, callback) {
-     // console.log(request);
-     // console.log(context);
+        /*
+        console.log('r', request);
+        console.log('c', context);
+        const p = require.resolve.paths(request, {paths: [context]});
+        console.log('p', p);
+
+        if( !request.startsWith('.') && !request.includes('examples') ) {
+          skip();
+          return;
+        }
+        */
 
         let filePath;
         try {
@@ -301,7 +310,6 @@ function config_ignore_node_modules() {
         }
 
         include();
-
         return;
 
         function skip() {
