@@ -16,8 +16,13 @@ const FileSets = require('@brillout/file-sets');
 const SOURCE_CODE_OUTPUT_DIR = 'generated-source-code';
 const SOURCE_CODE_OUTPUT_SUFFIX = '.browser-entry';
 const BROWSER_OUTPUT_DIR = 'browser';
+/* TODO
 const BROWSER_OUTPUT_BROWSER_ENTRY_SUFFIX = '.browser-entry';
 const NODEJS_OUTPUT_PAGE_CONFIG_SUFFIX = '.page-config';
+/*/
+const BROWSER_OUTPUT_BROWSER_ENTRY_SUFFIX = '';
+const NODEJS_OUTPUT_PAGE_CONFIG_SUFFIX = '';
+//*/
 const NODEJS_OUTPUT_DIR = 'nodejs';
 const CSS_ONLY = '-CSS_ONLY';
 
@@ -148,7 +153,7 @@ function getBrowserConfig({pageBrowserEntries, outputDir, getWebpackBrowserConfi
     const generatedEntries = generateBrowserEntries({pageBrowserEntries, fileSets});
     const browserEntries = getBrowserEntries({generatedEntries, autoReloadEnabled});
     const browserOutputPath = pathModule.resolve(outputDir, BROWSER_OUTPUT_DIR);
-    const defaultBrowserConfig = getDefaultBrowserConfig({entries: browserEntries, outputPath: browserOutputPath, filename: '[name]'+BROWSER_OUTPUT_SUFFIX+'.js'});
+    const defaultBrowserConfig = getDefaultBrowserConfig({entries: browserEntries, outputPath: browserOutputPath});
     assert_internal(Object.keys(browserEntries).length>0);
     const configBrowser = getWebpackBrowserConfig({config: defaultBrowserConfig, entries: browserEntries, outputPath: browserOutputPath, ...webpackConfigMod});
     assert_config({config: configBrowser, webpackEntries: browserEntries, outputPath: browserOutputPath, getterName: 'getWebpackBrowserConfig'});
@@ -185,7 +190,7 @@ function getPageFiles({configNodejs, pageFiles__by_interface}) {
 
     Object.entries(pageFiles__by_interface)
     .forEach(([pageName, pageFile]) => {
-        const entryPoint = nodejsEntries[pageName];
+        const entryPoint = nodejsEntries[pageName+NODEJS_OUTPUT_PAGE_CONFIG_SUFFIX];
         assert_usage(
             entryPoint,
             nodejsEntryNames,
@@ -286,7 +291,10 @@ function loadPageModules({nodejsEntryPoints, pageFiles}) {
         Object.entries(nodejsEntryPoints)
         .filter(([entry_name]) => entry_name!==ENTRY_NAME__SERVER)
     );
-    assert_internal(pageEntries.length === Object.keys(pageFiles).length);
+    assert_internal(
+      pageEntries.length === Object.keys(pageFiles).length,
+      {pageEntries, pageFiles},
+    );
     const pageModules = (
         pageEntries
         .map(([entry_name, entry_point]) => {
