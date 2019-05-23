@@ -12,7 +12,7 @@ ssr.serverEntryFile = 'server/';
 ssr.buildDir = '.build/';
 
 (() => {
-  const {fileExport: userConfig} = loadFile('goldssr.config.js', {regexSearch: false});
+  const {fileExport: userConfig} = loadFile('goldssr.config.js');
   Object.assign(
     ssr,
     userConfig,
@@ -24,7 +24,6 @@ module.exports = ssr;
 function create_ssr() {
   config.GoldSSR = {};
 
-  // TODO non-regexp search
   const {packageJsonFile, loaded: loadedPlugins} = loadDependencies();
 
   require('@goldssr/core');
@@ -47,7 +46,7 @@ function create_ssr() {
         ssr.pagesDir,
         "You need to set `pagesDir`",
       );
-      const pageConfigs = findProjectFiles('*\.page-config\.*', {regexSearch: true, within: ssr.pagesDir});
+      const pageConfigs = findProjectFiles('*.page-config.*', {within: ssr.pagesDir});
       assert.usage(
         pageConfigs.length>=1,
         "No files with the `.page-config.` suffix found in `"+ssr.pagesDir+"`.",
