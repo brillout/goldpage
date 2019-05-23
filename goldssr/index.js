@@ -8,11 +8,18 @@ const ssr = create_ssr();
 
 // Default values
 ssr.pagesDir = 'pages/';
+ssr.serverEntryFile = 'server/';
 ssr.buildDir = '.build/';
 
-module.exports = ssr;
+(() => {
+  const {fileExport: userConfig} = loadFile('goldssr.config.js', {regexSearch: false});
+  Object.assign(
+    ssr,
+    userConfig,
+  );
+})();
 
-loadFile('goldssr.config.js', {regexSearch: true});
+module.exports = ssr;
 
 function create_ssr() {
   config.GoldSSR = {};
@@ -59,7 +66,7 @@ function create_ssr() {
     return new Proxy(this, {set, get});
 
     function set(ssr_obj, prop, value) {
-      if( ['pagesDir', 'buildDir'].includes(prop) ){
+      if( ['pagesDir', 'buildDir', 'serverEntryFile'].includes(prop) ){
         value = path.resolve(projectDir, value);
       }
 

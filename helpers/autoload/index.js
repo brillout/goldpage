@@ -9,11 +9,13 @@ function loadFile(filename, opts) {
   const projectFiles = new ProjectFiles();
   const {findProjectFiles} = projectFiles;
   const files = findProjectFiles(filename, opts);
+  assert.usage(files.length<=1);
+  let fileExport;
   files.forEach(filePath => {
     assert.internal(path.isAbsolute(filePath));
-    require(filePath);
+    fileExport = require(filePath);
   });
-  return {loaded: files, ...projectFiles};
+  return {loaded: files, fileExport, ...projectFiles};
 }
 
 function loadDependencies() {

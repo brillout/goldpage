@@ -1,6 +1,4 @@
-const ssr = require('goldssr');
-
-Object.assign(ssr, {
+module.exports = {
   pagesDir: __dirname+'/pages',
   log: {
     buildingText: 'Building pages...',
@@ -9,4 +7,4 @@ Object.assign(ssr, {
     verbose: false,
   },
   serverEntryFile: __dirname+'/server',
-});
+};
