@@ -1,8 +1,8 @@
 module.exports = {
   pagesDir: __dirname+'/pages',
   log: {
-    buildingText: 'Building pages...',
-    builtText: 'Pages built',
+    buildingText: 'Building...',
+    builtText: 'All built',
     showLoadingSpinner: true,
     verbose: false,
   },

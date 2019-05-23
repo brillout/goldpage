@@ -12,7 +12,7 @@ async function startServer() {
   server.route({
     method: 'GET',
     path: '/hapi-route',
-    handler: (req, h) => h.response('heelo hr!!'),
+    handler: (req, h) => h.response('heelo hr !!'),
   });
 
   await server.register(ssr.hapi);

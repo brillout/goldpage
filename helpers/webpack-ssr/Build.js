@@ -82,8 +82,11 @@ function BuildInstance() {
                )
              );
 
+             const {entryFileServer} = that;
+             assert_internal(entryFileServer)
              const argsObj = {
                 serverBuildEntry,
+                serverEntryFile: entryFileServer,
                 ...args[0],
              };
 
@@ -143,13 +146,13 @@ function get_logger() {
     logger_opts.getBuildStartText = () => logOptions.buildingText;
     logger_opts.getRebuildingText = () => logOptions.buildingText;
   } else {
-    logger_opts.getBuildStartText = () => 'Building pages';
+    logger_opts.getBuildStartText = () => 'Building';
   }
   if( logOptions.builtText ) {
     logger_opts.getBuildEndText = () => logOptions.builtText;
     logger_opts.getRebuiltText = () => logOptions.builtText;
   } else {
-    logger_opts.getBuildEndText = () => 'Pages built';
+    logger_opts.getBuildEndText = () => 'Built';
   }
 
   logger_opts.showLoadingSpinner = logOptions.showLoadingSpinner;
