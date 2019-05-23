@@ -5,13 +5,12 @@ main();
 
 async function main() {
   let server;
-  ssr.onBuild = async () => {
+  ssr.onBuild = async ({serverBuildEntry}) => {
     if( server ) {
       await server.stop();
     }
-    const serverEntryFilepath = __dirname+'/.build/nodejs/server';
-    delete require.cache[require.resolve(serverEntryFilepath)];
-    server = await require(serverEntryFilepath);
+    delete require.cache[serverBuildEntry];
+    server = await require(serverBuildEntry);
   };
   ssr.build();
 }

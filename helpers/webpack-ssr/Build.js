@@ -69,7 +69,25 @@ function BuildInstance() {
 
     isoBuilder.onBuildDone = async (...args) => {
         if( that.onBuildDone ) {
-             await that.onBuildDone(...args);
+             assert_internal(args.length===1);
+             assert_internal(args[0].constructor===Object);
+
+             const serverBuildEntry = (
+               require.resolve(
+                 pathModule.join(
+                   outputDir,
+                   NODEJS_OUTPUT_DIR,
+                   ENTRY_NAME__SERVER,
+                 )
+               )
+             );
+
+             const argsObj = {
+                serverBuildEntry,
+                ...args[0],
+             };
+
+             await that.onBuildDone(argsObj);
         }
 
         if( autoReloadEnabled ) {
