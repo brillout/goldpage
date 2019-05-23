@@ -55,10 +55,18 @@ function runBuild() {
   return build();
 }
 
-function onBuildDone(...args) {
+let onBuildPromise;
+let alreadyQueued;
+async function onBuildDone(...args) {
   const {onBuild} = reconfig.GoldSSR;
+  if( alreadyQueued ) return;
+  if( onBuildPromise ) {
+    alreadyQueued = true;
+    await onBuildPromise;
+    alreadyQueued = false;
+  }
   if( onBuild ){
-    onBuild(...args);
+    onBuildPromise = onBuild(...args);
   }
 }
 
