@@ -1,5 +1,6 @@
 const ssr = require('goldssr');
 const config = require('@brillout/reconfig');
+const require_ = require('@brillout/require-gold');
 
 main();
 
@@ -9,8 +10,7 @@ async function main() {
     if( server ) {
       await server.stop();
     }
-    delete require.cache[serverBuildEntry];
-    server = await require(serverBuildEntry);
+    server = await require_(serverBuildEntry, {skipCache: true});
   };
   ssr.build();
 }

@@ -11,7 +11,7 @@ const fs = require('fs');
 const mkdirp = require('mkdirp');
 const deep_copy = require('./utils/deep_copy');
 const {titleFormat} = require('@brillout/format-text');
-const forceRequire = require('@reframe/utils/forceRequire');
+const require_ = require('@brillout/require-gold');
 
 module.exports = compile;
 
@@ -522,7 +522,7 @@ function load_entry_point({entry_point, loadEntryPoints, is_success}) {
     const ret = {};
     if( !(loadEntryPoints.skipEntryPoints||[]).includes(entry_point.entry_name) ) {
         try {
-            ret.loadedModule = forceRequire(filepath);
+            ret.loadedModule = require_(filepath, {skipCache: true});
         } catch(err) {
             ret.runtimeError = err;
         }

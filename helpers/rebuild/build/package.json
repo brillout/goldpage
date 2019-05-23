@@ -4,6 +4,7 @@
   "dependencies": {
     "@brillout/cli-theme": "0.3.2",
     "@brillout/format-text": "^0.1.0",
+    "@brillout/require-gold": "^0.1.1",
     "@reframe/utils": "0.3.2",
     "bluebird": "^3.5.4",
     "commondir": "^1.0.1",

@@ -3,7 +3,7 @@ const assert_usage = require('reassert/usage');
 const fs = require('fs');
 const pathModule = require('path');
 const {colorError} = require('@brillout/cli-theme');
-const forceRequire = require('@reframe/utils/forceRequire');
+const require_ = require('@brillout/require-gold');
 
 let cache;
 
@@ -30,7 +30,7 @@ function getAssetInfos({outputDir, shouldBeProductionBuild}) {
             pageFile = makePathAbsolute(pageFile, {outputDir});
             pageFileTranspiled = makePathAbsolute(pageFileTranspiled, {outputDir});
 
-            const pageExport = forceRequire(pageFileTranspiled);
+            const pageExport = require_(pageFileTranspiled, {skipCache: true});
 
             return {...assets, pageName, pageFileTranspiled, pageFile, pageExport};
         })
