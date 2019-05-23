@@ -99,7 +99,7 @@ function create_ssr() {
       "No GoldSSR Plugins loaded. Add some to "+packageJsonFile,
     );
     */
-    const buildConfigMissing = !config.GoldSSR.runBuild;
+    const buildConfigMissing = !!config.GoldSSR.runBuildFile;
     assert.usage(
       buildConfigMissing,
       {loadedPlugins},
