@@ -30,8 +30,7 @@ async function getHtml(requestContext) {
     const uri = requestContext.url;
     assert_internal(uri && uri.constructor===String, uri);
 
-    const getBuildInfo = require(config.GoldSSR.getBuildInfoFile);
-    const {pageConfigs} = getBuildInfo();
+    const {pageConfigs} = config.GoldSSR.getBuildInfo();
     const {renderPageToHtmlFile, routerFile} = config.GoldSSR;
     const renderToHtml = require(renderPageToHtmlFile);
     const router = require(routerFile);

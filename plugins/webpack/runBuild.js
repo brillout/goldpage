@@ -4,43 +4,63 @@ const assert = require('reassert');
 
 const reconfig = require('@brillout/reconfig');
 
-const outputDir = reconfig.GoldSSR.buildDir;
-const getPageFiles = () => {
-  const configFileNames = reconfig.GoldSSR.getPageConfigFiles();
-  return getPageConfigs(configFileNames);
-};
-const getWebpackBrowserConfig = ({config, ...utils}) => {
-  const webpackBrowserConfigModifier = assemble_modifiers('webpackBrowserConfig');
-  return webpackBrowserConfigModifier({config, ...utils});
-};
-const getWebpackNodejsConfig = ({config, ...utils}) => {
-  const webpackNodejsConfigModifier = assemble_modifiers('webpackNodejsConfig');
-  return webpackNodejsConfigModifier({config, ...utils});
-};
-const {logOptions, doNotWatchBuildFiles} = reconfig.GoldSSR;
-const {pagesDir} = reconfig.GoldSSR;
-const {getPageHtmlsFile, getPageBrowserEntriesFile} = reconfig.GoldSSR;
-const getPageHtmls = require(getPageHtmlsFile);
-const getPageBrowserEntries = require(getPageBrowserEntriesFile);
-const entryFileServer = reconfig.GoldSSR.transpileServerCode!==false && reconfig.GoldSSR.serverEntryFile;
+module.exports = runBuild;
 
-const build = new Build({
-    outputDir,
-    getPageFiles,
-    getPageBrowserEntries,
-    getPageHtmls,
-    getWebpackBrowserConfig,
-    getWebpackNodejsConfig,
+let alreadyRun = false;
+
+function runBuild() {
+  assert.usage(
+    alreadyRun===false,
+    "You can start the build only once.",
+  );
+
+  const getWebpackBrowserConfig = ({config, ...utils}) => {
+    const webpackBrowserConfigModifier = assemble_modifiers('webpackBrowserConfig');
+    return webpackBrowserConfigModifier({config, ...utils});
+  };
+  const getWebpackNodejsConfig = ({config, ...utils}) => {
+    const webpackNodejsConfigModifier = assemble_modifiers('webpackNodejsConfig');
+    return webpackNodejsConfigModifier({config, ...utils});
+  };
+  const {
     logOptions,
     doNotWatchBuildFiles,
-    entryFileServer,
-});
+    pagesDir,
+    buildDir: outputDir,
+    getPageHtmlsFile,
+    getPageBrowserEntriesFile,
+    transpileServerCode,
+    serverEntryFile,
+  } = reconfig.GoldSSR;
 
-watchDir(pagesDir, () => {build()});
+  const getPageHtmls = require(getPageHtmlsFile);
+  const getPageBrowserEntries = require(getPageBrowserEntriesFile);
+  const entryFileServer = transpileServerCode!==false && serverEntryFile;
 
-module.exports = build;
+  const build = new Build({
+      outputDir,
+      getPageFiles,
+      getPageBrowserEntries,
+      getPageHtmls,
+      getWebpackBrowserConfig,
+      getWebpackNodejsConfig,
+      logOptions,
+      doNotWatchBuildFiles,
+      entryFileServer,
+      onBuildDone,
+  });
 
+  watchDir(pagesDir, () => {build()});
 
+  return build();
+}
+
+function onBuildDone(...args) {
+  const {onBuild} = reconfig.GoldSSR;
+  if( onBuild ){
+    onBuild(...args);
+  }
+}
 
 // We assemble several webpack config modifiers into one supra modifier
 function assemble_modifiers(modifier_name) {
@@ -71,8 +91,14 @@ function assemble_modifiers(modifier_name) {
     return supra_modifier;
 }
 
-function getPageConfigs(configFileNames) {
+function getPageFiles() {
     const pathModule = require('path');
+
+    const {
+      pagesDir,
+      getPageConfigFiles,
+    } = reconfig.GoldSSR;
+    const configFileNames = getPageConfigFiles();
 
     assert.usage(configFileNames.constructor===Array);
     const pageConfigFiles = {};

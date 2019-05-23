@@ -1,11 +1,12 @@
 const config = require('@brillout/reconfig');
-const runBuildFile = require.resolve('./runBuild');
-const getBuildInfoFile = require.resolve('./getBuildInfo');
+const runBuild = require('./runBuild');
+const getBuildInfo = require('./getBuildInfo');
 
 Object.assign(
   config.GoldSSR,
   {
-    runBuildFile,
-    getBuildInfoFile,
+    runBuild,
+    getBuildInfo,
+    onBuild: null,
   },
 );

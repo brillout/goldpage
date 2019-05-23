@@ -99,14 +99,13 @@ function create_ssr() {
       "No GoldSSR Plugins loaded. Add some to "+packageJsonFile,
     );
     */
-    const buildConfigMissing = !!config.GoldSSR.runBuildFile;
+    const isMissing = !!config.GoldSSR.runBuild;
     assert.usage(
-      buildConfigMissing,
+      isMissing,
       {loadedPlugins},
       "A builder plugin is missing. Add one, such as `@goldssr/webpack`, to "+packageJsonFile,
     );
-    const runBuild = require(config.GoldSSR.runBuildFile);
-    await runBuild();
+    await config.GoldSSR.runBuild();
   }
 
   /*

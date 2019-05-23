@@ -68,8 +68,7 @@ function getCacheHeader(filePath, fileContent) {
 }
 
 function getFilePath({pathname}) {
-    const getBuildInfo = require(config.GoldSSR.getBuildInfoFile);
-    const {staticAssetsDir} = getBuildInfo();
+    const {staticAssetsDir} = config.GoldSSR.getBuildInfo();
 
     const filename = (
         pathname==='/' && '/index.html' ||

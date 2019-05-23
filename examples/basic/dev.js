@@ -1,12 +1,11 @@
-require('goldssr');
+const ssr = require('goldssr');
 const config = require('@brillout/reconfig');
-const runBuild = require(config.GoldSSR.runBuildFile);
 
 main();
 
 async function main() {
   let server;
-  runBuild.onBuildDone = async () => {
+  ssr.onBuild = async () => {
     if( server ) {
       await server.stop();
     }
@@ -14,7 +13,7 @@ async function main() {
     delete require.cache[require.resolve(serverEntryFilepath)];
     server = await require(serverEntryFilepath);
   };
-  require('./build');
+  ssr.build();
 }
 
 /*
@@ -22,12 +21,17 @@ const ssr = require('goldssr');
 
 async function main() {
   let server;
-  ssr.build.onBuildSuccess = async ({serverEntryFile}) => {
+
+  ssr.onBuild = async ({serverEntryFile}) => {
     if( server ) {
       await server.stop();
     }
-    server = await require(serverEntryFile);
+    server = await require_(serverEntryFile);
+    assert.usage(
+      server && server.stop,
+      "The server entry `"+serverEntryFile+"` should return an object with a `stop()` function",
   };
+
   ssr.build();
 }
 */
