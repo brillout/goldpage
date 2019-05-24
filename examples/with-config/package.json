@@ -4,9 +4,8 @@
   "version": "0.3.2",
   "main": "dev.js",
   "scripts": {
-    "dev": "goldssr dev",
-    "prod": "npm run build && npm run start",
-    "build": "export NODE_ENV='production' && goldssr build",
+    "dev": "node ./dev.js",
+    "build": "export NODE_ENV='production' && node ./build.js",
     "start": "export NODE_ENV='production' && node ./.build/nodejs/server"
   },
   "scripts-new": {
