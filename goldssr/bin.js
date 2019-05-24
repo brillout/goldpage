@@ -2,7 +2,7 @@
 
 const {argv} = process;
 console.log(argv);
-if( false ) {
+if( true ) {
   require('./dev');
 } else {
   require('./build');

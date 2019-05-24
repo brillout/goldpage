@@ -33,7 +33,6 @@
     "helpers/webpack-config-mod",
 
     "helpers/autoload",
-    "helpers/project-files",
     "helpers/file-sets",
     "helpers/reconfig",
     "helpers/repage",

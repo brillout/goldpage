@@ -10,5 +10,8 @@
     "@goldssr/browser": "0.3.2",
     "@goldssr/server": "0.3.2",
     "reassert": "^1.1.21"
+  },
+  "@brillout/get-user-dir": {
+    "isNotUserCode": true
   }
 }
