@@ -27,45 +27,74 @@ Add SSR to your app. Easy & Flexible.
 
 `ssr-coin`
 (<img src="https://github.com/brillout/goldssr/raw/master/docs/ssr-coin.min.svg?sanitize=true" width=16 height=10 style="max-width:100%;" alt="ssr-coin"/>)
-is a do-one-thing-do-it-well library that adds server-side rendering (SSR) to your app.
-It is designed to be easy yet flexible.
+is a do-one-thing-do-it-well library that adds server-side rendering (SSR) to your app
+that is designed to be easy yet flexible.
 
-Read [Awesome Universal Rendering](https://github.com/brillout/awesome-universal-rendering) if you want more information about what SSR is and its benefits.
-Note that SSR is not only about **SEO** but it is also about [**browser load time** performance]() and [**developer experience**]().
+To know more about SSR and its benefits,
+read [Awesome Universal Rendering](https://github.com/brillout/awesome-universal-rendering).
+Note that SSR is not only about SEO but it is also about [browser load time performance]() and [developer experience]().
 The last two ascpects of SSR are vastly underestimated.
 
 `ssr-coin` is unopinionated and works with any stack:
-- any view libray: React, Vue, React Native Web, etc.
-- any server framework: Express, Koa, Hapi, etc.
-- any language: ES6, TypeScript, PostCSS, etc.
+- Any view libray: React, Vue, React Native Web, etc.
+- Any server framework: Express, Koa, Hapi, etc.
+- Any language: ES6, TypeScript, PostCSS, etc.
 
-Thanks to its zero-config feature, you can use `ssr-coin` with only a couple of lines.
+Thanks to its zero-config feature, you can add SSR to your app with only a couple of lines.
 
 But, and if you need to, you can also take control over:
- - The HTML rendering (full-control)
- - The DOM rendering (full-control)
- - The routing (full-control)
- - The building (partial-control)
+ - The HTML rendering (full control)
+ - The DOM rendering (full control)
+ - The routing (full control)
+ - The building (partial control)
 
 ## Usage (zero-config)
 
-## How it works
-
-It works by building what we call "page configs" and you server.
-It generates a browser entry.
-
-This is crucial design decision that makes `ssr-coin` unique.
-It's a simple design and achieves scalable and high performance for browser load time.
-Scalable because each page is rendered 
-SSR
-With zero JavaScript.
-
-That is:
- - 
+## Plugins
 
 ## Usage (with config)
 
-You can configure `ssr-coin` with a `.ssr-coin.config.js` file placed at project's root directory.
+You can configure ``
+
+ - `pages/**/*.page.js` to configure your pages
+ - `.ssr-coin.config.js` to globally configure `ssr-coin`
+
+The options of a page config `*.page.js` are:
+
+~~~js
+// pages/landing.page.js
+
+const landingPageConfig = {
+  route: '/hello/:name',
+
+  view: props => (
+    <div>
+      Welcome {props.name}.
+      You are a {props.gender}
+    </div>
+  ),
+
+  getInitialProps: async props => {
+    const props = await fetch('https://example.org/person/'+name);
+    // Load some async data
+    // We assume that 
+    assert(props.gender);
+    return props;
+  },
+
+  // HTML meta scripts
+  title: ({name, gender}) => 'Hi '+name,
+  description: ({name}) => 'This is the page of '+name,
+
+  // We explain the following two options below
+  renderHtmlAtBuildTime: true,
+  doNotRenderInBrowser: true,
+};
+
+module.exports = landingPageConfig;
+~~~
+
+And the `.ssr-coin.config.js` file has following options:
 
 ~~~js
 // /ssr-coin.config.js
@@ -75,6 +104,7 @@ const = require.resolve('path/to/renderToHtml.js');
 module.exports = {
   log: {
   },
+  indexHtml: 'path/to/indexHtml.js',
 };
 ~~~
 
@@ -96,7 +126,7 @@ We talk about configuring the builing at:
 
 If you need then read:
 
-- [Fully Flexible](#fully-flexible)
+- [Full Flexibility](#full-flexibility)
 
 #### HTML Rendering
 
@@ -135,6 +165,17 @@ and let's discuss solutions to your problem.
 We aim to make `ssr-coin` highly flexible,
 and we meant it.
 
-### How it works
+## How it works
 
-Generates
+It works by building what we call "page configs" and you server.
+It generates a browser entry.
+
+This is crucial design decision that makes `ssr-coin` unique.
+It's a simple design and achieves scalable and high performance for browser load time.
+Scalable because each page is rendered 
+SSR
+With zero JavaScript.
+
+That is:
+ - 
+
