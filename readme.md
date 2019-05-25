@@ -4,17 +4,18 @@
   </a>
 </p>
 
-<h3>
+<h1>
   <p align="center">
     <code>ssr-coin</code>
   </p>
-</h3>
+</h1>
 
 <p align="center">
 Add SSR to your app. Easy & Flexible.
 </p>
 
-<br/>
+---
+
 <br/>
 
  - [What is `ssr-coin`](#what-is-ssr-coin)
