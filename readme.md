@@ -4,4 +4,4 @@
   </a>
 </p>
 
-<h1><p align="center">`ssr-coin`</p></h1>
+<h1><p align="center"><code>ssr-coin</code></p></h1>
