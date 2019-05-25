@@ -1,7 +1,8 @@
 {
   "name": "goldssr",
   "version": "0.3.2",
-  "bin": "./bin",
+  "main": "./main.js",
+  "bin": "./bin.js",
   "dependencies": {
     "@brillout/autoload": "0.3.2",
     "@brillout/project-files": "0.3.2",
