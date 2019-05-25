@@ -8,8 +8,9 @@
 
  - [What is `ssr-coin`](#what-is-ssr-coin)
  - [Usage (zero-config)](#usage-zero-config)
- - [How it works](#how-it-works)
+ - [Plugins](#plugins)
  - [Usage (with config)](#usage-with-config)
+ - [How it works](#how-it-works)
 
 ## What is `ssr-coin`
 
@@ -23,10 +24,7 @@ Note that SSR is not only about **SEO** but it is also about (**browser-load-tim
 The last two ascpects of SSR are vastly underestimated.
 
 `ssr-coin` is unopinionated and works with any stack:
- - any view libray: React, Vue, React Native Web, etc.
- - any server framework: Express, Koa, Hapi, etc.
- - any language: ES6, TypeScript, PostCSS, etc.
-
+ - any view libray: React, Vue, React Native Web, etc.  - any server framework: Express, Koa, Hapi, etc.  - any language: ES6, TypeScript, PostCSS, etc.  
 Thanks to its zero-config feature, you can use `ssr-coin` with only a couple of lines.
 
 But, and if you need to, you can also take control over:
@@ -66,29 +64,63 @@ module.exports = {
 };
 ~~~
 
-What `renderToHtml.js`, are explained in the following sections. bellow.
+The files `renderToHtml.js` and `renderPageToHtml.js` are explained at:
+
 - [HTML Rendering](#html-rendering)
-What values are explained in the sections bellow.
+
+The files `renderToDom.js` and `renderPageToDom.js` are explained at:
 
 - [DOM Rendering](#dom-rendering)
+
+The file `router.js` is explained at:
+
 - [Routing](#routing)
 
-And we talk about configuring the builing at:
+We talk about configuring the builing at:
 
 - [Building](#building)
 
-### HTML Rendering
+If you need then read:
 
-### DOM Rendering
+- [Fully Flexible](#fully-flexible)
 
-### Routing
+#### HTML Rendering
 
-### Building
+#### DOM Rendering
+
+#### Routing
+
+#### Building
 
 We strongly believe that, as a developer, you shouldn't mess around with building.
-Building is a complex topic and and quickly can become a considerably time sink.
-We believe that the build should be taken care of by tools with minimal configuration,
-and we thrilled about zero-config bundlers such as [Parcel](https://github.com/parcel-bundler/parcel).
+Building is a complex topic and and configuring building can quickly become a considerably time sink.
+We believe that the build process should be taken care of by tools with minimal configuration.
+Messing with building should be your last resort.
 
-Today `gold-ssr` is based on Webpack but we will migrate to Parcel once Parcel v2 is ready.
+Today,
+`gold-ssr` is based on Webpack,
+but we will migrate to Parcel once Parcel v2 is ready.
 
+to alter Webpack but for now
+
+We may publish documentation about how to write plugins
+we prefer to develop the plugins hand-in-hand today.
+
+If you want to change Webpack's configuration then we suggest you to use a `ssr-coin` plugin
+
+#### Full Flexibility
+
+For internal `ssr-coin` developing purposes,
+the entire `ssr-coin` build process is design in a modular way.
+What this means for you,
+is that you can take control over many aspect of the building process.
+
+If you need to configure something not covered in this Readme,
+then open a ticket on this GitHub repository
+and let's discuss solutions to your problem.
+We aim to make `ssr-coin` highly flexible,
+and we meant it.
+
+### How it works
+
+Generates
