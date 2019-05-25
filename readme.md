@@ -2,15 +2,20 @@
   <a href="/../../#readme">
     <img align="center" src="https://github.com/brillout/goldssr/raw/master/docs/ssr-coin.min.svg?sanitize=true" width=96 height=96 style="max-width:100%;" alt="ssr-coin"/>
   </a>
-
-  <h3>
-    <p align="center">
-      <code>ssr-coin</code>
-    </p>
-  </h3>
-
-  <b>Add SSR to your app. Easy & Flexible.</b>
 </p>
+
+<h3>
+  <p align="center">
+    <code>ssr-coin</code>
+  </p>
+</h3>
+
+<p align="center">
+Add SSR to your app. Easy & Flexible.
+</p>
+
+<br/>
+<br/>
 
  - [What is `ssr-coin`](#what-is-ssr-coin)
  - [Usage (zero-config)](#usage-zero-config)
