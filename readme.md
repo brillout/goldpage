@@ -14,8 +14,7 @@
 Add SSR to your app. Easy & Flexible.
 </p>
 
----
-
+<br/>
 <br/>
 
  - [What is `ssr-coin`](#what-is-ssr-coin)
