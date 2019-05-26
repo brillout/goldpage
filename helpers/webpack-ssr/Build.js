@@ -142,18 +142,12 @@ function get_logger() {
     logger_opts.log_config_and_stats = true;
   }
 
-  if( logOptions.buildingText ) {
-    logger_opts.getBuildStartText = () => logOptions.buildingText;
-    logger_opts.getRebuildingText = () => logOptions.buildingText;
-  } else {
-    logger_opts.getBuildStartText = () => 'Building';
-  }
-  if( logOptions.builtText ) {
-    logger_opts.getBuildEndText = () => logOptions.builtText;
-    logger_opts.getRebuiltText = () => logOptions.builtText;
-  } else {
-    logger_opts.getBuildEndText = () => 'Built';
-  }
+  const defaultBuidingText = 'Building';
+  const defaultBuitText = 'Built';
+  logger_opts.getBuildStartText = () => logOptions.buildingText || defaultBuidingText;
+  logger_opts.getRebuildingText = () => logOptions.buildingText || defaultBuidingText;
+  logger_opts.getBuildEndText = () => logOptions.builtText || defaultBuitText;
+  logger_opts.getRebuiltText = () => logOptions.builtText || defaultBuitText;
 
   logger_opts.showLoadingSpinner = logOptions.showLoadingSpinner;
 
