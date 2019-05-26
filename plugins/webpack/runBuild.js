@@ -67,6 +67,7 @@ async function onBuildDone(...args) {
   }
   if( onBuild ){
     onBuildPromise = onBuild(...args);
+    await onBuildPromise;
   }
 }
 
