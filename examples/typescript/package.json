@@ -2,6 +2,12 @@
   "name": "examples_typescript",
   "private": true,
   "version": "0.3.2",
+  "scripts": {
+    "dev": "goldssr dev",
+    "prod": "npm run build && npm run start",
+    "build": "export NODE_ENV='production' && goldssr build",
+    "start": "export NODE_ENV='production' && node ./.build/nodejs/server"
+  },
   "dependencies": {
     "@goldssr/react": "0.3.2",
     "@goldssr/path-to-regexp": "0.3.2",
