@@ -5,7 +5,7 @@ module.exports = {
   route: '/',
   view: () => (
     <div>
-      Hello from ssrCoin.
+      Hello from ssr-coin.
       <Time/>
     </div>
   ),
