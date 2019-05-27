@@ -800,13 +800,22 @@
     reassert "^1.1.14"
     string-width "^2.1.1"
 
-"@brillout/get-user-dir@^0.2.1", "@brillout/get-user-dir@^0.2.2":
+"@brillout/get-user-dir@^0.2.1":
   version "0.2.2"
   resolved "https://registry.yarnpkg.com/@brillout/get-user-dir/-/get-user-dir-0.2.2.tgz#10530f81c3a66401d9dbb27d31c0b1641554c183"
   integrity sha512-6gA9fWc8CfXMOizDF1QJLjsF71jDbfDTq9O4t1huHqRaOz8kBX/dvv263F8iauPBTJLbuIA2l4M/cfPoaFJw2w==
   dependencies:
     callsites "^2.0.0"
     reassert "^1.1.9"
+
+"@brillout/get-user-dir@^0.2.3":
+  version "0.2.3"
+  resolved "https://registry.yarnpkg.com/@brillout/get-user-dir/-/get-user-dir-0.2.3.tgz#15aaf26a4f785b49fa7baec1a6d333a8c914cd93"
+  integrity sha512-fk38XPJyYtw2KbaBn6Ll8gNlOsTDjY9a2yS+s4pJXKjlKT7SKewp8M6oOKN7iMhEn5oBKjSRQb77nw5NpeNrDA==
+  dependencies:
+    "@brillout/project-files" "^0.1.0"
+    "@brillout/reassert" "^0.1.0"
+    callsites "^2.0.0"
 
 "@brillout/index-html@^0.1.2":
   version "0.1.4"
@@ -824,6 +833,17 @@
   dependencies:
     reassert "^1.1.11"
 
+"@brillout/project-files@^0.1.0", "@brillout/project-files@~0.1.0":
+  version "0.1.0"
+  resolved "https://registry.yarnpkg.com/@brillout/project-files/-/project-files-0.1.0.tgz#2f274f4b25f1f03d5b2d9e6f983ba4158e610e44"
+  integrity sha512-trKJaFHw/MZD2UbN+EYL2xhHw9vawnEo7yuFzDZQVRZQPuGDWUKJ1FlIYgN6HOEtVwZdq9GMl3rt+uDSgSTV7g==
+  dependencies:
+    "@brillout/get-user-dir" "^0.2.3"
+    "@brillout/reassert" "^0.1.0"
+    find-up "^4.0.0"
+    glob-gitignore "^1.0.14"
+    ignore "^5.1.1"
+
 "@brillout/reassert@0.0.1":
   version "0.0.1"
   resolved "https://registry.yarnpkg.com/@brillout/reassert/-/reassert-0.0.1.tgz#68c4bf06f3676d11cda26ee6f8a62a0e2ad4876c"
@@ -835,6 +855,13 @@
   version "0.0.2"
   resolved "https://registry.yarnpkg.com/@brillout/reassert/-/reassert-0.0.2.tgz#0a010a6be8ec1bd71fa9c77f15d877fa5c54505a"
   integrity sha512-M7Ag6lpEIscjcjOfK+vN6U/GcXpozb739IrBg2KiquHSwgAlmyikMrBUsGpM+O36D8cRI22yRka36iIzgXdb0g==
+  dependencies:
+    "@brillout/format-text" "^0.1.3"
+
+"@brillout/reassert@^0.1.0":
+  version "0.1.0"
+  resolved "https://registry.yarnpkg.com/@brillout/reassert/-/reassert-0.1.0.tgz#0d09870810d981f9d9e73e1eddb50c5b44ff63fe"
+  integrity sha512-aU1+XhsIKXy78GII8YGE6JVu/G7QiCbCnm/+RMY3zpZPJ4dlc7+HWNpkVpbAOTSp+1wbCSl/je/gMh3PZ2L1wg==
   dependencies:
     "@brillout/format-text" "^0.1.3"
 
@@ -879,19 +906,19 @@
     simple-git "^1.95.0"
     source-map-support "^0.5.4"
 
-"@universal-adapter/hapi@^0.1.2":
-  version "0.1.2"
-  resolved "https://registry.yarnpkg.com/@universal-adapter/hapi/-/hapi-0.1.2.tgz#02419d28148f9efce7a7bea1ce3335758ee9953b"
-  integrity sha512-kjkjVyVEfj9+xzK6ohGor2V0yqvymLVFUXgEH4hiDmoSkxbioszc0ifWAFvZ9M1Ayuy8XmSYl63WFfRVZJA7Yg==
+"@universal-adapter/hapi@^0.2.1":
+  version "0.2.1"
+  resolved "https://registry.yarnpkg.com/@universal-adapter/hapi/-/hapi-0.2.1.tgz#0cf05189c02c4731757b024003221746d375e6f6"
+  integrity sha512-A9s4jjJ/jko422k2A9BMMO731f4P5gsLRUjwnyY1HtWbEAjvJLer8U/EmjPUi/It+z7wE8jD55i2hevAEIHGIg==
   dependencies:
-    "@universal-adapter/server" "0.1.2"
+    "@universal-adapter/server" "0.2.1"
     boom "^7.2.0"
     reassert "^1.1.16"
 
-"@universal-adapter/server@0.1.2":
-  version "0.1.2"
-  resolved "https://registry.yarnpkg.com/@universal-adapter/server/-/server-0.1.2.tgz#34b8a2719f0ae07bc33f9c4d829606c79a2f967e"
-  integrity sha512-6+Xm0Hj+r+A4UrNUCLBAwQkxJC6kulMHDYBe5pGep54KtNJK7v4H4G7svuJ3S0dvg+XjJPWlPfABDAGF+JL+PA==
+"@universal-adapter/server@0.2.1":
+  version "0.2.1"
+  resolved "https://registry.yarnpkg.com/@universal-adapter/server/-/server-0.2.1.tgz#97e5877e97120bfb7b62a0b9b48dc93a2f7eeaca"
+  integrity sha512-mBhP/NVfgOFm8dl3N+szTthlAjgTlNqFqyB2BWBzL38rO6um0aZv2izyIqXxo9o37AdutADg/wzOirbGwIkqoQ==
   dependencies:
     "@brillout/parse-uri" "^0.1.1"
     express "^4.16.4"
@@ -2569,7 +2596,7 @@ git-state@^4.0.0:
   dependencies:
     after-all-results "^2.0.0"
 
-glob-gitignore@^1.0.6:
+glob-gitignore@^1.0.14, glob-gitignore@^1.0.6:
   version "1.0.14"
   resolved "https://registry.yarnpkg.com/glob-gitignore/-/glob-gitignore-1.0.14.tgz#8b708cb029e73bd388d22f7f935213aa93a1e7c2"
   integrity sha512-YuAEPqL58bOQDqDF2kMv009rIjSAtPs+WPzyGbwRWK+wD0UWQVRoP34Pz6yJ6ivco65C9tZnaIt0I3JCuQ8NZQ==
@@ -2880,7 +2907,7 @@ ignore@^3.3.5, ignore@^3.3.7:
   resolved "https://registry.yarnpkg.com/ignore/-/ignore-3.3.10.tgz#0a97fb876986e8081c631160f8f9f389157f0043"
   integrity sha512-Pgs951kaMm5GXP7MOvxERINe3gsaVjUWFm+UZPSq9xYriQAksyhg0csnS0KXSNRD5NmNdapXEpjxG49+AKh/ug==
 
-ignore@^5.0.5:
+ignore@^5.0.5, ignore@^5.1.1:
   version "5.1.1"
   resolved "https://registry.yarnpkg.com/ignore/-/ignore-5.1.1.tgz#2fc6b8f518aff48fef65a7f348ed85632448e4a5"
   integrity sha512-DWjnQIFLenVrwyRCKZT+7a7/U4Cqgar4WG8V++K3hw+lrW1hc/SIwdiGmtxKCVACmHULTuGeBbHJmbwW7/sAvA==
