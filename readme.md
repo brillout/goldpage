@@ -38,12 +38,12 @@ It is designed to be easy yet entirely flexible.
 
 Infos about SSR:
 - [Awesome Universal Rendering - What is SSR](https://github.com/brillout/awesome-universal-rendering)
-- [Awesome Universal Rendering - When to use SSR](https://github.com/brillout/awesome-universal-rendering)
-  - Explains whether one should use SSR or not.
-- [Awesome Universal Rendering - Performance](https://github.com/brillout/awesome-universal-rendering)
-  - Explains the performance benefits of SSR which can be substantial for mobile.
-- [Awesome Universal Rendering - Developer Experience](https://github.com/brillout/awesome-universal-rendering)
-  - Not many people know that SSR introduces a new way of developing applications leading to important increase in developing speed.
+- [Awesome Universal Rendering - When to use SSR](https://github.com/brillout/awesome-universal-rendering) -
+  Explains whether SSR should be used or not.
+- [Awesome Universal Rendering - Performance](https://github.com/brillout/awesome-universal-rendering) -
+  Explains the performance benefits of SSR which can be substantial for mobile.
+- [Awesome Universal Rendering - Developer Experience](https://github.com/brillout/awesome-universal-rendering) -
+  Not many people know that SSR introduces a new way of developing applications with an important increase in developing speed.
 
 `ssr-coin` is unopinionated and works with any stack:
 - Any view libray: React, Vue, React Native Web, etc.
