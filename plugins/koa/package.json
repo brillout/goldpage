@@ -1,5 +1,5 @@
 {
-  "name": "@goldssr/koa",
+  "name": "@ssr-coin/koa",
   "version": "0.3.2",
   "@brillout/autoload": true,
   "dependencies": {

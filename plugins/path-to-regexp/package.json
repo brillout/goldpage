@@ -1,5 +1,5 @@
 {
-  "name": "@goldssr/path-to-regexp",
+  "name": "@ssr-coin/path-to-regexp",
   "version": "0.3.2",
   "@brillout/autoload": true,
   "dependencies": {

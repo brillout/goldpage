@@ -26,14 +26,14 @@ function create_ssr() {
 
   const {packageJsonFile, loaded: loadedPlugins} = loadDependencies();
 
-  require('@goldssr/core');
-  require('@goldssr/browser');
-  require('@goldssr/server');
+  require('@ssr-coin/core');
+  require('@ssr-coin/browser');
+  require('@ssr-coin/server');
   /*
-  require('@goldssr/react');
-  require('@goldssr/path-to-regexp');
-  require('@goldssr/webpack');
-  require('@goldssr/hapi');
+  require('@ssr-coin/react');
+  require('@ssr-coin/path-to-regexp');
+  require('@ssr-coin/webpack');
+  require('@ssr-coin/hapi');
   //*/
 
   return new GoldSSR();
@@ -92,7 +92,7 @@ function create_ssr() {
     assert.usage(
       isMissing,
       {loadedPlugins},
-      "A builder plugin is missing. Add one, such as `@goldssr/webpack`, to "+packageJsonFile,
+      "A builder plugin is missing. Add one, such as `@ssr-coin/webpack`, to "+packageJsonFile,
     );
     await config.GoldSSR.runBuild();
   }
@@ -102,7 +102,7 @@ function create_ssr() {
     assert_usage(
       config.GoldSSR.rend,
       {loadedPlugins},
-      "A builder plugin is missing. Add one, such as `@goldssr/webpack`, to "+packageJsonFile,
+      "A builder plugin is missing. Add one, such as `@ssr-coin/webpack`, to "+packageJsonFile,
     );
   }
   */

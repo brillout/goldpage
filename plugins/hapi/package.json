@@ -1,5 +1,5 @@
 {
-  "name": "@goldssr/hapi",
+  "name": "@ssr-coin/hapi",
   "version": "0.3.2",
   "@brillout/autoload": true,
   "dependencies": {

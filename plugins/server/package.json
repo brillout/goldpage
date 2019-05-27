@@ -1,5 +1,5 @@
 {
-  "name": "@goldssr/server",
+  "name": "@ssr-coin/server",
   "version": "0.3.2",
   "@brillout/autoload": true,
   "dependencies": {

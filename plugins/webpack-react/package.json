@@ -1,5 +1,5 @@
 {
-  "name": "@goldssr/webpack-react",
+  "name": "@ssr-coin/webpack-react",
   "version": "0.3.2",
   "@brillout/autoload": true,
   "dependencies": {

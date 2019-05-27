@@ -1,5 +1,5 @@
 {
-  "name": "@goldssr/index-html",
+  "name": "@ssr-coin/index-html",
   "version": "0.3.2",
   "@brillout/autoload": true,
   "dependencies": {
