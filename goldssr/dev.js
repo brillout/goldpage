@@ -10,13 +10,17 @@ assert.usage(
 let server;
 ssr.onBuild = async ({serverBuildEntry, serverEntryFile}) => {
   if( server ) {
-    await server.stop();
+    if( server.close ){
+      await server.close();
+    } else if( server.stop ){
+      await server.stop();
+    }
   }
   server = await require_(serverBuildEntry, {skipCache: true});
   assert.usage(
-    server && server.stop,
-    "The server entry `"+serverEntryFile+"` should return an object with a `stop()` function",
-  )
+    server && (server.close || server.stop),
+    "`"+serverEntryFile+"` should return an object with a `close()` or `stop()` function",
+  );
 };
 
 ssr.build();

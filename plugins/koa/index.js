@@ -3,7 +3,7 @@ const assert = require('@brillout/reassert');
 const KoaAdapter = require('@universal-adapter/koa');
 
 config.GoldSSR.serverAdapters = config.GoldSSR.serverAdapters || {};
-config.GoldSSR.serverAdapters.hapi = (
+config.GoldSSR.serverAdapters.koa = (
   new KoaAdapter(() => {
     const {StaticAssets, ServerRendering} = config.GoldSSR;
     assert.internal(StaticAssets);
