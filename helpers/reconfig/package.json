@@ -4,6 +4,7 @@
   "dependencies": {
     "reassert": "^1.1.12"
   },
+  "repository": "github:reframejs/ssr-coin",
   "publishConfig": {
     "access": "public"
   }

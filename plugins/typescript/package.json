@@ -16,7 +16,7 @@
   "publishConfig": {
     "access": "public"
   },
-  "repository": "github.com:reframejs/goldssr",
+  "repository": "github.com:reframejs/ssr-coin",
   "checkDeps": {
     "skip": [
       "typescript"
