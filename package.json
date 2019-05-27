@@ -12,7 +12,7 @@
     "examples/koa",
     "examples/typescript",
 
-    "goldssr/",
+    "ssr-coin/",
 
     "plugins/core",
 
