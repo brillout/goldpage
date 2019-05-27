@@ -142,7 +142,7 @@ We believe that the build process should be taken care of by tools with minimal 
 Messing with building should be your last resort.
 
 Today,
-`gold-ssr` is based on Webpack,
+`ssr-coin` is based on Webpack,
 but we will migrate to Parcel once Parcel v2 is ready.
 
 to alter Webpack but for now
