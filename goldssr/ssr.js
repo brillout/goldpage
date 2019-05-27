@@ -62,7 +62,7 @@ function create_ssr() {
       {build},
     );
 
-    return new Proxy(this, {set, get});
+    return new Proxy(this, {set});
 
     function set(ssr_obj, prop, value) {
       if( ['pagesDir', 'buildDir', 'serverEntryFile'].includes(prop) ){
@@ -78,17 +78,6 @@ function create_ssr() {
       config.GoldSSR[prop] = value;
 
       return true;
-    }
-
-    function get(ssr_obj, prop) {
-      if( !(prop in ssr_obj) ) {
-        const server_adapter_getter = config.GoldSSR.serverAdapters['get_'+prop];
-        if( server_adapter_getter ) {
-          return server_adapter_getter();
-        }
-      }
-
-      return ssr_obj[prop];
     }
   }
 
