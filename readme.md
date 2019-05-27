@@ -11,7 +11,7 @@
 </h1>
 
 <p align="center">
-Add SSR to your app. Easy & Flexible.
+Add SSR to your app.
 </p>
 
 <br/>
@@ -27,13 +27,15 @@ Add SSR to your app. Easy & Flexible.
 
 `ssr-coin`
 (<img src="https://github.com/brillout/ssr-coin/raw/master/docs/ssr-coin.min.svg?sanitize=true" width=16 height=10 style="max-width:100%;" alt="ssr-coin"/>)
-is a do-one-thing-do-it-well library that adds server-side rendering (SSR) to your app
-that is designed to be easy yet flexible.
+is a do-one-thing-do-it-well library that adds server-side rendering (SSR) to your app.
 
-To know more about SSR and its benefits,
-read [Awesome Universal Rendering](https://github.com/brillout/awesome-universal-rendering).
-Note that SSR is not only about SEO but it is also about [browser load time performance]() and [developer experience]().
-The last two ascpects of SSR are vastly underestimated.
+It is designed to be easy yet entirely flexible.
+
+More infos about SSR:
+ - [Awesome Universal Rendering - What is SSR](https://github.com/brillout/awesome-universal-rendering)
+ - [Awesome Universal Rendering - When to use SSR](https://github.com/brillout/awesome-universal-rendering)
+ - [Awesome Universal Rendering - Performance](https://github.com/brillout/awesome-universal-rendering)
+ - [Awesome Universal Rendering - Developer Experience](https://github.com/brillout/awesome-universal-rendering)
 
 `ssr-coin` is unopinionated and works with any stack:
 - Any view libray: React, Vue, React Native Web, etc.
@@ -42,7 +44,7 @@ The last two ascpects of SSR are vastly underestimated.
 
 Thanks to its zero-config feature, you can add SSR to your app with only a couple of lines.
 
-But, and if you need to, you can also take control over:
+But, if you need to, you can take control over:
  - The HTML rendering (full control)
  - The DOM rendering (full control)
  - The routing (full control)
