@@ -9,6 +9,7 @@
   },
   "workspaces": [
     "examples/basic",
+    "examples/koa",
     "examples/typescript",
 
     "goldssr/",
@@ -21,6 +22,7 @@
     "plugins/index-html",
     "plugins/path-to-regexp",
     "plugins/hapi",
+    "plugins/koa",
 
     "plugins/typescript",
 

@@ -9,11 +9,12 @@
     "start": "export NODE_ENV='production' && node ./.build/nodejs/server"
   },
   "dependencies": {
-    "@goldssr/react": "0.3.2",
-    "@goldssr/path-to-regexp": "0.3.2",
-    "@goldssr/webpack": "0.3.2",
     "@goldssr/koa": "0.3.2",
+    "@goldssr/path-to-regexp": "0.3.2",
+    "@goldssr/react": "0.3.2",
+    "@goldssr/webpack": "0.3.2",
     "goldssr": "0.3.2",
+    "koa": "^2.7.0",
     "react": "^16.8.6"
   },
   "checkDeps": {

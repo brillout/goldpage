@@ -1,5 +1,5 @@
 {
-  "name": "@goldssr/hapi",
+  "name": "@goldssr/koa",
   "version": "0.3.2",
   "@brillout/autoload": true,
   "dependencies": {
