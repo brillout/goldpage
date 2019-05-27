@@ -68,7 +68,7 @@ function getCacheHeader(filePath, fileContent) {
 }
 
 function getFilePath({pathname}) {
-    const {staticAssetsDir} = config.GoldSSR.getBuildInfo();
+    const {staticAssetsDir} = config.ssrCoin.getBuildInfo();
 
     const filename = (
         pathname==='/' && '/index.html' ||

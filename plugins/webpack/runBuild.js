@@ -31,7 +31,7 @@ function runBuild() {
     getPageBrowserEntriesFile,
     transpileServerCode,
     serverEntryFile,
-  } = reconfig.GoldSSR;
+  } = reconfig.ssrCoin;
 
   const getPageHtmls = require(getPageHtmlsFile);
   const getPageBrowserEntries = require(getPageBrowserEntriesFile);
@@ -58,7 +58,7 @@ function runBuild() {
 let onBuildPromise;
 let alreadyQueued;
 async function onBuildDone(...args) {
-  const {onBuild} = reconfig.GoldSSR;
+  const {onBuild} = reconfig.ssrCoin;
   if( alreadyQueued ) return;
   if( onBuildPromise ) {
     alreadyQueued = true;
@@ -76,7 +76,7 @@ function assemble_modifiers(modifier_name) {
     // `config` holds a webpack config
     let supra_modifier = ({config}) => config;
 
-    const modifiers = reconfig.GoldSSR[modifier_name];
+    const modifiers = reconfig.ssrCoin[modifier_name];
 
     // We assemble all `configParts`'s config modifiers into one `supra_modifier`
     modifiers
@@ -106,7 +106,7 @@ function getPageFiles() {
     const {
       pagesDir,
       getPageConfigFiles,
-    } = reconfig.GoldSSR;
+    } = reconfig.ssrCoin;
     const configFileNames = getPageConfigFiles();
 
     assert.usage(configFileNames.constructor===Array);

@@ -4,7 +4,7 @@ const renderToHtmlFile = require.resolve('./renderToHtml');
 const config = require('@brillout/reconfig');
 
 Object.assign(
-  config.GoldSSR,
+  config.ssrCoin,
   {
     renderToHtmlFile,
     renderToDomFile,

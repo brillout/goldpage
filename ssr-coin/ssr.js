@@ -22,7 +22,7 @@ ssr.buildDir = '.build/';
 module.exports = ssr;
 
 function create_ssr() {
-  config.GoldSSR = {};
+  config.ssrCoin = {};
 
   const {packageJsonFile, loaded: loadedPlugins} = loadDependencies();
 
@@ -36,12 +36,12 @@ function create_ssr() {
   require('@ssr-coin/hapi');
   //*/
 
-  return new GoldSSR();
+  return new ssrCoin();
 
-  function GoldSSR() {
+  function ssrCoin() {
     const {projectDir, findProjectFiles} = new ProjectFiles();
 
-    config.GoldSSR.getPageConfigFiles = () => {
+    config.ssrCoin.getPageConfigFiles = () => {
       assert.usage(
         ssr.pagesDir,
         "You need to set `pagesDir`",
@@ -58,7 +58,7 @@ function create_ssr() {
     this.build = build;
     Object.assign(
       this,
-      config.GoldSSR.serverAdapters,
+      config.ssrCoin.serverAdapters,
       {build},
     );
 
@@ -75,7 +75,7 @@ function create_ssr() {
         prop = 'logOptions';
       }
 
-      config.GoldSSR[prop] = value;
+      config.ssrCoin[prop] = value;
 
       return true;
     }
@@ -85,22 +85,22 @@ function create_ssr() {
     /*
     assert.usage(
       loadedPlugins.length>0,
-      "No GoldSSR Plugins loaded. Add some to "+packageJsonFile,
+      "No ssrCoin Plugins loaded. Add some to "+packageJsonFile,
     );
     */
-    const isMissing = !!config.GoldSSR.runBuild;
+    const isMissing = !!config.ssrCoin.runBuild;
     assert.usage(
       isMissing,
       {loadedPlugins},
       "A builder plugin is missing. Add one, such as `@ssr-coin/webpack`, to "+packageJsonFile,
     );
-    await config.GoldSSR.runBuild();
+    await config.ssrCoin.runBuild();
   }
 
   /*
   function assert_reconfig() {
     assert_usage(
-      config.GoldSSR.rend,
+      config.ssrCoin.rend,
       {loadedPlugins},
       "A builder plugin is missing. Add one, such as `@ssr-coin/webpack`, to "+packageJsonFile,
     );

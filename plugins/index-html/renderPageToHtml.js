@@ -6,7 +6,7 @@ const assert = require('@brillout/reassert');
 module.exports = renderPageToHtml;
 
 async function renderPageToHtml({pageConfig, initialProps}) {
-  const renderToHtml = require(config.GoldSSR.renderToHtmlFile);
+  const renderToHtml = require(config.ssrCoin.renderToHtmlFile);
   const contentHtml = await renderToHtml({pageConfig, initialProps});
   assert.usage(
     contentHtml && contentHtml.constructor===String,

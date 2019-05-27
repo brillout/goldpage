@@ -2,9 +2,9 @@ const browserInitFile = require.resolve('./browserInit');
 const hydratePageFile = require.resolve('./hydratePage');
 const config = require('@brillout/reconfig');
 
-config.GoldSSR.browserInitFile = browserInitFile;
-config.GoldSSR.browserInitFunctions = config.GoldSSR.browserInitFunctions || [];
-config.GoldSSR.browserInitFunctions.push(
+config.ssrCoin.browserInitFile = browserInitFile;
+config.ssrCoin.browserInitFunctions = config.ssrCoin.browserInitFunctions || [];
+config.ssrCoin.browserInitFunctions.push(
   {
     name: 'hydratePage',
     initFunctionFile: hydratePageFile,

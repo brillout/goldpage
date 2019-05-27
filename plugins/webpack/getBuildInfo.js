@@ -5,7 +5,7 @@ const assert = require('reassert');
 module.exports = getBuildInfo;
 
 function getBuildInfo({shouldBeProductionBuild}={}) {
-    const outputDir = config.GoldSSR.buildDir;
+    const outputDir = config.ssrCoin.buildDir;
     assert.internal(outputDir);
 
     const assetInfos = getAssetInfos({outputDir, shouldBeProductionBuild});
@@ -24,7 +24,7 @@ function getPageConfigs({pageAssets}) {
 
             Object.assign(
                 pageConfig,
-                config.GoldSSR.defaultPageConfig,
+                config.ssrCoin.defaultPageConfig,
                 pageExport,
             );
 

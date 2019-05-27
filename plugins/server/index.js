@@ -3,7 +3,7 @@ const StaticAssets = require('./StaticAssets');
 const config = require('@brillout/reconfig');
 
 Object.assign(
-  config.GoldSSR,
+  config.ssrCoin,
   {
     ServerRendering,
     StaticAssets,

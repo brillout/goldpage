@@ -7,9 +7,9 @@ const getStaticPageHtmls = require('@brillout/repage/getStaticPageHtmls');
 module.exports = getPageHtmls;
 
 async function getPageHtmls() {
-    const {pageConfigs} = config.GoldSSR.getBuildInfo();
+    const {pageConfigs} = config.ssrCoin.getBuildInfo();
 
-    const {routerFile, renderPageToHtmlFile} = config.GoldSSR;
+    const {routerFile, renderPageToHtmlFile} = config.ssrCoin;
     const renderToHtml = require(renderPageToHtmlFile);
     const router = require(routerFile);
     assert_usage(router);
