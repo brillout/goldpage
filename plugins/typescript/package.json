@@ -16,7 +16,7 @@
   "publishConfig": {
     "access": "public"
   },
-  "repository": "https://github.com/reframejs/goldssr",
+  "repository": "github.com:reframejs/goldssr",
   "checkDeps": {
     "skip": [
       "typescript"
