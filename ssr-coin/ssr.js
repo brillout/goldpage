@@ -12,7 +12,7 @@ ssr.serverEntryFile = 'server/';
 ssr.buildDir = '.build/';
 
 (() => {
-  const {fileExport: userConfig} = loadFile('goldssr.config.js');
+  const {fileExport: userConfig} = loadFile('ssr-coin.config.js');
   Object.assign(
     ssr,
     userConfig,

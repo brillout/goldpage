@@ -3,9 +3,9 @@
   "private": true,
   "version": "0.3.2",
   "scripts": {
-    "dev": "goldssr dev",
+    "dev": "ssr-coin dev",
     "prod": "npm run build && npm run start",
-    "build": "export NODE_ENV='production' && goldssr build",
+    "build": "export NODE_ENV='production' && ssr-coin build",
     "start": "export NODE_ENV='production' && node ./.build/nodejs/server"
   },
   "dependencies": {
@@ -13,7 +13,7 @@
     "@ssr-coin/path-to-regexp": "0.3.2",
     "@ssr-coin/webpack": "0.3.2",
     "@ssr-coin/hapi": "0.3.2",
-    "goldssr": "0.3.2",
+    "ssr-coin": "0.3.2",
     "hapi": "^18.1.0",
     "react": "^16.8.6"
   },

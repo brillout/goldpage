@@ -1,2 +1,2 @@
-const ssr = require('goldssr');
+const ssr = require('ssr-coin');
 ssr.build();

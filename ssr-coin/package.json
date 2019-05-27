@@ -1,5 +1,5 @@
 {
-  "name": "goldssr",
+  "name": "ssr-coin",
   "version": "0.3.2",
   "main": "./ssr.js",
   "bin": "./bin.js",

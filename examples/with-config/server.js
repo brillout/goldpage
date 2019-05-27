@@ -1,5 +1,5 @@
 const Hapi = require('hapi');
-const ssr = require('goldssr');
+const ssr = require('ssr-coin');
 
 module.exports = startServer();
 

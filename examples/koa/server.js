@@ -1,5 +1,5 @@
 const Koa = require('koa');
-const ssr = require('goldssr');
+const ssr = require('ssr-coin');
 
 const app = new Koa();
 app.use(ssr.koa);

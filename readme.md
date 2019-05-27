@@ -1,6 +1,6 @@
 <p align="center">
   <a href="/../../#readme">
-    <img align="center" src="https://github.com/brillout/goldssr/raw/master/docs/ssr-coin.min.svg?sanitize=true" width=96 height=96 style="max-width:100%;" alt="ssr-coin"/>
+    <img align="center" src="https://github.com/brillout/ssr-coin/raw/master/docs/ssr-coin.min.svg?sanitize=true" width=96 height=96 style="max-width:100%;" alt="ssr-coin"/>
   </a>
 </p>
 
@@ -26,7 +26,7 @@ Add SSR to your app. Easy & Flexible.
 ## What is `ssr-coin`
 
 `ssr-coin`
-(<img src="https://github.com/brillout/goldssr/raw/master/docs/ssr-coin.min.svg?sanitize=true" width=16 height=10 style="max-width:100%;" alt="ssr-coin"/>)
+(<img src="https://github.com/brillout/ssr-coin/raw/master/docs/ssr-coin.min.svg?sanitize=true" width=16 height=10 style="max-width:100%;" alt="ssr-coin"/>)
 is a do-one-thing-do-it-well library that adds server-side rendering (SSR) to your app
 that is designed to be easy yet flexible.
 
