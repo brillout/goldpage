@@ -17,42 +17,49 @@ Add SSR to your app.
 <br/>
 <br/>
 
- - [What is `ssr-coin`](#what-is-ssr-coin)
- - [Usage (zero-config)](#usage-zero-config)
- - [Plugins](#plugins)
- - [Usage (with config)](#usage-with-config)
- - [How it works](#how-it-works)
+- [What is `ssr-coin` <img src="https://github.com/brillout/ssr-coin/raw/master/docs/ssr-coin.min.svg?sanitize=true" width=16 height=10 style="max-width:100%;" alt="ssr-coin"/>](#what-is-ssr-coin-)
+- Usage
+  - [Zero-config Usage](#usage-zero-config)
+  - [CSS](#css)
+  - [Page Config](#page-config)
+  - [Render Config](#)
+  - [Router Config](#)
+  - [Build Config](#)
+  - [Full Config](#)
+- [Plugins](#plugins)
+- [How it works](#how-it-works)
 
-## What is `ssr-coin`
+## What is `ssr-coin` <img src="https://github.com/brillout/ssr-coin/raw/master/docs/ssr-coin.min.svg?sanitize=true" width=16 height=10 style="max-width:100%;" alt="ssr-coin"/>
 
 `ssr-coin`
-(<img src="https://github.com/brillout/ssr-coin/raw/master/docs/ssr-coin.min.svg?sanitize=true" width=16 height=10 style="max-width:100%;" alt="ssr-coin"/>)
+<img src="https://github.com/brillout/ssr-coin/raw/master/docs/ssr-coin.min.svg?sanitize=true" width=16 height=10 style="max-width:100%;" alt="ssr-coin"/>
 is a do-one-thing-do-it-well library that adds server-side rendering (SSR) to your app.
-
 It is designed to be easy yet entirely flexible.
 
-More infos about SSR:
- - [Awesome Universal Rendering - What is SSR](https://github.com/brillout/awesome-universal-rendering)
- - [Awesome Universal Rendering - When to use SSR](https://github.com/brillout/awesome-universal-rendering)
- - [Awesome Universal Rendering - Performance](https://github.com/brillout/awesome-universal-rendering)
- - [Awesome Universal Rendering - Developer Experience](https://github.com/brillout/awesome-universal-rendering)
+Infos about SSR:
+- [Awesome Universal Rendering - What is SSR](https://github.com/brillout/awesome-universal-rendering)
+- [Awesome Universal Rendering - When to use SSR](https://github.com/brillout/awesome-universal-rendering)
+  - Explains whether one should use SSR or not.
+- [Awesome Universal Rendering - Performance](https://github.com/brillout/awesome-universal-rendering)
+  - Explains the performance benefits of SSR which can be substantial for mobile.
+- [Awesome Universal Rendering - Developer Experience](https://github.com/brillout/awesome-universal-rendering)
+  - Not many people know that SSR introduces a new way of developing applications leading to important increase in developing speed.
 
 `ssr-coin` is unopinionated and works with any stack:
 - Any view libray: React, Vue, React Native Web, etc.
 - Any server framework: Express, Koa, Hapi, etc.
 - Any language: ES6, TypeScript, PostCSS, etc.
 
-Thanks to its zero-config feature, you can add SSR to your app with only a couple of lines.
-
-But, if you need to, you can take control over:
+By default,
+`ssr-coin` has zero-config:
+you can add SSR to your app with only couple of lines.
+But, if you need to, you can configure and take control over:
  - The HTML rendering (full control)
  - The DOM rendering (full control)
  - The routing (full control)
  - The building (partial control)
 
-## Usage (zero-config)
-
-## Plugins
+## Zero Config
 
 ## Usage (with config)
 
