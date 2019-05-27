@@ -1,4 +1,4 @@
-const ssr = require('goldssr');
+const ssr = require('./ssr');
 const assert = require('@brillout/reassert');
 
 assert.warning(
