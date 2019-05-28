@@ -21,6 +21,7 @@ Add SSR to your app.
 - Usage
   - [Quick Start]()
   - [Zero-config Setup]()
+  - [Server Build Setup]()
   - [Can I use `ssr-coin` with my own bundling?]()
   - [Performance tuning]()
 - Configuration
@@ -91,7 +92,9 @@ This
 Then go through the Quick Start instead.
 
 
-0. Install `ssr-coin` and plugins.
+0. Install.
+
+   `ssr-coin`:
    ~~~shell
    npm install ssr-coin
    ~~~
@@ -106,7 +109,9 @@ Then go through the Quick Start instead.
    npm install @ssr-coin/express
    ~~~
 
-   Note that plugins are automatically loaded. They just have to be listed in the `dependencies` list of your package.json.
+   Note that plugins
+   listed in the `dependencies` list of your `package.json`
+   are automatically loaded.
 
 
 1. Add `ssr-coin` to your Node.js server.
@@ -162,18 +167,24 @@ Then go through the Quick Start instead.
    Express, Koa, or Hapi.
    </details>
 
-2. Add a page.
+2. Create a page.
 
-   First, create the `pages/` directory.
+   Create the `pages/` directory.
    ~~~shell
-   cd path/to/your/project/dir && mkdir pages/
+   cd path/to/your/project/dir/ && mkdir pages/
    ~~~
 
+   Create
    Then copy
    ~~~js
    export default {
-     route: 'ssr-test',
-     view: <>,
+     route: 'hello/:name',
+     view: ({data, name}) => (
+       // We assume that `@ssr-coin/react`
+       <div>
+       </div>
+     ),
+     tittle: ({name}) => 'Hi '+name,
      getInitialProps: async () => {
        await sleep(0.3);
        return {data: "This is some async data;"};
@@ -182,25 +193,7 @@ Then go through the Quick Start instead.
    ~~~
    to `pages/test.page.js`
 
-3. Enable server-side auto-reload:
-   ~~~json
-   {
-     "ssr-coin": {
-       "serverEntryFile": "./path/to/your/server/entry"
-     },
-   }
-   ~~~
-   Or if you don't want `ssr-coin` to auto-reload your server:
-   ~~~json
-   {
-     "ssr-coin": {
-       "doNotBuildServer": true
-     },
-   }
-   ~~~
-   Note that browser-side auto-reload will be enabled either way.
-
-4. Add the `ssr-coin` scripts to your `package.json`:
+3. Add the `ssr-coin` scripts to your `package.json`:
    ~~~json
    {
      "scripts": {
@@ -211,7 +204,12 @@ Then go through the Quick Start instead.
      }
    }
    ~~~
-5. You can now run `npm run dev` and go to the newly created page `/ssr-test`
+
+That's it,
+you can now run `npm run dev` and go to the newly created page `/ssr-test`.
+
+
+Note two things:
 
 Note that you'll have to replace your current bundling step with `ssr-coin`'s one.
 
@@ -228,6 +226,36 @@ Replacing your bundling from Webpack to `ssr-coin` could be trickier.
 Please open a GitHub issue if you run into problems.
 
 A **migration strategy** to progessively add view components to a `ssr-coin` pages and iteratively address any problem you may encounter.
+
+
+## Server Build Setup
+
+You can make `ssr-coin` build your server code.
+
+If you want to
+- transpile your server code (e.g. if you want to use TypeScript on the server), or
+- enable auto-reload for your server
+you can add make `ssr-coin` build your server code by setting the `serverStartFile` config in your `package.json`:
+
+~~~json
+{
+  "ssr-coin": {
+    "serverEntryFile": "./path/to/your/server/entry"
+  },
+}
+~~~
+
+3. Enable server-side auto-reload:
+   Or if you don't want `ssr-coin` to auto-reload your server:
+   ~~~json
+   {
+     "ssr-coin": {
+       "doNotBuildServer": true
+     },
+   }
+   ~~~
+   Note that browser-side auto-reload will be enabled either way.
+
 
 
 
