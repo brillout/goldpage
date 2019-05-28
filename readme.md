@@ -20,16 +20,16 @@ Add SSR to your app.
 - [What is `ssr-coin` <img src="https://github.com/brillout/ssr-coin/raw/master/docs/ssr-coin.min.svg?sanitize=true" width=16 height=10 style="max-width:100%;" alt="ssr-coin"/>](#what-is-ssr-coin-)
 - Usage
   - [Quick Start]()
-  - [Zero-config Setup]()
-  - [Server Build Setup]()
-  - [Can I use `ssr-coin` with my own bundling?]()
-  - [Performance tuning]()
+  - [Zero-config]()
+  - [Server Build]()
+  - [CSS]()
+  - [Async Data]()
+  - [Browser Load Performance]()
 - Configuration
   - [Page](#page-config)
   - [Render](#)
   - [Router](#)
   - [Build](#)
-  - [Bundler](#)
 - [Plugins](#plugins)
 - [How it works](#how-it-works)
 
@@ -182,6 +182,8 @@ Then go through the Quick Start instead.
      view: ({data, name}) => (
        // We assume that `@ssr-coin/react`
        <div>
+         Your name: <span>{name}</span><br/>
+         Loaded data: <span>{data}</span>
        </div>
      ),
      tittle: ({name}) => 'Hi '+name,
@@ -190,6 +192,12 @@ Then go through the Quick Start instead.
        return {data: "This is some async data;"};
      },
    };
+   function sleep(seconds) {
+     let resolve;
+     const p = new Promise(r => resolve=r);
+     setTimeout(resolve, seconds*1000);
+     return p;
+   }
    ~~~
    to `pages/test.page.js`
 
@@ -205,17 +213,24 @@ Then go through the Quick Start instead.
    }
    ~~~
 
-That's it,
-you can now run `npm run dev` and go to the newly created page `/ssr-test`.
+That's it.
+You can now run `npm run dev` and go to your newly created page `/ssr-test`.
 
+Note that you have to use `ssr-coin`'s bundling step.
+You can however take control over the building step.
+More infos at [Config - Build]().
 
-Note two things:
+if you want to know why and for migration strategies.
 
-Note that you'll have to replace your current bundling step with `ssr-coin`'s one.
-
-It is a **conscious design decision to including the bundling step** inside `ssr-coin`
+It is a conscious design decision to including the bundling step inside `ssr-coin`
 and to abstract it away from you.
-Read [Config - Bundler]() if you want to know why.
+
+Beyond the zero-config setup you can also:
+- Enable **server-side auto-reload** by letting `ssr-coin` build your server code
+- **Transpile server code** by letting `ssr-coin` build your server code
+- **Add Redux, GraphQL or other container** by taking control over how your pages are rendered
+- **Improve browser-load performance** for your non-interactive pages by setting `doNoRenderInBrowser: true`.
+
 
 Replacing your bundling from Parcel to `ssr-coin` is easy
 (Since Parcel is zero-config.)
@@ -225,7 +240,7 @@ Replacing your bundling from Webpack to `ssr-coin` could be trickier.
 (Since Webpack's complex configuration is effectively a vendor lock-in.)
 Please open a GitHub issue if you run into problems.
 
-A **migration strategy** to progessively add view components to a `ssr-coin` pages and iteratively address any problem you may encounter.
+A migration strategy to progessively add view components to a `ssr-coin` pages and iteratively address any problem you may encounter.
 
 
 ## Server Build Setup
