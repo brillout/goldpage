@@ -17,10 +17,10 @@ Add SSR to your app.
 <br/>
 <br/>
 
-- [What is `ssr-coin` <img src="https://github.com/brillout/ssr-coin/raw/master/docs/ssr-coin.min.svg?sanitize=true" width=16 height=10 style="max-width:100%;" alt="ssr-coin"/>](#what-is-ssr-coin-)
+- [What is `ssr-coin`](#what-is-ssr-coin-)
 - Usage
   - [Quick Start]()
-  - [Zero-config]()
+  - [Zero-config Setup]()
   - [Server Build]()
   - [CSS]()
   - [Async Data]()
@@ -33,11 +33,9 @@ Add SSR to your app.
 - [Plugins](#plugins)
 - [How it works](#how-it-works)
 
-## What is `ssr-coin` <img src="https://github.com/brillout/ssr-coin/raw/master/docs/ssr-coin.min.svg?sanitize=true" width=16 height=10 style="max-width:100%;" alt="ssr-coin"/>
+## What is `ssr-coin`
 
-`ssr-coin`
-<img src="https://github.com/brillout/ssr-coin/raw/master/docs/ssr-coin.min.svg?sanitize=true" width=16 height=10 style="max-width:100%;" alt="ssr-coin"/>
-is a do-one-thing-do-it-well library that adds server-side rendering (SSR) to your Node.js server.
+`ssr-coin` is a do-one-thing-do-it-well library that adds server-side rendering (SSR) to your Node.js server.
 It is designed to be easy yet entirely flexible.
 
 Infos about SSR:
@@ -226,7 +224,8 @@ It is a conscious design decision to including the bundling step inside `ssr-coi
 and to abstract it away from you.
 
 Beyond the zero-config setup you can also:
-- Enable **server-side auto-reload** by letting `ssr-coin` build your server code
+- Enable **server-side auto-reload** by letting `ssr-coin` build your server code.
+(Browser-side auto-reload is already enabled in zero-config setup)
 - **Transpile server code** by letting `ssr-coin` build your server code
 - **Add Redux, GraphQL or other container** by taking control over how your pages are rendered
 - **Improve browser-load performance** for your non-interactive pages by setting `doNoRenderInBrowser: true`.
