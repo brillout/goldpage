@@ -19,13 +19,16 @@ Add SSR to your app.
 
 - [What is `ssr-coin` <img src="https://github.com/brillout/ssr-coin/raw/master/docs/ssr-coin.min.svg?sanitize=true" width=16 height=10 style="max-width:100%;" alt="ssr-coin"/>](#what-is-ssr-coin-)
 - Usage
-  - [Zero-config Usage](#usage-zero-config)
-  - [CSS](#css)
-  - [Page Config](#page-config)
-  - [Render Config](#)
-  - [Router Config](#)
-  - [Build Config](#)
-  - [Full Config](#)
+  - [Quick Start]()
+  - [Zero-config Setup]()
+  - [Can I use `ssr-coin` with my own bundling?]()
+  - [Performance tuning]()
+- Configuration
+  - [Page](#page-config)
+  - [Render](#)
+  - [Router](#)
+  - [Build](#)
+  - [Bundler](#)
 - [Plugins](#plugins)
 - [How it works](#how-it-works)
 
@@ -33,7 +36,7 @@ Add SSR to your app.
 
 `ssr-coin`
 <img src="https://github.com/brillout/ssr-coin/raw/master/docs/ssr-coin.min.svg?sanitize=true" width=16 height=10 style="max-width:100%;" alt="ssr-coin"/>
-is a do-one-thing-do-it-well library that adds server-side rendering (SSR) to your app.
+is a do-one-thing-do-it-well library that adds server-side rendering (SSR) to your Node.js server.
 It is designed to be easy yet entirely flexible.
 
 Infos about SSR:
@@ -54,14 +57,204 @@ By default,
 `ssr-coin` has zero-config:
 you can add SSR to your app with only couple of lines.
 But, if you need to, you can configure and take control over:
- - The HTML rendering (full control)
- - The DOM rendering (full control)
- - The routing (full control)
- - The building (partial control)
+- The HTML rendering (full control)
+- The DOM rendering (full control)
+- The routing (full control)
+- The building (partial control)
 
-## Zero Config
+## Quick Start
 
-## Usage (with config)
+The `github:brillout/ssr-coin-starter` starter 
+
+1. Clone the starter repo.
+  ~~~shell
+  git clone git@github.com:brillout/ssr-coin-starter
+  ~~~
+
+2. Install dependencies.
+  ~~~shell
+  cd ssr-coin-starter && npm install
+  ~~~
+
+3. Start the dev server.
+  ~~~shell
+  npm run dev
+  ~~~
+
+In the `ssr-coin-starter/package.json` you can see the used plugins. Try to change the 
+
+If you want to add SSR to your existing app then read the next section.
+
+## Zero-config Setup
+
+This 
+Then go through the Quick Start instead.
+
+
+0. Install `ssr-coin` and plugins.
+   ~~~shell
+   npm install ssr-coin
+   ~~~
+
+   A [render plugin]() such as `@ssr-coin/vue` or `@ssr-coin/react`:
+   ~~~shell
+   npm install @ssr-coin/react
+   ~~~
+
+   And a [server plugin]() such as `@ssr-coin/hapi` or `@ssr/express`:
+   ~~~shell
+   npm install @ssr-coin/express
+   ~~~
+
+   Note that plugins are automatically loaded. They just have to be listed in the `dependencies` list of your package.json.
+
+
+1. Add `ssr-coin` to your Node.js server.
+
+   With Express:
+   ~~~js
+   const express = require('express');
+   const ssr = require('ssr-coin');
+
+   const app = express();
+   app.use(ssr.express);
+   ~~~
+
+   <details>
+   <summary>
+   With Hapi
+   </summary>
+
+   ~~~js
+   const Hapi = require('hapi');
+   const ssr = require('ssr-coin');
+
+   (async ()=>{
+     const server = Hapi.Server();
+     await server.register(ssr.hapi);
+   })();
+   ~~~
+   </details>
+
+   <details>
+   <summary>
+   With Koa
+   </summary>
+
+   ~~~js
+   const Koa = require('koa');
+   const ssr = require('ssr-coin');
+
+   const app = new Koa();
+   app.use(ssr.koa);
+   ~~~
+   </details>
+
+   <details>
+   <summary>
+   With other server frameworks
+   </summary>
+
+   `ssr-coin` can be used with any server framework.
+   But there is no documentation for this (yet).
+   Open a GitHub issue
+   if you want to use `ssr-coin` with a server framework other than
+   Express, Koa, or Hapi.
+   </details>
+
+2. Add a page.
+
+   First, create the `pages/` directory.
+   ~~~shell
+   cd path/to/your/project/dir && mkdir pages/
+   ~~~
+
+   Then copy
+   ~~~js
+   export default {
+     route: 'ssr-test',
+     view: <>,
+     getInitialProps: async () => {
+       await sleep(0.3);
+       return {data: "This is some async data;"};
+     },
+   };
+   ~~~
+   to `pages/test.page.js`
+
+3. Enable server-side auto-reload:
+   ~~~json
+   {
+     "ssr-coin": {
+       "serverEntryFile": "./path/to/your/server/entry"
+     },
+   }
+   ~~~
+   Or if you don't want `ssr-coin` to auto-reload your server:
+   ~~~json
+   {
+     "ssr-coin": {
+       "doNotBuildServer": true
+     },
+   }
+   ~~~
+   Note that browser-side auto-reload will be enabled either way.
+
+4. Add the `ssr-coin` scripts to your `package.json`:
+   ~~~json
+   {
+     "scripts": {
+      "dev": "ssr-coin dev",
+      "prod": "npm run build && npm run start",
+      "build": "export NODE_ENV='production' && ssr-coin build",
+      "start": "export NODE_ENV='production' && node ./.build/nodejs/server"
+     }
+   }
+   ~~~
+5. You can now run `npm run dev` and go to the newly created page `/ssr-test`
+
+Note that you'll have to replace your current bundling step with `ssr-coin`'s one.
+
+It is a **conscious design decision to including the bundling step** inside `ssr-coin`
+and to abstract it away from you.
+Read [Config - Bundler]() if you want to know why.
+
+Replacing your bundling from Parcel to `ssr-coin` is easy
+(Since Parcel is zero-config.)
+It should be only a matter of changing your `package.json` scripts such as `"dev": "parcel"` to `"dev": "ssr-coin dev"`.
+
+Replacing your bundling from Webpack to `ssr-coin` could be trickier.
+(Since Webpack's complex configuration is effectively a vendor lock-in.)
+Please open a GitHub issue if you run into problems.
+
+A **migration strategy** to progessively add view components to a `ssr-coin` pages and iteratively address any problem you may encounter.
+
+
+
+If you a bundling that is custom to your app,
+for example if you have a webpack,
+then you'll have to replace it with `ssr-coin`'s bundling.
+
+You may think at first "Didn't you say that `ssr-coin` is a do-one-thing-do-it-well Library".
+We don't believe so. We believe .
+SSR and bundling are intimetly connected and.
+
+(Integrating SSR is most complex part of SSR 
+We strongly believe that 
+
+You may
+you'll have to replace.
+This is a conscious and is a non-goal.
+We believe .
+Ideally
+
+tighly couples you with Webpack.
+Webpack's configuration is effectively a webpack lock-in.
+
+You may 
+As for the dev server you can easily
+You may 
+The bundling
 
 You can configure ``
 
@@ -169,7 +362,7 @@ What this means for you,
 is that you can take control over many aspect of the building process.
 
 If you need to configure something not covered in this Readme,
-then open a ticket on this GitHub repository
+then open a GitHub issue
 and let's discuss solutions to your problem.
 We aim to make `ssr-coin` highly flexible,
 and we meant it.

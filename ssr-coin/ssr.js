@@ -36,9 +36,9 @@ function create_ssr() {
   require('@ssr-coin/hapi');
   //*/
 
-  return new ssrCoin();
+  return new SSR();
 
-  function ssrCoin() {
+  function SSR() {
     const {projectDir, findProjectFiles} = new ProjectFiles();
 
     config.ssrCoin.getPageConfigFiles = () => {
@@ -62,7 +62,7 @@ function create_ssr() {
       {build},
     );
 
-    return new Proxy(this, {set});
+    return new Proxy(this, {set, get});
 
     function set(ssr_obj, prop, value) {
       if( ['pagesDir', 'buildDir', 'serverEntryFile'].includes(prop) ){
@@ -78,6 +78,17 @@ function create_ssr() {
       config.ssrCoin[prop] = value;
 
       return true;
+    }
+
+    function get(ssr_obj, prop) {
+      const value = ssr_obj[prop];
+      assert.usage(
+        !['express', 'koa', 'hapi'].includes(prop) || value,
+        "The plugin `@ssr-coin/"+prop+"` needs to be listed in the `dependencies` list of "+packageJsonFile,
+        "Did you `npm install @ssr-coin/"+prop+"`?",
+        "Once `@ssr-coin/"+prop+"` is listed as dependency, it is automatically loaded and require('ssr-coin')."+prop+" available.",
+      );
+      return value;
     }
   }
 
