@@ -218,10 +218,10 @@ Then go through the Quick Start instead.
    ~~~json
    {
      "scripts": {
-      "dev": "ssr-coin dev",
-      "prod": "npm run build && npm run start",
-      "build": "export NODE_ENV='production' && ssr-coin build",
-      "start": "export NODE_ENV='production' && node ./.build/nodejs/server"
+       "dev": "ssr-coin dev",
+       "prod": "npm run build && npm run start",
+       "build": "export NODE_ENV='production' && ssr-coin build",
+       "start": "export NODE_ENV='production' && node ./.build/nodejs/server"
      }
    }
    ~~~
@@ -413,13 +413,40 @@ and we meant it.
 In order to use `ssr-coin` you have to use `ssr-coin`'s bundling.
 
 We believe that, as a web developer, you shouldn't have to configure bundling
-and that it should be the task of library authors to give you a zero-config bundling experience.
+and that bundling should be as zero-config as possible.
 
-We believe that ideally, using
-Ideally we believe that
+If you are currently using Parcel,
+then using `ssr-coin` should be as easy as changing
 
-~~~js
+~~~json
+{
+  "scripts": {
+    "dev": "parcel",
+    "build": "parcel build",
+  }
+}
 ~~~
+
+to
+
+~~~json
+{
+  "scripts": {
+    "dev": "ssr-coin",
+    "build": "ssr-coin build",
+  }
+}
+~~~
+
+In a nutshell:
+We don't want you to fiddle around with `ssr-coin`'s bundling and that's a good thing.
+(When you think about it, a Webpack configuration is a vendor lock-in.)
+
+That said we are not here yet and migration from Parcel/Webpack to `ssr-coin` requires work today.
+
+`ssr-coin` is currently using Webpack.
+(Once Parcel V2 is released we will use Parcel instead.)
+
 parcel watch
 parcel uild
 
