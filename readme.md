@@ -172,13 +172,14 @@ Then go through the Quick Start instead.
    cd path/to/your/project/dir/ && mkdir pages/
    ~~~
 
-   Create
-   Then copy
+   Create a file
+   at `pages/test.page.js`.
+
+   With React:
    ~~~js
    export default {
      route: 'hello/:name',
      view: ({data, name}) => (
-       // We assume that `@ssr-coin/react`
        <div>
          Your name: <span>{name}</span><br/>
          Loaded data: <span>{data}</span>
@@ -197,7 +198,21 @@ Then go through the Quick Start instead.
      return p;
    }
    ~~~
-   to `pages/test.page.js`
+
+   <details>
+   <summary>
+   With Vue
+   </summary>
+   ~~~js
+   const Hapi = require('hapi');
+   const ssr = require('ssr-coin');
+
+   (async ()=>{
+     const server = Hapi.Server();
+     await server.register(ssr.hapi);
+   })();
+   ~~~
+   </details>
 
 3. Add the `ssr-coin` scripts to your `package.json`:
    ~~~json
@@ -218,28 +233,12 @@ Note that you have to use `ssr-coin`'s bundling step.
 You can however take control over the building step.
 More infos at [Config - Build]().
 
-if you want to know why and for migration strategies.
-
-It is a conscious design decision to including the bundling step inside `ssr-coin`
-and to abstract it away from you.
-
 Beyond the zero-config setup you can also:
 - Enable **server-side auto-reload** by letting `ssr-coin` build your server code.
 (Browser-side auto-reload is already enabled in zero-config setup)
 - **Transpile server code** by letting `ssr-coin` build your server code
 - **Add Redux, GraphQL or other container** by taking control over how your pages are rendered
 - **Improve browser-load performance** for your non-interactive pages by setting `doNoRenderInBrowser: true`.
-
-
-Replacing your bundling from Parcel to `ssr-coin` is easy
-(Since Parcel is zero-config.)
-It should be only a matter of changing your `package.json` scripts such as `"dev": "parcel"` to `"dev": "ssr-coin dev"`.
-
-Replacing your bundling from Webpack to `ssr-coin` could be trickier.
-(Since Webpack's complex configuration is effectively a vendor lock-in.)
-Please open a GitHub issue if you run into problems.
-
-A migration strategy to progessively add view components to a `ssr-coin` pages and iteratively address any problem you may encounter.
 
 
 ## Server Build Setup
@@ -408,6 +407,81 @@ then open a GitHub issue
 and let's discuss solutions to your problem.
 We aim to make `ssr-coin` highly flexible,
 and we meant it.
+
+## Build
+
+In order to use `ssr-coin` you have to use `ssr-coin`'s bundling.
+
+We believe that, as a web developer, you shouldn't have to configure bundling
+and that it should be the task of library authors to give you a zero-config bundling experience.
+
+We believe that ideally, using
+Ideally we believe that
+
+~~~js
+~~~
+parcel watch
+parcel uild
+
+and we believe that this situation should be avoided.
+(Like what Parcel is doing.)
+That's why we don't .
+That said, for internal development purposes, the bunlding is
+
+But we are not there yet and `ssr-coin` currently uses Webpack.
+
+This also means that
+This means that 
+
+Right now `ssr-coin` uses Webpack. We will use Parcel v2 once it's released.
+This means that depending what kind you'll have to
+If you want to that is not covered by one of the `ssr-coin` plugin then you'll have to change `ssr-coin`'s webpack configuration yourself.
+It's fairly easy to do so and open a GitHub ticket and we'll talk you throught how to do it.
+(Since we will eventually use Parcel instead of Webpack.)
+Which is basically what
+Note that once `ssr-coin` uses Parcel, most things will just work without have to using any plugin.
+
+It is a conscious design decision to include the bundling step inside `ssr-coin`
+and to abstract it away from you.
+We believe that you shouldn't have to fiddle around with bundling
+
+Replacing your bundling from Webpack to `ssr-coin` could be trickier.
+(Since Webpack's complex configuration is effectively a vendor lock-in.)
+Please open a GitHub issue if you run into problems.
+
+If you use Webpack, this means that you will have to drop your Webpack configuration.
+
+If you use Parcel, this should be easy (since Parcel is zero-config).
+It should be only a matter of changing your `package.json` scripts such as `"dev": "parcel"` to `"dev": "ssr-coin dev"`.
+
+A possible migration strategy is to progessively add your view components to newly created `ssr-coin` pages and iteratively address the bundling migration problems you encounter.
+
+Beyond bundling you can create your own build and dev logic and programatically call `ssr-coin`'s bundling:
+
+~~~js
+const ssr = require('ssr-coin');
+const restartServer = require('./path/to/your/restartServer/logic');
+
+(async () => {
+  ssr.onBuild = async () => {
+    console.log();
+    // `ssr-coin`'s waits until `onBuild` resolves
+    await restartServer();
+  };
+  await ssr.build();
+})();
+~~~
+
+For example the current implementation of `ssr-coin dev` is:
+~~~js
+!INLINE ./ssr-coin/dev.js
+~~~
+
+If you need something that `ssr-coin` is currently not providing,
+then open a GitHub ticket.
+We aim to make `ssr-coin` flexible and we mean it.
+
+## Plugins
 
 ## How it works
 
