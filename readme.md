@@ -18,20 +18,36 @@ Add SSR to your app.
 <br/>
 
 - [What is `ssr-coin`](#what-is-ssr-coin-)
+- [What is SSR]()
+- [Why SSR]()
+- [Plugins](#plugins)
+- [How it works](#how-it-works)
 - Usage
-  - [Quick Start]()
-  - [Zero-config Setup]()
-  - [Server Build]()
+  - [Getting Started]()
+  Basics
+  - [Server-side autoreload]()
+  - [Transpile Server code]()
+  - [Custom Rendering]()
+  - [`getInitialProps`]()
+  - [`doNotRenderInBrowser`]()
+  - [`renderHtmlAtBuildTime`]()
+  - [HTML <head/>, <title/>, <meta name="description"/>, etc.]()
+  How-to
+  - [Babel Config]()
+  - [Languages: TypeScript, Coffeescript, etc.]()
+  - [Providers: Redux / GraphQL / etc.]()
+  - [CSS pre-processors: PostCSS / Sass / Less / etc.]()
+  Config API
+  - [Page](#page-config)
+  - [`ssr-coin.config.js`](#page-config)
+  How-to
+  - [Redux]()
+  - [PostCSS]()
+  - [PM2]()
+  - [Sass/Less]()
   - [CSS]()
   - [Async Data]()
   - [Browser Load Performance]()
-- Configuration
-  - [Page](#page-config)
-  - [Render](#)
-  - [Router](#)
-  - [Build](#)
-- [Plugins](#plugins)
-- [How it works](#how-it-works)
 
 ## What is `ssr-coin`
 
@@ -241,7 +257,10 @@ Beyond the zero-config setup you can also:
 - **Improve browser-load performance** for your non-interactive pages by setting `doNoRenderInBrowser: true`.
 
 
-## Server Build Setup
+
+
+
+## Server-side autoreload
 
 You can make `ssr-coin` build your server code.
 
