@@ -70,20 +70,75 @@ render(
 
 `ssr-coin` is a do-one-thing-do-it-well library that adds server-side rendering (SSR) to your Node.js server.
 
+You define pages
+
+~~~js
+// pages/hello.page.js
+
+// `ssr-coin` supports other view libraries such as Vue as well
+import React, {useEffect} from 'react';
+
+export default {
+  route: '/hello/:name',
+  view: ({name}) => {
+    <div>
+      Welcome, <b>{name}</b> to <code>ssr-coin</code>.
+      The time is: <Time/>
+    </div>
+  },
+  title: ({name}) => 'Hi '+name,
+};
+
+function Time() {
+}
+~~~
+
+and add `ssr-coin` to your server
+
+~~~js
+// server/start.js
+
+// `ssr-coin` has integrations for other server frameworks as well (Hapi, Koa, ...)
+const express = require('express');
+const ssr = require('ssr-coin');
+
+const app = express();
+app.use(ssr.express);
+~~~
+
+and `ssr-coin` takes care of the rest:
+It transpiles, bundles, routes, renders, and serves your pages.
+
+~~~shell
+$ node server/start.js
+~~~
+
+## Why `ssr-coin`
+
+We maintain [Awesome Universal Rendering]() list which includes a list of SSR tools.
+
+The tools we are aware of either don't do enough and leave the user with too many things to handle
+(e.g. Razzle)
+or they do too much
+and are too opinionated, restrictive and brittle
+(e.g. Next.js)
+
+`ssr-coin` is about giving you both: ease of use *and* freedom.
+ It also comes with some unique features such as static pages.
+
 When designing `ssr-coin` we focus on:
  - Zero-config
  - Freedom
  - Strong abstractions
 
-Zero-config and strong abstractions makes `ssr-coin` easy to use.
-And freedom is about allowing you to use `ssr-coin` with any tool you want and to give you control over key aspects.
-
-What makes `ssr-coin` special are thre
-With "zero-config" philosophy in mind. It also cares about giving you the freedom to achieve what you want.
+Zero-config and strong abstractions make `ssr-coin` easy to use.
+And freedom is about allowing you to use `ssr-coin` with any tool you want and giving you control over key aspects.
 
 ###### Zero-Config
 
-You can use `ssr-coin` with a zero-config setup and add SSR to your app simply by:
+You can use `ssr-coin` with a zero-config setup and add SSR to your app with only couple of lines.
+
+
  - Install `ssr-coin`, a render plugin (such as `@ssr-coin/react`), and a server integration plugin (such as `@ssr-coin/express`)
  - Add the `ssr-coin` middleware/plugin to your server (Express/Koa/Hapi/etc.)
  - Define pages (their root view component, their root, their title, etc.)
@@ -114,7 +169,7 @@ Then automatically transpiles, bundles, routes, renders, and serves your pages.
 `ssr-coin` is about giving you both ease and freedom.
 easy experience
 
-###### Freedom
+###### Unopinionated
 
 You can use `ssr-coin` with any tool you want:
 - Any view libray: React, Vue, React Native Web, etc.
@@ -124,9 +179,11 @@ You can use `ssr-coin` with any tool you want:
 - Any process manager: Docker, systemd, PM2, etc.
 - etc.
 
-And you can take over control key aspects.
+###### Control
 
-For example, by creating `renderToHtml` and `renderToDom` files you can wrap your.
+We allow you to take over control key aspects of `ssr-coin`.
+
+For example, by creating `renderToHtml` and `renderToDom` files you can take over control over the rendering.
 
 For example for React:
 
@@ -163,33 +220,11 @@ async function renderToDom({pageConfig, initialProps, CONTAINER_ID}) {
 }
 ~~~
 
-This control is important and allows you to use any provider you want such as Redux.
+This control is important in order to allow you to use tools such as Redux or GraphQL Apollo.
 
-Or
-you can have full control over the HTML `<head>`
-by creating an `index.html`:
+###### Strong abstractions
 
-~~~html
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta name="whatever" content="you want">
-    !HEAD
-  </head>
-  <body>
-    !BODY
-  </body>
-</html>
-~~~
-
-(`!HEAD` and `!BODY` are replaced and populated by `ssr-coin`.)
-
-If there anything you cannot achieve because of `ssr-coin`, then open a GitHub ticket.
-We want to make `ssr-coin` flexible and we mean it.
-
-
-###### Strong abstraction
-
+Giving you too much freedom is equally as bad as giving you not enough freedom.
 With only give you freedom that makes sense.
 
 For example, we believe that you shouldn't mess around with bundling.
@@ -200,6 +235,33 @@ Or another example is that we don't want you to control. This and you shouldn't 
 This is a complex subject and 
 
 We care about strong abstractions that hide complexity from you to give you an tool that is easy to use.
+
+###### Browser-static pages
+
+By setting `doNoRenderInBrowser` you can make a page *browser-static*:
+your page is rendered to HTML only and the DOM is not manipulated
+
+your view components are only used render 
+No JavaScript is loaded in the browser and the DOM is not manipulated.
+
+Because no (or much less) JavaScript is loaded nor executed in the browser,
+
+there is no browser-side JavaScript, the page is super fast.
+This is important non-interactive pages that need good performance on mobile,
+such as a landing page.
+
+###### Server-static pages
+
+By setting `renderHtmlAtBuildTime` you make a page *server-static*:
+The HTML of the page is rendered ad build time and no server runtime is required to
+generate your page.
+
+###### Optimal code splitting & optimal HTTP cache headers
+
+`ssr-coin` is designed so that a page only loads JavaScript it needs.
+This means that create new view components for a new page doesn't increase the bundle size of other pages.
+
+We extensively make use of hashing and HTTP cache headers to make best use of browser caches.
 
 
 
