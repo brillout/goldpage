@@ -27,9 +27,9 @@ Add SSR to your app.
   - [Server-side Autoreload]()
   - [Transpile Server Code]()
   - [Control Over Rendering]()
-  - [CSS & Sttic Assets]()
+  - [CSS & Static Assets]()
   - [`getInitialProps` & Async Data]()
-  - [`doNotRenderInBrowser` & `renderHtmlAtBuildTime`]()
+  - [`doNotRenderInBrowser` & `renderHtmlAtBuildTime` & Performance Tuning]()
   - [`index.html` - <html>, <head/>, <title/>, <meta name="description"/>, etc.]()
   Config API
   - [Page](#page-config)
@@ -40,9 +40,9 @@ Add SSR to your app.
   - [Providers: Redux / React Router / GraphQL Apollo / Relay / etc.]()
   - [CSS pre-processors: PostCSS / Sass / Less / etc.]()
   - [Custom Routing & Dynamic Routing]()
-  - [Frontend Libraries / Bootstrap / Semantic UI]()
-  - [Custom Dev Server & Custom Build & Custom CLI]()
-  - [Express / Koa / Hapi / Other server frameworks]()
+  - [Frontend Libraries: jQuery / Bootstrap / Semantic UI / etc.]()
+  - [Custom scripts: Custom Dev Server & Custom Build & Custom CLI]()
+  - [Express / Koa / Hapi / Other Server Frameworks]()
 
 
 ## Provider
@@ -67,7 +67,35 @@ render(
 ## What is `ssr-coin`
 
 `ssr-coin` is a do-one-thing-do-it-well library that adds server-side rendering (SSR) to your Node.js server.
-It is designed to be easy yet entirely flexible.
+
+###### Zero-Config
+
+`ssr-coin` has been designed with "zero-config" in mind:
+ - Zero-config setup: you can add SSR to your app with only a couple of lines
+ - Beyond the zero-config setup, you have the possibility to take control over key aspects
+
+`ssr-coin` is about giving you both ease and freedom.
+easy experience
+
+###### Unopinionated
+
+`ssr-coin` is unopinionated and works with any stack:
+- Any view libray: React, Vue, React Native Web, etc.
+- Any server framework: Express, Koa, Hapi, etc.
+- Any language: ES6, TypeScript, PostCSS, etc.
+- Any tool: Redux, GraphQL Apollo, PM2, systemd, etc.
+
+###### Freedom
+
+Freedom to choose to tech stack you want.
+
+But, if you need to, you can configure and take control over:
+- The HTML rendering (full control)
+- The DOM rendering (full control)
+- The routing (full control)
+- The building (partial control)
+
+## What is SSR & SSR Benefits
 
 Infos about SSR:
 - [Awesome Universal Rendering - What is SSR](https://github.com/brillout/awesome-universal-rendering)
@@ -77,20 +105,6 @@ Infos about SSR:
   Explains the performance benefits of SSR which can be substantial for mobile.
 - [Awesome Universal Rendering - Developer Experience](https://github.com/brillout/awesome-universal-rendering) -
   Not many people know that SSR introduces a new way of developing applications with an important increase in developing speed.
-
-`ssr-coin` is unopinionated and works with any stack:
-- Any view libray: React, Vue, React Native Web, etc.
-- Any server framework: Express, Koa, Hapi, etc.
-- Any language: ES6, TypeScript, PostCSS, etc.
-
-By default,
-`ssr-coin` has zero-config:
-you can add SSR to your app with only couple of lines.
-But, if you need to, you can configure and take control over:
-- The HTML rendering (full control)
-- The DOM rendering (full control)
-- The routing (full control)
-- The building (partial control)
 
 ## Quick Start
 
