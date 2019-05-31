@@ -18,36 +18,51 @@ Add SSR to your app.
 <br/>
 
 - [What is `ssr-coin`](#what-is-ssr-coin-)
-- [What is SSR]()
-- [Why SSR]()
+- [What is SSR & SSR Benefits]()
 - [Plugins](#plugins)
 - [How it works](#how-it-works)
 - Usage
   - [Getting Started]()
   Basics
-  - [Server-side autoreload]()
-  - [Transpile Server code]()
-  - [Custom Rendering]()
-  - [`getInitialProps`]()
-  - [`doNotRenderInBrowser`]()
-  - [`renderHtmlAtBuildTime`]()
-  - [HTML <head/>, <title/>, <meta name="description"/>, etc.]()
-  How-to
-  - [Babel Config]()
-  - [Languages: TypeScript, Coffeescript, etc.]()
-  - [Providers: Redux / GraphQL / etc.]()
-  - [CSS pre-processors: PostCSS / Sass / Less / etc.]()
+  - [Server-side Autoreload]()
+  - [Transpile Server Code]()
+  - [Control Over Rendering]()
+  - [CSS & Sttic Assets]()
+  - [`getInitialProps` & Async Data]()
+  - [`doNotRenderInBrowser` & `renderHtmlAtBuildTime`]()
+  - [`index.html` - <html>, <head/>, <title/>, <meta name="description"/>, etc.]()
   Config API
   - [Page](#page-config)
   - [`ssr-coin.config.js`](#page-config)
   How-to
-  - [Redux]()
-  - [PostCSS]()
-  - [PM2]()
-  - [Sass/Less]()
-  - [CSS]()
-  - [Async Data]()
-  - [Browser Load Performance]()
+  - [Babel Config]()
+  - [Languages: TypeScript / Coffeescript / etc.]()
+  - [Providers: Redux / React Router / GraphQL Apollo / Relay / etc.]()
+  - [CSS pre-processors: PostCSS / Sass / Less / etc.]()
+  - [Custom Routing & Dynamic Routing]()
+  - [Frontend Libraries / Bootstrap / Semantic UI]()
+  - [Custom Dev Server & Custom Build & Custom CLI]()
+  - [Express / Koa / Hapi / Other server frameworks]()
+
+
+## Provider
+
+import React from 'react'
+import { render } from 'react-dom'
+import { Provider } from 'react-redux'
+import { createStore } from 'redux'
+import todoApp from './reducers'
+import App from './components/App'
+
+const store = createStore(todoApp)
+
+render(
+  <Provider store={store}>
+      <App />
+        </Provider>,
+          document.getElementById('root')
+          )
+
 
 ## What is `ssr-coin`
 
