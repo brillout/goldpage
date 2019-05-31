@@ -68,22 +68,61 @@ render(
 
 `ssr-coin` is a do-one-thing-do-it-well library that adds server-side rendering (SSR) to your Node.js server.
 
+With "zero-config" philosophy in mind. It also cares about giving you the freedom to achieve what you want.
+
 ###### Zero-Config
 
+You can use `ssr-coin` with a zero-config setup and add SSR to your app simply by:
+ - Install `ssr-coin`, a render plugin (such as `@ssr-coin/react`), and a server integration plugin (such as `@ssr-coin/express`)
+ - Add the `ssr-coin` middleware/plugin to your server (Express/Koa/Hapi/etc.)
+ - Define pages (their root view component, their root, their title, etc.)
+
+key aspects.
+What this means is that 
+Then automatically transpiles, bundles, routes, renders, and serves your pages.
+
+ -
+ - with only a couple of lines.
+
+`ssr-coin` takes of the rest:
+ - Bundling.
+   <br/>
+   `ssr-coin` transpiles and bundles your pages with a minimal-size bundle for each page. Allowing you to scale up to hundreds of pages without increase the bundle size of each page.
+ - Minimal bundle sizes.
+   <br/>
+ - Routing & Serving. `ssr-coin` to for (Express, Koa, Hapi, etc.) automatically serve your pages with optiomal HTTP caching headers.
+ - Auto-reload.
+   <br/>
+   `ssr-coin` comes with browser-side auto-reload as well as server-side auto-reload.
+
+ - Generating a a size-minimal bundle for each page
+ - Routing your pages
 `ssr-coin` has been designed with "zero-config" in mind:
- - Zero-config setup: you can add SSR to your app with only a couple of lines
  - Beyond the zero-config setup, you have the possibility to take control over key aspects
 
 `ssr-coin` is about giving you both ease and freedom.
 easy experience
 
-###### Unopinionated
+###### Freedom
 
 `ssr-coin` is unopinionated and works with any stack:
 - Any view libray: React, Vue, React Native Web, etc.
 - Any server framework: Express, Koa, Hapi, etc.
 - Any language: ES6, TypeScript, PostCSS, etc.
 - Any tool: Redux, GraphQL Apollo, PM2, systemd, etc.
+
+For example you can create a `renderToHtml` and `renderToDom` files.
+ by setting to you can take control
+
+This control is what allows you to allows to use `ssr-coin` with any view library you want and any tool such as Redux.
+
+Or another example is that for exampl
+This is impo
+It also allows to take control over key aspects such as
+
+This allows you to 
+
+
 
 ###### Freedom
 
@@ -94,6 +133,10 @@ But, if you need to, you can configure and take control over:
 - The DOM rendering (full control)
 - The routing (full control)
 - The building (partial control)
+
+
+
+
 
 ## What is SSR & SSR Benefits
 
@@ -147,7 +190,7 @@ Then go through the Quick Start instead.
    npm install @ssr-coin/react
    ~~~
 
-   And a [server plugin]() such as `@ssr-coin/hapi` or `@ssr/express`:
+   And a [server integration plugin]() such as `@ssr-coin/hapi` or `@ssr/express`:
    ~~~shell
    npm install @ssr-coin/express
    ~~~
