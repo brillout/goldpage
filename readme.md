@@ -17,8 +17,10 @@ Add SSR to your app.
 <br/>
 <br/>
 
-- [What is `ssr-coin`](#what-is-ssr-coin-)
-- [What is SSR & SSR Benefits]()
+- [What is `ssr-coin`](#what-is-ssr-coin)
+- [What is SSR]()
+- [Why `ssr-coin`](#why-ssr)
+- [Why SSR]()
 - [Plugins](#plugins)
 - [How it works](#how-it-works)
 - Usage
@@ -68,6 +70,15 @@ render(
 
 `ssr-coin` is a do-one-thing-do-it-well library that adds server-side rendering (SSR) to your Node.js server.
 
+When designing `ssr-coin` we focus on:
+ - Zero-config
+ - Freedom
+ - Strong abstractions
+
+Zero-config and strong abstractions makes `ssr-coin` easy to use.
+And freedom is about allowing you to use `ssr-coin` with any tool you want and to give you control over key aspects.
+
+What makes `ssr-coin` special are thre
 With "zero-config" philosophy in mind. It also cares about giving you the freedom to achieve what you want.
 
 ###### Zero-Config
@@ -105,35 +116,90 @@ easy experience
 
 ###### Freedom
 
-`ssr-coin` is unopinionated and works with any stack:
+You can use `ssr-coin` with any tool you want:
 - Any view libray: React, Vue, React Native Web, etc.
 - Any server framework: Express, Koa, Hapi, etc.
 - Any language: ES6, TypeScript, PostCSS, etc.
-- Any tool: Redux, GraphQL Apollo, PM2, systemd, etc.
+- Any provider: Redux, GraphQL Apollo, Relay, etc.
+- Any process manager: Docker, systemd, PM2, etc.
+- etc.
 
-For example you can create a `renderToHtml` and `renderToDom` files.
- by setting to you can take control
+And you can take over control key aspects.
 
-This control is what allows you to allows to use `ssr-coin` with any view library you want and any tool such as Redux.
+For example, by creating `renderToHtml` and `renderToDom` files you can wrap your.
 
-Or another example is that for exampl
-This is impo
-It also allows to take control over key aspects such as
+For example for React:
 
-This allows you to 
+~~~js
+// renderToHtml.js
+
+const React = require('react');
+const ReactDOMServer = require('react-dom/server');
+
+module.exports = renderToHtml;
+
+async function renderToHtml({pageConfig, initialProps}) {
+  return (
+    ReactDOMServer.renderToStaticMarkup(
+      React.createElement(pageConfig.view, initialProps)
+    )
+  );
+}
+~~~
+
+~~~js
+// renderToDom.js
+
+const React = require('react');
+const ReactDOM = require('react-dom');
+
+module.exports = renderToDom;
+
+async function renderToDom({pageConfig, initialProps, CONTAINER_ID}) {
+  ReactDOM.hydrate(
+    React.createElement(pageConfig.view, initialProps),
+    document.getElementById(CONTAINER_ID)
+  );
+}
+~~~
+
+This control is important and allows you to use any provider you want such as Redux.
+
+Or
+you can have full control over the HTML `<head>`
+by creating an `index.html`:
+
+~~~html
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="whatever" content="you want">
+    !HEAD
+  </head>
+  <body>
+    !BODY
+  </body>
+</html>
+~~~
+
+(`!HEAD` and `!BODY` are replaced and populated by `ssr-coin`.)
+
+If there anything you cannot achieve because of `ssr-coin`, then open a GitHub ticket.
+We want to make `ssr-coin` flexible and we mean it.
 
 
+###### Strong abstraction
 
-###### Freedom
+With only give you freedom that makes sense.
 
-Freedom to choose to tech stack you want.
+For example, we believe that you shouldn't mess around with bundling.
+But ideally you shouldn't care.
 
-But, if you need to, you can configure and take control over:
-- The HTML rendering (full control)
-- The DOM rendering (full control)
-- The routing (full control)
-- The building (partial control)
+Or another example is that we don't want you to control. This and you shouldn't care.
 
+This is a complex subject and 
+
+We care about strong abstractions that hide complexity from you to give you an tool that is easy to use.
 
 
 
