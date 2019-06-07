@@ -7,10 +7,10 @@
 !INLINE ./snippets/li-1.md [Why `ssr-coin`](#why-ssr) --hide-source-path
 !INLINE ./snippets/li-1.md [Plugins](#plugins) --hide-source-path
 !INLINE ./snippets/li-1.md Usage --hide-source-path
-	!INLINE ./snippets/li-2.md [Getting Started](#getting-started) --hide-source-path
-	!INLINE ./snippets/li-2-header.md Basics --hide-source-path
-	!INLINE ./snippets/li-2.md [Server-side Autoreload]() --hide-source-path
-	!INLINE ./snippets/li-2.md [Transpile Server Code]() --hide-source-path
+!INLINE ./snippets/li-2.md [Getting Started](#getting-started) --hide-source-path
+!INLINE ./snippets/li-2-header.md Basics --hide-source-path
+!INLINE ./snippets/li-2.md [Server-side Autoreload]() --hide-source-path
+!INLINE ./snippets/li-2.md [Transpile Server Code]() --hide-source-path
 
 bla
 

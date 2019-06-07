@@ -98,10 +98,13 @@ Add SSR to your app.
 <br/> &nbsp;&nbsp;&nbsp;&#8226;&nbsp; [Why
 <br/> &nbsp;&nbsp;&nbsp;&#8226;&nbsp; [Plugins](#plugins)
 <br/> &nbsp;&nbsp;&nbsp;&#8226;&nbsp; Usage
-	!INLINE ./snippets/li-2.md [Getting Started](#getting-started) --hide-source-path
-	!INLINE ./snippets/li-2-header.md Basics --hide-source-path
-	!INLINE ./snippets/li-2.md [Server-side Autoreload]() --hide-source-path
-	!INLINE ./snippets/li-2.md [Transpile Server Code]() --hide-source-path
+<br/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#8226;&nbsp; [Getting
+<sub>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Basics
+</sub>
+<br/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#8226;&nbsp; [Server-side
+<br/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#8226;&nbsp; [Transpile
 
 bla
 
