@@ -8,18 +8,14 @@ Use Reframe with TypeScript.
 
 ### Usage
 
-Add `@reframe/typescript` to your `reframe.config.js`.
+Add `@reframe/typescript` to your `ssr-coin.config.js`.
 
 ~~~js
-!INLINE ./example/reframe.config.js --hide-source-path
+!INLINE ./example/ssr-coin.config.js --hide-source-path
 ~~~
 
 ### Example
 
 ~~~tsx
-!INLINE ./example/pages/landing.config.tsx
-~~~
-
-~~~js
-!INLINE ./example/reframe.config.js
+!INLINE ./example/pages/landing.page-config.tsx
 ~~~

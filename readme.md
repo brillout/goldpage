@@ -1,12 +1,103 @@
-!MENU_ORDER 1
-!MENU_LINK /../../
-!OUTPUT ../readme.md
-!INLINE ./snippets/header.md --hide-source-path
+<!---
 
-!INLINE ./snippets/li-1.md [What is `ssr-coin`](#what-is-ssr-coin) --hide-source-path
-!INLINE ./snippets/li-1.md [Why `ssr-coin`](#why-ssr) --hide-source-path
-!INLINE ./snippets/li-1.md [Plugins](#plugins) --hide-source-path
-!INLINE ./snippets/li-1.md Usage --hide-source-path
+
+
+
+
+
+    WARNING, READ THIS.
+    This is a computed file. Do not edit.
+    Edit `/docs/readme.template.md` instead.
+
+
+
+
+
+
+
+
+
+
+
+
+    WARNING, READ THIS.
+    This is a computed file. Do not edit.
+    Edit `/docs/readme.template.md` instead.
+
+
+
+
+
+
+
+
+
+
+
+
+    WARNING, READ THIS.
+    This is a computed file. Do not edit.
+    Edit `/docs/readme.template.md` instead.
+
+
+
+
+
+
+
+
+
+
+
+
+    WARNING, READ THIS.
+    This is a computed file. Do not edit.
+    Edit `/docs/readme.template.md` instead.
+
+
+
+
+
+
+
+
+
+
+
+
+    WARNING, READ THIS.
+    This is a computed file. Do not edit.
+    Edit `/docs/readme.template.md` instead.
+
+
+
+
+
+
+-->
+<p align="center">
+  <a href="/../../#readme">
+    <img align="center" src="https://github.com/brillout/ssr-coin/raw/master/docs/ssr-coin.min.svg?sanitize=true" width=96 height=96 style="max-width:100%;" alt="ssr-coin"/>
+  </a>
+</p>
+
+<h1>
+  <p align="center">
+    <code>ssr-coin</code>
+  </p>
+</h1>
+
+<p align="center">
+Add SSR to your app.
+</p>
+
+<br/>
+<br/>
+
+<br/> &nbsp;&nbsp;&nbsp;&#8226;&nbsp; [What
+<br/> &nbsp;&nbsp;&nbsp;&#8226;&nbsp; [Why
+<br/> &nbsp;&nbsp;&nbsp;&#8226;&nbsp; [Plugins](#plugins)
+<br/> &nbsp;&nbsp;&nbsp;&#8226;&nbsp; Usage
 	!INLINE ./snippets/li-2.md [Getting Started](#getting-started) --hide-source-path
 	!INLINE ./snippets/li-2-header.md Basics --hide-source-path
 	!INLINE ./snippets/li-2.md [Server-side Autoreload]() --hide-source-path
@@ -729,3 +820,81 @@ With zero JavaScript.
 That is:
  - 
 
+
+<!---
+
+
+
+
+
+
+    WARNING, READ THIS.
+    This is a computed file. Do not edit.
+    Edit `/docs/readme.template.md` instead.
+
+
+
+
+
+
+
+
+
+
+
+
+    WARNING, READ THIS.
+    This is a computed file. Do not edit.
+    Edit `/docs/readme.template.md` instead.
+
+
+
+
+
+
+
+
+
+
+
+
+    WARNING, READ THIS.
+    This is a computed file. Do not edit.
+    Edit `/docs/readme.template.md` instead.
+
+
+
+
+
+
+
+
+
+
+
+
+    WARNING, READ THIS.
+    This is a computed file. Do not edit.
+    Edit `/docs/readme.template.md` instead.
+
+
+
+
+
+
+
+
+
+
+
+
+    WARNING, READ THIS.
+    This is a computed file. Do not edit.
+    Edit `/docs/readme.template.md` instead.
+
+
+
+
+
+
+-->
