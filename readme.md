@@ -94,17 +94,17 @@ Add SSR to your app.
 <br/>
 <br/>
 
-<br/> &nbsp;&nbsp;&nbsp;&#8226;&nbsp; [What
-<br/> &nbsp;&nbsp;&nbsp;&#8226;&nbsp; [Why
-<br/> &nbsp;&nbsp;&nbsp;&#8226;&nbsp; [Plugins](#plugins)
+<br/> &nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a
+<br/> &nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a
+<br/> &nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a
 <br/> &nbsp;&nbsp;&nbsp;&#8226;&nbsp; Usage
-<br/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#8226;&nbsp; [Getting
+<br/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a
 <sub>
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 Basics
 </sub>
-<br/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#8226;&nbsp; [Server-side
-<br/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#8226;&nbsp; [Transpile
+<br/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a
+<br/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a
 
 bla
 

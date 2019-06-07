@@ -3,14 +3,14 @@
 !OUTPUT ../readme.md
 !INLINE ./snippets/header.md --hide-source-path
 
-!INLINE ./snippets/li-1.md [What is `ssr-coin`](#what-is-ssr-coin) --hide-source-path
-!INLINE ./snippets/li-1.md [Why `ssr-coin`](#why-ssr) --hide-source-path
-!INLINE ./snippets/li-1.md [Plugins](#plugins) --hide-source-path
+!INLINE ./snippets/li-1.md <a href="#what-is-ssr-coin">What is `ssr-coin`</a> --hide-source-path
+!INLINE ./snippets/li-1.md <a href="#why-ssr">Why `ssr-coin`</a> --hide-source-path
+!INLINE ./snippets/li-1.md <a href="#plugins">Plugins</a> --hide-source-path
 !INLINE ./snippets/li-1.md Usage --hide-source-path
-!INLINE ./snippets/li-2.md [Getting Started](#getting-started) --hide-source-path
+!INLINE ./snippets/li-2.md <a href="#getting-started">Getting Started</a> --hide-source-path
 !INLINE ./snippets/li-2-header.md Basics --hide-source-path
-!INLINE ./snippets/li-2.md [Server-side Autoreload]() --hide-source-path
-!INLINE ./snippets/li-2.md [Transpile Server Code]() --hide-source-path
+!INLINE ./snippets/li-2.md <a href="">Server-side Autoreload</a> --hide-source-path
+!INLINE ./snippets/li-2.md <a href="">Transpile Server Code</a> --hide-source-path
 
 bla
 
