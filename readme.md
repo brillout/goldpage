@@ -25,14 +25,17 @@ Add SSR to your app.
 [Plugins](#plugins)
 <br/> &nbsp;&nbsp;&nbsp;&#8226;&nbsp;
 Usage
-  <br/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#8226;&nbsp;
+  <br/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#8226;&nbsp;
   [Getting Started]()
-  <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#nbsp;&nbsp;&nbsp;
+  <sub>
+  <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
   Basics
+  </sub>
   <br/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#8226;&nbsp;
   [Server-side Autoreload]()
   <br/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#8226;&nbsp;
   [Transpile Server Code]()
+
 
 bla
 
