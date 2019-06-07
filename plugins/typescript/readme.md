@@ -84,35 +84,32 @@ Use Reframe with TypeScript.
 
 ### Usage
 
-Add `@reframe/typescript` to your `reframe.config.js`.
+Add `@reframe/typescript` to your `ssr-coin.config.js`.
 
 ~~~js
 module.exports = {
-    $plugins: [
-        require('@reframe/react-kit'),
-        require('@reframe/typescript') // npm install @reframe/typescript
-    ],
-
+  typescript: {
     // Syntax transformation is done with `@babel/preset-typescript`
     // Options:
     babelPresetTypescript: {
-        isTSX: true, // default value
-        allExtensions: true, // default value
+      isTSX: true, // default value
+      allExtensions: true, // default value
     },
 
     // Type checking is done with `fork-ts-checker-webpack-plugin`
     // Options:
     forkTsCheckerWebpackPlugin: {
-        // To enable type checking set `enable: true`
-        enable: true,
+      // To enable type checking set `enable: true`
+      enable: true,
     },
+  },
 };
 ~~~
 
 ### Example
 
 ~~~tsx
-// /plugins/typescript/example/pages/landing.config.tsx
+// /plugins/typescript/example/pages/landing.page-config.tsx
 
 import * as React from "react";
 
@@ -124,31 +121,6 @@ export default {
     route: '/',
     view: () => <Hello compiler="TypeScript" framework="React" />,
     doNotRenderInBrowser: true,
-};
-~~~
-
-~~~js
-// /plugins/typescript/example/reframe.config.js
-
-module.exports = {
-    $plugins: [
-        require('@reframe/react-kit'),
-        require('@reframe/typescript') // npm install @reframe/typescript
-    ],
-
-    // Syntax transformation is done with `@babel/preset-typescript`
-    // Options:
-    babelPresetTypescript: {
-        isTSX: true, // default value
-        allExtensions: true, // default value
-    },
-
-    // Type checking is done with `fork-ts-checker-webpack-plugin`
-    // Options:
-    forkTsCheckerWebpackPlugin: {
-        // To enable type checking set `enable: true`
-        enable: true,
-    },
 };
 ~~~
 
