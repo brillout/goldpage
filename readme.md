@@ -17,25 +17,33 @@ Add SSR to your app.
 <br/>
 <br/>
 
-- [What is `ssr-coin`](#what-is-ssr-coin)
-- [What is SSR]()
-- [Why `ssr-coin`](#why-ssr)
-- [Why SSR]()
-- [Plugins](#plugins)
-- [How it works](#how-it-works)
-- Usage
-  - [Getting Started]()
+<br/> &nbsp;&nbsp;&nbsp;&#8226;&nbsp;
+[What is `ssr-coin`](#what-is-ssr-coin)
+<br/> &nbsp;&nbsp;&nbsp;&#8226;&nbsp;
+[Why `ssr-coin`](#why-ssr)
+<br/> &nbsp;&nbsp;&nbsp;&#8226;&nbsp;
+[Plugins](#plugins)
+<br/> &nbsp;&nbsp;&nbsp;&#8226;&nbsp;
+Usage
+  <br/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#8226;&nbsp;
+  [Getting Started]()
+  <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#nbsp;&nbsp;&nbsp;
   Basics
-  - [Server-side Autoreload]()
-  - [Transpile Server Code]()
-  - [Control Over Rendering]()
+  <br/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#8226;&nbsp;
+  [Server-side Autoreload]()
+  <br/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#8226;&nbsp;
+  [Transpile Server Code]()
+
+bla
+
+  - [Rendering `<App>`]()
   - [CSS & Static Assets]()
   - [`getInitialProps` & Async Data]()
   - [`doNotRenderInBrowser` & `renderHtmlAtBuildTime` & Performance Tuning]()
   - [`index.html` - <html>, <head/>, <title/>, <meta name="description"/>, etc.]()
-  Config API
-  - [Page](#page-config)
-  - [`ssr-coin.config.js`](#page-config)
+  API
+  - [Page Config](#page-config)
+  - [`ssr-coin.config.js` - Global Config](#page-config)
   How-to
   - [Babel Config]()
   - [Languages: TypeScript / Coffeescript / etc.]()
