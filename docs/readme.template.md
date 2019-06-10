@@ -21,40 +21,21 @@ bla
   - [`index.html` - <html>, <head/>, <title/>, <meta name="description"/>, etc.]()
   API
   - [Page Config](#page-config)
-  - [`ssr-coin.config.js` - Global Config](#page-config)
+  - [`ssr-coin` Config](#page-config)
   How-to
-  - [Babel Config]()
+  - [Control Transpalition: Babel Config]()
   - [Languages: TypeScript / Coffeescript / etc.]()
-  - [Providers: Redux / React Router / GraphQL Apollo / Relay / etc.]()
+  - [Control Rendering & Providers for Redux / React Router / GraphQL Apollo / Relay / etc.]()
   - [CSS pre-processors: PostCSS / Sass / Less / etc.]()
-  - [Custom Routing & Dynamic Routing]()
+  - [Control Routing & Dynamic Routing]()
   - [Frontend Libraries: jQuery / Bootstrap / Semantic UI / etc.]()
-  - [Custom scripts: Custom Dev Server & Custom Build & Custom CLI]()
+  - [Control scripts: Custom Dev Server & Custom Build & Custom CLI]()
   - [Express / Koa / Hapi / Other Server Frameworks]()
-
-
-## Provider
-
-import React from 'react'
-import { render } from 'react-dom'
-import { Provider } from 'react-redux'
-import { createStore } from 'redux'
-import todoApp from './reducers'
-import App from './components/App'
-
-const store = createStore(todoApp)
-
-render(
-  <Provider store={store}>
-      <App />
-        </Provider>,
-          document.getElementById('root')
-          )
 
 
 ## What is `ssr-coin`
 
-`ssr-coin` is a do-one-thing-do-it-well library that adds server-side rendering (SSR) to your Node.js server.
+`ssr-coin` is a library that adds server-side rendering (SSR) to your Node.js server.
 
 You define pages
 
@@ -79,25 +60,131 @@ function Time() {
 }
 ~~~
 
+and `ssr-coin` takes care of the rest:
+It transpiles, bundles, routes, renders, and serves your pages.
+
+You can use `ssr-coin` with your existing app.
+
 and add `ssr-coin` to your server
 
-~~~js
-// server/start.js
 
-// `ssr-coin` has integrations for other server frameworks as well (Hapi, Koa, ...)
+
+
+
+
+## Why `ssr-coin`
+
+`ssr-coin` is about making SSR easy with no scrifice on flexibility and freedom.
+
+
+###### Easy
+
+All you need to get started is:
+ - Install `ssr-coin` and `ssr-coin` plugins
+ - Add the `ssr-coin` middleware to your server
+ - Define your pages
+
+That's it.
+
+For example, for a React & Express stack:
+
+~~~json
+{
+  "dependencies": {
+    "@ssr-coin/react": "~0.3.2",
+    "@ssr-coin/express": "~0.3.2",
+    "ssr-coin": "~0.3.2"
+  }
+}
+~~~
+
+~~~js
 const express = require('express');
 const ssr = require('ssr-coin');
 
 const app = express();
+
+// Add the `ssr-coin` middleware
 app.use(ssr.express);
+
+app.listen(3000);
 ~~~
 
-and `ssr-coin` takes care of the rest:
-It transpiles, bundles, routes, renders, and serves your pages.
+~~~js
+// pages/hello.page.js
 
-~~~shell
-$ node server/start.js
+import React from 'react';
+
+export default {
+ route: '/hello/:name',
+ view: ({name}) => {
+   <div>
+     Hello <b>{name}</b>.
+     Welcome to <code>ssr-coin</code>.
+   </div>
+ },
+};
 ~~~
+
+
+###### Freedom
+
+`ssr-coin` takes care of SSR and SSR only:
+the rest of your stack is entirely up to you and you can use:
+
+- Any view libray: **React**, **Vue**, **React Native Web**, etc.
+- Any server framework: **Express**, **Koa**, **Hapi**, etc.
+- Any language: **ES6**, **TypeScript**, **PostCSS**, etc.
+- Any provider: **Redux**, **GraphQL Apollo**, **Relay**, etc.
+- Any process manager: **Docker**, **systemd**, **PM2**, etc.
+- etc.
+
+We designed `ssr-coin` with a broad range of SSR uses cases in mind.
+For example, you can configure when a page is rendered:
+- You can configure your page's HTML to be rendered at build-time or at request-time.
+- You can configure whether your page is rendered to the DOM or not (aka hydration).
+
+This fine grain control over when your pages are rendered allows you to build all kinds of apps:
+- Frontend & backend apps (aka full-stack **SSR** app).
+- Frontend-only apps (aka **static website**).
+- Backend-only apps (aka **old-school** app with **plain old HTML**).
+- Hybrid apps (where some pages are static and some dynamic).
+
+
+###### Batteries included
+
+- [DX] Zero-config / Minimal-config
+- [DX] Browser-side autoreload
+- [DX] Server-side autoreload
+- [Flexibility] Controlable Rendering
+- [Flexibility] Controlable Babel Transpalition
+- [Performance] Page based code spliting
+- [Performance] Optimal HTTP caching
+- [Performance] [DOM-static pages]()
+- [Performance] [HTML-static pages]()
+
+
+
+
+
+## Provider
+
+import React from 'react'
+import { render } from 'react-dom'
+import { Provider } from 'react-redux'
+import { createStore } from 'redux'
+import todoApp from './reducers'
+import App from './components/App'
+
+const store = createStore(todoApp)
+
+render(
+  <Provider store={store}>
+      <App />
+        </Provider>,
+          document.getElementById('root')
+          )
+
 
 ## Why `ssr-coin`
 
@@ -154,16 +241,6 @@ Then automatically transpiles, bundles, routes, renders, and serves your pages.
 
 `ssr-coin` is about giving you both ease and freedom.
 easy experience
-
-###### Unopinionated
-
-You can use `ssr-coin` with any tool you want:
-- Any view libray: React, Vue, React Native Web, etc.
-- Any server framework: Express, Koa, Hapi, etc.
-- Any language: ES6, TypeScript, PostCSS, etc.
-- Any provider: Redux, GraphQL Apollo, Relay, etc.
-- Any process manager: Docker, systemd, PM2, etc.
-- etc.
 
 ###### Control
 
@@ -265,6 +342,8 @@ Infos about SSR:
 
 ## Quick Start
 
+
+------
 The `github:brillout/ssr-coin-starter` starter 
 
 1. Clone the starter repo.
@@ -285,11 +364,8 @@ The `github:brillout/ssr-coin-starter` starter
 In the `ssr-coin-starter/package.json` you can see the used plugins. Try to change the 
 
 If you want to add SSR to your existing app then read the next section.
+------
 
-## Zero-config Setup
-
-This 
-Then go through the Quick Start instead.
 
 
 0. Install.
