@@ -54,7 +54,7 @@ export default {
   view: ({name}) => {
     <div>
       Welcome, <b>{name}</b> to <code>ssr-coin</code>.
-			<Counter/>
+      <Counter/>
     </div>
   },
   title: ({name}) => 'Hi '+name,

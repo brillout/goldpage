@@ -1,27 +1,25 @@
-const React = require('react');
-const { useState, useEffect } = require('react');
+import React, {useState} from 'react';
 
-module.exports = {
+export default {
   route: '/',
   view: () => (
     <div>
       Hello from ssr-coin.
-      <Time/>
+      <Counter/>
     </div>
   ),
 //renderHtmlAtBuildTime: true,
 };
 
-function Time() {
-  const [seconds, setSeconds] = useState(0);
-
-  useEffect(() => {
-    setTimeout(() => setSeconds(seconds+1), 1000);
-  });
+function Counter() {
+  const [count, setCount] = useState(0);
 
   return (
     <div>
-      Time elapsed: <span>{seconds}</span>
+      <p>You clicked <span>{count}</span> times</p>
+      <button onClick={() => setCount(count + 1)}>
+        Click me
+      </button>
     </div>
   );
 }
