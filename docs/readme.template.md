@@ -37,35 +37,42 @@ bla
 
 `ssr-coin` is a library that adds server-side rendering (SSR) to your Node.js server.
 
-You define pages
+You define your pages
+and `ssr-coin` takes care of the rest:
+It transpiles, bundles, routes, renders, and serves your pages.
+
+You can add `ssr-coin` to your existing app.
 
 ~~~js
 // pages/hello.page.js
 
-// `ssr-coin` supports other view libraries such as Vue as well
-import React, {useEffect} from 'react';
+// `ssr-coin` supports any view library such as Vue
+import React, {useState} from 'react';
 
 export default {
   route: '/hello/:name',
   view: ({name}) => {
     <div>
       Welcome, <b>{name}</b> to <code>ssr-coin</code>.
-      The time is: <Time/>
+			<Counter/>
     </div>
   },
   title: ({name}) => 'Hi '+name,
 };
 
-function Time() {
+function Counter() {
+  const [count, setCount] = useState(0);
+
+  return (
+    <div>
+      <p>You clicked {count} times</p>
+      <button onClick={() => setCount(count + 1)}>
+        Click me
+      </button>
+    </div>
+  );
 }
 ~~~
-
-and `ssr-coin` takes care of the rest:
-It transpiles, bundles, routes, renders, and serves your pages.
-
-You can use `ssr-coin` with your existing app.
-
-and add `ssr-coin` to your server
 
 
 
