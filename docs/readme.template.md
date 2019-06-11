@@ -3,34 +3,31 @@
 !OUTPUT ../readme.md
 !INLINE ./snippets/header.md --hide-source-path
 
-!INLINE li-1 <a href="#what-is-ssr-coin">What is `ssr-coin`</a> --hide-source-path
-!INLINE li-1 <a href="#why-ssr">Why `ssr-coin`</a> --hide-source-path
-!INLINE li-1 <a href="#plugins">Plugins</a> --hide-source-path
-!INLINE li-1 Usage --hide-source-path
-!INLINE li-2 <a href="#getting-started">Getting Started</a> --hide-source-path
-!INLINE li-2-header Basics --hide-source-path
-!INLINE li-2 <a href="">Server-side Autoreload</a> --hide-source-path
-!INLINE li-2 <a href="">Transpile Server Code</a> --hide-source-path
-
-bla
-
-  - [Rendering `<App>`]()
-  - [CSS & Static Assets]()
-  - [`getInitialProps` & Async Data]()
-  - [`doNotRenderInBrowser` & `renderHtmlAtBuildTime` & Performance Tuning]()
-  - [`index.html` - <html>, <head/>, <title/>, <meta name="description"/>, etc.]()
-  API
-  - [Page Config](#page-config)
-  - [`ssr-coin` Config](#page-config)
-  How-to
-  - [Control Transpalition: Babel Config]()
-  - [Languages: TypeScript / Coffeescript / etc.]()
-  - [Control Rendering & Providers for Redux / React Router / GraphQL Apollo / Relay / etc.]()
-  - [CSS pre-processors: PostCSS / Sass / Less / etc.]()
-  - [Control Routing & Dynamic Routing]()
-  - [Frontend Libraries: jQuery / Bootstrap / Semantic UI / etc.]()
-  - [Control scripts: Custom Dev Server & Custom Build & Custom CLI]()
-  - [Express / Koa / Hapi / Other Server Frameworks]()
+!INLINE li-1 <a href="#what-is-ssr-coin">What is `ssr-coin`</a>
+!INLINE li-1 <a href="#why-ssr">Why `ssr-coin`</a>
+!INLINE li-1 <a href="#plugins">Plugins</a>
+!INLINE li-1 Usage
+!INLINE li-2 <a href="#getting-started">Getting Started</a>
+!INLINE li-2-header Basics
+!INLINE li-2 <a href="">Server-side Autoreload</a>
+!INLINE li-2 <a href="">Transpile Server Code</a>
+!INLINE li-2 <a href="">Control `<App>` Rendering</a>
+!INLINE li-2 <a href="">CSS & Static Assets</a>
+!INLINE li-2 <a href="">`getInitialProps` & Async Data</a>
+!INLINE li-2 <a href="">`doNotRenderInBrowser` & `renderHtmlAtBuildTime` & Performance Tuning</a>
+!INLINE li-2 <a href="">`index.html` - <html>, <head/>, <title/>, <meta name="description"/>, etc.</a>
+!INLINE li-2-header API
+!INLINE li-2 <a href="#page-config">Page Config</a>
+!INLINE li-2 <a href="">`ssr-coin` Config</a>
+!INLINE li-2-header How-to
+!INLINE li-2 <a href="">Control Transpalition: Babel Config</a>
+!INLINE li-2 <a href="">Languages: TypeScript / Coffeescript / etc.</a>
+!INLINE li-2 <a href="">Control Rendering & Providers for Redux / React Router / GraphQL Apollo / Relay / etc.</a>
+!INLINE li-2 <a href="">CSS pre-processors: PostCSS / Sass / Less / etc.</a>
+!INLINE li-2 <a href="">Control Routing & Dynamic Routing</a>
+!INLINE li-2 <a href="">Frontend Libraries: jQuery / Bootstrap / Semantic UI / etc.</a>
+!INLINE li-2 <a href="">Control scripts: Custom Dev Server & Custom Build & Custom CLI</a>
+!INLINE li-2 <a href="">Express / Koa / Hapi / Other Server Frameworks</a>
 
 
 ## What is `ssr-coin`

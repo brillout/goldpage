@@ -105,26 +105,29 @@ Basics
 </sub>
 <br/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a href="">Server-side Autoreload</a>
 <br/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a href="">Transpile Server Code</a>
-
-bla
-
-  - [Rendering `<App>`]()
-  - [CSS & Static Assets]()
-  - [`getInitialProps` & Async Data]()
-  - [`doNotRenderInBrowser` & `renderHtmlAtBuildTime` & Performance Tuning]()
-  - [`index.html` - <html>, <head/>, <title/>, <meta name="description"/>, etc.]()
-  API
-  - [Page Config](#page-config)
-  - [`ssr-coin` Config](#page-config)
-  How-to
-  - [Control Transpalition: Babel Config]()
-  - [Languages: TypeScript / Coffeescript / etc.]()
-  - [Control Rendering & Providers for Redux / React Router / GraphQL Apollo / Relay / etc.]()
-  - [CSS pre-processors: PostCSS / Sass / Less / etc.]()
-  - [Control Routing & Dynamic Routing]()
-  - [Frontend Libraries: jQuery / Bootstrap / Semantic UI / etc.]()
-  - [Control scripts: Custom Dev Server & Custom Build & Custom CLI]()
-  - [Express / Koa / Hapi / Other Server Frameworks]()
+<br/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a href="">Control `<App>` Rendering</a>
+<br/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a href="">CSS & Static Assets</a>
+<br/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a href="">`getInitialProps` & Async Data</a>
+<br/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a href="">`doNotRenderInBrowser` & `renderHtmlAtBuildTime` & Performance Tuning</a>
+<br/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a href="">`index.html` - <html>, <head/>, <title/>, <meta name="description"/>, etc.</a>
+<sub>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+API
+</sub>
+<br/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a href="#page-config">Page Config</a>
+<br/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a href="">`ssr-coin` Config</a>
+<sub>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+How-to
+</sub>
+<br/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a href="">Control Transpalition: Babel Config</a>
+<br/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a href="">Languages: TypeScript / Coffeescript / etc.</a>
+<br/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a href="">Control Rendering & Providers for Redux / React Router / GraphQL Apollo / Relay / etc.</a>
+<br/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a href="">CSS pre-processors: PostCSS / Sass / Less / etc.</a>
+<br/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a href="">Control Routing & Dynamic Routing</a>
+<br/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a href="">Frontend Libraries: jQuery / Bootstrap / Semantic UI / etc.</a>
+<br/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a href="">Control scripts: Custom Dev Server & Custom Build & Custom CLI</a>
+<br/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a href="">Express / Koa / Hapi / Other Server Frameworks</a>
 
 
 ## What is `ssr-coin`
