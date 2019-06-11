@@ -109,7 +109,7 @@ module.exports = {
 ### Example
 
 ~~~tsx
-// /plugins/typescript/example/pages/landing.page-config.tsx
+// /plugins/typescript/example/pages/landing.page.tsx
 
 import * as React from "react";
 

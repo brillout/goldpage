@@ -24,17 +24,13 @@ module.exports = ssr;
 function create_ssr() {
   config.ssrCoin = {};
 
-  const {packageJsonFile, loaded: loadedPlugins} = loadDependencies();
-
   require('@ssr-coin/core');
   require('@ssr-coin/browser');
   require('@ssr-coin/server');
-  /*
-  require('@ssr-coin/react');
   require('@ssr-coin/path-to-regexp');
   require('@ssr-coin/webpack');
-  require('@ssr-coin/hapi');
-  //*/
+
+  const {packageJsonFile, loaded: loadedPlugins} = loadDependencies();
 
   return new SSR();
 
@@ -46,10 +42,10 @@ function create_ssr() {
         ssr.pagesDir,
         "You need to set `pagesDir`",
       );
-      const pageConfigs = findProjectFiles('*.page-config.*', {within: ssr.pagesDir});
+      const pageConfigs = findProjectFiles('*.page.*', {within: ssr.pagesDir});
       assert.usage(
         pageConfigs.length>=1,
-        "No files with the `.page-config.` suffix found in `"+ssr.pagesDir+"`.",
+        "No files with the `.page.` suffix found in `"+ssr.pagesDir+"`.",
         "You need to define at least one page config file.",
       );
       return pageConfigs;

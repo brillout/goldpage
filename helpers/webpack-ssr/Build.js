@@ -18,7 +18,7 @@ const SOURCE_CODE_OUTPUT_SUFFIX = '.browser-entry';
 const BROWSER_OUTPUT_DIR = 'browser';
 /* TODO
 const BROWSER_OUTPUT_BROWSER_ENTRY_SUFFIX = '.browser-entry';
-const NODEJS_OUTPUT_PAGE_CONFIG_SUFFIX = '.page-config';
+const NODEJS_OUTPUT_PAGE_CONFIG_SUFFIX = '.page';
 /*/
 const BROWSER_OUTPUT_BROWSER_ENTRY_SUFFIX = '';
 const NODEJS_OUTPUT_PAGE_CONFIG_SUFFIX = '';

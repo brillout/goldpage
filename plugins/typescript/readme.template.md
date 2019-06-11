@@ -17,5 +17,5 @@ Add `@reframe/typescript` to your `ssr-coin.config.js`.
 ### Example
 
 ~~~tsx
-!INLINE ./example/pages/landing.page-config.tsx
+!INLINE ./example/pages/landing.page.tsx
 ~~~
