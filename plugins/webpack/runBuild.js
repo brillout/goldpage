@@ -9,6 +9,7 @@ module.exports = runBuild;
 let alreadyRun = false;
 
 function runBuild() {
+  reconfig.ssrCoin.buildStarted = true;
   assert.usage(
     alreadyRun===false,
     "You can start the build only once.",

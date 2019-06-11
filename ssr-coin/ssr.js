@@ -35,7 +35,19 @@ function create_ssr() {
   return new SSR();
 
   function SSR() {
-    const {projectDir, findProjectFiles} = new ProjectFiles();
+    const {projectDir, findProjectFiles, userScript} = new ProjectFiles();
+
+    process.nextTick(() => {
+      if( !isDev() ){
+        return;
+      }
+      const {buildStarted} = config.ssrCoin;
+      if( buildStarted ){
+        return;
+      }
+      assert.internal(userScript);
+      build();
+    });
 
     config.ssrCoin.getPageConfigFiles = () => {
       assert.usage(
@@ -113,4 +125,11 @@ function create_ssr() {
     );
   }
   */
+}
+
+function isDev() {
+  if( [undefined, 'development'].includes(process.env.NODE_ENV) ){
+    return true;
+  }
+  return false;
 }

@@ -3,7 +3,7 @@
   "private": true,
   "version": "0.3.2",
   "scripts": {
-    "dev": "ssr-coin dev",
+    "dev": "node ./server.js",
     "prod": "npm run build && npm run start",
     "build": "export NODE_ENV='production' && ssr-coin build",
     "start": "export NODE_ENV='production' && node ./.build/nodejs/server"

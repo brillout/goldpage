@@ -8,5 +8,6 @@ Object.assign(
     runBuild,
     getBuildInfo,
     onBuild: null,
+    buildStarted: false,
   },
 );
