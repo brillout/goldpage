@@ -77,7 +77,7 @@ function get_tsconfig_path(webpackConfig) {
   const tsconfig_path = find_up.sync('tsconfig.json', {cwd: userDir});
   assert_usage(
     tsconfig_path,
-    'Cannot find `tsconfig.json` by looking into every directory from the "user directory" '+userDir+' to the root `/`.',
+    'Cannot find `tsconfig.json` by looking into every directory between the user directory '+userDir+' an the root `/`.',
     algorithmDesc
   );
   return tsconfig_path;

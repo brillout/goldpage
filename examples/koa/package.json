@@ -10,9 +10,7 @@
   },
   "dependencies": {
     "@ssr-coin/koa": "0.3.2",
-    "@ssr-coin/path-to-regexp": "0.3.2",
     "@ssr-coin/react": "0.3.2",
-    "@ssr-coin/webpack": "0.3.2",
     "ssr-coin": "0.3.2",
     "koa": "^2.7.0",
     "react": "^16.8.6"
