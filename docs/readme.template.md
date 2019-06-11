@@ -15,7 +15,7 @@
 !INLINE li-2 <a href="">CSS & Static Assets</a>
 !INLINE li-2 <a href="">`getInitialProps` & Async Data</a>
 !INLINE li-2 <a href="">`doNotRenderInBrowser` & `renderHtmlAtBuildTime` & Performance Tuning</a>
-!INLINE li-2 <a href="">`index.html` - <html>, <head/>, <title/>, <meta name="description"/>, etc.</a>
+!INLINE li-2 <a href="">`index.html` - `<html>`, `<head/>`, `<title/>`, `<meta name="description"/>`, etc.</a>
 !INLINE li-2-header API
 !INLINE li-2 <a href="#page-config">Page Config</a>
 !INLINE li-2 <a href="">`ssr-coin` Config</a>
