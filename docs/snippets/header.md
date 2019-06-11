@@ -15,5 +15,4 @@ Add SSR to your app.
 </p>
 
 <br/>
-<br/>
 
