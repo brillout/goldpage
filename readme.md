@@ -94,17 +94,17 @@ Add SSR to your app.
 <br/>
 <br/>
 
-<br/> &nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a
-<br/> &nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a
-<br/> &nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a
+<br/> &nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a href="#what-is-ssr-coin">What is `ssr-coin`</a>
+<br/> &nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a href="#why-ssr">Why `ssr-coin`</a>
+<br/> &nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a href="#plugins">Plugins</a>
 <br/> &nbsp;&nbsp;&nbsp;&#8226;&nbsp; Usage
-<br/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a
+<br/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a href="#getting-started">Getting Started</a>
 <sub>
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 Basics
 </sub>
-<br/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a
-<br/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a
+<br/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a href="">Server-side Autoreload</a>
+<br/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a href="">Transpile Server Code</a>
 
 bla
 
