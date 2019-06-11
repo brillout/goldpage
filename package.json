@@ -7,35 +7,27 @@
   },
   "devDependencies": {
     "@brillout/check-deps": "^0.1.5",
-    "@brillout/mdocs": "^0.1.24"
+    "@brillout/mdocs": "^0.1.26"
   },
   "workspaces": [
     "examples/basic",
     "examples/koa",
     "examples/typescript",
-
     "ssr-coin/",
-
     "plugins/core",
-
     "plugins/browser",
     "plugins/server",
-
     "plugins/index-html",
     "plugins/path-to-regexp",
     "plugins/hapi",
     "plugins/koa",
-
     "plugins/typescript",
-
     "plugins/react",
     "plugins/render-react",
     "plugins/webpack-react",
-
     "plugins/webpack",
     "helpers/webpack-ssr",
     "helpers/webpack-config-mod",
-
     "helpers/autoload",
     "helpers/file-sets",
     "helpers/reconfig",
