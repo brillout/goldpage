@@ -46,7 +46,7 @@ function create_ssr() {
         return;
       }
       assert.internal(userScript);
-      build();
+      require('./dev');
     });
 
     config.ssrCoin.getPageConfigFiles = () => {
