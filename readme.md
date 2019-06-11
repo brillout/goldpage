@@ -91,8 +91,6 @@
 Add SSR to your app.
 </p>
 
-<br/>
-
 <br/> &nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a href="#what-is-ssr-coin">What is `ssr-coin`</a>
 <br/> &nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a href="#why-ssr">Why `ssr-coin`</a>
 <br/> &nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a href="#plugins">Plugins</a>
