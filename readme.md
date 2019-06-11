@@ -93,7 +93,6 @@ Add SSR to your app.
 
 <br/> &nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a href="#what-is-ssr-coin">What is `ssr-coin`</a>
 <br/> &nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a href="#why-ssr">Why `ssr-coin`</a>
-<br/> &nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a href="#plugins">Plugins</a>
 <br/> &nbsp;&nbsp;&nbsp;&#8226;&nbsp; Usage
 <br/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a href="#getting-started">Getting Started</a>
 <sub>
@@ -125,6 +124,7 @@ How-to
 <br/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a href="">Frontend Libraries: jQuery / Bootstrap / Semantic UI / ...</a>
 <br/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a href="">Server Frameworks: Express / Koa / Hapi / Fastify / ...</a>
 <br/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a href="">Control scripts: Custom Dev Server & Custom Build & Custom CLI</a>
+<br/> &nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a href="#plugins">Plugins</a>
 
 <br/>
 

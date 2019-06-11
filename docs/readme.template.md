@@ -5,7 +5,6 @@
 
 !INLINE li-1 <a href="#what-is-ssr-coin">What is `ssr-coin`</a>
 !INLINE li-1 <a href="#why-ssr">Why `ssr-coin`</a>
-!INLINE li-1 <a href="#plugins">Plugins</a>
 !INLINE li-1 Usage
 !INLINE li-2 <a href="#getting-started">Getting Started</a>
 !INLINE li-2-header Basics
@@ -28,6 +27,7 @@
 !INLINE li-2 <a href="">Frontend Libraries: jQuery / Bootstrap / Semantic UI / ...</a>
 !INLINE li-2 <a href="">Server Frameworks: Express / Koa / Hapi / Fastify / ...</a>
 !INLINE li-2 <a href="">Control scripts: Custom Dev Server & Custom Build & Custom CLI</a>
+!INLINE li-1 <a href="#plugins">Plugins</a>
 
 <br/>
 
