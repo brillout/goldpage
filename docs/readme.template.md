@@ -14,8 +14,8 @@
 !INLINE li-2 <a href="">Control `index.html`: `<html>`, `<head/>`, `<title/>`, `<meta name="description"/>`, ...</a>
 !INLINE li-2 <a href="">Performance Tuning: `doNotRenderInBrowser` & `renderHtmlAtBuildTime`</a>
 !INLINE li-2-header API
-!INLINE li-2 <a href="#page-config">Page Config</a>
-!INLINE li-2 <a href="">`ssr-coin` Config</a>
+!INLINE li-2 <a href="#page-config">Page Config `*.page.js`</a>
+!INLINE li-2 <a href="">Global Config `.ssr-coin.config.js`</a>
 !INLINE li-2-header How-to
 !INLINE li-2 <a href="">Server-side: Disable/enable autoreload & transpile server code</a>
 !INLINE li-2 <a href="">Control Transpalition: Babel Config</a>
