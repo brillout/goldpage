@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 
 const assert = require('@brillout/reassert');
+const path = require('path');
 
 (() => {
   const {isDev, serverEntryFile} = parseArguments();
@@ -29,16 +30,18 @@ function parseArguments() {
 
   let isDev = true;
   if( args[0]==='build' ){
-    args = args.slice(1);
     isDev = false;
   }
+  args = args.slice(1);
 
   let serverEntryFile = null;
   if( args.length!==0 ){
     const serverEntrySpec = args[0];
     args = args.slice(1);
+    serverEntryFile = serverEntrySpec;
+    serverEntryFile = path.resolve(process.cwd(), serverEntryFile);
     try {
-      serverEntryFile = require.resolve(serverEntrySpec);
+      serverEntryFile = require.resolve(serverEntryFile);
     } catch(err) {
       assert_usage(
         false,
@@ -66,6 +69,7 @@ function assert_usage(bool, failureReason) {
     bool,
     [
       "Wrong `ssr-coin` CLI usage.",
+      "  ssr-coin "+process.argv.slice(2).join(' '),
       ...(
         failureReason ? [failureReason] : []
       ),

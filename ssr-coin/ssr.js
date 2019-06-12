@@ -35,18 +35,12 @@ function create_ssr() {
   return new SSR();
 
   function SSR() {
-    const {projectDir, findProjectFiles, userScript} = new ProjectFiles();
+    const {projectDir, findProjectFiles} = new ProjectFiles();
 
     process.nextTick(() => {
-      if( !isDev() ){
-        return;
+      if( isDev() && !config.ssrCoin.buildStarted ){
+        build();
       }
-      const {buildStarted} = config.ssrCoin;
-      if( buildStarted ){
-        return;
-      }
-      assert.internal(userScript);
-      require('./dev');
     });
 
     config.ssrCoin.getPageConfigFiles = () => {

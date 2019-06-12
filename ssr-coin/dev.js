@@ -2,6 +2,7 @@ const ssr = require('./ssr');
 const require_ = require('@brillout/require-gold');
 const assert = require('@brillout/reassert');
 const ProjectFiles = require('@brillout/project-files');
+const {fork} = require('child_process');
 const kill = require('kill-port');
 
 assert.usage(
@@ -10,24 +11,22 @@ assert.usage(
 );
 
 let server;
-ssr.onBuild = args => {
+ssr.onBuild = ({serverBuildEntry, serverEntryFile}) => {
+  if( !serverBuildEntry ){
+    return;
+  }
   const {PORT} = process.env;
-  const {userScript} = new ProjectFiles();
-  const {isFirstBuild} = args;
-  assert.internal([true, false].includes(isFirstBuild));
-  if( PORT && userScript ){
-    if( args.isFirstBuild!==false ){
-      return;
-    }
-    return restart__byPort(PORT, userScript);
+  if( PORT ){
+    return restart__byPort({serverBuildEntry, PORT});
   } else {
-    return restart__byExport(args);
+    return restart__byExport({serverBuildEntry, serverEntryFile});
   }
 }
 
 ssr.build();
 
 async function restart__byExport({serverBuildEntry, serverEntryFile}) {
+  console.log('by-export');
   if( server ) {
     if( server.close ){
       await server.close();
@@ -42,10 +41,8 @@ async function restart__byExport({serverBuildEntry, serverEntryFile}) {
   );
 }
 
-async function restart__byPort(PORT, userScript) {
-  console.log('killing');
+async function restart__byPort({serverBuildEntry, PORT}) {
+  console.log('by-port');
   await kill(process.env.PORT);
-  console.log('killed');
-  require_(userScript);
-  console.log('resterated '+userScript);
+  const subprocess = fork(serverBuildEntry, {detached: false, stdio: 'inherit'});
 }
