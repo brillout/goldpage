@@ -8,7 +8,7 @@ const ssr = create_ssr();
 
 // Default values
 ssr.pagesDir = 'pages/';
-ssr.serverEntryFile = 'server/';
+// ssr.serverEntryFile = 'server/';
 ssr.buildDir = '.build/';
 
 (() => {
