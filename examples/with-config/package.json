@@ -5,7 +5,8 @@
   "main": "dev.js",
   "scripts": {
     "dev": "node ./dev.js",
-    "build": "export NODE_ENV='production' && node ./build.js",
+    "build": "node ./build.js",
+    "prod": "npm run build && npm run start",
     "start": "export NODE_ENV='production' && node ./.build/nodejs/server"
   },
   "scripts-new": {
