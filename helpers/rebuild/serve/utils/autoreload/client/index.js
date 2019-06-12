@@ -37,6 +37,22 @@ function connect() {
     };
 }
 
-function reloadBrowser() {
+async function reloadBrowser() {
+    await awaitServer();
     document.location.reload();
+}
+
+async function awaitServer() {
+  try {
+    await fetch(location.href);
+  } catch(err) {
+    await sleep(0.3);
+    await awaitServer();
+  }
+}
+function sleep(seconds) {
+  let resolve;
+  const promise = new Promise(resolve_ => resolve = resolve_);
+  setTimeout(resolve, seconds*1000);
+  return promise;
 }

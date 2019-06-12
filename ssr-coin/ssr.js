@@ -37,14 +37,6 @@ function create_ssr() {
   function SSR() {
     const {projectDir, findProjectFiles} = new ProjectFiles();
 
-    /*
-    process.nextTick(() => {
-      if( isDev() && !config.ssrCoin.buildStarted ){
-        build();
-      }
-    });
-    */
-
     config.ssrCoin.getPageConfigFiles = () => {
       assert.usage(
         ssr.pagesDir,
@@ -86,14 +78,29 @@ function create_ssr() {
 
     function get(ssr_obj, prop) {
       const value = ssr_obj[prop];
-      assert.usage(
-        !['express', 'koa', 'hapi'].includes(prop) || value,
-        "The plugin `@ssr-coin/"+prop+"` needs to be listed in the `dependencies` list of "+packageJsonFile,
-        "Did you `npm install @ssr-coin/"+prop+"`?",
-        "Once `@ssr-coin/"+prop+"` is listed as dependency, it is automatically loaded and require('ssr-coin')."+prop+" available.",
-      );
+      if( isServerMiddleware(prop) ){
+        assert.usage(
+          value,
+          "The plugin `@ssr-coin/"+prop+"` needs to be listed in the `dependencies` list of "+packageJsonFile,
+          "Did you `npm install @ssr-coin/"+prop+"`?",
+          "Once `@ssr-coin/"+prop+"` is listed as dependency, it is automatically loaded and require('ssr-coin')."+prop+" available.",
+        );
+        autobuild();
+      }
       return value;
     }
+  }
+
+  function isServerMiddleware(prop) {
+    return ['express', 'koa', 'hapi'].includes(prop);
+  }
+
+  function autobuild() {
+    process.nextTick(() => {
+      if( isDev() && !config.ssrCoin.buildStarted && !process.env.ALREADY_BUILT ){
+        build();
+      }
+    });
   }
 
   async function build() {

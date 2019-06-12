@@ -8,7 +8,6 @@ export default {
       <Counter/>
     </div>
   ),
-//renderHtmlAtBuildTime: true,
 };
 
 function Counter() {

@@ -72,23 +72,26 @@ function BuildInstance() {
              assert_internal(args.length===1);
              assert_internal(args[0].constructor===Object);
 
-             const serverBuildEntry = (
-               require.resolve(
-                 pathModule.join(
-                   outputDir,
-                   NODEJS_OUTPUT_DIR,
-                   ENTRY_NAME__SERVER,
-                 )
-               )
-             );
+             let argsObj = args[0];
 
              const {entryFileServer} = that;
-             assert_internal(entryFileServer)
-             const argsObj = {
-                serverBuildEntry,
-                serverEntryFile: entryFileServer,
-                ...args[0],
-             };
+             if( entryFileServer ){
+               const serverBuildEntry = (
+                 require.resolve(
+                   pathModule.join(
+                     outputDir,
+                     NODEJS_OUTPUT_DIR,
+                     ENTRY_NAME__SERVER,
+                   )
+                 )
+               );
+
+               argsObj = {
+                  serverBuildEntry,
+                  serverEntryFile: entryFileServer,
+                  ...argsObj
+               };
+             }
 
              await that.onBuildDone(argsObj);
         }
