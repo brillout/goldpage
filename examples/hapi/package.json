@@ -1,5 +1,5 @@
 {
-  "name": "examples_basic",
+  "name": "examples_hapi",
   "private": true,
   "version": "0.3.2",
   "scripts": {
@@ -10,7 +10,7 @@
   },
   "dependencies": {
     "@ssr-coin/react": "0.3.2",
-    "@ssr-coin/express": "0.3.2",
+    "@ssr-coin/hapi": "0.3.2",
     "ssr-coin": "0.3.2",
     "hapi": "^18.1.0",
     "react": "^16.8.6"

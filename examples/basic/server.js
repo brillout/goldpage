@@ -1,23 +1,8 @@
-const Hapi = require('hapi');
+const express = require('express');
 const ssr = require('ssr-coin');
 
-startServer();
+const app = express();
 
-async function startServer() {
-  const server = Hapi.Server({
-    port: process.env.PORT || 3000,
-    debug: {request: ['internal']},
-  });
+app.use(ssr.express);
 
-  server.route({
-    method: 'GET',
-    path: '/hapi-route',
-    handler: (req, h) => h.response('heelo hr !!'),
-  });
-
-  await server.register(ssr.hapi);
-
-  await server.start();
-
-  console.log('Server running');
-}
+app.listen(3000, () => {console.log('Server is running')});

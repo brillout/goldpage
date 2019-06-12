@@ -908,6 +908,14 @@
     simple-git "^1.95.0"
     source-map-support "^0.5.4"
 
+"@universal-adapter/express@^0.2.1":
+  version "0.2.1"
+  resolved "https://registry.yarnpkg.com/@universal-adapter/express/-/express-0.2.1.tgz#58790978de46bae5787c3b45481044cf3b6f2fad"
+  integrity sha512-3Qx2zXJj8CRkc2O7mo0zq/ZoralsZlrRCMlnZLTVuQ7D7l1geunPGt/jUGiwiiWOGjQZ+V7NYPq9c4S/xVt8Yw==
+  dependencies:
+    "@universal-adapter/server" "0.2.1"
+    reassert "^1.1.16"
+
 "@universal-adapter/hapi@^0.2.1":
   version "0.2.1"
   resolved "https://registry.yarnpkg.com/@universal-adapter/hapi/-/hapi-0.2.1.tgz#0cf05189c02c4731757b024003221746d375e6f6"

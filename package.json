@@ -12,6 +12,7 @@
   "workspaces": [
     "examples/basic",
     "examples/koa",
+    "examples/hapi",
     "examples/typescript",
     "ssr-coin/",
     "plugins/core",
@@ -21,6 +22,7 @@
     "plugins/path-to-regexp",
     "plugins/hapi",
     "plugins/koa",
+    "plugins/express",
     "plugins/typescript",
     "plugins/react",
     "plugins/render-react",
