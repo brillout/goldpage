@@ -10,10 +10,11 @@
     "@brillout/mdocs": "^0.1.26"
   },
   "workspaces": [
-    "examples/basic",
+    "examples/express",
     "examples/koa",
     "examples/hapi",
     "examples/typescript",
+    "examples/with-config",
     "ssr-coin/",
     "plugins/core",
     "plugins/browser",
