@@ -16,7 +16,7 @@ ssr.onBuild = ({serverBuildEntry, serverEntryFile}) => {
     return;
   }
   const {PORT} = process.env;
-  if( PORT ){
+  if( PORT || true ){
     return restart__byPort({serverBuildEntry, PORT});
   } else {
     return restart__byExport({serverBuildEntry, serverEntryFile});
@@ -42,7 +42,9 @@ async function restart__byExport({serverBuildEntry, serverEntryFile}) {
 }
 
 async function restart__byPort({serverBuildEntry, PORT}) {
-  console.log('by-port');
-  await kill(process.env.PORT);
+  console.log('by-port '+PORT);
+  if( PORT ){
+    await kill(PORT);
+  }
   const subprocess = fork(serverBuildEntry, {detached: false, stdio: 'inherit'});
 }

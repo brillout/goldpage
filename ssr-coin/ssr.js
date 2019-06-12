@@ -37,11 +37,13 @@ function create_ssr() {
   function SSR() {
     const {projectDir, findProjectFiles} = new ProjectFiles();
 
+    /*
     process.nextTick(() => {
       if( isDev() && !config.ssrCoin.buildStarted ){
         build();
       }
     });
+    */
 
     config.ssrCoin.getPageConfigFiles = () => {
       assert.usage(
