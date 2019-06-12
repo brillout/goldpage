@@ -9,11 +9,11 @@
     "start": "export NODE_ENV='production' && node ./.build/nodejs/server"
   },
   "dependencies": {
-    "@ssr-coin/react": "0.3.2",
     "@ssr-coin/express": "0.3.2",
-    "ssr-coin": "0.3.2",
-    "hapi": "^18.1.0",
-    "react": "^16.8.6"
+    "@ssr-coin/react": "0.3.2",
+    "express": "^4.17.1",
+    "react": "^16.8.6",
+    "ssr-coin": "0.3.2"
   },
   "checkDeps": {
     "skip": true
