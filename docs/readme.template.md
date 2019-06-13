@@ -401,6 +401,10 @@ You can also directly run your server without using the `ssr-coin dev ./path/to/
 $ node ./path/to/your/server.js
 ~~~
 
+In that case the server code is not transpiled and the server-side autoreloading is deactivated.
+
+Your `package.json`'s scripts would look like this:
+
 ~~~json
 {
   "scripts": {
@@ -412,13 +416,9 @@ $ node ./path/to/your/server.js
 }
 ~~~
 
-In that case the server code is not transpiled and the server-side autoreloading is deactivated.
-
-Your `package.json`'s scripts should then look like this:
-
 Conversely, if you want to enable the transpalition of your server code (e.g. if you want to use TypeScript) then make sure to use use the `ssr-coin dev ./path/to/your/server.js` command.
 
-Your `package.json`'s scripts should then look like this:
+Your `package.json`'s scripts would look like this:
 
 ~~~json
 {

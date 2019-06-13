@@ -10,6 +10,7 @@
     "@brillout/mdocs": "^0.1.26"
   },
   "workspaces": [
+    "examples/babel-config",
     "examples/express",
     "examples/koa",
     "examples/hapi",
