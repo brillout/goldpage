@@ -17,7 +17,8 @@
 !INLINE li-2 <a href="#page-config">Page Config `*.page.js`</a>
 !INLINE li-2 <a href="">Global Config `.ssr-coin.config.js`</a>
 !INLINE li-2-header How-to
-!INLINE li-2 <a href="">Server-side: Disable/enable autoreload & transpile server code</a>
+!INLINE li-2 <a href="">Disable/enable Server-side Autoreload</a>
+!INLINE li-2 <a href="">Disable/enable server-side Code transpalition</a>
 !INLINE li-2 <a href="">Control Transpalition: Babel Config</a>
 !INLINE li-2 <a href="">Languages: TypeScript / Coffeescript / ...</a>
 !INLINE li-2 <a href="">Providers for Redux / React Router / GraphQL Apollo / Relay / ...</a>
@@ -78,7 +79,7 @@ function Counter() {
 
 ## Why `ssr-coin`
 
-`ssr-coin` is about making SSR easy with no scrifice on flexibility and freedom.
+`ssr-coin` is about making SSR as easy as possible yet flexible.
 
 
 ###### Easy
@@ -143,16 +144,15 @@ the rest of your stack is entirely up to you and you can use:
 - Any process manager: **Docker**, **systemd**, **PM2**, etc.
 - etc.
 
-We designed `ssr-coin` with a broad range of SSR uses cases in mind.
-For example, you can configure when a page is rendered:
+You can configure when a page is rendered:
 - You can configure your page's HTML to be rendered at build-time or at request-time.
 - You can configure whether your page is rendered to the DOM or not (aka hydration).
 
-This fine grain control over when your pages are rendered allows you to build all kinds of apps:
-- Frontend & backend apps (aka full-stack **SSR** app).
-- Frontend-only apps (aka **static website**).
-- Backend-only apps (aka **old-school** app with **plain old HTML**).
-- Hybrid apps (where some pages are static and some dynamic).
+This allows you to build all kinds of apps:
+- Frontend-only app (aka **static website**).
+- Backend-only app (aka **old-school** app with **plain old HTML**).
+- Frontend + backend app (aka full-stack **SSR** app).
+- Hybrid app (where some pages are static and some dynamic).
 
 
 ###### Batteries included
@@ -161,7 +161,8 @@ This fine grain control over when your pages are rendered allows you to build al
 - [DX] Browser-side autoreload
 - [DX] Server-side autoreload
 - [Flexibility] Controlable Rendering
-- [Flexibility] Controlable Babel Transpalition
+- [Flexibility] Controlable CLI
+- [Flexibility] Controlable Transpalition
 - [Performance] Page based code spliting
 - [Performance] Optimal HTTP caching
 - [Performance] [DOM-static pages]()
