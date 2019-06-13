@@ -127,7 +127,7 @@ How-to
 <br/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a href=#control-transpalition-babel-config>Control Transpalition: Babel Config</a>
 <br/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a href=#languages-typescript--coffeescript-->Languages: TypeScript / Coffeescript / ...</a>
 <br/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a href=#providers-for-redux--react-router--graphql-apollo--relay-->Providers for Redux / React Router / GraphQL Apollo / Relay / ...</a>
-<br/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a href=#css--static-assets>CSS & Static Assets</a>_PRE_PROCESSORS
+<br/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a href=#css-pre-processors-postcss--sass--less-->CSS pre-processors: PostCSS / Sass / Less / ...</a>
 <br/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a href=#control-routing--dynamic-routing>Control Routing & Dynamic Routing</a>
 <br/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a href=#frontend-libraries-jquery--bootstrap--semantic-ui-->Frontend Libraries: jQuery / Bootstrap / Semantic UI / ...</a>
 <br/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a href=#server-frameworks-express--koa--hapi--fastify-->Server Frameworks: Express / Koa / Hapi / Fastify / ...</a>
@@ -525,7 +525,7 @@ you can add make `ssr-coin` build your server code by setting the `serverStartFi
 ## Control Transpalition: Babel Config
 ## Languages: TypeScript / Coffeescript / ...
 ## Providers for Redux / React Router / GraphQL Apollo / Relay / ...
-## CSS & Static Assets_PRE_PROCESSORS
+## CSS pre-processors: PostCSS / Sass / Less / ...
 ## Control Routing & Dynamic Routing
 ## Frontend Libraries: jQuery / Bootstrap / Semantic UI / ...
 ## Server Frameworks: Express / Koa / Hapi / Fastify / ...
