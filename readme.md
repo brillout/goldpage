@@ -91,43 +91,48 @@
 Add SSR to your app.
 </p>
 
-<br/> &nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a href="#what-is-ssr-coin">What is `ssr-coin`</a>
-<br/> &nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a href="#why-ssr">Why `ssr-coin`</a>
+
+
+
+
+
+<br/> &nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a href=#what-is-ssr-coin>What is `ssr-coin`</a>
+<br/> &nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a href=#why-ssr-coin>Why `ssr-coin`</a>
 <br/> &nbsp;&nbsp;&nbsp;&#8226;&nbsp; Usage
-<br/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a href="#getting-started">Getting Started</a>
+<br/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a href=#getting-started>Getting Started</a>
 <sub>
 <br/>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 Basics
 </sub>
-<br/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a href="">CSS & Static Assets</a>
-<br/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a href="">Async Data: `getInitialProps`</a>
-<br/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a href="">Control `<App>` Rendering</a>
-<br/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a href="">Control `index.html`: `<html>`, `<head/>`, `<title/>`, `<meta name="description"/>`, ...</a>
-<br/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a href="">Performance Tuning: `doNotRenderInBrowser` & `renderHtmlAtBuildTime`</a>
+<br/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a href=#css--static-assets>CSS & Static Assets</a>
+<br/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a href=#async-data-getinitialprops>Async Data: `getInitialProps`</a>
+<br/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a href=#control-app-rendering>Control `<App>` Rendering</a>
+<br/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a href=#control-indexhtml-html-head-title-meta-namedescription->Control `index.html`: `<html>`, `<head/>`, `<title/>`, `<meta name="description"/>`, ...</a>
+<br/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a href=#performance-tuning-donotrenderinbrowser--renderhtmlatbuildtime>Performance Tuning: `doNotRenderInBrowser` & `renderHtmlAtBuildTime`</a>
 <sub>
 <br/>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 API
 </sub>
-<br/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a href="#page-config">Page Config `*.page.js`</a>
-<br/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a href="">Global Config `.ssr-coin.config.js`</a>
+<br/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a href=#page-config-pagejs>Page Config `*.page.js`</a>
+<br/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a href=#global-config-ssr-coinconfigjs>Global Config `.ssr-coin.config.js`</a>
 <sub>
 <br/>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 How-to
 </sub>
-<br/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a href="">Disable/enable Server-side Autoreload</a>
-<br/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a href="">Disable/enable server-side Code transpalition</a>
-<br/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a href="">Control Transpalition: Babel Config</a>
-<br/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a href="">Languages: TypeScript / Coffeescript / ...</a>
-<br/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a href="">Providers for Redux / React Router / GraphQL Apollo / Relay / ...</a>
-<br/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a href="">CSS pre-processors: PostCSS / Sass / Less / ...</a>
-<br/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a href="">Control Routing & Dynamic Routing</a>
-<br/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a href="">Frontend Libraries: jQuery / Bootstrap / Semantic UI / ...</a>
-<br/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a href="">Server Frameworks: Express / Koa / Hapi / Fastify / ...</a>
-<br/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a href="">Control scripts: Custom Dev Server & Custom Build & Custom CLI</a>
-<br/> &nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a href="#plugins">Plugins</a>
+<br/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a href=#disableenable-server-side-autoreload>Disable/enable Server-side Autoreload</a>
+<br/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a href=#disableenable-server-side-code-transpalition>Disable/enable server-side Code transpalition</a>
+<br/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a href=#control-transpalition-babel-config>Control Transpalition: Babel Config</a>
+<br/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a href=#languages-typescript--coffeescript-->Languages: TypeScript / Coffeescript / ...</a>
+<br/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a href=#providers-for-redux--react-router--graphql-apollo--relay-->Providers for Redux / React Router / GraphQL Apollo / Relay / ...</a>
+<br/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a href=#css--static-assets>CSS & Static Assets</a>_PRE_PROCESSORS
+<br/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a href=#control-routing--dynamic-routing>Control Routing & Dynamic Routing</a>
+<br/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a href=#frontend-libraries-jquery--bootstrap--semantic-ui-->Frontend Libraries: jQuery / Bootstrap / Semantic UI / ...</a>
+<br/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a href=#server-frameworks-express--koa--hapi--fastify-->Server Frameworks: Express / Koa / Hapi / Fastify / ...</a>
+<br/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a href=#control-scripts-custom-dev-server--custom-build--custom-cli>Control scripts: Custom Dev Server & Custom Build & Custom CLI</a>
+<br/> &nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a href=#plugins>Plugins</a>
 
 <br/>
 
@@ -272,8 +277,9 @@ This allows you to build all kinds of apps:
 
 
 
-## Provider
+## Providers for Redux / React Router / GraphQL Apollo / Relay / ...
 
+~~~js
 import React from 'react'
 import { render } from 'react-dom'
 import { Provider } from 'react-redux'
@@ -285,167 +291,14 @@ const store = createStore(todoApp)
 
 render(
   <Provider store={store}>
-      <App />
-        </Provider>,
-          document.getElementById('root')
-          )
-
-
-## Why `ssr-coin`
-
-We maintain [Awesome Universal Rendering]() list which includes a list of SSR tools.
-
-The tools we are aware of either don't do enough and leave the user with too many things to handle
-(e.g. Razzle)
-or they do too much
-and are too opinionated, restrictive and brittle
-(e.g. Next.js)
-
-`ssr-coin` is about giving you both: ease of use *and* freedom.
- It also comes with some unique features such as static pages.
-
-When designing `ssr-coin` we focus on:
- - Zero-config
- - Freedom
- - Strong abstractions
-
-Zero-config and strong abstractions make `ssr-coin` easy to use.
-And freedom is about allowing you to use `ssr-coin` with any tool you want and giving you control over key aspects.
-
-###### Zero-Config
-
-You can use `ssr-coin` with a zero-config setup and add SSR to your app with only couple of lines.
-
-
- - Install `ssr-coin`, a render plugin (such as `@ssr-coin/react`), and a server integration plugin (such as `@ssr-coin/express`)
- - Add the `ssr-coin` middleware/plugin to your server (Express/Koa/Hapi/etc.)
- - Define pages (their root view component, their root, their title, etc.)
-
-key aspects.
-What this means is that 
-Then automatically transpiles, bundles, routes, renders, and serves your pages.
-
- -
- - with only a couple of lines.
-
-`ssr-coin` takes of the rest:
- - Bundling.
-   <br/>
-   `ssr-coin` transpiles and bundles your pages with a minimal-size bundle for each page. Allowing you to scale up to hundreds of pages without increase the bundle size of each page.
- - Minimal bundle sizes.
-   <br/>
- - Routing & Serving. `ssr-coin` to for (Express, Koa, Hapi, etc.) automatically serve your pages with optiomal HTTP caching headers.
- - Auto-reload.
-   <br/>
-   `ssr-coin` comes with browser-side auto-reload as well as server-side auto-reload.
-
- - Generating a a size-minimal bundle for each page
- - Routing your pages
-`ssr-coin` has been designed with "zero-config" in mind:
- - Beyond the zero-config setup, you have the possibility to take control over key aspects
-
-`ssr-coin` is about giving you both ease and freedom.
-easy experience
-
-###### Control
-
-We allow you to take over control key aspects of `ssr-coin`.
-
-For example, by creating `renderToHtml` and `renderToDom` files you can take over control over the rendering.
-
-For example for React:
-
+    <App />
+    </Provider>,
+  document.getElementById('root')
+)
 ~~~js
-// renderToHtml.js
-
-const React = require('react');
-const ReactDOMServer = require('react-dom/server');
-
-module.exports = renderToHtml;
-
-async function renderToHtml({pageConfig, initialProps}) {
-  return (
-    ReactDOMServer.renderToStaticMarkup(
-      React.createElement(pageConfig.view, initialProps)
-    )
-  );
-}
-~~~
-
-~~~js
-// renderToDom.js
-
-const React = require('react');
-const ReactDOM = require('react-dom');
-
-module.exports = renderToDom;
-
-async function renderToDom({pageConfig, initialProps, CONTAINER_ID}) {
-  ReactDOM.hydrate(
-    React.createElement(pageConfig.view, initialProps),
-    document.getElementById(CONTAINER_ID)
-  );
-}
-~~~
-
-This control is important in order to allow you to use tools such as Redux or GraphQL Apollo.
-
-###### Strong abstractions
-
-Giving you too much freedom is equally as bad as giving you not enough freedom.
-With only give you freedom that makes sense.
-
-For example, we believe that you shouldn't mess around with bundling.
-But ideally you shouldn't care.
-
-Or another example is that we don't want you to control. This and you shouldn't care.
-
-This is a complex subject and 
-
-We care about strong abstractions that hide complexity from you to give you an tool that is easy to use.
-
-###### Browser-static pages
-
-By setting `doNoRenderInBrowser` you can make a page *browser-static*:
-your page is rendered to HTML only and the DOM is not manipulated
-
-your view components are only used render 
-No JavaScript is loaded in the browser and the DOM is not manipulated.
-
-Because no (or much less) JavaScript is loaded nor executed in the browser,
-
-there is no browser-side JavaScript, the page is super fast.
-This is important non-interactive pages that need good performance on mobile,
-such as a landing page.
-
-###### Server-static pages
-
-By setting `renderHtmlAtBuildTime` you make a page *server-static*:
-The HTML of the page is rendered ad build time and no server runtime is required to
-generate your page.
-
-###### Optimal code splitting & optimal HTTP cache headers
-
-`ssr-coin` is designed so that a page only loads JavaScript it needs.
-This means that create new view components for a new page doesn't increase the bundle size of other pages.
-
-We extensively make use of hashing and HTTP cache headers to make best use of browser caches.
 
 
-
-
-## What is SSR & SSR Benefits
-
-Infos about SSR:
-- [Awesome Universal Rendering - What is SSR](https://github.com/brillout/awesome-universal-rendering)
-- [Awesome Universal Rendering - When to use SSR](https://github.com/brillout/awesome-universal-rendering) -
-  Explains whether SSR should be used or not.
-- [Awesome Universal Rendering - Performance](https://github.com/brillout/awesome-universal-rendering) -
-  Explains the performance benefits of SSR which can be substantial for mobile.
-- [Awesome Universal Rendering - Developer Experience](https://github.com/brillout/awesome-universal-rendering) -
-  Not many people know that SSR introduces a new way of developing applications with an important increase in developing speed.
-
-## Quick Start
+## Getting Started
 
 
 ------
@@ -610,7 +463,7 @@ If you want to add SSR to your existing app then read the next section.
    ~~~
 
 That's it.
-You can now run `npm run dev` and go to your newly created page `/ssr-test`.
+You can now run `npm run dev` / `yarn dev` and go to your newly created page `/ssr-test`.
 
 Note that you have to use `ssr-coin`'s bundling step.
 You can however take control over the building step.
@@ -627,7 +480,7 @@ Beyond the zero-config setup you can also:
 
 
 
-## Server-side autoreload
+## Disable/enable Server-side Autoreload
 
 You can make `ssr-coin` build your server code.
 
@@ -658,257 +511,26 @@ you can add make `ssr-coin` build your server code by setting the `serverStartFi
 
 
 
-If you a bundling that is custom to your app,
-for example if you have a webpack,
-then you'll have to replace it with `ssr-coin`'s bundling.
-
-You may think at first "Didn't you say that `ssr-coin` is a do-one-thing-do-it-well Library".
-We don't believe so. We believe .
-SSR and bundling are intimetly connected and.
-
-(Integrating SSR is most complex part of SSR 
-We strongly believe that 
-
-You may
-you'll have to replace.
-This is a conscious and is a non-goal.
-We believe .
-Ideally
-
-tighly couples you with Webpack.
-Webpack's configuration is effectively a webpack lock-in.
-
-You may 
-As for the dev server you can easily
-You may 
-The bundling
-
-You can configure ``
-
- - `pages/**/*.page.js` to configure your pages
- - `.ssr-coin.config.js` to globally configure `ssr-coin`
-
-The options of a page config `*.page.js` are:
-
-~~~js
-// pages/landing.page.js
-
-const landingPageConfig = {
-  route: '/hello/:name',
-
-  view: props => (
-    <div>
-      Welcome {props.name}.
-      You are a {props.gender}
-    </div>
-  ),
-
-  getInitialProps: async props => {
-    const props = await fetch('https://example.org/person/'+name);
-    // Load some async data
-    // We assume that 
-    assert(props.gender);
-    return props;
-  },
-
-  // HTML meta scripts
-  title: ({name, gender}) => 'Hi '+name,
-  description: ({name}) => 'This is the page of '+name,
-
-  // We explain the following two options below
-  renderHtmlAtBuildTime: true,
-  doNotRenderInBrowser: true,
-};
-
-module.exports = landingPageConfig;
-~~~
-
-And the `.ssr-coin.config.js` file has following options:
-
-~~~js
-// /ssr-coin.config.js
-
-const = require.resolve('path/to/renderToHtml.js');
-
-module.exports = {
-  log: {
-  },
-  indexHtml: 'path/to/indexHtml.js',
-};
-~~~
-
-The files `renderToHtml.js` and `renderPageToHtml.js` are explained at:
-
-- [HTML Rendering](#html-rendering)
-
-The files `renderToDom.js` and `renderPageToDom.js` are explained at:
-
-- [DOM Rendering](#dom-rendering)
-
-The file `router.js` is explained at:
-
-- [Routing](#routing)
-
-We talk about configuring the builing at:
-
-- [Building](#building)
-
-If you need then read:
-
-- [Full Flexibility](#full-flexibility)
-
-#### HTML Rendering
-
-#### DOM Rendering
-
-#### Routing
-
-#### Building
-
-We strongly believe that, as a developer, you shouldn't mess around with building.
-Building is a complex topic and and configuring building can quickly become a considerably time sink.
-We believe that the build process should be taken care of by tools with minimal configuration.
-Messing with building should be your last resort.
-
-Today,
-`ssr-coin` is based on Webpack,
-but we will migrate to Parcel once Parcel v2 is ready.
-
-to alter Webpack but for now
-
-We may publish documentation about how to write plugins
-we prefer to develop the plugins hand-in-hand today.
-
-If you want to change Webpack's configuration then we suggest you to use a `ssr-coin` plugin
-
-#### Full Flexibility
-
-For internal `ssr-coin` developing purposes,
-the entire `ssr-coin` build process is design in a modular way.
-What this means for you,
-is that you can take control over many aspect of the building process.
-
-If you need to configure something not covered in this Readme,
-then open a GitHub issue
-and let's discuss solutions to your problem.
-We aim to make `ssr-coin` highly flexible,
-and we meant it.
-
-## Build
-
-In order to use `ssr-coin` you have to use `ssr-coin`'s bundling.
-
-We believe that, as a web developer, you shouldn't have to configure bundling
-and that bundling should be as zero-config as possible.
-
-If you are currently using Parcel,
-then using `ssr-coin` should be as easy as changing
-
-~~~json
-{
-  "scripts": {
-    "dev": "parcel",
-    "build": "parcel build",
-  }
-}
-~~~
-
-to
-
-~~~json
-{
-  "scripts": {
-    "dev": "ssr-coin",
-    "build": "ssr-coin build",
-  }
-}
-~~~
-
-In a nutshell:
-We don't want you to fiddle around with `ssr-coin`'s bundling and that's a good thing.
-(When you think about it, a Webpack configuration is a vendor lock-in.)
-
-That said we are not here yet and migration from Parcel/Webpack to `ssr-coin` requires work today.
-
-`ssr-coin` is currently using Webpack.
-(Once Parcel V2 is released we will use Parcel instead.)
-
-parcel watch
-parcel uild
-
-and we believe that this situation should be avoided.
-(Like what Parcel is doing.)
-That's why we don't .
-That said, for internal development purposes, the bunlding is
-
-But we are not there yet and `ssr-coin` currently uses Webpack.
-
-This also means that
-This means that 
-
-Right now `ssr-coin` uses Webpack. We will use Parcel v2 once it's released.
-This means that depending what kind you'll have to
-If you want to that is not covered by one of the `ssr-coin` plugin then you'll have to change `ssr-coin`'s webpack configuration yourself.
-It's fairly easy to do so and open a GitHub ticket and we'll talk you throught how to do it.
-(Since we will eventually use Parcel instead of Webpack.)
-Which is basically what
-Note that once `ssr-coin` uses Parcel, most things will just work without have to using any plugin.
-
-It is a conscious design decision to include the bundling step inside `ssr-coin`
-and to abstract it away from you.
-We believe that you shouldn't have to fiddle around with bundling
-
-Replacing your bundling from Webpack to `ssr-coin` could be trickier.
-(Since Webpack's complex configuration is effectively a vendor lock-in.)
-Please open a GitHub issue if you run into problems.
-
-If you use Webpack, this means that you will have to drop your Webpack configuration.
-
-If you use Parcel, this should be easy (since Parcel is zero-config).
-It should be only a matter of changing your `package.json` scripts such as `"dev": "parcel"` to `"dev": "ssr-coin dev"`.
-
-A possible migration strategy is to progessively add your view components to newly created `ssr-coin` pages and iteratively address the bundling migration problems you encounter.
-
-Beyond bundling you can create your own build and dev logic and programatically call `ssr-coin`'s bundling:
-
-~~~js
-const ssr = require('ssr-coin');
-const restartServer = require('./path/to/your/restartServer/logic');
-
-(async () => {
-  ssr.onBuild = async () => {
-    console.log();
-    // `ssr-coin`'s waits until `onBuild` resolves
-    await restartServer();
-  };
-  await ssr.build();
-})();
-~~~
-
-For example the current implementation of `ssr-coin dev` is:
-~~~js
-TODO-!INLINE ./ssr-coin/dev.js
-~~~
-
-If you need something that `ssr-coin` is currently not providing,
-then open a GitHub ticket.
-We aim to make `ssr-coin` flexible and we mean it.
-
+## CSS & Static Assets
+## Async Data: `getInitialProps`
+## Control `<App>` Rendering
+## Control `index.html`: `<html>`, `<head/>`, `<title/>`, `<meta name="description"/>`, ...
+## Performance Tuning: `doNotRenderInBrowser` & `renderHtmlAtBuildTime`
+
+## Page Config `*.page.js`
+## Global Config `.ssr-coin.config.js`
+
+## Disable/enable Server-side Autoreload
+## Disable/enable server-side Code transpalition
+## Control Transpalition: Babel Config
+## Languages: TypeScript / Coffeescript / ...
+## Providers for Redux / React Router / GraphQL Apollo / Relay / ...
+## CSS & Static Assets_PRE_PROCESSORS
+## Control Routing & Dynamic Routing
+## Frontend Libraries: jQuery / Bootstrap / Semantic UI / ...
+## Server Frameworks: Express / Koa / Hapi / Fastify / ...
+## Control scripts: Custom Dev Server & Custom Build & Custom CLI
 ## Plugins
-
-## How it works
-
-It works by building what we call "page configs" and you server.
-It generates a browser entry.
-
-This is crucial design decision that makes `ssr-coin` unique.
-It's a simple design and achieves scalable and high performance for browser load time.
-Scalable because each page is rendered 
-SSR
-With zero JavaScript.
-
-That is:
- - 
 
 
 <!---
