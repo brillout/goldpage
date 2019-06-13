@@ -216,7 +216,7 @@ render(
     </Provider>,
   document.getElementById('root')
 )
-~~~js
+~~~
 
 
 ## !VAR START

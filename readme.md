@@ -295,7 +295,7 @@ render(
     </Provider>,
   document.getElementById('root')
 )
-~~~js
+~~~
 
 
 ## Getting Started
