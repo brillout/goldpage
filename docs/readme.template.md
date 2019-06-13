@@ -197,28 +197,6 @@ This allows you to build all kinds of apps:
 
 
 
-
-## !VAR PROVIDERS
-
-~~~js
-import React from 'react'
-import { render } from 'react-dom'
-import { Provider } from 'react-redux'
-import { createStore } from 'redux'
-import todoApp from './reducers'
-import App from './components/App'
-
-const store = createStore(todoApp)
-
-render(
-  <Provider store={store}>
-    <App />
-    </Provider>,
-  document.getElementById('root')
-)
-~~~
-
-
 ## !VAR START
 
 
@@ -399,39 +377,6 @@ Beyond the zero-config setup you can also:
 
 
 
-
-
-## !VAR SERVER_SIDE_AUTORELOAD
-
-You can make `ssr-coin` build your server code.
-
-If you want to
-- transpile your server code (e.g. if you want to use TypeScript on the server), or
-- enable auto-reload for your server
-you can add make `ssr-coin` build your server code by setting the `serverStartFile` config in your `package.json`:
-
-~~~json
-{
-  "ssr-coin": {
-    "serverEntryFile": "./path/to/your/server/entry"
-  },
-}
-~~~
-
-3. Enable server-side auto-reload:
-   Or if you don't want `ssr-coin` to auto-reload your server:
-   ~~~json
-   {
-     "ssr-coin": {
-       "doNotBuildServer": true
-     },
-   }
-   ~~~
-   Note that browser-side auto-reload will be enabled either way.
-
-
-
-
 ## !VAR CSS
 ## !VAR ASYNC_DATA
 ## !VAR CONTROL_RENDERING
@@ -442,10 +387,88 @@ you can add make `ssr-coin` build your server code by setting the `serverStartFi
 ## !VAR GLOBAL_CONFIG
 
 ## !VAR SERVER_SIDE_AUTORELOAD
+
+Server-side autoreload is activated When `ssr-coin` transpiles.
+
+See the next section !VAR|LINK SERVER_SIDE_TRANSPALITION to enable/disable the tranpalition of your server code
+(and thus to enable/disable server-side autoreload).
+
 ## !VAR SERVER_SIDE_TRANSPALITION
+
+You can also directly run your server without using the `ssr-coin dev ./path/to/your/server.js` command:
+
+~~~shell
+$ node ./path/to/your/server.js
+~~~
+
+~~~json
+{
+  "scripts": {
+    "dev": "node ./path/to/your/server.js",
+    "build": "ssr-coin build",
+    "prod": "npm run build && npm run start",
+    "start": "export NODE_ENV='production' && node .path/to/your/server.js"
+  }
+}
+~~~
+
+In that case the server code is not transpiled and the server-side autoreloading is deactivated.
+
+Your `package.json`'s scripts should then look like this:
+
+Conversely, if you want to enable the transpalition of your server code (e.g. if you want to use TypeScript) then make sure to use use the `ssr-coin dev ./path/to/your/server.js` command.
+
+Your `package.json`'s scripts should then look like this:
+
+~~~json
+{
+  "scripts": {
+    "dev": "ssr-coin dev ./path/to/your/server.js",
+    "build": "ssr-coin build ./path/to/your/server.js",
+    "prod": "npm run build && npm run start",
+    "start": "export NODE_ENV='production' && node ./.build/nodejs/server"
+  }
+}
+~~~
+
 ## !VAR CONTROL_TRANSPALITION
+
+
+
 ## !VAR LANGUAGES
+
+Make sure
+
+`ssr-coin` currently uses webpack to transpile your code.
+`ssr-coin` which means you may need to modify `ssr-coin` webpack's config.
+If there is a plugin available.
+For exampe, for TypeScript, simply use the [TypeScript plugin](/plugins/typescript).
+If there is no plugin available then open a GitHub issue and we'll build a plugin together.
+
+We will use Parcel instead of Webpack once Parcel v2 is released.
+Since Parcel is zero-config,
+point you will not have modifying will be a thing of the past.
+
 ## !VAR PROVIDERS
+
+~~~js
+import React from 'react'
+import { render } from 'react-dom'
+import { Provider } from 'react-redux'
+import { createStore } from 'redux'
+import todoApp from './reducers'
+import App from './components/App'
+
+const store = createStore(todoApp)
+
+render(
+  <Provider store={store}>
+    <App />
+    </Provider>,
+  document.getElementById('root')
+)
+~~~
+
 ## !VAR CSS_PRE_PROCESSORS
 ## !VAR ROUTING
 ## !VAR FRONTEND_LIBRARIRES
