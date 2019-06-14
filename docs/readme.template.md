@@ -8,25 +8,24 @@
 
 !VAR START Getting Started
 
-!VAR CSS CSS & Static Assets
+!VAR CSS_AND_ASSETS CSS & Static Assets
 !VAR ASYNC_DATA Async Data: `getInitialProps`
-!VAR CONTROL_RENDERING Control `<App>` Rendering
-!VAR CONTROL_HTML Control `index.html`: `<html>`, `<head/>`, `<title/>`, `<meta name="description"/>`, ...
+!VAR CONTROL_RENDERING `<App>` Rendering
+!VAR SERVER_SIDE Server-side Autoreload & Server-side Transpalition
+!VAR CONTROL_HTML `index.html`: `<html>`, `<head/>`, `<title/>`, `<meta name="description"/>`, ...
 !VAR PERFORMANCE_TUNING Performance Tuning: `doNotRenderInBrowser` & `renderHtmlAtBuildTime`
 
 !VAR PAGE_CONFIG Page Config `*.page.js`
 !VAR GLOBAL_CONFIG Global Config `.ssr-coin.config.js`
+!VAR SSR_COIN_CONFIG Config `.ssr-coin.config.js`
 
-!VAR SERVER_SIDE_AUTORELOAD Disable/enable Server-side Autoreload
-!VAR SERVER_SIDE_TRANSPALITION Disable/enable server-side Code transpalition
-!VAR CONTROL_TRANSPALITION Control Transpalition: Babel Config
-!VAR LANGUAGES Languages: TypeScript / Coffeescript / ...
 !VAR PROVIDERS Providers for Redux / React Router / GraphQL Apollo / Relay / ...
+!VAR LANGUAGES Transpalition & Babel Config & Languages: TypeScript / Coffeescript / ES6 / ...
 !VAR CSS_PRE_PROCESSORS CSS pre-processors: PostCSS / Sass / Less / ...
-!VAR ROUTING Control Routing & Dynamic Routing
+!VAR ROUTING StaticRouting & Dynamic Routing & React Router
 !VAR FRONTEND_LIBRARIRES Frontend Libraries: jQuery / Bootstrap / Semantic UI / ...
 !VAR SERVER_FRAMEWORKS Server Frameworks: Express / Koa / Hapi / Fastify / ...
-!VAR CONTROL_CLI Control scripts: Custom Dev Server & Custom Build & Custom CLI
+!VAR CONTROL_CLI CLI scripts: Dev Server & Build & Server Start
 !VAR PLUGINS Plugins
 
 !INLINE li-1 !VAR|LINK WHAT
@@ -34,20 +33,18 @@
 !INLINE li-1 Usage
 !INLINE li-2 !VAR|LINK START
 !INLINE li-2-header Basics
-!INLINE li-2 !VAR|LINK CSS
+!INLINE li-2 !VAR|LINK CSS_AND_ASSETS
 !INLINE li-2 !VAR|LINK ASYNC_DATA
 !INLINE li-2 !VAR|LINK CONTROL_RENDERING
 !INLINE li-2 !VAR|LINK CONTROL_HTML
+!INLINE li-2 !VAR|LINK SERVER_SIDE
 !INLINE li-2 !VAR|LINK PERFORMANCE_TUNING
 !INLINE li-2-header API
 !INLINE li-2 !VAR|LINK PAGE_CONFIG
 !INLINE li-2 !VAR|LINK GLOBAL_CONFIG
-!INLINE li-2-header How-to
-!INLINE li-2 !VAR|LINK SERVER_SIDE_AUTORELOAD
-!INLINE li-2 !VAR|LINK SERVER_SIDE_TRANSPALITION
-!INLINE li-2 !VAR|LINK CONTROL_TRANSPALITION
-!INLINE li-2 !VAR|LINK LANGUAGES
+!INLINE li-2-header Recipes
 !INLINE li-2 !VAR|LINK PROVIDERS
+!INLINE li-2 !VAR|LINK LANGUAGES
 !INLINE li-2 !VAR|LINK CSS_PRE_PROCESSORS
 !INLINE li-2 !VAR|LINK ROUTING
 !INLINE li-2 !VAR|LINK FRONTEND_LIBRARIRES
@@ -377,63 +374,63 @@ Beyond the zero-config setup you can also:
 
 
 
-## !VAR CSS
+## !VAR CSS_AND_ASSETS
 ## !VAR ASYNC_DATA
 ## !VAR CONTROL_RENDERING
+
+## !VAR SERVER_SIDE
+
+
+If you specify a path when calling `ssr-coin dev ./path/to/your/server.js` then:
+ - `ssr-coin` transpiles your server code. Allowing you, for example, to use TypeScript for your server code.
+ - `ssr-coin` auto-reloads the server whenever you make changes to your server code
+
+Your `package.json`'s scripts would be:
+
+~~~json
+{
+  "scripts": {
+    "dev": "ssr-coin dev ./path/to/your/server.js",
+    "prod": "npm run build && npm run start",
+    "build": "ssr-coin build ./path/to/your/server.js",
+    "start": "export NODE_ENV='production' && node ./.build/nodejs/server"
+  }
+}
+~~~
+
+By not specifying your server path `ssr-coin` doesn't transpile nor auto reloads your server,
+and your `package.json`'s scripts would be:
+
+~~~json
+{
+  "scripts": {
+    "dev": "node ./path/to/your/server.js",
+    "prod": "npm run build && npm run start",
+    "build": "ssr-coin build",
+    "start": "export NODE_ENV='production' && node .path/to/your/server.js"
+  }
+}
+~~~
+
+Note that `ssr-coin` always transpiles and auto-reloads your views and browser code.
+
+
+
+
 ## !VAR CONTROL_HTML
 ## !VAR PERFORMANCE_TUNING
 
 ## !VAR PAGE_CONFIG
 ## !VAR GLOBAL_CONFIG
 
-## !VAR SERVER_SIDE_AUTORELOAD
+## !VAR PROVIDERS
 
-Server-side autoreload is activated When `ssr-coin` transpiles.
+By taking control over the rendering of your `<App/>` (see !VAR|LINK CONTROL_RENDERING) you can add providers for Redux, GraphQL, etc.
 
-See the next section !VAR|LINK SERVER_SIDE_TRANSPALITION to enable/disable the tranpalition of your server code
-(and thus to enable/disable server-side autoreload).
+For example, for a React & React Router app:
 
-## !VAR SERVER_SIDE_TRANSPALITION
-
-You can also directly run your server without using the `ssr-coin dev ./path/to/your/server.js` command:
-
-~~~shell
-$ node ./path/to/your/server.js
+~~~js
 ~~~
-
-In that case the server code is not transpiled and the server-side autoreloading is deactivated.
-
-Your `package.json`'s scripts would look like this:
-
-~~~json
-{
-  "scripts": {
-    "dev": "node ./path/to/your/server.js",
-    "build": "ssr-coin build",
-    "prod": "npm run build && npm run start",
-    "start": "export NODE_ENV='production' && node .path/to/your/server.js"
-  }
-}
-~~~
-
-Conversely, if you want to enable the transpalition of your server code (e.g. if you want to use TypeScript) then make sure to use use the `ssr-coin dev ./path/to/your/server.js` command.
-
-Your `package.json`'s scripts would look like this:
-
-~~~json
-{
-  "scripts": {
-    "dev": "ssr-coin dev ./path/to/your/server.js",
-    "build": "ssr-coin build ./path/to/your/server.js",
-    "prod": "npm run build && npm run start",
-    "start": "export NODE_ENV='production' && node ./.build/nodejs/server"
-  }
-}
-~~~
-
-## !VAR CONTROL_TRANSPALITION
-
-
 
 ## !VAR LANGUAGES
 
@@ -446,30 +443,13 @@ For exampe, for TypeScript, simply use the [TypeScript plugin](/plugins/typescri
 If there is no plugin available then open a GitHub issue and we'll build a plugin together.
 
 We will use Parcel instead of Webpack once Parcel v2 is released.
-Since Parcel is zero-config,
-point you will not have modifying will be a thing of the past.
-
-## !VAR PROVIDERS
-
-~~~js
-import React from 'react'
-import { render } from 'react-dom'
-import { Provider } from 'react-redux'
-import { createStore } from 'redux'
-import todoApp from './reducers'
-import App from './components/App'
-
-const store = createStore(todoApp)
-
-render(
-  <Provider store={store}>
-    <App />
-    </Provider>,
-  document.getElementById('root')
-)
-~~~
+There will then be no need for transpalition plugins anymore (since parcel is zero-config).
 
 ## !VAR CSS_PRE_PROCESSORS
+
+
+
+
 ## !VAR ROUTING
 ## !VAR FRONTEND_LIBRARIRES
 ## !VAR SERVER_FRAMEWORKS
