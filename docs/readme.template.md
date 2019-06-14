@@ -16,8 +16,8 @@
 !VAR PERFORMANCE_TUNING Performance Tuning: `doNotRenderInBrowser` & `renderHtmlAtBuildTime`
 
 !VAR PAGE_CONFIG Page Config `*.page.js`
-!VAR GLOBAL_CONFIG Global Config `.ssr-coin.config.js`
-!VAR SSR_COIN_CONFIG Config `.ssr-coin.config.js`
+!VAR GLOBAL_CONFIG Global Config `ssr-coin.config.js`
+!VAR SSR_COIN_CONFIG `ssr-coin` API
 
 !VAR PROVIDERS Providers for Redux / React Router / GraphQL Apollo / Relay / ...
 !VAR LANGUAGES Transpalition & Babel Config & Languages: TypeScript / Coffeescript / ES6 / ...
@@ -42,6 +42,7 @@
 !INLINE li-2-header API
 !INLINE li-2 !VAR|LINK PAGE_CONFIG
 !INLINE li-2 !VAR|LINK GLOBAL_CONFIG
+!INLINE li-2 !VAR|LINK SSR_COIN_CONFIG
 !INLINE li-2-header Recipes
 !INLINE li-2 !VAR|LINK PROVIDERS
 !INLINE li-2 !VAR|LINK LANGUAGES
@@ -422,15 +423,28 @@ Note that `ssr-coin` always transpiles and auto-reloads your views and browser c
 
 ## !VAR PAGE_CONFIG
 ## !VAR GLOBAL_CONFIG
+## !VAR SSR_COIN_CONFIG
 
 ## !VAR PROVIDERS
 
 By taking control over the rendering of your `<App/>` (see !VAR|LINK CONTROL_RENDERING) you can add providers for Redux, GraphQL, etc.
 
-For example, for a React with React Router app:
+For example, to add React Router to a React app:
 
 ~~~js
+!INLINE /examples/react-router/render/renderToDom.js
 ~~~
+
+~~~js
+!INLINE /examples/react-router/render/renderToHtml.js
+~~~
+
+~~~js
+!INLINE /examples/react-router/ssr-coin.config.js
+~~~
+
+You can see the example's entire source code
+at [/examples/react-router](/examples/react-router)
 
 ## !VAR LANGUAGES
 

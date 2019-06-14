@@ -107,8 +107,9 @@ Basics
 </sub>
 <br/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a href=#css--static-assets>CSS & Static Assets</a>
 <br/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a href=#async-data-getinitialprops>Async Data: `getInitialProps`</a>
-<br/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a href=#control-app-rendering>Control `<App>` Rendering</a>
-<br/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a href=#control-indexhtml-html-head-title-meta-namedescription->Control `index.html`: `<html>`, `<head/>`, `<title/>`, `<meta name="description"/>`, ...</a>
+<br/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a href=#app-rendering>`<App>` Rendering</a>
+<br/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a href=#indexhtml-html-head-title-meta-namedescription->`index.html`: `<html>`, `<head/>`, `<title/>`, `<meta name="description"/>`, ...</a>
+<br/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a href=#server-side-autoreload--server-side-transpalition>Server-side Autoreload & Server-side Transpalition</a>
 <br/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a href=#performance-tuning-donotrenderinbrowser--renderhtmlatbuildtime>Performance Tuning: `doNotRenderInBrowser` & `renderHtmlAtBuildTime`</a>
 <sub>
 <br/>
@@ -116,22 +117,20 @@ Basics
 API
 </sub>
 <br/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a href=#page-config-pagejs>Page Config `*.page.js`</a>
-<br/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a href=#global-config-ssr-coinconfigjs>Global Config `.ssr-coin.config.js`</a>
+<br/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a href=#global-config-ssr-coinconfigjs>Global Config `ssr-coin.config.js`</a>
+<br/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a href=#ssr-coin-api>`ssr-coin` API</a>
 <sub>
 <br/>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-How-to
+Recipes
 </sub>
-<br/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a href=#disableenable-server-side-autoreload>Disable/enable Server-side Autoreload</a>
-<br/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a href=#disableenable-server-side-code-transpalition>Disable/enable server-side Code transpalition</a>
-<br/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a href=#control-transpalition-babel-config>Control Transpalition: Babel Config</a>
-<br/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a href=#languages-typescript--coffeescript-->Languages: TypeScript / Coffeescript / ...</a>
 <br/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a href=#providers-for-redux--react-router--graphql-apollo--relay-->Providers for Redux / React Router / GraphQL Apollo / Relay / ...</a>
+<br/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a href=#transpalition--babel-config--languages-typescript--coffeescript--es6-->Transpalition & Babel Config & Languages: TypeScript / Coffeescript / ES6 / ...</a>
 <br/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a href=#css-pre-processors-postcss--sass--less-->CSS pre-processors: PostCSS / Sass / Less / ...</a>
-<br/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a href=#control-routing--dynamic-routing>Control Routing & Dynamic Routing</a>
+<br/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a href=#staticrouting--dynamic-routing--react-router>StaticRouting & Dynamic Routing & React Router</a>
 <br/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a href=#frontend-libraries-jquery--bootstrap--semantic-ui-->Frontend Libraries: jQuery / Bootstrap / Semantic UI / ...</a>
 <br/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a href=#server-frameworks-express--koa--hapi--fastify-->Server Frameworks: Express / Koa / Hapi / Fastify / ...</a>
-<br/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a href=#control-scripts-custom-dev-server--custom-build--custom-cli>Control scripts: Custom Dev Server & Custom Build & Custom CLI</a>
+<br/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a href=#cli-scripts-dev-server--build--server-start>CLI scripts: Dev Server & Build & Server Start</a>
 <br/> &nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a href=#plugins>Plugins</a>
 
 <br/>
@@ -274,28 +273,6 @@ This allows you to build all kinds of apps:
 - [Performance] [HTML-static pages]()
 
 
-
-
-
-## Providers for Redux / React Router / GraphQL Apollo / Relay / ...
-
-~~~js
-import React from 'react'
-import { render } from 'react-dom'
-import { Provider } from 'react-redux'
-import { createStore } from 'redux'
-import todoApp from './reducers'
-import App from './components/App'
-
-const store = createStore(todoApp)
-
-render(
-  <Provider store={store}>
-    <App />
-    </Provider>,
-  document.getElementById('root')
-)
-~~~
 
 
 ## Getting Started
@@ -478,58 +455,149 @@ Beyond the zero-config setup you can also:
 
 
 
+## CSS & Static Assets
+## Async Data: `getInitialProps`
+## `<App>` Rendering
+
+## Server-side Autoreload & Server-side Transpalition
 
 
-## Disable/enable Server-side Autoreload
+If you specify a path when calling `ssr-coin dev ./path/to/your/server.js` then:
+ - `ssr-coin` transpiles your server code. Allowing you, for example, to use TypeScript for your server code.
+ - `ssr-coin` auto-reloads the server whenever you make changes to your server code
 
-You can make `ssr-coin` build your server code.
-
-If you want to
-- transpile your server code (e.g. if you want to use TypeScript on the server), or
-- enable auto-reload for your server
-you can add make `ssr-coin` build your server code by setting the `serverStartFile` config in your `package.json`:
+Your `package.json`'s scripts would be:
 
 ~~~json
 {
-  "ssr-coin": {
-    "serverEntryFile": "./path/to/your/server/entry"
-  },
+  "scripts": {
+    "dev": "ssr-coin dev ./path/to/your/server.js",
+    "prod": "npm run build && npm run start",
+    "build": "ssr-coin build ./path/to/your/server.js",
+    "start": "export NODE_ENV='production' && node ./.build/nodejs/server"
+  }
 }
 ~~~
 
-3. Enable server-side auto-reload:
-   Or if you don't want `ssr-coin` to auto-reload your server:
-   ~~~json
-   {
-     "ssr-coin": {
-       "doNotBuildServer": true
-     },
-   }
-   ~~~
-   Note that browser-side auto-reload will be enabled either way.
+By not specifying your server path `ssr-coin` doesn't transpile nor auto reloads your server,
+and your `package.json`'s scripts would be:
+
+~~~json
+{
+  "scripts": {
+    "dev": "node ./path/to/your/server.js",
+    "prod": "npm run build && npm run start",
+    "build": "ssr-coin build",
+    "start": "export NODE_ENV='production' && node .path/to/your/server.js"
+  }
+}
+~~~
+
+Note that `ssr-coin` always transpiles and auto-reloads your views and browser code.
 
 
 
 
-## CSS & Static Assets
-## Async Data: `getInitialProps`
-## Control `<App>` Rendering
-## Control `index.html`: `<html>`, `<head/>`, `<title/>`, `<meta name="description"/>`, ...
+## `index.html`: `<html>`, `<head/>`, `<title/>`, `<meta name="description"/>`, ...
 ## Performance Tuning: `doNotRenderInBrowser` & `renderHtmlAtBuildTime`
 
 ## Page Config `*.page.js`
-## Global Config `.ssr-coin.config.js`
+## Global Config `ssr-coin.config.js`
+## `ssr-coin` API
 
-## Disable/enable Server-side Autoreload
-## Disable/enable server-side Code transpalition
-## Control Transpalition: Babel Config
-## Languages: TypeScript / Coffeescript / ...
 ## Providers for Redux / React Router / GraphQL Apollo / Relay / ...
+
+By taking control over the rendering of your `<App/>` (see <a href=#app-rendering>`<App>` Rendering</a>) you can add providers for Redux, GraphQL, etc.
+
+For example, to add React Router to a React app:
+
+~~~js
+// /examples/react-router/render/renderToDom.js
+
+const React = require('react');
+const ReactDOM = require('react-dom');
+const {BrowserRouter} = require('react-router-dom');
+
+module.exports = renderToDom;
+
+async function renderToDom({pageConfig, initialProps, CONTAINER_ID}) {
+  ReactDOM.hydrate(
+    React.createElement(
+      BrowserRouter,
+      null,
+      React.createElement(pageConfig.view, initialProps)
+    ),
+    document.getElementById(CONTAINER_ID)
+  );
+}
+~~~
+
+~~~js
+// /examples/react-router/render/renderToHtml.js
+
+const React = require('react');
+const ReactDOMServer = require('react-dom/server');
+const {StaticRouter} = require('react-router');
+
+module.exports = renderToHtml;
+
+async function renderToHtml({pageConfig, initialProps, ...url}) {
+  const location = {
+      pathname: initialProps.route.url.pathname,
+      search: initialProps.route.url.search,
+      hash: initialProps.route.url.hash,
+      state: undefined
+  };
+
+  return (
+    ReactDOMServer.renderToStaticMarkup(
+      React.createElement(
+        StaticRouter,
+        {location, context: {}},
+        React.createElement(
+          pageConfig.view,
+          initialProps
+        )
+      )
+    )
+  );
+}
+~~~
+
+~~~js
+// /examples/react-router/ssr-coin.config.js
+
+module.exports = {
+  renderToHtml: './render/renderToHtml.js',
+  renderToDom: './render/renderToDom.js',
+};
+~~~
+
+You can see the example's entire source code
+at [/examples/react-router](/examples/react-router)
+
+## Transpalition & Babel Config & Languages: TypeScript / Coffeescript / ES6 / ...
+
+Make sure
+
+`ssr-coin` currently uses webpack to transpile your code.
+`ssr-coin` which means you may need to modify `ssr-coin` webpack's config.
+If there is a plugin available.
+For exampe, for TypeScript, simply use the [TypeScript plugin](/plugins/typescript).
+If there is no plugin available then open a GitHub issue and we'll build a plugin together.
+
+We will use Parcel instead of Webpack once Parcel v2 is released.
+There will then be no need for transpalition plugins anymore (since parcel is zero-config).
+
 ## CSS pre-processors: PostCSS / Sass / Less / ...
-## Control Routing & Dynamic Routing
+
+
+
+
+## StaticRouting & Dynamic Routing & React Router
 ## Frontend Libraries: jQuery / Bootstrap / Semantic UI / ...
 ## Server Frameworks: Express / Koa / Hapi / Fastify / ...
-## Control scripts: Custom Dev Server & Custom Build & Custom CLI
+## CLI scripts: Dev Server & Build & Server Start
 ## Plugins
 
 padding
