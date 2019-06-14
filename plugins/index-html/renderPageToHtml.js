@@ -6,12 +6,14 @@ const assert = require('@brillout/reassert');
 module.exports = renderPageToHtml;
 
 async function renderPageToHtml({pageConfig, initialProps}) {
+  let renderToHtmlFile;
   try {
-    require.resolve(config.ssrCoin.renderToHtml);
+    renderToHtmlFile = require.resolve(config.ssrCoin.renderToHtml, {paths: ['/home/romu/code/ssr-coin/examples/react-router']});
   } catch (err) {
     assert.usage(
       false,
-      "`renderToHtml` should be the path of your `renderToHtml` file.",
+      "The `renderToHtml` config is set to `"+config.ssrCoin.renderToHtml+"`.",
+      "But `renderToHtml` should be the path of your `renderToHtml` file.",
       "E.g.:",
       "  // ssr-coin.config.js",
       "  module.exports = {",
@@ -20,7 +22,7 @@ async function renderPageToHtml({pageConfig, initialProps}) {
       "  };",
     );
   }
-  const renderToHtml = require(config.ssrCoin.renderToHtml);
+  const renderToHtml = require(renderToHtmlFile);
   const contentHtml = await renderToHtml({pageConfig, initialProps});
   assert.usage(
     contentHtml && contentHtml.constructor===String,

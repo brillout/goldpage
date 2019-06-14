@@ -13,6 +13,7 @@ Object.assign(
 
 function getBrowserConfigs() {
     const assert_plugin = require('reassert/usage');
+    const assert = require('@brillout/reassert');
 
     const configPaths = {};
     config
@@ -32,16 +33,34 @@ function getBrowserConfigs() {
         Object.values(configPaths)
         .map(({configPath, configIsList}) => {
             const suffix = 'File';
-            assert_plugin(configPath.endsWith(suffix));
-            const configName = configPath.slice(0, -suffix.length) + (configIsList ? 's' : '');
+            const configName = (
+              !configPath.endsWith(suffix) ? (
+                configPath
+              ) : (
+                configPath.slice(0, -suffix.length) + (configIsList ? 's' : '')
+              )
+            );
 
             assert_plugin(!configPath.includes('.'));
 
             const configFile = (() => {
                 if( configIsList ) return null;
                 let filePath = config.ssrCoin[configPath];
-                assert_plugin(filePath.constructor===String);
-                filePath = require.resolve(filePath);
+                try {
+                  filePath = require.resolve(filePath, {paths: ['/home/romu/code/ssr-coin/examples/react-router']});
+                } catch(err) {
+                  assert.usage(
+                    false,
+                    "The `renderToDom` config is set to `"+filePath+"`.",
+                    "But `renderToDom` should be the path of your `renderToDom` file.",
+                    "E.g.:",
+                    "  // ssr-coin.config.js",
+                    "  module.exports = {",
+                    "   renderToDom: './path/to/your/renderToDom.js'",
+                    "   /* ... */",
+                    "  };",
+                  );
+                }
                 assert_plugin(filePath);
                 return filePath;
             })();

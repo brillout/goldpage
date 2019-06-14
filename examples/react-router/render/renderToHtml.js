@@ -4,15 +4,13 @@ const {StaticRouter} = require('react-router');
 
 module.exports = renderToHtml;
 
-async function renderToHtml({pageConfig, initialProps, route}) {
+async function renderToHtml({pageConfig, initialProps, ...url}) {
   const location = {
-      pathname: route.url.pathname,
-      search: route.url.search,
-      hash: route.url.hash,
+      pathname: initialProps.route.url.pathname,
+      search: initialProps.route.url.search,
+      hash: initialProps.route.url.hash,
       state: undefined
   };
-
-  console.log('ss', StaticRouter);
 
   return (
     ReactDOMServer.renderToStaticMarkup(
