@@ -89,7 +89,7 @@ Webpack config modifiers.
 ### Usage Example
 
 ~~~js
-// /helpers/webpack-config-mod/example.js
+// ./example.js
 
 const mod = require('@brillout/webpack-config-mod'); // npm install @brillout/webpack-config-mod
 
