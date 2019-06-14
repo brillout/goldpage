@@ -14,6 +14,7 @@
     "examples/express",
     "examples/koa",
     "examples/hapi",
+    "examples/react-router",
     "examples/typescript",
     "examples/with-config",
     "ssr-coin/",

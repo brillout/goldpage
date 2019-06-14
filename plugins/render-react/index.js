@@ -1,12 +1,12 @@
-const renderToDomFile = require.resolve('./renderToDom');
-const renderToHtmlFile = require.resolve('./renderToHtml');
+const renderToDom = require.resolve('./renderToDom');
+const renderToHtml = require.resolve('./renderToHtml');
 
 const config = require('@brillout/reconfig');
 
 Object.assign(
   config.ssrCoin,
   {
-    renderToHtmlFile,
-    renderToDomFile,
+    renderToHtml,
+    renderToDom,
   },
 );

@@ -1,15 +1,15 @@
-const renderPageToDomFile = require.resolve('./renderPageToDom');
-const renderPageToHtmlFile = require.resolve('./renderPageToHtml');
+const renderPageToDom = require.resolve('./renderPageToDom');
+const renderPageToHtml = require.resolve('./renderPageToHtml');
 
 const config = require('@brillout/reconfig');
 
 Object.assign(
   config.ssrCoin,
   {
-    renderPageToHtmlFile,
-    renderPageToDomFile,
+    renderPageToHtml,
+    renderPageToDom,
   },
 );
 
 config.ssrCoin.browserConfigs = config.ssrCoin.browserConfigs || [];
-config.ssrCoin.browserConfigs.push('renderPageToDomFile', 'renderToDomFile');
+config.ssrCoin.browserConfigs.push('renderPageToDom', 'renderToDom');

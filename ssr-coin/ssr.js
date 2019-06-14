@@ -11,14 +11,6 @@ ssr.pagesDir = 'pages/';
 // ssr.serverEntryFile = 'server/';
 ssr.buildDir = '.build/';
 
-(() => {
-  const {fileExport: userConfig} = loadFile('ssr-coin.config.js');
-  Object.assign(
-    ssr,
-    userConfig,
-  );
-})();
-
 module.exports = ssr;
 
 function create_ssr() {
@@ -31,6 +23,14 @@ function create_ssr() {
   require('@ssr-coin/webpack');
 
   const {packageJsonFile, loaded: loadedPlugins} = loadDependencies();
+
+  (() => {
+    const {fileExport: userConfig} = loadFile('ssr-coin.config.js');
+    Object.assign(
+      config.ssrCoin,
+      userConfig,
+    );
+  })();
 
   return new SSR();
 

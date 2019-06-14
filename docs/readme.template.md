@@ -427,7 +427,7 @@ Note that `ssr-coin` always transpiles and auto-reloads your views and browser c
 
 By taking control over the rendering of your `<App/>` (see !VAR|LINK CONTROL_RENDERING) you can add providers for Redux, GraphQL, etc.
 
-For example, for a React & React Router app:
+For example, for a React with React Router app:
 
 ~~~js
 ~~~

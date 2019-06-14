@@ -1,6 +1,6 @@
-const routerFile = require.resolve('./router');
+const router = require.resolve('./router');
 const config = require('@brillout/reconfig');
 
-config.ssrCoin.routerFile = routerFile;
+config.ssrCoin.router = router;
 config.ssrCoin.browserConfigs = config.ssrCoin.browserConfigs || [];
-config.ssrCoin.browserConfigs.push('routerFile');
+config.ssrCoin.browserConfigs.push('router');
