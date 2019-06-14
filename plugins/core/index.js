@@ -47,7 +47,7 @@ function getBrowserConfigs() {
                 if( configIsList ) return null;
                 let filePath = config.ssrCoin[configPath];
                 try {
-                  filePath = require.resolve(filePath, {paths: ['/home/romu/code/ssr-coin/examples/react-router']});
+                  filePath = require.resolve(filePath, {paths: [config.ssrCoin.projectDir]});
                 } catch(err) {
                   assert.usage(
                     false,

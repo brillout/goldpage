@@ -8,7 +8,7 @@ module.exports = renderPageToHtml;
 async function renderPageToHtml({pageConfig, initialProps}) {
   let renderToHtmlFile;
   try {
-    renderToHtmlFile = require.resolve(config.ssrCoin.renderToHtml, {paths: ['/home/romu/code/ssr-coin/examples/react-router']});
+    renderToHtmlFile = require.resolve(config.ssrCoin.renderToHtml, {paths: [config.ssrCoin.projectDir]});
   } catch (err) {
     assert.usage(
       false,

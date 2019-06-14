@@ -24,18 +24,15 @@ function create_ssr() {
 
   const {packageJsonFile, loaded: loadedPlugins} = loadDependencies();
 
-  (() => {
-    const {fileExport: userConfig} = loadFile('ssr-coin.config.js');
-    Object.assign(
-      config.ssrCoin,
-      userConfig,
-    );
-  })();
+  const {projectDir, findProjectFiles} = new ProjectFiles();
+
+  config.ssrCoin.projectDir = projectDir;
+
+  applySsrCoinConfig();
 
   return new SSR();
 
   function SSR() {
-    const {projectDir, findProjectFiles} = new ProjectFiles();
 
     config.ssrCoin.getPageConfigFiles = () => {
       assert.usage(
@@ -89,6 +86,20 @@ function create_ssr() {
       }
       return value;
     }
+  }
+
+  function applySsrCoinConfig() {
+    assert.internal(projectDir);
+    let ssrCoinConfigPath = path.resolve(projectDir, 'ssr-coin.config.js');
+    try {
+      ssrCoinConfigPath = require.resolve(ssrCoinConfigPath);
+    } catch(err) {
+      return;
+    }
+    Object.assign(
+      config.ssrCoin,
+      require(ssrCoinConfigPath),
+    );
   }
 
   function isServerMiddleware(prop) {
