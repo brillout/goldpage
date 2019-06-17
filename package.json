@@ -17,6 +17,7 @@
     "examples/react-router",
     "examples/typescript",
     "examples/with-config",
+    "examples/static-assets",
     "ssr-coin/",
     "plugins/core",
     "plugins/browser",

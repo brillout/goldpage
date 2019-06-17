@@ -1,0 +1,22 @@
+body {
+    background-color: pink;
+    font-family: 'Tangerine';
+    font-size: 2em;
+}
+.diamond-background {
+    background-image: url('./assets/diamond.png');
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
+.diamond {
+    width: 80px;
+    height: 47px;
+    margin: 25px;
+    display: inline-block;
+}
+
+@font-face {
+    font-family: 'Tangerine';
+    src: url('./assets/Tangerine.ttf') format('truetype');
+}

@@ -196,31 +196,25 @@ This allows you to build all kinds of apps:
 
 ## !VAR GETTING_STARTED
 
-This Getting Started is about adding `ssr-coin` to an exisiting app.
-If you want to create a new app and start from scratch,
+This getting started is about adding `ssr-coin` to an exisiting app.
+If you want to start from scratch
 then use a Reframe starter instead.
 
-0. Install.
+0. Install `ssr-coin`.
 
-   `ssr-coin`:
    ~~~shell
    npm install ssr-coin
    ~~~
 
-   A [render plugin]() such as `@ssr-coin/vue` or `@ssr-coin/react`:
+   Install a [render plugin]() such as `@ssr-coin/vue` or `@ssr-coin/react`.
    ~~~shell
    npm install @ssr-coin/react
    ~~~
 
-   And a [server integration plugin]() such as `@ssr-coin/hapi` or `@ssr/express`:
+   Install a [server plugin]() such as `@ssr-coin/hapi` or `@ssr/express`.
    ~~~shell
    npm install @ssr-coin/express
    ~~~
-
-   Note that plugins
-   listed in the `dependencies` list of your `package.json`
-   are automatically loaded.
-
 
 1. Add `ssr-coin` to your Node.js server.
 
@@ -275,7 +269,7 @@ then use a Reframe starter instead.
    Express, Koa, or Hapi.
    </details>
 
-2. Create a page.
+2. Create your first page.
 
    Create the `pages/` directory.
    ~~~shell
@@ -283,7 +277,7 @@ then use a Reframe starter instead.
    ~~~
 
    Create a file
-   at `pages/test.page.js`.
+   at `pages/hello.page.js`.
 
    With React:
    ~~~js
@@ -336,9 +330,46 @@ then use a Reframe starter instead.
    }
    ~~~
 
-You can now run `npm run dev` (/ `yarn dev`) and go to your newly created page `/ssr-test`.
+You can now run `npm run dev` (/ `yarn dev`) and go to your newly created page `/hello/jon`.
 
 ## !VAR CSS_AND_ASSETS
+
+To load CSS, simply import it:
+
+~~~js
+import './path/to/style.css';
+~~~
+
+Importing static assets such as images, fonts, or videos
+returns a URL:
+
+~~~js
+import imageUrl from './path/to/image.png';
+// `imageUrl` is the URL serving `image.png`.
+// Do something with imageUrl, e.g. `await fetch(imageUrl)` or `<img src={imageUrl}/>`.
+~~~
+
+You can also reference static assets in CSS:
+
+~~~css
+.logo {
+    /* Your file's path on your disk `./path/to/image.png`
+       will automatically be replaced with the URL serving `image.png` */
+    background-image: url('./path/to/image.png');
+}
+@font-face {
+    font-family: 'MyAwesomeFont';
+    /* Your file's path on your disk `./path/to/my-awesome-font.ttf`
+       will automatically be replaced with the URL serving `my-awesome-font.ttf` */
+    src: url('./path/to/my-awesome-font.ttf') format('truetype');
+}
+~~~
+
+Example of a page that uses all kinds of static assets:
+ - [/examples/static-assets/](/examples/static-assets/)
+
+
+
 ## !VAR ASYNC_DATA
 ## !VAR CONTROL_RENDERING
 
