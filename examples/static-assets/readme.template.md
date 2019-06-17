@@ -8,6 +8,6 @@ Some excerpts:
 !INLINE ./pages/glitter/views/Glitter.js
 ~~~
 
-~~~js
+~~~css
 !INLINE ./pages/glitter/style.css
 ~~~

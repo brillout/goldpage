@@ -111,7 +111,7 @@ const Glitter = () => (
 export {Glitter};
 ~~~
 
-~~~js
+~~~css
 // ./pages/glitter/style.css
 
 body {
