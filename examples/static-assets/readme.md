@@ -7,7 +7,7 @@
 
     WARNING, READ THIS.
     This is a computed file. Do not edit.
-    Edit `/examples/basics/pages/glitter/readme.template.md` instead.
+    Edit `/examples/static-assets/readme.template.md` instead.
 
 
 
@@ -22,7 +22,7 @@
 
     WARNING, READ THIS.
     This is a computed file. Do not edit.
-    Edit `/examples/basics/pages/glitter/readme.template.md` instead.
+    Edit `/examples/static-assets/readme.template.md` instead.
 
 
 
@@ -37,7 +37,7 @@
 
     WARNING, READ THIS.
     This is a computed file. Do not edit.
-    Edit `/examples/basics/pages/glitter/readme.template.md` instead.
+    Edit `/examples/static-assets/readme.template.md` instead.
 
 
 
@@ -52,7 +52,7 @@
 
     WARNING, READ THIS.
     This is a computed file. Do not edit.
-    Edit `/examples/basics/pages/glitter/readme.template.md` instead.
+    Edit `/examples/static-assets/readme.template.md` instead.
 
 
 
@@ -67,7 +67,7 @@
 
     WARNING, READ THIS.
     This is a computed file. Do not edit.
-    Edit `/examples/basics/pages/glitter/readme.template.md` instead.
+    Edit `/examples/static-assets/readme.template.md` instead.
 
 
 
@@ -76,29 +76,16 @@
 
 -->
 
-This page exhibits code that uses CSS and static assets.
+This example exhibits how to use CSS and static assets.
+
+Some excerpts:
 
 ~~~js
-// /examples/basics/pages/glitter/GlitterPage.config.js
-
-const {GlitterComponent} = require('./GlitterComponent');
-
-const GlitterPage = {
-    route: '/glitter',
-    title: 'Glamorous Page',
-    view: GlitterComponent,
-    doNotRenderInBrowser: true,
-};
-
-module.exports = GlitterPage;
-~~~
-
-~~~js
-// /examples/basics/pages/glitter/GlitterComponent.js
+// ./pages/glitter/views/Glitter.js
 
 import React from 'react';
-import './GlitterStyle.css';
-import diamondUrl from './diamond.png';
+import '../style.css';
+import diamondUrl from '../assets/diamond.png';
 
 const Center = ({children, style}) => (
     <div
@@ -113,7 +100,7 @@ const Center = ({children, style}) => (
 
 const Diamond = () => <div className="diamond diamond-background"/>;
 
-const GlitterComponent = () => (
+const Glitter = () => (
     <Center style={{fontSize: '2em'}}>
         <Diamond/>
         Shine
@@ -121,11 +108,11 @@ const GlitterComponent = () => (
     </Center>
 );
 
-export {GlitterComponent};
+export {Glitter};
 ~~~
 
-~~~css
-// /examples/basics/pages/glitter/GlitterStyle.css
+~~~js
+// ./pages/glitter/style.css
 
 body {
     background-color: pink;
@@ -133,7 +120,7 @@ body {
     font-size: 2em;
 }
 .diamond-background {
-    background-image: url('./diamond.png');
+    background-image: url('./assets/diamond.png');
     background-repeat: no-repeat;
     background-size: contain;
 }
@@ -147,7 +134,7 @@ body {
 
 @font-face {
     font-family: 'Tangerine';
-    src: url('./Tangerine.ttf') format('truetype');
+    src: url('./assets/Tangerine.ttf') format('truetype');
 }
 ~~~
 
@@ -160,7 +147,7 @@ body {
 
     WARNING, READ THIS.
     This is a computed file. Do not edit.
-    Edit `/examples/basics/pages/glitter/readme.template.md` instead.
+    Edit `/examples/static-assets/readme.template.md` instead.
 
 
 
@@ -175,7 +162,7 @@ body {
 
     WARNING, READ THIS.
     This is a computed file. Do not edit.
-    Edit `/examples/basics/pages/glitter/readme.template.md` instead.
+    Edit `/examples/static-assets/readme.template.md` instead.
 
 
 
@@ -190,7 +177,7 @@ body {
 
     WARNING, READ THIS.
     This is a computed file. Do not edit.
-    Edit `/examples/basics/pages/glitter/readme.template.md` instead.
+    Edit `/examples/static-assets/readme.template.md` instead.
 
 
 
@@ -205,7 +192,7 @@ body {
 
     WARNING, READ THIS.
     This is a computed file. Do not edit.
-    Edit `/examples/basics/pages/glitter/readme.template.md` instead.
+    Edit `/examples/static-assets/readme.template.md` instead.
 
 
 
@@ -220,7 +207,7 @@ body {
 
     WARNING, READ THIS.
     This is a computed file. Do not edit.
-    Edit `/examples/basics/pages/glitter/readme.template.md` instead.
+    Edit `/examples/static-assets/readme.template.md` instead.
 
 
 
