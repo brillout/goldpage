@@ -12,7 +12,7 @@
 !VAR ASYNC_DATA Async Data & `getInitialProps`
 !VAR CONTROL_RENDERING `<App>` Rendering
 !VAR SERVER_SIDE Server-Side Autoreload & Server-Side Transpalition
-!VAR CONTROL_HTML `index.html`: `<html>`, `<head/>`, `<title/>`, `<meta name="description"/>`, ...
+!VAR CONTROL_HTML HTML Meta Tags: `index.html`, `<title/>`, `<meta/>`, `<link/>`, ...
 !VAR PERFORMANCE_TUNING Performance: `doNotRenderInBrowser` & `renderHtmlAtBuildTime`
 
 !VAR PAGE_CONFIG Page Config `*.page.js`
@@ -23,7 +23,7 @@
 !VAR LANGUAGES Transpalition & Babel Config & Languages: TypeScript / Coffeescript / ES6 / ...
 !VAR CSS_PRE_PROCESSORS CSS pre-processors: PostCSS / Sass / Less / ...
 !VAR ROUTING StaticRouting & Dynamic Routing & React Router
-!VAR FRONTEND_LIBRARIRES Frontend Libraries: jQuery / Bootstrap / Semantic UI / ...
+!VAR FRONTEND_LIBRARIRES Frontend Libraries: Google Analytics Snippet / jQuery / Bootstrap / Semantic UI / ...
 !VAR SERVER_FRAMEWORKS Server Frameworks: Express / Koa / Hapi / Fastify / ...
 !VAR CONTROL_CLI CLI scripts: Dev Server & Build & Server Start
 !VAR PLUGINS Plugins
@@ -446,6 +446,56 @@ Note that `ssr-coin` always transpiles and auto-reloads your views and browser c
 
 
 ## !VAR CONTROL_HTML
+
+To set the HTML meta tags for all pages, create a `index.html` file:
+~~~html
+!INLINE ../examples/custom-head/index.html
+~~~
+
+To set the HTML meta tags for one page only, use your page's config:
+~~~js
+!INLINE ../examples/html-meta-tags/pages/landing.page.js
+~~~
+~~~js
+!INLINE ../examples/html-meta-tags/pages/about.page.js
+~~~
+See [`@brillout/index-html`'s documentation](https://github.com/brillout/index-html) for the list of all options.
+
+
+To add css and scripts saved on disk, use a conditional require:
+~~~js
+// For CSS, you can use import (or `require`):
+import './path/to/your/style.css';
+
+// For scripts that you want to be loaded only in the browser, do this:
+if( isBrowser() ){
+  require('./path/to/your/script.js');
+}
+function isBrowser() {
+  return typeof window !== "undefined";
+}
+
+export default {
+  route: '/test-page',
+  view: () => <div>Test</div>,
+};
+~~~
+
+If you want to load a script for all your pages then create a "commons" file that is loaded by all your page configs:
+
+~~~js
+// commons.js
+
+~~~
+
+~~~js
+!INLINE ../examples/custom-head/pages/about.config.js
+~~~
+
+Example:
+ - [/examples/html-meta-tags](/examples/html-meta-tags)
+
+
 ## !VAR PERFORMANCE_TUNING
 
 ## !VAR PAGE_CONFIG

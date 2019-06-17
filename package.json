@@ -11,6 +11,7 @@
   },
   "workspaces": [
     "examples/babel-config",
+    "examples/html-meta-tags",
     "examples/express",
     "examples/koa",
     "examples/hapi",
