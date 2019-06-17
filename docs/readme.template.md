@@ -387,8 +387,27 @@ We further explain the difference between both at:
 
 ## !VAR CONTROL_RENDERING
 
-## !VAR SERVER_SIDE
+You can control how your pages are rendered
+by adding `renderToHtml` and `renderToDom` to your `ssr-coin.config.js`:
 
+Example of adding React Router to a React app:
+
+~~~js
+!INLINE /examples/react-router/render/renderToDom.js
+~~~
+
+~~~js
+!INLINE /examples/react-router/render/renderToHtml.js
+~~~
+
+~~~js
+!INLINE /examples/react-router/ssr-coin.config.js
+~~~
+
+The example's entire source code is at:
+- [/examples/react-router](/examples/react-router)
+
+## !VAR SERVER_SIDE
 
 If you specify a path when calling `ssr-coin dev ./path/to/your/server.js` then:
  - `ssr-coin` transpiles your server code. Allowing you, for example, to use TypeScript for your server code.
@@ -435,23 +454,11 @@ Note that `ssr-coin` always transpiles and auto-reloads your views and browser c
 
 ## !VAR PROVIDERS
 
-By taking control over the rendering of your `<App/>` (see !VAR|LINK CONTROL_RENDERING) you can add providers for Redux, GraphQL, etc.
+By controlling the rendering of your `<App/>` you can add any providers for Redux, GraphQL, etc.
 
-For example, to add React Router to a React app:
+See !VAR|LINK CONTROL_RENDERING for how to take over control of the rendering of your pages.
 
-~~~js
-!INLINE /examples/react-router/render/renderToDom.js
-~~~
-
-~~~js
-!INLINE /examples/react-router/render/renderToHtml.js
-~~~
-
-~~~js
-!INLINE /examples/react-router/ssr-coin.config.js
-~~~
-
-You can see the example's entire source code
+Example of adding the React Router providers:
 at [/examples/react-router](/examples/react-router)
 
 ## !VAR LANGUAGES

@@ -486,57 +486,10 @@ We further explain the difference between both at:
 
 ## `<App>` Rendering
 
-## Server-Side Autoreload & Server-Side Transpalition
+You can control how your pages are rendered
+by adding `renderToHtml` and `renderToDom` to your `ssr-coin.config.js`:
 
-
-If you specify a path when calling `ssr-coin dev ./path/to/your/server.js` then:
- - `ssr-coin` transpiles your server code. Allowing you, for example, to use TypeScript for your server code.
- - `ssr-coin` auto-reloads the server whenever you make changes to your server code
-
-Your `package.json`'s scripts would be:
-
-~~~json
-{
-  "scripts": {
-    "dev": "ssr-coin dev ./path/to/your/server.js",
-    "prod": "npm run build && npm run start",
-    "build": "ssr-coin build ./path/to/your/server.js",
-    "start": "export NODE_ENV='production' && node ./.build/nodejs/server"
-  }
-}
-~~~
-
-By not specifying your server path `ssr-coin` doesn't transpile nor auto reloads your server,
-and your `package.json`'s scripts would be:
-
-~~~json
-{
-  "scripts": {
-    "dev": "node ./path/to/your/server.js",
-    "prod": "npm run build && npm run start",
-    "build": "ssr-coin build",
-    "start": "export NODE_ENV='production' && node .path/to/your/server.js"
-  }
-}
-~~~
-
-Note that `ssr-coin` always transpiles and auto-reloads your views and browser code.
-
-
-
-
-## `index.html`: `<html>`, `<head/>`, `<title/>`, `<meta name="description"/>`, ...
-## Performance: `doNotRenderInBrowser` & `renderHtmlAtBuildTime`
-
-## Page Config `*.page.js`
-## Global Config `ssr-coin.config.js`
-## `ssr-coin` API
-
-## Providers for Redux / React Router / GraphQL Apollo / Relay / ...
-
-By taking control over the rendering of your `<App/>` (see <a href=#app-rendering>`<App>` Rendering</a>) you can add providers for Redux, GraphQL, etc.
-
-For example, to add React Router to a React app:
+Example of adding React Router to a React app:
 
 ~~~js
 // /examples/react-router/render/renderToDom.js
@@ -600,7 +553,61 @@ module.exports = {
 };
 ~~~
 
-You can see the example's entire source code
+The example's entire source code is at:
+- [/examples/react-router](/examples/react-router)
+
+## Server-Side Autoreload & Server-Side Transpalition
+
+If you specify a path when calling `ssr-coin dev ./path/to/your/server.js` then:
+ - `ssr-coin` transpiles your server code. Allowing you, for example, to use TypeScript for your server code.
+ - `ssr-coin` auto-reloads the server whenever you make changes to your server code
+
+Your `package.json`'s scripts would be:
+
+~~~json
+{
+  "scripts": {
+    "dev": "ssr-coin dev ./path/to/your/server.js",
+    "prod": "npm run build && npm run start",
+    "build": "ssr-coin build ./path/to/your/server.js",
+    "start": "export NODE_ENV='production' && node ./.build/nodejs/server"
+  }
+}
+~~~
+
+By not specifying your server path `ssr-coin` doesn't transpile nor auto reloads your server,
+and your `package.json`'s scripts would be:
+
+~~~json
+{
+  "scripts": {
+    "dev": "node ./path/to/your/server.js",
+    "prod": "npm run build && npm run start",
+    "build": "ssr-coin build",
+    "start": "export NODE_ENV='production' && node .path/to/your/server.js"
+  }
+}
+~~~
+
+Note that `ssr-coin` always transpiles and auto-reloads your views and browser code.
+
+
+
+
+## `index.html`: `<html>`, `<head/>`, `<title/>`, `<meta name="description"/>`, ...
+## Performance: `doNotRenderInBrowser` & `renderHtmlAtBuildTime`
+
+## Page Config `*.page.js`
+## Global Config `ssr-coin.config.js`
+## `ssr-coin` API
+
+## Providers for Redux / React Router / GraphQL Apollo / Relay / ...
+
+By controlling the rendering of your `<App/>` you can add any providers for Redux, GraphQL, etc.
+
+See <a href=#app-rendering>`<App>` Rendering</a> for how to take over control of the rendering of your pages.
+
+Example of adding the React Router providers:
 at [/examples/react-router](/examples/react-router)
 
 ## Transpalition & Babel Config & Languages: TypeScript / Coffeescript / ES6 / ...
