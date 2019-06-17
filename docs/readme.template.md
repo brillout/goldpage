@@ -6,14 +6,14 @@
 !VAR WHAT What is `ssr-coin`
 !VAR WHY Why `ssr-coin`
 
-!VAR START Getting Started
+!VAR GETTING_STARTED Getting Started
 
 !VAR CSS_AND_ASSETS CSS & Static Assets
-!VAR ASYNC_DATA Async Data: `getInitialProps`
+!VAR ASYNC_DATA Async Data & `getInitialProps`
 !VAR CONTROL_RENDERING `<App>` Rendering
-!VAR SERVER_SIDE Server-side Autoreload & Server-side Transpalition
+!VAR SERVER_SIDE Server-Side Autoreload & Server-Side Transpalition
 !VAR CONTROL_HTML `index.html`: `<html>`, `<head/>`, `<title/>`, `<meta name="description"/>`, ...
-!VAR PERFORMANCE_TUNING Performance Tuning: `doNotRenderInBrowser` & `renderHtmlAtBuildTime`
+!VAR PERFORMANCE_TUNING Performance: `doNotRenderInBrowser` & `renderHtmlAtBuildTime`
 
 !VAR PAGE_CONFIG Page Config `*.page.js`
 !VAR GLOBAL_CONFIG Global Config `ssr-coin.config.js`
@@ -31,7 +31,7 @@
 !INLINE li-1 !VAR|LINK WHAT
 !INLINE li-1 !VAR|LINK WHY
 !INLINE li-1 Usage
-!INLINE li-2 !VAR|LINK START
+!INLINE li-2 !VAR|LINK GETTING_STARTED
 !INLINE li-2-header Basics
 !INLINE li-2 !VAR|LINK CSS_AND_ASSETS
 !INLINE li-2 !VAR|LINK ASYNC_DATA
@@ -188,40 +188,17 @@ This allows you to build all kinds of apps:
 - [Flexibility] Controlable CLI
 - [Flexibility] Controlable Transpalition
 - [Performance] Page based code spliting
+- [Performance] Optional HTML/DOM rendering
 - [Performance] Optimal HTTP caching
-- [Performance] [DOM-static pages]()
-- [Performance] [HTML-static pages]()
 
 
 
 
-## !VAR START
+## !VAR GETTING_STARTED
 
-
-------
-The `github:brillout/ssr-coin-starter` starter 
-
-1. Clone the starter repo.
-  ~~~shell
-  git clone git@github.com:brillout/ssr-coin-starter
-  ~~~
-
-2. Install dependencies.
-  ~~~shell
-  cd ssr-coin-starter && npm install
-  ~~~
-
-3. Start the dev server.
-  ~~~shell
-  npm run dev
-  ~~~
-
-In the `ssr-coin-starter/package.json` you can see the used plugins. Try to change the 
-
-If you want to add SSR to your existing app then read the next section.
-------
-
-
+This Getting Started is about adding `ssr-coin` to an exisiting app.
+If you want to create a new app and start from scratch,
+then use a Reframe starter instead.
 
 0. Install.
 
@@ -351,29 +328,15 @@ If you want to add SSR to your existing app then read the next section.
    ~~~json
    {
      "scripts": {
-       "dev": "ssr-coin dev",
+       "dev": "ssr-coin dev ./path/to/your/server.js",
        "prod": "npm run build && npm run start",
-       "build": "export NODE_ENV='production' && ssr-coin build",
+       "build": "ssr-coin build ./path/to/your/server.js",
        "start": "export NODE_ENV='production' && node ./.build/nodejs/server"
      }
    }
    ~~~
 
-That's it.
-You can now run `npm run dev` / `yarn dev` and go to your newly created page `/ssr-test`.
-
-Note that you have to use `ssr-coin`'s bundling step.
-You can however take control over the building step.
-More infos at [Config - Build]().
-
-Beyond the zero-config setup you can also:
-- Enable **server-side auto-reload** by letting `ssr-coin` build your server code.
-(Browser-side auto-reload is already enabled in zero-config setup)
-- **Transpile server code** by letting `ssr-coin` build your server code
-- **Add Redux, GraphQL or other container** by taking control over how your pages are rendered
-- **Improve browser-load performance** for your non-interactive pages by setting `doNoRenderInBrowser: true`.
-
-
+You can now run `npm run dev` (/ `yarn dev`) and go to your newly created page `/ssr-test`.
 
 ## !VAR CSS_AND_ASSETS
 ## !VAR ASYNC_DATA
