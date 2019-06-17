@@ -17,8 +17,11 @@
     "examples/react-router",
     "examples/typescript",
     "examples/with-config",
+    "examples/async-data",
     "examples/static-assets",
+
     "ssr-coin/",
+
     "plugins/core",
     "plugins/browser",
     "plugins/server",
@@ -32,6 +35,7 @@
     "plugins/render-react",
     "plugins/webpack-react",
     "plugins/webpack",
+
     "helpers/webpack-ssr",
     "helpers/webpack-config-mod",
     "helpers/autoload",

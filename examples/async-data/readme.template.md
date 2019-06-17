@@ -10,7 +10,7 @@ We define two pages that load data:
 ### GameOfThronesPage - Using `async getInitialProps()`
 
 ~~~js
-!INLINE ./pages/html.page.js
+!INLINE ./pages/got/html.page.js
 ~~~
 
 Because `aysnc getInitialProps()` is called and waited for prior to rendering the HTML, our page's HTML `view-source:http://localhost:3000/game-of-thrones` displays the data already.
@@ -51,7 +51,7 @@ Note that because the HTML already contains the data, we can set `doNotRenderInB
 ### GameOfThronesPage2 - Using stateful component
 
 ~~~js
-!INLINE ./GameOfThronesPage2.config.js
+!INLINE ./pages/got/dom.page.js
 ~~~
 
 When using such stateful component,

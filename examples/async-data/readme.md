@@ -7,7 +7,7 @@
 
     WARNING, READ THIS.
     This is a computed file. Do not edit.
-    Edit `/examples/basics/pages/got/readme.template.md` instead.
+    Edit `/examples/async-data/readme.template.md` instead.
 
 
 
@@ -22,7 +22,7 @@
 
     WARNING, READ THIS.
     This is a computed file. Do not edit.
-    Edit `/examples/basics/pages/got/readme.template.md` instead.
+    Edit `/examples/async-data/readme.template.md` instead.
 
 
 
@@ -37,7 +37,7 @@
 
     WARNING, READ THIS.
     This is a computed file. Do not edit.
-    Edit `/examples/basics/pages/got/readme.template.md` instead.
+    Edit `/examples/async-data/readme.template.md` instead.
 
 
 
@@ -52,7 +52,7 @@
 
     WARNING, READ THIS.
     This is a computed file. Do not edit.
-    Edit `/examples/basics/pages/got/readme.template.md` instead.
+    Edit `/examples/async-data/readme.template.md` instead.
 
 
 
@@ -67,7 +67,7 @@
 
     WARNING, READ THIS.
     This is a computed file. Do not edit.
-    Edit `/examples/basics/pages/got/readme.template.md` instead.
+    Edit `/examples/async-data/readme.template.md` instead.
 
 
 
@@ -76,37 +76,35 @@
 
 -->
 
-# Pages Loading Data
+This example exhibits how to load and render data.
 
 We define two pages that load data:
- - GameOfThronesPage - Loads data by adding `async getInitialProps()` to its page config.
- - GameOfThronesPage2 - Loads data by using a stateful component.
-
-
+ - `html.page.js` - Loads data by using `async getInitialProps()`.
+ - `dom.page.js` - Loads data by using a stateful component.
 
 
 ### GameOfThronesPage - Using `async getInitialProps()`
 
 ~~~js
-// /examples/basics/pages/got/GameOfThronesPage.config.js
+// ./pages/got/html.page.js
 
 import React from 'react';
 import getCharacters from './data/getCharacters';
 import CharacterList from './views/CharacterList';
 
 export default {
-    route: '/game-of-thrones',
+  // Everything returned in `getInitialProps()` is passed to the props of the `view` component
+  getInitialProps: async () => {
+    const characters = await getCharacters();
+    return {characters};
+  },
 
-    // Everything returned in `getInitialProps()` is passed to the props of the view
-    getInitialProps: async () => {
-        const characters = await getCharacters();
-        return {characters};
-    },
+  // Our data is available at `props.characters`
+  view: props => <CharacterList characters={props.characters}/>,
 
-    // Our data is available at `props.characters`
-    view: props => <CharacterList characters={props.characters}/>,
+  doNotRenderInBrowser: true,
 
-    doNotRenderInBrowser: true,
+  route: '/html',
 };
 ~~~
 
@@ -148,28 +146,28 @@ Note that because the HTML already contains the data, we can set `doNotRenderInB
 ### GameOfThronesPage2 - Using stateful component
 
 ~~~js
-// /examples/basics/pages/got/GameOfThronesPage2.config.js
+// ./pages/got/dom.page.js
 
 import React from 'react';
 import getCharacters from './data/getCharacters';
 import CharacterList from './views/CharacterList';
 
 class Characters extends React.Component {
-    render() {
-        if( ! this.state || this.state.characters===undefined ) {
-            return <div>Loading...</div>;
-        }
-        return <CharacterList characters={this.state.characters}/>;
+  render() {
+    if( ! this.state || this.state.characters===undefined ) {
+      return <div>Loading...</div>;
     }
-    async componentDidMount() {
-        const characters = await getCharacters();
-        this.setState({characters});
-    }
+    return <CharacterList characters={this.state.characters}/>;
+  }
+  async componentDidMount() {
+    const characters = await getCharacters();
+    this.setState({characters});
+  }
 }
 
 export default {
-    route: '/game-of-thrones-2',
-    view: Characters,
+  view: Characters,
+  route: '/dom',
 };
 ~~~
 
@@ -206,7 +204,7 @@ And the HTML returned by the server is:
 
     WARNING, READ THIS.
     This is a computed file. Do not edit.
-    Edit `/examples/basics/pages/got/readme.template.md` instead.
+    Edit `/examples/async-data/readme.template.md` instead.
 
 
 
@@ -221,7 +219,7 @@ And the HTML returned by the server is:
 
     WARNING, READ THIS.
     This is a computed file. Do not edit.
-    Edit `/examples/basics/pages/got/readme.template.md` instead.
+    Edit `/examples/async-data/readme.template.md` instead.
 
 
 
@@ -236,7 +234,7 @@ And the HTML returned by the server is:
 
     WARNING, READ THIS.
     This is a computed file. Do not edit.
-    Edit `/examples/basics/pages/got/readme.template.md` instead.
+    Edit `/examples/async-data/readme.template.md` instead.
 
 
 
@@ -251,7 +249,7 @@ And the HTML returned by the server is:
 
     WARNING, READ THIS.
     This is a computed file. Do not edit.
-    Edit `/examples/basics/pages/got/readme.template.md` instead.
+    Edit `/examples/async-data/readme.template.md` instead.
 
 
 
@@ -266,7 +264,7 @@ And the HTML returned by the server is:
 
     WARNING, READ THIS.
     This is a computed file. Do not edit.
-    Edit `/examples/basics/pages/got/readme.template.md` instead.
+    Edit `/examples/async-data/readme.template.md` instead.
 
 
 

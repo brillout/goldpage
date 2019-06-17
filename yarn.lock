@@ -782,6 +782,14 @@
     ora "3.0.0"
     reassert "^1.1.12"
 
+"@brillout/fetch@^0.1.2":
+  version "0.1.2"
+  resolved "https://registry.yarnpkg.com/@brillout/fetch/-/fetch-0.1.2.tgz#71bccf9476a04fa58ae9721683a9849fcddd385b"
+  integrity sha512-epUz64Rqv/0vL5y2LEF0Mv3/MR4OtaAXwWdTYb4W5RfYh5FT5E5iUHuW5WRMWuL+nZX9RNcGTFwtK1wXbMUveA==
+  dependencies:
+    node-fetch "^1.7.3"
+    reassert "^1.1.16"
+
 "@brillout/find-package-files@^0.1.0", "@brillout/find-package-files@^0.1.1":
   version "0.1.1"
   resolved "https://registry.yarnpkg.com/@brillout/find-package-files/-/find-package-files-0.1.1.tgz#ee4e971af549b7bd4ab248c88c6b042b37aa4487"
@@ -3706,7 +3714,7 @@ nigel@3.x.x:
     hoek "6.x.x"
     vise "3.x.x"
 
-node-fetch@^1.0.1:
+node-fetch@^1.0.1, node-fetch@^1.7.3:
   version "1.7.3"
   resolved "https://registry.yarnpkg.com/node-fetch/-/node-fetch-1.7.3.tgz#980f6f72d85211a5347c6b2bc18c5b84c3eb47ef"
   integrity sha512-NhZ4CsKx7cYm2vSrBAr2PvFOe6sWDf0UYLRqA6svUYg7+/TSfVAu49jYC4BvQ4Sms9SZgdqGBgroqfDhJdTyKQ==

@@ -112,8 +112,7 @@ export {Glitter};
 ~~~
 
 ~~~css
-// ./pages/glitter/style.css
-
+/* ./pages/glitter/style.css */
 body {
     background-color: pink;
     font-family: 'Tangerine';

@@ -451,6 +451,39 @@ Example of a page that uses all kinds of static assets:
 
 
 ## Async Data & `getInitialProps`
+
+You can load and render data by adding a `getInitialProps` function to your page config:
+
+~~~js
+// ../examples/async-data/pages/got/html.page.js
+
+import React from 'react';
+import getCharacters from './data/getCharacters';
+import CharacterList from './views/CharacterList';
+
+export default {
+  // Everything returned in `getInitialProps()` is passed to the props of the `view` component
+  getInitialProps: async () => {
+    const characters = await getCharacters();
+    return {characters};
+  },
+
+  // Our data is available at `props.characters`
+  view: props => <CharacterList characters={props.characters}/>,
+
+  doNotRenderInBrowser: true,
+
+  route: '/html',
+};
+~~~
+
+Alternatively, you can fetch data in a stateful component.
+But then your data is rendered only to the DOM (and not to HTML).
+
+We further explain the difference between both at:
+ - [/examples/async-data/](/examples/async-data/)
+
+
 ## `<App>` Rendering
 
 ## Server-Side Autoreload & Server-Side Transpalition
