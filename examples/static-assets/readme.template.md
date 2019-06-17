@@ -9,5 +9,6 @@ Some excerpts:
 ~~~
 
 ~~~css
-!INLINE ./pages/glitter/style.css
+/* ./pages/glitter/style.css */
+!INLINE ./pages/glitter/style.css --hide-source-path
 ~~~

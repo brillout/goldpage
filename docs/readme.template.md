@@ -371,6 +371,20 @@ Example of a page that uses all kinds of static assets:
 
 
 ## !VAR ASYNC_DATA
+
+You can load and render data by adding a `getInitialProps` function to your page config:
+
+~~~js
+!INLINE ../examples/async-data/pages/got/html.page.js
+~~~
+
+Alternatively, you can fetch data in a stateful component.
+But then your data is rendered only to the DOM (and not to HTML).
+
+We further explain the difference between both at:
+ - [/examples/async-data/](/examples/async-data/)
+
+
 ## !VAR CONTROL_RENDERING
 
 ## !VAR SERVER_SIDE
