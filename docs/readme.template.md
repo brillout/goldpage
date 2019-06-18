@@ -15,10 +15,6 @@
 !VAR CONTROL_HTML HTML Meta Tags: `index.html`, `<title/>`, `<meta/>`, `<link/>`, ...
 !VAR PERFORMANCE_TUNING Performance: `doNotRenderInBrowser` & `renderHtmlAtBuildTime`
 
-!VAR PAGE_CONFIG Page Config `*.page.js`
-!VAR GLOBAL_CONFIG Global Config `ssr-coin.config.js`
-!VAR SSR_COIN_CONFIG `ssr-coin` API
-
 !VAR PROVIDERS Providers for Redux / React Router / GraphQL Apollo / Relay / ...
 !VAR LANGUAGES Transpalition & Babel Config & Languages: TypeScript / Coffeescript / ES6 / ...
 !VAR CSS_PRE_PROCESSORS CSS pre-processors: PostCSS / Sass / Less / ...
@@ -42,10 +38,6 @@
 !INLINE li-2 !VAR|LINK CONTROL_HTML
 !INLINE li-2 !VAR|LINK SERVER_SIDE
 !INLINE li-2 !VAR|LINK PERFORMANCE_TUNING
-!INLINE li-2-header API
-!INLINE li-2 !VAR|LINK PAGE_CONFIG
-!INLINE li-2 !VAR|LINK GLOBAL_CONFIG
-!INLINE li-2 !VAR|LINK SSR_COIN_CONFIG
 !INLINE li-2-header Recipes
 !INLINE li-2 !VAR|LINK PROVIDERS
 !INLINE li-2 !VAR|LINK LANGUAGES
@@ -464,10 +456,6 @@ Example:
 
 
 ## !VAR PERFORMANCE_TUNING
-
-## !VAR PAGE_CONFIG
-## !VAR GLOBAL_CONFIG
-## !VAR SSR_COIN_CONFIG
 
 ## !VAR PROVIDERS
 
