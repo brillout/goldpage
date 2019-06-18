@@ -375,7 +375,7 @@ Example of a page that uses all kinds of static assets:
 You can load and render data by adding a `getInitialProps` function to your page config:
 
 ~~~js
-!INLINE ../examples/async-data/pages/got/html.page.js
+!INLINE /examples/async-data/pages/got/html.page.js
 ~~~
 
 Alternatively, you can fetch data in a stateful component.
@@ -449,15 +449,15 @@ Note that `ssr-coin` always transpiles and auto-reloads your views and browser c
 
 To set HTML meta tags for all pages, create a `index.html` file:
 ~~~html
-!INLINE ../examples/html-meta-tags/index.html
+!INLINE /examples/html-meta-tags/index.html
 ~~~
 
 To set HTML meta tags for one page only, use the page's config:
 ~~~js
-!INLINE ../examples/html-meta-tags/pages/landing.page.js
+!INLINE /examples/html-meta-tags/pages/landing.page.js
 ~~~
 ~~~js
-!INLINE ../examples/html-meta-tags/pages/about.page.js
+!INLINE /examples/html-meta-tags/pages/about.page.js
 ~~~
 
 See [`@brillout/index-html`'s documentation](https://github.com/brillout/index-html) for the list of all options.

@@ -108,7 +108,7 @@ Basics
 <br/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a href=#css--static-assets>CSS & Static Assets</a>
 <br/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a href=#async-data--getinitialprops>Async Data & `getInitialProps`</a>
 <br/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a href=#app-rendering>`<App>` Rendering</a>
-<br/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a href=#indexhtml-html-head-title-meta-namedescription->`index.html`: `<html>`, `<head/>`, `<title/>`, `<meta name="description"/>`, ...</a>
+<br/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a href=#html-meta-tags-indexhtml-title-meta-link->HTML Meta Tags: `index.html`, `<title/>`, `<meta/>`, `<link/>`, ...</a>
 <br/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a href=#server-side-autoreload--server-side-transpalition>Server-Side Autoreload & Server-Side Transpalition</a>
 <br/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a href=#performance-donotrenderinbrowser--renderhtmlatbuildtime>Performance: `doNotRenderInBrowser` & `renderHtmlAtBuildTime`</a>
 <sub>
@@ -128,7 +128,7 @@ Recipes
 <br/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a href=#transpalition--babel-config--languages-typescript--coffeescript--es6-->Transpalition & Babel Config & Languages: TypeScript / Coffeescript / ES6 / ...</a>
 <br/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a href=#css-pre-processors-postcss--sass--less-->CSS pre-processors: PostCSS / Sass / Less / ...</a>
 <br/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a href=#staticrouting--dynamic-routing--react-router>StaticRouting & Dynamic Routing & React Router</a>
-<br/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a href=#frontend-libraries-jquery--bootstrap--semantic-ui-->Frontend Libraries: jQuery / Bootstrap / Semantic UI / ...</a>
+<br/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a href=#frontend-libraries-google-analytics-snippet--jquery--bootstrap--semantic-ui-->Frontend Libraries: Google Analytics Snippet / jQuery / Bootstrap / Semantic UI / ...</a>
 <br/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a href=#server-frameworks-express--koa--hapi--fastify-->Server Frameworks: Express / Koa / Hapi / Fastify / ...</a>
 <br/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a href=#cli-scripts-dev-server--build--server-start>CLI scripts: Dev Server & Build & Server Start</a>
 <br/> &nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a href=#plugins>Plugins</a>
@@ -455,7 +455,7 @@ Example of a page that uses all kinds of static assets:
 You can load and render data by adding a `getInitialProps` function to your page config:
 
 ~~~js
-// ../examples/async-data/pages/got/html.page.js
+// /examples/async-data/pages/got/html.page.js
 
 import React from 'react';
 import getCharacters from './data/getCharacters';
@@ -594,7 +594,87 @@ Note that `ssr-coin` always transpiles and auto-reloads your views and browser c
 
 
 
-## `index.html`: `<html>`, `<head/>`, `<title/>`, `<meta name="description"/>`, ...
+## HTML Meta Tags: `index.html`, `<title/>`, `<meta/>`, `<link/>`, ...
+
+To set HTML meta tags for all pages, create a `index.html` file:
+~~~html
+// /examples/html-meta-tags/index.html
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="manifest" href="/manifest.json">
+    !HEAD
+  </head>
+  <body>
+    !BODY
+    <script src="https://example.org/some-lib.js" type="text/javascript"></script>
+  </body>
+</html>
+~~~
+
+To set HTML meta tags for one page only, use the page's config:
+~~~js
+// /examples/html-meta-tags/pages/landing.page.js
+
+import React from 'react';
+
+export default {
+  // Adds <title>Welcome</title>
+  title: 'Welcome',
+
+  // Adds <meta name="description" content="A welcome page."/>
+  description: 'A welcome page.',
+
+  // Adds <script src="https://example.org/awesome-lib.js" type="text/javascript"></script>
+  scripts: [
+    'https://example.org/awesome-lib.js',
+  ],
+
+  // Adds <link href="https://example.org/awesome-lib.css" rel="stylesheet"/>
+  styles: [
+    'https://example.org/awesome-lib.css',
+  ],
+
+  // ssr-coin uses the package @brillout/index-html (https://github.com/brillout/index-html) to generate HTML.
+  // All @brillout/index-html's options are avaible over the page config
+
+  route: '/',
+  view: () => <h1>Welcome</h1>,
+};
+~~~
+~~~js
+// /examples/html-meta-tags/pages/about.page.js
+
+import React from 'react';
+
+export default {
+  // `indexHtml` allows you to override the `index.html` file for a specific page:
+  indexHtml: (
+`<!DOCTYPE html>
+<html>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <head>
+    !HEAD
+  </head>
+  <body>
+    !BODY
+  </body>
+</html>
+`
+  ),
+
+  route: '/about',
+  view: () => <h1>About Page</h1>,
+};
+~~~
+
+See [`@brillout/index-html`'s documentation](https://github.com/brillout/index-html) for the list of all options.
+
+Example:
+ - [/examples/html-meta-tags](/examples/html-meta-tags)
+
+
 ## Performance: `doNotRenderInBrowser` & `renderHtmlAtBuildTime`
 
 ## Page Config `*.page.js`
@@ -629,57 +709,53 @@ There will then be no need for transpalition plugins anymore (since parcel is ze
 
 
 ## StaticRouting & Dynamic Routing & React Router
-## Frontend Libraries: jQuery / Bootstrap / Semantic UI / ...
+## Frontend Libraries: Google Analytics Snippet / jQuery / Bootstrap / Semantic UI / ...
+
+To load a frontend library hosted on a cdn, add `<script>` and `<style>` tags to your HTML, see <a href=#html-meta-tags-indexhtml-title-meta-link->HTML Meta Tags: `index.html`, `<title/>`, `<meta/>`, `<link/>`, ...</a>.
+
+To load a frontend library that is saved on your disk, use a file that is loaded by all your pages:
+
+~~~js
+// /examples/frontend-libraries/pages/commons.js
+
+if( isBrowser() ){
+  require('../frontend/normalize.css');
+  require('../frontend/style.css');
+  require('../frontend/google-analytics.js');
+}
+
+function isBrowser() {
+  return typeof window !== "undefined";
+}
+~~~
+~~~js
+// /examples/frontend-libraries/pages/landing.page.js
+
+require('./commons.js');
+
+import React from 'react';
+
+export default {
+  route: '/',
+  view: () => <h1>Landing Page</h1>,
+};
+~~~
+~~~js
+// /examples/frontend-libraries/pages/about.page.js
+
+require('./commons.js');
+
+import React from 'react';
+
+export default {
+  route: '/about',
+  view: () => <h1>About Page</h1>,
+};
+~~~
+
 ## Server Frameworks: Express / Koa / Hapi / Fastify / ...
 ## CLI scripts: Dev Server & Build & Server Start
 ## Plugins
-
-padding
-
-padding
-
-padding
-
-padding
-
-padding
-
-padding
-
-padding
-
-padding
-
-padding
-
-padding
-
-padding
-
-padding
-
-padding
-
-padding
-
-padding
-
-padding
-
-padding
-
-padding
-
-padding
-
-padding
-
-padding
-
-padding
-
-padding
-
 
 <!---
 
