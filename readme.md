@@ -95,7 +95,6 @@ Add SSR to your app.
 
 
 
-
 <br/> &nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a href=#what-is-ssr-coin>What is `ssr-coin`</a>
 <br/> &nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a href=#why-ssr-coin>Why `ssr-coin`</a>
 <br/> &nbsp;&nbsp;&nbsp;&#8226;&nbsp; Usage
@@ -114,14 +113,6 @@ Basics
 <sub>
 <br/>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-API
-</sub>
-<br/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a href=#page-config-pagejs>Page Config `*.page.js`</a>
-<br/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a href=#global-config-ssr-coinconfigjs>Global Config `ssr-coin.config.js`</a>
-<br/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a href=#ssr-coin-api>`ssr-coin` API</a>
-<sub>
-<br/>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 Recipes
 </sub>
 <br/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a href=#providers-for-redux--react-router--graphql-apollo--relay-->Providers for Redux / React Router / GraphQL Apollo / Relay / ...</a>
@@ -130,7 +121,8 @@ Recipes
 <br/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a href=#static-routing--dynamic-routing--react-router>Static Routing & Dynamic Routing & React Router</a>
 <br/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a href=#frontend-libraries-google-analytics-snippet--jquery--bootstrap--semantic-ui-->Frontend Libraries: Google Analytics Snippet / jQuery / Bootstrap / Semantic UI / ...</a>
 <br/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a href=#server-frameworks-express--koa--hapi--fastify-->Server Frameworks: Express / Koa / Hapi / Fastify / ...</a>
-<br/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a href=#cli-scripts-dev-server--build--server-start>CLI scripts: Dev Server & Build & Server Start</a>
+<br/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a href=#process-managers-docker-systemd-pm2->Process managers: Docker, systemd, PM2, ...</a>
+<br/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a href=#cli-scripts-dev-server--build>CLI scripts: Dev Server & Build</a>
 <br/> &nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a href=#plugins>Plugins</a>
 
 <br/>
@@ -183,19 +175,20 @@ function Counter() {
 
 ## Why `ssr-coin`
 
-`ssr-coin` is about making SSR as easy as possible yet flexible.
+`ssr-coin` is about making SSR easy and flexible.
 
 
 ###### Easy
 
 All you need to get started is:
- - Install `ssr-coin` and `ssr-coin` plugins
- - Add the `ssr-coin` middleware to your server
- - Define your pages
+ - Install `ssr-coin`, a server plugin and a render plugin.
+ - Add the `ssr-coin` middleware to your server.
+ - Add the `ssr-coin` scripts to your `package.json`
+ - Define your pages.
 
 That's it.
 
-For example, for a React & Express stack:
+For example, all you need for a React & Express stack is:
 
 ~~~json
 {
@@ -203,11 +196,19 @@ For example, for a React & Express stack:
     "@ssr-coin/react": "~0.3.2",
     "@ssr-coin/express": "~0.3.2",
     "ssr-coin": "~0.3.2"
+  },
+  "scripts": {
+    "dev": "ssr-coin dev ./path/to/your/server.js",
+    "prod": "npm run build && npm run start",
+    "build": "ssr-coin build ./path/to/your/server.js",
+    "start": "export NODE_ENV='production' && node ./.build/nodejs/server"
   }
 }
 ~~~
 
 ~~~js
+// server.js
+
 const express = require('express');
 const ssr = require('ssr-coin');
 
@@ -235,6 +236,8 @@ export default {
 };
 ~~~
 
+You can now run `npm run dev` (/ `yarn dev`) then go to `/hello/jon` and see your first SSR page.
+
 
 ###### Freedom
 
@@ -248,28 +251,10 @@ the rest of your stack is entirely up to you and you can use:
 - Any process manager: **Docker**, **systemd**, **PM2**, etc.
 - etc.
 
-You can configure when a page is rendered:
-- You can configure your page's HTML to be rendered at build-time or at request-time.
-- You can configure whether your page is rendered to the DOM or not (aka hydration).
-
-This allows you to build all kinds of apps:
-- Frontend-only app (aka **static website**).
-- Backend-only app (aka **old-school** app with **plain old HTML**).
-- Frontend + backend app (aka full-stack **SSR** app).
-- Hybrid app (where some pages are static and some dynamic).
-
 
 ###### Batteries included
 
-- [DX] Zero-config / Minimal-config
-- [DX] Browser-side autoreload
-- [DX] Server-side autoreload
-- [Flexibility] Controlable Rendering
-- [Flexibility] Controlable CLI
-- [Flexibility] Controlable Transpalition
-- [Performance] Page based code spliting
-- [Performance] Optional HTML/DOM rendering
-- [Performance] Optimal HTTP caching
+`ssr-coin` comes with nifty features out of the box, such as browser autoreload, server autoreload, page based code splitting and HTTP caching.
 
 
 
@@ -677,10 +662,6 @@ Example:
 
 ## Performance: `doNotRenderInBrowser` & `renderHtmlAtBuildTime`
 
-## Page Config `*.page.js`
-## Global Config `ssr-coin.config.js`
-## `ssr-coin` API
-
 ## Providers for Redux / React Router / GraphQL Apollo / Relay / ...
 
 By controlling the rendering of your `<App/>` you can add any providers for Redux, GraphQL, etc.
@@ -764,8 +745,36 @@ To use `ssr-coin` with another server framework, open a GitHub issue.
 `ssr-coin` can be used with any server framework
 but there is no documentation for this (yet).
 
+## Process managers: Docker, systemd, PM2, ...
 
-## CLI scripts: Dev Server & Build & Server Start
+In production, you can start your server with any process manager.
+
+For example with `pm2`:
+
+~~~bash
+# if you transpile your server code (you run `ssr-coin build ./path/to/your/server.js`)
+pm2 start ./.build/nodejs/server
+~~~
+~~~bash
+# if you don't transpile your server code (you run `ssr-coin build`)
+pm2 start ./path/to/your/server.js
+~~~
+
+
+## CLI scripts: Dev Server & Build
+
+Instead of using the `ssr-coin` CLI,
+you can use the `ssr-coin` API.
+This allows you to gain control over the dev server and the build step.
+
+You can for example write your own dev server:
+
+Or have a custom build step:
+
+~~~js
+~~~
+
+
 ## Plugins
 
 ###### Server plugins
