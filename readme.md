@@ -127,7 +127,7 @@ Recipes
 <br/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a href=#providers-for-redux--react-router--graphql-apollo--relay-->Providers for Redux / React Router / GraphQL Apollo / Relay / ...</a>
 <br/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a href=#transpalition--babel-config--languages-typescript--coffeescript--es6-->Transpalition & Babel Config & Languages: TypeScript / Coffeescript / ES6 / ...</a>
 <br/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a href=#css-pre-processors-postcss--sass--less-->CSS pre-processors: PostCSS / Sass / Less / ...</a>
-<br/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a href=#staticrouting--dynamic-routing--react-router>StaticRouting & Dynamic Routing & React Router</a>
+<br/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a href=#static-routing--dynamic-routing--react-router>Static Routing & Dynamic Routing & React Router</a>
 <br/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a href=#frontend-libraries-google-analytics-snippet--jquery--bootstrap--semantic-ui-->Frontend Libraries: Google Analytics Snippet / jQuery / Bootstrap / Semantic UI / ...</a>
 <br/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a href=#server-frameworks-express--koa--hapi--fastify-->Server Frameworks: Express / Koa / Hapi / Fastify / ...</a>
 <br/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a href=#cli-scripts-dev-server--build--server-start>CLI scripts: Dev Server & Build & Server Start</a>
@@ -286,12 +286,12 @@ then use a Reframe starter instead.
    npm install ssr-coin
    ~~~
 
-   Install a [render plugin]() such as `@ssr-coin/vue` or `@ssr-coin/react`.
+   Install a [render plugin](#render-plugins) such as `@ssr-coin/vue` or `@ssr-coin/react`.
    ~~~shell
    npm install @ssr-coin/react
    ~~~
 
-   Install a [server plugin]() such as `@ssr-coin/hapi` or `@ssr/express`.
+   Install a [server plugin](#server-plugins) such as `@ssr-coin/hapi` or `@ssr/express`.
    ~~~shell
    npm install @ssr-coin/express
    ~~~
@@ -708,17 +708,20 @@ There will then be no need for transpalition plugins anymore (since parcel is ze
 
 
 
-## StaticRouting & Dynamic Routing & React Router
+## Static Routing & Dynamic Routing & React Router
 ## Frontend Libraries: Google Analytics Snippet / jQuery / Bootstrap / Semantic UI / ...
 
 To load a frontend library hosted on a cdn, add `<script>` and `<style>` tags to your HTML, see <a href=#html-meta-tags-indexhtml-title-meta-link->HTML Meta Tags: `index.html`, `<title/>`, `<meta/>`, `<link/>`, ...</a>.
 
-To load a frontend library that is saved on your disk, use a file that is loaded by all your pages:
+To load a frontend library saved on your disk, use a file that is loaded by all your pages:
 
 ~~~js
 // /examples/frontend-libraries/pages/commons.js
 
-if( isBrowser() ){
+if(
+  // Do not load the frontend libraries on the server
+  isBrowser()
+){
   require('../frontend/normalize.css');
   require('../frontend/style.css');
   require('../frontend/google-analytics.js');
@@ -754,8 +757,20 @@ export default {
 ~~~
 
 ## Server Frameworks: Express / Koa / Hapi / Fastify / ...
+
+To use `ssr-coin` with `express`, `koa` or `hapi`, use the corresponding [server plugin](#server-plugins).
+
+To use `ssr-coin` with another server framework, open a GitHub issue.
+`ssr-coin` can be used with any server framework
+but there is no documentation for this (yet).
+
+
 ## CLI scripts: Dev Server & Build & Server Start
 ## Plugins
+
+###### Server plugins
+
+###### Render plugins
 
 <!---
 

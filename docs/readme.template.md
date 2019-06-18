@@ -22,11 +22,14 @@
 !VAR PROVIDERS Providers for Redux / React Router / GraphQL Apollo / Relay / ...
 !VAR LANGUAGES Transpalition & Babel Config & Languages: TypeScript / Coffeescript / ES6 / ...
 !VAR CSS_PRE_PROCESSORS CSS pre-processors: PostCSS / Sass / Less / ...
-!VAR ROUTING StaticRouting & Dynamic Routing & React Router
+!VAR ROUTING Static Routing & Dynamic Routing & React Router
 !VAR FRONTEND_LIBRARIRES Frontend Libraries: Google Analytics Snippet / jQuery / Bootstrap / Semantic UI / ...
 !VAR SERVER_FRAMEWORKS Server Frameworks: Express / Koa / Hapi / Fastify / ...
-!VAR CONTROL_CLI CLI scripts: Dev Server & Build & Server Start
+!VAR PROCESS_MANAGERS Process managers: Docker, systemd, PM2, ...
+!VAR CONTROL_CLI CLI scripts: Dev Server & Build
 !VAR PLUGINS Plugins
+!VAR PLUGINS_SERVER Server plugins
+!VAR PLUGINS_RENDER Render plugins
 
 !INLINE li-1 !VAR|LINK WHAT
 !INLINE li-1 !VAR|LINK WHY
@@ -50,6 +53,7 @@
 !INLINE li-2 !VAR|LINK ROUTING
 !INLINE li-2 !VAR|LINK FRONTEND_LIBRARIRES
 !INLINE li-2 !VAR|LINK SERVER_FRAMEWORKS
+!INLINE li-2 !VAR|LINK PROCESS_MANAGERS
 !INLINE li-2 !VAR|LINK CONTROL_CLI
 !INLINE li-1 !VAR|LINK PLUGINS
 
@@ -103,19 +107,20 @@ function Counter() {
 
 ## !VAR WHY
 
-`ssr-coin` is about making SSR as easy as possible yet flexible.
+`ssr-coin` is about making SSR easy and flexible.
 
 
 ###### Easy
 
 All you need to get started is:
- - Install `ssr-coin` and `ssr-coin` plugins
- - Add the `ssr-coin` middleware to your server
- - Define your pages
+ - Install `ssr-coin`, a server plugin and a render plugin.
+ - Add the `ssr-coin` middleware to your server.
+ - Add the `ssr-coin` scripts to your `package.json`
+ - Define your pages.
 
 That's it.
 
-For example, for a React & Express stack:
+For example, all you need for a React & Express stack is:
 
 ~~~json
 {
@@ -123,11 +128,19 @@ For example, for a React & Express stack:
     "@ssr-coin/react": "~0.3.2",
     "@ssr-coin/express": "~0.3.2",
     "ssr-coin": "~0.3.2"
+  },
+  "scripts": {
+    "dev": "ssr-coin dev ./path/to/your/server.js",
+    "prod": "npm run build && npm run start",
+    "build": "ssr-coin build ./path/to/your/server.js",
+    "start": "export NODE_ENV='production' && node ./.build/nodejs/server"
   }
 }
 ~~~
 
 ~~~js
+// server.js
+
 const express = require('express');
 const ssr = require('ssr-coin');
 
@@ -155,6 +168,8 @@ export default {
 };
 ~~~
 
+You can now run `npm run dev` (/ `yarn dev`) then go to `/hello/jon` and see your first SSR page.
+
 
 ###### Freedom
 
@@ -168,28 +183,10 @@ the rest of your stack is entirely up to you and you can use:
 - Any process manager: **Docker**, **systemd**, **PM2**, etc.
 - etc.
 
-You can configure when a page is rendered:
-- You can configure your page's HTML to be rendered at build-time or at request-time.
-- You can configure whether your page is rendered to the DOM or not (aka hydration).
-
-This allows you to build all kinds of apps:
-- Frontend-only app (aka **static website**).
-- Backend-only app (aka **old-school** app with **plain old HTML**).
-- Frontend + backend app (aka full-stack **SSR** app).
-- Hybrid app (where some pages are static and some dynamic).
-
 
 ###### Batteries included
 
-- [DX] Zero-config / Minimal-config
-- [DX] Browser-side autoreload
-- [DX] Server-side autoreload
-- [Flexibility] Controlable Rendering
-- [Flexibility] Controlable CLI
-- [Flexibility] Controlable Transpalition
-- [Performance] Page based code spliting
-- [Performance] Optional HTML/DOM rendering
-- [Performance] Optimal HTTP caching
+`ssr-coin` comes with nifty features out of the box, such as browser autoreload, server autoreload, page based code splitting and HTTP caching.
 
 
 
@@ -206,12 +203,12 @@ then use a Reframe starter instead.
    npm install ssr-coin
    ~~~
 
-   Install a [render plugin]() such as `@ssr-coin/vue` or `@ssr-coin/react`.
+   Install a [render plugin](!VAR|ANCHOR PLUGINS_RENDER) such as `@ssr-coin/vue` or `@ssr-coin/react`.
    ~~~shell
    npm install @ssr-coin/react
    ~~~
 
-   Install a [server plugin]() such as `@ssr-coin/hapi` or `@ssr/express`.
+   Install a [server plugin](!VAR|ANCHOR PLUGINS_SERVER) such as `@ssr-coin/hapi` or `@ssr/express`.
    ~~~shell
    npm install @ssr-coin/express
    ~~~
@@ -504,7 +501,7 @@ There will then be no need for transpalition plugins anymore (since parcel is ze
 
 To load a frontend library hosted on a cdn, add `<script>` and `<style>` tags to your HTML, see !VAR|LINK CONTROL_HTML.
 
-To load a frontend library that is saved on your disk, use a file that is loaded by all your pages:
+To load a frontend library saved on your disk, use a file that is loaded by all your pages:
 
 ~~~js
 !INLINE /examples/frontend-libraries/pages/commons.js
@@ -517,5 +514,45 @@ To load a frontend library that is saved on your disk, use a file that is loaded
 ~~~
 
 ## !VAR SERVER_FRAMEWORKS
+
+To use `ssr-coin` with `express`, `koa` or `hapi`, use the corresponding [server plugin](!VAR|ANCHOR PLUGINS_SERVER).
+
+To use `ssr-coin` with another server framework, open a GitHub issue.
+`ssr-coin` can be used with any server framework
+but there is no documentation for this (yet).
+
+## !VAR PROCESS_MANAGERS
+
+In production, you can start your server with any process manager.
+
+For example with `pm2`:
+
+~~~bash
+# if you transpile your server code (you run `ssr-coin build ./path/to/your/server.js`)
+pm2 start ./.build/nodejs/server
+~~~
+~~~bash
+# if you don't transpile your server code (you run `ssr-coin build`)
+pm2 start ./path/to/your/server.js
+~~~
+
+
 ## !VAR CONTROL_CLI
+
+Instead of using the `ssr-coin` CLI,
+you can use the `ssr-coin` API.
+This allows you to gain control over the dev server and the build step.
+
+You can for example write your own dev server:
+
+Or have a custom build step:
+
+~~~js
+~~~
+
+
 ## !VAR PLUGINS
+
+###### !VAR PLUGINS_SERVER
+
+###### !VAR PLUGINS_RENDER
