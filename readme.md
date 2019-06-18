@@ -106,24 +106,23 @@ Add SSR to your app.
 Basics
 </sub>
 <br/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a href=#css--static-assets>CSS & Static Assets</a>
-<br/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a href=#async-data--getinitialprops>Async Data & `getInitialProps`</a>
-<br/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a href=#app-rendering>`<App>` Rendering</a>
+<br/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a href=#async-data-getinitialprops>Async Data: `getInitialProps`</a>
+<br/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a href=#rendering>Rendering</a>
 <br/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a href=#html-meta-tags-indexhtml-title-meta-link->HTML Meta Tags: `index.html`, `<title/>`, `<meta/>`, `<link/>`, ...</a>
-<br/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a href=#server-side-autoreload--server-side-transpalition>Server-Side Autoreload & Server-Side Transpalition</a>
+<br/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a href=#server-side-transpalition--autoreload>Server-Side: Transpalition & Autoreload</a>
 <br/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a href=#performance-donotrenderinbrowser--renderhtmlatbuildtime>Performance: `doNotRenderInBrowser` & `renderHtmlAtBuildTime`</a>
 <sub>
 <br/>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 Recipes
 </sub>
-<br/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a href=#providers-for-redux--react-router--graphql-apollo--relay-->Providers for Redux / React Router / GraphQL Apollo / Relay / ...</a>
-<br/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a href=#transpalition--babel-config--languages-typescript--coffeescript--es6-->Transpalition & Babel Config & Languages: TypeScript / Coffeescript / ES6 / ...</a>
+<br/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a href=#providers-redux--react-router--graphql-apollo--relay-->Providers: Redux / React Router / GraphQL Apollo / Relay / ...</a>
+<br/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a href=#transpalition--babel-config-typescript--coffeescript--es6-->Transpalition & Babel Config: TypeScript / Coffeescript / ES6 / ...</a>
 <br/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a href=#css-pre-processors-postcss--sass--less-->CSS pre-processors: PostCSS / Sass / Less / ...</a>
-<br/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a href=#static-routing--dynamic-routing--react-router>Static Routing & Dynamic Routing & React Router</a>
-<br/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a href=#frontend-libraries-google-analytics-snippet--jquery--bootstrap--semantic-ui-->Frontend Libraries: Google Analytics Snippet / jQuery / Bootstrap / Semantic UI / ...</a>
+<br/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a href=#static-routing--dynamic-routing-react-router-->Static Routing & Dynamic Routing: React Router / ...</a>
+<br/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a href=#frontend-libraries-google-analytics--jquery--bootstrap--semantic-ui-->Frontend Libraries: Google Analytics / jQuery / Bootstrap / Semantic UI / ...</a>
 <br/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a href=#server-frameworks-express--koa--hapi--fastify-->Server Frameworks: Express / Koa / Hapi / Fastify / ...</a>
-<br/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a href=#process-managers-docker-systemd-pm2->Process managers: Docker, systemd, PM2, ...</a>
-<br/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a href=#cli-scripts-dev-server--build>CLI scripts: Dev Server & Build</a>
+<br/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a href=#process-managers-docker--systemd--pm2-->Process managers: Docker / systemd / PM2 / ...</a>
 
 <br/>
 
@@ -435,7 +434,7 @@ Example of a page that uses all kinds of static assets:
 
 
 
-## Async Data & `getInitialProps`
+## Async Data: `getInitialProps`
 
 You can load and render data by adding a `getInitialProps` function to your page config:
 
@@ -469,7 +468,7 @@ We further explain the difference between both at:
  - [/examples/async-data/](/examples/async-data/)
 
 
-## `<App>` Rendering
+## Rendering
 
 You can control how your pages are rendered
 by adding `renderToHtml` and `renderToDom` to your `ssr-coin.config.js`:
@@ -541,7 +540,7 @@ module.exports = {
 The example's entire source code is at:
 - [/examples/react-router](/examples/react-router)
 
-## Server-Side Autoreload & Server-Side Transpalition
+## Server-Side: Transpalition & Autoreload
 
 If you specify a path when calling `ssr-coin dev ./path/to/your/server.js` then:
  - `ssr-coin` transpiles your server code. Allowing you, for example, to use TypeScript for your server code.
@@ -662,16 +661,16 @@ Example:
 
 ## Performance: `doNotRenderInBrowser` & `renderHtmlAtBuildTime`
 
-## Providers for Redux / React Router / GraphQL Apollo / Relay / ...
+## Providers: Redux / React Router / GraphQL Apollo / Relay / ...
 
-By controlling the rendering of your `<App/>` you can add any providers for Redux, GraphQL, etc.
+By controlling the rendering of your pages you can add any providers for Redux, GraphQL, etc.
 
-See <a href=#app-rendering>`<App>` Rendering</a> for how to take over control of the rendering of your pages.
+See <a href=#rendering>Rendering</a> for how to take over control of the rendering of your pages.
 
 Example of adding the React Router providers:
 at [/examples/react-router](/examples/react-router)
 
-## Transpalition & Babel Config & Languages: TypeScript / Coffeescript / ES6 / ...
+## Transpalition & Babel Config: TypeScript / Coffeescript / ES6 / ...
 
 Make sure
 
@@ -689,8 +688,8 @@ There will then be no need for transpalition plugins anymore (since parcel is ze
 
 
 
-## Static Routing & Dynamic Routing & React Router
-## Frontend Libraries: Google Analytics Snippet / jQuery / Bootstrap / Semantic UI / ...
+## Static Routing & Dynamic Routing: React Router / ...
+## Frontend Libraries: Google Analytics / jQuery / Bootstrap / Semantic UI / ...
 
 To load a frontend library hosted on a cdn, add `<script>` and `<style>` tags to your HTML, see <a href=#html-meta-tags-indexhtml-title-meta-link->HTML Meta Tags: `index.html`, `<title/>`, `<meta/>`, `<link/>`, ...</a>.
 
@@ -745,7 +744,7 @@ To use `ssr-coin` with another server framework, open a GitHub issue.
 `ssr-coin` can be used with any server framework
 but there is no documentation for this (yet).
 
-## Process managers: Docker, systemd, PM2, ...
+## Process managers: Docker / systemd / PM2 / ...
 
 In production, you can start your server with any process manager.
 
@@ -758,20 +757,6 @@ pm2 start ./.build/nodejs/server
 ~~~bash
 # if you don't transpile your server code (you run `ssr-coin build`)
 pm2 start ./path/to/your/server.js
-~~~
-
-
-## CLI scripts: Dev Server & Build
-
-Instead of using the `ssr-coin` CLI,
-you can use the `ssr-coin` API.
-This allows you to gain control over the dev server and the build step.
-
-You can for example write your own dev server:
-
-Or have a custom build step:
-
-~~~js
 ~~~
 
 

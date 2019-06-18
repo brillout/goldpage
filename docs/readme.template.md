@@ -1,4 +1,3 @@
-!MENU_ORDER 1
 !MENU_LINK /../../
 !OUTPUT ../readme.md
 !INLINE ./snippets/header.md --hide-source-path
@@ -9,20 +8,19 @@
 !VAR GETTING_STARTED Getting Started
 
 !VAR CSS_AND_ASSETS CSS & Static Assets
-!VAR ASYNC_DATA Async Data & `getInitialProps`
-!VAR CONTROL_RENDERING `<App>` Rendering
-!VAR SERVER_SIDE Server-Side Autoreload & Server-Side Transpalition
+!VAR ASYNC_DATA Async Data: `getInitialProps`
+!VAR CONTROL_RENDERING Rendering
+!VAR SERVER_SIDE Server-Side: Transpalition & Autoreload
 !VAR CONTROL_HTML HTML Meta Tags: `index.html`, `<title/>`, `<meta/>`, `<link/>`, ...
 !VAR PERFORMANCE_TUNING Performance: `doNotRenderInBrowser` & `renderHtmlAtBuildTime`
 
-!VAR PROVIDERS Providers for Redux / React Router / GraphQL Apollo / Relay / ...
-!VAR LANGUAGES Transpalition & Babel Config & Languages: TypeScript / Coffeescript / ES6 / ...
+!VAR PROVIDERS Providers: Redux / React Router / GraphQL Apollo / Relay / ...
+!VAR LANGUAGES Transpalition & Babel Config: TypeScript / Coffeescript / ES6 / ...
 !VAR CSS_PRE_PROCESSORS CSS pre-processors: PostCSS / Sass / Less / ...
-!VAR ROUTING Static Routing & Dynamic Routing & React Router
-!VAR FRONTEND_LIBRARIRES Frontend Libraries: Google Analytics Snippet / jQuery / Bootstrap / Semantic UI / ...
+!VAR ROUTING Static Routing & Dynamic Routing: React Router / ...
+!VAR FRONTEND_LIBRARIRES Frontend Libraries: Google Analytics / jQuery / Bootstrap / Semantic UI / ...
 !VAR SERVER_FRAMEWORKS Server Frameworks: Express / Koa / Hapi / Fastify / ...
-!VAR PROCESS_MANAGERS Process managers: Docker, systemd, PM2, ...
-!VAR CONTROL_CLI CLI scripts: Dev Server & Build
+!VAR PROCESS_MANAGERS Process managers: Docker / systemd / PM2 / ...
 !VAR PLUGINS Plugins
 !VAR PLUGINS_SERVER Server plugins
 !VAR PLUGINS_RENDER Render plugins
@@ -47,7 +45,6 @@
 !INLINE li-2 !VAR|LINK FRONTEND_LIBRARIRES
 !INLINE li-2 !VAR|LINK SERVER_FRAMEWORKS
 !INLINE li-2 !VAR|LINK PROCESS_MANAGERS
-!INLINE li-2 !VAR|LINK CONTROL_CLI
 
 <br/>
 
@@ -459,7 +456,7 @@ Example:
 
 ## !VAR PROVIDERS
 
-By controlling the rendering of your `<App/>` you can add any providers for Redux, GraphQL, etc.
+By controlling the rendering of your pages you can add any providers for Redux, GraphQL, etc.
 
 See !VAR|LINK CONTROL_RENDERING for how to take over control of the rendering of your pages.
 
@@ -522,20 +519,6 @@ pm2 start ./.build/nodejs/server
 ~~~bash
 # if you don't transpile your server code (you run `ssr-coin build`)
 pm2 start ./path/to/your/server.js
-~~~
-
-
-## !VAR CONTROL_CLI
-
-Instead of using the `ssr-coin` CLI,
-you can use the `ssr-coin` API.
-This allows you to gain control over the dev server and the build step.
-
-You can for example write your own dev server:
-
-Or have a custom build step:
-
-~~~js
 ~~~
 
 
