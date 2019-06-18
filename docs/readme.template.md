@@ -447,50 +447,20 @@ Note that `ssr-coin` always transpiles and auto-reloads your views and browser c
 
 ## !VAR CONTROL_HTML
 
-To set the HTML meta tags for all pages, create a `index.html` file:
+To set HTML meta tags for all pages, create a `index.html` file:
 ~~~html
-!INLINE ../examples/custom-head/index.html
+!INLINE ../examples/html-meta-tags/index.html
 ~~~
 
-To set the HTML meta tags for one page only, use your page's config:
+To set HTML meta tags for one page only, use the page's config:
 ~~~js
 !INLINE ../examples/html-meta-tags/pages/landing.page.js
 ~~~
 ~~~js
 !INLINE ../examples/html-meta-tags/pages/about.page.js
 ~~~
+
 See [`@brillout/index-html`'s documentation](https://github.com/brillout/index-html) for the list of all options.
-
-
-To add css and scripts saved on disk, use a conditional require:
-~~~js
-// For CSS, you can use import (or `require`):
-import './path/to/your/style.css';
-
-// For scripts that you want to be loaded only in the browser, do this:
-if( isBrowser() ){
-  require('./path/to/your/script.js');
-}
-function isBrowser() {
-  return typeof window !== "undefined";
-}
-
-export default {
-  route: '/test-page',
-  view: () => <div>Test</div>,
-};
-~~~
-
-If you want to load a script for all your pages then create a "commons" file that is loaded by all your page configs:
-
-~~~js
-// commons.js
-
-~~~
-
-~~~js
-!INLINE ../examples/custom-head/pages/about.config.js
-~~~
 
 Example:
  - [/examples/html-meta-tags](/examples/html-meta-tags)
@@ -531,53 +501,21 @@ There will then be no need for transpalition plugins anymore (since parcel is ze
 
 ## !VAR ROUTING
 ## !VAR FRONTEND_LIBRARIRES
+
+To load a frontend library hosted on a cdn, add `<script>` and `<style>` tags to your HTML, see !VAR|LINK CONTROL_HTML.
+
+To load a frontend library that is saved on your disk, use a file that is loaded by all your pages:
+
+~~~js
+!INLINE /examples/frontend-libraries/pages/commons.js
+~~~
+~~~js
+!INLINE /examples/frontend-libraries/pages/landing.page.js
+~~~
+~~~js
+!INLINE /examples/frontend-libraries/pages/about.page.js
+~~~
+
 ## !VAR SERVER_FRAMEWORKS
 ## !VAR CONTROL_CLI
 ## !VAR PLUGINS
-
-padding
-
-padding
-
-padding
-
-padding
-
-padding
-
-padding
-
-padding
-
-padding
-
-padding
-
-padding
-
-padding
-
-padding
-
-padding
-
-padding
-
-padding
-
-padding
-
-padding
-
-padding
-
-padding
-
-padding
-
-padding
-
-padding
-
-padding
-

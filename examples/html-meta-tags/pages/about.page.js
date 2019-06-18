@@ -1,4 +1,3 @@
-import './commons.js';
 import React from 'react';
 
 export default {
