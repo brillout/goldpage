@@ -117,9 +117,9 @@ Basics
 Recipes
 </sub>
 <br/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a href=#providers-redux--react-router--graphql-apollo--relay-->Providers: Redux / React Router / GraphQL Apollo / Relay / ...</a>
-<br/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a href=#transpalition--babel-config-typescript--coffeescript--es6-->Transpalition & Babel Config: TypeScript / Coffeescript / ES6 / ...</a>
+<br/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a href=#transpalition-babel--typescript---es6-->Transpalition: Babel / TypeScript /  ES6 / ...</a>
 <br/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a href=#css-pre-processors-postcss--sass--less-->CSS pre-processors: PostCSS / Sass / Less / ...</a>
-<br/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a href=#static-routing--dynamic-routing-react-router-->Static Routing & Dynamic Routing: React Router / ...</a>
+<br/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a href=#routing-react-router-->Routing: React Router / ...</a>
 <br/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a href=#frontend-libraries-google-analytics--jquery--bootstrap--semantic-ui-->Frontend Libraries: Google Analytics / jQuery / Bootstrap / Semantic UI / ...</a>
 <br/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a href=#server-frameworks-express--koa--hapi--fastify-->Server Frameworks: Express / Koa / Hapi / Fastify / ...</a>
 <br/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a href=#process-managers-docker--systemd--pm2-->Process managers: Docker / systemd / PM2 / ...</a>
@@ -661,6 +661,101 @@ Example:
 
 ## Performance: `doNotRenderInBrowser` & `renderHtmlAtBuildTime`
 
+With `doNotRenderInBrowser` and `renderHtmlAtBuildTime` you can control when your pages are rendered.
+
+By default,
+a page is rendered twice:
+it is first rendered to HTML on the server and then rendered again to the DOM in the browser.
+(Modern view libraries, such as React and Vue, are able to render views to the DOM as well as to HTML.)
+(You can read an explanation of why rendering a page twice makes sense at [Awesome Universal Rendering](https://github.com/brillout/awesome-universal-rendering).)
+With `ssr-coin` you can choose whether your pages are rendered to the DOM and/or to HTML.
+
+###### `doNotRenderInBrowser`
+
+With `doNotRenderInBrowser` you control whether your page is rendered in the browser.
+
+- `doNotRenderInBrowser: false` (default value)
+  - Slower Performance
+    <br/>
+    The page's views (e.g. the page's React components) and view libraries (e.g. React) are loaded, executed, and rendered in the browser.
+    This can be slow on mobile devices.
+  - Interactive
+    <br/>
+    Because your page is rendered to the browser's DOM, your page can be stateful and interactive.
+- `doNotRenderInBrowser: true`
+  - Increased performance
+    <br/>
+    The page's views and view libraries are not loaded nor executed in the browser.
+    This means that considerably less JavaScript is loaded/executed in the browser.
+    This performance gain is substantial on mobile devices.
+  - Not interactive
+    <br/>
+    Because your page is not rendered to the browser's DOM, your page connot have stateful nor interactive views.
+
+In a nutshell:
+If your page needs to be interactive then you have to rendered it in the browser and set `doNotRenderInBrowser` to `false`.
+But if your page isn't interactive then you can set `doNotRenderInBrowser` to `true` for increased performance and a blazing fast page on mobile devices.
+
+###### `renderHtmlAtBuildTime`
+
+With `renderHtmlAtBuildTime` you can control whether the page's HTML is
+rendered statically at build-time or
+dynamically at request-time.
+
+- `renderHtmlAtBuildTime: false` (default value)
+  <br/>
+  The page is rendered to HTML at request-time.
+  <br/>
+  The page is (re-)rendered to HTML every time the user requests the page.
+- `renderHtmlAtBuildTime: true`
+  <br/>
+  The page is rendered to HTML at build-time.
+  <br/>
+  The page is rendered to HTML only once, when your app is transpiled and built.
+
+By default,
+a page is rendered to HTML at request-time.
+But if the page's content is static
+(a landing page, an about page, a blog post, a personal homepage, etc.)
+it is wasteful to re-render its HTML on every page request.
+
+By setting `renderHtmlAtBuildTime: true` to all your pages,
+you can remove the need for a Node.js server.
+You can then deploy your app to a static host such as Netlify or GitHub Pages.
+
+If you don't want to render your page to HTML at all,
+then do something like that:
+~~~jsx
+import Loading from './path/to/your/loading/component';
+import Search from './path/to/your/search/component';
+
+// Rendering a search page to HTML doesn't make much sense.
+// We render the search page only to the DOM.
+
+const SearchPage = {
+  title: 'Search products',
+  route: '/search',
+  view: SearchPage,
+  // We render <Loading> to HTML at build-time
+  renderHtmlAtBuildTime: true,
+  // We render <Search> to the DOM
+  doNotRenderInBrowser: false,
+};
+
+export default SearchPage;
+
+function SearchPage(props) {
+  if( props.isNodejs ) {
+    return <Loading/>;
+  } else {
+    return <Search {...props}/>;
+  }
+}
+~~~
+
+
+
+
 ## Providers: Redux / React Router / GraphQL Apollo / Relay / ...
 
 By controlling the rendering of your pages you can add any providers for Redux, GraphQL, etc.
@@ -670,7 +765,7 @@ See <a href=#rendering>Rendering</a> for how to take over control of the renderi
 Example of adding the React Router providers:
 at [/examples/react-router](/examples/react-router)
 
-## Transpalition & Babel Config: TypeScript / Coffeescript / ES6 / ...
+## Transpalition: Babel / TypeScript /  ES6 / ...
 
 Make sure
 
@@ -688,7 +783,7 @@ There will then be no need for transpalition plugins anymore (since parcel is ze
 
 
 
-## Static Routing & Dynamic Routing: React Router / ...
+## Routing: React Router / ...
 ## Frontend Libraries: Google Analytics / jQuery / Bootstrap / Semantic UI / ...
 
 To load a frontend library hosted on a cdn, add `<script>` and `<style>` tags to your HTML, see <a href=#html-meta-tags-indexhtml-title-meta-link->HTML Meta Tags: `index.html`, `<title/>`, `<meta/>`, `<link/>`, ...</a>.
