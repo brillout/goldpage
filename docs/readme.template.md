@@ -454,22 +454,14 @@ Example:
 
 ## !VAR PERFORMANCE_TUNING
 
+With `doNotRenderInBrowser` and `renderHtmlAtBuildTime` you can control when your pages are rendered.
+
 By default,
 a page is rendered twice:
-the page is first rendered to HTML on the server and then is rendered again to the DOM in the browser (aka hydration).
-
-
-By setting `doNotRenderInBrowser: true` to a page config,
-you tell `ssr-coin` to not render the page in the browser.
-
-
-
-
-
-
-
-
-With `doNotRenderInBrowser` and `renderHtmlAtBuildTime` you can determine when your pages are rendered.
+it is first rendered to HTML on the server and then rendered again to the DOM in the browser.
+(Modern view libraries, such as React and Vue, are able to render views to the DOM as well as to HTML.)
+(You can read an explanation of why rendering a page twice makes sense at [Awesome Universal Rendering](https://github.com/brillout/awesome-universal-rendering).)
+With `ssr-coin` you can choose whether your pages are rendered to the DOM and/or to HTML.
 
 ###### `doNotRenderInBrowser`
 
@@ -478,90 +470,41 @@ With `doNotRenderInBrowser` you control whether your page is rendered in the bro
 - `doNotRenderInBrowser: false` (default value)
   - Slower Performance
     <br/>
-    The page's views (e.g. your page's React components) and view libraries (e.g. React) need are loaded and executed in the browser.
+    The page's views (e.g. the page's React components) and view libraries (e.g. React) are loaded, executed, and rendered in the browser.
     This can be slow on mobile devices.
-  - Interactive views
+  - Interactive
     <br/>
-    Because your page is rendered to the browser's DOM, your page can contain views that are stateful.
-    If your page needs to be interactive, then you'll need stateful views and you'll need to render your page in the browser.
-
-  The page is rendered in the browser.
-  <br/>
-  The page's code (e.g. React components) and the view library (e.g. React) are loaded in the browser.
-  <br/>
-  The page is rendered to the DOM.
-  <br/>
-  The DOM may change.
-  <br/>
-  The page can have statefull views
-  The page can have interactive views
-
+    Because your page is rendered to the browser's DOM, your page can be stateful and interactive.
 - `doNotRenderInBrowser: true`
   - Increased performance
     <br/>
-    The page's views (e.g. your page's React components) and view libraries (e.g. React) need are not loaded nor executed in the browser.
+    The page's views and view libraries are not loaded nor executed in the browser.
     This means that considerably less JavaScript is loaded/executed in the browser.
     This performance gain is substantial on mobile devices.
-  - No interactive views
+  - Not interactive
     <br/>
-    Because your page is not rendered to the browser's DOM, your page connot contain stateful views.
-    You cannot 
+    Because your page is not rendered to the browser's DOM, your page connot have stateful nor interactive views.
 
 In a nutshell:
-If your page needs to be interactive then you'll have to rendered it to the browser and `doNotRenderInBrowser` needs to be `false`.
-But if your page isn't interactive then you can set `doNotRenderInBrowser` to `true` for increased performance (which is considerable on mobile devices).
-
-  <br/>
-  The page is not rendered in the browser.
-  <br/>
-  No JavaScript is loaded nor executed in the browser.
-  (Or much less JavaScript.)
-  <br/>
-  The page is not rendered to the DOM.
-  (The page is rendered to HTML only.)
-  <br/>
-  The DOM will not change.
-  <br/>
-  The page is stateless
-  <br/>
-  The page can have interactive views
-
-By default,
-your page is rendered in the browser so that it can have interactive views.
-(A like button, an interactive graph, a To-Do list, etc.).
-
-Setting `doNotRenderInBrowser: true` makes your page considerably faster.
-If your page has no interactive views,
-then you should set `doNotRenderInBrowser: true`.
-(More precisely, you should set `doNotRenderInBrowser: true` when your page's view components are all stateless.)
-
-By setting `doNotRenderInBrowser: true` to all your pages,
-you remove browser-side JavaScript.
-In other words,
-you remove the frontend,
-and the view library
-(React/Vue/etc.)
-is only used on the server as an HTML template engine.
+If your page needs to be interactive then you have to rendered it in the browser and set `doNotRenderInBrowser` to `false`.
+But if your page isn't interactive then you can set `doNotRenderInBrowser` to `true` for increased performance and a blazing fast page on mobile devices.
 
 ###### `renderHtmlAtBuildTime`
 
-Your pages are always rendered to HTML.
-(Modern view libraries, such as React and Vue, can render components to HTML.)
-
-The page config option `renderHtmlAtBuildTime` allows you to control whether the page's HTML is
+With `renderHtmlAtBuildTime` you can control whether the page's HTML is
 rendered statically at build-time or
 dynamically at request-time.
 
- - `renderHtmlAtBuildTime: false` (default value)
-   <br/>
-   The page is rendered to HTML at request-time.
-   <br/>
-   The page is (re-)rendered to HTML every time the user requests the page.
- - `renderHtmlAtBuildTime: true`
-   <br/>
-   The page is rendered to HTML at build-time.
-   <br/>
-   The page is rendered to HTML only once, when Reframe is building and transpiling your app.
+- `renderHtmlAtBuildTime: false` (default value)
+  <br/>
+  The page is rendered to HTML at request-time.
+  <br/>
+  The page is (re-)rendered to HTML every time the user requests the page.
+- `renderHtmlAtBuildTime: true`
+  <br/>
+  The page is rendered to HTML at build-time.
+  <br/>
+  The page is rendered to HTML only once, when your app is transpiled and built.
 
 By default,
 a page is rendered to HTML at request-time.
@@ -570,16 +513,19 @@ But if the page's content is static
 it is wasteful to re-render its HTML on every page request.
 
 By setting `renderHtmlAtBuildTime: true` to all your pages,
-you effectively remove the need for a Node.js server.
+you can remove the need for a Node.js server.
 You can then deploy your app to a static host such as Netlify or GitHub Pages.
 
-If you don't want to render your page to HTML,
+If you don't want to render your page to HTML at all,
 then do something like that:
 ~~~jsx
-const Loading = require('./path/to/your/loading/component');
-const Search = require('./path/to/your/search/component');
+import Loading from './path/to/your/loading/component';
+import Search from './path/to/your/search/component';
 
-const SearchPageConfig = {
+// Rendering a search page to HTML doesn't make much sense.
+// We render the search page only to the DOM.
+
+const SearchPage = {
   title: 'Search products',
   route: '/search',
   view: SearchPage,
@@ -589,7 +535,7 @@ const SearchPageConfig = {
   doNotRenderInBrowser: false,
 };
 
-export default SearchPageConfig;
+export default SearchPage;
 
 function SearchPage(props) {
   if( props.isNodejs ) {
