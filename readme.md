@@ -107,22 +107,22 @@ Basics
 </sub>
 <br/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a href=#css--static-assets>CSS & Static Assets</a>
 <br/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a href=#async-data-getinitialprops>Async Data: `getInitialProps`</a>
-<br/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a href=#rendering>Rendering</a>
+<br/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a href=#control-rendering>Control Rendering</a>
 <br/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a href=#html-meta-tags-indexhtml-title-meta-link->HTML Meta Tags: `index.html`, `<title/>`, `<meta/>`, `<link/>`, ...</a>
-<br/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a href=#server-side-transpalition--autoreload>Server-Side: Transpalition & Autoreload</a>
+<br/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a href=#server-side-transpalition--server-side-autoreload>Server-Side Transpalition & Server-side Autoreload</a>
 <br/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a href=#performance-donotrenderinbrowser--renderhtmlatbuildtime>Performance: `doNotRenderInBrowser` & `renderHtmlAtBuildTime`</a>
 <sub>
 <br/>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 Recipes
 </sub>
-<br/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a href=#providers-redux--react-router--graphql-apollo--relay-->Providers: Redux / React Router / GraphQL Apollo / Relay / ...</a>
-<br/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a href=#transpalition-babel--typescript---es6-->Transpalition: Babel / TypeScript /  ES6 / ...</a>
-<br/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a href=#css-pre-processors-postcss--sass--less-->CSS pre-processors: PostCSS / Sass / Less / ...</a>
-<br/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a href=#routing-react-router-->Routing: React Router / ...</a>
-<br/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a href=#frontend-libraries-google-analytics--jquery--bootstrap--semantic-ui-->Frontend Libraries: Google Analytics / jQuery / Bootstrap / Semantic UI / ...</a>
-<br/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a href=#server-frameworks-express--koa--hapi--fastify-->Server Frameworks: Express / Koa / Hapi / Fastify / ...</a>
-<br/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a href=#process-managers-docker--systemd--pm2-->Process managers: Docker / systemd / PM2 / ...</a>
+<br/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a href=#add-providers-redux--react-router--graphql-apollo--relay-->Add Providers: Redux / React Router / GraphQL Apollo / Relay / ...</a>
+<br/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a href=#control-transpalition-babel--typescript---es6-->Control Transpalition: Babel / TypeScript /  ES6 / ...</a>
+<br/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a href=#add-css-pre-processor-postcss--sass--less-->Add CSS pre-processor: PostCSS / Sass / Less / ...</a>
+<br/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a href=#control-routing-static-routing--dynmaic-routing--react-router-->Control Routing: Static Routing / Dynmaic Routing / React Router / ...</a>
+<br/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a href=#add-frontend-libraries-google-analytics--jquery--bootstrap--semantic-ui-->Add Frontend Libraries: Google Analytics / jQuery / Bootstrap / Semantic UI / ...</a>
+<br/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a href=#use-server-framework-express--koa--hapi--fastify-->Use Server Framework: Express / Koa / Hapi / Fastify / ...</a>
+<br/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a href=#use-process-manager-docker--systemd--pm2-->Use process manager: Docker / systemd / PM2 / ...</a>
 
 <br/>
 
@@ -468,7 +468,7 @@ We further explain the difference between both at:
  - [/examples/async-data/](/examples/async-data/)
 
 
-## Rendering
+## Control Rendering
 
 You can control how your pages are rendered
 by adding `renderToHtml` and `renderToDom` to your `ssr-coin.config.js`:
@@ -540,7 +540,7 @@ module.exports = {
 The example's entire source code is at:
 - [/examples/react-router](/examples/react-router)
 
-## Server-Side: Transpalition & Autoreload
+## Server-Side Transpalition & Server-side Autoreload
 
 If you specify a path when calling `ssr-coin dev ./path/to/your/server.js` then:
  - `ssr-coin` transpiles your server code. Allowing you, for example, to use TypeScript for your server code.
@@ -756,16 +756,16 @@ function SearchPage(props) {
 
 
 
-## Providers: Redux / React Router / GraphQL Apollo / Relay / ...
+## Add Providers: Redux / React Router / GraphQL Apollo / Relay / ...
 
 By controlling the rendering of your pages you can add any providers for Redux, GraphQL, etc.
 
-See <a href=#rendering>Rendering</a> for how to take over control of the rendering of your pages.
+See <a href=#control-rendering>Control Rendering</a> for how to take over control of the rendering of your pages.
 
 Example of adding the React Router providers:
 at [/examples/react-router](/examples/react-router)
 
-## Transpalition: Babel / TypeScript /  ES6 / ...
+## Control Transpalition: Babel / TypeScript /  ES6 / ...
 
 Make sure
 
@@ -778,13 +778,13 @@ If there is no plugin available then open a GitHub issue and we'll build a plugi
 We will use Parcel instead of Webpack once Parcel v2 is released.
 There will then be no need for transpalition plugins anymore (since parcel is zero-config).
 
-## CSS pre-processors: PostCSS / Sass / Less / ...
+## Add CSS pre-processor: PostCSS / Sass / Less / ...
 
 
 
 
-## Routing: React Router / ...
-## Frontend Libraries: Google Analytics / jQuery / Bootstrap / Semantic UI / ...
+## Control Routing: Static Routing / Dynmaic Routing / React Router / ...
+## Add Frontend Libraries: Google Analytics / jQuery / Bootstrap / Semantic UI / ...
 
 To load a frontend library hosted on a cdn, add `<script>` and `<style>` tags to your HTML, see <a href=#html-meta-tags-indexhtml-title-meta-link->HTML Meta Tags: `index.html`, `<title/>`, `<meta/>`, `<link/>`, ...</a>.
 
@@ -831,7 +831,7 @@ export default {
 };
 ~~~
 
-## Server Frameworks: Express / Koa / Hapi / Fastify / ...
+## Use Server Framework: Express / Koa / Hapi / Fastify / ...
 
 To use `ssr-coin` with `express`, `koa` or `hapi`, use the corresponding [server plugin](#server-plugins).
 
@@ -839,7 +839,7 @@ To use `ssr-coin` with another server framework, open a GitHub issue.
 `ssr-coin` can be used with any server framework
 but there is no documentation for this (yet).
 
-## Process managers: Docker / systemd / PM2 / ...
+## Use process manager: Docker / systemd / PM2 / ...
 
 In production, you can start your server with any process manager.
 
