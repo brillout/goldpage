@@ -17,7 +17,7 @@
 !VAR PROVIDERS Add Providers: Redux / React Router / GraphQL Apollo / Relay / ...
 !VAR LANGUAGES Control Transpalition: Babel / TypeScript /  ES6 / ...
 !VAR CSS_PRE_PROCESSORS Add CSS pre-processor: PostCSS / Sass / Less / ...
-!VAR ROUTING Control Routing: Static Routing / Dynmaic Routing / React Router / ...
+!VAR ROUTING Control Routing: Server-side Routing / Browser-side Routing / React Router / ...
 !VAR FRONTEND_LIBRARIRES Add Frontend Libraries: Google Analytics / jQuery / Bootstrap / Semantic UI / ...
 !VAR SERVER_FRAMEWORKS Use Server Framework: Express / Koa / Hapi / Fastify / ...
 !VAR PROCESS_MANAGERS Use process manager: Docker / systemd / PM2 / ...
@@ -577,6 +577,165 @@ There will then be no need for transpalition plugins anymore (since parcel is ze
 
 
 ## !VAR ROUTING
+
+There are two ways to do routing on the web:
+*server-side routing*
+and
+*browser-side routing*.
+
+###### Server-side Routing
+
+Routes defined in your page configs
+
+~~~jsx
+import React from 'react';
+
+export default {
+  route: '/hello/:name',
+  view: ({name}) => (
+    <div>
+      Welcome {name}.
+    </div>
+  ),
+};
+~~~
+
+are server-side routes:
+navigating from `/hello/jon` to `/hello/alice` is the same as when you close your `/hello/jon` tab and open a new tab `/hello/alice`.
+In other words, the previous page `/hello/jon` is "fully" closed and a new page is created at `/hello/alice`.
+It is the server that does the job of mapping URLs to pages and the browser is not involved in routing.
+
+Server-side routing is simple but
+there are some situations where server-side routing is not an option.
+
+###### Browser-side Routing
+
+HTML5 introduced new browser APIs to manipulate the browser history which enabled browser-side routing:
+when navigating from `/previous-page` to `/next-page`, instead of stopping current page `/previous-page` and starting a new page at `/next-page`, the current page is preserved, its URL changed to `/next-page` (with `history.pushState()`), and `/next-page` is rendered to the DOM replacing the DOM of `/previous-page`.
+
+Server-side routing is simpler than browser-side routing and you should use server-side routing by default.
+But if server-side routing is not an option,
+you can use a library that does browser-side routing, such as React Router.
+
+~~~js
+!INLINE /examples/react-router/render/renderToDom.js
+~~~
+
+~~~js
+!INLINE /examples/react-router/render/renderToHtml.js
+~~~
+
+~~~js
+!INLINE /examples/react-router/ssr-coin.config.js
+~~~
+
+The example's entire source code is at:
+- [/examples/react-router](/examples/react-router)
+
+
+
+
+is replc with the browser native API `history.pushState()` and the new page is rendered to the DOM replacing the old page's DOM.
+
+When doing browser-side routing
+
+
+Browser-side routing is 
+
+But for certain use cases certain use cases require browser-side routing.
+
+
+
+If,
+for example,
+you want 
+
+the page reload
+If you wan
+If you want to 
+
+
+There are, however, 
+The  and this is 
+
+Instead of using your pages config's `route`,
+you can use a library that does browser-side routing.
+
+You can use libraries,
+such as [React Router](https://github.com/ReactTraining/react-router),
+to do browser-side routing:
+
+instead of loading a new page,
+the url of the current page is modified using the browser's history API (in particular `history.pushState()`) and the new page views are loaded into the page and rendered to the DOM.
+
+
+Using the browser's
+
+###### Reframe's default router
+
+By default, Reframe uses [`path-to-regexp`](https://github.com/pillarjs/path-to-regexp) to match URLs with a the page config's `route`.
+(React Router uses `path-to-regexp` as well.)
+
+For example, in the following page config, Reframe will use `path-to-regexp` to determine if a URL matches the page's route `'/hello/:name'`.
+
+~~~jsx
+const HelloPage = {
+    route: '/hello/:name',
+    view: ({route: {args: {name}}}) => <div>Welcome {name}</div>,
+};
+~~~
+
+See [`path-to-regexp`'s docs](https://github.com/pillarjs/path-to-regexp) for further information about the route string syntax.
+
+###### Advanced routing with React Router
+
+You can use React Router's components by adding the plugin [`@reframe/react-router`](/plugins/react-router).
+
+Using React Router components allow you to implement:
+ - **pushState-navigation**
+   <br/>
+   To navigate to a new page by manipulating the DOM instead of loading the new page's HTML.
+   (A detailed explanation of "pushState-navigation" follows below.)
+   Such navigation make sense for route changes that cause only small changes on the page.
+   It would for example be prohibitive to reload the entire page for a URL change that causes only minor changes to a little box on the page.
+ - **Nested Routes**
+   <br/>
+ - **SPAs**
+   <br/>
+   Apps where the app's entire browser-side code is bundled in one script and loaded at once.
+ - **URL hash**
+   <br/>
+   URLs with a `window.location.hash`.
+
+###### Html-navigation VS pushState-navigation
+
+There are two ways of navigating between pages:
+ - *HTML-navigation*
+   <br/>
+   When clicking a link, the new page's HTML is loaded.
+   (In other words, the browser discards the current DOM and builds a new DOM upon the new page's HTML.)
+ - *pushState-navigation*
+   <br/>
+   When clicking a link, the URL is changed by `history.pushState()` and the DOM is manipulated (instead of loading the new page's HTML).
+
+By default, Reframe does HTML-navigation when using `<a>` links between pages defined with page configs.
+
+###### pushState-navigation
+
+By using React Router's components you can do pushState-navigation.
+Pages are then defined by React Router's component instead of page configs.
+
+Note that with *page* we denote any view that is identified with a URL:
+If two URLs have similar views that differ in only in a small way,
+we still speak of two pages because these two views have two different URLs.
+
+Also note that the broswer-side code is splitted only between pages defined with page configs,
+and pages defined with React Router components will share the same browser-side code bundle.
+
+
+!INLINE ./snippets/section-footer.md #custom --hide-source-path
+
+
 ## !VAR FRONTEND_LIBRARIRES
 
 To load a frontend library hosted on a cdn, add `<script>` and `<style>` tags to your HTML, see !VAR|LINK CONTROL_HTML.
