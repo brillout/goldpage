@@ -157,7 +157,7 @@ export default {
 };
 ~~~
 
-You can now run `npm run dev` (/ `yarn dev`) then go to `/hello/jon` and see your first SSR page.
+You can now run `npm run dev` (`yarn dev`) then go to `/hello/jon` and see your first SSR page.
 
 
 ###### Freedom
@@ -316,7 +316,7 @@ then use a Reframe starter instead.
    }
    ~~~
 
-You can now run `npm run dev` (/ `yarn dev`) and go to your newly created page `/hello/jon`.
+You can now run `npm run dev` (`yarn dev`) and go to your newly created page `/hello/jon`.
 
 ## !VAR CSS_AND_ASSETS
 
@@ -463,7 +463,7 @@ it is first rendered to HTML on the server and then rendered again to the DOM in
 (You can read an explanation of why rendering a page twice makes sense at [Awesome Universal Rendering](https://github.com/brillout/awesome-universal-rendering).)
 With `ssr-coin` you can choose whether your pages are rendered to the DOM and/or to HTML.
 
-###### `doNotRenderInBrowser`
+###### doNotRenderInBrowser
 
 With `doNotRenderInBrowser` you control whether your page is rendered in the browser.
 
@@ -489,7 +489,7 @@ In a nutshell:
 If your page needs to be interactive then you have to rendered it in the browser and set `doNotRenderInBrowser` to `false`.
 But if your page isn't interactive then you can set `doNotRenderInBrowser` to `true` for increased performance and a blazing fast page on mobile devices.
 
-###### `renderHtmlAtBuildTime`
+###### renderHtmlAtBuildTime
 
 With `renderHtmlAtBuildTime` you can control whether the page's HTML is
 rendered statically at build-time or
