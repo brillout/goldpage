@@ -1,5 +1,5 @@
 const {getInitialProps} = require('./getInitialProps');
-const generateHtml = require('@brillout/index-html');
+const html = require('@brillout/html');
 
 module.exports = {renderPageHtml};
 
@@ -34,11 +34,9 @@ function renderHtmlError({pageConfig, err}) {
 `
 );
 
-    const htmlOptions = Object.assign({bodyHtmls: []}, pageConfig);
-    htmlOptions.bodyHtmls.push(errHtml);
-    const html = generateHtml(htmlOptions);
-
-    return html;
+    const htmlOptions = Object.assign({body: []}, pageConfig);
+    htmlOptions.body.push(errHtml);
+    return html(htmlOptions);
 }
 
 function isProduction() {

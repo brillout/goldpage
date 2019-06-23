@@ -3,10 +3,10 @@ const ReactDOMServer = require('react-dom/server');
 
 module.exports = renderToHtml;
 
-async function renderToHtml({pageConfig, initialProps}) {
+async function renderToHtml({page, initialProps}) {
   return (
     ReactDOMServer.renderToStaticMarkup(
-      React.createElement(pageConfig.view, initialProps)
+      React.createElement(page.view, initialProps)
     )
   );
 }

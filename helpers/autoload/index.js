@@ -3,31 +3,27 @@ const ProjectFiles = require('@brillout/project-files');
 const findUp = require('find-up');
 const path = require('path');
 
-module.exports = {loadDependencies, loadFile};
+module.exports = {loadDependencies/*, loadFile*/};
 
+/*
 function loadFile(filename, opts) {
   const projectFiles = new ProjectFiles();
-  const {findProjectFiles} = projectFiles;
-  const files = findProjectFiles(filename, opts);
+  const files = projectFiles.findFiles(filename, opts);
   assert.usage(files.length<=1);
   let fileExport;
   files.forEach(filePath => {
     assert.internal(path.isAbsolute(filePath));
     fileExport = require(filePath);
   });
-  return {loaded: files, fileExport, ...projectFiles};
+  return {loaded: files, fileExport};
 }
+*/
 
 function loadDependencies() {
   const projectFiles = new ProjectFiles();
-  const {packageJsonFile, projectDir} = projectFiles;
+  const {packageJson, packageJsonFile, projectDir} = projectFiles;
   assert.internal(packageJsonFile);
   assert.internal(projectDir);
-
-  const packageJson = require(packageJsonFile);
-  if( !packageJsonFile ) {
-    return;
-  }
 
   const {dependencies} = packageJson;
   if( !dependencies ) {
@@ -45,5 +41,5 @@ function loadDependencies() {
     }
   });
 
-  return {loaded, ...projectFiles};
+  return {loaded, packageJsonFile};
 }

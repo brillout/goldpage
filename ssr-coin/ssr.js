@@ -2,7 +2,7 @@ const config = require('@brillout/reconfig');
 const assert = require('reassert');
 const path = require('path');
 const ProjectFiles = require('@brillout/project-files');
-const {loadDependencies, loadFile} = require('@brillout/autoload');
+const {loadDependencies} = require('@brillout/autoload');
 
 const ssr = create_ssr();
 
@@ -24,7 +24,7 @@ function create_ssr() {
 
   const {packageJsonFile, loaded: loadedPlugins} = loadDependencies();
 
-  const {projectDir, findProjectFiles} = new ProjectFiles();
+  const {projectDir, findFiles} = new ProjectFiles();
 
   config.ssrCoin.projectDir = projectDir;
 
@@ -39,7 +39,7 @@ function create_ssr() {
         ssr.pagesDir,
         "You need to set `pagesDir`",
       );
-      const pageConfigs = findProjectFiles('*.page.*', {within: ssr.pagesDir});
+      const pageConfigs = findFiles('*.page.*'/*, {within: ssr.pagesDir}*/);
       assert.usage(
         pageConfigs.length>=1,
         "No files with the `.page.` suffix found in `"+ssr.pagesDir+"`.",

@@ -446,7 +446,7 @@ To set HTML meta tags for one page only, use the page's config:
 !INLINE /examples/html-meta-tags/pages/about.page.js
 ~~~
 
-See [`@brillout/index-html`'s documentation](https://github.com/brillout/index-html) for the list of all options.
+See [`@brillout/html`'s documentation](https://github.com/brillout/html) for the list of all options.
 
 Example:
  - [/examples/html-meta-tags](/examples/html-meta-tags)

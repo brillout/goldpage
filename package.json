@@ -27,7 +27,7 @@
     "plugins/core",
     "plugins/browser",
     "plugins/server",
-    "plugins/index-html",
+    "plugins/html",
     "plugins/path-to-regexp",
     "plugins/hapi",
     "plugins/koa",

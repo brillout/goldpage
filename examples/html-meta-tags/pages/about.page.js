@@ -1,8 +1,8 @@
 import React from 'react';
 
 export default {
-  // `indexHtml` allows you to override the `index.html` file for a specific page:
-  indexHtml: (
+  // `html` allows you to override the `index.html` file for a specific page:
+  html: (
 `<!DOCTYPE html>
 <html>
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">

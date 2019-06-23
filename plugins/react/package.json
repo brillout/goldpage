@@ -3,7 +3,7 @@
   "version": "0.3.2",
   "@brillout/autoload": true,
   "dependencies": {
-    "@ssr-coin/index-html": "0.3.2",
+    "@ssr-coin/html": "0.3.2",
     "@ssr-coin/render-react": "0.3.2",
     "@ssr-coin/webpack-react": "0.3.2"
   },

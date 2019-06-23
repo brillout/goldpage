@@ -17,8 +17,8 @@ export default {
     'https://example.org/awesome-lib.css',
   ],
 
-  // ssr-coin uses the package @brillout/index-html (https://github.com/brillout/index-html) to generate HTML.
-  // All @brillout/index-html's options are avaible over the page config
+  // ssr-coin uses the package @brillout/html (https://github.com/brillout/html) to generate HTML.
+  // All @brillout/html's options are avaible over the page config
 
   route: '/',
   view: () => <h1>Welcome</h1>,
