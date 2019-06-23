@@ -601,21 +601,24 @@ export default {
 ~~~
 
 are server-side routes:
-navigating from `/hello/jon` to `/hello/alice` is the same as when you close your `/hello/jon` tab and open a new tab `/hello/alice`.
-In other words, the previous page `/hello/jon` is "fully" closed and a new page is created at `/hello/alice`.
-It is the server that does the job of mapping URLs to pages and the browser is not involved in routing.
-
-Server-side routing is simple but
-there are some situations where server-side routing is not an option.
+when navigating from `/hello/jon` to `/hello/alice`
+the browser terminates the current page `/hello/jon` and starts a new page at `/hello/alice`,
+as if you would close the `/hello/jon` tab and open a new tab `/hello/alice`.
+It is the server that does the job of mapping URLs to pages and the browser is not involved in the routing process.
 
 ###### Browser-side Routing
 
-HTML5 introduced new browser APIs to manipulate the browser history which enabled browser-side routing:
-when navigating from `/previous-page` to `/next-page`, instead of stopping current page `/previous-page` and starting a new page at `/next-page`, the current page is preserved, its URL changed to `/next-page` (with `history.pushState()`), and `/next-page` is rendered to the DOM replacing the DOM of `/previous-page`.
+HTML5 introduced a new browser API `history` that allows to manipulate the browser URL history enabling browser-side routing:
+when navigating from `/previous-page` to `/next-page`, instead of terminating the current page `/previous-page` and starting a new page at `/next-page`, the current page `/previous-page` is preserved, its URL changed to `/next-page` (with `history.pushState()`), and the content of `/next-page` is rendered to the DOM replacing the DOM of `/previous-page`.
 
-Server-side routing is simpler than browser-side routing and you should use server-side routing by default.
+Server-side routing is simpler than browser-side routing and server-side routing should be used when possible.
 But if server-side routing is not an option,
-you can use a library that does browser-side routing, such as React Router.
+you can opt to do browser-side routing.
+
+To do so you may need to
+[take control over rendering](!VAR|ANCHOR CONTROL_RENDERING).
+
+Example of a React app doing browser-side routing with React Router:
 
 ~~~js
 !INLINE /examples/react-router/render/renderToDom.js
@@ -633,43 +636,6 @@ The example's entire source code is at:
 - [/examples/react-router](/examples/react-router)
 
 
-
-
-is replc with the browser native API `history.pushState()` and the new page is rendered to the DOM replacing the old page's DOM.
-
-When doing browser-side routing
-
-
-Browser-side routing is 
-
-But for certain use cases certain use cases require browser-side routing.
-
-
-
-If,
-for example,
-you want 
-
-the page reload
-If you wan
-If you want to 
-
-
-There are, however, 
-The  and this is 
-
-Instead of using your pages config's `route`,
-you can use a library that does browser-side routing.
-
-You can use libraries,
-such as [React Router](https://github.com/ReactTraining/react-router),
-to do browser-side routing:
-
-instead of loading a new page,
-the url of the current page is modified using the browser's history API (in particular `history.pushState()`) and the new page views are loaded into the page and rendered to the DOM.
-
-
-Using the browser's
 
 ###### Reframe's default router
 
