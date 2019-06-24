@@ -9,14 +9,34 @@ export default {
 };
 
 async function getInitialProps({isNodejs}) {
+  const state = await getState({isNodejs});
+  const store = createStore(reducers, state);
+  return {store};
+}
+
+async function getState({isNodejs}) {
+  let state;
   if( isNodejs ){
-    const store = createStore(reducers);
-    return {store};
+    // On server-side rendering, we fetch the initial state
+    const count = await fetchCount();
+    state = {count};
   } else {
-    const store = createStore(
-      reducers,
-      window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
-    );
-    return {store};
+    // On browser-side rendering, the initial state is provided by the server
+    state = window.__PRELOADED_STATE__;
+    delete window.__PRELOADED_STATE__;
   }
+  return state;
+}
+
+// We simulate a network request
+function fetchCount(callback) {
+  let resolve;
+  const p = new Promise(r => resolve=r);
+  setTimeout(() => {
+    resolve(getRandomInt(2, 10));
+  }, 500);
+  return p;
+}
+function getRandomInt(min, max) {
+  return Math.floor(Math.random() * (max - min)) + min;
 }
