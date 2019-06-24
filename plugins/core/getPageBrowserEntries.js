@@ -148,17 +148,9 @@ function getAllBrowserConfigs({browserEntrySpec, pageConfig, pageFile, pageName}
     }
 
     function addPageConfig() {
-        const configVal = [
-            "(() => {",
-            "    let pageConfig = "+getRequireString(pageFile)+";",
-            "    pageConfig = (pageConfig||{}).__esModule===true ? pageConfig.default : pageConfig;",
-            "    return pageConfig;",
-            "})()",
-        ].join('\n');
-
         allBrowserConfigs.push({
             configProp: ".pageConfig",
-            configVal,
+            configVal: getRequireString(pageFile),
             doNotIncludeJavaScript: !browserConfigsToAdd.includes('pageConfig'),
         });
     }
@@ -180,7 +172,7 @@ function getAllBrowserConfigs({browserEntrySpec, pageConfig, pageFile, pageName}
 }
 
 function getRequireString(requirePath) {
-    return "require('"+require.resolve(requirePath)+"')";
+  return "(() => {const ret = require('"+require.resolve(requirePath)+"'); return (ret||{}).__esModule===true ? ret.default : ret;})();";
 }
 
 function getBrowserEntrySpec({pageConfig, pageFile, pageName}) {

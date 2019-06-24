@@ -1,17 +1,15 @@
-const React = require('react');
-const ReactDOM = require('react-dom');
-const {Provider} = require('react-redux');
+import React from 'react';
+import ReactDOM from 'react-dom';
+import { Provider } from 'react-redux';
 
-module.exports = renderToDom;
+export default renderToDom;
 
 async function renderToDom({page, initialProps, CONTAINER_ID}) {
   const {store} = initialProps;
   ReactDOM.hydrate(
-    React.createElement(
-      Provider,
-      {store},
-      React.createElement(page.view, initialProps)
-    ),
+    <Provider store={store}>
+      <page.view {...initialProps}/>
+    </Provider>,
     document.getElementById(CONTAINER_ID)
   );
 }

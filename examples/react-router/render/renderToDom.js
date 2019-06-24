@@ -1,16 +1,14 @@
-const React = require('react');
-const ReactDOM = require('react-dom');
-const {BrowserRouter} = require('react-router-dom');
+import React from 'react';
+import ReactDOM from 'react-dom';
+import { BrowserRouter } from 'react-router-dom';
 
-module.exports = renderToDom;
+export default renderToDom;
 
 async function renderToDom({page, initialProps, CONTAINER_ID}) {
   ReactDOM.hydrate(
-    React.createElement(
-      BrowserRouter,
-      null,
-      React.createElement(page.view, initialProps)
-    ),
+    <BrowserRouter>
+      <page.view {...initialProps}/>
+    </BrowserRouter>,
     document.getElementById(CONTAINER_ID)
   );
 }

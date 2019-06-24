@@ -1,11 +1,11 @@
-const React = require('react');
-const ReactDOM = require('react-dom');
+import React from 'react';
+import ReactDOM from 'react-dom';
 
-module.exports = renderToDom;
+export default renderToDom;
 
 async function renderToDom({page, initialProps, CONTAINER_ID}) {
   ReactDOM.hydrate(
-    React.createElement(page.view, initialProps),
+    <page.view {...initialProps}/>,
     document.getElementById(CONTAINER_ID)
   );
 }
