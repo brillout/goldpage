@@ -23,6 +23,7 @@
     "examples/static-assets",
     "examples/redux",
     "examples/emotion",
+    "examples/styled-components",
 
     "ssr-coin/",
 
