@@ -21,6 +21,7 @@
     "examples/with-config",
     "examples/async-data",
     "examples/static-assets",
+    "examples/redux",
 
     "ssr-coin/",
 
