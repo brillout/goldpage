@@ -7,7 +7,7 @@
 
     WARNING, READ THIS.
     This is a computed file. Do not edit.
-    Edit `/examples/babel-config/readme.template.md` instead.
+    Edit `/examples/babel/readme.template.md` instead.
 
 
 
@@ -22,7 +22,7 @@
 
     WARNING, READ THIS.
     This is a computed file. Do not edit.
-    Edit `/examples/babel-config/readme.template.md` instead.
+    Edit `/examples/babel/readme.template.md` instead.
 
 
 
@@ -37,7 +37,7 @@
 
     WARNING, READ THIS.
     This is a computed file. Do not edit.
-    Edit `/examples/babel-config/readme.template.md` instead.
+    Edit `/examples/babel/readme.template.md` instead.
 
 
 
@@ -52,7 +52,7 @@
 
     WARNING, READ THIS.
     This is a computed file. Do not edit.
-    Edit `/examples/babel-config/readme.template.md` instead.
+    Edit `/examples/babel/readme.template.md` instead.
 
 
 
@@ -67,7 +67,7 @@
 
     WARNING, READ THIS.
     This is a computed file. Do not edit.
-    Edit `/examples/babel-config/readme.template.md` instead.
+    Edit `/examples/babel/readme.template.md` instead.
 
 
 
@@ -133,7 +133,7 @@ export default WelcomePage;
 
     WARNING, READ THIS.
     This is a computed file. Do not edit.
-    Edit `/examples/babel-config/readme.template.md` instead.
+    Edit `/examples/babel/readme.template.md` instead.
 
 
 
@@ -148,7 +148,7 @@ export default WelcomePage;
 
     WARNING, READ THIS.
     This is a computed file. Do not edit.
-    Edit `/examples/babel-config/readme.template.md` instead.
+    Edit `/examples/babel/readme.template.md` instead.
 
 
 
@@ -163,7 +163,7 @@ export default WelcomePage;
 
     WARNING, READ THIS.
     This is a computed file. Do not edit.
-    Edit `/examples/babel-config/readme.template.md` instead.
+    Edit `/examples/babel/readme.template.md` instead.
 
 
 
@@ -178,7 +178,7 @@ export default WelcomePage;
 
     WARNING, READ THIS.
     This is a computed file. Do not edit.
-    Edit `/examples/babel-config/readme.template.md` instead.
+    Edit `/examples/babel/readme.template.md` instead.
 
 
 
@@ -193,7 +193,7 @@ export default WelcomePage;
 
     WARNING, READ THIS.
     This is a computed file. Do not edit.
-    Edit `/examples/babel-config/readme.template.md` instead.
+    Edit `/examples/babel/readme.template.md` instead.
 
 
 

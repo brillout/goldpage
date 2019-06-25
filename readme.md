@@ -95,6 +95,8 @@ Add SSR to your app.
 
 
 
+
+
 <br/> &nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a href=#what-is-ssr-coin>What is `ssr-coin`</a>
 <br/> &nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a href=#why-ssr-coin>Why `ssr-coin`</a>
 <br/> &nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a href=#plugins>Plugins</a>
@@ -109,17 +111,24 @@ Basics
 <br/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a href=#async-data-getinitialprops>Async Data: `getInitialProps`</a>
 <br/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a href=#control-rendering>Control Rendering</a>
 <br/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a href=#html-meta-tags-indexhtml-title-meta-link->HTML Meta Tags: `index.html`, `<title/>`, `<meta/>`, `<link/>`, ...</a>
-<br/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a href=#server-side-transpalition--server-side-autoreload>Server-Side Transpalition & Server-side Autoreload</a>
+<br/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a href=#server-side-transpilation--server-side-autoreload>Server-Side Transpilation & Server-side Autoreload</a>
 <br/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a href=#performance-donotrenderinbrowser--renderhtmlatbuildtime>Performance: `doNotRenderInBrowser` & `renderHtmlAtBuildTime`</a>
+<sub>
+<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+API Reference
+</sub>
+<br/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a href=#api>API</a>
 <sub>
 <br/>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 Recipes
 </sub>
 <br/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a href=#add-providers-redux--react-router--graphql-apollo--relay-->Add Providers: Redux / React Router / GraphQL Apollo / Relay / ...</a>
-<br/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a href=#control-transpalition-babel--typescript---es6-->Control Transpalition: Babel / TypeScript /  ES6 / ...</a>
+<br/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a href=#control-transpilation-babel--typescript---es6-->Control Transpilation: Babel / TypeScript /  ES6 / ...</a>
+<br/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a href=#css-in-js-emotion--styled-components-->CSS-in-JS: Emotion / styled-components / ...</a>
 <br/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a href=#add-css-pre-processor-postcss--sass--less-->Add CSS pre-processor: PostCSS / Sass / Less / ...</a>
-<br/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a href=#control-routing-static-routing--dynmaic-routing--react-router-->Control Routing: Static Routing / Dynmaic Routing / React Router / ...</a>
+<br/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a href=#control-routing-server-side-routing--browser-side-routing--react-router-->Control Routing: Server-side Routing / Browser-side Routing / React Router / ...</a>
 <br/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a href=#add-frontend-libraries-google-analytics--jquery--bootstrap--semantic-ui-->Add Frontend Libraries: Google Analytics / jQuery / Bootstrap / Semantic UI / ...</a>
 <br/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a href=#use-server-framework-express--koa--hapi--fastify-->Use Server Framework: Express / Koa / Hapi / Fastify / ...</a>
 <br/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a href=#use-process-manager-docker--systemd--pm2-->Use process manager: Docker / systemd / PM2 / ...</a>
@@ -235,7 +244,7 @@ export default {
 };
 ~~~
 
-You can now run `npm run dev` (/ `yarn dev`) then go to `/hello/jon` and see your first SSR page.
+You can now run `npm run dev` (`yarn dev`) then go to `/hello/jon` and see your first SSR page.
 
 
 ###### Freedom
@@ -394,7 +403,7 @@ then use a Reframe starter instead.
    }
    ~~~
 
-You can now run `npm run dev` (/ `yarn dev`) and go to your newly created page `/hello/jon`.
+You can now run `npm run dev` (`yarn dev`) and go to your newly created page `/hello/jon`.
 
 ## CSS & Static Assets
 
@@ -446,13 +455,14 @@ import getCharacters from './data/getCharacters';
 import CharacterList from './views/CharacterList';
 
 export default {
-  // Everything returned in `getInitialProps()` is passed to the props of the `view` component
+  // Everything returned in `getInitialProps()` is passed to the `view`'s prop.
+  // `ssr-coin` calls `getInitialProps` before rendering `view` to HTML or the DOM.
   getInitialProps: async () => {
     const characters = await getCharacters();
     return {characters};
   },
 
-  // Our data is available at `props.characters`
+  // The `characters` returned by `getInitialProps()` is available at `props.characters`
   view: props => <CharacterList characters={props.characters}/>,
 
   doNotRenderInBrowser: true,
@@ -470,66 +480,11 @@ We further explain the difference between both at:
 
 ## Control Rendering
 
-You can control how your pages are rendered
-by adding `renderToHtml` and `renderToDom` to your `ssr-coin.config.js`:
-
-Example of adding React Router to a React app:
+You can control how your pages are rendered to HTML and to the DOM
+by create `renderToHtml` and `renderToDom` files:
 
 ~~~js
-// /examples/react-router/render/renderToDom.js
-
-const React = require('react');
-const ReactDOM = require('react-dom');
-const {BrowserRouter} = require('react-router-dom');
-
-module.exports = renderToDom;
-
-async function renderToDom({pageConfig, initialProps, CONTAINER_ID}) {
-  ReactDOM.hydrate(
-    React.createElement(
-      BrowserRouter,
-      null,
-      React.createElement(pageConfig.view, initialProps)
-    ),
-    document.getElementById(CONTAINER_ID)
-  );
-}
-~~~
-
-~~~js
-// /examples/react-router/render/renderToHtml.js
-
-const React = require('react');
-const ReactDOMServer = require('react-dom/server');
-const {StaticRouter} = require('react-router');
-
-module.exports = renderToHtml;
-
-async function renderToHtml({pageConfig, initialProps, ...url}) {
-  const location = {
-      pathname: initialProps.route.url.pathname,
-      search: initialProps.route.url.search,
-      hash: initialProps.route.url.hash,
-      state: undefined
-  };
-
-  return (
-    ReactDOMServer.renderToStaticMarkup(
-      React.createElement(
-        StaticRouter,
-        {location, context: {}},
-        React.createElement(
-          pageConfig.view,
-          initialProps
-        )
-      )
-    )
-  );
-}
-~~~
-
-~~~js
-// /examples/react-router/ssr-coin.config.js
+// ssr-coin.config.js
 
 module.exports = {
   renderToHtml: './render/renderToHtml.js',
@@ -537,10 +492,64 @@ module.exports = {
 };
 ~~~
 
-The example's entire source code is at:
-- [/examples/react-router](/examples/react-router)
+~~~js
+// render/renderToDom.js
 
-## Server-Side Transpalition & Server-side Autoreload
+import React from 'react';
+import ReactDOM from 'react-dom';
+
+export default renderToDom;
+
+async function renderToDom({page, initialProps, CONTAINER_ID}) {
+  ReactDOM.hydrate(
+    <page.view {...initialProps}/>,
+    document.getElementById(CONTAINER_ID)
+  );
+}
+~~~
+
+~~~js
+// render/renderToHtml.js
+
+const React = require('react');
+const ReactDOMServer = require('react-dom/server');
+
+module.exports = renderToHtml;
+
+async function renderToHtml({page, initialProps, CONTAINER_ID}) {
+  const html = (
+    ReactDOMServer.renderToStaticMarkup(
+      React.createElement(page.view, initialProps)
+    )
+  );
+
+  // Altnertively, you can return a `@brillout/html` options object
+  // in order to have more control over the generated HTML. See all
+  // html options at https://github.com/brillout/html
+  // return {
+  //   head: [
+  //     '<style>body{background: blue;}</style>',
+  //   ],
+  //   body: [
+  //     '<div>Some additional HTML</div>',
+  //     '<div id='+CONTAINER_ID+'>'+html+'</div>',
+  //   ]
+  // };
+
+  return html;
+}
+~~~
+
+Controlling the rendering of your app allows you to add providers for React libraries such as Redux.
+
+Examples:
+- [/examples/react-router](/examples/react-router)
+- [/examples/redux](/examples/redux)
+- [/examples/styled-components](/examples/styled-components)
+
+
+
+## Server-Side Transpilation & Server-side Autoreload
 
 If you specify a path when calling `ssr-coin dev ./path/to/your/server.js` then:
  - `ssr-coin` transpiles your server code. Allowing you, for example, to use TypeScript for your server code.
@@ -582,7 +591,7 @@ Note that `ssr-coin` always transpiles and auto-reloads your views and browser c
 
 To set HTML meta tags for all pages, create a `index.html` file:
 ~~~html
-// /examples/html-meta-tags/index.html
+// /examples/html/index.html
 
 <!DOCTYPE html>
 <html>
@@ -599,7 +608,7 @@ To set HTML meta tags for all pages, create a `index.html` file:
 
 To set HTML meta tags for one page only, use the page's config:
 ~~~js
-// /examples/html-meta-tags/pages/landing.page.js
+// /examples/html/pages/landing.page.js
 
 import React from 'react';
 
@@ -620,21 +629,21 @@ export default {
     'https://example.org/awesome-lib.css',
   ],
 
-  // ssr-coin uses the package @brillout/index-html (https://github.com/brillout/index-html) to generate HTML.
-  // All @brillout/index-html's options are avaible over the page config
+  // ssr-coin uses the package @brillout/html (https://github.com/brillout/html) to generate HTML.
+  // All @brillout/html's options are avaible over the page config
 
   route: '/',
   view: () => <h1>Welcome</h1>,
 };
 ~~~
 ~~~js
-// /examples/html-meta-tags/pages/about.page.js
+// /examples/html/pages/about.page.js
 
 import React from 'react';
 
 export default {
-  // `indexHtml` allows you to override the `index.html` file for a specific page:
-  indexHtml: (
+  // `html` allows you to override the `index.html` file for a specific page:
+  html: (
 `<!DOCTYPE html>
 <html>
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -653,10 +662,10 @@ export default {
 };
 ~~~
 
-See [`@brillout/index-html`'s documentation](https://github.com/brillout/index-html) for the list of all options.
+See [`@brillout/html`'s documentation](https://github.com/brillout/html) for the list of all options.
 
 Example:
- - [/examples/html-meta-tags](/examples/html-meta-tags)
+ - [/examples/html](/examples/html)
 
 
 ## Performance: `doNotRenderInBrowser` & `renderHtmlAtBuildTime`
@@ -670,7 +679,7 @@ it is first rendered to HTML on the server and then rendered again to the DOM in
 (You can read an explanation of why rendering a page twice makes sense at [Awesome Universal Rendering](https://github.com/brillout/awesome-universal-rendering).)
 With `ssr-coin` you can choose whether your pages are rendered to the DOM and/or to HTML.
 
-###### `doNotRenderInBrowser`
+###### doNotRenderInBrowser
 
 With `doNotRenderInBrowser` you control whether your page is rendered in the browser.
 
@@ -696,7 +705,7 @@ In a nutshell:
 If your page needs to be interactive then you have to rendered it in the browser and set `doNotRenderInBrowser` to `false`.
 But if your page isn't interactive then you can set `doNotRenderInBrowser` to `true` for increased performance and a blazing fast page on mobile devices.
 
-###### `renderHtmlAtBuildTime`
+###### renderHtmlAtBuildTime
 
 With `renderHtmlAtBuildTime` you can control whether the page's HTML is
 rendered statically at build-time or
@@ -758,32 +767,161 @@ function SearchPage(props) {
 
 ## Add Providers: Redux / React Router / GraphQL Apollo / Relay / ...
 
-By controlling the rendering of your pages you can add any providers for Redux, GraphQL, etc.
+By controlling the rendering of your pages you can add providers for Redux, GraphQL, etc.
 
 See <a href=#control-rendering>Control Rendering</a> for how to take over control of the rendering of your pages.
 
-Example of adding the React Router providers:
-at [/examples/react-router](/examples/react-router)
+Examples:
+- [/examples/react-router](/examples/react-router)
+- [/examples/redux](/examples/redux)
+- [/examples/styled-components](/examples/styled-components)
 
-## Control Transpalition: Babel / TypeScript /  ES6 / ...
+## Control Transpilation: Babel / TypeScript /  ES6 / ...
 
-Make sure
+You can configure Babel and the JavaScript transpilation by creating a `.babelrc` file.
+See [/examples/babel](/examples/babel) for an example of configuring babel.
 
-`ssr-coin` currently uses webpack to transpile your code.
-`ssr-coin` which means you may need to modify `ssr-coin` webpack's config.
-If there is a plugin available.
-For exampe, for TypeScript, simply use the [TypeScript plugin](/plugins/typescript).
-If there is no plugin available then open a GitHub issue and we'll build a plugin together.
+`ssr-coin` currently uses Webpack.
+This means that for custom transpilations beyond babel, modifications to `ssr-coin`'s webpack config are required.
+Instead of modifying `ssr-coin`'s webpack config yourself,
+see if there is a [transpilation plugin](#transpilation-plugins) [transpilation plugin]
+that modifies `ssr-coin`'s webpack config for you.
+For exampe, for TypeScript, you can use the [TypeScript plugin](/plugins/typescript).
+If there is no plugin for what you need, then open a GitHub issue and we'll create one together.
 
-We will use Parcel instead of Webpack once Parcel v2 is released.
-There will then be no need for transpalition plugins anymore (since parcel is zero-config).
+Once Parcel v2's is released,
+`ssr-coin` will use Parcel instead of Webpack.
+Since Parcel is zero-config, most of your transpilation needs will then just work.
+(Transpilation plugins will not be required anymore.)
+
+Examples:
+- [/examples/typescript](/examples/typescript)
+- [/examples/babel](/examples/babel)
+
+
+## CSS-in-JS: Emotion / styled-components / ...
+
+Some CSS-in-JS libraries,
+such as [emotion](https://github.com/emotion-js/emotion),
+work with SSR out of the box and no additional setup is required.
+
+For some others,
+such as [styled-components](https://github.com/styled-components/styled-components),
+you make need to
+[take control over rendering](#control-rendering).
+
+Examples:
+- [/examples/emotion](/examples/emotion)
+- [/examples/styled-components](/examples/styled-components)
+
 
 ## Add CSS pre-processor: PostCSS / Sass / Less / ...
 
 
 
 
-## Control Routing: Static Routing / Dynmaic Routing / React Router / ...
+## Control Routing: Server-side Routing / Browser-side Routing / React Router / ...
+
+There are two ways to do routing on the web:
+*server-side routing*
+and
+*browser-side routing*.
+
+###### Server-side Routing
+
+Routes defined in your page configs
+
+~~~jsx
+import React from 'react';
+
+export default {
+  route: '/hello/:name',
+  view: ({name}) => (
+    <div>
+      Welcome {name}.
+    </div>
+  ),
+};
+~~~
+
+are server-side routes:
+when navigating from `/hello/jon` to `/hello/alice`
+the browser terminates the current page `/hello/jon` and starts a new page at `/hello/alice`,
+as if you would close the `/hello/jon` tab and open a new tab `/hello/alice`.
+It is the server that does the job of mapping URLs to pages and the browser is not involved in the routing process.
+
+###### Browser-side Routing
+
+HTML5 introduced a new browser API `history` that allows to manipulate the browser URL history enabling browser-side routing:
+when navigating from `/previous-page` to `/next-page`, instead of terminating the current page `/previous-page` and starting a new page at `/next-page`, the current page `/previous-page` is preserved, its URL changed to `/next-page` (with `history.pushState()`), and the content of `/next-page` is rendered to the DOM replacing the DOM of `/previous-page`.
+
+Server-side routing is simpler than browser-side routing and server-side routing should be used when possible.
+But if server-side routing is not an option,
+you can opt to do browser-side routing.
+
+To do so you may need to
+[take control over rendering](#control-rendering).
+
+Example of a React app doing browser-side routing with React Router:
+
+~~~js
+// /examples/react-router/render/renderToDom.js
+
+import React from 'react';
+import ReactDOM from 'react-dom';
+import { BrowserRouter } from 'react-router-dom';
+
+export default renderToDom;
+
+async function renderToDom({page, initialProps, CONTAINER_ID}) {
+  ReactDOM.hydrate(
+    <BrowserRouter>
+      <page.view {...initialProps}/>
+    </BrowserRouter>,
+    document.getElementById(CONTAINER_ID)
+  );
+}
+~~~
+
+~~~js
+// /examples/react-router/render/renderToHtml.js
+
+const React = require('react');
+const ReactDOMServer = require('react-dom/server');
+const {StaticRouter} = require('react-router');
+
+module.exports = renderToHtml;
+
+async function renderToHtml({page, initialProps}) {
+  const {pathname, search, hash} = initialProps;
+  return (
+    ReactDOMServer.renderToStaticMarkup(
+      React.createElement(
+        StaticRouter,
+        {location: {pathname, search, hash, state: undefined}, context: {}},
+        React.createElement(
+          page.view,
+          initialProps
+        )
+      )
+    )
+  );
+}
+~~~
+
+~~~js
+// /examples/react-router/ssr-coin.config.js
+
+module.exports = {
+  renderToHtml: './render/renderToHtml.js',
+  renderToDom: './render/renderToDom.js',
+};
+~~~
+
+The example's entire source code is at:
+- [/examples/react-router](/examples/react-router)
+
+
 ## Add Frontend Libraries: Google Analytics / jQuery / Bootstrap / Semantic UI / ...
 
 To load a frontend library hosted on a cdn, add `<script>` and `<style>` tags to your HTML, see <a href=#html-meta-tags-indexhtml-title-meta-link->HTML Meta Tags: `index.html`, `<title/>`, `<meta/>`, `<link/>`, ...</a>.
@@ -860,6 +998,8 @@ pm2 start ./path/to/your/server.js
 ###### Server plugins
 
 ###### Render plugins
+
+###### Transpilation plugins
 
 <!---
 
