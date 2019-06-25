@@ -24,6 +24,7 @@
     "examples/redux",
     "examples/emotion",
     "examples/styled-components",
+    "examples/postcss",
 
     "ssr-coin/",
 
@@ -35,6 +36,7 @@
     "plugins/hapi",
     "plugins/koa",
     "plugins/express",
+    "plugins/postcss",
     "plugins/typescript",
     "plugins/react",
     "plugins/render-react",

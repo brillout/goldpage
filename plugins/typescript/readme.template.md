@@ -1,14 +1,22 @@
 !MENU_SKIP
 
-Reframe + TypeScript = :heart:
+`ssr-coin` + TypeScript = :heart:
 
-# `@reframe/typescript`
+# `@ssr-coin/typescript`
 
-Use Reframe with TypeScript.
+Use `ssr-coin` with TypeScript.
 
 ### Usage
 
-Add `@reframe/typescript` to your `ssr-coin.config.js`.
+Install `@ssr-coin/typescript`.
+
+~~~shell
+$ npm install @ssr-coin/typescript
+~~~
+
+The `ssr-coin/typescript` plugin is automatically loaded.
+
+Configure TypeScript:
 
 ~~~js
 !INLINE ./example/ssr-coin.config.js --hide-source-path
@@ -18,4 +26,8 @@ Add `@reframe/typescript` to your `ssr-coin.config.js`.
 
 ~~~tsx
 !INLINE ./example/pages/hello.page.tsx
+~~~
+
+~~~js
+!INLINE ./example/ssr-coin.config.js
 ~~~

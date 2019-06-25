@@ -1,17 +1,18 @@
 {
-  "name": "example_typescript",
+  "name": "example-postcss",
   "private": true,
   "version": "0.3.2",
   "scripts": {
     "dev": "ssr-coin dev ./server.js"
   },
   "dependencies": {
-    "@ssr-coin/react": "0.3.2",
+    "@ssr-coin/postcss": "0.3.2",
     "@ssr-coin/express": "0.3.2",
-    "@ssr-coin/typescript": "0.3.2",
-    "express": "^4.17.1",
+    "@ssr-coin/react": "0.3.2",
+    "postcss-cssnext": "^3.1.0",
     "react": "^16.8.6",
-    "ssr-coin": "0.3.2"
+    "ssr-coin": "0.3.2",
+    "sugarss": "^2.0.0"
   },
   "checkDeps": {
     "skip": true
