@@ -5,25 +5,30 @@
 !VAR WHAT What is `ssr-coin`
 !VAR WHY Why `ssr-coin`
 
+!VAR PLUGINS Plugins
+!VAR PLUGINS_SERVER Server plugins
+!VAR PLUGINS_RENDER Render plugins
+!VAR PLUGINS_TRANSPILATION Transpilation plugins
+
 !VAR GETTING_STARTED Getting Started
 
 !VAR CSS_AND_ASSETS CSS & Static Assets
 !VAR ASYNC_DATA Async Data: `getInitialProps`
 !VAR CONTROL_RENDERING Control Rendering
-!VAR SERVER_SIDE Server-Side Transpalition & Server-side Autoreload
+!VAR SERVER_SIDE Server-Side Transpilation & Server-side Autoreload
 !VAR CONTROL_HTML HTML Meta Tags: `index.html`, `<title/>`, `<meta/>`, `<link/>`, ...
 !VAR PERFORMANCE_TUNING Performance: `doNotRenderInBrowser` & `renderHtmlAtBuildTime`
 
+!VAR API_REF API
+
 !VAR PROVIDERS Add Providers: Redux / React Router / GraphQL Apollo / Relay / ...
-!VAR LANGUAGES Control Transpalition: Babel / TypeScript /  ES6 / ...
+!VAR LANGUAGES Control Transpilation: Babel / TypeScript /  ES6 / ...
+!VAR CSS_IN_JS CSS-in-JS: Emotion / styled-components / ...
 !VAR CSS_PRE_PROCESSORS Add CSS pre-processor: PostCSS / Sass / Less / ...
 !VAR ROUTING Control Routing: Server-side Routing / Browser-side Routing / React Router / ...
 !VAR FRONTEND_LIBRARIRES Add Frontend Libraries: Google Analytics / jQuery / Bootstrap / Semantic UI / ...
 !VAR SERVER_FRAMEWORKS Use Server Framework: Express / Koa / Hapi / Fastify / ...
 !VAR PROCESS_MANAGERS Use process manager: Docker / systemd / PM2 / ...
-!VAR PLUGINS Plugins
-!VAR PLUGINS_SERVER Server plugins
-!VAR PLUGINS_RENDER Render plugins
 
 !INLINE li-1 !VAR|LINK WHAT
 !INLINE li-1 !VAR|LINK WHY
@@ -37,9 +42,12 @@
 !INLINE li-2 !VAR|LINK CONTROL_HTML
 !INLINE li-2 !VAR|LINK SERVER_SIDE
 !INLINE li-2 !VAR|LINK PERFORMANCE_TUNING
+!INLINE li-2-header API Reference
+!INLINE li-2 !VAR|LINK API_REF
 !INLINE li-2-header Recipes
 !INLINE li-2 !VAR|LINK PROVIDERS
 !INLINE li-2 !VAR|LINK LANGUAGES
+!INLINE li-2 !VAR|LINK CSS_IN_JS
 !INLINE li-2 !VAR|LINK CSS_PRE_PROCESSORS
 !INLINE li-2 !VAR|LINK ROUTING
 !INLINE li-2 !VAR|LINK FRONTEND_LIBRARIRES
@@ -373,25 +381,35 @@ We further explain the difference between both at:
 
 ## !VAR CONTROL_RENDERING
 
-You can control how your pages are rendered
-by adding `renderToHtml` and `renderToDom` to your `ssr-coin.config.js`:
-
-Example of adding React Router to a React app:
+You can control how your pages are rendered to HTML and to the DOM
+by create `renderToHtml` and `renderToDom` files:
 
 ~~~js
-!INLINE /examples/react-router/render/renderToDom.js
+// ssr-coin.config.js
+
+!INLINE /examples/react-router/ssr-coin.config.js --hide-source-path
 ~~~
 
 ~~~js
-!INLINE /examples/react-router/render/renderToHtml.js
+// render/renderToDom.js
+
+!INLINE /plugins/render-react/renderToDom.js --hide-source-path
 ~~~
 
 ~~~js
-!INLINE /examples/react-router/ssr-coin.config.js
+// render/renderToHtml.js
+
+!INLINE /plugins/render-react/renderToHtml.js --hide-source-path
 ~~~
 
-The example's entire source code is at:
+Controlling the rendering of your app allows you to add providers for React libraries such as Redux.
+
+Examples:
 - [/examples/react-router](/examples/react-router)
+- [/examples/redux](/examples/redux)
+- [/examples/styled-components](/examples/styled-components)
+
+
 
 ## !VAR SERVER_SIDE
 
@@ -435,21 +453,21 @@ Note that `ssr-coin` always transpiles and auto-reloads your views and browser c
 
 To set HTML meta tags for all pages, create a `index.html` file:
 ~~~html
-!INLINE /examples/html-meta-tags/index.html
+!INLINE /examples/html/index.html
 ~~~
 
 To set HTML meta tags for one page only, use the page's config:
 ~~~js
-!INLINE /examples/html-meta-tags/pages/landing.page.js
+!INLINE /examples/html/pages/landing.page.js
 ~~~
 ~~~js
-!INLINE /examples/html-meta-tags/pages/about.page.js
+!INLINE /examples/html/pages/about.page.js
 ~~~
 
 See [`@brillout/html`'s documentation](https://github.com/brillout/html) for the list of all options.
 
 Example:
- - [/examples/html-meta-tags](/examples/html-meta-tags)
+ - [/examples/html](/examples/html)
 
 
 ## !VAR PERFORMANCE_TUNING
@@ -551,25 +569,53 @@ function SearchPage(props) {
 
 ## !VAR PROVIDERS
 
-By controlling the rendering of your pages you can add any providers for Redux, GraphQL, etc.
+By controlling the rendering of your pages you can add providers for Redux, GraphQL, etc.
 
 See !VAR|LINK CONTROL_RENDERING for how to take over control of the rendering of your pages.
 
-Example of adding the React Router providers:
-at [/examples/react-router](/examples/react-router)
+Examples:
+- [/examples/react-router](/examples/react-router)
+- [/examples/redux](/examples/redux)
+- [/examples/styled-components](/examples/styled-components)
 
 ## !VAR LANGUAGES
 
-Make sure
+You can configure Babel and the JavaScript transpilation by creating a `.babelrc` file.
+See [/examples/babel](/examples/babel) for an example of configuring babel.
 
-`ssr-coin` currently uses webpack to transpile your code.
-`ssr-coin` which means you may need to modify `ssr-coin` webpack's config.
-If there is a plugin available.
-For exampe, for TypeScript, simply use the [TypeScript plugin](/plugins/typescript).
-If there is no plugin available then open a GitHub issue and we'll build a plugin together.
+`ssr-coin` currently uses Webpack.
+This means that for custom transpilations beyond babel, modifications to `ssr-coin`'s webpack config are required.
+Instead of modifying `ssr-coin`'s webpack config yourself,
+see if there is a [transpilation plugin](!VAR|ANCHOR PLUGINS_TRANSPILATION) [transpilation plugin]
+that modifies `ssr-coin`'s webpack config for you.
+For exampe, for TypeScript, you can use the [TypeScript plugin](/plugins/typescript).
+If there is no plugin for what you need, then open a GitHub issue and we'll create one together.
 
-We will use Parcel instead of Webpack once Parcel v2 is released.
-There will then be no need for transpalition plugins anymore (since parcel is zero-config).
+Once Parcel v2's is released,
+`ssr-coin` will use Parcel instead of Webpack.
+Since Parcel is zero-config, most of your transpilation needs will then just work.
+(Transpilation plugins will not be required anymore.)
+
+Examples:
+- [/examples/typescript](/examples/typescript)
+- [/examples/babel](/examples/babel)
+
+
+## !VAR CSS_IN_JS
+
+Some CSS-in-JS libraries,
+such as [emotion](https://github.com/emotion-js/emotion),
+work with SSR out of the box and no additional setup is required.
+
+For some others,
+such as [styled-components](https://github.com/styled-components/styled-components),
+you make need to
+[take control over rendering](!VAR|ANCHOR CONTROL_RENDERING).
+
+Examples:
+- [/examples/emotion](/examples/emotion)
+- [/examples/styled-components](/examples/styled-components)
+
 
 ## !VAR CSS_PRE_PROCESSORS
 
@@ -681,3 +727,5 @@ pm2 start ./path/to/your/server.js
 ###### !VAR PLUGINS_SERVER
 
 ###### !VAR PLUGINS_RENDER
+
+###### !VAR PLUGINS_TRANSPILATION

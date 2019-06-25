@@ -3,13 +3,14 @@ import getCharacters from './data/getCharacters';
 import CharacterList from './views/CharacterList';
 
 export default {
-  // Everything returned in `getInitialProps()` is passed to the props of the `view` component
+  // Everything returned in `getInitialProps()` is passed to the `view`'s prop.
+  // `ssr-coin` calls `getInitialProps` before rendering `view` to HTML or the DOM.
   getInitialProps: async () => {
     const characters = await getCharacters();
     return {characters};
   },
 
-  // Our data is available at `props.characters`
+  // The `characters` returned by `getInitialProps()` is available at `props.characters`
   view: props => <CharacterList characters={props.characters}/>,
 
   doNotRenderInBrowser: true,
