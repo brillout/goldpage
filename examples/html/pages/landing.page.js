@@ -1,4 +1,5 @@
 import React from 'react';
+import logoUrl from './logo.png';
 
 export default {
   // Adds <title>Welcome</title>
@@ -16,6 +17,9 @@ export default {
   styles: [
     'https://example.org/awesome-lib.css',
   ],
+
+  // Adds <link rel="shortcut icon" href="/logo.hash_85dcecf7a6ad1f1ae4d590bb3078e4b1.png" />
+  favicon: logoUrl,
 
   // ssr-coin uses the package @brillout/html (https://github.com/brillout/html) to generate HTML.
   // All @brillout/html's options are avaible over the page config
