@@ -21,13 +21,14 @@
 
 !VAR API_REF API
 
-!VAR PROVIDERS Add Providers: Redux / React Router / GraphQL Apollo / Relay / ...
-!VAR LANGUAGES Control Transpilation: Babel / TypeScript /  ES6 / ...
-!VAR CSS_IN_JS CSS-in-JS: Emotion / styled-components / ...
+!VAR ADD_PROVIDERS Add Providers: Redux / React Router / GraphQL Apollo / Relay / ...
+!VAR CONTROL_TRANSPILATION Control Transpilation: Babel / TypeScript /  ES6 / ...
+!VAR CSS_IN_JS Add CSS-in-JS: Emotion / styled-components / ...
 !VAR CSS_PRE_PROCESSORS Add CSS pre-processor: PostCSS / Sass / Less / ...
 !VAR ROUTING Control Routing: Server-side Routing / Browser-side Routing / React Router / ...
 !VAR FRONTEND_LIBRARIRES Add Frontend Libraries: Google Analytics / jQuery / Bootstrap / Semantic UI / ...
 !VAR SERVER_FRAMEWORKS Use Server Framework: Express / Koa / Hapi / Fastify / ...
+!VAR VIEW_LIBRARIES Use View Library: React / Vue / Preact / ...
 !VAR PROCESS_MANAGERS Use process manager: Docker / systemd / PM2 / ...
 
 !INLINE li-1 !VAR|LINK WHAT
@@ -45,13 +46,14 @@
 !INLINE li-2-header API Reference
 !INLINE li-2 !VAR|LINK API_REF
 !INLINE li-2-header Recipes
-!INLINE li-2 !VAR|LINK PROVIDERS
-!INLINE li-2 !VAR|LINK LANGUAGES
+!INLINE li-2 !VAR|LINK ADD_PROVIDERS
+!INLINE li-2 !VAR|LINK CONTROL_TRANSPILATION
 !INLINE li-2 !VAR|LINK CSS_IN_JS
 !INLINE li-2 !VAR|LINK CSS_PRE_PROCESSORS
 !INLINE li-2 !VAR|LINK ROUTING
 !INLINE li-2 !VAR|LINK FRONTEND_LIBRARIRES
 !INLINE li-2 !VAR|LINK SERVER_FRAMEWORKS
+!INLINE li-2 !VAR|LINK VIEW_LIBRARIES
 !INLINE li-2 !VAR|LINK PROCESS_MANAGERS
 
 <br/>
@@ -566,8 +568,114 @@ function SearchPage(props) {
 
 
 
+## !VAR API_REF
 
-## !VAR PROVIDERS
+Page 
+
+~~~js
+// pages/*.page.js
+
+export default {
+
+  // The url of the page
+  // We use the routing library `path-to-regexp` (https://github.com/pillarjs/path-to-regexp)
+  route: '/product/:productId',
+
+  getInitialProps: (
+    async ({
+      // The route arguments are avaible.
+      productId,
+
+      // Whether the code is being run in Node.js or in the browser
+      isNodejs,
+
+      url,
+      pathname,
+      search,
+      origin,
+      hash,
+
+      // The page config props are available.
+      view,
+      route,
+      ...pageConfig,
+
+      // The server framework's request props are available.
+      ...requestContext,
+
+      /*
+      // Since all props are flat-merged into one object, there can be conflicts.
+      // All the props also occur here.
+      // In case of a prop name conflict, access the prop here
+      __sources: {
+        pageConfig,
+        // Props returned by `getInitialProps`
+        loadedProps,
+        requestContext,
+        // The url object returned by `@brillout/parse-uri` (https://github.com/brillout/parse-uri)
+        url,
+        // The route params
+        routeArguments,
+        isNodejs,
+      },
+      */
+    }) => {
+      if( url==='http://localhost:3000/product/123?productColor=blue#reviews' ){
+        assert(productId==='123');
+        assert(origin==='localhost');
+        assert(pathname==='/product/123');
+        assert(search.productColor==='blue');
+        assert(hash==='reviews');
+      }
+      const loadedData = await fetch('https://example.org/api/product/'+productId);
+      return {loadedData, someInitialProps: 'bla'};
+    },
+  ),
+
+  // The content of your page, rendered by the render plugin you installed
+  view: (
+    ({
+      // All props returned by `getInitialProps` are passed to `view`
+      loadedData,
+      someInitialProps,
+
+      // And all props passed to `getInitialProps` are also passed here
+      some,
+      props
+    }) => (
+      return (
+        <div>Page Content</div>
+      );
+    )
+  ),
+
+  // Control when the page is rendered, see "!VAR PERFORMANCE_TUNING".
+  doNotRenderInBrowser: false,
+  renderHtmlAtBuildTime: false,
+
+  // `@brillout/html` options
+  // <title>Title shown in browser tab.</title>
+  title: 'Title shown in browser tab.',
+  // <meta name="description" content="Description of page shown in search engines.">
+  description: 'Description of page shown in search engines.',
+  // <link rel="icon" href="https://raw.githubusercontent.com/ghuser-io/ghuser.io/master/docs/logo_square.png" />
+  favicon: require('./path/to/logo.png'),
+  head: [
+    <link rel="manifest" href="/manifest.webmanifest">
+  ],
+  body: [
+  ],
+  // Outer part of the HTML
+  html: `
+!HEAD
+!BODY
+  `,
+  // See
+  // ...
+};
+~~~
+
+## !VAR ADD_PROVIDERS
 
 By controlling the rendering of your pages you can add providers for Redux, GraphQL, etc.
 
@@ -578,7 +686,7 @@ Examples:
 - [/examples/redux](/examples/redux)
 - [/examples/styled-components](/examples/styled-components)
 
-## !VAR LANGUAGES
+## !VAR CONTROL_TRANSPILATION
 
 You can configure Babel and the JavaScript transpilation by creating a `.babelrc` file.
 See [/examples/babel](/examples/babel) for an example of configuring babel.
@@ -619,7 +727,10 @@ Examples:
 
 ## !VAR CSS_PRE_PROCESSORS
 
+By [controlling transpilation](!VAR|ANCHOR CONTROL_TRANSPILATION) you can add CSS pre-processors such as PostCSS.
 
+Example:
+ - [/examples/postcss](/examples/postcss)
 
 
 ## !VAR ROUTING
@@ -661,8 +772,8 @@ Server-side routing is simpler than browser-side routing and server-side routing
 But if server-side routing is not an option,
 you can opt to do browser-side routing.
 
-To do so you may need to
-[take control over rendering](!VAR|ANCHOR CONTROL_RENDERING).
+You can do browser-side routing by
+[taking control over rendering](!VAR|ANCHOR CONTROL_RENDERING).
 
 Example of a React app doing browser-side routing with React Router:
 
@@ -684,9 +795,9 @@ The example's entire source code is at:
 
 ## !VAR FRONTEND_LIBRARIRES
 
-To load a frontend library hosted on a cdn, add `<script>` and `<style>` tags to your HTML, see !VAR|LINK CONTROL_HTML.
+To load a frontend library that is hosted on a cdn, add `<script>` and `<style>` tags to your HTML, see !VAR|LINK CONTROL_HTML.
 
-To load a frontend library saved on your disk, use a file that is loaded by all your pages:
+To load a frontend library that is saved on your disk, use a file that is loaded by all your pages:
 
 ~~~js
 !INLINE /examples/frontend-libraries/pages/commons.js
@@ -705,6 +816,15 @@ To use `ssr-coin` with `express`, `koa` or `hapi`, use the corresponding [server
 To use `ssr-coin` with another server framework, open a GitHub issue.
 `ssr-coin` can be used with any server framework
 but there is no documentation for this (yet).
+
+## !VAR VIEW_LIBRARIES
+
+If there is a [render plugin](!VAR|ANCHOR PLUGINS_RENDER) for the view library you want to use,
+then just install the plugin and that's it.
+
+If there is no render plugin,
+then [take control over rendering](!VAR|ANCHOR CONTROL_RENDERING).
+That way you should be able to use any view library.
 
 ## !VAR PROCESS_MANAGERS
 
