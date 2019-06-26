@@ -36,19 +36,20 @@ async function renderPageToHtml({initialProps}) {
     "`renderToHtml` should return a HTML string or a `@brillout/html` parameter object.",
   );
 
-  const htmlOptions = (
-    renderToHtml__value.constructor===Object ? ({
-      ...initialProps.__sources.pageConfig,
-      initialProps,
-      ...renderToHtml__value,
-    }) : ({
-      body: [
-        '<div id="'+CONTAINER_ID+'">'+renderToHtml__value+'</div>',
-      ],
-      ...initialProps.__sources.pageConfig,
-      initialProps,
-    })
-  );
+  const htmlOptions = {
+    ...initialProps.__sources.pageConfig,
+    initialProps,
+  };
+
+  if( renderToHtml__value.constructor===String ){
+    htmlOptions.body = htmlOptions.body || [];
+    htmlOptions.body = [
+      ...htmlOptions.body,
+      '<div id="'+CONTAINER_ID+'">'+renderToHtml__value+'</div>'
+    ];
+  } else {
+    Object.assign(htmlOptions, renderToHtml__value);
+  }
 
   return html(htmlOptions);
 }

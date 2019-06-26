@@ -1,0 +1,12 @@
+{
+  "name": "Manifest Example",
+  "start_url": ".",
+  "display": "standalone",
+  "background_color": "#fff",
+  "description": "A manifest example for ssr-coin.",
+  "icons": [{
+    "src": "logo.hash_85dcecf7a6ad1f1ae4d590bb3078e4b1.png",
+    "sizes": "225x225",
+    "type": "image/png"
+  }]
+}
