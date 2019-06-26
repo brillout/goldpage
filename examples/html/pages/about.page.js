@@ -5,8 +5,9 @@ export default {
   html: (
 `<!DOCTYPE html>
 <html>
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <head>
+    <title>Title set over \`html\` option.</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     !HEAD
   </head>
   <body>

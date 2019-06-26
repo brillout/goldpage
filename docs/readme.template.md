@@ -19,7 +19,9 @@
 !VAR CONTROL_HTML HTML Meta Tags: `index.html`, `<title/>`, `<meta/>`, `<link/>`, ...
 !VAR PERFORMANCE_TUNING Performance: `doNotRenderInBrowser` & `renderHtmlAtBuildTime`
 
-!VAR API_REF API
+!VAR PAGE_CONFIG Page Config `*page.js`
+!VAR SSR_COIN_CONFIG Global Config `ssr-coin.config.js`
+!VAR CLI_REF CLI
 
 !VAR ADD_PROVIDERS Add Providers: Redux / React Router / GraphQL Apollo / Relay / ...
 !VAR CONTROL_TRANSPILATION Control Transpilation: Babel / TypeScript /  ES6 / ...
@@ -44,7 +46,9 @@
 !INLINE li-2 !VAR|LINK SERVER_SIDE
 !INLINE li-2 !VAR|LINK PERFORMANCE_TUNING
 !INLINE li-2-header API Reference
-!INLINE li-2 !VAR|LINK API_REF
+!INLINE li-2 !VAR|LINK PAGE_CONFIG
+!INLINE li-2 !VAR|LINK SSR_COIN_CONFIG
+!INLINE li-2 !VAR|LINK CLI_REF
 !INLINE li-2-header Recipes
 !INLINE li-2 !VAR|LINK ADD_PROVIDERS
 !INLINE li-2 !VAR|LINK CONTROL_TRANSPILATION
@@ -568,112 +572,176 @@ function SearchPage(props) {
 
 
 
-## !VAR API_REF
-
-Page 
+## !VAR PAGE_CONFIG
 
 ~~~js
 // pages/*.page.js
 
-export default {
-
-  // The url of the page
-  // We use the routing library `path-to-regexp` (https://github.com/pillarjs/path-to-regexp)
+const pageConfig = {
+  // The url of the page.
+  // The routing is done by `path-to-regexp` (https://github.com/pillarjs/path-to-regexp).
   route: '/product/:productId',
 
-  getInitialProps: (
-    async ({
-      // The route arguments are avaible.
-      productId,
+  // You can use `addInitialProps` to load async data.
+  addInitialProps: async initialProps => {
+    // See the definition of `assert_initialProps` for
+    // a full referance of what `initialProps` contains.
+    assert_initialProps(initialProps);
 
-      // Whether the code is being run in Node.js or in the browser
-      isNodejs,
+    const {productId} = initialProps;
+    const loadedData = await fetch('https://example.org/api/product/'+productId);
 
-      url,
-      pathname,
-      search,
-      origin,
-      hash,
+    return {loadedData};
+  },
 
-      // The page config props are available.
-      view,
-      route,
-      ...pageConfig,
+  // The content of your page.
+  // It is rendered by the render plugin you installed.
+  view: initialProps => {
+    assert_initialProps(initialProps);
 
-      // The server framework's request props are available.
-      ...requestContext,
+    // Props returned by `addInitialProps` are available to `view`
+    assert(initialProps.loadedData);
 
-      /*
-      // Since all props are flat-merged into one object, there can be conflicts.
-      // All the props also occur here.
-      // In case of a prop name conflict, access the prop here
-      __sources: {
-        pageConfig,
-        // Props returned by `getInitialProps`
-        loadedProps,
-        requestContext,
-        // The url object returned by `@brillout/parse-uri` (https://github.com/brillout/parse-uri)
-        url,
-        // The route params
-        routeArguments,
-        isNodejs,
-      },
-      */
-    }) => {
-      if( url==='http://localhost:3000/product/123?productColor=blue#reviews' ){
-        assert(productId==='123');
-        assert(origin==='localhost');
-        assert(pathname==='/product/123');
-        assert(search.productColor==='blue');
-        assert(hash==='reviews');
-      }
-      const loadedData = await fetch('https://example.org/api/product/'+productId);
-      return {loadedData, someInitialProps: 'bla'};
-    },
-  ),
-
-  // The content of your page, rendered by the render plugin you installed
-  view: (
-    ({
-      // All props returned by `getInitialProps` are passed to `view`
-      loadedData,
-      someInitialProps,
-
-      // And all props passed to `getInitialProps` are also passed here
-      some,
-      props
-    }) => (
-      return (
-        <div>Page Content</div>
-      );
-    )
-  ),
+    return (
+      <div>Page Content</div>
+    );
+  },
 
   // Control when the page is rendered, see "!VAR PERFORMANCE_TUNING".
   doNotRenderInBrowser: false,
   renderHtmlAtBuildTime: false,
 
-  // `@brillout/html` options
-  // <title>Title shown in browser tab.</title>
-  title: 'Title shown in browser tab.',
-  // <meta name="description" content="Description of page shown in search engines.">
-  description: 'Description of page shown in search engines.',
-  // <link rel="icon" href="https://raw.githubusercontent.com/ghuser-io/ghuser.io/master/docs/logo_square.png" />
-  favicon: require('./path/to/logo.png'),
-  head: [
-    <link rel="manifest" href="/manifest.webmanifest">
-  ],
-  body: [
-  ],
-  // Outer part of the HTML
-  html: `
-!HEAD
-!BODY
-  `,
-  // See
-  // ...
+  ...getHtmlOptions()
 };
+
+export default pageConfig;
+
+function assert_initialProps(initialProps){
+  const {
+    // The route arguments are avaible.
+    productId,
+
+    // Whether the code is being run in Node.js or in the browser
+    isNodejs,
+
+    // URL props
+    url,
+    pathname,
+    search,
+    origin,
+    hash,
+
+    // The request object is available here.
+    // The page config as well.
+    // See below.
+    ...initialProps__rest
+  } = initialProps;
+
+  if( url==='http://localhost:3000/product/123?productColor=blue#reviews' ){
+    assert(productId==='123');
+    assert(origin==='localhost');
+    assert(pathname==='/product/123');
+    assert(search.productColor==='blue');
+    assert(hash==='reviews');
+  }
+
+  assert([true, false].includes(isNodejs);
+
+  // The server framework's request object is also available.
+  // For example, to get the HTTP request headers `req.headers`:
+  const {headers} = initialProps__rest;
+
+  // The page config is available over `initialProps`
+  assert(initialProps__rest.route);
+  assert(initialProps__rest.view);
+  pageConfig.forEach(pageConfigProp => {
+    assert(initialProps__rest[pageConfigProp]);
+  });
+
+  // Since all props are flat-merged into one object, there can be conflicts.
+  // In case of a prop name conflict, you can access all props over `__sources`.
+  const {__sources} = initialProps;
+  // Props returned by `getInitialProps`
+  assert(__sources.addInitialProps__result);
+  // The request object returned by your server framework (Express / Koa / Hapi / ...)
+  assert(__sources.requestObject);
+  // The url object returned by `@brillout/parse-uri` (https://github.com/brillout/parse-uri)
+  assert(__sources.url);
+  // The route params
+  assert(__sources.routeArguments);
+  assert(__sources.pageConfig===pageConfig);
+  assert(__sources.isNodejs===isNodejs);
+}
+
+function getHtmlOptions() {
+  // ssr-coin uses `@brillout/html` (https://github.com/brillout/html) to generate HTML.
+  // All `@brillout/html` options are available over the page config.
+
+  return {
+    // Adds <title>Title shown in browser tab.</title>
+    title: 'Title shown in browser tab.',
+    /* Altneratively:
+    title: initialProps => {
+      assert_initialProps(initialProps);
+      // Props returned by `addInitialProps` are also available to the `@brillout/html` options
+      return initialProps.loadedData.product.name;
+    },
+    */
+
+    // <meta name="description" content="Description of page shown in search engines.">
+    description: 'Description of page shown in search engines.',
+    /*
+    // Not only `title` but all options can be dynmically generated with a function
+    description: initialProps => initialProps.loadedData.product.name,
+    */
+
+    // <link rel="icon" href="https://raw.githubusercontent.com/ghuser-io/ghuser.io/master/docs/logo_square.png" />
+    favicon: require('./path/to/logo.png'),
+
+    head: [
+      '<link rel="manifest" href="/manifest.webmanifest">',
+    ],
+    body: [
+      '<script>console.log("hello from injected script")</script>',
+    ],
+    /* Again, we can use a function to dynammically generate HTML.
+    body: initialProps => {
+      return [
+        '<script>console.log("hello from '+initialProps.loadedData.productname+' page.")</script>',
+      ];
+    },
+    */
+
+    // You can fully control the HTML:
+    html: (
+`<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    !HEAD
+  </head>
+  <body>
+    !BODY
+  </body>
+</html>
+`
+    ),
+    /* Dynammically as well:
+    html: initialProps => '...',
+    */
+
+    // See https://github.com/brillout/html for the list of all options
+  };
+}
 ~~~
+
+## !VAR SSR_COIN_CONFIG
+
+
+
+## !VAR CLI_REF
+
+
 
 ## !VAR ADD_PROVIDERS
 

@@ -12,16 +12,16 @@ async function getInitialProps({pageConfig, url, router, requestContext, isNodej
 
   let initialProps = assemble(null);
 
-  const loadedProps = (
+  const addInitialProps__result = (
     pageConfig.getInitialProps &&
     await pageConfig.getInitialProps(initialProps)
   );
 
-  initialProps = assemble(loadedProps);
+  initialProps = assemble(addInitialProps__result);
 
   return initialProps;
 
-  function assemble(loadedProps) {
+  function assemble(addInitialProps__result) {
     return ({
       isNodejs,
       url: url.uri,
@@ -29,10 +29,10 @@ async function getInitialProps({pageConfig, url, router, requestContext, isNodej
       ...requestContext,
       ...url,
       ...routeArguments,
-      ...loadedProps,
+      ...addInitialProps__result,
       __sources: {
         pageConfig,
-        loadedProps,
+        addInitialProps__result,
         requestContext,
         url,
         routeArguments,
