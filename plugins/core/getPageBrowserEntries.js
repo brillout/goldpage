@@ -25,7 +25,7 @@ function getPageBrowserEntries(pageModules) {
 }
 
 function assert_usage__defaultPageConfig() {
-    const configsUsedInBrowser = ['route', 'view', 'getInitialProps'];
+    const configsUsedInBrowser = ['route', 'view', 'addInitialProps'];
     const {defaultPageConfig} = config.ssrCoin;
     configsUsedInBrowser.forEach(prop => {
         assert_usage(

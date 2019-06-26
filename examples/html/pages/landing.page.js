@@ -44,7 +44,7 @@ export default {
 
   // You can also dynamically generate HTML.
   // You can use this to have page meta tags generatetd upon loaded data.
-  getInitialProps: async ({productId}) => {
+  addInitialProps: async ({productId}) => {
     const product = await fetchProduct(productId);
     console.log(product);
     return {product};

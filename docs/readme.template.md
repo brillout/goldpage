@@ -13,7 +13,7 @@
 !VAR GETTING_STARTED Getting Started
 
 !VAR CSS_AND_ASSETS CSS & Static Assets
-!VAR ASYNC_DATA Async Data: `getInitialProps`
+!VAR ASYNC_DATA Async Data: `addInitialProps`
 !VAR CONTROL_RENDERING Control Rendering
 !VAR SERVER_SIDE Server-Side Transpilation & Server-side Autoreload
 !VAR CONTROL_HTML HTML Meta Tags: `index.html`, `<title/>`, `<meta/>`, `<link/>`, ...
@@ -290,7 +290,7 @@ then use a Reframe starter instead.
        </div>
      ),
      tittle: ({name}) => 'Hi '+name,
-     getInitialProps: async () => {
+     addInitialProps: async () => {
        await sleep(0.3);
        return {data: "This is some async data;"};
      },
@@ -372,7 +372,7 @@ Example of a page that uses all kinds of static assets:
 
 ## !VAR ASYNC_DATA
 
-You can load and render data by adding a `getInitialProps` function to your page config:
+You can load and render data by adding a `addInitialProps` function to your page config:
 
 ~~~js
 !INLINE /examples/async-data/pages/got/html.page.js
@@ -661,7 +661,7 @@ function assert_initialProps(initialProps){
   // Since all props are flat-merged into one object, there can be conflicts.
   // In case of a prop name conflict, you can access all props over `__sources`.
   const {__sources} = initialProps;
-  // Props returned by `getInitialProps`
+  // Props returned by `addInitialProps`
   assert(__sources.addInitialProps__result);
   // The request object returned by your server framework (Express / Koa / Hapi / ...)
   assert(__sources.requestObject);

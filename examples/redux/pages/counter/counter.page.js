@@ -5,10 +5,10 @@ import reducers from './reducers'
 export default {
   route: '/',
   view: Counter,
-  getInitialProps,
+  addInitialProps,
 };
 
-async function getInitialProps({isNodejs}) {
+async function addInitialProps({isNodejs}) {
   const state = await getState({isNodejs});
   const store = createStore(reducers, state);
   return {store};

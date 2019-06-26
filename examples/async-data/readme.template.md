@@ -3,17 +3,17 @@
 This example exhibits how to load and render data.
 
 We define two pages that load data:
- - `html.page.js` - Loads data by using `async getInitialProps()`.
+ - `html.page.js` - Loads data by using `async addInitialProps()`.
  - `dom.page.js` - Loads data by using a stateful component.
 
 
-### GameOfThronesPage - Using `async getInitialProps()`
+### GameOfThronesPage - Using `async addInitialProps()`
 
 ~~~js
 !INLINE ./pages/got/html.page.js
 ~~~
 
-Because `aysnc getInitialProps()` is called and waited for prior to rendering the HTML, our page's HTML `view-source:http://localhost:3000/game-of-thrones` displays the data already.
+Because `aysnc addInitialProps()` is called and waited for prior to rendering the HTML, our page's HTML `view-source:http://localhost:3000/game-of-thrones` displays the data already.
 
 ~~~html
 <!DOCTYPE html>

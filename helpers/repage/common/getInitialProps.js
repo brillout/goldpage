@@ -13,8 +13,8 @@ async function getInitialProps({pageConfig, url, router, requestContext, isNodej
   let initialProps = assemble(null);
 
   const addInitialProps__result = (
-    pageConfig.getInitialProps &&
-    await pageConfig.getInitialProps(initialProps)
+    pageConfig.addInitialProps &&
+    await pageConfig.addInitialProps(initialProps)
   );
 
   initialProps = assemble(addInitialProps__result);
