@@ -1,12 +1,11 @@
-const assert_internal = require('reassert/internal');
-const assert_usage = require('reassert/usage');
-const assert_todo = assert_internal;
+const assert = require('@brillout/reassert');
+const assert_todo = assert.internal;
 
 // `matchPath` source code:
 //    https://github.com/ReactTraining/react-router/blob/master/packages/react-router/modules/matchPath.js
 const reactRouter = require('react-router');
 const {matchPath} = reactRouter||{};
-assert_internal(matchPath, {matchPath, reactRouter});
+assert.internal(matchPath, {matchPath, reactRouter});
 
 const router = {
     doesMatchUrl,
@@ -32,7 +31,7 @@ function getRouteArguments(urlProps, pageInfo) {
         return null;
     }
     const params = {match_info};
-    assert_internal(params && params.constructor === Object, params);
+    assert.internal(params && params.constructor === Object, params);
     return match_info.params;
 }
 
@@ -64,8 +63,8 @@ function get_match_info(urlProps, pageInfo) {
 }
 
 function assert_urlProps(urlProps) {
-    assert_internal(urlProps && urlProps.constructor===Object, urlProps);
-    assert_internal(urlProps.pathname && urlProps.pathname.constructor===String && urlProps.pathname.startsWith('/'), urlProps);
+    assert.internal(urlProps && urlProps.constructor===Object, {urlProps});
+    assert.internal(urlProps.pathname && urlProps.pathname.constructor===String && urlProps.pathname.startsWith('/'), urlProps);
 }
 
 function hasOnlyOneUniqueRoute() {

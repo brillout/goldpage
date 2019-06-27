@@ -1,5 +1,5 @@
 const {getInitialProps} = require('./common/getInitialProps');
-const assert = require('@brillout/assert');
+const assert = require('@brillout/reassert');
 
 module.exports = hydratePage;
 
