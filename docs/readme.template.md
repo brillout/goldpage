@@ -577,6 +577,7 @@ function SearchPage(props) {
 ~~~js
 // pages/*.page.js
 
+!INLINE /examples/html/pages/products.page.js --hide-source-path
 ~~~
 
 ## !VAR SSR_COIN_CONFIG

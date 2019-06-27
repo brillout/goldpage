@@ -32,6 +32,7 @@ async function getInitialProps({pageConfig, url, router, requestObject, isNodejs
       isNodejs,
       ...requestObject,
       ...pageConfig,
+      ...urlProps.query,
       ...urlProps,
       ...routeArguments,
       ...addInitialProps__result,
