@@ -6,14 +6,14 @@ async function getInitialProps({pageConfig, url, router, requestObject, isNodejs
   // `url` is missing iff static HTML rendering
   assert.internal(url.startsWith('http') || url.startsWith('/'));
   const parseUrl = require('@brillout/parse-url');
-  const urlPros = parseUrl(url);
-  assert.internal(urlPros.url===url);
-  assert.internal(urlPros.pathname);
+  const urlProps = parseUrl(url);
+  assert.internal(urlProps.url===url);
+  assert.internal(urlProps.pathname);
 
   assert.internal([true,false].includes(isNodejs));
   assert.internal((requestObject||{}).constructor===Object);
 
-  const routeArguments = router.getRouteArguments(url, pageConfig);
+  const routeArguments = router.getRouteArguments(urlProps, pageConfig);
   assert.internal((routeArguments||{}).constructor===Object, {routeArguments});
 
   let initialProps = assemble(null);

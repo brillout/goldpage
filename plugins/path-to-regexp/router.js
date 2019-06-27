@@ -36,7 +36,7 @@ function getRouteArguments(urlProps, pageInfo) {
 }
 
 function getRouteUrl(routeArguments, pageInfo) {
-    assert_usage(
+    assert.usage(
         routeArguments && routeArguments.constructor===Object && Object.keys(routeArguments).length===0,
         "`getRouteUrl` not supported for parameterized routes."
     );
@@ -49,7 +49,7 @@ function get_match_info(urlProps, pageInfo) {
     if( ! route ) {
         return null;
     }
-    assert_usage([String, Object].includes(route.constructor));
+    assert.usage([String, Object].includes(route.constructor));
     const options = (
         route.constructor===String ? (
             {path: route, exact: true}
