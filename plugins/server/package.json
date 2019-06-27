@@ -3,7 +3,7 @@
   "version": "0.3.2",
   "@brillout/autoload": true,
   "dependencies": {
-    "@brillout/parse-uri": "^0.1.1",
+    "@brillout/parse-url": "^0.2.1",
     "@brillout/reconfig": "0.3.2",
     "@brillout/repage": "0.3.2",
     "fs-extra": "^7.0.1",

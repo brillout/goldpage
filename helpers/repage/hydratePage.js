@@ -1,28 +1,13 @@
-const {getUrl} = require('./common/getUrl');
 const {getInitialProps} = require('./common/getInitialProps');
+const assert = require('@brillout/assert');
 
 module.exports = hydratePage;
 
-async function hydratePage({pageConfig, router, navigator=getDefaultNavigator(), renderPageToDom}) {
-    const uri = navigator.getCurrentRoute();
-
-    const url = getUrl({uri});
+async function hydratePage({pageConfig, router, renderPageToDom}) {
+    const url = window.location.href;
+    assert.internal(url.startsWith('http'));
 
     const initialProps = await getInitialProps({pageConfig, url, router});
 
     await renderPageToDom({pageConfig, initialProps});
-}
-
-function getDefaultNavigator() {
-
-    const defaultNavigator = {
-        getCurrentRoute,
-    };
-
-    return defaultNavigator;
-
-    function getCurrentRoute() {
-        const current_route = window.location.href.replace(window.location.origin, '');
-        return current_route;
-    }
 }

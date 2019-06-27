@@ -1,12 +1,17 @@
-const assert = require('reassert');
+const assert = require('@brillout/reassert');
 
 module.exports = {getInitialProps};
 
-async function getInitialProps({pageConfig, url, router, requestContext, isNodejs=false}) {
-  assert.internal(url && url.constructor===Object && url.uri && url.uri.constructor===String && url.pathname && url.pathname.constructor===String, {url});
-  console.log('uu',url);
+async function getInitialProps({pageConfig, url, router, requestObject, isNodejs=false}) {
+  // `url` is missing iff static HTML rendering
+  assert.internal(url.startsWith('http') || url.startsWith('/'));
+  const parseUrl = require('@brillout/parse-url');
+  const urlPros = parseUrl(url);
+  assert.internal(urlPros.url===url);
+  assert.internal(urlPros.pathname);
+
   assert.internal([true,false].includes(isNodejs));
-  assert.internal((requestContext||{}).constructor===Object);
+  assert.internal((requestObject||{}).constructor===Object);
 
   const routeArguments = router.getRouteArguments(url, pageConfig);
   assert.internal((routeArguments||{}).constructor===Object, {routeArguments});
@@ -25,17 +30,16 @@ async function getInitialProps({pageConfig, url, router, requestContext, isNodej
   function assemble(addInitialProps__result) {
     return ({
       isNodejs,
-      url: url.uri,
+      ...requestObject,
       ...pageConfig,
-      ...requestContext,
-      ...url,
+      ...urlProps,
       ...routeArguments,
       ...addInitialProps__result,
       __sources: {
         pageConfig,
         addInitialProps__result,
-        requestObject: requestContext,
-        urlObject: url,
+        requestObject,
+        urlProps,
         routeArguments,
         isNodejs,
       },

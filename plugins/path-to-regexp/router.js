@@ -11,23 +11,23 @@ assert_internal(matchPath, {matchPath, reactRouter});
 const router = {
     doesMatchUrl,
     getRouteArguments,
-    getRouteUri,
+    getRouteUrl,
  // hasOnlyOneUniqueRoute,
  // getRouteString,
 };
 
 module.exports = router;
 
-function doesMatchUrl(url, pageInfo) {
-    const match_info = get_match_info(url, pageInfo);
+function doesMatchUrl(urlProps, pageInfo) {
+    const match_info = get_match_info(urlProps, pageInfo);
     return !!match_info;
     if( ! match_info ) {
         return false;
     }
 }
 
-function getRouteArguments(url, pageInfo) {
-    const match_info = get_match_info(url, pageInfo);
+function getRouteArguments(urlProps, pageInfo) {
+    const match_info = get_match_info(urlProps, pageInfo);
     if( ! match_info ) {
         return null;
     }
@@ -36,15 +36,16 @@ function getRouteArguments(url, pageInfo) {
     return match_info.params;
 }
 
-function getRouteUri(routeArguments, pageInfo) {
+function getRouteUrl(routeArguments, pageInfo) {
     assert_usage(
         routeArguments && routeArguments.constructor===Object && Object.keys(routeArguments).length===0,
-        "`getRouteUri` not supported for parameterized routes."
+        "`getRouteUrl` not supported for parameterized routes."
     );
-    return pageInfo.route;
+    const urlPartial = pageInfo.route;
+    return urlPartial;
 }
 
-function get_match_info(url, pageInfo) {
+function get_match_info(urlProps, pageInfo) {
     const route = pageInfo && pageInfo.route;
     if( ! route ) {
         return null;
@@ -57,14 +58,14 @@ function get_match_info(url, pageInfo) {
             Object.assign({exact: true}, route)
         )
     );
-    assert_url(url);
-    const {pathname} = url;
+    assert_urlProps(urlProps);
+    const {pathname} = urlProps;
     return matchPath(pathname, options);
 }
 
-function assert_url(url) {
-    assert_internal(url && url.constructor===Object, url);
-    assert_internal(url.pathname && url.pathname.constructor===String && url.pathname.startsWith('/'), url);
+function assert_urlProps(urlProps) {
+    assert_internal(urlProps && urlProps.constructor===Object, urlProps);
+    assert_internal(urlProps.pathname && urlProps.pathname.constructor===String && urlProps.pathname.startsWith('/'), urlProps);
 }
 
 function hasOnlyOneUniqueRoute() {

@@ -2,7 +2,7 @@ const assert_internal = require('reassert/internal');
 const config = require('@brillout/reconfig');
 const pathModule = require('path');
 const crypto = require('crypto');
-const parseUri = require('@brillout/parse-uri');
+const parseUrl = require('@brillout/parse-url');
 const fs = require('fs-extra');
 const Mimos = require('mimos');
 const mimos = new Mimos();
@@ -13,9 +13,9 @@ module.exports = StaticAssets;
 // we certainly want static assests to be served for the universal adapters
 StaticAssets.executionPriority = 1000*1000;
 
-async function StaticAssets(requestContext) {
-    const {url} = requestContext;
-    const {pathname} = parseUri(url);
+async function StaticAssets(requestObject) {
+    const {url} = requestObject;
+    const {pathname} = parseUrl(url);
     const filePath = getFilePath({pathname});
 
     const fileContent = await getFileContent(filePath);

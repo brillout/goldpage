@@ -3,8 +3,8 @@
   "version": "0.3.2",
   "dependencies": {
     "@brillout/html": "^0.3.0",
-    "@brillout/parse-uri": "^0.1.1",
-    "reassert": "^1.1.12"
+    "@brillout/parse-url": "^0.2.1",
+    "@brillout/reassert": "^0.1.1"
   },
   "repository": "github:reframejs/ssr-coin",
   "publishConfig": {

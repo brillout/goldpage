@@ -105,7 +105,7 @@ function assert_initialProps(initialProps){
   // The request object returned by your server framework (Express / Koa / Hapi / ...)
   assert(isNodejs===false || __sources.requestObject);
   assert(isNodejs===false || __sources.requestObject.headers);
-  // The url object returned by `@brillout/parse-uri` (https://github.com/brillout/parse-uri)
+  // The url object returned by `@brillout/parse-url` (https://github.com/brillout/parse-url)
   assert(__sources.urlObject);
   // The route params
   assert(__sources.routeArguments);

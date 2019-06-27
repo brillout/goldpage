@@ -1,15 +1,14 @@
-const assert_warning = require('reassert/warning');
-const {getUrl} = require('./common/getUrl');
+const assert = require('@brillout/reassert');
 const {renderPageHtml} = require('./common/renderPageHtml');
+const parseUrl = require('@brillout/parse-url');
 
 module.exports = getPageHtml;
 
-async function getPageHtml({pageConfigs, uri, renderToHtml, router, requestContext}) {
-    const url = getUrl({uri});
-
+async function getPageHtml({pageConfigs, url, renderToHtml, router, requestObject}) {
+    const urlProps = parseUrl(url);
     const pageConfigMatches = (
         pageConfigs
-        .filter(pageConfig => router.doesMatchUrl(url, pageConfig))
+        .filter(pageConfig => router.doesMatchUrl(urlProps, pageConfig))
     );
 
     if( pageConfigMatches.length===0 ) {
@@ -18,12 +17,12 @@ async function getPageHtml({pageConfigs, uri, renderToHtml, router, requestConte
 
     const pageConfig = pageConfigMatches[0];
 
-    assert_warning(
+    assert.warning(
         !pageConfig.renderHtmlAtBuildTime,
-        'Performance warning; dynamically rendering a static page at `'+uri+'`.'
+        'Performance warning; dynamically rendering a static page at `'+url+'`.'
     );
 
-    const html = await renderPageHtml({renderToHtml, pageConfig, url, router, requestContext});
+    const html = await renderPageHtml({renderToHtml, pageConfig, url, router, requestObject});
 
     return html;
 }

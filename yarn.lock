@@ -817,12 +817,12 @@
     "@brillout/reassert" "^0.1.0"
     callsites "^2.0.0"
 
-"@brillout/html@^0.2.0":
-  version "0.2.0"
-  resolved "https://registry.yarnpkg.com/@brillout/html/-/html-0.2.0.tgz#31cba422c0313ccf6169642d14b6ea2533ce78eb"
-  integrity sha512-I7G0JLWZJpoKQVbiW/asLvJUzTd6Nr17Qr9qGf3aRK6URVVlO+O5XwbwClRYpBYwMWb183hUiYxhvMy0nZOM+A==
+"@brillout/html@^0.3.0":
+  version "0.3.0"
+  resolved "https://registry.yarnpkg.com/@brillout/html/-/html-0.3.0.tgz#5e7aff48637ea35c30381e6a84b68fb70fab188c"
+  integrity sha512-z7hQZShJzMJdttotKtHRrvyOGc3gVd5QBk0OAfwXpbRT4QOG7aNA4YK0I8PpyXsm+VZiJ1nZ87V+JjHj1YmHTw==
   dependencies:
-    "@brillout/project-files" "^0.2.0"
+    "@brillout/project-files" "^0.3.0"
     "@brillout/reassert" "^0.1.1"
 
 "@brillout/mdocs@^0.1.26":
@@ -842,6 +842,13 @@
   dependencies:
     reassert "^1.1.11"
 
+"@brillout/parse-url@^0.2.1":
+  version "0.2.1"
+  resolved "https://registry.yarnpkg.com/@brillout/parse-url/-/parse-url-0.2.1.tgz#e3ddd8c47ac583e5bf284503b71c633f5f043749"
+  integrity sha512-C0FmqahuI24dPYuGGTblhjFK+kvmXVq7OFbLQwjcrMN2yRVHgMOuzg/wtpwwKDk/7jITR7nAIGvSfiUsrA2LKw==
+  dependencies:
+    "@brillout/reassert" "^0.1.1"
+
 "@brillout/project-files@^0.1.0":
   version "0.1.1"
   resolved "https://registry.yarnpkg.com/@brillout/project-files/-/project-files-0.1.1.tgz#5c4a2572a0a6e26a9357efec691962ca3752de4d"
@@ -854,10 +861,10 @@
     glob-gitignore "^1.0.14"
     ignore "^5.1.1"
 
-"@brillout/project-files@^0.2.0":
-  version "0.2.0"
-  resolved "https://registry.yarnpkg.com/@brillout/project-files/-/project-files-0.2.0.tgz#25b217aeb4b6a87432dd1402e48b63bed2763f05"
-  integrity sha512-AAZ5yYabmKWpbZkXGqP9wOlGNRIylQaKpE4+cp2Ff0kJoIOSatwP69sPSx8izSRQpnk0rE+iRJR0kXDlydEgZg==
+"@brillout/project-files@^0.3.0":
+  version "0.3.0"
+  resolved "https://registry.yarnpkg.com/@brillout/project-files/-/project-files-0.3.0.tgz#b35289af0e4de84428ed939f82290b9fc7deead0"
+  integrity sha512-NmE4acdR+CZl72yauKuQFTeunTBnddreLgokbXn0HP03UICR/yojIn7OOT25MicGIbWrtijyxEfwqja+3tv3vw==
   dependencies:
     "@brillout/get-user-dir" "^0.2.3"
     "@brillout/reassert" "^0.1.0"

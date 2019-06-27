@@ -1,5 +1,4 @@
-const assert_warning = require('reassert/warning');
-const {getUrl} = require('./common/getUrl');
+const assert = require('@brillout/reassert');
 const {renderPageHtml} = require('./common/renderPageHtml');
 
 module.exports = getStaticPageHtmls;
@@ -15,7 +14,7 @@ async function getStaticPageHtmls({pageConfigs, router, renderToHtml}) {
 
                 const isUniqueRoute = router.hasOnlyOneUniqueRoute(pageConfig);
 
-                assert_warning(
+                assert.warning(
                     isUniqueRoute || !pageConfig.renderHtmlAtBuildTime,
                     pageConfig,
                     "Can't have `renderHtmlAtBuildTime: true` since the route is parameterized",
@@ -26,9 +25,7 @@ async function getStaticPageHtmls({pageConfigs, router, renderToHtml}) {
             })
             .filter(pageConfig => pageConfig.renderHtmlAtBuildTime)
             .map(async pageConfig => {
-                const uri = router.getRouteUri({}, pageConfig);
-
-                const url = getUrl({uri});
+                const url = router.getRouteUrl({}, pageConfig);
 
                 const html = await renderPageHtml({renderToHtml, pageConfig, url, router});
 

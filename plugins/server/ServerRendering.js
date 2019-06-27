@@ -9,8 +9,8 @@ module.exports = ServerRendering;
 // We set a low priority for the universal adapters
 ServerRendering.executionPriority = -1000;
 
-async function ServerRendering(requestContext) {
-    const html = await getHtml(requestContext);
+async function ServerRendering(requestObject) {
+    const html = await getHtml(requestObject);
 
     if( html === null ) {
         return null;
@@ -26,16 +26,16 @@ async function ServerRendering(requestContext) {
     }
 }
 
-async function getHtml(requestContext) {
-    const uri = requestContext.url;
-    assert_internal(uri && uri.constructor===String, uri);
+async function getHtml(requestObject) {
+    const {url} = requestObject;
+    assert_internal(url.startsWith('http'));
 
     const {pageConfigs} = config.ssrCoin.getBuildInfo();
     const {renderPageToHtml, router: routerFile} = config.ssrCoin;
     const renderToHtml = require(renderPageToHtml);
     const router = require(routerFile);
 
-    const html = await getPageHtml({pageConfigs, uri, renderToHtml, router, requestContext});
+    const html = await getPageHtml({pageConfigs, url, renderToHtml, router, requestObject});
     assert_internal(html===null || html.constructor===String, html);
 
     return html;
