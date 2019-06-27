@@ -1,0 +1,13 @@
+{
+  "name": "@ssr-coin/crossroads",
+  "version": "0.3.2",
+  "@brillout/autoload": true,
+  "dependencies": {
+    "crossroads": "^0.12.2",
+    "reassert": "^1.1.12"
+  },
+  "repository": "github.com:reframejs/ssr-coin",
+  "publishConfig": {
+    "access": "public"
+  }
+}

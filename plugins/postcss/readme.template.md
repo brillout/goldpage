@@ -29,7 +29,7 @@ Configure PostCSS:
 ~~~
 
 ~~~js
-!INLINE ./example/pages/landing.config.js
+!INLINE ./example/pages/landing.page.js
 ~~~
 
 ~~~js

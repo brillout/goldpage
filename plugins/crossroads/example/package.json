@@ -1,16 +1,16 @@
 {
-  "name": "example_koa",
+  "name": "example_crossroads",
   "private": true,
   "version": "0.3.2",
   "scripts": {
     "dev": "ssr-coin dev ./server.js"
   },
   "dependencies": {
-    "@ssr-coin/koa": "0.3.2",
     "@ssr-coin/react": "0.3.2",
-    "ssr-coin": "0.3.2",
-    "koa": "^2.7.0",
-    "react": "^16.8.6"
+    "@ssr-coin/express": "0.3.2",
+    "@ssr-coin/crossroads": "0.3.2",
+    "react": "^16.8.6",
+    "ssr-coin": "0.3.2"
   },
   "checkDeps": {
     "skip": true

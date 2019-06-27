@@ -42,6 +42,8 @@
     "plugins/render-react",
     "plugins/webpack-react",
     "plugins/webpack",
+    "plugins/crossroads",
+    "plugins/crossroads/example",
 
     "helpers/webpack-ssr",
     "helpers/webpack-config-mod",
