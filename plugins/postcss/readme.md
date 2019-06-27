@@ -76,58 +76,41 @@
 
 -->
 
-Reframe + PostCSS = :heart:
+`ssr-coin` + PostCSS = :heart:
 
-# `@reframe/postcss`
+# `@ssr-coin/postcss`
 
-Use Reframe with PostCSS.
+Use `ssr-coin` with PostCSS.
 
 ### Usage
 
-Add `@reframe/postcss` to your `reframe.config.js`:
+Install `@ssr-coin/postcss`.
+
+~~~shell
+$ npm install @ssr-coin/postcss
+~~~
+
+The `ssr-coin/postcss` plugin is automatically loaded.
+
+Configure PostCSS:
 
 ~~~js
 module.exports = {
-    $plugins: [
-        require('@reframe/react-kit'),
-        require('@reframe/postcss') // npm install @reframe/postcss
+  // All options defined here are passed down as options for `postcss-loader`.
+  // Thus, this is where you add PostCSS plugins, a PostCSS parser, etc.
+  postcss: {
+    plugins: [
+      require('postcss-cssnext')()
     ],
-
-    // All options defined here are passed down as options for `postcss-loader`.
-    // Thus, this is where you add PostCSS plugins, a PostCSS parser, etc.
-    postcss: {
-        plugins: [
-            require('postcss-cssnext')()
-        ],
-        parser: 'sugarss',
-    }
+    parser: 'sugarss',
+  },
 };
 ~~~
 
 ### Example
 
-~~~js
-// /plugins/postcss/example/reframe.config.js
-
-module.exports = {
-    $plugins: [
-        require('@reframe/react-kit'),
-        require('@reframe/postcss') // npm install @reframe/postcss
-    ],
-
-    // All options defined here are passed down as options for `postcss-loader`.
-    // Thus, this is where you add PostCSS plugins, a PostCSS parser, etc.
-    postcss: {
-        plugins: [
-            require('postcss-cssnext')()
-        ],
-        parser: 'sugarss',
-    }
-};
-~~~
-
 ~~~sugarss
-// /plugins/postcss/example/pages/landing.css
+// ./example/pages/landing.css
 
 :root
   --red: #f88
@@ -150,29 +133,44 @@ module.exports = {
 ~~~
 
 ~~~js
-// /plugins/postcss/example/pages/landing.config.js
+// ./example/pages/landing.page.js
 
 import React from 'react';
 import './landing.css';
 
 const LandingComponent = () => (
-    <div>
-        <div className="blue-on-red">
-            Blue on red.
-        </div>
-        <div className="red-on-blue">
-            Red on blue.
-        </div>
+  <div>
+    <div className="blue-on-red">
+      Blue on red.
     </div>
+    <div className="red-on-blue">
+      Red on blue.
+    </div>
+  </div>
 );
 
 const LandingPage = {
-    route: '/',
-    view: LandingComponent,
-    doNotRenderInBrowser: true,
+  route: '/',
+  view: LandingComponent,
+  doNotRenderInBrowser: true,
 };
 
 export default LandingPage;
+~~~
+
+~~~js
+// ./example/ssr-coin.config.js
+
+module.exports = {
+  // All options defined here are passed down as options for `postcss-loader`.
+  // Thus, this is where you add PostCSS plugins, a PostCSS parser, etc.
+  postcss: {
+    plugins: [
+      require('postcss-cssnext')()
+    ],
+    parser: 'sugarss',
+  },
+};
 ~~~
 
 <!---

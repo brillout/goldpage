@@ -108,7 +108,7 @@ Add SSR to your app.
 Basics
 </sub>
 <br/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a href=#css--static-assets>CSS & Static Assets</a>
-<br/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a href=#async-data-getinitialprops>Async Data: `getInitialProps`</a>
+<br/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a href=#async-data-addinitialprops>Async Data: `addInitialProps`</a>
 <br/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a href=#control-rendering>Control Rendering</a>
 <br/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a href=#html-meta-tags-indexhtml-title-meta-link->HTML Meta Tags: `index.html`, `<title/>`, `<meta/>`, `<link/>`, ...</a>
 <br/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a href=#server-side-transpilation--server-side-autoreload>Server-Side Transpilation & Server-side Autoreload</a>
@@ -118,7 +118,9 @@ Basics
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 API Reference
 </sub>
-<br/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a href=#api>API</a>
+<br/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a href=#page-config-pagejs>Page Config `*page.js`</a>
+<br/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a href=#global-config-ssr-coinconfigjs>Global Config `ssr-coin.config.js`</a>
+<br/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a href=#cli>CLI</a>
 <sub>
 <br/>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -126,11 +128,12 @@ Recipes
 </sub>
 <br/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a href=#add-providers-redux--react-router--graphql-apollo--relay-->Add Providers: Redux / React Router / GraphQL Apollo / Relay / ...</a>
 <br/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a href=#control-transpilation-babel--typescript---es6-->Control Transpilation: Babel / TypeScript /  ES6 / ...</a>
-<br/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a href=#css-in-js-emotion--styled-components-->CSS-in-JS: Emotion / styled-components / ...</a>
+<br/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a href=#add-css-in-js-emotion--styled-components-->Add CSS-in-JS: Emotion / styled-components / ...</a>
 <br/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a href=#add-css-pre-processor-postcss--sass--less-->Add CSS pre-processor: PostCSS / Sass / Less / ...</a>
 <br/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a href=#control-routing-server-side-routing--browser-side-routing--react-router-->Control Routing: Server-side Routing / Browser-side Routing / React Router / ...</a>
 <br/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a href=#add-frontend-libraries-google-analytics--jquery--bootstrap--semantic-ui-->Add Frontend Libraries: Google Analytics / jQuery / Bootstrap / Semantic UI / ...</a>
 <br/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a href=#use-server-framework-express--koa--hapi--fastify-->Use Server Framework: Express / Koa / Hapi / Fastify / ...</a>
+<br/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a href=#use-view-library-react--vue--preact-->Use View Library: React / Vue / Preact / ...</a>
 <br/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a href=#use-process-manager-docker--systemd--pm2-->Use process manager: Docker / systemd / PM2 / ...</a>
 
 <br/>
@@ -363,7 +366,7 @@ then use a Reframe starter instead.
        </div>
      ),
      tittle: ({name}) => 'Hi '+name,
-     getInitialProps: async () => {
+     addInitialProps: async () => {
        await sleep(0.3);
        return {data: "This is some async data;"};
      },
@@ -443,9 +446,9 @@ Example of a page that uses all kinds of static assets:
 
 
 
-## Async Data: `getInitialProps`
+## Async Data: `addInitialProps`
 
-You can load and render data by adding a `getInitialProps` function to your page config:
+You can load and render data by adding a `addInitialProps` function to your page config:
 
 ~~~js
 // /examples/async-data/pages/got/html.page.js
@@ -455,14 +458,14 @@ import getCharacters from './data/getCharacters';
 import CharacterList from './views/CharacterList';
 
 export default {
-  // Everything returned in `getInitialProps()` is passed to the `view`'s prop.
-  // `ssr-coin` calls `getInitialProps` before rendering `view` to HTML or the DOM.
-  getInitialProps: async () => {
+  // `ssr-coin` calls `addInitialProps()` before rendering `view` to HTML or to the DOM.
+  // Everything returned in `addInitialProps()` is passed to the `view`'s prop.
+  addInitialProps: async () => {
     const characters = await getCharacters();
     return {characters};
   },
 
-  // The `characters` returned by `getInitialProps()` is available at `props.characters`
+  // The `characters` returned by our `addInitialProps` is available at `props.characters`
   view: props => <CharacterList characters={props.characters}/>,
 
   doNotRenderInBrowser: true,
@@ -596,7 +599,6 @@ To set HTML meta tags for all pages, create a `index.html` file:
 <!DOCTYPE html>
 <html>
   <head>
-    <link rel="manifest" href="/manifest.json">
     !HEAD
   </head>
   <body>
@@ -606,17 +608,29 @@ To set HTML meta tags for all pages, create a `index.html` file:
 </html>
 ~~~
 
-To set HTML meta tags for one page only, use the page's config:
+To set HTML meta tags of a page, use the page's config:
 ~~~js
-// /examples/html/pages/landing.page.js
+// /examples/html/pages/product.page.js
 
 import React from 'react';
+import logoUrl from './logo.png';
+import manifestUrl from './manifest.webmanifest';
+import fetchProduct from './fetchProduct';
 
 export default {
+  route: '/product/:productId',
+  view: () => <h1>Welcome</h1>,
+
+  // ssr-coin uses the package @brillout/html (https://github.com/brillout/html) to generate HTML.
+  // All @brillout/html's options are avaible over the page config
+
   // Adds <title>Welcome</title>
   title: 'Welcome',
 
-  // Adds <meta name="description" content="A welcome page."/>
+  // Adds <link rel="shortcut icon" href="/logo.hash_85dcecf7a6ad1f1ae4d590bb3078e4b1.png">
+  favicon: logoUrl,
+
+  // Adds <meta name="description" content="A welcome page.">
   description: 'A welcome page.',
 
   // Adds <script src="https://example.org/awesome-lib.js" type="text/javascript"></script>
@@ -624,16 +638,36 @@ export default {
     'https://example.org/awesome-lib.js',
   ],
 
-  // Adds <link href="https://example.org/awesome-lib.css" rel="stylesheet"/>
+  // Adds <link href="https://example.org/awesome-lib.css" rel="stylesheet">
   styles: [
     'https://example.org/awesome-lib.css',
   ],
 
-  // ssr-coin uses the package @brillout/html (https://github.com/brillout/html) to generate HTML.
-  // All @brillout/html's options are avaible over the page config
+  // Adds <link rel="manifest" href="/manifest.hash_bb5e0038d1d480b7e022aaa0bdce25a5.webmanifest">
+  head: [
+		'<link rel="manifest" href="'+manifestUrl+'"/>',
+    // HTML in this array is added to <head>
+    // Make sure that the HTML you inject is safe; escape all user generated content.
+  ],
 
-  route: '/',
-  view: () => <h1>Welcome</h1>,
+  body: [
+    '<script>console.log("hello from injected script")</script>',
+    // HTML in this array is added to <body>
+    // Make sure that the HTML you inject is safe; escape all user generated content.
+  ],
+
+  // You can generate HTML dynamically.
+  // E.g. to have page meta tags generatetd upon loaded data.
+  addInitialProps: async ({productId}) => {
+    const product = await fetchProduct(productId);
+    return {product};
+  },
+  title: ({product, productId}) => product.name+' ('+productId+')',
+  head: ({product}) => [
+    // Open Graph tags
+    '<meta property="og:title" content="'+product.name+'">',
+    '<meta property="og:description" name="description" content="'+product.description+'">',
+  ],
 };
 ~~~
 ~~~js
@@ -646,8 +680,9 @@ export default {
   html: (
 `<!DOCTYPE html>
 <html>
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <head>
+    <title>Title set over \`html\` option.</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     !HEAD
   </head>
   <body>
@@ -764,6 +799,220 @@ function SearchPage(props) {
 
 
 
+## Page Config `*page.js`
+
+~~~js
+// pages/*.page.js
+
+import React from 'react';
+import fetchProduct from './fetchProduct';
+import assert from '@brillout/reassert';
+import manifestUrl from './manifest.webmanifest';
+
+const pageConfig = getPageConfig();
+export default pageConfig;
+
+function getPageConfig() {
+  return {
+    // The url of the page.
+    // The routing is done by `path-to-regexp` (https://github.com/pillarjs/path-to-regexp).
+    route: '/products/:productId',
+
+    // You can use `addInitialProps` to load async data.
+    addInitialProps: async initialProps => {
+      // See the definition of `assert_initialProps` for
+      // a full referance of what `initialProps` contains.
+      assert_initialProps(initialProps);
+
+      const {productId} = initialProps;
+      const product = await fetchProduct(productId);
+
+      return {product};
+    },
+
+    // The content of your page.
+    // It is rendered by the render plugin you installed.
+    view: initialProps => {
+      assert_initialProps(initialProps);
+
+      // Props returned by `addInitialProps` are available to `view`
+      assert(initialProps.product);
+
+      return (
+        <div>
+          Product id: <b>{initialProps.productId}</b><br/>
+          Product name: <b>{initialProps.product.name}</b><br/>
+          Product description: <b>{initialProps.product.description}</b><br/>
+          { initialProps.productColor && (
+            <span>Product color: <b>{initialProps.productColor}</b></span>
+          )
+          }
+        </div>
+      );
+    },
+
+    // Control when the page is rendered, see "!VAR PERFORMANCE_TUNING".
+    doNotRenderInBrowser: false,
+    renderHtmlAtBuildTime: false,
+
+    ...getHtmlOptions()
+  };
+}
+
+function assert_initialProps(initialProps){
+  const {
+    // Route arguments
+    productId,
+
+    // Query paramaters
+    productColor,
+
+    // Whether the code is being run in Node.js or in the browser
+    isNodejs,
+
+    // URL props
+    url,
+    origin,
+    protocol,
+    hostname,
+    port,
+    pathname,
+    query,
+    queryString,
+    hash,
+
+    // The request object is available here.
+    // The page config as well.
+    // See below.
+    ...initialProps__rest
+  } = initialProps;
+
+  assert.internal(url.startsWith('http'));
+  if( url==='http://localhost:3000/products/123?productColor=blue#reviews' ){
+    // Url params
+    assert(productId==='123');
+    assert(productColor==='blue');
+
+    // Url props
+    assert(origin==='http://localhost:3000');
+    assert(protocol==='http:');
+    assert(hostname==='localhost');
+    assert(port==='3000');
+    assert(pathname==='/products/123');
+    assert(query.productColor==='blue');
+    assert(queryString==='?productColor=blue');
+    assert(hash==='#reviews');
+  }
+
+  assert([true, false].includes(isNodejs));
+
+  // The server framework's request object is also available.
+  // For example, to get the HTTP request headers `req.headers`:
+  const {headers} = initialProps__rest;
+
+  // The page config is available over `initialProps`
+  assert(initialProps__rest.route);
+  assert(initialProps__rest.view);
+  Object.keys(pageConfig).forEach(pageConfigProp => {
+    assert(pageConfigProp in initialProps__rest);
+  });
+
+
+  // Since all props are flat-merged into one object, there can be conflicts.
+  // In case of a prop name conflict, you can access all props over `__sources`.
+  const {__sources} = initialProps;
+  // Props returned by `addInitialProps`
+  assert(__sources.addInitialProps__result===null || __sources.addInitialProps__result.product);
+
+  // The request object returned by your server framework (Express / Koa / Hapi / ...)
+  assert(isNodejs===false || __sources.requestObject);
+  assert(isNodejs===false || __sources.requestObject.headers);
+
+  // The url props returned by `@brillout/parse-url` (https://github.com/brillout/parse-url)
+  assert(__sources.urlProps);
+
+  // The route params
+  assert(__sources.routeArguments);
+  assert(__sources.routeArguments.productId);
+
+  // The page config
+  assert(__sources.pageConfig);
+  assert(__sources.pageConfig.route);
+  assert(__sources.pageConfig.view);
+
+  // Whether the code is running on the server or in the browser.
+  assert(__sources.isNodejs===isNodejs);
+}
+
+function getHtmlOptions() {
+  // ssr-coin uses `@brillout/html` (https://github.com/brillout/html) to generate HTML.
+  // All `@brillout/html` options are available over the page config.
+
+  return {
+    // Adds <title>Title shown in browser tab.</title>
+    title: 'Title shown in browser tab.',
+    /* Altneratively:
+    title: initialProps => {
+      assert_initialProps(initialProps);
+      // Props returned by `addInitialProps` are also available to the `@brillout/html` options
+      return initialProps.product.product.name;
+    },
+    */
+
+    // <meta name="description" content="Description of page shown in search engines.">
+    description: 'Description of page shown in search engines.',
+    /*
+    // Not only `title` but all options can be dynmically generated with a function
+    description: initialProps => initialProps.product.product.name,
+    */
+
+    // <link rel="icon" href="https://raw.githubusercontent.com/ghuser-io/ghuser.io/master/docs/logo_square.png" />
+ // favicon: require('./path/to/logo.png'),
+
+    head: [
+      '<link rel="manifest" href="'+manifestUrl+'">',
+    ],
+    body: [
+      '<script>console.log("hello from injected script")</script>',
+    ],
+    /* Again, we can use a function to dynammically generate HTML.
+    body: initialProps => {
+      return [
+        '<script>console.log("hello from '+initialProps.product.productname+' page.")</script>',
+      ];
+    },
+    */
+
+    // You can fully control the HTML:
+    html: (
+`<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    !HEAD
+  </head>
+  <body>
+    !BODY
+  </body>
+</html>
+`
+    ),
+    /* Dynammically as well:
+    html: initialProps => '...',
+    */
+
+    // See https://github.com/brillout/html for the list of all options
+  };
+}
+~~~
+
+## Global Config `ssr-coin.config.js`
+
+
+
+## CLI
+
+
 
 ## Add Providers: Redux / React Router / GraphQL Apollo / Relay / ...
 
@@ -799,7 +1048,7 @@ Examples:
 - [/examples/babel](/examples/babel)
 
 
-## CSS-in-JS: Emotion / styled-components / ...
+## Add CSS-in-JS: Emotion / styled-components / ...
 
 Some CSS-in-JS libraries,
 such as [emotion](https://github.com/emotion-js/emotion),
@@ -817,7 +1066,10 @@ Examples:
 
 ## Add CSS pre-processor: PostCSS / Sass / Less / ...
 
+By [controlling transpilation](#control-transpilation-babel--typescript---es6--) you can add CSS pre-processors such as PostCSS.
 
+Example:
+ - [/examples/postcss](/examples/postcss)
 
 
 ## Control Routing: Server-side Routing / Browser-side Routing / React Router / ...
@@ -859,8 +1111,8 @@ Server-side routing is simpler than browser-side routing and server-side routing
 But if server-side routing is not an option,
 you can opt to do browser-side routing.
 
-To do so you may need to
-[take control over rendering](#control-rendering).
+You can do browser-side routing by
+[taking control over rendering](#control-rendering).
 
 Example of a React app doing browser-side routing with React Router:
 
@@ -924,9 +1176,9 @@ The example's entire source code is at:
 
 ## Add Frontend Libraries: Google Analytics / jQuery / Bootstrap / Semantic UI / ...
 
-To load a frontend library hosted on a cdn, add `<script>` and `<style>` tags to your HTML, see <a href=#html-meta-tags-indexhtml-title-meta-link->HTML Meta Tags: `index.html`, `<title/>`, `<meta/>`, `<link/>`, ...</a>.
+To load a frontend library that is hosted on a cdn, add `<script>` and `<style>` tags to your HTML, see <a href=#html-meta-tags-indexhtml-title-meta-link->HTML Meta Tags: `index.html`, `<title/>`, `<meta/>`, `<link/>`, ...</a>.
 
-To load a frontend library saved on your disk, use a file that is loaded by all your pages:
+To load a frontend library that is saved on your disk, use a file that is loaded by all your pages:
 
 ~~~js
 // /examples/frontend-libraries/pages/commons.js
@@ -976,6 +1228,15 @@ To use `ssr-coin` with `express`, `koa` or `hapi`, use the corresponding [server
 To use `ssr-coin` with another server framework, open a GitHub issue.
 `ssr-coin` can be used with any server framework
 but there is no documentation for this (yet).
+
+## Use View Library: React / Vue / Preact / ...
+
+If there is a [render plugin](#render-plugins) for the view library you want to use,
+then just install the plugin and that's it.
+
+If there is no render plugin,
+then [take control over rendering](#control-rendering).
+That way you should be able to use any view library.
 
 ## Use process manager: Docker / systemd / PM2 / ...
 

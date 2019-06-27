@@ -79,11 +79,11 @@
 This example exhibits how to load and render data.
 
 We define two pages that load data:
- - `html.page.js` - Loads data by using `async getInitialProps()`.
+ - `html.page.js` - Loads data by using `async addInitialProps()`.
  - `dom.page.js` - Loads data by using a stateful component.
 
 
-### GameOfThronesPage - Using `async getInitialProps()`
+### GameOfThronesPage - Using `async addInitialProps()`
 
 ~~~js
 // ./pages/got/html.page.js
@@ -93,14 +93,14 @@ import getCharacters from './data/getCharacters';
 import CharacterList from './views/CharacterList';
 
 export default {
-  // Everything returned in `getInitialProps()` is passed to the `view`'s prop.
-  // `ssr-coin` calls `getInitialProps` before rendering `view` to HTML or the DOM.
-  getInitialProps: async () => {
+  // `ssr-coin` calls `addInitialProps()` before rendering `view` to HTML or to the DOM.
+  // Everything returned in `addInitialProps()` is passed to the `view`'s prop.
+  addInitialProps: async () => {
     const characters = await getCharacters();
     return {characters};
   },
 
-  // The `characters` returned by `getInitialProps()` is available at `props.characters`
+  // The `characters` returned by our `addInitialProps` is available at `props.characters`
   view: props => <CharacterList characters={props.characters}/>,
 
   doNotRenderInBrowser: true,
@@ -109,7 +109,7 @@ export default {
 };
 ~~~
 
-Because `aysnc getInitialProps()` is called and waited for prior to rendering the HTML, our page's HTML `view-source:http://localhost:3000/game-of-thrones` displays the data already.
+Because `aysnc addInitialProps()` is called and waited for prior to rendering the HTML, our page's HTML `view-source:http://localhost:3000/game-of-thrones` displays the data already.
 
 ~~~html
 <!DOCTYPE html>

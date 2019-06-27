@@ -76,7 +76,7 @@
 
 -->
 
-Reframe + Crossroads = :heart:
+`ssr-coin` + Crossroads = :heart:
 
 # `@reframe/crossroads`
 
@@ -84,60 +84,26 @@ Routing with [Crossroads.js](https://github.com/millermedeiros/crossroads.js).
 
 ### Usage
 
-Add `@reframe/crossroads` to your `reframe.config.js`:
+Simply install `@ssr-coin/crossroads`.
 
-~~~js
-module.exports = {
-    $plugins: [
-        require('@reframe/react-kit'),
-        require('@reframe/crossroads')
-    ]
-};
+~~~bash
+$ npm install @ssr-coin/crossroads
 ~~~
+
+`ssr-coin/crossroads` is automatically loaded.
 
 ### Example
 
 ~~~js
-// /plugins/crossroads/example/reframe.config.js
-
-module.exports = {
-    $plugins: [
-        require('@reframe/react-kit'),
-        require('@reframe/crossroads')
-    ]
-};
-~~~
-
-~~~sugarss
-// /plugins/crossroads/example/pages/hello.config.js
-
-import React from 'react';
-
-const HelloPage = {
-    route: '/hello/{name}',
-    view: props => {
-      const name = props.route.args.name;
-      return <div>Hello {name}</div>;
-    },
-};
-
-export default HelloPage;
-~~~
-
-~~~js
-// /plugins/crossroads/example/pages/landing.config.js
+// ./example/pages/hello.page.js
 
 import React from 'react';
 
 export default {
-    route: '/',
-    view: () => (
-        <div>
-            <a href="/hello/lisa">/hello/lisa</a>
-            <br/>
-            <a href="/hello/jon">/hello/jon</a>
-        </div>
-    ),
+  route: '/hello/{name}',
+  view: ({name}) => (
+    <div>Hello {name}</div>
+  ),
 };
 ~~~
 

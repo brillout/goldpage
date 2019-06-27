@@ -76,15 +76,23 @@
 
 -->
 
-Reframe + TypeScript = :heart:
+`ssr-coin` + TypeScript = :heart:
 
-# `@reframe/typescript`
+# `@ssr-coin/typescript`
 
-Use Reframe with TypeScript.
+Use `ssr-coin` with TypeScript.
 
 ### Usage
 
-Add `@reframe/typescript` to your `ssr-coin.config.js`.
+Install `@ssr-coin/typescript`.
+
+~~~shell
+$ npm install @ssr-coin/typescript
+~~~
+
+The `ssr-coin/typescript` plugin is automatically loaded.
+
+Configure TypeScript:
 
 ~~~js
 module.exports = {
@@ -121,6 +129,28 @@ export default {
     route: '/',
     view: () => <Hello compiler="TypeScript" framework="React" />,
     doNotRenderInBrowser: true,
+};
+~~~
+
+~~~js
+// ./example/ssr-coin.config.js
+
+module.exports = {
+  typescript: {
+    // Syntax transformation is done with `@babel/preset-typescript`
+    // Options:
+    babelPresetTypescript: {
+      isTSX: true, // default value
+      allExtensions: true, // default value
+    },
+
+    // Type checking is done with `fork-ts-checker-webpack-plugin`
+    // Options:
+    forkTsCheckerWebpackPlugin: {
+      // To enable type checking set `enable: true`
+      enable: true,
+    },
+  },
 };
 ~~~
 
