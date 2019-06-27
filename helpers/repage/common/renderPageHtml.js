@@ -34,9 +34,7 @@ function renderHtmlError({pageConfig, err}) {
 `
 );
 
-    const htmlOptions = Object.assign({body: []}, pageConfig);
-    htmlOptions.body.push(errHtml);
-    return html(htmlOptions);
+    return html({body: [errHtml]});
 }
 
 function isProduction() {

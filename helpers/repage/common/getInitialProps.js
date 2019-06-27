@@ -4,6 +4,7 @@ module.exports = {getInitialProps};
 
 async function getInitialProps({pageConfig, url, router, requestContext, isNodejs=false}) {
   assert.internal(url && url.constructor===Object && url.uri && url.uri.constructor===String && url.pathname && url.pathname.constructor===String, {url});
+  console.log('uu',url);
   assert.internal([true,false].includes(isNodejs));
   assert.internal((requestContext||{}).constructor===Object);
 
@@ -33,8 +34,8 @@ async function getInitialProps({pageConfig, url, router, requestContext, isNodej
       __sources: {
         pageConfig,
         addInitialProps__result,
-        requestContext,
-        url,
+        requestObject: requestContext,
+        urlObject: url,
         routeArguments,
         isNodejs,
       },
