@@ -576,7 +576,7 @@ function SearchPage(props) {
 
 #### Contents
 
-!VAR PAGE_CONFIGS Plugins
+!VAR PAGE_CONFIGS Page configs
 !VAR INITIAL_PROPS `initialProps`
 !VAR HTML_CONFIGS HTML Configs
 

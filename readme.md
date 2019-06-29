@@ -804,11 +804,11 @@ function SearchPage(props) {
 #### Contents
 
 
-- <a href=#plugins>Plugins</a> - List of all page configs
+- <a href=#page-configs>Page configs</a> - List of all page configs
 - <a href=#initialprops>`initialProps`</a> - List of all initial props
 - <a href=#html-configs>HTML Configs</a> - List of html configs
 
-#### Plugins
+#### Page configs
 
 ~~~js
 // pages/*.page.js
