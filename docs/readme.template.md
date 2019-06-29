@@ -576,13 +576,13 @@ function SearchPage(props) {
 
 #### Contents
 
-!VAR PAGE_CONFIGS Page configs
-!VAR INITIAL_PROPS `initialProps`
+!VAR PAGE_CONFIGS Page Configs
+!VAR INITIAL_PROPS Initial Props
 !VAR HTML_CONFIGS HTML Configs
 
-- !VAR|LINK PAGE_CONFIGS - List of all page configs
-- !VAR|LINK INITIAL_PROPS - List of all initial props
-- !VAR|LINK HTML_CONFIGS - List of html configs
+- !VAR|LINK PAGE_CONFIGS - List of all page configs.
+- !VAR|LINK INITIAL_PROPS - List of all initial props.
+- !VAR|LINK HTML_CONFIGS - List of HTML configs.
 
 #### !VAR PAGE_CONFIGS
 

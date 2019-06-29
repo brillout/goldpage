@@ -804,11 +804,11 @@ function SearchPage(props) {
 #### Contents
 
 
-- <a href=#page-configs>Page configs</a> - List of all page configs
-- <a href=#initialprops>`initialProps`</a> - List of all initial props
-- <a href=#html-configs>HTML Configs</a> - List of html configs
+- <a href=#page-configs>Page Configs</a> - List of all page configs.
+- <a href=#initial-props>Initial Props</a> - List of all initial props.
+- <a href=#html-configs>HTML Configs</a> - List of HTML configs.
 
-#### Page configs
+#### Page Configs
 
 ~~~js
 // pages/*.page.js
@@ -870,7 +870,7 @@ function getPageConfig() {
 }
 ~~~
 
-#### `initialProps`
+#### Initial Props
 
 ~~~js
 import assert from '@brillout/reassert';
