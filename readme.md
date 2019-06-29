@@ -801,13 +801,23 @@ function SearchPage(props) {
 
 ## Page Config `*page.js`
 
+#### Contents
+
+
+- <a href=#plugins>Plugins</a> - List of all page configs
+- <a href=#initialprops>`initialProps`</a> - List of all initial props
+- <a href=#html-configs>HTML Configs</a> - List of html configs
+
+#### Plugins
+
 ~~~js
 // pages/*.page.js
 
 import React from 'react';
-import fetchProduct from './fetchProduct';
-import assert from '@brillout/reassert';
 import manifestUrl from './manifest.webmanifest';
+import fetchProduct from './fetchProduct';
+import getHtmlOptions from './getHtmlOptions';
+import assert_initialProps from './assert_initialProps';
 
 const pageConfig = getPageConfig();
 export default pageConfig;
@@ -836,7 +846,7 @@ function getPageConfig() {
       assert_initialProps(initialProps);
 
       // Props returned by `addInitialProps` are available to `view`
-      assert(initialProps.product);
+      const {product} = initialProps;
 
       return (
         <div>
@@ -858,6 +868,14 @@ function getPageConfig() {
     ...getHtmlOptions()
   };
 }
+~~~
+
+#### `initialProps`
+
+~~~js
+import assert from '@brillout/reassert';
+
+export default assert_initialProps;
 
 function assert_initialProps(initialProps){
   const {
@@ -943,6 +961,12 @@ function assert_initialProps(initialProps){
   // Whether the code is running on the server or in the browser.
   assert(__sources.isNodejs===isNodejs);
 }
+~~~
+
+#### HTML Configs
+
+~~~js
+export default getHtmlOptions;
 
 function getHtmlOptions() {
   // ssr-coin uses `@brillout/html` (https://github.com/brillout/html) to generate HTML.
@@ -1005,6 +1029,7 @@ function getHtmlOptions() {
   };
 }
 ~~~
+
 
 ## Global Config `ssr-coin.config.js`
 

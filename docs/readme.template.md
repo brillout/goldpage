@@ -574,11 +574,36 @@ function SearchPage(props) {
 
 ## !VAR PAGE_CONFIG
 
+#### Contents
+
+!VAR PAGE_CONFIGS Plugins
+!VAR INITIAL_PROPS `initialProps`
+!VAR HTML_CONFIGS HTML Configs
+
+- !VAR|LINK PAGE_CONFIGS - List of all page configs
+- !VAR|LINK INITIAL_PROPS - List of all initial props
+- !VAR|LINK HTML_CONFIGS - List of html configs
+
+#### !VAR PAGE_CONFIGS
+
 ~~~js
 // pages/*.page.js
 
 !INLINE /examples/html/pages/products.page.js --hide-source-path
 ~~~
+
+#### !VAR INITIAL_PROPS
+
+~~~js
+!INLINE /examples/html/pages/assert_initialProps.js --hide-source-path
+~~~
+
+#### !VAR HTML_CONFIGS
+
+~~~js
+!INLINE /examples/html/pages/getHtmlOptions.js --hide-source-path
+~~~
+
 
 ## !VAR SSR_COIN_CONFIG
 
