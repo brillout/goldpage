@@ -990,8 +990,8 @@ function getHtmlOptions() {
     description: initialProps => initialProps.product.product.name,
     */
 
-    // <link rel="icon" href="https://raw.githubusercontent.com/ghuser-io/ghuser.io/master/docs/logo_square.png" />
- // favicon: require('./path/to/logo.png'),
+    // <link rel="shortcut icon" href="/logo.hash_85dcecf7a6ad1f1ae4d590bb3078e4b1.png">
+    favicon: require('./logo.png'),
 
     head: [
       '<link rel="manifest" href="'+manifestUrl+'">',
