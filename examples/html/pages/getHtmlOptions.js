@@ -1,3 +1,5 @@
+import manifestUrl from './manifest.webmanifest';
+
 export default getHtmlOptions;
 
 function getHtmlOptions() {

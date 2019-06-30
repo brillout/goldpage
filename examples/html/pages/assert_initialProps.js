@@ -53,13 +53,9 @@ function assert_initialProps(initialProps){
   // For example, to get the HTTP request headers `req.headers`:
   const {headers} = initialProps__rest;
 
-  // The page config is available over `initialProps`
+  // The page config is available at `initialProps`
   assert(initialProps__rest.route);
   assert(initialProps__rest.view);
-  Object.keys(pageConfig).forEach(pageConfigProp => {
-    assert(pageConfigProp in initialProps__rest);
-  });
-
 
   // Since all props are flat-merged into one object, there can be conflicts.
   // In case of a prop name conflict, you can access all props over `__sources`.

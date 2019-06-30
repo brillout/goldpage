@@ -1,5 +1,4 @@
 import React from 'react';
-import manifestUrl from './manifest.webmanifest';
 import fetchProduct from './fetchProduct';
 // Definition of `getHtmlOptions` is shown below.
 import getHtmlOptions from './getHtmlOptions';
@@ -53,10 +52,6 @@ function view(initialProps) {
       Product id: <b>{initialProps.productId}</b><br/>
       Product name: <b>{initialProps.product.name}</b><br/>
       Product description: <b>{initialProps.product.description}</b><br/>
-      { initialProps.productColor && (
-        <span>Product color: <b>{initialProps.productColor}</b></span>
-      )
-      }
     </div>
   );
 }
