@@ -28,7 +28,7 @@ async function ServerRendering(requestObject) {
 
 async function getHtml(requestObject) {
     const {url} = requestObject;
-    assert_internal(url.startsWith('http'));
+    assert_internal(url.startsWith('http'), {url});
 
     const {pageConfigs} = config.ssrCoin.getBuildInfo();
     const {renderPageToHtml, router: routerFile} = config.ssrCoin;

@@ -64,8 +64,17 @@ function create_ssr() {
 
       ssr_obj[prop] = value;
 
+      /*
       if( prop==='log' ){
+        config.ssrCoin.logOptions = config.ssrCoin.logOptions || {};
         prop = 'logOptions';
+        return true;
+      }
+      */
+      if( prop==='silent' ){
+        config.ssrCoin.logOptions = config.ssrCoin.logOptions || {};
+        config.ssrCoin.logOptions.onlyLogFailure = true;
+        return true;
       }
 
       config.ssrCoin[prop] = value;

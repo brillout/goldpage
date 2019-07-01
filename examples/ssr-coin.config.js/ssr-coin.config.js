@@ -1,4 +1,6 @@
 module.exports = {
+  silent: true,
+  /*
   pagesDir: __dirname+'/pages',
   log: {
     buildingText: 'Building...',
@@ -6,5 +8,6 @@ module.exports = {
     showLoadingSpinner: true,
     verbose: false,
   },
+  */
   serverEntryFile: __dirname+'/server',
 };

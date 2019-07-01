@@ -37,6 +37,7 @@ function Logger(opts) {
             on_first_compilation_success,
             on_re_compilation_success,
             log_config_and_stats: false,
+            onlyLogFailure: false,
             showLoadingSpinner: false,
         },
         opts,
@@ -254,12 +255,28 @@ function BuildStateManager(logger) {
         logging_is_compiling: false,
         has_been_successful_before: false,
         has_finished_compiled_before: false,
+        isFailing: false,
     };
 
     return onNewBuildState;
 
     function onNewBuildState(new_state) {
         const {is_compiling, is_failure, compilation_info} = logger.build_state = new_state;
+
+        assert_internal([true, false, undefined].includes(is_failure), {is_failure});
+        /*
+        assert_internal(!is_compiling || is_failure===null, {is_failure, is_compiling});
+        */
+        assert_internal([true, false].includes(this.onlyLogFailure));
+        const wasFailing = logging_state.isFailing;
+        if( !is_compiling || is_failure ){
+          logging_state.isFailing = !!is_failure;
+        }
+        if( this.onlyLogFailure ){
+          if( this.onlyLogFailure && !(wasFailing || is_failure) ){
+            return;
+          }
+        }
 
         assert_internal(is_compiling || [true, false].includes(is_failure));
 
