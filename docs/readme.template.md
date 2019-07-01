@@ -196,7 +196,7 @@ the rest of your stack is entirely up to you and you can use:
 
 ## !VAR PLUGIN_LIST
 
-###### !VAR PLUGINS_SERVER
+#### !VAR PLUGINS_SERVER
 
 Server integration plugins.
 
@@ -204,7 +204,7 @@ Server integration plugins.
 - [Koa](/plugins/koa)
 - [Hapi](/plugins/hapi)
 
-###### !VAR PLUGINS_RENDER
+#### !VAR PLUGINS_RENDER
 
 View library integration plugins.
 
@@ -212,7 +212,7 @@ View library integration plugins.
 - [Vue](/plugins/vue)
 - [React Native Web](/plugins/react-native-web)
 
-###### !VAR PLUGINS_TRANSPILATION
+#### !VAR PLUGINS_TRANSPILATION
 
 Transpilation plugins to add languages.
 
