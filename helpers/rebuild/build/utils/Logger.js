@@ -264,18 +264,18 @@ function BuildStateManager(logger) {
         const {is_compiling, is_failure, compilation_info} = logger.build_state = new_state;
 
         assert_internal([true, false, undefined].includes(is_failure), {is_failure});
-        /*
-        assert_internal(!is_compiling || is_failure===null, {is_failure, is_compiling});
+        /* This assertion is false:
+        assert_internal(!is_compiling || is_failure===undefined, {is_failure, is_compiling});
         */
         assert_internal([true, false].includes(this.onlyLogFailure));
         const wasFailing = logging_state.isFailing;
         if( !is_compiling || is_failure ){
           logging_state.isFailing = !!is_failure;
         }
-        if( this.onlyLogFailure ){
-          if( this.onlyLogFailure && !(wasFailing || is_failure) ){
-            return;
-          }
+        // console.log({is_compiling, is_failure});
+        let skipLogging = false;
+        if( this.onlyLogFailure && !wasFailing && !is_failure ){
+          skipLogging = true;
         }
 
         assert_internal(is_compiling || [true, false].includes(is_failure));
@@ -290,10 +290,12 @@ function BuildStateManager(logger) {
                 spinner_text = logger.getRebuildingText();
             }
             assert_tmp(spinner_text);
-            if( logger.showLoadingSpinner ) {
-              logger.loading_spinner.start_spinner(spinner_text);
-            } else {
-              process.stdout.write(spinner_text);
+            if( !skipLogging ){
+              if( logger.showLoadingSpinner ) {
+                logger.loading_spinner.start_spinner(spinner_text);
+              } else {
+                process.stdout.write(spinner_text);
+              }
             }
         }
 
@@ -305,27 +307,35 @@ function BuildStateManager(logger) {
 
         if( ! is_compiling && logging_state.logging_is_compiling ) {
             logging_state.logging_is_compiling = false;
-            if( logger.showLoadingSpinner ) {
-              logger.loading_spinner.stop_spinner();
-            } else {
-              clearLine();
+            if( !skipLogging ){
+              if( logger.showLoadingSpinner ) {
+                logger.loading_spinner.stop_spinner();
+              } else {
+                clearLine();
+              }
             }
         }
 
         if( ! is_compiling && ! logging_state.has_finished_compiled_before ) {
-            logger.on_first_compilation_result({compilation_info, is_failure});
+            if( !skipLogging ){
+              logger.on_first_compilation_result({compilation_info, is_failure});
+            }
             logging_state.has_finished_compiled_before = true;
         }
 
         if( ! is_compiling && is_failure ) {
-            logger.on_compilation_fail({compilation_info});
+            if( !skipLogging ){
+              logger.on_compilation_fail({compilation_info});
+            }
         }
 
         if( ! is_compiling && ! is_failure ) {
-            if( ! logging_state.has_been_successful_before ) {
-                logger.on_first_compilation_success({compilation_info});
-            } else {
-                logger.on_re_compilation_success();
+            if( !skipLogging ){
+              if( ! logging_state.has_been_successful_before ) {
+                  logger.on_first_compilation_success({compilation_info});
+              } else {
+                  logger.on_re_compilation_success();
+              }
             }
             logging_state.has_been_successful_before = true;
         }

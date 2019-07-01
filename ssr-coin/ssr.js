@@ -4,14 +4,7 @@ const path = require('path');
 const ProjectFiles = require('@brillout/project-files');
 const {loadDependencies} = require('@brillout/autoload');
 
-const ssr = create_ssr();
-
-// Default values
-ssr.pagesDir = 'pages/';
-// ssr.serverEntryFile = 'server/';
-ssr.buildDir = '.build/';
-
-module.exports = ssr;
+module.exports = create_ssr();
 
 function create_ssr() {
   config.ssrCoin = {};
@@ -28,9 +21,16 @@ function create_ssr() {
 
   config.ssrCoin.projectDir = projectDir;
 
+  const ssr = new SSR();
+
+  // Default values
+  ssr.pagesDir = 'pages/';
+  // ssr.serverEntryFile = 'server/';
+  ssr.buildDir = '.build/';
+
   applySsrCoinConfig();
 
-  return new SSR();
+  return ssr;
 
   function SSR() {
 
@@ -105,9 +105,10 @@ function create_ssr() {
     } catch(err) {
       return;
     }
+    const ssrCoinConfig = require(ssrCoinConfigPath);
     Object.assign(
-      config.ssrCoin,
-      require(ssrCoinConfigPath),
+      ssr,
+      ssrCoinConfig,
     );
   }
 

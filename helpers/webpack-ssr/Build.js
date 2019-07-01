@@ -137,9 +137,11 @@ function BuildInstance() {
 }
 
 function get_logger() {
-  const logger_opts = {};
-
   const {logOptions={}} = this;
+
+  const logger_opts = {
+    onlyLogFailure: logOptions.onlyLogFailure,
+  };
 
   if( logOptions.verbose ) {
     logger_opts.log_config_and_stats = true;
