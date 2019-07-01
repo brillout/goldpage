@@ -1033,10 +1033,66 @@ function getHtmlOptions() {
 
 ## Global Config `ssr-coin.config.js`
 
+We try keep `ssr-coin` as zero-config as possible,
+hence `ssr.config.js` has only few options.
 
+~~~js
+// ssr.config.js
+
+module.exports = {
+  // Control how pages are rendered. (See section "Control Rendering").
+  renderToHtml: require.resolve('./path/to/your/renderToHtml'),
+  renderToDom: require.resolve('./path/to/your/renderToDom'),
+
+  // Make `ssr-coin` log to the console only for errors.
+  silent: true,
+};
+~~~
 
 ## CLI
 
+`ssr-coin` has two commands:
+
+- ~~~shell
+  $ ssr-coin dev ./path/to/your/server.js
+  ~~~
+  The `dev` command starts your server with auto-reload:
+  whenever you make a change to your code,
+  your code is rebuilt and the pages open in your browser are reloaded.
+  The `dev` command is meant to be used while you develop your app.
+
+- ~~~shell
+  $ ssr-coin build ./path/to/your/server.js
+  ~~~
+  The `build` command builds your code for production.
+  (E.g. it minifies your browser-side code whereas the `dev` command doesn't.)
+  Once `build` is finished you can repeatedly start and shut down your server.
+  If your server-side code is written in JavaScript then you can call your server entry directly: `$ node ./path/to/your/server.js`.
+  If not, then run the transpiled version which is located in the `.build` directory: `$ node ./build/nodejs/server.js`.
+
+Do not install `ssr-coin` globally and do not call the `ssr-coin` CLI directly.
+Use your `package.json`'s `scripts` instead:
+
+~~~json
+{
+  "dependencies": {
+    "ssr-coin": "^0.3.2",
+  },
+  "scripts": {
+    "dev": "ssr-coin dev ./path/to/your/server.js",
+    "prod": "npm run build && npm run start",
+    "build": "ssr-coin build ./path/to/your/server.js",
+    "start": "export NODE_ENV='production' && node ./.build/nodejs/server"
+  }
+}
+~~~
+
+You can then install a local `ssr-coin` copy (`$ npm install` / `$ yarn`) and
+then call `$ npm run dev` (/ `$ yarn dev`).
+
+A local install has couple of advantages over a global install:
+ - Many projects can have many different `ssr-coin` versions.
+ - Removing your project's directory also removes `ssr-coin`.
 
 
 ## Add Providers: Redux / React Router / GraphQL Apollo / Relay / ...
