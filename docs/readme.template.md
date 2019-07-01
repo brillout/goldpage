@@ -200,24 +200,24 @@ the rest of your stack is entirely up to you and you can use:
 
 Server integration plugins.
 
-- [/plugins/render-express](Express)
-- [/plugins/render-koa](Koa)
-- [/plugins/render-hapi](Hapi)
+- [Express](/plugins/render-express)
+- [Koa](/plugins/render-koa)
+- [Hapi](/plugins/render-hapi)
 
 ###### !VAR PLUGINS_RENDER
 
 View library integration plugins.
 
-- [/plugins/render-react](React)
-- [/plugins/render-vue](Vue)
-- [/plugins/render-react-native-web](React Native Web)
+- [React](/plugins/react)
+- [React](/plugins/vue)
+- [React](/plugins/react-native-web)
 
 ###### !VAR PLUGINS_TRANSPILATION
 
 Transpilation plugins to add languages.
 
-- [/plugins/typescript](TypeScript)
-- [/plugins/postcss](PostCSS)
+- [TypeScript](/plugins/typescript)
+- [PostCSS](/plugins/postcss)
 
 !INLINE ./snippets/section-footer.md #readme --hide-source-path
 

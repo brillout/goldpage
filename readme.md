@@ -324,24 +324,24 @@ We enjoy talking with our users.
 
 Server integration plugins.
 
-- [/plugins/render-express](Express)
-- [/plugins/render-koa](Koa)
-- [/plugins/render-hapi](Hapi)
+- [Express](/plugins/render-express)
+- [Koa](/plugins/render-koa)
+- [Hapi](/plugins/render-hapi)
 
 ###### Render plugins
 
 View library integration plugins.
 
-- [/plugins/render-react](React)
-- [/plugins/render-vue](Vue)
-- [/plugins/render-react-native-web](React Native Web)
+- [React](/plugins/react)
+- [React](/plugins/vue)
+- [React](/plugins/react-native-web)
 
 ###### Transpilation plugins
 
 Transpilation plugins to add languages.
 
-- [/plugins/typescript](TypeScript)
-- [/plugins/postcss](PostCSS)
+- [TypeScript](/plugins/typescript)
+- [PostCSS](/plugins/postcss)
 
 
 <br/>
