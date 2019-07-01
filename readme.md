@@ -1158,6 +1158,32 @@ function view(initialProps) {
 }
 ~~~
 
+
+<br/>
+
+<p align="center">
+
+<sup>
+<a href="https://github.com/reframejs/ssr-coin/issues/new">Open a ticket</a> or
+<a href="https://discord.gg/kqXf65G">chat with us</a>
+if you have questions, feature requests, or if you just want to talk to us.
+</sup>
+
+<sup>
+We enjoy talking with our users.
+</sup>
+
+<br/>
+
+<sup>
+<a href="#contents"><b>&#8679;</b> <b>TOP</b> <b>&#8679;</b></a>
+</sup>
+
+</p>
+
+<br/>
+<br/>
+
 #### Initial Props
 
 ~~~js
@@ -1247,6 +1273,32 @@ function assert_initialProps(initialProps){
 }
 ~~~
 
+
+<br/>
+
+<p align="center">
+
+<sup>
+<a href="https://github.com/reframejs/ssr-coin/issues/new">Open a ticket</a> or
+<a href="https://discord.gg/kqXf65G">chat with us</a>
+if you have questions, feature requests, or if you just want to talk to us.
+</sup>
+
+<sup>
+We enjoy talking with our users.
+</sup>
+
+<br/>
+
+<sup>
+<a href="#contents"><b>&#8679;</b> <b>TOP</b> <b>&#8679;</b></a>
+</sup>
+
+</p>
+
+<br/>
+<br/>
+
 #### HTML Configs
 
 ~~~js
@@ -1334,7 +1386,7 @@ We enjoy talking with our users.
 <br/>
 
 <sup>
-<a href="#readme"><b>&#8679;</b> <b>TOP</b> <b>&#8679;</b></a>
+<a href="#contents"><b>&#8679;</b> <b>TOP</b> <b>&#8679;</b></a>
 </sup>
 
 </p>

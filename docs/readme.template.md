@@ -638,11 +638,15 @@ function SearchPage(props) {
 !INLINE /examples/html/pages/products.page.js --hide-source-path
 ~~~
 
+!INLINE ./snippets/section-footer.md #contents --hide-source-path
+
 #### !VAR INITIAL_PROPS
 
 ~~~js
 !INLINE /examples/html/pages/assert_initialProps.js --hide-source-path
 ~~~
+
+!INLINE ./snippets/section-footer.md #contents --hide-source-path
 
 #### !VAR HTML_CONFIGS
 
@@ -650,7 +654,7 @@ function SearchPage(props) {
 !INLINE /examples/html/pages/getHtmlOptions.js --hide-source-path
 ~~~
 
-!INLINE ./snippets/section-footer.md #readme --hide-source-path
+!INLINE ./snippets/section-footer.md #contents --hide-source-path
 
 
 
