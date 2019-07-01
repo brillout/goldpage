@@ -19,6 +19,7 @@
     "examples/react-router",
     "examples/typescript",
     "examples/ssr-coin.config.js",
+    "examples/custom-cli-scripts",
     "examples/async-data",
     "examples/static-assets",
     "examples/redux",
