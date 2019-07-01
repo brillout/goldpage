@@ -1,31 +1,24 @@
+const React = require('react');
 const ReactDOMServer = require('react-dom/server');
-const generateHtml = require('@brillout/index-html');
-const config = require('@brillout/reconfig').getConfig({configFileName: 'reframe.config.js'});
 const {AppRegistry} = require('react-native-web');
-const {CONTAINER_ID, getReactElement} = require('@reframe/react/common');
 
 module.exports = renderToHtml;
 
-async function renderToHtml({pageConfig, initialProps}) {
-    const reactElement = getReactElement({
-        pageConfig,
-        initialProps,
-        viewWrappers: config.nodejsViewWrappers,
-    });
+async function renderToHtml({page, initialProps, CONTAINER_ID}) {
+  AppRegistry.registerComponent('App', () => () => React.createElement(page.view, initialProps));
 
-    AppRegistry.registerComponent('App', () => () => reactElement);
+  const { element, getStyleElement } = AppRegistry.getApplication('App', { initialProps });
 
-    const { element, getStyleElement } = AppRegistry.getApplication('App', { initialProps });
+  const viewHtml = ReactDOMServer.renderToStaticMarkup(element);
 
-    const div = ReactDOMServer.renderToStaticMarkup(element);
+  const styleHtml = ReactDOMServer.renderToStaticMarkup(getStyleElement());
 
-    const css = ReactDOMServer.renderToStaticMarkup(getStyleElement());
-
-    const htmlOptions = Object.assign({headHtmls: [], bodyHtmls: []}, pageConfig);
-    htmlOptions.bodyHtmls.push('<div id="'+CONTAINER_ID+'">'+div+'</div>');
-    htmlOptions.headHtmls.push(css);
-
-    const html = generateHtml(htmlOptions);
-
-    return html;
+  return {
+    head: [
+      styleHtml,
+    ],
+    body: [
+      '<div id="'+CONTAINER_ID+'">'+viewHtml+'</div>',
+    ]
+  };
 }

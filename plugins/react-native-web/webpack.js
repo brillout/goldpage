@@ -1,4 +1,3 @@
-require('@ssr-coin/webpack-react');
 const webpackBrowserConfig = require('./webpackBrowserConfig');
 const webpackNodejsConfig = require('./webpackNodejsConfig');
 

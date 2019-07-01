@@ -1,21 +1,13 @@
+const React = require('react');
 const {AppRegistry} = require('react-native-web');
-const browserConfig = require('@brillout/browser-config');
-const {CONTAINER_ID, getReactElement} = require('@reframe/react/common');
 
 module.exports = renderToDom;
 
-async function renderToDom({pageConfig, initialProps}) {
-    const viewWrappers = browserConfig.browserViewWrappers;
-    const reactElement = getReactElement({
-        pageConfig,
-        initialProps,
-        viewWrappers,
-    });
+async function renderToDom({page, initialProps, CONTAINER_ID}) {
+  AppRegistry.registerComponent('App', () => () => React.createElement(page.view, initialProps));
 
-    AppRegistry.registerComponent('App', () => () => reactElement);
-
-    AppRegistry.runApplication('App', {
-        initialProps,
-        rootTag: document.getElementById(CONTAINER_ID),
-    });
+  AppRegistry.runApplication('App', {
+    initialProps,
+    rootTag: document.getElementById(CONTAINER_ID),
+  });
 }

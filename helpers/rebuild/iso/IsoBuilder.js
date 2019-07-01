@@ -324,13 +324,13 @@ async function buildAll({isoBuilder, latestRun, browserBuild, nodejsBuild, isReb
     let resolvedValue;
     let isAborted = true;
     while( true ) {
-        const yield = generator.next(resolvedValue);
-        if( yield.done ) {
-            assert_internal(!yield.value);
+        const yieldVal = generator.next(resolvedValue);
+        if( yieldVal.done ) {
+            assert_internal(!yieldVal.value);
             isAborted = false;
             break;
         }
-        const currentPromise = yield.value;
+        const currentPromise = yieldVal.value;
         assert_usage(currentPromise && currentPromise.then);
      // const resolveTimeout = gen_timeout({desc: 'Builder Promise'});
         resolvedValue = await currentPromise.then();

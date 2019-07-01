@@ -9,6 +9,7 @@ async function getPageHtmls() {
     const {pageConfigs} = config.ssrCoin.getBuildInfo();
 
     const {router: routerFile, renderPageToHtml} = config.ssrCoin;
+    assert_usage(renderPageToHtml);
     const renderToHtml = require(renderPageToHtml);
     const router = require(routerFile);
     assert_usage(router);
