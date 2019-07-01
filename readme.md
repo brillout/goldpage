@@ -180,7 +180,30 @@ function Counter() {
 ~~~
 
 
+<br/>
 
+<p align="center">
+
+<sup>
+<a href="https://github.com/reframejs/ssr-coin/issues/new">Open a ticket</a> or
+<a href="https://discord.gg/kqXf65G">chat with us</a>
+if you have questions, feature requests, or if you just want to talk to us.
+</sup>
+
+<sup>
+We enjoy talking with our users.
+</sup>
+
+<br/>
+
+<sup>
+<a href="#readme"><b>&#8679;</b> <b>TOP</b> <b>&#8679;</b></a>
+</sup>
+
+</p>
+
+<br/>
+<br/>
 
 
 
@@ -267,6 +290,84 @@ the rest of your stack is entirely up to you and you can use:
 
 `ssr-coin` comes with nifty features out of the box, such as browser autoreload, server autoreload, page based code splitting and HTTP caching.
 
+
+<br/>
+
+<p align="center">
+
+<sup>
+<a href="https://github.com/reframejs/ssr-coin/issues/new">Open a ticket</a> or
+<a href="https://discord.gg/kqXf65G">chat with us</a>
+if you have questions, feature requests, or if you just want to talk to us.
+</sup>
+
+<sup>
+We enjoy talking with our users.
+</sup>
+
+<br/>
+
+<sup>
+<a href="#readme"><b>&#8679;</b> <b>TOP</b> <b>&#8679;</b></a>
+</sup>
+
+</p>
+
+<br/>
+<br/>
+
+
+
+## Plugins
+
+###### Server plugins
+
+Server integration plugins.
+
+- [/plugins/render-express](/plugins/render-express)
+- [/plugins/render-koa](/plugins/render-koa)
+- [/plugins/render-hapi](/plugins/render-hapi)
+
+###### Render plugins
+
+View library integration plugins.
+
+- [/plugins/render-react](/plugins/render-react)
+- [/plugins/render-vue](/plugins/render-vue)
+- [/plugins/render-react-native-web](/plugins/render-react-native-web)
+
+###### Transpilation plugins
+
+Transpilation plugins to add languages.
+
+- [/plugins/typescript](/plugins/typescript)
+- [/plugins/postcss](/plugins/postcss)
+
+
+<br/>
+
+<p align="center">
+
+<sup>
+<a href="https://github.com/reframejs/ssr-coin/issues/new">Open a ticket</a> or
+<a href="https://discord.gg/kqXf65G">chat with us</a>
+if you have questions, feature requests, or if you just want to talk to us.
+</sup>
+
+<sup>
+We enjoy talking with our users.
+</sup>
+
+<br/>
+
+<sup>
+<a href="#readme"><b>&#8679;</b> <b>TOP</b> <b>&#8679;</b></a>
+</sup>
+
+</p>
+
+<br/>
+<br/>
 
 
 
@@ -408,6 +509,34 @@ then use a Reframe starter instead.
 
 You can now run `npm run dev` (`yarn dev`) and go to your newly created page `/hello/jon`.
 
+
+<br/>
+
+<p align="center">
+
+<sup>
+<a href="https://github.com/reframejs/ssr-coin/issues/new">Open a ticket</a> or
+<a href="https://discord.gg/kqXf65G">chat with us</a>
+if you have questions, feature requests, or if you just want to talk to us.
+</sup>
+
+<sup>
+We enjoy talking with our users.
+</sup>
+
+<br/>
+
+<sup>
+<a href="#readme"><b>&#8679;</b> <b>TOP</b> <b>&#8679;</b></a>
+</sup>
+
+</p>
+
+<br/>
+<br/>
+
+
+
 ## CSS & Static Assets
 
 To load CSS, simply import it:
@@ -445,6 +574,32 @@ Example of a page that uses all kinds of static assets:
  - [/examples/static-assets/](/examples/static-assets/)
 
 
+<br/>
+
+<p align="center">
+
+<sup>
+<a href="https://github.com/reframejs/ssr-coin/issues/new">Open a ticket</a> or
+<a href="https://discord.gg/kqXf65G">chat with us</a>
+if you have questions, feature requests, or if you just want to talk to us.
+</sup>
+
+<sup>
+We enjoy talking with our users.
+</sup>
+
+<br/>
+
+<sup>
+<a href="#readme"><b>&#8679;</b> <b>TOP</b> <b>&#8679;</b></a>
+</sup>
+
+</p>
+
+<br/>
+<br/>
+
+
 
 ## Async Data: `addInitialProps`
 
@@ -479,6 +634,33 @@ But then your data is rendered only to the DOM (and not to HTML).
 
 We further explain the difference between both at:
  - [/examples/async-data/](/examples/async-data/)
+
+
+<br/>
+
+<p align="center">
+
+<sup>
+<a href="https://github.com/reframejs/ssr-coin/issues/new">Open a ticket</a> or
+<a href="https://discord.gg/kqXf65G">chat with us</a>
+if you have questions, feature requests, or if you just want to talk to us.
+</sup>
+
+<sup>
+We enjoy talking with our users.
+</sup>
+
+<br/>
+
+<sup>
+<a href="#readme"><b>&#8679;</b> <b>TOP</b> <b>&#8679;</b></a>
+</sup>
+
+</p>
+
+<br/>
+<br/>
+
 
 
 ## Control Rendering
@@ -551,6 +733,32 @@ Examples:
 - [/examples/styled-components](/examples/styled-components)
 
 
+<br/>
+
+<p align="center">
+
+<sup>
+<a href="https://github.com/reframejs/ssr-coin/issues/new">Open a ticket</a> or
+<a href="https://discord.gg/kqXf65G">chat with us</a>
+if you have questions, feature requests, or if you just want to talk to us.
+</sup>
+
+<sup>
+We enjoy talking with our users.
+</sup>
+
+<br/>
+
+<sup>
+<a href="#readme"><b>&#8679;</b> <b>TOP</b> <b>&#8679;</b></a>
+</sup>
+
+</p>
+
+<br/>
+<br/>
+
+
 
 ## Server-Side Transpilation & Server-side Autoreload
 
@@ -587,6 +795,31 @@ and your `package.json`'s scripts would be:
 
 Note that `ssr-coin` always transpiles and auto-reloads your views and browser code.
 
+
+<br/>
+
+<p align="center">
+
+<sup>
+<a href="https://github.com/reframejs/ssr-coin/issues/new">Open a ticket</a> or
+<a href="https://discord.gg/kqXf65G">chat with us</a>
+if you have questions, feature requests, or if you just want to talk to us.
+</sup>
+
+<sup>
+We enjoy talking with our users.
+</sup>
+
+<br/>
+
+<sup>
+<a href="#readme"><b>&#8679;</b> <b>TOP</b> <b>&#8679;</b></a>
+</sup>
+
+</p>
+
+<br/>
+<br/>
 
 
 
@@ -703,6 +936,33 @@ Example:
  - [/examples/html](/examples/html)
 
 
+<br/>
+
+<p align="center">
+
+<sup>
+<a href="https://github.com/reframejs/ssr-coin/issues/new">Open a ticket</a> or
+<a href="https://discord.gg/kqXf65G">chat with us</a>
+if you have questions, feature requests, or if you just want to talk to us.
+</sup>
+
+<sup>
+We enjoy talking with our users.
+</sup>
+
+<br/>
+
+<sup>
+<a href="#readme"><b>&#8679;</b> <b>TOP</b> <b>&#8679;</b></a>
+</sup>
+
+</p>
+
+<br/>
+<br/>
+
+
+
 ## Performance: `doNotRenderInBrowser` & `renderHtmlAtBuildTime`
 
 With `doNotRenderInBrowser` and `renderHtmlAtBuildTime` you can control when your pages are rendered.
@@ -796,6 +1056,32 @@ function SearchPage(props) {
   }
 }
 ~~~
+
+
+<br/>
+
+<p align="center">
+
+<sup>
+<a href="https://github.com/reframejs/ssr-coin/issues/new">Open a ticket</a> or
+<a href="https://discord.gg/kqXf65G">chat with us</a>
+if you have questions, feature requests, or if you just want to talk to us.
+</sup>
+
+<sup>
+We enjoy talking with our users.
+</sup>
+
+<br/>
+
+<sup>
+<a href="#readme"><b>&#8679;</b> <b>TOP</b> <b>&#8679;</b></a>
+</sup>
+
+</p>
+
+<br/>
+<br/>
 
 
 
@@ -1031,6 +1317,33 @@ function getHtmlOptions() {
 ~~~
 
 
+<br/>
+
+<p align="center">
+
+<sup>
+<a href="https://github.com/reframejs/ssr-coin/issues/new">Open a ticket</a> or
+<a href="https://discord.gg/kqXf65G">chat with us</a>
+if you have questions, feature requests, or if you just want to talk to us.
+</sup>
+
+<sup>
+We enjoy talking with our users.
+</sup>
+
+<br/>
+
+<sup>
+<a href="#readme"><b>&#8679;</b> <b>TOP</b> <b>&#8679;</b></a>
+</sup>
+
+</p>
+
+<br/>
+<br/>
+
+
+
 ## Global Config `ssr-coin.config.js`
 
 We try keep `ssr-coin` as zero-config as possible,
@@ -1048,6 +1361,34 @@ module.exports = {
   silent: true,
 };
 ~~~
+
+
+<br/>
+
+<p align="center">
+
+<sup>
+<a href="https://github.com/reframejs/ssr-coin/issues/new">Open a ticket</a> or
+<a href="https://discord.gg/kqXf65G">chat with us</a>
+if you have questions, feature requests, or if you just want to talk to us.
+</sup>
+
+<sup>
+We enjoy talking with our users.
+</sup>
+
+<br/>
+
+<sup>
+<a href="#readme"><b>&#8679;</b> <b>TOP</b> <b>&#8679;</b></a>
+</sup>
+
+</p>
+
+<br/>
+<br/>
+
+
 
 ## CLI
 
@@ -1095,6 +1436,33 @@ A local install has couple of advantages over a global install:
  - Removing your project's directory also removes `ssr-coin`.
 
 
+<br/>
+
+<p align="center">
+
+<sup>
+<a href="https://github.com/reframejs/ssr-coin/issues/new">Open a ticket</a> or
+<a href="https://discord.gg/kqXf65G">chat with us</a>
+if you have questions, feature requests, or if you just want to talk to us.
+</sup>
+
+<sup>
+We enjoy talking with our users.
+</sup>
+
+<br/>
+
+<sup>
+<a href="#readme"><b>&#8679;</b> <b>TOP</b> <b>&#8679;</b></a>
+</sup>
+
+</p>
+
+<br/>
+<br/>
+
+
+
 ## Add Providers: Redux / React Router / GraphQL Apollo / Relay / ...
 
 By controlling the rendering of your pages you can add providers for Redux, GraphQL, etc.
@@ -1105,6 +1473,33 @@ Examples:
 - [/examples/react-router](/examples/react-router)
 - [/examples/redux](/examples/redux)
 - [/examples/styled-components](/examples/styled-components)
+
+
+<br/>
+
+<p align="center">
+
+<sup>
+<a href="https://github.com/reframejs/ssr-coin/issues/new">Open a ticket</a> or
+<a href="https://discord.gg/kqXf65G">chat with us</a>
+if you have questions, feature requests, or if you just want to talk to us.
+</sup>
+
+<sup>
+We enjoy talking with our users.
+</sup>
+
+<br/>
+
+<sup>
+<a href="#readme"><b>&#8679;</b> <b>TOP</b> <b>&#8679;</b></a>
+</sup>
+
+</p>
+
+<br/>
+<br/>
+
 
 ## Control Transpilation: Babel / TypeScript /  ES6 / ...
 
@@ -1129,6 +1524,33 @@ Examples:
 - [/examples/babel](/examples/babel)
 
 
+<br/>
+
+<p align="center">
+
+<sup>
+<a href="https://github.com/reframejs/ssr-coin/issues/new">Open a ticket</a> or
+<a href="https://discord.gg/kqXf65G">chat with us</a>
+if you have questions, feature requests, or if you just want to talk to us.
+</sup>
+
+<sup>
+We enjoy talking with our users.
+</sup>
+
+<br/>
+
+<sup>
+<a href="#readme"><b>&#8679;</b> <b>TOP</b> <b>&#8679;</b></a>
+</sup>
+
+</p>
+
+<br/>
+<br/>
+
+
+
 ## Add CSS-in-JS: Emotion / styled-components / ...
 
 Some CSS-in-JS libraries,
@@ -1145,12 +1567,66 @@ Examples:
 - [/examples/styled-components](/examples/styled-components)
 
 
+<br/>
+
+<p align="center">
+
+<sup>
+<a href="https://github.com/reframejs/ssr-coin/issues/new">Open a ticket</a> or
+<a href="https://discord.gg/kqXf65G">chat with us</a>
+if you have questions, feature requests, or if you just want to talk to us.
+</sup>
+
+<sup>
+We enjoy talking with our users.
+</sup>
+
+<br/>
+
+<sup>
+<a href="#readme"><b>&#8679;</b> <b>TOP</b> <b>&#8679;</b></a>
+</sup>
+
+</p>
+
+<br/>
+<br/>
+
+
+
 ## Add CSS pre-processor: PostCSS / Sass / Less / ...
 
 By [controlling transpilation](#control-transpilation-babel--typescript---es6--) you can add CSS pre-processors such as PostCSS.
 
 Example:
  - [/examples/postcss](/examples/postcss)
+
+
+<br/>
+
+<p align="center">
+
+<sup>
+<a href="https://github.com/reframejs/ssr-coin/issues/new">Open a ticket</a> or
+<a href="https://discord.gg/kqXf65G">chat with us</a>
+if you have questions, feature requests, or if you just want to talk to us.
+</sup>
+
+<sup>
+We enjoy talking with our users.
+</sup>
+
+<br/>
+
+<sup>
+<a href="#readme"><b>&#8679;</b> <b>TOP</b> <b>&#8679;</b></a>
+</sup>
+
+</p>
+
+<br/>
+<br/>
+
 
 
 ## Control Routing: Server-side Routing / Browser-side Routing / React Router / ...
@@ -1255,6 +1731,33 @@ The example's entire source code is at:
 - [/examples/react-router](/examples/react-router)
 
 
+<br/>
+
+<p align="center">
+
+<sup>
+<a href="https://github.com/reframejs/ssr-coin/issues/new">Open a ticket</a> or
+<a href="https://discord.gg/kqXf65G">chat with us</a>
+if you have questions, feature requests, or if you just want to talk to us.
+</sup>
+
+<sup>
+We enjoy talking with our users.
+</sup>
+
+<br/>
+
+<sup>
+<a href="#readme"><b>&#8679;</b> <b>TOP</b> <b>&#8679;</b></a>
+</sup>
+
+</p>
+
+<br/>
+<br/>
+
+
+
 ## Add Frontend Libraries: Google Analytics / jQuery / Bootstrap / Semantic UI / ...
 
 To load a frontend library that is hosted on a cdn, add `<script>` and `<style>` tags to your HTML, see <a href=#html-meta-tags-indexhtml-title-meta-link->HTML Meta Tags: `index.html`, `<title/>`, `<meta/>`, `<link/>`, ...</a>.
@@ -1302,6 +1805,33 @@ export default {
 };
 ~~~
 
+
+<br/>
+
+<p align="center">
+
+<sup>
+<a href="https://github.com/reframejs/ssr-coin/issues/new">Open a ticket</a> or
+<a href="https://discord.gg/kqXf65G">chat with us</a>
+if you have questions, feature requests, or if you just want to talk to us.
+</sup>
+
+<sup>
+We enjoy talking with our users.
+</sup>
+
+<br/>
+
+<sup>
+<a href="#readme"><b>&#8679;</b> <b>TOP</b> <b>&#8679;</b></a>
+</sup>
+
+</p>
+
+<br/>
+<br/>
+
+
 ## Use Server Framework: Express / Koa / Hapi / Fastify / ...
 
 To use `ssr-coin` with `express`, `koa` or `hapi`, use the corresponding [server plugin](#server-plugins).
@@ -1309,6 +1839,33 @@ To use `ssr-coin` with `express`, `koa` or `hapi`, use the corresponding [server
 To use `ssr-coin` with another server framework, open a GitHub issue.
 `ssr-coin` can be used with any server framework
 but there is no documentation for this (yet).
+
+
+<br/>
+
+<p align="center">
+
+<sup>
+<a href="https://github.com/reframejs/ssr-coin/issues/new">Open a ticket</a> or
+<a href="https://discord.gg/kqXf65G">chat with us</a>
+if you have questions, feature requests, or if you just want to talk to us.
+</sup>
+
+<sup>
+We enjoy talking with our users.
+</sup>
+
+<br/>
+
+<sup>
+<a href="#readme"><b>&#8679;</b> <b>TOP</b> <b>&#8679;</b></a>
+</sup>
+
+</p>
+
+<br/>
+<br/>
+
 
 ## Use View Library: React / Vue / Preact / ...
 
@@ -1318,6 +1875,33 @@ then just install the plugin and that's it.
 If there is no render plugin,
 then [take control over rendering](#control-rendering).
 That way you should be able to use any view library.
+
+
+<br/>
+
+<p align="center">
+
+<sup>
+<a href="https://github.com/reframejs/ssr-coin/issues/new">Open a ticket</a> or
+<a href="https://discord.gg/kqXf65G">chat with us</a>
+if you have questions, feature requests, or if you just want to talk to us.
+</sup>
+
+<sup>
+We enjoy talking with our users.
+</sup>
+
+<br/>
+
+<sup>
+<a href="#readme"><b>&#8679;</b> <b>TOP</b> <b>&#8679;</b></a>
+</sup>
+
+</p>
+
+<br/>
+<br/>
+
 
 ## Use process manager: Docker / systemd / PM2 / ...
 
@@ -1335,13 +1919,33 @@ pm2 start ./path/to/your/server.js
 ~~~
 
 
-## Plugins
+<br/>
 
-###### Server plugins
+<p align="center">
 
-###### Render plugins
+<sup>
+<a href="https://github.com/reframejs/ssr-coin/issues/new">Open a ticket</a> or
+<a href="https://discord.gg/kqXf65G">chat with us</a>
+if you have questions, feature requests, or if you just want to talk to us.
+</sup>
 
-###### Transpilation plugins
+<sup>
+We enjoy talking with our users.
+</sup>
+
+<br/>
+
+<sup>
+<a href="#readme"><b>&#8679;</b> <b>TOP</b> <b>&#8679;</b></a>
+</sup>
+
+</p>
+
+<br/>
+<br/>
+
+
+
 
 <!---
 

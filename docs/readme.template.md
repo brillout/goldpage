@@ -2,10 +2,10 @@
 !OUTPUT ../readme.md
 !INLINE ./snippets/header.md --hide-source-path
 
-!VAR WHAT What is `ssr-coin`
-!VAR WHY Why `ssr-coin`
+!VAR WHAT_SSR_COIN What is `ssr-coin`
+!VAR WHY_SSR_COIN Why `ssr-coin`
 
-!VAR PLUGINS Plugins
+!VAR PLUGIN_LIST Plugins
 !VAR PLUGINS_SERVER Server plugins
 !VAR PLUGINS_RENDER Render plugins
 !VAR PLUGINS_TRANSPILATION Transpilation plugins
@@ -33,9 +33,9 @@
 !VAR VIEW_LIBRARIES Use View Library: React / Vue / Preact / ...
 !VAR PROCESS_MANAGERS Use process manager: Docker / systemd / PM2 / ...
 
-!INLINE li-1 !VAR|LINK WHAT
-!INLINE li-1 !VAR|LINK WHY
-!INLINE li-1 !VAR|LINK PLUGINS
+!INLINE li-1 !VAR|LINK WHAT_SSR_COIN
+!INLINE li-1 !VAR|LINK WHY_SSR_COIN
+!INLINE li-1 !VAR|LINK PLUGIN_LIST
 !INLINE li-1 Usage
 !INLINE li-2 !VAR|LINK GETTING_STARTED
 !INLINE li-2-header Basics
@@ -62,7 +62,7 @@
 
 <br/>
 
-## !VAR WHAT
+## !VAR WHAT_SSR_COIN
 
 `ssr-coin` is a library that adds server-side rendering (SSR) to your Node.js server.
 
@@ -103,12 +103,11 @@ function Counter() {
 }
 ~~~
 
+!INLINE ./snippets/section-footer.md #readme --hide-source-path
 
 
 
-
-
-## !VAR WHY
+## !VAR WHY_SSR_COIN
 
 `ssr-coin` is about making SSR easy and flexible.
 
@@ -191,6 +190,36 @@ the rest of your stack is entirely up to you and you can use:
 
 `ssr-coin` comes with nifty features out of the box, such as browser autoreload, server autoreload, page based code splitting and HTTP caching.
 
+!INLINE ./snippets/section-footer.md #readme --hide-source-path
+
+
+
+## !VAR PLUGIN_LIST
+
+###### !VAR PLUGINS_SERVER
+
+Server integration plugins.
+
+- [/plugins/render-express](/plugins/render-express)
+- [/plugins/render-koa](/plugins/render-koa)
+- [/plugins/render-hapi](/plugins/render-hapi)
+
+###### !VAR PLUGINS_RENDER
+
+View library integration plugins.
+
+- [/plugins/render-react](/plugins/render-react)
+- [/plugins/render-vue](/plugins/render-vue)
+- [/plugins/render-react-native-web](/plugins/render-react-native-web)
+
+###### !VAR PLUGINS_TRANSPILATION
+
+Transpilation plugins to add languages.
+
+- [/plugins/typescript](/plugins/typescript)
+- [/plugins/postcss](/plugins/postcss)
+
+!INLINE ./snippets/section-footer.md #readme --hide-source-path
 
 
 
@@ -332,6 +361,10 @@ then use a Reframe starter instead.
 
 You can now run `npm run dev` (`yarn dev`) and go to your newly created page `/hello/jon`.
 
+!INLINE ./snippets/section-footer.md #readme --hide-source-path
+
+
+
 ## !VAR CSS_AND_ASSETS
 
 To load CSS, simply import it:
@@ -368,6 +401,8 @@ You can also reference static assets in CSS:
 Example of a page that uses all kinds of static assets:
  - [/examples/static-assets/](/examples/static-assets/)
 
+!INLINE ./snippets/section-footer.md #readme --hide-source-path
+
 
 
 ## !VAR ASYNC_DATA
@@ -383,6 +418,9 @@ But then your data is rendered only to the DOM (and not to HTML).
 
 We further explain the difference between both at:
  - [/examples/async-data/](/examples/async-data/)
+
+!INLINE ./snippets/section-footer.md #readme --hide-source-path
+
 
 
 ## !VAR CONTROL_RENDERING
@@ -414,6 +452,8 @@ Examples:
 - [/examples/react-router](/examples/react-router)
 - [/examples/redux](/examples/redux)
 - [/examples/styled-components](/examples/styled-components)
+
+!INLINE ./snippets/section-footer.md #readme --hide-source-path
 
 
 
@@ -452,6 +492,7 @@ and your `package.json`'s scripts would be:
 
 Note that `ssr-coin` always transpiles and auto-reloads your views and browser code.
 
+!INLINE ./snippets/section-footer.md #readme --hide-source-path
 
 
 
@@ -474,6 +515,9 @@ See [`@brillout/html`'s documentation](https://github.com/brillout/html) for the
 
 Example:
  - [/examples/html](/examples/html)
+
+!INLINE ./snippets/section-footer.md #readme --hide-source-path
+
 
 
 ## !VAR PERFORMANCE_TUNING
@@ -570,6 +614,8 @@ function SearchPage(props) {
 }
 ~~~
 
+!INLINE ./snippets/section-footer.md #readme --hide-source-path
+
 
 
 ## !VAR PAGE_CONFIG
@@ -604,6 +650,9 @@ function SearchPage(props) {
 !INLINE /examples/html/pages/getHtmlOptions.js --hide-source-path
 ~~~
 
+!INLINE ./snippets/section-footer.md #readme --hide-source-path
+
+
 
 ## !VAR SSR_COIN_CONFIG
 
@@ -622,6 +671,10 @@ module.exports = {
   silent: true,
 };
 ~~~
+
+!INLINE ./snippets/section-footer.md #readme --hide-source-path
+
+
 
 ## !VAR CLI_REF
 
@@ -668,6 +721,9 @@ A local install has couple of advantages over a global install:
  - Many projects can have many different `ssr-coin` versions.
  - Removing your project's directory also removes `ssr-coin`.
 
+!INLINE ./snippets/section-footer.md #readme --hide-source-path
+
+
 
 ## !VAR ADD_PROVIDERS
 
@@ -679,6 +735,9 @@ Examples:
 - [/examples/react-router](/examples/react-router)
 - [/examples/redux](/examples/redux)
 - [/examples/styled-components](/examples/styled-components)
+
+!INLINE ./snippets/section-footer.md #readme --hide-source-path
+
 
 ## !VAR CONTROL_TRANSPILATION
 
@@ -702,6 +761,9 @@ Examples:
 - [/examples/typescript](/examples/typescript)
 - [/examples/babel](/examples/babel)
 
+!INLINE ./snippets/section-footer.md #readme --hide-source-path
+
+
 
 ## !VAR CSS_IN_JS
 
@@ -718,6 +780,9 @@ Examples:
 - [/examples/emotion](/examples/emotion)
 - [/examples/styled-components](/examples/styled-components)
 
+!INLINE ./snippets/section-footer.md #readme --hide-source-path
+
+
 
 ## !VAR CSS_PRE_PROCESSORS
 
@@ -725,6 +790,9 @@ By [controlling transpilation](!VAR|ANCHOR CONTROL_TRANSPILATION) you can add CS
 
 Example:
  - [/examples/postcss](/examples/postcss)
+
+!INLINE ./snippets/section-footer.md #readme --hide-source-path
+
 
 
 ## !VAR ROUTING
@@ -786,6 +854,9 @@ Example of a React app doing browser-side routing with React Router:
 The example's entire source code is at:
 - [/examples/react-router](/examples/react-router)
 
+!INLINE ./snippets/section-footer.md #readme --hide-source-path
+
+
 
 ## !VAR FRONTEND_LIBRARIRES
 
@@ -803,6 +874,9 @@ To load a frontend library that is saved on your disk, use a file that is loaded
 !INLINE /examples/frontend-libraries/pages/about.page.js
 ~~~
 
+!INLINE ./snippets/section-footer.md #readme --hide-source-path
+
+
 ## !VAR SERVER_FRAMEWORKS
 
 To use `ssr-coin` with `express`, `koa` or `hapi`, use the corresponding [server plugin](!VAR|ANCHOR PLUGINS_SERVER).
@@ -810,6 +884,9 @@ To use `ssr-coin` with `express`, `koa` or `hapi`, use the corresponding [server
 To use `ssr-coin` with another server framework, open a GitHub issue.
 `ssr-coin` can be used with any server framework
 but there is no documentation for this (yet).
+
+!INLINE ./snippets/section-footer.md #readme --hide-source-path
+
 
 ## !VAR VIEW_LIBRARIES
 
@@ -819,6 +896,9 @@ then just install the plugin and that's it.
 If there is no render plugin,
 then [take control over rendering](!VAR|ANCHOR CONTROL_RENDERING).
 That way you should be able to use any view library.
+
+!INLINE ./snippets/section-footer.md #readme --hide-source-path
+
 
 ## !VAR PROCESS_MANAGERS
 
@@ -835,11 +915,7 @@ pm2 start ./.build/nodejs/server
 pm2 start ./path/to/your/server.js
 ~~~
 
+!INLINE ./snippets/section-footer.md #readme --hide-source-path
 
-## !VAR PLUGINS
 
-###### !VAR PLUGINS_SERVER
 
-###### !VAR PLUGINS_RENDER
-
-###### !VAR PLUGINS_TRANSPILATION
