@@ -200,9 +200,9 @@ the rest of your stack is entirely up to you and you can use:
 
 Server integration plugins.
 
-- [Express](/plugins/render-express)
-- [Koa](/plugins/render-koa)
-- [Hapi](/plugins/render-hapi)
+- [Express](/plugins/express)
+- [Koa](/plugins/koa)
+- [Hapi](/plugins/hapi)
 
 ###### !VAR PLUGINS_RENDER
 

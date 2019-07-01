@@ -324,9 +324,9 @@ We enjoy talking with our users.
 
 Server integration plugins.
 
-- [Express](/plugins/render-express)
-- [Koa](/plugins/render-koa)
-- [Hapi](/plugins/render-hapi)
+- [Express](/plugins/express)
+- [Koa](/plugins/koa)
+- [Hapi](/plugins/hapi)
 
 ###### Render plugins
 
