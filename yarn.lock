@@ -835,13 +835,6 @@
     find-up "^2.1.0"
     lodash.escaperegexp "^4.1.2"
 
-"@brillout/parse-uri@^0.1.1":
-  version "0.1.1"
-  resolved "https://registry.yarnpkg.com/@brillout/parse-uri/-/parse-uri-0.1.1.tgz#d4f765af19ae0da4b5b80fae19a4e40ec4cc6541"
-  integrity sha512-RPSYmQvRcdllpLh4d7rA727QZPSX7cjymRI9QdRrj/vvDMqgeuPeXii8jzZCobiTI8kpFHkf85mBdQxhXKrOBQ==
-  dependencies:
-    reassert "^1.1.11"
-
 "@brillout/parse-url@^0.2.1":
   version "0.2.1"
   resolved "https://registry.yarnpkg.com/@brillout/parse-url/-/parse-url-0.2.1.tgz#e3ddd8c47ac583e5bf284503b71c633f5f043749"
@@ -1018,38 +1011,39 @@
     simple-git "^1.95.0"
     source-map-support "^0.5.4"
 
-"@universal-adapter/express@^0.2.1":
-  version "0.2.1"
-  resolved "https://registry.yarnpkg.com/@universal-adapter/express/-/express-0.2.1.tgz#58790978de46bae5787c3b45481044cf3b6f2fad"
-  integrity sha512-3Qx2zXJj8CRkc2O7mo0zq/ZoralsZlrRCMlnZLTVuQ7D7l1geunPGt/jUGiwiiWOGjQZ+V7NYPq9c4S/xVt8Yw==
+"@universal-adapter/express@^0.3.0":
+  version "0.3.0"
+  resolved "https://registry.yarnpkg.com/@universal-adapter/express/-/express-0.3.0.tgz#f296cdedca3e9ea7f87df944f72a84bd5df580a0"
+  integrity sha512-4NUCzZ97+6cvyOd3suApVsHvp5o6XGolcPrgUIpgZcWlC9e7KORuCgSq1BpJyVxKPzbT+ye//w8pUe9GYo5a2Q==
   dependencies:
-    "@universal-adapter/server" "0.2.1"
+    "@universal-adapter/server" "0.3.0"
     reassert "^1.1.16"
 
-"@universal-adapter/hapi@^0.2.1":
-  version "0.2.1"
-  resolved "https://registry.yarnpkg.com/@universal-adapter/hapi/-/hapi-0.2.1.tgz#0cf05189c02c4731757b024003221746d375e6f6"
-  integrity sha512-A9s4jjJ/jko422k2A9BMMO731f4P5gsLRUjwnyY1HtWbEAjvJLer8U/EmjPUi/It+z7wE8jD55i2hevAEIHGIg==
+"@universal-adapter/hapi@^0.3.0":
+  version "0.3.0"
+  resolved "https://registry.yarnpkg.com/@universal-adapter/hapi/-/hapi-0.3.0.tgz#cc979e16182134e36127e760276b8c3591a7ddb1"
+  integrity sha512-oGM8BpidrZLjUZPdMPa48Tbrya9dgksYLEQTUrMCul9OyR0ecPGUPeHA4W5DMNKXU9AveNKemDmqerYy3jhJhw==
   dependencies:
-    "@universal-adapter/server" "0.2.1"
+    "@universal-adapter/server" "0.3.0"
     boom "^7.2.0"
+    hapi-url "^1.0.2"
     reassert "^1.1.16"
 
-"@universal-adapter/koa@^0.2.1":
-  version "0.2.1"
-  resolved "https://registry.yarnpkg.com/@universal-adapter/koa/-/koa-0.2.1.tgz#bf8cb195a25d63a1e949dd183fddb90203290c69"
-  integrity sha512-DMI/l5kHwvhJhIEJHQxB7DhwSozfr4IRyRQHhcoaCrIQT0+MdBgWp2P8COOUz+sMFOC0AgQBdB/kmAgvKDQzXw==
+"@universal-adapter/koa@^0.3.0":
+  version "0.3.0"
+  resolved "https://registry.yarnpkg.com/@universal-adapter/koa/-/koa-0.3.0.tgz#27dae5ae52521da7b86aaf47b35645b58b1f528b"
+  integrity sha512-IG3Tq7LIhcDJNBeraAgE14+spuHUOxDvS8kPoUa9lHQqeQcxK87jGxHAMbEbOBlXx81joAuYimEpTpWKNT2hHQ==
   dependencies:
-    "@universal-adapter/server" "0.2.1"
+    "@universal-adapter/server" "0.3.0"
     koa-router "^7.4.0"
     reassert "^1.1.16"
 
-"@universal-adapter/server@0.2.1":
-  version "0.2.1"
-  resolved "https://registry.yarnpkg.com/@universal-adapter/server/-/server-0.2.1.tgz#97e5877e97120bfb7b62a0b9b48dc93a2f7eeaca"
-  integrity sha512-mBhP/NVfgOFm8dl3N+szTthlAjgTlNqFqyB2BWBzL38rO6um0aZv2izyIqXxo9o37AdutADg/wzOirbGwIkqoQ==
+"@universal-adapter/server@0.3.0":
+  version "0.3.0"
+  resolved "https://registry.yarnpkg.com/@universal-adapter/server/-/server-0.3.0.tgz#24448c0429caf72c0a7906bb08720d9611da4017"
+  integrity sha512-T8ISuN90P1mXw3FOiMckYEZ/Hnf1oUF/NJlQAXFL0f2ITwsd0UolJtezNjvdsnHGMkVUfxGogcIK+iRaMNXpSA==
   dependencies:
-    "@brillout/parse-uri" "^0.1.1"
+    "@brillout/parse-url" "^0.2.1"
     express "^4.16.4"
     hapi "^17.8.1"
     koa "^2.6.2"
@@ -3014,6 +3008,13 @@ gud@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/gud/-/gud-1.0.0.tgz#a489581b17e6a70beca9abe3ae57de7a499852c0"
   integrity sha512-zGEOVKFM5sVPPrYs7J5/hYEw2Pof8KCyOwyhG8sAF26mCAeUFAcYPu1mwB7hhpIP29zOIBaDqwuHdLp0jvZXjw==
+
+hapi-url@^1.0.2:
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/hapi-url/-/hapi-url-1.0.2.tgz#49b094d1f90f80fa510bc74396b907d39ab84db1"
+  integrity sha512-utw3jeg9IWiHuK0X+9vlVDyjpfgbca3Q/uXQZHslXicEyoVdc6xHWXvfCgWY4ATeFw2aKXowIwzJUcViDh87yA==
+  dependencies:
+    url "^0.11.0"
 
 hapi@^17.8.1:
   version "17.8.5"
@@ -5256,7 +5257,7 @@ readdirp@^2.2.1:
     micromatch "^3.1.10"
     readable-stream "^2.0.2"
 
-reassert@^1.1.11, reassert@^1.1.12, reassert@^1.1.14, reassert@^1.1.16, reassert@^1.1.21, reassert@^1.1.8:
+reassert@^1.1.12, reassert@^1.1.14, reassert@^1.1.16, reassert@^1.1.21, reassert@^1.1.8:
   version "1.1.21"
   resolved "https://registry.yarnpkg.com/reassert/-/reassert-1.1.21.tgz#0e61cde7d2dde876d301342153cd9b1c7459649f"
   integrity sha512-Ff2/AaIE5LDTrsEBUDKFb65klJki9xibTKi7loj9bGxBrQBb4BubgvJLEyKRlzrr4SFmg0QzfdcTojU9NHn0Zw==
