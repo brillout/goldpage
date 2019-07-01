@@ -1,0 +1,17 @@
+{
+  "name": "example_react-native-web",
+  "private": true,
+  "version": "0.3.2",
+  "scripts": {
+    "dev": "ssr-coin dev ./server.js"
+  },
+  "dependencies": {
+    "@ssr-coin/express": "0.3.2",
+    "@ssr-coin/react-native-web": "0.3.2",
+    "react": "^16.8.6",
+    "ssr-coin": "0.3.2"
+  },
+  "checkDeps": {
+    "skip": true
+  }
+}

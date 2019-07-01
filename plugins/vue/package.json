@@ -1,0 +1,13 @@
+{
+  "name": "@ssr-coin/vue",
+  "version": "0.3.2",
+  "@brillout/autoload": true,
+  "dependencies": {
+    "@ssr-coin/html": "0.3.2",
+    "vue-server-renderer": "^2.6.10"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": "github:reframejs/ssr-coin"
+}

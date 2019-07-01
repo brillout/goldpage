@@ -77,7 +77,7 @@ function assemble_modifiers(modifier_name) {
     // `config` holds a webpack config
     let supra_modifier = ({config}) => config;
 
-    const modifiers = reconfig.ssrCoin[modifier_name];
+    const modifiers = reconfig.ssrCoin[modifier_name] || [];
 
     // We assemble all `configParts`'s config modifiers into one `supra_modifier`
     modifiers

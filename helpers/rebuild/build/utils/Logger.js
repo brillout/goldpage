@@ -267,7 +267,6 @@ function BuildStateManager(logger) {
         /* This assertion is false:
         assert_internal(!is_compiling || is_failure===undefined, {is_failure, is_compiling});
         */
-        assert_internal([true, false].includes(this.onlyLogFailure));
         const wasFailing = logging_state.isFailing;
         if( !is_compiling || is_failure ){
           logging_state.isFailing = !!is_failure;
