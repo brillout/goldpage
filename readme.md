@@ -333,8 +333,8 @@ Server integration plugins.
 View library integration plugins.
 
 - [React](/plugins/react)
-- [React](/plugins/vue)
-- [React](/plugins/react-native-web)
+- [Vue](/plugins/vue)
+- [React Native Web](/plugins/react-native-web)
 
 ###### Transpilation plugins
 
