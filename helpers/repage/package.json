@@ -2,7 +2,7 @@
   "name": "@brillout/repage",
   "version": "0.3.2",
   "dependencies": {
-    "@brillout/html": "^0.3.0",
+    "@brillout/html": "^0.3.1",
     "@brillout/parse-url": "^0.2.1",
     "@brillout/reassert": "^0.1.1"
   },
