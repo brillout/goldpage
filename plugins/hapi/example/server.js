@@ -9,12 +9,6 @@ async function startServer() {
     debug: {request: ['internal']},
   });
 
-  server.route({
-    method: 'GET',
-    path: '/hapi-route',
-    handler: (req, h) => h.response('heelo hr !!'),
-  });
-
   await server.register(ssr.hapi);
 
   await server.start();
