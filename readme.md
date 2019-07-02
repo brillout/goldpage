@@ -320,7 +320,7 @@ We enjoy talking with our users.
 
 ## Plugins
 
-#### Server plugins
+#### Server Plugins
 
 Server integration plugins.
 
@@ -328,7 +328,7 @@ Server integration plugins.
 - [Koa](/plugins/koa)
 - [Hapi](/plugins/hapi)
 
-#### Render plugins
+#### Render Plugins
 
 View library integration plugins.
 
@@ -336,12 +336,19 @@ View library integration plugins.
 - [Vue](/plugins/vue)
 - [React Native Web](/plugins/react-native-web)
 
-#### Transpilation plugins
+#### Transpilation Plugins
 
 Transpilation plugins to add languages.
 
 - [TypeScript](/plugins/typescript)
 - [PostCSS](/plugins/postcss)
+
+#### Router Plugins
+
+Plugins to (statically) route your pages.
+
+- [`path-to-regexp`](/plugins/path-to-regexp)
+- [Crossroads](/plugins/crossroads)
 
 
 <br/>

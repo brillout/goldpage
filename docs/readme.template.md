@@ -6,9 +6,9 @@
 !VAR WHY_SSR_COIN Why `ssr-coin`
 
 !VAR PLUGIN_LIST Plugins
-!VAR PLUGINS_SERVER Server plugins
-!VAR PLUGINS_RENDER Render plugins
-!VAR PLUGINS_TRANSPILATION Transpilation plugins
+!VAR PLUGINS_SERVER Server Plugins
+!VAR PLUGINS_RENDER Render Plugins
+!VAR PLUGINS_TRANSPILATION Transpilation Plugins
 
 !VAR GETTING_STARTED Getting Started
 
@@ -218,6 +218,13 @@ Transpilation plugins to add languages.
 
 - [TypeScript](/plugins/typescript)
 - [PostCSS](/plugins/postcss)
+
+#### Router Plugins
+
+Plugins to (statically) route your pages.
+
+- [`path-to-regexp`](/plugins/path-to-regexp)
+- [Crossroads](/plugins/crossroads)
 
 !INLINE ./snippets/section-footer.md #readme --hide-source-path
 
