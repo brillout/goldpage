@@ -1927,11 +1927,11 @@ We enjoy talking with our users :-).
 ## Use View Library: React / Vue / Preact / ...
 
 If there is a [render plugin](#render-plugins) for the view library you want to use,
-then just install the plugin and that's it.
+then simply install the plugin.
 
 If there is no render plugin,
 then [take control over rendering](#control-rendering).
-That way you should be able to use any view library.
+That way you are able to use any view library.
 
 
 <br/>

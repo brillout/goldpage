@@ -900,11 +900,11 @@ but there is no documentation for this (yet).
 ## !VAR VIEW_LIBRARIES
 
 If there is a [render plugin](!VAR|ANCHOR PLUGINS_RENDER) for the view library you want to use,
-then just install the plugin and that's it.
+then simply install the plugin.
 
 If there is no render plugin,
 then [take control over rendering](!VAR|ANCHOR CONTROL_RENDERING).
-That way you should be able to use any view library.
+That way you are able to use any view library.
 
 !INLINE ./snippets/section-footer.md #readme --hide-source-path
 
