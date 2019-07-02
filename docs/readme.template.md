@@ -226,8 +226,6 @@ Transpilation plugins to add languages.
 ## !VAR GETTING_STARTED
 
 This getting started is about adding `ssr-coin` to an exisiting app.
-If you want to start from scratch
-then use a Reframe starter instead.
 
 0. Install `ssr-coin`.
 

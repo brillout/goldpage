@@ -69,7 +69,7 @@ function moveAndStampOutputDir({outputDir}) {
         assert_usage(
             stamp_content,
             colorError('ssr-coin stamp is missing')+' at `'+stamp_path+'`.',
-            "It is therefore assumed that `"+outputDir+"` has not been created by Reframe.",
+            "It is therefore assumed that `"+outputDir+"` has not been created by ssr-coin.",
             colorEmphasisLight('Remove `'+outputDir+'` and retry.'),
         );
         assert_internal(stamp_content && !/\s/.test(stamp_content), stamp_content);

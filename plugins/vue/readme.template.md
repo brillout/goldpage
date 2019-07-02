@@ -4,7 +4,7 @@
 
 # `@ssr-coin/vue`
 
-Use `ssr-coin` with Vue.
+Use `ssr-coin` with [Vue](https://github.com/vuejs/vue).
 
 ### Usage
 
@@ -14,7 +14,8 @@ Install `@ssr-coin/vue`.
 $ npm install @ssr-coin/vue
 ~~~
 
-The `ssr-coin/vue` plugin is automatically loaded.
+The plugin is automatically loaded and
+the `view` property of your page configs will now be rendered with Vue.
 
 ### Example
 

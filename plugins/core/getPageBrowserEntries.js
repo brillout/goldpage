@@ -30,7 +30,7 @@ function assert_usage__defaultPageConfig() {
     configsUsedInBrowser.forEach(prop => {
         assert_usage(
             !defaultPageConfig || !(prop in defaultPageConfig),
-            "Reframe doesn't support setting a default `"+prop+"` page configuration via `defaultPageConfig`.",
+            "ssr-coin doesn't support setting a default `"+prop+"` page configuration via `defaultPageConfig`.",
             "Open a GitHub issue if you need to do that."
         );
     });
