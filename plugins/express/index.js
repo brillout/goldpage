@@ -1,5 +1,4 @@
 const config = require('@brillout/reconfig');
-console.log('l2', config);
 const assert = require('@brillout/reassert');
 const ExpressAdapter = require('@universal-adapter/express');
 

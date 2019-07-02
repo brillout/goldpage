@@ -11,7 +11,6 @@ module.exports = create_ssr();
 
 function create_ssr() {
   config.ssrCoin = {};
-  console.log('l1', config);
 
   require('@ssr-coin/core');
   require('@ssr-coin/browser');

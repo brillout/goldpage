@@ -31,11 +31,30 @@ function loadDependencies() {
   const loaded = [];
   Object.keys(dependencies)
   .forEach(depName => {
-    const dep = eval('require').resolve(depName+'/package.json', {paths: [projectDir]});
-    const depPackageJson = eval('require')(dep);
+    const dep = (
+      /*
+      eval('require')
+      /*/
+      require
+      //*/
+      .resolve(depName+'/package.json', {paths: [projectDir]})
+    );
+    const depPackageJson = (
+      /*
+      eval('require')
+      /*/
+      require
+      //*/
+      (dep)
+    );
     if( depPackageJson['@brillout/autoload'] ) {
       loaded.push(depName);
-      eval('require')(depName);
+      /*
+      eval('require')
+      /*/
+      require
+      //*/
+      (depName);
     }
   });
 
