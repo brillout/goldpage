@@ -31,11 +31,11 @@ function loadDependencies() {
   const loaded = [];
   Object.keys(dependencies)
   .forEach(depName => {
-    const dep = require.resolve(depName+'/package.json', {paths: [projectDir]});
+    const dep = eval('require').resolve(depName+'/package.json', {paths: [projectDir]});
     const depPackageJson = eval('require')(dep);
     if( depPackageJson['@brillout/autoload'] ) {
       loaded.push(depName);
-      require(depName);
+      eval('require')(depName);
     }
   });
 

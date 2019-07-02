@@ -1,3 +1,5 @@
+console.log('lll');
+console.log(new Error('sttt').stack);
 module.exports = {};
 /*
 const assert = require('reassert');

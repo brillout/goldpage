@@ -1,3 +1,5 @@
+require('source-map-support/register');
+
 const config = require('@brillout/reconfig');
 const assert = require('reassert');
 const path = require('path');
@@ -9,6 +11,7 @@ module.exports = create_ssr();
 
 function create_ssr() {
   config.ssrCoin = {};
+  console.log('l1', config);
 
   require('@ssr-coin/core');
   require('@ssr-coin/browser');

@@ -808,7 +808,7 @@
     reassert "^1.1.14"
     string-width "^2.1.1"
 
-"@brillout/get-user-dir@^0.2.1", "@brillout/get-user-dir@^0.2.3", "@brillout/get-user-dir@^0.2.4":
+"@brillout/get-user-dir@^0.2.1", "@brillout/get-user-dir@^0.2.3":
   version "0.2.4"
   resolved "https://registry.yarnpkg.com/@brillout/get-user-dir/-/get-user-dir-0.2.4.tgz#6010e4b6b240efca925fca335b3b2af81bdba467"
   integrity sha512-WJheo7XlNr6lLolmdO3EZOJtKBif1Ch2FhgJApjrZQ+ZJFJpAm+P+Fha4f0P7qu1ifhMGdalMDKaKixPzOZjnQ==
@@ -854,7 +854,7 @@
     glob-gitignore "^1.0.14"
     ignore "^5.1.1"
 
-"@brillout/project-files@^0.3.0":
+"@brillout/project-files@^0.3.0", "@brillout/project-files@^0.4.0":
   version "0.3.0"
   resolved "https://registry.yarnpkg.com/@brillout/project-files/-/project-files-0.3.0.tgz#b35289af0e4de84428ed939f82290b9fc7deead0"
   integrity sha512-NmE4acdR+CZl72yauKuQFTeunTBnddreLgokbXn0HP03UICR/yojIn7OOT25MicGIbWrtijyxEfwqja+3tv3vw==
