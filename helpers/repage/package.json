@@ -6,8 +6,8 @@
     "@brillout/parse-url": "^0.2.1",
     "@brillout/reassert": "^0.1.1"
   },
-  "repository": "github:reframejs/ssr-coin",
   "publishConfig": {
     "access": "public"
-  }
+  },
+  "repository": "github:reframejs/ssr-coin"
 }

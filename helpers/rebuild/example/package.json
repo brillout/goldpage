@@ -1,5 +1,5 @@
 {
-  "name": "_example-rebuild",
+  "name": "example_rebuild",
   "private": true,
   "version": "0.3.2",
   "dependencies": {

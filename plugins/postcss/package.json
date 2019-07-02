@@ -8,8 +8,8 @@
     "mini-css-extract-plugin": "^0.6.0",
     "postcss-loader": "^3.0.0"
   },
-  "repository": "github.com:reframejs/ssr-coin",
   "publishConfig": {
     "access": "public"
-  }
+  },
+  "repository": "github:reframejs/ssr-coin"
 }
