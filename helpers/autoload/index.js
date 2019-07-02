@@ -1,5 +1,5 @@
 const assert = require('reassert');
-const ProjectFiles = require('@brillout/project-files');
+const {packageJson, packageJsonFile, projectDir} = require('@brillout/project-files');
 const findUp = require('find-up');
 const path = require('path');
 
@@ -20,8 +20,6 @@ function loadFile(filename, opts) {
 */
 
 function loadDependencies() {
-  const projectFiles = new ProjectFiles();
-  const {packageJson, packageJsonFile, projectDir} = projectFiles;
   assert.internal(packageJsonFile);
   assert.internal(projectDir);
 
@@ -34,7 +32,7 @@ function loadDependencies() {
   Object.keys(dependencies)
   .forEach(depName => {
     const dep = require.resolve(depName+'/package.json', {paths: [projectDir]});
-    const depPackageJson = require(dep);
+    const depPackageJson = eval('require')(dep);
     if( depPackageJson['@brillout/autoload'] ) {
       loaded.push(depName);
       require(depName);

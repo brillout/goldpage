@@ -5,7 +5,6 @@ const {Logger} = require('@rebuild/build/utils/Logger');
 const reloadBrowser = require('@rebuild/serve/utils/autoreload/reloadBrowser');
 const autoreloadClientPath = require.resolve('@rebuild/serve/utils/autoreload/client');
 const pathModule = require('path');
-const getUserDir = require('@brillout/get-user-dir');
 const getDefaultBrowserConfig = require('./getDefaultBrowserConfig');
 const getDefaultNodejsConfig = require('./getDefaultNodejsConfig');
 const webpackConfigMod = require('@brillout/webpack-config-mod');
@@ -582,4 +581,9 @@ function make_paths_array_unique(paths) {
         paths
     );
     return [...new Set(paths)];
+}
+
+function getUserDir() {
+  const {userDir} = require('@brillout/project-files');
+  return userDir;
 }

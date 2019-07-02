@@ -2,7 +2,7 @@
   "name": "@brillout/autoload",
   "version": "0.3.2",
   "dependencies": {
-    "@brillout/project-files": "^0.3.0",
+    "@brillout/project-files": "^0.4.0",
     "find-up": "^4.0.0",
     "reassert": "^1.1.12"
   },

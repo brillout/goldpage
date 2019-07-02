@@ -1,7 +1,8 @@
 const config = require('@brillout/reconfig');
 const assert = require('reassert');
 const path = require('path');
-const ProjectFiles = require('@brillout/project-files');
+const {projectDir, findFiles} = require('@brillout/project-files');
+
 const {loadDependencies} = require('@brillout/autoload');
 
 module.exports = create_ssr();
@@ -16,8 +17,6 @@ function create_ssr() {
   require('@ssr-coin/webpack');
 
   const {packageJsonFile, loaded: loadedPlugins} = loadDependencies();
-
-  const {projectDir, findFiles} = new ProjectFiles();
 
   config.ssrCoin.projectDir = projectDir;
 

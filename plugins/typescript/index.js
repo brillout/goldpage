@@ -65,10 +65,9 @@ function addExtensions({webpackConfig, getRule, setRule, addExtension}) {
 function get_tsconfig_path(webpackConfig) {
   const find_up = require('find-up');
   const assert_usage = require('reassert/usage');
-  const getUserDir = require('@brillout/get-user-dir');
 
   const userDir = webpackConfig.context || getUserDir();
-  const algorithmDesc = 'The "user directory" is determined by the `context` option of the webpack config and if missing then by using `@brillout/get-user-dir`';
+  const algorithmDesc = 'The "user directory" is determined by the `context` option of the webpack config and if missing then by using `@brillout/project-files`';
   assert_usage(
     userDir,
     'Cannot find `tsconfig.json` because couldn\'t find the "user directory".',
@@ -81,4 +80,9 @@ function get_tsconfig_path(webpackConfig) {
     algorithmDesc
   );
   return tsconfig_path;
+}
+
+function getUserDir() {
+  const {userDir} = require('@brillout/project-files');
+  return userDir;
 }
