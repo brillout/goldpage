@@ -91,7 +91,7 @@ $ npm install @ssr-coin/koa
 ~~~
 
 The plugin is automatically loaded and
-and a Koa middleware is now available at `require('ssr-coin').koa`.
+a Koa middleware is now available at `require('ssr-coin').koa`.
 
 ### Example
 

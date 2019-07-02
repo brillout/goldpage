@@ -15,7 +15,7 @@ $ npm install @ssr-coin/express
 ~~~
 
 The plugin is automatically loaded and
-and a Express middleware is now available at `require('ssr-coin').express`.
+an Express middleware is now available at `require('ssr-coin').express`.
 
 ### Example
 

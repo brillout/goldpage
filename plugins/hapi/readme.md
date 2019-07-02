@@ -91,7 +91,7 @@ $ npm install @ssr-coin/hapi
 ~~~
 
 The plugin is automatically loaded and
-and a Hapi plugin is now available at `require('ssr-coin').hapi`.
+a Hapi plugin is now available at `require('ssr-coin').hapi`.
 
 ### Example
 
