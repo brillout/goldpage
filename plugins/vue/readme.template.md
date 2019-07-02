@@ -15,7 +15,7 @@ $ npm install @ssr-coin/vue
 ~~~
 
 The plugin is automatically loaded and
-the `view` property of your page configs will now be rendered with Vue.
+the `view` property of your page configs is now rendered with Vue.
 
 ### Example
 

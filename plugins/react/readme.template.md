@@ -2,7 +2,7 @@
 
 `ssr-coin` + React = :heart:
 
-# `@reframe/react`
+# `@ssr-coin/react`
 
 Use `ssr-coin` with [React](https://github.com/facebook/react).
 
@@ -15,7 +15,7 @@ $ npm install @ssr-coin/react
 ~~~
 
 The plugin is automatically loaded and
-the `view` property of your page configs will now be rendered with React.
+the `view` property of your page configs is now rendered with React.
 
 ### Example
 

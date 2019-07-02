@@ -78,7 +78,7 @@
 
 `ssr-coin` + React Native Web = :heart:
 
-# `@reframe/react-native-web`
+# `@ssr-coin/react-native-web`
 
 Use `ssr-coin` with [React Native Web](https://github.com/necolas/react-native-web).
 
@@ -91,7 +91,7 @@ $ npm install @ssr-coin/react-native-web
 ~~~
 
 The plugin is automatically loaded and
-the `view` property of your page configs will now be rendered with React Native Web.
+the `view` property of your page configs is now rendered with React Native Web.
 
 ### Example
 

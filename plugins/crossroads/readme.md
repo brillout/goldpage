@@ -78,19 +78,20 @@
 
 `ssr-coin` + Crossroads = :heart:
 
-# `@reframe/crossroads`
+# `@ssr-coin/crossroads`
 
 Routing with [Crossroads.js](https://github.com/millermedeiros/crossroads.js).
 
 ### Usage
 
-Simply install `@ssr-coin/crossroads`.
+Install `@ssr-coin/crossroads`.
 
 ~~~bash
 $ npm install @ssr-coin/crossroads
 ~~~
 
-`ssr-coin/crossroads` is automatically loaded.
+The plugin is automatically loaded and
+the `route` property of your page configs is now handled by Crossroads.
 
 ### Example
 
