@@ -19,4 +19,5 @@ const styles = StyleSheet.create({
 export default {
   route: '/',
   view: App,
+//doNotRenderInBrowser: true,
 };

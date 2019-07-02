@@ -4,7 +4,8 @@ const {AppRegistry} = require('react-native-web');
 module.exports = renderToDom;
 
 async function renderToDom({page, initialProps, CONTAINER_ID}) {
-  AppRegistry.registerComponent('App', () => () => React.createElement(page.view, initialProps));
+  const viewElement = React.createElement(page.view, initialProps);
+  AppRegistry.registerComponent('App', () => () => viewElement);
 
   AppRegistry.runApplication('App', {
     initialProps,

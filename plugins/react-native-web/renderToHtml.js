@@ -5,12 +5,19 @@ const {AppRegistry} = require('react-native-web');
 module.exports = renderToHtml;
 
 async function renderToHtml({page, initialProps, CONTAINER_ID}) {
-  AppRegistry.registerComponent('App', () => () => React.createElement(page.view, initialProps));
+  /*
+  AppRegistry.registerComponent('App', () => page.view);
+  /*/
+  const viewElement = React.createElement(page.view, initialProps);
+  AppRegistry.registerComponent('App', () => () => viewElement);
+  //*/
 
   const { element, getStyleElement } = AppRegistry.getApplication('App', { initialProps });
 
   const viewHtml = ReactDOMServer.renderToStaticMarkup(element);
 
+  // Bug: `styleHtml` doesn't inlcude user defined styles
+  // Likely solution: make sure that all of react-native-web is compiled with webpack
   const styleHtml = ReactDOMServer.renderToStaticMarkup(getStyleElement());
 
   return {

@@ -290,6 +290,12 @@ function config_ignore_node_modules() {
           include();
           return;
         }
+        /* Attempt to make React Native Web + SSR + CSS work:
+        if( request.startsWith('react') || context.includes('node_modules/react') ){
+          include();
+          return;
+        }
+        */
 
         // TODO implement a proper solution with require resolve.
         //  - For node_modules:
