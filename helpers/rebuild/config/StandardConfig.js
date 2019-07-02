@@ -285,6 +285,12 @@ function config_ignore_node_modules() {
     };
 
     function skip_node_modules(context, request, callback) {
+        // Hack because `react-native-web` should be transpiled but isn't
+        if( request.startsWith('react-native-web') ){
+          include();
+          return;
+        }
+
         // TODO implement a proper solution with require resolve.
         //  - For node_modules:
         //    - https://github.com/browserify/resolve
