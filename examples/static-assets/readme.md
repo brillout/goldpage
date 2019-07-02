@@ -7,7 +7,7 @@
 
     WARNING, READ THIS.
     This is a computed file. Do not edit.
-    Edit `/examples/static-assets/readme.template.md` instead.
+    Instead, edit `/examples/static-assets/readme.template.md` and run `npm run docs` (or `yarn docs`).
 
 
 
@@ -22,7 +22,7 @@
 
     WARNING, READ THIS.
     This is a computed file. Do not edit.
-    Edit `/examples/static-assets/readme.template.md` instead.
+    Instead, edit `/examples/static-assets/readme.template.md` and run `npm run docs` (or `yarn docs`).
 
 
 
@@ -37,7 +37,7 @@
 
     WARNING, READ THIS.
     This is a computed file. Do not edit.
-    Edit `/examples/static-assets/readme.template.md` instead.
+    Instead, edit `/examples/static-assets/readme.template.md` and run `npm run docs` (or `yarn docs`).
 
 
 
@@ -52,7 +52,7 @@
 
     WARNING, READ THIS.
     This is a computed file. Do not edit.
-    Edit `/examples/static-assets/readme.template.md` instead.
+    Instead, edit `/examples/static-assets/readme.template.md` and run `npm run docs` (or `yarn docs`).
 
 
 
@@ -67,7 +67,7 @@
 
     WARNING, READ THIS.
     This is a computed file. Do not edit.
-    Edit `/examples/static-assets/readme.template.md` instead.
+    Instead, edit `/examples/static-assets/readme.template.md` and run `npm run docs` (or `yarn docs`).
 
 
 
@@ -146,7 +146,7 @@ body {
 
     WARNING, READ THIS.
     This is a computed file. Do not edit.
-    Edit `/examples/static-assets/readme.template.md` instead.
+    Instead, edit `/examples/static-assets/readme.template.md` and run `npm run docs` (or `yarn docs`).
 
 
 
@@ -161,7 +161,7 @@ body {
 
     WARNING, READ THIS.
     This is a computed file. Do not edit.
-    Edit `/examples/static-assets/readme.template.md` instead.
+    Instead, edit `/examples/static-assets/readme.template.md` and run `npm run docs` (or `yarn docs`).
 
 
 
@@ -176,7 +176,7 @@ body {
 
     WARNING, READ THIS.
     This is a computed file. Do not edit.
-    Edit `/examples/static-assets/readme.template.md` instead.
+    Instead, edit `/examples/static-assets/readme.template.md` and run `npm run docs` (or `yarn docs`).
 
 
 
@@ -191,7 +191,7 @@ body {
 
     WARNING, READ THIS.
     This is a computed file. Do not edit.
-    Edit `/examples/static-assets/readme.template.md` instead.
+    Instead, edit `/examples/static-assets/readme.template.md` and run `npm run docs` (or `yarn docs`).
 
 
 
@@ -206,7 +206,7 @@ body {
 
     WARNING, READ THIS.
     This is a computed file. Do not edit.
-    Edit `/examples/static-assets/readme.template.md` instead.
+    Instead, edit `/examples/static-assets/readme.template.md` and run `npm run docs` (or `yarn docs`).
 
 
 

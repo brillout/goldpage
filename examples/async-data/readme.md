@@ -7,7 +7,7 @@
 
     WARNING, READ THIS.
     This is a computed file. Do not edit.
-    Edit `/examples/async-data/readme.template.md` instead.
+    Instead, edit `/examples/async-data/readme.template.md` and run `npm run docs` (or `yarn docs`).
 
 
 
@@ -22,7 +22,7 @@
 
     WARNING, READ THIS.
     This is a computed file. Do not edit.
-    Edit `/examples/async-data/readme.template.md` instead.
+    Instead, edit `/examples/async-data/readme.template.md` and run `npm run docs` (or `yarn docs`).
 
 
 
@@ -37,7 +37,7 @@
 
     WARNING, READ THIS.
     This is a computed file. Do not edit.
-    Edit `/examples/async-data/readme.template.md` instead.
+    Instead, edit `/examples/async-data/readme.template.md` and run `npm run docs` (or `yarn docs`).
 
 
 
@@ -52,7 +52,7 @@
 
     WARNING, READ THIS.
     This is a computed file. Do not edit.
-    Edit `/examples/async-data/readme.template.md` instead.
+    Instead, edit `/examples/async-data/readme.template.md` and run `npm run docs` (or `yarn docs`).
 
 
 
@@ -67,7 +67,7 @@
 
     WARNING, READ THIS.
     This is a computed file. Do not edit.
-    Edit `/examples/async-data/readme.template.md` instead.
+    Instead, edit `/examples/async-data/readme.template.md` and run `npm run docs` (or `yarn docs`).
 
 
 
@@ -205,7 +205,7 @@ And the HTML returned by the server is:
 
     WARNING, READ THIS.
     This is a computed file. Do not edit.
-    Edit `/examples/async-data/readme.template.md` instead.
+    Instead, edit `/examples/async-data/readme.template.md` and run `npm run docs` (or `yarn docs`).
 
 
 
@@ -220,7 +220,7 @@ And the HTML returned by the server is:
 
     WARNING, READ THIS.
     This is a computed file. Do not edit.
-    Edit `/examples/async-data/readme.template.md` instead.
+    Instead, edit `/examples/async-data/readme.template.md` and run `npm run docs` (or `yarn docs`).
 
 
 
@@ -235,7 +235,7 @@ And the HTML returned by the server is:
 
     WARNING, READ THIS.
     This is a computed file. Do not edit.
-    Edit `/examples/async-data/readme.template.md` instead.
+    Instead, edit `/examples/async-data/readme.template.md` and run `npm run docs` (or `yarn docs`).
 
 
 
@@ -250,7 +250,7 @@ And the HTML returned by the server is:
 
     WARNING, READ THIS.
     This is a computed file. Do not edit.
-    Edit `/examples/async-data/readme.template.md` instead.
+    Instead, edit `/examples/async-data/readme.template.md` and run `npm run docs` (or `yarn docs`).
 
 
 
@@ -265,7 +265,7 @@ And the HTML returned by the server is:
 
     WARNING, READ THIS.
     This is a computed file. Do not edit.
-    Edit `/examples/async-data/readme.template.md` instead.
+    Instead, edit `/examples/async-data/readme.template.md` and run `npm run docs` (or `yarn docs`).
 
 
 

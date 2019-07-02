@@ -7,7 +7,7 @@
 
     WARNING, READ THIS.
     This is a computed file. Do not edit.
-    Edit `/plugins/vue/readme.template.md` instead.
+    Instead, edit `/plugins/vue/readme.template.md` and run `npm run docs` (or `yarn docs`).
 
 
 
@@ -22,7 +22,7 @@
 
     WARNING, READ THIS.
     This is a computed file. Do not edit.
-    Edit `/plugins/vue/readme.template.md` instead.
+    Instead, edit `/plugins/vue/readme.template.md` and run `npm run docs` (or `yarn docs`).
 
 
 
@@ -37,7 +37,7 @@
 
     WARNING, READ THIS.
     This is a computed file. Do not edit.
-    Edit `/plugins/vue/readme.template.md` instead.
+    Instead, edit `/plugins/vue/readme.template.md` and run `npm run docs` (or `yarn docs`).
 
 
 
@@ -52,7 +52,7 @@
 
     WARNING, READ THIS.
     This is a computed file. Do not edit.
-    Edit `/plugins/vue/readme.template.md` instead.
+    Instead, edit `/plugins/vue/readme.template.md` and run `npm run docs` (or `yarn docs`).
 
 
 
@@ -67,7 +67,7 @@
 
     WARNING, READ THIS.
     This is a computed file. Do not edit.
-    Edit `/plugins/vue/readme.template.md` instead.
+    Instead, edit `/plugins/vue/readme.template.md` and run `npm run docs` (or `yarn docs`).
 
 
 
@@ -76,40 +76,26 @@
 
 -->
 
-Reframe + Vue = :heart:
+`ssr-coin` + Vue = :heart:
 
-# `@reframe/vue`
+# `@ssr-coin/vue`
 
-Use Reframe with Vue.
+Use `ssr-coin` with Vue.
 
 ### Usage
 
-Add `@reframe/vue` to your `reframe.config.js`:
+Install `@ssr-coin/vue`.
 
-~~~js
-module.exports = {
-    $plugins: [
-        require('@reframe/react-kit'),
-        require('@reframe/vue') // npm install @reframe/vue
-    ],
-};
+~~~shell
+$ npm install @ssr-coin/vue
 ~~~
+
+The `ssr-coin/vue` plugin is automatically loaded.
 
 ### Example
 
 ~~~js
-// /plugins/vue/example/reframe.config.js
-
-module.exports = {
-    $plugins: [
-        require('@reframe/react-kit'),
-        require('@reframe/vue') // npm install @reframe/vue
-    ],
-};
-~~~
-
-~~~js
-// /plugins/vue/example/pages/vue-welcome.config.js
+// ./example/pages/vue-welcome.page.js
 
 import Vue from 'vue';
 
@@ -132,7 +118,7 @@ export default {
 
     WARNING, READ THIS.
     This is a computed file. Do not edit.
-    Edit `/plugins/vue/readme.template.md` instead.
+    Instead, edit `/plugins/vue/readme.template.md` and run `npm run docs` (or `yarn docs`).
 
 
 
@@ -147,7 +133,7 @@ export default {
 
     WARNING, READ THIS.
     This is a computed file. Do not edit.
-    Edit `/plugins/vue/readme.template.md` instead.
+    Instead, edit `/plugins/vue/readme.template.md` and run `npm run docs` (or `yarn docs`).
 
 
 
@@ -162,7 +148,7 @@ export default {
 
     WARNING, READ THIS.
     This is a computed file. Do not edit.
-    Edit `/plugins/vue/readme.template.md` instead.
+    Instead, edit `/plugins/vue/readme.template.md` and run `npm run docs` (or `yarn docs`).
 
 
 
@@ -177,7 +163,7 @@ export default {
 
     WARNING, READ THIS.
     This is a computed file. Do not edit.
-    Edit `/plugins/vue/readme.template.md` instead.
+    Instead, edit `/plugins/vue/readme.template.md` and run `npm run docs` (or `yarn docs`).
 
 
 
@@ -192,7 +178,7 @@ export default {
 
     WARNING, READ THIS.
     This is a computed file. Do not edit.
-    Edit `/plugins/vue/readme.template.md` instead.
+    Instead, edit `/plugins/vue/readme.template.md` and run `npm run docs` (or `yarn docs`).
 
 
 

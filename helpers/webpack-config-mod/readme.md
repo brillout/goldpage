@@ -7,7 +7,7 @@
 
     WARNING, READ THIS.
     This is a computed file. Do not edit.
-    Edit `/helpers/webpack-config-mod/readme.template.md` instead.
+    Instead, edit `/helpers/webpack-config-mod/readme.template.md` and run `npm run docs` (or `yarn docs`).
 
 
 
@@ -22,7 +22,7 @@
 
     WARNING, READ THIS.
     This is a computed file. Do not edit.
-    Edit `/helpers/webpack-config-mod/readme.template.md` instead.
+    Instead, edit `/helpers/webpack-config-mod/readme.template.md` and run `npm run docs` (or `yarn docs`).
 
 
 
@@ -37,7 +37,7 @@
 
     WARNING, READ THIS.
     This is a computed file. Do not edit.
-    Edit `/helpers/webpack-config-mod/readme.template.md` instead.
+    Instead, edit `/helpers/webpack-config-mod/readme.template.md` and run `npm run docs` (or `yarn docs`).
 
 
 
@@ -52,7 +52,7 @@
 
     WARNING, READ THIS.
     This is a computed file. Do not edit.
-    Edit `/helpers/webpack-config-mod/readme.template.md` instead.
+    Instead, edit `/helpers/webpack-config-mod/readme.template.md` and run `npm run docs` (or `yarn docs`).
 
 
 
@@ -67,7 +67,7 @@
 
     WARNING, READ THIS.
     This is a computed file. Do not edit.
-    Edit `/helpers/webpack-config-mod/readme.template.md` instead.
+    Instead, edit `/helpers/webpack-config-mod/readme.template.md` and run `npm run docs` (or `yarn docs`).
 
 
 
@@ -175,7 +175,7 @@ console.log("Success");
 
     WARNING, READ THIS.
     This is a computed file. Do not edit.
-    Edit `/helpers/webpack-config-mod/readme.template.md` instead.
+    Instead, edit `/helpers/webpack-config-mod/readme.template.md` and run `npm run docs` (or `yarn docs`).
 
 
 
@@ -190,7 +190,7 @@ console.log("Success");
 
     WARNING, READ THIS.
     This is a computed file. Do not edit.
-    Edit `/helpers/webpack-config-mod/readme.template.md` instead.
+    Instead, edit `/helpers/webpack-config-mod/readme.template.md` and run `npm run docs` (or `yarn docs`).
 
 
 
@@ -205,7 +205,7 @@ console.log("Success");
 
     WARNING, READ THIS.
     This is a computed file. Do not edit.
-    Edit `/helpers/webpack-config-mod/readme.template.md` instead.
+    Instead, edit `/helpers/webpack-config-mod/readme.template.md` and run `npm run docs` (or `yarn docs`).
 
 
 
@@ -220,7 +220,7 @@ console.log("Success");
 
     WARNING, READ THIS.
     This is a computed file. Do not edit.
-    Edit `/helpers/webpack-config-mod/readme.template.md` instead.
+    Instead, edit `/helpers/webpack-config-mod/readme.template.md` and run `npm run docs` (or `yarn docs`).
 
 
 
@@ -235,7 +235,7 @@ console.log("Success");
 
     WARNING, READ THIS.
     This is a computed file. Do not edit.
-    Edit `/helpers/webpack-config-mod/readme.template.md` instead.
+    Instead, edit `/helpers/webpack-config-mod/readme.template.md` and run `npm run docs` (or `yarn docs`).
 
 
 

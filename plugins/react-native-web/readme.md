@@ -7,7 +7,7 @@
 
     WARNING, READ THIS.
     This is a computed file. Do not edit.
-    Edit `/plugins/react-native-web/readme.template.md` instead.
+    Instead, edit `/plugins/react-native-web/readme.template.md` and run `npm run docs` (or `yarn docs`).
 
 
 
@@ -22,7 +22,7 @@
 
     WARNING, READ THIS.
     This is a computed file. Do not edit.
-    Edit `/plugins/react-native-web/readme.template.md` instead.
+    Instead, edit `/plugins/react-native-web/readme.template.md` and run `npm run docs` (or `yarn docs`).
 
 
 
@@ -37,7 +37,7 @@
 
     WARNING, READ THIS.
     This is a computed file. Do not edit.
-    Edit `/plugins/react-native-web/readme.template.md` instead.
+    Instead, edit `/plugins/react-native-web/readme.template.md` and run `npm run docs` (or `yarn docs`).
 
 
 
@@ -52,7 +52,7 @@
 
     WARNING, READ THIS.
     This is a computed file. Do not edit.
-    Edit `/plugins/react-native-web/readme.template.md` instead.
+    Instead, edit `/plugins/react-native-web/readme.template.md` and run `npm run docs` (or `yarn docs`).
 
 
 
@@ -67,7 +67,7 @@
 
     WARNING, READ THIS.
     This is a computed file. Do not edit.
-    Edit `/plugins/react-native-web/readme.template.md` instead.
+    Instead, edit `/plugins/react-native-web/readme.template.md` and run `npm run docs` (or `yarn docs`).
 
 
 
@@ -84,54 +84,41 @@ Implement views for the web and for native mobile using [React Native Web](https
 
 ### Usage
 
-Add `@reframe/react-native-web` to your `reframe.config.js`:
+Install `@ssr-coin/react-native-web`.
 
-~~~js
-module.exports = {
-    $plugins: [
-        require('@reframe/react-kit'),
-        require('@reframe/react-native-web') // npm install @reframe/react-native-web
-    ]
-};
+~~~shell
+$ npm install @ssr-coin/react-native-web
 ~~~
+
+The `ssr-coin/react-native-web` plugin is automatically loaded.
 
 ### Example
 
 ~~~js
-// /plugins/react-native-web/example/reframe.config.js
-
-module.exports = {
-    $plugins: [
-        require('@reframe/react-kit'),
-        require('@reframe/react-native-web') // npm install @reframe/react-native-web
-    ]
-};
-~~~
-
-~~~js
-// /plugins/react-native-web/example/pages/hello-native-web.config.js
+// ./example/pages/hello-native-web.page.js
 
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 
 class App extends React.Component {
-    render() {
-        return (
-            <View style={styles.box}>
-                <Text style={styles.text}>Hello from native web!</Text>
-            </View>
-        );
-    }
+  render() {
+    return (
+      <View style={styles.box}>
+        <Text style={styles.text}>Hello from native web!</Text>
+      </View>
+    );
+  }
 }
 
 const styles = StyleSheet.create({
-    box: { padding: 10 },
-    text: { fontWeight: 'bold', color: 'green' },
+  box: { padding: 10 },
+  text: { fontWeight: 'bold', color: 'green' },
 });
 
 export default {
-    route: '/',
-    view: App,
+  route: '/',
+  view: App,
+//doNotRenderInBrowser: true,
 };
 ~~~
 
@@ -144,7 +131,7 @@ export default {
 
     WARNING, READ THIS.
     This is a computed file. Do not edit.
-    Edit `/plugins/react-native-web/readme.template.md` instead.
+    Instead, edit `/plugins/react-native-web/readme.template.md` and run `npm run docs` (or `yarn docs`).
 
 
 
@@ -159,7 +146,7 @@ export default {
 
     WARNING, READ THIS.
     This is a computed file. Do not edit.
-    Edit `/plugins/react-native-web/readme.template.md` instead.
+    Instead, edit `/plugins/react-native-web/readme.template.md` and run `npm run docs` (or `yarn docs`).
 
 
 
@@ -174,7 +161,7 @@ export default {
 
     WARNING, READ THIS.
     This is a computed file. Do not edit.
-    Edit `/plugins/react-native-web/readme.template.md` instead.
+    Instead, edit `/plugins/react-native-web/readme.template.md` and run `npm run docs` (or `yarn docs`).
 
 
 
@@ -189,7 +176,7 @@ export default {
 
     WARNING, READ THIS.
     This is a computed file. Do not edit.
-    Edit `/plugins/react-native-web/readme.template.md` instead.
+    Instead, edit `/plugins/react-native-web/readme.template.md` and run `npm run docs` (or `yarn docs`).
 
 
 
@@ -204,7 +191,7 @@ export default {
 
     WARNING, READ THIS.
     This is a computed file. Do not edit.
-    Edit `/plugins/react-native-web/readme.template.md` instead.
+    Instead, edit `/plugins/react-native-web/readme.template.md` and run `npm run docs` (or `yarn docs`).
 
 
 

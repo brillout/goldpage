@@ -7,7 +7,7 @@
 
     WARNING, READ THIS.
     This is a computed file. Do not edit.
-    Edit `/plugins/postcss/readme.template.md` instead.
+    Instead, edit `/plugins/postcss/readme.template.md` and run `npm run docs` (or `yarn docs`).
 
 
 
@@ -22,7 +22,7 @@
 
     WARNING, READ THIS.
     This is a computed file. Do not edit.
-    Edit `/plugins/postcss/readme.template.md` instead.
+    Instead, edit `/plugins/postcss/readme.template.md` and run `npm run docs` (or `yarn docs`).
 
 
 
@@ -37,7 +37,7 @@
 
     WARNING, READ THIS.
     This is a computed file. Do not edit.
-    Edit `/plugins/postcss/readme.template.md` instead.
+    Instead, edit `/plugins/postcss/readme.template.md` and run `npm run docs` (or `yarn docs`).
 
 
 
@@ -52,7 +52,7 @@
 
     WARNING, READ THIS.
     This is a computed file. Do not edit.
-    Edit `/plugins/postcss/readme.template.md` instead.
+    Instead, edit `/plugins/postcss/readme.template.md` and run `npm run docs` (or `yarn docs`).
 
 
 
@@ -67,7 +67,7 @@
 
     WARNING, READ THIS.
     This is a computed file. Do not edit.
-    Edit `/plugins/postcss/readme.template.md` instead.
+    Instead, edit `/plugins/postcss/readme.template.md` and run `npm run docs` (or `yarn docs`).
 
 
 
@@ -182,7 +182,7 @@ module.exports = {
 
     WARNING, READ THIS.
     This is a computed file. Do not edit.
-    Edit `/plugins/postcss/readme.template.md` instead.
+    Instead, edit `/plugins/postcss/readme.template.md` and run `npm run docs` (or `yarn docs`).
 
 
 
@@ -197,7 +197,7 @@ module.exports = {
 
     WARNING, READ THIS.
     This is a computed file. Do not edit.
-    Edit `/plugins/postcss/readme.template.md` instead.
+    Instead, edit `/plugins/postcss/readme.template.md` and run `npm run docs` (or `yarn docs`).
 
 
 
@@ -212,7 +212,7 @@ module.exports = {
 
     WARNING, READ THIS.
     This is a computed file. Do not edit.
-    Edit `/plugins/postcss/readme.template.md` instead.
+    Instead, edit `/plugins/postcss/readme.template.md` and run `npm run docs` (or `yarn docs`).
 
 
 
@@ -227,7 +227,7 @@ module.exports = {
 
     WARNING, READ THIS.
     This is a computed file. Do not edit.
-    Edit `/plugins/postcss/readme.template.md` instead.
+    Instead, edit `/plugins/postcss/readme.template.md` and run `npm run docs` (or `yarn docs`).
 
 
 
@@ -242,7 +242,7 @@ module.exports = {
 
     WARNING, READ THIS.
     This is a computed file. Do not edit.
-    Edit `/plugins/postcss/readme.template.md` instead.
+    Instead, edit `/plugins/postcss/readme.template.md` and run `npm run docs` (or `yarn docs`).
 
 
 

@@ -7,7 +7,7 @@
 
     WARNING, READ THIS.
     This is a computed file. Do not edit.
-    Edit `/docs/readme.template.md` instead.
+    Instead, edit `/docs/readme.template.md` and run `npm run docs` (or `yarn docs`).
 
 
 
@@ -22,7 +22,7 @@
 
     WARNING, READ THIS.
     This is a computed file. Do not edit.
-    Edit `/docs/readme.template.md` instead.
+    Instead, edit `/docs/readme.template.md` and run `npm run docs` (or `yarn docs`).
 
 
 
@@ -37,7 +37,7 @@
 
     WARNING, READ THIS.
     This is a computed file. Do not edit.
-    Edit `/docs/readme.template.md` instead.
+    Instead, edit `/docs/readme.template.md` and run `npm run docs` (or `yarn docs`).
 
 
 
@@ -52,7 +52,7 @@
 
     WARNING, READ THIS.
     This is a computed file. Do not edit.
-    Edit `/docs/readme.template.md` instead.
+    Instead, edit `/docs/readme.template.md` and run `npm run docs` (or `yarn docs`).
 
 
 
@@ -67,7 +67,7 @@
 
     WARNING, READ THIS.
     This is a computed file. Do not edit.
-    Edit `/docs/readme.template.md` instead.
+    Instead, edit `/docs/readme.template.md` and run `npm run docs` (or `yarn docs`).
 
 
 
@@ -2008,7 +2008,7 @@ We enjoy talking with our users.
 
     WARNING, READ THIS.
     This is a computed file. Do not edit.
-    Edit `/docs/readme.template.md` instead.
+    Instead, edit `/docs/readme.template.md` and run `npm run docs` (or `yarn docs`).
 
 
 
@@ -2023,7 +2023,7 @@ We enjoy talking with our users.
 
     WARNING, READ THIS.
     This is a computed file. Do not edit.
-    Edit `/docs/readme.template.md` instead.
+    Instead, edit `/docs/readme.template.md` and run `npm run docs` (or `yarn docs`).
 
 
 
@@ -2038,7 +2038,7 @@ We enjoy talking with our users.
 
     WARNING, READ THIS.
     This is a computed file. Do not edit.
-    Edit `/docs/readme.template.md` instead.
+    Instead, edit `/docs/readme.template.md` and run `npm run docs` (or `yarn docs`).
 
 
 
@@ -2053,7 +2053,7 @@ We enjoy talking with our users.
 
     WARNING, READ THIS.
     This is a computed file. Do not edit.
-    Edit `/docs/readme.template.md` instead.
+    Instead, edit `/docs/readme.template.md` and run `npm run docs` (or `yarn docs`).
 
 
 
@@ -2068,7 +2068,7 @@ We enjoy talking with our users.
 
     WARNING, READ THIS.
     This is a computed file. Do not edit.
-    Edit `/docs/readme.template.md` instead.
+    Instead, edit `/docs/readme.template.md` and run `npm run docs` (or `yarn docs`).
 
 
 
