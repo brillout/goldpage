@@ -84,13 +84,13 @@ export default {
 And `ssr-coin` takes care of the rest:
 it transpiles, bundles, routes, renders, and serves your pages.
 
-You can easily add `ssr-coin` to your existing Node.js server:
+You can easily add `ssr-coin` to a existing Node.js server:
 
 ~~~js
 !INLINE /examples/express/server.js
 ~~~
 
-Example:
+Example of page written in React:
 
 ~~~js
 !INLINE /examples/basic/pages/repos/repos.page.js
@@ -102,27 +102,24 @@ Example:
 
 ## !VAR WHY_SSR_COIN
 
-`ssr-coin` is about making SSR easy and flexible.
-
+`ssr-coin` is about making SSR as easy as possible yet entirely flexible.
 
 ###### Easy
 
-All you need to get started is:
- - Install `ssr-coin`, a server plugin and a render plugin.
- - Add the `ssr-coin` middleware to your server.
- - Add the `ssr-coin` scripts to your `package.json`
- - Define your pages.
+It's easy to get started.
 
-That's it.
+The entire setup for a React + Express app is easy:
 
-For example, all you need for a React & Express stack is:
+~~~json5
+// pacakge.json
 
-~~~json
 {
   "dependencies": {
+    "ssr-coin": "~0.3.2",
     "@ssr-coin/react": "~0.3.2",
     "@ssr-coin/express": "~0.3.2",
-    "ssr-coin": "~0.3.2"
+    "express": "^4.17.1",
+    "react": "^16.8.6"
   },
   "scripts": {
     "dev": "ssr-coin dev ./path/to/your/server.js",
@@ -153,17 +150,15 @@ app.listen(3000);
 import React from 'react';
 
 export default {
- route: '/hello/:name',
- view: ({name}) => {
-   <div>
-     Hello <b>{name}</b>.
-     Welcome to <code>ssr-coin</code>.
-   </div>
- },
+  route: '/hello/:name',
+  view: ({name}) => {
+    <div>
+      Hello <b>{name}</b>.
+      Welcome to <code>ssr-coin</code>.
+    </div>
+  },
 };
 ~~~
-
-You can now run `npm run dev` (`yarn dev`) then go to `/hello/jon` and see your first SSR page.
 
 
 ###### Freedom
@@ -173,7 +168,7 @@ the rest of your stack is entirely up to you and you can use:
 
 - Any view libray: **React**, **Vue**, **React Native Web**, etc.
 - Any server framework: **Express**, **Koa**, **Hapi**, etc.
-- Any language: **ES6**, **TypeScript**, **PostCSS**, etc.
+- Any language: **ES7**, **TypeScript**, **PostCSS**, etc.
 - Any provider: **Redux**, **GraphQL Apollo**, **Relay**, etc.
 - Any process manager: **Docker**, **systemd**, **PM2**, etc.
 - etc.
@@ -181,7 +176,7 @@ the rest of your stack is entirely up to you and you can use:
 
 ###### Batteries included
 
-`ssr-coin` comes with nifty features out of the box, such as browser autoreload, server autoreload, page based code splitting and HTTP caching.
+`ssr-coin` comes with nifty features out of the box such as browser & server auto-reload, page based code splitting, and optimal HTTP caching.
 
 !INLINE ./snippets/section-footer.md #readme --hide-source-path
 
