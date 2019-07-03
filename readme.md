@@ -126,15 +126,16 @@ API Reference
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 Recipes
 </sub>
-<br/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a href=#add-providers-redux--react-router--graphql-apollo--relay-->Add Providers: Redux / React Router / GraphQL Apollo / Relay / ...</a>
+<br/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a href=#providers-redux--react-router--graphql-apollo--relay-->Providers: Redux / React Router / GraphQL Apollo / Relay / ...</a>
 <br/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a href=#control-transpilation-babel--typescript---es6-->Control Transpilation: Babel / TypeScript /  ES6 / ...</a>
-<br/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a href=#add-css-in-js-emotion--styled-components-->Add CSS-in-JS: Emotion / styled-components / ...</a>
-<br/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a href=#add-css-pre-processor-postcss--sass--less-->Add CSS pre-processor: PostCSS / Sass / Less / ...</a>
+<br/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a href=#css-in-js-emotion--styled-components-->CSS-in-JS: Emotion / styled-components / ...</a>
+<br/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a href=#css-pre-processors-postcss--sass--less-->CSS pre-processors: PostCSS / Sass / Less / ...</a>
 <br/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a href=#control-routing-server-side-routing--browser-side-routing--react-router-->Control Routing: Server-side Routing / Browser-side Routing / React Router / ...</a>
-<br/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a href=#add-frontend-libraries-google-analytics--jquery--bootstrap--semantic-ui-->Add Frontend Libraries: Google Analytics / jQuery / Bootstrap / Semantic UI / ...</a>
-<br/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a href=#use-server-framework-express--koa--hapi--fastify-->Use Server Framework: Express / Koa / Hapi / Fastify / ...</a>
-<br/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a href=#use-view-library-react--vue--preact-->Use View Library: React / Vue / Preact / ...</a>
-<br/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a href=#use-process-manager-docker--systemd--pm2-->Use process manager: Docker / systemd / PM2 / ...</a>
+<br/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a href=#frontend-libraries-google-analytics--jquery--bootstrap--semantic-ui-->Frontend Libraries: Google Analytics / jQuery / Bootstrap / Semantic UI / ...</a>
+<br/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a href=#server-frameworks-express--koa--hapi--fastify-->Server Frameworks: Express / Koa / Hapi / Fastify / ...</a>
+<br/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a href=#view-libraries-react--vue--preact-->View Libraries: React / Vue / Preact / ...</a>
+<br/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a href=#process-managers-docker--systemd--pm2-->Process Managers: Docker / systemd / PM2 / ...</a>
+<br/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a href=#generate-static-websites>Generate Static Websites</a>
 
 <br/>
 
@@ -160,7 +161,7 @@ export default {
 And `ssr-coin` takes care of the rest:
 it transpiles, bundles, routes, renders, and serves your pages.
 
-You can easily add `ssr-coin` to your existing Node.js server:
+You can easily add `ssr-coin` to a existing Node.js server:
 
 ~~~js
 // /examples/express/server.js
@@ -178,7 +179,7 @@ app.use(ssr.express);
 app.listen(3000, () => {console.log('Server is running')});
 ~~~
 
-Example:
+Example of page written in React:
 
 ~~~js
 // /examples/basic/pages/repos/repos.page.js
@@ -250,86 +251,21 @@ We enjoy talking with our users :-).
 
 ## Why `ssr-coin`
 
-`ssr-coin` is about making SSR easy and flexible.
-
-
-###### Easy
-
-All you need to get started is:
- - Install `ssr-coin`, a server plugin and a render plugin.
- - Add the `ssr-coin` middleware to your server.
- - Add the `ssr-coin` scripts to your `package.json`
- - Define your pages.
-
-That's it.
-
-For example, all you need for a React & Express stack is:
-
-~~~json
-{
-  "dependencies": {
-    "@ssr-coin/react": "~0.3.2",
-    "@ssr-coin/express": "~0.3.2",
-    "ssr-coin": "~0.3.2"
-  },
-  "scripts": {
-    "dev": "ssr-coin dev ./path/to/your/server.js",
-    "prod": "npm run build && npm run start",
-    "build": "ssr-coin build ./path/to/your/server.js",
-    "start": "export NODE_ENV='production' && node ./.build/nodejs/server"
-  }
-}
-~~~
-
-~~~js
-// server.js
-
-const express = require('express');
-const ssr = require('ssr-coin');
-
-const app = express();
-
-// Add the `ssr-coin` middleware
-app.use(ssr.express);
-
-app.listen(3000);
-~~~
-
-~~~js
-// pages/hello.page.js
-
-import React from 'react';
-
-export default {
- route: '/hello/:name',
- view: ({name}) => {
-   <div>
-     Hello <b>{name}</b>.
-     Welcome to <code>ssr-coin</code>.
-   </div>
- },
-};
-~~~
-
-You can now run `npm run dev` (`yarn dev`) then go to `/hello/jon` and see your first SSR page.
-
-
-###### Freedom
+`ssr-coin` is about making SSR as easy as possible yet entirely flexible.
 
 `ssr-coin` takes care of SSR and SSR only:
 the rest of your stack is entirely up to you and you can use:
+- Any view libray: React, Vue, React Native Web, etc.
+- Any server framework: Express, Koa, Hapi, etc.
+- Any language: ES7, TypeScript, PostCSS, etc.
+- Any provider: Redux, GraphQL Apollo, Relay, etc.
+- Any process manager: Docker, systemd, PM2, etc.
 
-- Any view libray: **React**, **Vue**, **React Native Web**, etc.
-- Any server framework: **Express**, **Koa**, **Hapi**, etc.
-- Any language: **ES6**, **TypeScript**, **PostCSS**, etc.
-- Any provider: **Redux**, **GraphQL Apollo**, **Relay**, etc.
-- Any process manager: **Docker**, **systemd**, **PM2**, etc.
-- etc.
-
-
-###### Batteries included
-
-`ssr-coin` comes with nifty features out of the box, such as browser autoreload, server autoreload, page based code splitting and HTTP caching.
+`ssr-coin` comes with lot's of features such as:
+- Browser auto-reload & server auto-reload
+- Automatic code splitting & optimal HTTP caching
+- Pages with no browser-side JavaScript for blazing fast performance (especially for mobile devices)
+- Static pages & generation of static websites
 
 
 <br/>
@@ -1561,7 +1497,7 @@ We enjoy talking with our users :-).
 
 
 
-## Add Providers: Redux / React Router / GraphQL Apollo / Relay / ...
+## Providers: Redux / React Router / GraphQL Apollo / Relay / ...
 
 By controlling the rendering of your pages you can add providers for Redux, GraphQL, etc.
 
@@ -1649,7 +1585,7 @@ We enjoy talking with our users :-).
 
 
 
-## Add CSS-in-JS: Emotion / styled-components / ...
+## CSS-in-JS: Emotion / styled-components / ...
 
 Some CSS-in-JS libraries,
 such as [emotion](https://github.com/emotion-js/emotion),
@@ -1692,7 +1628,7 @@ We enjoy talking with our users :-).
 
 
 
-## Add CSS pre-processor: PostCSS / Sass / Less / ...
+## CSS pre-processors: PostCSS / Sass / Less / ...
 
 If there is a [transpilation plugin](#transpilation-plugins) for the CSS pre-processor you want to use,
 then simply use it.
@@ -1864,7 +1800,7 @@ We enjoy talking with our users :-).
 
 
 
-## Add Frontend Libraries: Google Analytics / jQuery / Bootstrap / Semantic UI / ...
+## Frontend Libraries: Google Analytics / jQuery / Bootstrap / Semantic UI / ...
 
 To load a frontend library that is hosted on a cdn, add `<script>`/`<style>` tags to your HTML, see <a href=#html-meta-tags-indexhtml-title-meta-link->HTML Meta Tags: `index.html`, `<title/>`, `<meta/>`, `<link/>`, ...</a>.
 
@@ -1938,7 +1874,8 @@ We enjoy talking with our users :-).
 <br/>
 
 
-## Use Server Framework: Express / Koa / Hapi / Fastify / ...
+
+## Server Frameworks: Express / Koa / Hapi / Fastify / ...
 
 To use `ssr-coin` with `express`, `koa` or `hapi`, use the corresponding [server plugin](#server-plugins).
 
@@ -1973,7 +1910,8 @@ We enjoy talking with our users :-).
 <br/>
 
 
-## Use View Library: React / Vue / Preact / ...
+
+## View Libraries: React / Vue / Preact / ...
 
 If there is a [render plugin](#render-plugins) for the view library you want to use,
 then simply use it.
@@ -2009,7 +1947,8 @@ We enjoy talking with our users :-).
 <br/>
 
 
-## Use process manager: Docker / systemd / PM2 / ...
+
+## Process Managers: Docker / systemd / PM2 / ...
 
 You can start your server with any process manager.
 
@@ -2054,6 +1993,35 @@ We enjoy talking with our users :-).
 
 
 
+## Generate Static Websites
+
+BLA
+
+
+<br/>
+
+<p align="center">
+
+<sup>
+<a href="https://github.com/reframejs/ssr-coin/issues/new">Open a ticket</a> or
+<a href="https://discord.gg/kqXf65G">chat with us</a>
+if you have questions, feature requests, or if you just want to talk to us.
+</sup>
+
+<sup>
+We enjoy talking with our users :-).
+</sup>
+
+<br/>
+
+<sup>
+<a href="#readme"><b>&#8679;</b> <b>TOP</b> <b>&#8679;</b></a>
+</sup>
+
+</p>
+
+<br/>
+<br/>
 
 <!---
 

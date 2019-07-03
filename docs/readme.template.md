@@ -23,15 +23,16 @@
 !VAR SSR_COIN_CONFIG Global Config `ssr-coin.config.js`
 !VAR CLI_REF CLI
 
-!VAR ADD_PROVIDERS Add Providers: Redux / React Router / GraphQL Apollo / Relay / ...
+!VAR ADD_PROVIDERS Providers: Redux / React Router / GraphQL Apollo / Relay / ...
 !VAR CONTROL_TRANSPILATION Control Transpilation: Babel / TypeScript /  ES6 / ...
-!VAR CSS_IN_JS Add CSS-in-JS: Emotion / styled-components / ...
-!VAR CSS_PRE_PROCESSORS Add CSS pre-processor: PostCSS / Sass / Less / ...
+!VAR CSS_IN_JS CSS-in-JS: Emotion / styled-components / ...
+!VAR CSS_PRE_PROCESSORS CSS pre-processors: PostCSS / Sass / Less / ...
 !VAR ROUTING Control Routing: Server-side Routing / Browser-side Routing / React Router / ...
-!VAR FRONTEND_LIBRARIRES Add Frontend Libraries: Google Analytics / jQuery / Bootstrap / Semantic UI / ...
-!VAR SERVER_FRAMEWORKS Use Server Framework: Express / Koa / Hapi / Fastify / ...
-!VAR VIEW_LIBRARIES Use View Library: React / Vue / Preact / ...
-!VAR PROCESS_MANAGERS Use process manager: Docker / systemd / PM2 / ...
+!VAR FRONTEND_LIBRARIRES Frontend Libraries: Google Analytics / jQuery / Bootstrap / Semantic UI / ...
+!VAR SERVER_FRAMEWORKS Server Frameworks: Express / Koa / Hapi / Fastify / ...
+!VAR VIEW_LIBRARIES View Libraries: React / Vue / Preact / ...
+!VAR PROCESS_MANAGERS Process Managers: Docker / systemd / PM2 / ...
+!VAR STATIC_WEBSITES Generate Static Websites
 
 !INLINE li-1 !VAR|LINK WHAT_SSR_COIN
 !INLINE li-1 !VAR|LINK WHY_SSR_COIN
@@ -59,6 +60,7 @@
 !INLINE li-2 !VAR|LINK SERVER_FRAMEWORKS
 !INLINE li-2 !VAR|LINK VIEW_LIBRARIES
 !INLINE li-2 !VAR|LINK PROCESS_MANAGERS
+!INLINE li-2 !VAR|LINK STATIC_WEBSITES
 
 <br/>
 
@@ -104,79 +106,19 @@ Example of page written in React:
 
 `ssr-coin` is about making SSR as easy as possible yet entirely flexible.
 
-###### Easy
-
-It's easy to get started.
-
-The entire setup for a React + Express app is easy:
-
-~~~json5
-// pacakge.json
-
-{
-  "dependencies": {
-    "ssr-coin": "~0.3.2",
-    "@ssr-coin/react": "~0.3.2",
-    "@ssr-coin/express": "~0.3.2",
-    "express": "^4.17.1",
-    "react": "^16.8.6"
-  },
-  "scripts": {
-    "dev": "ssr-coin dev ./path/to/your/server.js",
-    "prod": "npm run build && npm run start",
-    "build": "ssr-coin build ./path/to/your/server.js",
-    "start": "export NODE_ENV='production' && node ./.build/nodejs/server"
-  }
-}
-~~~
-
-~~~js
-// server.js
-
-const express = require('express');
-const ssr = require('ssr-coin');
-
-const app = express();
-
-// Add the `ssr-coin` middleware
-app.use(ssr.express);
-
-app.listen(3000);
-~~~
-
-~~~js
-// pages/hello.page.js
-
-import React from 'react';
-
-export default {
-  route: '/hello/:name',
-  view: ({name}) => {
-    <div>
-      Hello <b>{name}</b>.
-      Welcome to <code>ssr-coin</code>.
-    </div>
-  },
-};
-~~~
-
-
-###### Freedom
-
 `ssr-coin` takes care of SSR and SSR only:
 the rest of your stack is entirely up to you and you can use:
+- Any view libray: React, Vue, React Native Web, etc.
+- Any server framework: Express, Koa, Hapi, etc.
+- Any language: ES7, TypeScript, PostCSS, etc.
+- Any provider: Redux, GraphQL Apollo, Relay, etc.
+- Any process manager: Docker, systemd, PM2, etc.
 
-- Any view libray: **React**, **Vue**, **React Native Web**, etc.
-- Any server framework: **Express**, **Koa**, **Hapi**, etc.
-- Any language: **ES7**, **TypeScript**, **PostCSS**, etc.
-- Any provider: **Redux**, **GraphQL Apollo**, **Relay**, etc.
-- Any process manager: **Docker**, **systemd**, **PM2**, etc.
-- etc.
-
-
-###### Batteries included
-
-`ssr-coin` comes with nifty features out of the box such as browser & server auto-reload, page based code splitting, and optimal HTTP caching.
+`ssr-coin` comes with lot's of features such as:
+- Browser auto-reload & server auto-reload
+- Automatic code splitting & optimal HTTP caching
+- Pages with no browser-side JavaScript for blazing fast performance (especially for mobile devices)
+- Static pages & generation of static websites
 
 !INLINE ./snippets/section-footer.md #readme --hide-source-path
 
@@ -882,6 +824,7 @@ To load a frontend library that is saved on disk, use a file that is loaded by a
 !INLINE ./snippets/section-footer.md #readme --hide-source-path
 
 
+
 ## !VAR SERVER_FRAMEWORKS
 
 To use `ssr-coin` with `express`, `koa` or `hapi`, use the corresponding [server plugin](!VAR|ANCHOR PLUGINS_SERVER).
@@ -891,6 +834,7 @@ To use `ssr-coin` with another server framework, open a GitHub issue.
 but there is no documentation for this (yet).
 
 !INLINE ./snippets/section-footer.md #readme --hide-source-path
+
 
 
 ## !VAR VIEW_LIBRARIES
@@ -903,6 +847,7 @@ then [take control over rendering](!VAR|ANCHOR CONTROL_RENDERING).
 That way you are able to use any view library.
 
 !INLINE ./snippets/section-footer.md #readme --hide-source-path
+
 
 
 ## !VAR PROCESS_MANAGERS
@@ -926,3 +871,8 @@ pm2 start ./path/to/your/server.js
 
 
 
+## !VAR STATIC_WEBSITES
+
+BLA
+
+!INLINE ./snippets/section-footer.md #readme --hide-source-path
