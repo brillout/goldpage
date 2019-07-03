@@ -104,6 +104,8 @@ Example:
 
 `ssr-coin` is about making SSR as easy as possible yet entirely flexible.
 
+**Freedom** :dove:
+
 It takes care of SSR and SSR only:
 the rest of your stack is entirely up to you and you can use:
 - Any view libray: React, Vue, React Native Web, etc.
@@ -112,11 +114,53 @@ the rest of your stack is entirely up to you and you can use:
 - Any provider: Redux, GraphQL Apollo, Relay, etc.
 - Any process manager: Docker, systemd, PM2, etc.
 
-It has many features, such as:
-- Browser auto-reload & server auto-reload.
-- Automatic code splitting & optimal HTTP caching.
-- Pages with no browser-side JavaScript for blazing fast performances (especially for mobile devices).
+**Easy** :sparkles:
+
+Meticulously design with ease of use in mind.
+`ssr-coin` is young and may have some rough edges here and there but greatly care about deliving a fine-polished tool.
+Expect it to become rock-solid.
+
+conscious decision to abstract away the build-step from you.
+Parcel currently ssr-coin is uses webpack but we will use Parcel v2 as soon as it's released.
+Using Parcel means that configuring are a thing of the past.
+Any kind to use TypeScript, will just work.
+
+**Static-dynamic Apps** :gear:
+
+You have control w the HTML of your page is rendered at built-time or at request-time and with `doNotRenderInBrowser` you can control whether your page is hydrated.
+
+can configure your pages 
+`ssr-coin` com
+
+**Blazing Fast on Mobile** :zap:
+
+We will eventually look into ways of hydrating.
+Meaning that pages with view components where only 10% are interactive will gain a drastic increase in mobile performance.
+including only
+
+- Pages with no browser-side JavaScript for a drastic increase in performance (especially on mobile devices).
 - Static pages & generation of static websites.
+
+**Batteries included** :battery:
+
+The usual features are included:
+browser auto-reload, server auto-reload,
+automatic code splitting,
+optimal HTTP caching,
+etc.
+
+**Future-proof** :muscle:
+
+`ssr-coin`'s simple and modular design means that it will.
+The ? will be a matter of implementing a new plugin.
+A works with both webpack and Parcel.
+That's fine
+Simple and modular design
+JavaScript is an exciting and fast moving enviroment.
+We celebrate and embrace change: no matter what comes next, `ssr-coin` will support it.
+Thanks to its design, no matter what comes next, we will embrace change.
+
+Using a tool that is future-proof ultimatively means less learning and more shipping.
 
 !INLINE ./snippets/section-footer.md #readme --hide-source-path
 
