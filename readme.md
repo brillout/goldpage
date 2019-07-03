@@ -261,11 +261,11 @@ the rest of your stack is entirely up to you and you can use:
 - Any provider: Redux, GraphQL Apollo, Relay, etc.
 - Any process manager: Docker, systemd, PM2, etc.
 
-`ssr-coin` comes with lot's of features such as:
-- Browser auto-reload & server auto-reload
-- Automatic code splitting & optimal HTTP caching
-- Pages with no browser-side JavaScript for blazing fast performance (especially for mobile devices)
-- Static pages & generation of static websites
+`ssr-coin` is feature rich:
+- Browser auto-reload & server auto-reload.
+- Automatic code splitting & optimal HTTP caching.
+- Pages with no browser-side JavaScript for blazing fast performances (especially for mobile devices).
+- Static pages & generation of static websites.
 
 
 <br/>
@@ -1995,7 +1995,26 @@ We enjoy talking with our users :-).
 
 ## Generate Static Websites
 
-BLA
+If you set `renderHtmlAtBuildTime: true` to all your page configs,
+then your entire browser-side code is generated at built-time.
+
+This means that no Node.js server is required to serve your frontend.
+
+If you don't need the Node.js server beyond serving your browser-side code then your app is essentially
+just a collection of static assets for the browser.
+Your app is then what is commonly called a "static website".
+
+You can deploy a static website using a static host such as
+[Netlify](https://www.netlify.com/),
+[Amazon S3](https://aws.amazon.com/s3/), or
+[GitHub Pages](https://pages.github.com/).
+
+To deploy,
+simply run `$ ssr-coin build`
+(or better `npm run build` where `require('./package.json').scripts.build === 'ssr-coin build'`)
+and copy the directory `.build/browser/`
+(which is the directory that contains the browser assets)
+to your static host.
 
 
 <br/>
@@ -2022,6 +2041,9 @@ We enjoy talking with our users :-).
 
 <br/>
 <br/>
+
+
+
 
 <!---
 
