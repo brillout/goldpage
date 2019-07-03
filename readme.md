@@ -257,7 +257,7 @@ the rest of your stack is entirely up to you and you can use:
 - Any provider: Redux, GraphQL Apollo, Relay, etc.
 - Any process manager: Docker, systemd, PM2, etc.
 
-It has many features:
+It has many features, such as:
 - Browser auto-reload & server auto-reload.
 - Automatic code splitting & optimal HTTP caching.
 - Pages with no browser-side JavaScript for blazing fast performances (especially for mobile devices).
