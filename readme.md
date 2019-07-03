@@ -1653,7 +1653,11 @@ We enjoy talking with our users :-).
 
 ## Add CSS pre-processor: PostCSS / Sass / Less / ...
 
-By [controlling transpilation](#control-transpilation-babel--typescript---es6--) you can add CSS pre-processors such as PostCSS.
+If there is a [transpilation plugin](#transpilation-plugins) for the CSS pre-processor you want to use,
+then simply use it.
+
+If there isn't one,
+then see [controlling transpilation](#control-transpilation-babel--typescript---es6--).
 
 Example:
  - [/examples/postcss](/examples/postcss)
@@ -1688,7 +1692,7 @@ We enjoy talking with our users :-).
 
 ## Control Routing: Server-side Routing / Browser-side Routing / React Router / ...
 
-There are two ways to do routing on the web:
+On the web, there are two ways to do routing:
 *server-side routing*
 and
 *browser-side routing*.
@@ -1712,23 +1716,27 @@ export default {
 
 are server-side routes:
 when navigating from `/hello/jon` to `/hello/alice`
-the browser terminates the current page `/hello/jon` and starts a new page at `/hello/alice`,
-as if you would close the `/hello/jon` tab and open a new tab `/hello/alice`.
+the browser terminates the current `/hello/jon` page and starts a new page at `/hello/alice`,
+as if you would close your `/hello/jon` browser tab and open a new tab at `/hello/alice`.
 It is the server that does the job of mapping URLs to pages and the browser is not involved in the routing process.
 
 ###### Browser-side Routing
 
-HTML5 introduced a new browser API `history` that allows to manipulate the browser URL history enabling browser-side routing:
+HTML5 introduced a new browser API `history` that allows you to manipulate the browser URL history.
+This enables browser-side routing:
 when navigating from `/previous-page` to `/next-page`, instead of terminating the current page `/previous-page` and starting a new page at `/next-page`, the current page `/previous-page` is preserved, its URL changed to `/next-page` (with `history.pushState()`), and the content of `/next-page` is rendered to the DOM replacing the DOM of `/previous-page`.
 
-Server-side routing is simpler than browser-side routing and server-side routing should be used when possible.
+Server-side routing is simpler than browser-side routing.
+Whenever possible, server-side routing should be used instead of browser-side rendering.
+
 But if server-side routing is not an option,
 you can opt to do browser-side routing.
-
 You can do browser-side routing by
 [taking control over rendering](#control-rendering).
 
-Example of a React app doing browser-side routing with React Router:
+For example,
+if you use React,
+you can do browser-side rendering by taking control over rendering in order to add React Router:
 
 ~~~js
 // /examples/react-router/render/renderToDom.js
@@ -1817,9 +1825,9 @@ We enjoy talking with our users :-).
 
 ## Add Frontend Libraries: Google Analytics / jQuery / Bootstrap / Semantic UI / ...
 
-To load a frontend library that is hosted on a cdn, add `<script>` and `<style>` tags to your HTML, see <a href=#html-meta-tags-indexhtml-title-meta-link->HTML Meta Tags: `index.html`, `<title/>`, `<meta/>`, `<link/>`, ...</a>.
+To load a frontend library that is hosted on a cdn, add `<script>`/`<style>` tags to your HTML, see <a href=#html-meta-tags-indexhtml-title-meta-link->HTML Meta Tags: `index.html`, `<title/>`, `<meta/>`, `<link/>`, ...</a>.
 
-To load a frontend library that is saved on your disk, use a file that is loaded by all your pages:
+To load a frontend library that is saved on disk, use a file that is loaded by all your pages:
 
 ~~~js
 // /examples/frontend-libraries/pages/commons.js
@@ -1927,7 +1935,7 @@ We enjoy talking with our users :-).
 ## Use View Library: React / Vue / Preact / ...
 
 If there is a [render plugin](#render-plugins) for the view library you want to use,
-then simply install the plugin.
+then simply use it.
 
 If there is no render plugin,
 then [take control over rendering](#control-rendering).
@@ -1962,16 +1970,18 @@ We enjoy talking with our users :-).
 
 ## Use process manager: Docker / systemd / PM2 / ...
 
-In production, you can start your server with any process manager.
+You can start your server with any process manager.
 
 For example with `pm2`:
 
 ~~~bash
-# if you transpile your server code (you run `ssr-coin build ./path/to/your/server.js`)
 pm2 start ./.build/nodejs/server
 ~~~
+
+If you don't transpile your server code (see !VAR|LINK),
+then use your server entry file:
+
 ~~~bash
-# if you don't transpile your server code (you run `ssr-coin build`)
 pm2 start ./path/to/your/server.js
 ~~~
 
