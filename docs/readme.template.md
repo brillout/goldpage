@@ -116,18 +116,27 @@ the rest of your stack is entirely up to you and you can use:
 
 **Easy** :sparkles:
 
-Meticulously design with ease of use in mind.
-`ssr-coin` is young and may have some rough edges here and there but greatly care about deliving a fine-polished tool.
-Expect it to become rock-solid.
+We designed `ssr-coin` with a strong focus on ease of use
+and we are zero-config believers.
 
-conscious decision to abstract away the build-step from you.
-Parcel currently ssr-coin is uses webpack but we will use Parcel v2 as soon as it's released.
-Using Parcel means that configuring are a thing of the past.
-Any kind to use TypeScript, will just work.
+For example,
+we don't allow you to configure how `ssr-coin` bundles your browser-side JavaScript code.
+If you don't absolutely need to configure something, then we don't allow you to configure it.
+
+Currently, `ssr-coin` uses Webpack but we will use Parcel instead as soon as Parcel v2 is released.
+Using Parcel means that all things related to building will just work.
+You want TypeScript and PostCSS? That will work with zero changes in config.
+
+(Note that `ssr-coin` is young and may have some rough edges here and there but greatly care about deliving a fine-polished tool ASAP.)
 
 **Static-dynamic Apps** :gear:
 
-You have control w the HTML of your page is rendered at built-time or at request-time and with `doNotRenderInBrowser` you can control whether your page is hydrated.
+You have control over when your pages are rendered:
+by setting `renderHtmlAtBuildTime: true` you.
+That way you have control over the "staticness" of your pages.
+This is crucial to achieve dramatic performance increase, especially on mobile.
+
+the HTML of your page is rendered at built-time or at request-time and with `doNotRenderInBrowser` you can control whether your page is hydrated.
 
 can configure your pages 
 `ssr-coin` com
@@ -144,23 +153,26 @@ including only
 **Batteries included** :battery:
 
 The usual features are included:
-browser auto-reload, server auto-reload,
+browser auto-reload,
+server auto-reload,
 automatic code splitting,
 optimal HTTP caching,
 etc.
 
-**Future-proof** :muscle:
+**Future-proof & Rock-solid** :mountain:
 
-`ssr-coin`'s simple and modular design means that it will.
-The ? will be a matter of implementing a new plugin.
-A works with both webpack and Parcel.
-That's fine
-Simple and modular design
-JavaScript is an exciting and fast moving enviroment.
-We celebrate and embrace change: no matter what comes next, `ssr-coin` will support it.
-Thanks to its design, no matter what comes next, we will embrace change.
+The simple and module design of `ssr-coin` means that it is adaptable to whatever comes next.
 
-Using a tool that is future-proof ultimatively means less learning and more shipping.
+For example, `ssr-coin` is view library agnostic.
+A new view library comes and makes React obsolete?
+Cool, and supporting it will simply be a matter of implementing a new plugin.
+
+Same goes for build:
+`ssr-coin` works with Parcel as well as with Webpack.
+Supporting the build tool of tomorrow will be breeze.
+
+Code that is agnostic to the evolution of the web will harden over time:
+expect `ssr-coin` to become rock-solid.
 
 !INLINE ./snippets/section-footer.md #readme --hide-source-path
 
