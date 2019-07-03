@@ -64,43 +64,36 @@
 
 ## !VAR WHAT_SSR_COIN
 
-`ssr-coin` is a library that adds server-side rendering (SSR) to your Node.js server.
+`ssr-coin` is a do-one-thing-do-it-well library to add [server-side rendering (SSR)](https://github.com/brillout/awesome-universal-rendering#introduction) to your Node.js app.
 
-You define your pages
-and `ssr-coin` takes care of the rest:
-It transpiles, bundles, routes, renders, and serves your pages.
-
-You can add `ssr-coin` to your existing app.
+You define so-called page configs:
 
 ~~~js
-// pages/hello.page.js
-
-// `ssr-coin` supports any view library such as Vue
-import React, {useState} from 'react';
+// A page config
 
 export default {
   route: '/hello/:name',
-  view: ({name}) => {
+  view: ({name}) => (
     <div>
-      Welcome, <b>{name}</b> to <code>ssr-coin</code>.
-      <Counter/>
+      Hello {name}, welcome to ssr-coin.
     </div>
-  },
-  title: ({name}) => 'Hi '+name,
+  ),
 };
+~~~
 
-function Counter() {
-  const [count, setCount] = useState(0);
+And `ssr-coin` takes care of the rest:
+it transpiles, bundles, routes, renders, and serves your pages.
 
-  return (
-    <div>
-      <p>You clicked {count} times</p>
-      <button onClick={() => setCount(count + 1)}>
-        Click me
-      </button>
-    </div>
-  );
-}
+You can easily add `ssr-coin` to your existing Node.js server:
+
+~~~js
+!INLINE /examples/express/server.js
+~~~
+
+Example:
+
+~~~js
+!INLINE /examples/basic/pages/repos/repos.page.js
 ~~~
 
 !INLINE ./snippets/section-footer.md #readme --hide-source-path

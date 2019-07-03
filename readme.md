@@ -140,40 +140,81 @@ Recipes
 
 ## What is `ssr-coin`
 
-`ssr-coin` is a library that adds server-side rendering (SSR) to your Node.js server.
+`ssr-coin` is a do-one-thing-do-it-well library to add [server-side rendering (SSR)](https://github.com/brillout/awesome-universal-rendering#introduction) to your Node.js app.
 
-You define your pages
-and `ssr-coin` takes care of the rest:
-It transpiles, bundles, routes, renders, and serves your pages.
-
-You can add `ssr-coin` to your existing app.
+You define so-called page configs:
 
 ~~~js
-// pages/hello.page.js
-
-// `ssr-coin` supports any view library such as Vue
-import React, {useState} from 'react';
+// A page config
 
 export default {
   route: '/hello/:name',
-  view: ({name}) => {
+  view: ({name}) => (
     <div>
-      Welcome, <b>{name}</b> to <code>ssr-coin</code>.
-      <Counter/>
+      Hello {name}, welcome to ssr-coin.
     </div>
-  },
-  title: ({name}) => 'Hi '+name,
+  ),
+};
+~~~
+
+And `ssr-coin` takes care of the rest:
+it transpiles, bundles, routes, renders, and serves your pages.
+
+You can easily add `ssr-coin` to your existing Node.js server:
+
+~~~js
+// /examples/express/server.js
+
+// Example of adding ssr-coin to a express server.
+
+const express = require('express');
+const ssr = require('ssr-coin');
+
+const app = express();
+
+// ssr-coin has middlewares also for Koa, Hapi, etc.
+app.use(ssr.express);
+
+app.listen(3000, () => {console.log('Server is running')});
+~~~
+
+Example:
+
+~~~js
+// /examples/basic/pages/repos/repos.page.js
+
+// `ssr-coin` also supports other view libraries such as Vue
+import React from 'react';
+
+import RepoList from './views/RepoList';
+import Counter from './views/Counter';
+import getUserRepos from './data/getUserRepos';
+
+export default {
+  route: '/repos/:username',
+  view,
+  addInitialProps,
+  title: ({username}) => 'Repos of '+username,
 };
 
-function Counter() {
-  const [count, setCount] = useState(0);
+// We load the list of pinned repos and we use `addInitialProps` to make it
+// available to our React components.
+async function addInitialProps({username}) {
+  const repositories = await getUserRepos(username);
+  return {repositories};
+}
 
+function view({username, repositories}) {
   return (
     <div>
-      <p>You clicked {count} times</p>
-      <button onClick={() => setCount(count + 1)}>
-        Click me
-      </button>
+      Hi <b>{username}</b>,
+      welcome to <code>ssr-coin</code>.
+      <br/><br/>
+      Interactive counter:
+      <Counter/>
+      <br/>
+      Your repos:
+      <RepoList repositories={repositories} />
     </div>
   );
 }
