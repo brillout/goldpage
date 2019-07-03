@@ -143,11 +143,12 @@ Recipes
 
 `ssr-coin` is a do-one-thing-do-it-well library to add [server-side rendering (SSR)](https://github.com/brillout/awesome-universal-rendering#introduction) to your Node.js app.
 
-You define so-called page configs:
+You define so-called page configs
+and `ssr-coin` takes care of the rest:
+it transpiles, bundles, routes, renders, and serves your pages.
 
 ~~~js
 // A page config
-
 export default {
   route: '/hello/:name',
   view: ({name}) => (
@@ -158,28 +159,23 @@ export default {
 };
 ~~~
 
-And `ssr-coin` takes care of the rest:
-it transpiles, bundles, routes, renders, and serves your pages.
-
-You can easily add `ssr-coin` to a existing Node.js server:
+You can easily add `ssr-coin` to an existing Node.js server:
 
 ~~~js
 // /examples/express/server.js
-
-// Example of adding ssr-coin to a express server.
 
 const express = require('express');
 const ssr = require('ssr-coin');
 
 const app = express();
 
-// ssr-coin has middlewares also for Koa, Hapi, etc.
+// ssr-coin also has middlewares for Koa, Hapi, etc.
 app.use(ssr.express);
 
 app.listen(3000, () => {console.log('Server is running')});
 ~~~
 
-Example of page written in React:
+Example:
 
 ~~~js
 // /examples/basic/pages/repos/repos.page.js
@@ -253,7 +249,7 @@ We enjoy talking with our users :-).
 
 `ssr-coin` is about making SSR as easy as possible yet entirely flexible.
 
-`ssr-coin` takes care of SSR and SSR only:
+It takes care of SSR and SSR only:
 the rest of your stack is entirely up to you and you can use:
 - Any view libray: React, Vue, React Native Web, etc.
 - Any server framework: Express, Koa, Hapi, etc.
@@ -261,7 +257,7 @@ the rest of your stack is entirely up to you and you can use:
 - Any provider: Redux, GraphQL Apollo, Relay, etc.
 - Any process manager: Docker, systemd, PM2, etc.
 
-`ssr-coin` is feature rich:
+It is feature rich:
 - Browser auto-reload & server auto-reload.
 - Automatic code splitting & optimal HTTP caching.
 - Pages with no browser-side JavaScript for blazing fast performances (especially for mobile devices).
@@ -807,10 +803,10 @@ We enjoy talking with our users :-).
 
 ## HTML Meta Tags: `index.html`, `<title/>`, `<meta/>`, `<link/>`, ...
 
-To set HTML meta tags for all pages, create a `index.html` file:
+To set HTML meta tags for all your pages,
+create a `index.html` file somewhere in your project's directory.
+Your `index.html` needs to contain  `!HEAD` and `!BODY`:
 ~~~html
-// /examples/html/index.html
-
 <!DOCTYPE html>
 <html>
   <head>
@@ -823,7 +819,7 @@ To set HTML meta tags for all pages, create a `index.html` file:
 </html>
 ~~~
 
-To set HTML meta tags of a page, use the page's config:
+To set HTML meta tags of only one page, use the page config:
 ~~~js
 // /examples/html/pages/product.page.js
 
@@ -833,11 +829,10 @@ import manifestUrl from './manifest.webmanifest';
 import fetchProduct from './fetchProduct';
 
 export default {
-  route: '/product/:productId',
   view: () => <h1>Welcome</h1>,
 
   // ssr-coin uses the package @brillout/html (https://github.com/brillout/html) to generate HTML.
-  // All @brillout/html's options are avaible over the page config
+  // All @brillout/html's options are available over the page config.
 
   // Adds <title>Welcome</title>
   title: 'Welcome',
@@ -860,19 +855,20 @@ export default {
 
   // Adds <link rel="manifest" href="/manifest.hash_bb5e0038d1d480b7e022aaa0bdce25a5.webmanifest">
   head: [
-		'<link rel="manifest" href="'+manifestUrl+'"/>',
-    // HTML in this array is added to <head>
-    // Make sure that the HTML you inject is safe; escape all user generated content.
+    '<link rel="manifest" href="'+manifestUrl+'"/>',
+    // All HTML in this array are added to `<head>`.
+    // Make sure that the HTML you inject here is safe and escape all user generated content.
   ],
 
   body: [
     '<script>console.log("hello from injected script")</script>',
-    // HTML in this array is added to <body>
-    // Make sure that the HTML you inject is safe; escape all user generated content.
+    // All HTML in this array are added to `<body>`.
+    // Make sure that the HTML you inject here is safe and escape all user generated content.
   ],
 
   // You can generate HTML dynamically.
   // E.g. to have page meta tags generatetd upon loaded data.
+  route: '/product/:productId',
   addInitialProps: async ({productId}) => {
     const product = await fetchProduct(productId);
     return {product};

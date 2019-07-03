@@ -68,11 +68,12 @@
 
 `ssr-coin` is a do-one-thing-do-it-well library to add [server-side rendering (SSR)](https://github.com/brillout/awesome-universal-rendering#introduction) to your Node.js app.
 
-You define so-called page configs:
+You define so-called page configs
+and `ssr-coin` takes care of the rest:
+it transpiles, bundles, routes, renders, and serves your pages.
 
 ~~~js
 // A page config
-
 export default {
   route: '/hello/:name',
   view: ({name}) => (
@@ -83,16 +84,13 @@ export default {
 };
 ~~~
 
-And `ssr-coin` takes care of the rest:
-it transpiles, bundles, routes, renders, and serves your pages.
-
-You can easily add `ssr-coin` to a existing Node.js server:
+You can easily add `ssr-coin` to an existing Node.js server:
 
 ~~~js
 !INLINE /examples/express/server.js
 ~~~
 
-Example of page written in React:
+Example:
 
 ~~~js
 !INLINE /examples/basic/pages/repos/repos.page.js
@@ -106,7 +104,7 @@ Example of page written in React:
 
 `ssr-coin` is about making SSR as easy as possible yet entirely flexible.
 
-`ssr-coin` takes care of SSR and SSR only:
+It takes care of SSR and SSR only:
 the rest of your stack is entirely up to you and you can use:
 - Any view libray: React, Vue, React Native Web, etc.
 - Any server framework: Express, Koa, Hapi, etc.
@@ -114,7 +112,7 @@ the rest of your stack is entirely up to you and you can use:
 - Any provider: Redux, GraphQL Apollo, Relay, etc.
 - Any process manager: Docker, systemd, PM2, etc.
 
-`ssr-coin` is feature rich:
+It is feature rich:
 - Browser auto-reload & server auto-reload.
 - Automatic code splitting & optimal HTTP caching.
 - Pages with no browser-side JavaScript for blazing fast performances (especially for mobile devices).
@@ -433,12 +431,14 @@ Note that `ssr-coin` always transpiles and auto-reloads your views and browser c
 
 ## !VAR CONTROL_HTML
 
-To set HTML meta tags for all pages, create a `index.html` file:
+To set HTML meta tags for all your pages,
+create a `index.html` file somewhere in your project's directory.
+Your `index.html` needs to contain  `!HEAD` and `!BODY`:
 ~~~html
-!INLINE /examples/html/index.html
+!INLINE /examples/html/index.html --hide-source-path
 ~~~
 
-To set HTML meta tags of a page, use the page's config:
+To set HTML meta tags of only one page, use the page config:
 ~~~js
 !INLINE /examples/html/pages/product.page.js
 ~~~

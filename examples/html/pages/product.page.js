@@ -4,11 +4,10 @@ import manifestUrl from './manifest.webmanifest';
 import fetchProduct from './fetchProduct';
 
 export default {
-  route: '/product/:productId',
   view: () => <h1>Welcome</h1>,
 
   // ssr-coin uses the package @brillout/html (https://github.com/brillout/html) to generate HTML.
-  // All @brillout/html's options are avaible over the page config
+  // All @brillout/html's options are available over the page config.
 
   // Adds <title>Welcome</title>
   title: 'Welcome',
@@ -31,19 +30,20 @@ export default {
 
   // Adds <link rel="manifest" href="/manifest.hash_bb5e0038d1d480b7e022aaa0bdce25a5.webmanifest">
   head: [
-		'<link rel="manifest" href="'+manifestUrl+'"/>',
-    // HTML in this array is added to <head>
-    // Make sure that the HTML you inject is safe; escape all user generated content.
+    '<link rel="manifest" href="'+manifestUrl+'"/>',
+    // All HTML in this array are added to `<head>`.
+    // Make sure that the HTML you inject here is safe and escape all user generated content.
   ],
 
   body: [
     '<script>console.log("hello from injected script")</script>',
-    // HTML in this array is added to <body>
-    // Make sure that the HTML you inject is safe; escape all user generated content.
+    // All HTML in this array are added to `<body>`.
+    // Make sure that the HTML you inject here is safe and escape all user generated content.
   ],
 
   // You can generate HTML dynamically.
   // E.g. to have page meta tags generatetd upon loaded data.
+  route: '/product/:productId',
   addInitialProps: async ({productId}) => {
     const product = await fetchProduct(productId);
     return {product};
