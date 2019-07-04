@@ -104,7 +104,7 @@ Example:
 
 `ssr-coin` is about making SSR as easy as possible without taking away your freedom.
 
-**Freedom** :dove:
+:dove: **Freedom**
 
 `ssr-coin` takes care of SSR and SSR only:
 the rest of your stack is entirely up to you and you can use:
@@ -114,7 +114,7 @@ the rest of your stack is entirely up to you and you can use:
 - Any provider: Redux, GraphQL Apollo, Relay, ...
 - Any process manager: Docker, systemd, PM2, ...
 
-**Easy** :sparkles:
+:sparkles: **Easy**
 
 We designed `ssr-coin` with a strong focus on ease of use
 and we are zero-config believers.
@@ -128,7 +128,7 @@ This means that all things related to building will just work.
 You want TypeScript and PostCSS? It will work out-of-the-box and you won't have to do anything.
 (That said you can use TypeScript and PostCSS today by installing the `@ssr-coin/typescript` and `@srr-coin/postcss` plugins which will modify the Webpack config for you.)
 
-**Static-dynamic Apps** :gear:
+:gear: **Static-dynamic Apps**
 
 You have control over the "staticness" of your pages.
 
@@ -148,7 +148,7 @@ You can also render pages to the DOM only.
 You have full control over the staticness of your pages.
 With `ssr-coin` you can have highly interactive pages (like an SPA) as well as static pages (like PHP in 1995).
 
-**Blazing Fast on Mobile** :zap:
+:zap: **Blazing Fast on Mobile**
 
 As mentioned in the previous section, you can have pages that have no (or little) browser-side JavaScript.
 
@@ -158,7 +158,7 @@ Today it's all or nothing: either the entire page is loaded & rendered in the br
 Bt we are looking into ways of having partial browser-side rendering.
 So that a page with only a couple of interactive views can still be blazing fast on mobile.
 
-**Batteries included** :battery:
+:battery: **Batteries included**
 
 The usual features are included:
 browser auto-reload,
@@ -167,7 +167,7 @@ automatic code splitting,
 optimal HTTP caching,
 etc.
 
-**Future-proof & Rock-solid** :mountain:
+:mountain: **Future-proof & Rock-solid**
 
 The modular design of `ssr-coin` means that it is adaptable to whatever comes next.
 
