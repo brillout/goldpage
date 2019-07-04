@@ -250,7 +250,7 @@ We enjoy talking with our users :-).
 `ssr-coin` is about making SSR as easy as possible without taking away your freedom.
 
 <br/>
-:dove:&nbsp;&nbsp; **Freedom**
+:dove:&nbsp;&nbsp; <b>Freedom</b>
 
 `ssr-coin` takes care of SSR and SSR only:
 the rest of your stack is entirely up to you and you can use:
@@ -261,7 +261,7 @@ the rest of your stack is entirely up to you and you can use:
 - Any process manager: Docker, systemd, PM2, ...
 
 <br/>
-:sparkles:&nbsp; **Easy**
+:sparkles:&nbsp; <b>Easy</b>
 
 We designed `ssr-coin` with a strong focus on ease of use
 and we are zero-config believers.
@@ -276,7 +276,7 @@ You want TypeScript and PostCSS? It will work out-of-the-box and you won't have 
 (That said you can use TypeScript and PostCSS today by installing the `@ssr-coin/typescript` and `@srr-coin/postcss` plugins which will modify the Webpack config for you.)
 
 <br/>
-:gear:&nbsp; **Static-dynamic Apps**
+:gear:&nbsp;&nbsp; <b>Static-dynamic Apps</b>
 
 You have control over the "staticness" of your pages.
 
@@ -297,7 +297,7 @@ You have full control over the staticness of your pages.
 With `ssr-coin` you can have highly interactive pages (like an SPA) as well as static pages (like PHP in 1995).
 
 <br/>
-:zap:&nbsp; **Blazing Fast on Mobile**
+:zap:&nbsp; <b>Blazing Fast on Mobile</b>
 
 As mentioned in the previous section, you can have pages that have no (or little) browser-side JavaScript.
 
@@ -308,7 +308,7 @@ Bt we are looking into ways of having partial browser-side rendering.
 So that a page with only a couple of interactive views can still be blazing fast on mobile.
 
 <br/>
-&nbsp;:battery: **Batteries included**
+:battery:&nbsp; <b>Batteries included</b>
 
 The usual features are included:
 browser auto-reload,
@@ -318,7 +318,7 @@ optimal HTTP caching,
 etc.
 
 <br/>
-:mountain:&nbsp;&nbsp; **Future-proof & Rock-solid**
+:mountain:&nbsp;&nbsp; <b>Future-proof & Rock-solid</b>
 
 The modular design of `ssr-coin` means that it is adaptable to whatever comes next.
 
