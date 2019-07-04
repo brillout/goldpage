@@ -42,8 +42,8 @@
 !INLINE li-2-header Basics
 !INLINE li-2 !VAR|LINK CSS_AND_ASSETS
 !INLINE li-2 !VAR|LINK ASYNC_DATA
-!INLINE li-2 !VAR|LINK CONTROL_RENDERING
 !INLINE li-2 !VAR|LINK CONTROL_HTML
+!INLINE li-2 !VAR|LINK CONTROL_RENDERING
 !INLINE li-2 !VAR|LINK SERVER_SIDE
 !INLINE li-2 !VAR|LINK PERFORMANCE_TUNING
 !INLINE li-2-header API Reference
@@ -102,17 +102,17 @@ Example:
 
 ## !VAR WHY_SSR_COIN
 
-`ssr-coin` is about making SSR as easy as possible yet entirely flexible.
+`ssr-coin` is about making SSR as easy as possible without taking away your freedom.
 
 **Freedom** :dove:
 
-It takes care of SSR and SSR only:
+`ssr-coin` takes care of SSR and SSR only:
 the rest of your stack is entirely up to you and you can use:
-- Any view libray: React, Vue, React Native Web, etc.
-- Any server framework: Express, Koa, Hapi, etc.
-- Any language: ES7, TypeScript, PostCSS, etc.
-- Any provider: Redux, GraphQL Apollo, Relay, etc.
-- Any process manager: Docker, systemd, PM2, etc.
+- Any view libray: React, Vue, React Native Web, ...
+- Any server framework: Express, Koa, Hapi, ...
+- Any language: ES7, TypeScript, PostCSS, ...
+- Any provider: Redux, GraphQL Apollo, Relay, ...
+- Any process manager: Docker, systemd, PM2, ...
 
 **Easy** :sparkles:
 
@@ -123,32 +123,40 @@ For example,
 we don't allow you to configure how `ssr-coin` bundles your browser-side JavaScript code.
 If you don't absolutely need to configure something, then we don't allow you to configure it.
 
-Currently, `ssr-coin` uses Webpack but we will use Parcel instead as soon as Parcel v2 is released.
-Using Parcel means that all things related to building will just work.
-You want TypeScript and PostCSS? That will work with zero changes in config.
-
-(Note that `ssr-coin` is young and may have some rough edges here and there but greatly care about deliving a fine-polished tool ASAP.)
+Currently, `ssr-coin` uses Webpack but we will use Parcel as soon as Parcel v2 is released.
+This means that all things related to building will just work.
+You want TypeScript and PostCSS? It will work out-of-the-box and you won't have to do anything.
+(That said you can use TypeScript and PostCSS today by installing the `@ssr-coin/typescript` and `@srr-coin/postcss` plugins which will modify the Webpack config for you.)
 
 **Static-dynamic Apps** :gear:
 
-You have control over when your pages are rendered:
-by setting `renderHtmlAtBuildTime: true` you.
-That way you have control over the "staticness" of your pages.
-This is crucial to achieve dramatic performance increase, especially on mobile.
+You have control over the "staticness" of your pages.
 
-the HTML of your page is rendered at built-time or at request-time and with `doNotRenderInBrowser` you can control whether your page is hydrated.
+For example, if you set `doNotRenderInBrowser: true` to a page config, the page is rendered to HTML only.
+That way you can have pages that have no (or very little) browser-side JavaScript.
 
-can configure your pages 
-`ssr-coin` com
+This is crucial for mobile devices where browser-side JavaScript is a performance killer.
+
+Also, stateful & interactive views are complex to develop.
+With `ssr-coin` you can develop apps with dynamic HTML only, like we did with PHP in 1995.
+
+Using React as an HTML template engine is a wonderful developer experience.
+(React without stateful views is super easy.)
+
+And with `renderHtmlAtBuildTime` you can control whether the HTML of your page is rendered at built-time or at request-time.
+You can also render pages to the DOM only.
+You have full control over the staticness of your pages.
+With `ssr-coin` you can have highly interactive pages (like an SPA) as well as static pages (like PHP in 1995).
 
 **Blazing Fast on Mobile** :zap:
 
-We will eventually look into ways of hydrating.
-Meaning that pages with view components where only 10% are interactive will gain a drastic increase in mobile performance.
-including only
+As mentioned in the previous section, you can have pages that have no (or little) browser-side JavaScript.
 
-- Pages with no browser-side JavaScript for a drastic increase in performance (especially on mobile devices).
-- Static pages & generation of static websites.
+If your app is mostly about content, then removing browser-side JavaScript is an effective way to make your pages super fast on mobile.
+
+Today it's all or nothing: either the entire page is loaded & rendered in the browser or the page is not loaded/rendered at all.
+Bt we are looking into ways of having partial browser-side rendering.
+So that a page with only a couple of interactive views can still be blazing fast on mobile.
 
 **Batteries included** :battery:
 
@@ -161,15 +169,15 @@ etc.
 
 **Future-proof & Rock-solid** :mountain:
 
-The simple and module design of `ssr-coin` means that it is adaptable to whatever comes next.
+The modular design of `ssr-coin` means that it is adaptable to whatever comes next.
 
 For example, `ssr-coin` is view library agnostic.
 A new view library comes and makes React obsolete?
 Cool, and supporting it will simply be a matter of implementing a new plugin.
 
-Same goes for build:
+Same goes for building:
 `ssr-coin` works with Parcel as well as with Webpack.
-Supporting the build tool of tomorrow will be breeze.
+Using the build tool of tomorrow will be breeze.
 
 Code that is agnostic to the evolution of the web will harden over time:
 expect `ssr-coin` to become rock-solid.
@@ -412,10 +420,35 @@ We further explain the difference between both at:
 
 
 
+## !VAR CONTROL_HTML
+
+To set HTML meta tags for all your pages,
+create a `index.html` file somewhere in your project's directory.
+Your `index.html` needs to contain  `!HEAD` and `!BODY`:
+~~~html
+!INLINE /examples/html/index.html --hide-source-path
+~~~
+
+To set HTML meta tags of only one page, use the page config:
+~~~js
+!INLINE /examples/html/pages/product.page.js
+~~~
+~~~js
+!INLINE /examples/html/pages/about.page.js
+~~~
+
+See [`@brillout/html`'s documentation](https://github.com/brillout/html) for the list of all options.
+
+Example:
+ - [/examples/html](/examples/html)
+
+!INLINE ./snippets/section-footer.md #readme --hide-source-path
+
+
+
 ## !VAR CONTROL_RENDERING
 
-You can control how your pages are rendered to HTML and to the DOM
-by create `renderToHtml` and `renderToDom` files:
+You can control how your pages are rendered to HTML and to the DOM:
 
 ~~~js
 // ssr-coin.config.js
@@ -435,7 +468,7 @@ by create `renderToHtml` and `renderToDom` files:
 !INLINE /plugins/render-react/renderToHtml.js --hide-source-path
 ~~~
 
-Controlling the rendering of your app allows you to add providers for React libraries such as Redux.
+This allows you to add providers such as Redux's `<Provider store={store} />` or React Router's `<BrowserRouter />`.
 
 Examples:
 - [/examples/react-router](/examples/react-router)
@@ -485,32 +518,6 @@ Note that `ssr-coin` always transpiles and auto-reloads your views and browser c
 
 
 
-## !VAR CONTROL_HTML
-
-To set HTML meta tags for all your pages,
-create a `index.html` file somewhere in your project's directory.
-Your `index.html` needs to contain  `!HEAD` and `!BODY`:
-~~~html
-!INLINE /examples/html/index.html --hide-source-path
-~~~
-
-To set HTML meta tags of only one page, use the page config:
-~~~js
-!INLINE /examples/html/pages/product.page.js
-~~~
-~~~js
-!INLINE /examples/html/pages/about.page.js
-~~~
-
-See [`@brillout/html`'s documentation](https://github.com/brillout/html) for the list of all options.
-
-Example:
- - [/examples/html](/examples/html)
-
-!INLINE ./snippets/section-footer.md #readme --hide-source-path
-
-
-
 ## !VAR PERFORMANCE_TUNING
 
 With `doNotRenderInBrowser` and `renderHtmlAtBuildTime` you can control when your pages are rendered.
@@ -529,11 +536,11 @@ With `doNotRenderInBrowser` you control whether your page is rendered in the bro
 - `doNotRenderInBrowser: false` (default value)
   - Slower Performance
     <br/>
-    The page's views (e.g. the page's React components) and view libraries (e.g. React) are loaded, executed, and rendered in the browser.
+    The page's views (e.g. React components) and view libraries (e.g. React) are loaded, executed, and rendered in the browser.
     This can be slow on mobile devices.
   - Interactive
     <br/>
-    Because your page is rendered to the browser's DOM, your page can be stateful and interactive.
+    Because your page is rendered to the browser's DOM, your page's views (e.g. React components) can be stateful and interactive.
 - `doNotRenderInBrowser: true`
   - Increased performance
     <br/>
@@ -542,7 +549,7 @@ With `doNotRenderInBrowser` you control whether your page is rendered in the bro
     This performance gain is substantial on mobile devices.
   - Not interactive
     <br/>
-    Because your page is not rendered to the browser's DOM, your page connot have stateful nor interactive views.
+    Because your page is not rendered to the browser's DOM, your page connot have stateful nor interacrive views.
 
 In a nutshell:
 If your page needs to be interactive then you have to rendered it in the browser and set `doNotRenderInBrowser` to `false`.

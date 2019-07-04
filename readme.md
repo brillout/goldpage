@@ -109,8 +109,8 @@ Basics
 </sub>
 <br/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a href=#css--static-assets>CSS & Static Assets</a>
 <br/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a href=#async-data-addinitialprops>Async Data: `addInitialProps`</a>
-<br/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a href=#control-rendering>Control Rendering</a>
 <br/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a href=#html-meta-tags-indexhtml-title-meta-link->HTML Meta Tags: `index.html`, `<title/>`, `<meta/>`, `<link/>`, ...</a>
+<br/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a href=#control-rendering>Control Rendering</a>
 <br/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a href=#server-side-transpilation--server-side-autoreload>Server-Side Transpilation & Server-side Autoreload</a>
 <br/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a href=#performance-donotrenderinbrowser--renderhtmlatbuildtime>Performance: `doNotRenderInBrowser` & `renderHtmlAtBuildTime`</a>
 <sub>
@@ -247,21 +247,85 @@ We enjoy talking with our users :-).
 
 ## Why `ssr-coin`
 
-`ssr-coin` is about making SSR as easy as possible yet entirely flexible.
+`ssr-coin` is about making SSR as easy as possible without taking away your freedom.
 
-It takes care of SSR and SSR only:
+**Freedom** :dove:
+
+`ssr-coin` takes care of SSR and SSR only:
 the rest of your stack is entirely up to you and you can use:
-- Any view libray: React, Vue, React Native Web, etc.
-- Any server framework: Express, Koa, Hapi, etc.
-- Any language: ES7, TypeScript, PostCSS, etc.
-- Any provider: Redux, GraphQL Apollo, Relay, etc.
-- Any process manager: Docker, systemd, PM2, etc.
+- Any view libray: React, Vue, React Native Web, ...
+- Any server framework: Express, Koa, Hapi, ...
+- Any language: ES7, TypeScript, PostCSS, ...
+- Any provider: Redux, GraphQL Apollo, Relay, ...
+- Any process manager: Docker, systemd, PM2, ...
 
-It has many features, such as:
-- Browser auto-reload & server auto-reload.
-- Automatic code splitting & optimal HTTP caching.
-- Pages with no browser-side JavaScript for blazing fast performances (especially for mobile devices).
-- Static pages & generation of static websites.
+**Easy** :sparkles:
+
+We designed `ssr-coin` with a strong focus on ease of use
+and we are zero-config believers.
+
+For example,
+we don't allow you to configure how `ssr-coin` bundles your browser-side JavaScript code.
+If you don't absolutely need to configure something, then we don't allow you to configure it.
+
+Currently, `ssr-coin` uses Webpack but we will use Parcel as soon as Parcel v2 is released.
+This means that all things related to building will just work.
+You want TypeScript and PostCSS? It will work out-of-the-box and you won't have to do anything.
+(That said you can use TypeScript and PostCSS today by installing the `@ssr-coin/typescript` and `@srr-coin/postcss` plugins which will modify the Webpack config for you.)
+
+**Static-dynamic Apps** :gear:
+
+You have control over the "staticness" of your pages.
+
+For example, if you set `doNotRenderInBrowser: true` to a page config, the page is rendered to HTML only.
+That way you can have pages that have no (or very little) browser-side JavaScript.
+
+This is crucial for mobile devices where browser-side JavaScript is a performance killer.
+
+Also, stateful & interactive views are complex to develop.
+With `ssr-coin` you can develop apps with dynamic HTML only, like we did with PHP in 1995.
+
+Using React as an HTML template engine is a wonderful developer experience.
+(React without stateful views is super easy.)
+
+And with `renderHtmlAtBuildTime` you can control whether the HTML of your page is rendered at built-time or at request-time.
+You can also render pages to the DOM only.
+You have full control over the staticness of your pages.
+With `ssr-coin` you can have highly interactive pages (like an SPA) as well as static pages (like PHP in 1995).
+
+**Blazing Fast on Mobile** :zap:
+
+As mentioned in the previous section, you can have pages that have no (or little) browser-side JavaScript.
+
+If your app is mostly about content, then removing browser-side JavaScript is an effective way to make your pages super fast on mobile.
+
+Today it's all or nothing: either the entire page is loaded & rendered in the browser or the page is not loaded/rendered at all.
+Bt we are looking into ways of having partial browser-side rendering.
+So that a page with only a couple of interactive views can still be blazing fast on mobile.
+
+**Batteries included** :battery:
+
+The usual features are included:
+browser auto-reload,
+server auto-reload,
+automatic code splitting,
+optimal HTTP caching,
+etc.
+
+**Future-proof & Rock-solid** :mountain:
+
+The modular design of `ssr-coin` means that it is adaptable to whatever comes next.
+
+For example, `ssr-coin` is view library agnostic.
+A new view library comes and makes React obsolete?
+Cool, and supporting it will simply be a matter of implementing a new plugin.
+
+Same goes for building:
+`ssr-coin` works with Parcel as well as with Webpack.
+Using the build tool of tomorrow will be breeze.
+
+Code that is agnostic to the evolution of the web will harden over time:
+expect `ssr-coin` to become rock-solid.
 
 
 <br/>
@@ -641,166 +705,6 @@ We enjoy talking with our users :-).
 
 
 
-## Control Rendering
-
-You can control how your pages are rendered to HTML and to the DOM
-by create `renderToHtml` and `renderToDom` files:
-
-~~~js
-// ssr-coin.config.js
-
-module.exports = {
-  renderToHtml: './render/renderToHtml.js',
-  renderToDom: './render/renderToDom.js',
-};
-~~~
-
-~~~js
-// render/renderToDom.js
-
-import React from 'react';
-import ReactDOM from 'react-dom';
-
-export default renderToDom;
-
-async function renderToDom({page, initialProps, CONTAINER_ID}) {
-  ReactDOM.hydrate(
-    <page.view {...initialProps}/>,
-    document.getElementById(CONTAINER_ID)
-  );
-}
-~~~
-
-~~~js
-// render/renderToHtml.js
-
-const React = require('react');
-const ReactDOMServer = require('react-dom/server');
-
-module.exports = renderToHtml;
-
-async function renderToHtml({page, initialProps, CONTAINER_ID}) {
-  const html = (
-    ReactDOMServer.renderToStaticMarkup(
-      React.createElement(page.view, initialProps)
-    )
-  );
-
-  // Altnertively, you can return a `@brillout/html` options object
-  // in order to have more control over the generated HTML. See all
-  // html options at https://github.com/brillout/html
-  // return {
-  //   head: [
-  //     '<style>body{background: blue;}</style>',
-  //   ],
-  //   body: [
-  //     '<div>Some additional HTML</div>',
-  //     '<div id='+CONTAINER_ID+'>'+html+'</div>',
-  //   ]
-  // };
-
-  return html;
-}
-~~~
-
-Controlling the rendering of your app allows you to add providers for React libraries such as Redux.
-
-Examples:
-- [/examples/react-router](/examples/react-router)
-- [/examples/redux](/examples/redux)
-- [/examples/styled-components](/examples/styled-components)
-
-
-<br/>
-
-<p align="center">
-
-<sup>
-<a href="https://github.com/reframejs/ssr-coin/issues/new">Open a ticket</a> or
-<a href="https://discord.gg/kqXf65G">chat with us</a>
-if you have questions, feature requests, or if you just want to talk to us.
-</sup>
-
-<sup>
-We enjoy talking with our users :-).
-</sup>
-
-<br/>
-
-<sup>
-<a href="#readme"><b>&#8679;</b> <b>TOP</b> <b>&#8679;</b></a>
-</sup>
-
-</p>
-
-<br/>
-<br/>
-
-
-
-## Server-Side Transpilation & Server-side Autoreload
-
-If you specify a path when calling `ssr-coin dev ./path/to/your/server.js` then:
- - `ssr-coin` transpiles your server code. Allowing you, for example, to use TypeScript for your server code.
- - `ssr-coin` auto-reloads the server whenever you make changes to your server code
-
-Your `package.json`'s scripts would be:
-
-~~~json
-{
-  "scripts": {
-    "dev": "ssr-coin dev ./path/to/your/server.js",
-    "prod": "npm run build && npm run start",
-    "build": "ssr-coin build ./path/to/your/server.js",
-    "start": "export NODE_ENV='production' && node ./.build/nodejs/server"
-  }
-}
-~~~
-
-By not specifying your server path `ssr-coin` doesn't transpile nor auto reloads your server,
-and your `package.json`'s scripts would be:
-
-~~~json
-{
-  "scripts": {
-    "dev": "node ./path/to/your/server.js",
-    "prod": "npm run build && npm run start",
-    "build": "ssr-coin build",
-    "start": "export NODE_ENV='production' && node .path/to/your/server.js"
-  }
-}
-~~~
-
-Note that `ssr-coin` always transpiles and auto-reloads your views and browser code.
-
-
-<br/>
-
-<p align="center">
-
-<sup>
-<a href="https://github.com/reframejs/ssr-coin/issues/new">Open a ticket</a> or
-<a href="https://discord.gg/kqXf65G">chat with us</a>
-if you have questions, feature requests, or if you just want to talk to us.
-</sup>
-
-<sup>
-We enjoy talking with our users :-).
-</sup>
-
-<br/>
-
-<sup>
-<a href="#readme"><b>&#8679;</b> <b>TOP</b> <b>&#8679;</b></a>
-</sup>
-
-</p>
-
-<br/>
-<br/>
-
-
-
 ## HTML Meta Tags: `index.html`, `<title/>`, `<meta/>`, `<link/>`, ...
 
 To set HTML meta tags for all your pages,
@@ -941,6 +845,165 @@ We enjoy talking with our users :-).
 
 
 
+## Control Rendering
+
+You can control how your pages are rendered to HTML and to the DOM:
+
+~~~js
+// ssr-coin.config.js
+
+module.exports = {
+  renderToHtml: './render/renderToHtml.js',
+  renderToDom: './render/renderToDom.js',
+};
+~~~
+
+~~~js
+// render/renderToDom.js
+
+import React from 'react';
+import ReactDOM from 'react-dom';
+
+export default renderToDom;
+
+async function renderToDom({page, initialProps, CONTAINER_ID}) {
+  ReactDOM.hydrate(
+    <page.view {...initialProps}/>,
+    document.getElementById(CONTAINER_ID)
+  );
+}
+~~~
+
+~~~js
+// render/renderToHtml.js
+
+const React = require('react');
+const ReactDOMServer = require('react-dom/server');
+
+module.exports = renderToHtml;
+
+async function renderToHtml({page, initialProps, CONTAINER_ID}) {
+  const html = (
+    ReactDOMServer.renderToStaticMarkup(
+      React.createElement(page.view, initialProps)
+    )
+  );
+
+  // Altnertively, you can return a `@brillout/html` options object
+  // in order to have more control over the generated HTML. See all
+  // html options at https://github.com/brillout/html
+  // return {
+  //   head: [
+  //     '<style>body{background: blue;}</style>',
+  //   ],
+  //   body: [
+  //     '<div>Some additional HTML</div>',
+  //     '<div id='+CONTAINER_ID+'>'+html+'</div>',
+  //   ]
+  // };
+
+  return html;
+}
+~~~
+
+This allows you to add providers such as Redux's `<Provider store={store} />` or React Router's `<BrowserRouter />`.
+
+Examples:
+- [/examples/react-router](/examples/react-router)
+- [/examples/redux](/examples/redux)
+- [/examples/styled-components](/examples/styled-components)
+
+
+<br/>
+
+<p align="center">
+
+<sup>
+<a href="https://github.com/reframejs/ssr-coin/issues/new">Open a ticket</a> or
+<a href="https://discord.gg/kqXf65G">chat with us</a>
+if you have questions, feature requests, or if you just want to talk to us.
+</sup>
+
+<sup>
+We enjoy talking with our users :-).
+</sup>
+
+<br/>
+
+<sup>
+<a href="#readme"><b>&#8679;</b> <b>TOP</b> <b>&#8679;</b></a>
+</sup>
+
+</p>
+
+<br/>
+<br/>
+
+
+
+## Server-Side Transpilation & Server-side Autoreload
+
+If you specify a path when calling `ssr-coin dev ./path/to/your/server.js` then:
+ - `ssr-coin` transpiles your server code. Allowing you, for example, to use TypeScript for your server code.
+ - `ssr-coin` auto-reloads the server whenever you make changes to your server code
+
+Your `package.json`'s scripts would be:
+
+~~~json
+{
+  "scripts": {
+    "dev": "ssr-coin dev ./path/to/your/server.js",
+    "prod": "npm run build && npm run start",
+    "build": "ssr-coin build ./path/to/your/server.js",
+    "start": "export NODE_ENV='production' && node ./.build/nodejs/server"
+  }
+}
+~~~
+
+By not specifying your server path `ssr-coin` doesn't transpile nor auto reloads your server,
+and your `package.json`'s scripts would be:
+
+~~~json
+{
+  "scripts": {
+    "dev": "node ./path/to/your/server.js",
+    "prod": "npm run build && npm run start",
+    "build": "ssr-coin build",
+    "start": "export NODE_ENV='production' && node .path/to/your/server.js"
+  }
+}
+~~~
+
+Note that `ssr-coin` always transpiles and auto-reloads your views and browser code.
+
+
+<br/>
+
+<p align="center">
+
+<sup>
+<a href="https://github.com/reframejs/ssr-coin/issues/new">Open a ticket</a> or
+<a href="https://discord.gg/kqXf65G">chat with us</a>
+if you have questions, feature requests, or if you just want to talk to us.
+</sup>
+
+<sup>
+We enjoy talking with our users :-).
+</sup>
+
+<br/>
+
+<sup>
+<a href="#readme"><b>&#8679;</b> <b>TOP</b> <b>&#8679;</b></a>
+</sup>
+
+</p>
+
+<br/>
+<br/>
+
+
+
 ## Performance: `doNotRenderInBrowser` & `renderHtmlAtBuildTime`
 
 With `doNotRenderInBrowser` and `renderHtmlAtBuildTime` you can control when your pages are rendered.
@@ -959,11 +1022,11 @@ With `doNotRenderInBrowser` you control whether your page is rendered in the bro
 - `doNotRenderInBrowser: false` (default value)
   - Slower Performance
     <br/>
-    The page's views (e.g. the page's React components) and view libraries (e.g. React) are loaded, executed, and rendered in the browser.
+    The page's views (e.g. React components) and view libraries (e.g. React) are loaded, executed, and rendered in the browser.
     This can be slow on mobile devices.
   - Interactive
     <br/>
-    Because your page is rendered to the browser's DOM, your page can be stateful and interactive.
+    Because your page is rendered to the browser's DOM, your page's views (e.g. React components) can be stateful and interactive.
 - `doNotRenderInBrowser: true`
   - Increased performance
     <br/>
@@ -972,7 +1035,7 @@ With `doNotRenderInBrowser` you control whether your page is rendered in the bro
     This performance gain is substantial on mobile devices.
   - Not interactive
     <br/>
-    Because your page is not rendered to the browser's DOM, your page connot have stateful nor interactive views.
+    Because your page is not rendered to the browser's DOM, your page connot have stateful nor interacrive views.
 
 In a nutshell:
 If your page needs to be interactive then you have to rendered it in the browser and set `doNotRenderInBrowser` to `false`.
