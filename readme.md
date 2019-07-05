@@ -247,7 +247,7 @@ We enjoy talking with our users :-).
 
 ## Why `ssr-coin`
 
-`ssr-coin` is about making SSR as easy as possible without taking away your freedom.
+`ssr-coin` is about making SSR as easy as possible while not taking away your freedom.
 
 <br/>
 :dove:&nbsp;&nbsp; <b>Freedom</b>
@@ -263,7 +263,7 @@ the rest of your stack is entirely up to you and you can use:
 <br/>
 :sparkles:&nbsp; <b>Easy</b>
 
-We designed `ssr-coin` with a strong focus on ease of use
+We designed `ssr-coin` with a strong focus on ease of use,
 and we are zero-config believers.
 
 For example,
@@ -273,14 +273,14 @@ If you don't absolutely need to configure something, then we don't allow you to 
 Currently, `ssr-coin` uses Webpack but we will use Parcel as soon as Parcel v2 is released.
 This means that all things related to building will just work.
 You want TypeScript and PostCSS? It will work out-of-the-box and you won't have to do anything.
-(That said you can use TypeScript and PostCSS today by installing the `@ssr-coin/typescript` and `@srr-coin/postcss` plugins which will modify the Webpack config for you.)
+(You can use TypeScript and PostCSS today by installing the `@ssr-coin/typescript` and `@ssr-coin/postcss` plugins which will modify the Webpack config for you.)
 
 <br/>
-:gear:&nbsp;&nbsp; <b>Static-dynamic Apps</b>
+:gear:&nbsp;&nbsp; <b>Static-Dynamic Apps</b>
 
-You have control over the "staticness" of your pages.
+You have control over the "static-ness" of your pages.
 
-For example, if you set `doNotRenderInBrowser: true` to a page config, the page is rendered to HTML only.
+For example, if you set `doNotRenderInBrowser: true` to a page config, then the page is rendered to HTML only.
 That way you can have pages that have no (or very little) browser-side JavaScript.
 
 This is crucial for mobile devices where browser-side JavaScript is a performance killer.
@@ -293,7 +293,7 @@ Using React as an HTML template engine is a wonderful developer experience.
 
 And with `renderHtmlAtBuildTime` you can control whether the HTML of your page is rendered at built-time or at request-time.
 You can also render pages to the DOM only.
-You have full control over the staticness of your pages.
+You have full control over the static-ness of your pages.
 With `ssr-coin` you can have highly interactive pages (like an SPA) as well as static pages (like PHP in 1995).
 
 <br/>
@@ -322,15 +322,10 @@ etc.
 
 The modular design of `ssr-coin` means that it is adaptable to whatever comes next.
 
-For example, `ssr-coin` is view library agnostic.
-A new view library comes and makes React obsolete?
-Cool, and supporting it will simply be a matter of implementing a new plugin.
+A new view library comes and is better than everything else?
+Cool, `ssr-coin` works with any view library.
 
-Same goes for building:
-`ssr-coin` works with Parcel as well as with Webpack.
-Using the build tool of tomorrow will be breeze.
-
-Code that is agnostic to the evolution of the web will harden over time:
+And all code that is agnostic to the evolution of the web will harden over time:
 expect `ssr-coin` to become rock-solid.
 
 
