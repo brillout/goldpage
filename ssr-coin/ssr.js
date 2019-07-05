@@ -43,7 +43,7 @@ function create_ssr() {
       const pageConfigs = findFiles('*.page.*'/*, {within: ssr.pagesDir}*/);
       assert.usage(
         pageConfigs.length>=1,
-        "No files with the `.page.` suffix found in `"+ssr.pagesDir+"`.",
+        "No files with the `.page` suffix found in `"+ssr.pagesDir+"`.",
         "You need to define at least one page config file.",
       );
       return pageConfigs;
