@@ -102,8 +102,6 @@ Example:
 
 ## !VAR WHY_SSR_COIN
 
-`ssr-coin` is about making SSR as easy as possible while not taking away your freedom.
-
 <br/>
 :dove:&nbsp;&nbsp; <b>Freedom</b>
 
@@ -118,54 +116,13 @@ the rest of your stack is entirely up to you and you can use:
 <br/>
 :sparkles:&nbsp; <b>Easy</b>
 
-We designed `ssr-coin` with a strong focus on ease of use,
-and we are zero-config believers.
-
-For example,
-we don't allow you to configure how `ssr-coin` bundles your browser-side JavaScript code.
-If you don't absolutely need to configure something, then we don't allow you to configure it.
-
-Currently, `ssr-coin` uses Webpack but we will use Parcel as soon as Parcel v2 is released.
-This means that all things related to building will just work.
-You want TypeScript and PostCSS? It will work out-of-the-box and you won't have to do anything.
-(You can use TypeScript and PostCSS today by installing the `@ssr-coin/typescript` and `@ssr-coin/postcss` plugins which will modify the Webpack config for you.)
-
-<br/>
-:gear:&nbsp;&nbsp; <b>Static-Dynamic Apps</b>
-
-You have control over the "static-ness" of your pages.
-
-For example, if you set `doNotRenderInBrowser: true` to a page config, then the page is rendered to HTML only.
-That way you can have pages that have no (or very little) browser-side JavaScript.
-
-This is crucial for mobile devices where browser-side JavaScript is a performance killer.
-
-Also, stateful & interactive views are complex to develop.
-With `ssr-coin` you can develop apps with dynamic HTML only, like we did with PHP in 1995.
-
-Using React as an HTML template engine is a wonderful developer experience.
-(React without stateful views is super easy.)
-
-And with `renderHtmlAtBuildTime` you can control whether the HTML of your page is rendered at built-time or at request-time.
-You can also render pages to the DOM only.
-You have full control over the static-ness of your pages.
-With `ssr-coin` you can have highly interactive pages (like an SPA) as well as static pages (like PHP in 1995).
-
-<br/>
-:zap:&nbsp; <b>Blazing Fast on Mobile</b>
-
-As mentioned in the previous section, you can have pages that have no (or little) browser-side JavaScript.
-
-If your app is mostly about content, then removing browser-side JavaScript is an effective way to make your pages super fast on mobile.
-
-Today it's all or nothing: either the entire page is loaded & rendered in the browser or the page is not loaded/rendered at all.
-Bt we are looking into ways of having partial browser-side rendering.
-So that a page with only a couple of interactive views can still be blazing fast on mobile.
+We designed `ssr-coin` with a strong focus on ease of use.
+Following the zero-config philosophy, we give you a minimal amount of configuration.
 
 <br/>
 :battery:&nbsp; <b>Batteries included</b>
 
-The usual features are included:
+`ssr-coin` includes
 browser auto-reload,
 server auto-reload,
 automatic code splitting,
@@ -173,15 +130,23 @@ optimal HTTP caching,
 etc.
 
 <br/>
+:zap:&nbsp; <b>Blazing Fast Mobile Pages</b>
+
+If you set `doNotRenderInBrowser: true` to a page config,
+then the page is rendered to HTML only.
+That way, you can have pages that have no (or very little) browser-side JavaScript.
+
+Browser-side JavaScript is a performance killer on mobile,
+so removing a page's browser-side JavaScript is an effective way to make it blazing fast on mobile.
+
+<br/>
 :mountain:&nbsp;&nbsp; <b>Future-proof & Rock-solid</b>
 
-The modular design of `ssr-coin` means that it is adaptable to whatever comes next.
-
+The modular design of `ssr-coin` makes it adaptable to whatever comes next.
 A new view library comes and is better than everything else?
-Cool, `ssr-coin` works with any view library.
+Cool with us; `ssr-coin` works with any view library.
 
-And all code that is agnostic to the evolution of the web will harden over time:
-expect `ssr-coin` to become rock-solid.
+Being versatile and focused on SSR only, `ssr-coin` can be used for all kinds of uses cases and will quickly harden and become rock-solid.
 
 !INLINE ./snippets/section-footer.md #readme --hide-source-path
 
@@ -755,7 +720,7 @@ that modifies `ssr-coin`'s webpack config for you.
 For exampe, for TypeScript, you can use the [TypeScript plugin](/plugins/typescript).
 If there is no plugin for what you need, then open a GitHub issue and we'll create one together.
 
-Once Parcel v2's is released,
+Once Parcel v2 is released,
 `ssr-coin` will use Parcel instead of Webpack.
 Since Parcel is zero-config, most of your transpilation needs will then just work.
 (Transpilation plugins will not be required anymore.)
