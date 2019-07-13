@@ -106,7 +106,8 @@ Example:
 :dove:&nbsp;&nbsp; <b>Freedom</b>
 
 `ssr-coin` takes care of SSR and SSR only:
-the rest of your stack is entirely up to you and you can use:
+the rest of your stack is entirely up to you.
+You can use:
 - Any view libray: React, Vue, React Native Web, ...
 - Any server framework: Express, Koa, Hapi, ...
 - Any language: ES7, TypeScript, PostCSS, ...
@@ -117,7 +118,7 @@ the rest of your stack is entirely up to you and you can use:
 :sparkles:&nbsp; <b>Easy</b>
 
 We designed `ssr-coin` with a strong focus on ease of use.
-Following the zero-config philosophy, we give you a minimal amount of configuration.
+We follow the zero-config philosophy and we give you a minimal amount of configuration.
 
 <br/>
 :battery:&nbsp; <b>Batteries included</b>
@@ -136,8 +137,8 @@ If you set `doNotRenderInBrowser: true` to a page config,
 then the page is rendered to HTML only.
 That way, you can have pages that have no (or very little) browser-side JavaScript.
 
-Browser-side JavaScript is a performance killer on mobile,
-so removing a page's browser-side JavaScript is an effective way to make it blazing fast on mobile.
+Browser-side JavaScript is a performance killer on mobile
+and removing a page's browser-side JavaScript is an effective way to make it blazing fast on mobile.
 
 <br/>
 :mountain:&nbsp;&nbsp; <b>Future-proof & Rock-solid</b>
@@ -146,7 +147,7 @@ The modular design of `ssr-coin` makes it adaptable to whatever comes next.
 A new view library comes and is better than everything else?
 Cool with us; `ssr-coin` works with any view library.
 
-Being versatile and focused on SSR only, `ssr-coin` can be used for all kinds of uses cases and will quickly harden and become rock-solid.
+Being versatile and focused on SSR only, `ssr-coin` can be used for all kinds of uses cases and will harden over time and become rock-solid.
 
 !INLINE ./snippets/section-footer.md #readme --hide-source-path
 
