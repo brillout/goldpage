@@ -105,30 +105,30 @@ Example:
 <br/>
 :dove:&nbsp;&nbsp; <b>Freedom</b>
 
-`ssr-coin` takes care of SSR and SSR only:
-the rest of your stack is entirely up to you.
-You can use:
+`ssr-coin` takes care of SSR and SSR only,
+it is entirely unopinionated,
+and it works with:
 - Any view libray: React, Vue, React Native Web, ...
 - Any server framework: Express, Koa, Hapi, ...
 - Any language: ES7, TypeScript, PostCSS, ...
-- Any provider: Redux, GraphQL Apollo, Relay, ...
+- Any provider: Redux, React Router, GraphQL Apollo, Relay, ...
+- Any CSS-in-JS: Emotion, styled-components, ...
 - Any process manager: Docker, systemd, PM2, ...
 
 <br/>
 :sparkles:&nbsp; <b>Easy</b>
 
-We designed `ssr-coin` with a strong focus on ease of use.
-We follow the zero-config philosophy and we give you a minimal amount of configuration.
+We designed `ssr-coin` with a meticulous focus on ease of use.
+We believe in the zero-config philosophy and we give you only a minimal amount of configuration.
 
 <br/>
 :battery:&nbsp; <b>Batteries included</b>
 
-`ssr-coin` includes
-browser auto-reload,
-server auto-reload,
-automatic code splitting,
-optimal HTTP caching,
-etc.
+`ssr-coin` comes with:
+- Browser auto-reload
+- Server auto-reload
+- Automatic page-based JavaScript source code splitting
+- Optimal HTTP caching
 
 <br/>
 :zap:&nbsp; <b>Blazing Fast Mobile Pages</b>
@@ -138,7 +138,7 @@ then the page is rendered to HTML only.
 That way, you can have pages that have no (or very little) browser-side JavaScript.
 
 Browser-side JavaScript is a performance killer on mobile
-and removing a page's browser-side JavaScript is an effective way to make it blazing fast on mobile.
+Removing a page's browser-side JavaScript makes it blazing fast on mobile.
 
 <br/>
 :mountain:&nbsp;&nbsp; <b>Future-proof & Rock-solid</b>
