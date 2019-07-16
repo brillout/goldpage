@@ -1,57 +1,59 @@
 import React from 'react';
+import logoUrl from './logo.png';
+import manifestUrl from './manifest.webmanifest';
 import fetchProduct from './fetchProduct';
-// Definition of `getHtmlOptions` is shown below.
-import getHtmlOptions from './getHtmlOptions';
-// Definition of `assert_initialProps` is shown below.
-import assert_initialProps from './assert_initialProps';
+import Product from './Product';
 
-export default getPageConfig();
+export default {
+  view: Product,
 
-function getPageConfig() {
-  return {
-    // The url of the page.
-    // The routing is done by `path-to-regexp` (https://github.com/pillarjs/path-to-regexp).
-    route: '/products/:productId',
+  // ssr-coin uses the package @brillout/html (https://github.com/brillout/html) to generate HTML.
+  // All @brillout/html's options are available over the page config.
 
-    // Add additional inital props, for example data loaded from an API.
-    // `addInitialProps` can be async and `ssr-coin` awaits `addInitialProps` before
-    // rendering `view` to the DOM / HTML.
-    addInitialProps,
+  // Adds <title>Welcome</title>
+  title: 'Product Page',
 
-    // The content of your page.
-    // `view` is rendered by the render plugin you installed.
-    view,
+  // Adds <link rel="shortcut icon" href="/logo.hash_85dcecf7a6ad1f1ae4d590bb3078e4b1.png">
+  favicon: logoUrl,
 
-    // Control when the page is rendered.
-    // See section "Performance: `doNotRenderInBrowser` & `renderHtmlAtBuildTime`".
-    doNotRenderInBrowser: false,
-    renderHtmlAtBuildTime: false,
+  // Adds <meta name="description" content="A welcome page.">
+  description: 'Describes a product',
 
-    ...getHtmlOptions()
-  };
-}
+  // Adds <script src="https://example.org/awesome-lib.js" type="text/javascript"></script>
+  scripts: [
+    'https://example.org/awesome-lib.js',
+  ],
 
-async function addInitialProps(initialProps) {
-  // See the definition of `assert_initialProps` for
-  // a full referance of what `initialProps` contains.
-  assert_initialProps(initialProps);
+  // Adds <link href="https://example.org/awesome-lib.css" rel="stylesheet">
+  styles: [
+    'https://example.org/awesome-lib.css',
+  ],
 
-  const {productId} = initialProps;
-  const product = await fetchProduct(productId);
-  return {product};
-}
+  // Adds <link rel="manifest" href="/manifest.hash_bb5e0038d1d480b7e022aaa0bdce25a5.webmanifest">
+  head: [
+    '<link rel="manifest" href="'+manifestUrl+'"/>',
+    // All HTML in this array are added to `<head>`.
+    // Make sure that the HTML you inject here is safe and escape all user generated content.
+  ],
 
-function view(initialProps) {
-  assert_initialProps(initialProps);
+  body: [
+    '<script>console.log("hello from injected script")</script>',
+    // All HTML in this array are added to `<body>`.
+    // Make sure that the HTML you inject here is safe and escape all user generated content.
+  ],
 
-  // The props returned by `addInitialProps` are available to `view`.
-  const {product} = initialProps;
+  // You can also generate HTML dynamically:
+  route: '/products/:productId',
+  addInitialProps: async ({productId}) => {
+    const product = await fetchProduct(productId);
+    return {product};
+  },
+  title: ({product, productId}) => product.name+' ('+productId+')',
+  description: ({product}) => product.description,
+  head: ({product}) => [
+    // Open Graph tags
+    '<meta property="og:title" content="'+product.name+'">',
+    '<meta property="og:description" name="description" content="'+product.description+'">',
+  ],
+};
 
-  return (
-    <div>
-      Product id: <b>{initialProps.productId}</b><br/>
-      Product name: <b>{initialProps.product.name}</b><br/>
-      Product description: <b>{initialProps.product.description}</b><br/>
-    </div>
-  );
-}

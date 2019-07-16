@@ -118,35 +118,39 @@ and works with:
 <br/>
 :sparkles:&nbsp; <b>Easy</b>
 
-We designed `ssr-coin` with a meticulous focus on ease of use, such as:
-- **We fully take care of building**. We believe that you shouldn't have to configure anything to make things work. You want to use TypeScript? Install the `@ssr-coin/typescript` plugin and that's it.
-- We allow you to **fully control how your pages are rendered** so that you can add any provider you want, such as React Router, GraphQL, and/or Redux.
-- We provide `ssr-coin` **server middlwares for Express, Koa, and Hapi** so that your pages are automatically routed and served.
-- The `ssr-coin.config.js` is optional has only couple of options &mdash; the less you have to configure, the easier your life. We believe in the zero-config philosophy.
+We designed `ssr-coin` with a meticulous focus on ease of use, for example:
+- **We fully take care of building**. We believe that you shouldn't have to fiddle with build. You want to use TypeScript? Simply install the `@ssr-coin/typescript` plugin and you can now write Node.js and browser code with TypeScript.
+- We allow you to fully **control how your pages are rendered** so that you can easily add any provider you want, such as React Router, GraphQL, and Redux.
+- We provide a `ssr-coin` server **middlware for Express, Koa, and Hapi** so that your pages are automatically routed and served.
+- The `ssr-coin.config.js` is optional has only couple of options &mdash; the less to configure, the easier your life. We believe in the **zero-config** philosophy.
 
-The docs' recipes are repetative and soon you you won't need the `ssr-coin` docs anymore.
-We believe that `ssr-coin` is the easiest SSR solution out there.
+With minimal configuration yet maximum flexibility,
+we believe `ssr-coin` to be the easiest SSR solution out there.
 
 <br/>
 :battery:&nbsp; <b>Batteries included</b>
 
-`ssr-coin` is feature-rich, such as:
+`ssr-coin` comes with lots of features, such as:
 - Browser auto-reload
 - Server auto-reload
+- Fully controllable rendering
 - Automatic code splitting
 - Optimal HTTP caching
-- Fully controllable rendering
 
 <br/>
 :zap:&nbsp; <b>Blazing Fast Mobile Pages</b>
 
-`ssr-coin` allows you to .
-If you set `doNotRenderInBrowser: true` to a page config,
-then the page is rendered to HTML only.
-That way, you can have pages that have no (or very little) browser-side JavaScript.
+With the page config
+`doNotRenderInBrowser` you can configure a page to be rendered to HTML only.
+The page then has no (or very little) browser-side JavaScript.
 
 Browser-side JavaScript is a performance killer on mobile
-Removing a page's browser-side JavaScript makes it blazing fast on mobile.
+and removing a page's browser-side JavaScript is an effective way to make it blazing fast on mobile.
+
+allows you to configure a page to be rendered to 
+If you set  to a page config,
+then the page is rendered to HTML only.
+That way, you can have pages that have no (or very little) browser-side JavaScript.
 
 <br/>
 :mountain:&nbsp;&nbsp; <b>Future-proof & Rock-solid</b>
@@ -383,7 +387,7 @@ Example of a page that uses all kinds of static assets:
 You can load and render data by adding a `addInitialProps` function to your page config:
 
 ~~~js
-!INLINE /examples/async-data/pages/got/html.page.js --hide-source-path
+!INLINE /examples/html/pages/product.page.js --hide-source-path
 ~~~
 
 Alternatively, you can fetch data in a stateful component.
@@ -407,7 +411,7 @@ Your `index.html` needs to contain  `!HEAD` and `!BODY`:
 
 To set HTML meta tags of only one page, use the page config:
 ~~~js
-!INLINE /examples/html/pages/product.page.js
+!INLINE /examples/html/pages/products.page.js
 ~~~
 ~~~js
 !INLINE /examples/html/pages/about.page.js
@@ -609,7 +613,7 @@ function SearchPage(props) {
 ~~~js
 // pages/*.page.js
 
-!INLINE /examples/html/pages/products.page.js --hide-source-path
+!INLINE /examples/html/pages/product-details.page.js --hide-source-path
 ~~~
 
 !INLINE ./snippets/section-footer.md #contents --hide-source-path
