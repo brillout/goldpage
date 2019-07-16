@@ -10,8 +10,8 @@ export default {
     return {characters};
   },
 
-  // The `characters` returned by our `addInitialProps` is available at `props.characters`
-  view: props => <CharacterList characters={props.characters}/>,
+  // The `characters` returned by `addInitialProps` is available to `view`
+  view: ({characters}) => <CharacterList characters={characters}/>,
 
   doNotRenderInBrowser: true,
 

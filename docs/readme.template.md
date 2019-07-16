@@ -105,9 +105,9 @@ Example:
 <br/>
 :dove:&nbsp;&nbsp; <b>Freedom</b>
 
-`ssr-coin` takes care of SSR and SSR only,
-it is entirely unopinionated,
-and it works with:
+`ssr-coin` takes care of SSR and SSR only;
+it is entirely unopinionated
+and works with:
 - Any view libray: React, Vue, React Native Web, ...
 - Any server framework: Express, Koa, Hapi, ...
 - Any language: ES7, TypeScript, PostCSS, ...
@@ -118,21 +118,29 @@ and it works with:
 <br/>
 :sparkles:&nbsp; <b>Easy</b>
 
-We designed `ssr-coin` with a meticulous focus on ease of use.
-We believe in the zero-config philosophy and we give you only a minimal amount of configuration.
+We designed `ssr-coin` with a meticulous focus on ease of use, such as:
+- **We fully take care of building**. We believe that you shouldn't have to configure anything to make things work. You want to use TypeScript? Install the `@ssr-coin/typescript` plugin and that's it.
+- We allow you to **fully control how your pages are rendered** so that you can add any provider you want, such as React Router, GraphQL, and/or Redux.
+- We provide `ssr-coin` **server middlwares for Express, Koa, and Hapi** so that your pages are automatically routed and served.
+- The `ssr-coin.config.js` is optional has only couple of options &mdash; the less you have to configure, the easier your life. We believe in the zero-config philosophy.
+
+The docs' recipes are repetative and soon you you won't need the `ssr-coin` docs anymore.
+We believe that `ssr-coin` is the easiest SSR solution out there.
 
 <br/>
 :battery:&nbsp; <b>Batteries included</b>
 
-`ssr-coin` comes with:
+`ssr-coin` is feature-rich, such as:
 - Browser auto-reload
 - Server auto-reload
-- Automatic page-based JavaScript source code splitting
+- Automatic code splitting
 - Optimal HTTP caching
+- Fully controllable rendering
 
 <br/>
 :zap:&nbsp; <b>Blazing Fast Mobile Pages</b>
 
+`ssr-coin` allows you to .
 If you set `doNotRenderInBrowser: true` to a page config,
 then the page is rendered to HTML only.
 That way, you can have pages that have no (or very little) browser-side JavaScript.
@@ -193,18 +201,21 @@ Plugins to (statically) route your pages.
 
 This getting started is about adding `ssr-coin` to an exisiting app.
 
+If you want to create a new app or if you just want to play around with `ssr-coin`,
+then use a [Reframe starter](https://github.com/topics/reframe-starter).
+
 0. Install `ssr-coin`.
 
    ~~~shell
    npm install ssr-coin
    ~~~
 
-   Install a [render plugin](!VAR|ANCHOR PLUGINS_RENDER) such as `@ssr-coin/vue` or `@ssr-coin/react`.
+   Install a [render plugin](!VAR|ANCHOR PLUGINS_RENDER), such as `@ssr-coin/react`:
    ~~~shell
    npm install @ssr-coin/react
    ~~~
 
-   Install a [server plugin](!VAR|ANCHOR PLUGINS_SERVER) such as `@ssr-coin/hapi` or `@ssr/express`.
+   Install a [server plugin](!VAR|ANCHOR PLUGINS_SERVER), such as `@ssr-coin/express`:
    ~~~shell
    npm install @ssr-coin/express
    ~~~
@@ -264,9 +275,9 @@ This getting started is about adding `ssr-coin` to an exisiting app.
 
 2. Create your first page.
 
-   Create the `pages/` directory.
+   Create a `pages/` directory.
    ~~~shell
-   cd path/to/your/project/dir/ && mkdir pages/
+   cd path/to/your/project/ && mkdir pages/
    ~~~
 
    Create a file
@@ -274,6 +285,8 @@ This getting started is about adding `ssr-coin` to an exisiting app.
 
    With React:
    ~~~js
+   // pages/hello.page.js
+
    export default {
      route: 'hello/:name',
      view: ({data, name}) => (
@@ -301,13 +314,9 @@ This getting started is about adding `ssr-coin` to an exisiting app.
    With Vue
    </summary>
    ~~~js
-   const Hapi = require('hapi');
-   const ssr = require('ssr-coin');
+   // pages/hello.page.js
 
-   (async ()=>{
-     const server = Hapi.Server();
-     await server.register(ssr.hapi);
-   })();
+   !INLINE /examples/vue/pages/vue-welcome.page.js --hide-source-path
    ~~~
    </details>
 
@@ -374,13 +383,13 @@ Example of a page that uses all kinds of static assets:
 You can load and render data by adding a `addInitialProps` function to your page config:
 
 ~~~js
-!INLINE /examples/async-data/pages/got/html.page.js
+!INLINE /examples/async-data/pages/got/html.page.js --hide-source-path
 ~~~
 
 Alternatively, you can fetch data in a stateful component.
-But then your data is rendered only to the DOM (and not to HTML).
+But the page's content is then rendered to the DOM only (and not to HTML).
 
-We further explain the difference between both at:
+We explain the difference between using a stateful component and `addInitialProps` at:
  - [/examples/async-data/](/examples/async-data/)
 
 !INLINE ./snippets/section-footer.md #readme --hide-source-path
