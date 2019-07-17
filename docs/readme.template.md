@@ -105,8 +105,8 @@ Example:
 <br/>
 :dove:&nbsp;&nbsp; <b>Freedom</b>
 
-`ssr-coin` takes care of SSR and SSR only;
-it is entirely unopinionated
+`ssr-coin` takes care of SSR and SSR only &mdash;
+it is unopinionated about your stack
 and works with:
 - Any view libray: React, Vue, React Native Web, ...
 - Any server framework: Express, Koa, Hapi, ...
@@ -119,10 +119,10 @@ and works with:
 :sparkles:&nbsp; <b>Easy</b>
 
 We designed `ssr-coin` with a meticulous focus on ease of use, for example:
-- **We fully take care of building**. We believe that you shouldn't have to fiddle with build. You want to use TypeScript? Simply install the `@ssr-coin/typescript` plugin and you can now write Node.js and browser code with TypeScript.
-- We allow you to fully **control how your pages are rendered** so that you can easily add any provider you want, such as React Router, GraphQL, and Redux.
-- We provide a `ssr-coin` server **middlware for Express, Koa, and Hapi** so that your pages are automatically routed and served.
-- The `ssr-coin.config.js` is optional has only couple of options &mdash; the less to configure, the easier your life. We believe in the **zero-config** philosophy.
+- **We fully take care of building**. We believe that build should just work and that you shouldn't have to fiddle with it. You want to use TypeScript? Install the `@ssr-coin/typescript` plugin and you can now use TypeScript to write browser code as well as Node.js code.
+- We allow you to fully **control how your pages are rendered**, so that you can easily add any provider you want such as React Router, GraphQL, Redux, ...
+- We provide a `ssr-coin` server **middlware for Express, Koa, and Hapi** to serve your pages.
+- The `ssr-coin.config.js` is optional and has only couple of options &mdash; the less you configure, the easier your life. We believe in the **zero-config** philosophy.
 
 With minimal configuration yet maximum flexibility,
 we believe `ssr-coin` to be the easiest SSR solution out there.
@@ -133,7 +133,7 @@ we believe `ssr-coin` to be the easiest SSR solution out there.
 `ssr-coin` comes with lots of features, such as:
 - Browser auto-reload
 - Server auto-reload
-- Fully controllable rendering
+- Full control over rendering
 - Automatic code splitting
 - Optimal HTTP caching
 
@@ -141,25 +141,18 @@ we believe `ssr-coin` to be the easiest SSR solution out there.
 :zap:&nbsp; <b>Blazing Fast Mobile Pages</b>
 
 With the page config
-`doNotRenderInBrowser` you can configure a page to be rendered to HTML only.
-The page then has no (or very little) browser-side JavaScript.
-
-Browser-side JavaScript is a performance killer on mobile
-and removing a page's browser-side JavaScript is an effective way to make it blazing fast on mobile.
-
-allows you to configure a page to be rendered to 
-If you set  to a page config,
-then the page is rendered to HTML only.
-That way, you can have pages that have no (or very little) browser-side JavaScript.
+`doNotRenderInBrowser` you can control whether a page is loaded & rendered in the browser.
+When setting `doNotRenderInBrowser: true`, the page has no (or very little) browser-side JavaScript.
+Removing browser-side JavaScript makes your page blazing fast on mobile.
 
 <br/>
 :mountain:&nbsp;&nbsp; <b>Future-proof & Rock-solid</b>
 
 The modular design of `ssr-coin` makes it adaptable to whatever comes next.
-A new view library comes and is better than everything else?
-Cool with us; `ssr-coin` works with any view library.
+For example,
+`ssr-coin` is view library agnostic allowing it to embrace future view libraries.
 
-Being versatile and focused on SSR only, `ssr-coin` can be used for all kinds of uses cases and will harden over time and become rock-solid.
+`ssr-coin` can be used for all kinds of SSR uses cases and will harden over time &mdash; it will eventually become rock-solid.
 
 !INLINE ./snippets/section-footer.md #readme --hide-source-path
 
