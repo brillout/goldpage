@@ -2,9 +2,12 @@ import React from 'react';
 
 const CharacterList = ({characters}) => {
     const content = (
-        characters === null ? (
+        characters === null && (
             <div>You are offline. Can't retrieve list of characters.</div>
-        ) : (
+        ) ||
+        characters.constructor===String && (
+            <div>{characters}</div>
+        ) || (
             <div>
                 List of characters loaded from remote server.
                 <ul>
