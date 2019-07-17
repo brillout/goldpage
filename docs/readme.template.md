@@ -645,7 +645,7 @@ module.exports = {
   renderToHtml: require.resolve('./path/to/your/renderToHtml'),
   renderToDom: require.resolve('./path/to/your/renderToDom'),
 
-  // Make `ssr-coin` log to the console only for errors.
+  // Make `ssr-coin` silent in the terminal (but it will still prints errors).
   silent: true,
 };
 ~~~

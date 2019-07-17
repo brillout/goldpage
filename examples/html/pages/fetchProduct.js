@@ -4,6 +4,7 @@ async function fetchProduct(productId) {
   // Simulate network request
   await sleep(0.5);
   const product = {
+    productId,
     name: 'Super vacuum cleaner',
     description: 'This the newest vacuum cleaner model from Prometheus Corp.',
   };

@@ -4,6 +4,7 @@ import fetchProduct from './fetchProduct';
 import getHtmlOptions from './getHtmlOptions';
 // Definition of `assert_initialProps` is shown below.
 import assert_initialProps from './assert_initialProps';
+import Product from './Product';
 
 export default getPageConfig();
 

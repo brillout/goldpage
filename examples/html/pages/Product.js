@@ -1,17 +1,14 @@
-import React from 'react;
+import React from 'react';
+import assert_initialProps from './assert_initialProps';
 
 export default Product;
 
-function Product(initialProps) {
-  assert_initialProps(initialProps);
-
-  const {product} = initialProps;
-
+function Product({product}) {
   return (
     <div>
-      Product id: <b>{initialProps.productId}</b><br/>
-      Product name: <b>{initialProps.product.name}</b><br/>
-      Product description: <b>{initialProps.product.description}</b><br/>
+      Product id: <b>{product.productId}</b><br/>
+      Product name: <b>{product.name}</b><br/>
+      Product description: <b>{product.description}</b><br/>
     </div>
   );
 }
