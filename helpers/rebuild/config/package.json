@@ -19,7 +19,7 @@
     "parent-module": "^1.0.1",
     "reassert": "^1.1.12",
     "style-loader": "^0.23.1",
-    "webpack": "^4.30.0"
+    "webpack": "^4.36.1"
   },
   "checkDeps": {
     "skip": [
