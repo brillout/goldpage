@@ -118,11 +118,13 @@ function create_ssr() {
   }
 
   function autobuild() {
+    /*
     process.nextTick(() => {
       if( isDev() && !config.ssrCoin.buildStarted && !process.env.ALREADY_BUILT ){
         build();
       }
     });
+    */
   }
 
   async function build() {

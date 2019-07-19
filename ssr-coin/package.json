@@ -6,12 +6,12 @@
   "dependencies": {
     "@brillout/autoload": "0.3.2",
     "@brillout/project-files": "^0.4.0",
+    "@brillout/reassert": "^0.1.1",
     "@brillout/reconfig": "0.3.2",
     "@ssr-coin/core": "0.3.2",
     "@ssr-coin/browser": "0.3.2",
     "@ssr-coin/server": "0.3.2",
-    "kill-port": "^1.5.1",
-    "reassert": "^1.1.21"
+    "kill-port": "^1.5.1"
   },
   "repository": "github:reframejs/ssr-coin"
 }
