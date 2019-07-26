@@ -118,16 +118,8 @@ and works with:
 <br/>
 :sparkles:&nbsp; <b>Easy</b>
 
-You need only couple of lines to add `ssr-coin` to your app.
-
-We design `ssr-coin` with a meticulous focus on ease of use, for example:
-- **We fully take care of building**. SSR and build are tightly connected and we fully take care of building to make things easy for you. We believe that build should just work and that you shouldn't have to fiddle with it. You want to use TypeScript? Install the `@ssr-coin/typescript` plugin and you can now write browser code as well as Node.js code with TypeScript.
-- We allow you to fully **control how your pages are rendered**, so that you can easily add any provider you want such as React Router, GraphQL, Redux, ...
-- We provide a `ssr-coin` server **middlware for Express, Koa, and Hapi** that fully takes care of serving your pages.
-- The `ssr-coin.config.js` is optional and has only couple of options &mdash; the less you configure, the easier your life. We believe in the **zero-config** philosophy.
-
-With minimal configuration yet maximum flexibility,
-we believe `ssr-coin` to be the easiest SSR solution out there.
+We designed `ssr-coin` with minimal configuration yet maximum flexibility,
+leading to, what we believe, to be the easiest SSR solution out there.
 
 <br/>
 :battery:&nbsp; <b>Batteries included</b>
