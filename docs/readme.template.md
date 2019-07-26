@@ -118,13 +118,14 @@ and works with:
 <br/>
 :sparkles:&nbsp; <b>Easy</b>
 
-We designed `ssr-coin` with minimal configuration yet maximum flexibility,
-leading to, what we believe, to be the easiest SSR solution out there.
+We designed `ssr-coin` to be highly flexible with minimal configuration
+resulting into, what we believe, the easiest SSR solution out there.
 
 <br/>
 :battery:&nbsp; <b>Batteries included</b>
 
-`ssr-coin` comes with lots of features, such as:
+`ssr-coin` comes with lots of features.
+Such as:
 - Browser auto-reload
 - Server auto-reload
 - Fully controllable rendering
@@ -135,19 +136,19 @@ leading to, what we believe, to be the easiest SSR solution out there.
 :zap:&nbsp; <b>Blazing Fast Mobile Pages</b>
 
 With the page config
-`doNotRenderInBrowser` you can control whether a page is loaded & rendered in the browser.
+`doNotRenderInBrowser` you control whether a page is loaded & rendered in the browser.
 When setting `doNotRenderInBrowser: true`, the page has no (or very little) browser-side JavaScript.
 Removing browser-side JavaScript makes your page blazing fast on mobile.
 
 <br/>
 :mountain:&nbsp;&nbsp; <b>Future-proof & Rock-solid</b>
 
-The modular design of `ssr-coin` makes it adaptable to whatever comes next.
-For example,
-`ssr-coin` is view library agnostic allowing it to embrace future view libraries.
+`ssr-coin` takes care of SSR and SSR only
+and is agnostic to the JavaScript ecosystem &mdash;
+it can adopt the libraries of the future
+making it resilient and future-proof.
 
-Being agnostic to the JavaScript ecosystem
-makes `ssr-coin` a resilient tool that will survive a long time and become rock-solid.
+`ssr-coin` will likely survive a long time and eventually become rock-solid.
 
 !INLINE ./snippets/section-footer.md #readme --hide-source-path
 
