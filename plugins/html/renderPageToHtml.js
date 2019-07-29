@@ -11,7 +11,11 @@ async function renderPageToHtml({initialProps}) {
   assert.internal(projectDir);
   let renderToHtml__file;
   try {
-    renderToHtml__file = require.resolve(renderToHtml, {paths: [projectDir]});
+    renderToHtml__file = (
+   // eval('require')
+      require
+      .resolve(renderToHtml, {paths: [projectDir]})
+    );
   } catch (err) {
     assert.usage(
       false,
@@ -25,7 +29,11 @@ async function renderPageToHtml({initialProps}) {
       "  };",
     );
   }
-  const renderToHtml__function = require(renderToHtml__file);
+  const renderToHtml__function = (
+ // eval('require')
+    require
+    (renderToHtml__file)
+  );
   const renderToHtml__value = await renderToHtml__function({
     page: initialProps.__sources.pageConfig,
     CONTAINER_ID,

@@ -1,12 +1,10 @@
 require('@ssr-coin/html');
 
-const webpackBrowserConfig = require('./webpackBrowserConfig');
-const webpackNodejsConfig = require('./webpackNodejsConfig');
+const config = require('@brillout/reconfig');
+
 
 const renderToDom = require.resolve('./renderToDom');
 const renderToHtml = require.resolve('./renderToHtml');
-
-const config = require('@brillout/reconfig');
 
 Object.assign(
   config.ssrCoin,
@@ -16,8 +14,11 @@ Object.assign(
   },
 );
 
+
+const webpackMod = require('./webpackMod');
+
 config.ssrCoin.webpackBrowserConfig = config.ssrCoin.webpackBrowserConfig || [];
-config.ssrCoin.webpackBrowserConfig.push(webpackBrowserConfig);
+config.ssrCoin.webpackBrowserConfig.push(webpackMod);
 
 config.ssrCoin.webpackNodejsConfig = config.ssrCoin.webpackNodejsConfig || [];
-config.ssrCoin.webpackNodejsConfig.push(webpackNodejsConfig);
+config.ssrCoin.webpackNodejsConfig.push(webpackMod);

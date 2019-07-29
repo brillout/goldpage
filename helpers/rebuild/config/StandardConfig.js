@@ -285,11 +285,12 @@ function config_ignore_node_modules() {
     };
 
     function skip_node_modules(context, request, callback) {
-        // Hack because `react-native-web` should be transpiled but isn't
+        // Hack: `react-native-web` should be transpiled but it isn't
         if( request.startsWith('react-native-web') ){
           include();
           return;
         }
+
         /* Attempt to make React Native Web + SSR + CSS work:
         if( request.startsWith('react') || context.includes('node_modules/react') ){
           include();
@@ -297,12 +298,22 @@ function config_ignore_node_modules() {
         }
         */
 
+        // ==HACK==
+        // Not sure what such path mean to webpack:
+        //    -!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../helpers/rebuild/config/fallback-loader.js??ref--2-0!../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./App.vue?vue&type=template&id=7185eed0&scoped=true&
+        // But they need to be included to be able to load `.vue` component files
+        // Following also works: `if( request.includes('/vue-loader/') ){ include(); return; }`
+        if( request.startsWith('!') || request.startsWith('-!') ){
+          include();
+          return;
+        }
+
         // TODO implement a proper solution with require resolve.
         //  - For node_modules:
         //    - https://github.com/browserify/resolve
         //    - https://github.com/nodejs/node/issues/18009
         //  - For pnp??
-        if( ['.', pathModule.sep].includes(request[0]) ){
+        if( ['.', '/', pathModule.sep].includes(request[0]) ){
           include();
         } else {
           skip();

@@ -13,7 +13,11 @@ function loadFile(filename, opts) {
   let fileExport;
   files.forEach(filePath => {
     assert.internal(path.isAbsolute(filePath));
-    fileExport = require(filePath);
+    fileExport = (
+   // eval('require')
+      require
+      (filePath)
+    );
   });
   return {loaded: files, fileExport};
 }
@@ -32,28 +36,19 @@ function loadDependencies() {
   Object.keys(dependencies)
   .forEach(depName => {
     const dep = (
-      /*
-      eval('require')
-      /*/
+   // eval('require')
       require
-      //*/
       .resolve(depName+'/package.json', {paths: [projectDir]})
     );
     const depPackageJson = (
-      /*
-      eval('require')
-      /*/
+   // eval('require')
       require
-      //*/
       (dep)
     );
     if( depPackageJson['@brillout/autoload'] ) {
       loaded.push(depName);
-      /*
-      eval('require')
-      /*/
+   // eval('require')
       require
-      //*/
       (depName);
     }
   });

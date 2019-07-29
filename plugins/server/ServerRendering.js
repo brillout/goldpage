@@ -32,8 +32,16 @@ async function getHtml(requestObject) {
 
     const {pageConfigs} = config.ssrCoin.getBuildInfo();
     const {renderPageToHtml, router: routerFile} = config.ssrCoin;
-    const renderToHtml = require(renderPageToHtml);
-    const router = require(routerFile);
+    const renderToHtml = (
+   // eval('require')
+      require
+      (renderPageToHtml)
+    );
+    const router = (
+   // eval('require')
+      require
+      (routerFile)
+    );
 
     const html = await getPageHtml({pageConfigs, url, renderToHtml, router, requestObject});
     assert_internal(html===null || html.constructor===String, html);

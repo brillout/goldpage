@@ -1,5 +1,5 @@
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
-const assert_internal = require('reassert/internal');
+const assert_internal = require("reassert/internal");
 
 module.exports = CssConfig;
 

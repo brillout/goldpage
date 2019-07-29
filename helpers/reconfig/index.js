@@ -1,4 +1,13 @@
+module.exports = global['@brillout/reconfig'] = global['@brillout/reconfig'] || {};
+
+
+
+/*
 module.exports = {};
+*/
+
+
+
 /*
 const assert = require('reassert');
 
