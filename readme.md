@@ -161,53 +161,14 @@ export default {
 
 **Example**
 
-~~~js
-import React from 'react';
+Example showcasing SSR; the page is:
+ - Interative &mdash; the user can modify the state of a counter.
+ - Server-side rendered &mdash; the content of the page is rendered to HTML, such as "brillout/awesome-react-component".
 
-import getRepositories from './data/getRepositories';
+(This example uses React but `ssr-coin` also supports Vue.js, React Native Web, etc.)
 
-import RepoList from './views/RepoList';
-import Counter from './views/Counter';
-
-// The page config:
-export default {
-  route: '/repos/:username',
-  addInitialProps,
-  view,
-  title,
-};
-
-// `getRepositories(username)` uses the GitHub API
-// to load the repositories of `username`.
-// `addInitialProps` makes `repositories` available
-// to `view`.
-async function addInitialProps({username}) {
-  const repositories = await getRepositories(username);
-  return {repositories};
-}
-
-function view({username, repositories}) {
-  return (
-    <div>
-      Hello <b>{username}</b>,
-
-      <br/><br/>
-      Your repositories are:
-      <RepoList repositories={repositories} />
-
-      <br/><br/>
-      This page is interactive:
-      <Counter/>
-    </div>
-  );
-}
-
-function title({username, repositories}) {
-  return (
-    username+' repositories ('+repositories.length+')'
-  );
-}
-~~~
+<img align="left" src="https://github.com/brillout/ssr-coin/raw/master/docs/ssr-coin_example_code.png" width=410 height=768 style="max-width:100%;"/>
+<img align="left" src="https://github.com/brillout/ssr-coin/raw/master/docs/ssr-coin_example_video.gif" width=336 height=706 style="max-width:100%;"/>
 
 
 <br/>

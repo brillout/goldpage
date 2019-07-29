@@ -86,9 +86,14 @@ export default {
 
 **Example**
 
-~~~js
-!INLINE /examples/basic/pages/repos/repos.page.js --hide-source-path
-~~~
+Example showcasing SSR; the page is:
+ - Interative &mdash; the user can modify the state of a counter.
+ - Server-side rendered &mdash; the content of the page is rendered to HTML, such as "brillout/awesome-react-component".
+
+(This example uses React but `ssr-coin` also supports Vue.js, React Native Web, etc.)
+
+<img align="left" src="https://github.com/brillout/ssr-coin/raw/master/docs/ssr-coin_example_code.png" width=410 height=768 style="max-width:100%;"/>
+<img align="left" src="https://github.com/brillout/ssr-coin/raw/master/docs/ssr-coin_example_video.gif" width=336 height=706 style="max-width:100%;"/>
 
 !INLINE ./snippets/section-footer.md #readme --hide-source-path
 
