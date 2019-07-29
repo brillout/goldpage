@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg width="63.556mm" height="63.556mm" version="1.1" viewBox="0 0 225.19999 225.20002" xmlns="http://www.w3.org/2000/svg" xmlns:cc="http://creativecommons.org/ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+<svg width="198.556mm" height="63.556mm" viewBox="0 0 703.54954 225.20002" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:cc="http://creativecommons.org/ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
 <g transform="translate(-4.4834 -4.1443)">
 <path class="st2" d="m221.48 116.74c0 57.6-46.7 104.4-104.4 104.4-57.6 0-104.4-46.7-104.4-104.4 0-57.6 46.7-104.4 104.4-104.4 57.6 0 104.4 46.7 104.4 104.4" fill="#f7dd5d"/>
 <path class="st3" d="m117.08 229.34c-62.1 0-112.6-50.5-112.6-112.6 0-62.1 50.5-112.6 112.6-112.6 62.1 0 112.6 50.5 112.6 112.6 0 62-50.5 112.6-112.6 112.6m0-211.7c-54.6 0-99 44.4-99 99 0 54.6 44.4 99 99 99 54.6 0 99-44.4 99-99 0-54.6-44.4-99-99-99" fill="#f2b22f"/>
@@ -9,4 +9,32 @@
 <path d="m97.855 142.32c3.7375 1.625 8.775 2.6 14.625 2.6 13 0 21.044-6.7438 21.044-16.331 0-3.575-1.2188-6.5812-3.575-8.9375-3.7375-3.6562-8.125-4.9562-12.269-6.6625-7.475-3.1688-11.375-5.2-11.375-10.644 0-5.9313 4.1438-9.8313 11.05-9.8313 2.8438 0 5.2812 0.56875 7.3125 1.7062l1.2188 1.3812 1.2188 7.7188h4.225v-12.594c-4.7938-1.5438-9.3438-2.275-13.812-2.275-11.538 0-18.769 6.4188-18.769 15.6 0 7.8812 4.7125 10.888 13.731 14.788 8.8562 3.8188 13.569 5.2812 13.569 12.025 0 5.6875-4.3875 9.75-12.269 9.75-3.6563 0-6.7438-0.65-9.1-1.8688l-1.0562-1.3812-0.975-9.3438h-4.7937v14.3z" fill="#f2b22f"/>
 <path d="m52.495 142.32c3.7375 1.625 8.775 2.6 14.625 2.6 13 0 21.044-6.7438 21.044-16.331 0-3.575-1.2188-6.5812-3.575-8.9375-3.7375-3.6562-8.125-4.9562-12.269-6.6625-7.475-3.1688-11.375-5.2-11.375-10.644 0-5.9313 4.1438-9.8313 11.05-9.8313 2.8438 0 5.2812 0.56875 7.3125 1.7062l1.2188 1.3812 1.2188 7.7188h4.225v-12.594c-4.7938-1.5438-9.3438-2.275-13.813-2.275-11.538 0-18.769 6.4188-18.769 15.6 0 7.8812 4.7125 10.888 13.731 14.788 8.8563 3.8188 13.569 5.2812 13.569 12.025 0 5.6875-4.3875 9.75-12.269 9.75-3.6562 0-6.7438-0.65-9.1-1.8688l-1.0562-1.3812-0.975-9.3438h-4.7938v14.3z" fill="#f2b22f"/>
 </g>
+<text
+   style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:115.59630585px;line-height:125%;font-family:'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;-inkscape-font-specification:'Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif, Normal';text-align:start;writing-mode:lr-tb;text-anchor:start;fill:#595959"
+   id="text3387"
+   font-size="100"
+   y="123.53654"
+   x="247.31715"
+   transform="scale(1.0381072,0.96329166)"
+   sodipodi:linespacing="125%">
+  <tspan
+     sodipodi:role="line"
+     id="tspan3524"
+     x="247.31715"
+     y="123.53654">ssr-coin</tspan>
+</text>
+<text
+   style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:45.00032043px;line-height:125%;font-family:'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;-inkscape-font-specification:'Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif, Normal';text-align:start;writing-mode:lr-tb;text-anchor:start;fill:#595959"
+   id="text3387-8"
+   font-size="100"
+   y="185.71858"
+   x="249.33635"
+   transform="scale(1.0381072,0.96329166)"
+   sodipodi:linespacing="125%">
+  <tspan
+     sodipodi:role="line"
+     id="tspan3544"
+     x="249.33635"
+     y="185.71858">Add SSR to your app</tspan>
+</text>
 </svg>
