@@ -165,11 +165,10 @@ Example showcasing SSR; the page is:
  - interactive &mdash; the user can modify the state of a counter.
  - Server-side rendered &mdash; the content of the page is rendered to HTML, such as "brillout/awesome-react-components".
 
-<img src="https://github.com/brillout/ssr-coin/raw/master/docs/ssr-coin_example_code.png" width=410 height=768 style="max-width:100%;"/>
 <img align="right" src="https://github.com/brillout/ssr-coin/raw/master/docs/ssr-coin_example_video.gif" width=336 height=706 style="max-width:100%;"/>
 
 ~~~js
-// We use React but ssr-coin also supports Vue.js, React Native Web, ...
+// We use React but ssr-coin also supports Vue.js, RNW, ...
 import React from 'react';
 
 import getRepositories from './data/getRepositories';
