@@ -87,13 +87,15 @@ export default {
 **Example**
 
 Example showcasing SSR; the page is:
- - Interative &mdash; the user can modify the state of a counter.
+ - interactive &mdash; the user can modify the state of a counter.
  - Server-side rendered &mdash; the content of the page is rendered to HTML, such as "brillout/awesome-react-components".
 
-(This example uses React but `ssr-coin` also supports Vue.js, React Native Web, etc.)
+<img src="https://github.com/brillout/ssr-coin/raw/master/docs/ssr-coin_example_code.png" width=410 height=768 style="max-width:100%;"/>
+<img align="right" src="https://github.com/brillout/ssr-coin/raw/master/docs/ssr-coin_example_video.gif" width=336 height=706 style="max-width:100%;"/>
 
-<img align="left" src="https://github.com/brillout/ssr-coin/raw/master/docs/ssr-coin_example_code.png" width=410 height=768 style="max-width:100%;"/>
-<img src="https://github.com/brillout/ssr-coin/raw/master/docs/ssr-coin_example_video.gif" width=336 height=706 style="max-width:100%;"/>
+~~~js
+!INLINE /examples/basic/pages/repos/repos.page.js --hide-source-path
+~~~
 
 !INLINE ./snippets/section-footer.md #readme --hide-source-path
 
@@ -138,7 +140,7 @@ With the page config
 `doNotRenderInBrowser` you control whether a page is loaded & rendered in the browser.
 By setting `doNotRenderInBrowser: true`, the page has no (or very little) browser-side JavaScript.
 
-For non-interative pages, removing browser-side JavaScript is an effective way to achieve blazing fast performance on mobile.
+For non-interactive pages, removing browser-side JavaScript is an effective way to achieve blazing fast performance on mobile.
 
 <br/>
 :mountain:&nbsp;&nbsp; <b>Future-proof & Rock-solid</b>

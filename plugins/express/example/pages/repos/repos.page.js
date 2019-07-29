@@ -1,3 +1,4 @@
+// We use React but ssr-coin also supports Vue.js, React Native Web, ...
 import React from 'react';
 
 import getRepositories from './data/getRepositories';
@@ -8,9 +9,7 @@ import Counter from './views/Counter';
 // The page config:
 export default {
   route: '/repos/:username',
-  addInitialProps,
-  view,
-  title,
+  addInitialProps, view, title,
 };
 
 // `getRepositories(username)` uses the GitHub API
