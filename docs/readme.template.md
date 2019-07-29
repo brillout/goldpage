@@ -116,13 +116,13 @@ We designed `ssr-coin` to be highly flexible with minimal configuration.
 Resulting into, what we believe to be, the easiest SSR solution out there.
 
 <br/>
-:battery:&nbsp; <b>Batteries included</b>
+:battery:&nbsp; <b>Batteries Included</b>
 
 `ssr-coin` comes with lots of features.
 Such as:
 - Browser auto-reload
 - Server auto-reload
-- Fully controllable rendering (both how and when your pages are rendred, optional)
+- Fully controllable rendering (how & when your pages are rendered)
 - Automatic code splitting
 - Optimal HTTP caching
 
@@ -132,7 +132,8 @@ Such as:
 With the page config
 `doNotRenderInBrowser` you control whether a page is loaded & rendered in the browser.
 By setting `doNotRenderInBrowser: true`, the page has no (or very little) browser-side JavaScript.
-For pages that are non-interative, removing browser-side JavaScript is an effective way to have blazing fast performance on mobile.
+
+For non-interative pages, removing browser-side JavaScript is an effective way to achieve blazing fast performance on mobile.
 
 <br/>
 :mountain:&nbsp;&nbsp; <b>Future-proof & Rock-solid</b>
