@@ -1,4 +1,5 @@
 import React, {useState} from 'react';
+import './style.css';
 
 export default Counter;
 
@@ -6,9 +7,9 @@ function Counter() {
   const [count, setCount] = useState(0);
 
   return (
-    <div style={{marginTop: 12, marginLeft: 22}}>
+    <div id='counter'>
       {' '}
-      <code style={{fontSize: '1.3em', verticalAlign: 'bottom', marginRight: 5, fontWeight: 'bold'}}>{count}</code>
+      <code>{count}</code>
       {' '}
       <button onClick={() => setCount(count + 1)}>
         Click me

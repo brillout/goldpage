@@ -162,7 +162,6 @@ export default {
 **Example**
 
 ~~~js
-// `ssr-coin` also supports other view libraries such as Vue
 import React from 'react';
 
 import getRepositories from './data/getRepositories';
@@ -178,8 +177,10 @@ export default {
   title,
 };
 
-// `getRepositories(username)` loads the GitHub repositories of `username`.
-// `addInitialProps` makes `repositories` available to `view`.
+// `getRepositories(username)` uses the GitHub API
+// to load the repositories of `username`.
+// `addInitialProps` makes `repositories` available
+// to `view`.
 async function addInitialProps({username}) {
   const repositories = await getRepositories(username);
   return {repositories};
@@ -202,7 +203,9 @@ function view({username, repositories}) {
 }
 
 function title({username, repositories}) {
-  return username + ' repositories ('+repositories.length+')';
+  return (
+    username+' repositories ('+repositories.length+')'
+  );
 }
 ~~~
 

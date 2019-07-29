@@ -1,0 +1,15 @@
+ul {
+  margin-bottom: -10px;
+}
+
+#counter {
+  margin-top: 12px;
+  margin-left: 22px;
+}
+
+code {
+  font-size: 1.3em;
+  vertical-align: bottom;
+  margin-right: 5px;
+  font-weight: bold;
+}
