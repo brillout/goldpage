@@ -86,8 +86,8 @@ export default {
 
 **Example**
 
-SSR showcase; the page is:
- - interactive &mdash; the user can modify the state of a counter.
+SSR showcase; the `http://localhost:3000/repos/brillout` page is:
+ - Interactive &mdash; the user can modify the state of a counter.
  - Server-side rendered &mdash; the content of the page is rendered to HTML, such as "brillout/awesome-react-components".
 
 <img align="right" src="https://github.com/brillout/ssr-coin/raw/master/docs/ssr-coin_example_video.gif" width=336 height=706 style="max-width:100%;"/>
