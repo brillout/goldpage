@@ -161,7 +161,7 @@ export default {
 
 **Example**
 
-Example showcasing SSR; the page is:
+SSR showcase; the page is:
  - interactive &mdash; the user can modify the state of a counter.
  - Server-side rendered &mdash; the content of the page is rendered to HTML, such as "brillout/awesome-react-components".
 
