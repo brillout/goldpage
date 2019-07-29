@@ -1,35 +1,42 @@
 // `ssr-coin` also supports other view libraries such as Vue
 import React from 'react';
 
+import getRepositories from './data/getRepositories';
+
 import RepoList from './views/RepoList';
 import Counter from './views/Counter';
-import getUserRepos from './data/getUserRepos';
 
+// The page config:
 export default {
   route: '/repos/:username',
-  view,
   addInitialProps,
-  title: ({username}) => 'Repos of '+username,
+  view,
+  title,
 };
 
-// We load the list of pinned repos and we use `addInitialProps` to make it
-// available to our React components.
+// `getRepositories(username)` loads the GitHub repositories of `username`.
+// `addInitialProps` makes `repositories` available to `view`.
 async function addInitialProps({username}) {
-  const repositories = await getUserRepos(username);
+  const repositories = await getRepositories(username);
   return {repositories};
 }
 
 function view({username, repositories}) {
   return (
     <div>
-      Hi <b>{username}</b>,
-      welcome to <code>ssr-coin</code>.
+      Hello <b>{username}</b>,
+
       <br/><br/>
-      Interactive counter:
-      <Counter/>
-      <br/>
-      Your repos:
+      Your repositories are:
       <RepoList repositories={repositories} />
+
+      <br/><br/>
+      This page is interactive:
+      <Counter/>
     </div>
   );
+}
+
+function title({username, repositories}) {
+  return username + ' repositories ('+repositories.length+')';
 }

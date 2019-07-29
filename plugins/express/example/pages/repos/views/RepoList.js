@@ -10,15 +10,19 @@ function RepoList({repositories}) {
     return <Err msg="You have no repositories"/>;
   }
   return (
-    <ul>{
-      repositories
+    <ul style={{marginBottom: -10}}>
+      { repositories
       .sort((repo1, repo2) => repo2.stargazers_count - repo1.stargazers_count)
       .map(({full_name, description}) => (
         <li key={full_name}>
-          <b>{full_name}</b> - <span>{description}</span>
+          {full_name}
+          {/*
+          <b>{full_name}</b><span>{' - '+description}</span>
+          */}
         </li>
-      ))
-    }</ul>
+      )) }
+      {repositories.length===10 && <li>...</li>}
+    </ul>
   );
 }
 

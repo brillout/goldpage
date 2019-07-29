@@ -84,16 +84,10 @@ export default {
 };
 ~~~
 
-You can easily add `ssr-coin` to an existing Node.js server:
+**Example**
 
 ~~~js
-!INLINE /examples/express/server.js
-~~~
-
-Example:
-
-~~~js
-!INLINE /examples/basic/pages/repos/repos.page.js
+!INLINE /examples/basic/pages/repos/repos.page.js --hide-source-path
 ~~~
 
 !INLINE ./snippets/section-footer.md #readme --hide-source-path
@@ -118,8 +112,8 @@ and works with:
 <br/>
 :sparkles:&nbsp; <b>Easy</b>
 
-We designed `ssr-coin` to be highly flexible with minimal configuration
-resulting into, what we believe to be, the easiest SSR solution out there.
+We designed `ssr-coin` to be highly flexible with minimal configuration.
+Resulting into, what we believe to be, the easiest SSR solution out there.
 
 <br/>
 :battery:&nbsp; <b>Batteries included</b>
@@ -145,7 +139,7 @@ For pages that are non-interative, removing browser-side JavaScript is an effect
 
 `ssr-coin` takes care of SSR and SSR only &mdash;
 it is agnostic to the JavaScript ecosystem
-and can adopt the libraries of the future.
+and can easily adopt the libraries of the future.
 This makes it resilient and future-proof.
 
 `ssr-coin` will likely survive a long time and will eventually become rock-solid.
