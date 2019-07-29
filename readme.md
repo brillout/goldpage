@@ -109,7 +109,7 @@ Basics
 </sub>
 <br/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a href=#css--static-assets>CSS & Static Assets</a>
 <br/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a href=#async-data-addinitialprops>Async Data: `addInitialProps`</a>
-<br/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a href=#html-meta-tags-indexhtml-title-meta-link->HTML Meta Tags: `index.html`, `<title/>`, `<meta/>`, `<link/>`, ...</a>
+<br/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a href=#html-indexhtml-head-meta-link->HTML: `index.html`, `<head>`, `<meta>`, `<link>`, ...</a>
 <br/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a href=#control-rendering>Control Rendering</a>
 <br/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a href=#server-side-transpilation--server-side-autoreload>Server-Side Transpilation & Server-side Autoreload</a>
 <br/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a href=#performance-donotrenderinbrowser--renderhtmlatbuildtime>Performance: `doNotRenderInBrowser` & `renderHtmlAtBuildTime`</a>
@@ -127,10 +127,10 @@ API Reference
 Recipes
 </sub>
 <br/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a href=#providers-redux--react-router--graphql-apollo--relay-->Providers: Redux / React Router / GraphQL Apollo / Relay / ...</a>
-<br/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a href=#control-transpilation-babel--typescript---es6-->Control Transpilation: Babel / TypeScript /  ES6 / ...</a>
+<br/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a href=#transpilation-babel--typescript---es6-->Transpilation: Babel / TypeScript /  ES6 / ...</a>
 <br/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a href=#css-in-js-emotion--styled-components-->CSS-in-JS: Emotion / styled-components / ...</a>
 <br/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a href=#css-pre-processors-postcss--sass--less-->CSS pre-processors: PostCSS / Sass / Less / ...</a>
-<br/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a href=#control-routing-server-side-routing--browser-side-routing--react-router-->Control Routing: Server-side Routing / Browser-side Routing / React Router / ...</a>
+<br/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a href=#routing-server-side-routing--browser-side-routing--react-router-->Routing: Server-side Routing / Browser-side Routing / React Router / ...</a>
 <br/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a href=#frontend-libraries-google-analytics--jquery--bootstrap--semantic-ui-->Frontend Libraries: Google Analytics / jQuery / Bootstrap / Semantic UI / ...</a>
 <br/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a href=#server-frameworks-express--koa--hapi--fastify-->Server Frameworks: Express / Koa / Hapi / Fastify / ...</a>
 <br/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a href=#view-libraries-react--vue--preact-->View Libraries: React / Vue / Preact / ...</a>
@@ -159,61 +159,50 @@ export default {
 };
 ~~~
 
-You can easily add `ssr-coin` to an existing Node.js server:
+**Example**
 
 ~~~js
-// /examples/express/server.js
-
-const express = require('express');
-const ssr = require('ssr-coin');
-
-const app = express();
-
-// ssr-coin also has middlewares for Koa, Hapi, etc.
-app.use(ssr.express);
-
-app.listen(3000, () => {console.log('Server is running')});
-~~~
-
-Example:
-
-~~~js
-// /examples/basic/pages/repos/repos.page.js
-
 // `ssr-coin` also supports other view libraries such as Vue
 import React from 'react';
 
+import getRepositories from './data/getRepositories';
+
 import RepoList from './views/RepoList';
 import Counter from './views/Counter';
-import getUserRepos from './data/getUserRepos';
 
+// The page config:
 export default {
   route: '/repos/:username',
-  view,
   addInitialProps,
-  title: ({username}) => 'Repos of '+username,
+  view,
+  title,
 };
 
-// We load the list of pinned repos and we use `addInitialProps` to make it
-// available to our React components.
+// `getRepositories(username)` loads the GitHub repositories of `username`.
+// `addInitialProps` makes `repositories` available to `view`.
 async function addInitialProps({username}) {
-  const repositories = await getUserRepos(username);
+  const repositories = await getRepositories(username);
   return {repositories};
 }
 
 function view({username, repositories}) {
   return (
     <div>
-      Hi <b>{username}</b>,
-      welcome to <code>ssr-coin</code>.
+      Hello <b>{username}</b>,
+
       <br/><br/>
-      Interactive counter:
-      <Counter/>
-      <br/>
-      Your repos:
+      Your repositories are:
       <RepoList repositories={repositories} />
+
+      <br/><br/>
+      This page is interactive:
+      <Counter/>
     </div>
   );
+}
+
+function title({username, repositories}) {
+  return username + ' repositories ('+repositories.length+')';
 }
 ~~~
 
@@ -250,48 +239,50 @@ We enjoy talking with our users :-).
 <br/>
 :dove:&nbsp;&nbsp; <b>Freedom</b>
 
-`ssr-coin` takes care of SSR and SSR only:
-the rest of your stack is entirely up to you and you can use:
-- Any view libray: React, Vue, React Native Web, ...
-- Any server framework: Express, Koa, Hapi, ...
-- Any language: ES7, TypeScript, PostCSS, ...
-- Any provider: Redux, GraphQL Apollo, Relay, ...
-- Any process manager: Docker, systemd, PM2, ...
+`ssr-coin` takes care of SSR and SSR only &mdash;
+it is unopinionated about the rest of your stack
+and works with:
+- any view libray: React, Vue, React Native Web, ...
+- any server framework: Express, Koa, Hapi, ...
+- any language: ES7, TypeScript, PostCSS, ...
+- any provider: Redux, React Router, GraphQL Apollo, Relay, ...
+- any CSS-in-JS: Emotion, styled-components, ...
+- any process manager: Docker, systemd, PM2, ...
 
 <br/>
 :sparkles:&nbsp; <b>Easy</b>
 
-We designed `ssr-coin` with a strong focus on ease of use.
-Following the zero-config philosophy, we give you a minimal amount of configuration.
+We designed `ssr-coin` to be highly flexible with minimal configuration.
+Resulting into, what we believe to be, the easiest SSR solution out there.
 
 <br/>
 :battery:&nbsp; <b>Batteries included</b>
 
-`ssr-coin` includes
-browser auto-reload,
-server auto-reload,
-automatic code splitting,
-optimal HTTP caching,
-etc.
+`ssr-coin` comes with lots of features.
+Such as:
+- Browser auto-reload
+- Server auto-reload
+- Fully controllable rendering (both how and when your pages are rendred, optional)
+- Automatic code splitting
+- Optimal HTTP caching
 
 <br/>
 :zap:&nbsp; <b>Blazing Fast Mobile Pages</b>
 
-If you set `doNotRenderInBrowser: true` to a page config,
-then the page is rendered to HTML only.
-That way, you can have pages that have no (or very little) browser-side JavaScript.
-
-Browser-side JavaScript is a performance killer on mobile,
-so removing a page's browser-side JavaScript is an effective way to make it blazing fast on mobile.
+With the page config
+`doNotRenderInBrowser` you control whether a page is loaded & rendered in the browser.
+By setting `doNotRenderInBrowser: true`, the page has no (or very little) browser-side JavaScript.
+For pages that are non-interative, removing browser-side JavaScript is an effective way to have blazing fast performance on mobile.
 
 <br/>
 :mountain:&nbsp;&nbsp; <b>Future-proof & Rock-solid</b>
 
-The modular design of `ssr-coin` makes it adaptable to whatever comes next.
-A new view library comes and is better than everything else?
-Cool with us; `ssr-coin` works with any view library.
+`ssr-coin` takes care of SSR and SSR only &mdash;
+it is agnostic to the JavaScript ecosystem
+and can easily adopt the libraries of the future.
+This makes it resilient and future-proof.
 
-Being versatile and focused on SSR only, `ssr-coin` can be used for all kinds of uses cases and will quickly harden and become rock-solid.
+`ssr-coin` will likely survive a long time and will eventually become rock-solid.
 
 
 <br/>
@@ -385,18 +376,21 @@ We enjoy talking with our users :-).
 
 This getting started is about adding `ssr-coin` to an exisiting app.
 
+If you want to create a new app or if you just want to play around with `ssr-coin`,
+then use a [Reframe starter](https://github.com/topics/reframe-starter).
+
 0. Install `ssr-coin`.
 
    ~~~shell
    npm install ssr-coin
    ~~~
 
-   Install a [render plugin](#render-plugins) such as `@ssr-coin/vue` or `@ssr-coin/react`.
+   Install a [render plugin](#render-plugins), such as `@ssr-coin/react`:
    ~~~shell
    npm install @ssr-coin/react
    ~~~
 
-   Install a [server plugin](#server-plugins) such as `@ssr-coin/hapi` or `@ssr/express`.
+   Install a [server plugin](#server-plugins), such as `@ssr-coin/express`:
    ~~~shell
    npm install @ssr-coin/express
    ~~~
@@ -456,9 +450,9 @@ This getting started is about adding `ssr-coin` to an exisiting app.
 
 2. Create your first page.
 
-   Create the `pages/` directory.
+   Create a `pages/` directory.
    ~~~shell
-   cd path/to/your/project/dir/ && mkdir pages/
+   cd path/to/your/project/ && mkdir pages/
    ~~~
 
    Create a file
@@ -466,6 +460,8 @@ This getting started is about adding `ssr-coin` to an exisiting app.
 
    With React:
    ~~~js
+   // pages/hello.page.js
+
    export default {
      route: 'hello/:name',
      view: ({data, name}) => (
@@ -493,13 +489,9 @@ This getting started is about adding `ssr-coin` to an exisiting app.
    With Vue
    </summary>
    ~~~js
-   const Hapi = require('hapi');
-   const ssr = require('ssr-coin');
+   // pages/hello.page.js
 
-   (async ()=>{
-     const server = Hapi.Server();
-     await server.register(ssr.hapi);
-   })();
+   !INLINE /examples/vue/pages/vue-welcome.page.js --hide-source-path
    ~~~
    </details>
 
@@ -614,33 +606,42 @@ We enjoy talking with our users :-).
 You can load and render data by adding a `addInitialProps` function to your page config:
 
 ~~~js
-// /examples/async-data/pages/got/html.page.js
-
 import React from 'react';
-import getCharacters from './data/getCharacters';
-import CharacterList from './views/CharacterList';
+import fetchProduct from './fetchProduct';
+import Product from './Product';
 
 export default {
+  route: '/product/:productId',
+
   // `ssr-coin` calls `addInitialProps()` before rendering `view` to HTML or to the DOM.
   // Everything returned in `addInitialProps()` is passed to the `view`'s prop.
-  addInitialProps: async () => {
-    const characters = await getCharacters();
-    return {characters};
+  addInitialProps: async ({productId}) => {
+    const product = await fetchProduct(productId);
+    return {product};
   },
 
-  // The `characters` returned by our `addInitialProps` is available at `props.characters`
-  view: props => <CharacterList characters={props.characters}/>,
+  // The `product` returned by `addInitialProps` is available to `view`
+  view: initialProps => {
+    const {product} = initialProps;
+    return (
+      <Product product={product}/>
+    );
+  },
 
-  doNotRenderInBrowser: true,
-
-  route: '/html',
+  // The initial props are also available when generating HTML
+  title: initialProps => {
+    const {product, productId} = initialProps;
+    return (
+      product.name+' ('+productId+')'
+    );
+  },
 };
 ~~~
 
 Alternatively, you can fetch data in a stateful component.
-But then your data is rendered only to the DOM (and not to HTML).
+But the page's content is then rendered to the DOM only (and not to HTML).
 
-We further explain the difference between both at:
+We explain the difference between using a stateful component and `addInitialProps` at:
  - [/examples/async-data/](/examples/async-data/)
 
 
@@ -671,7 +672,7 @@ We enjoy talking with our users :-).
 
 
 
-## HTML Meta Tags: `index.html`, `<title/>`, `<meta/>`, `<link/>`, ...
+## HTML: `index.html`, `<head>`, `<meta>`, `<link>`, ...
 
 To set HTML meta tags for all your pages,
 create a `index.html` file somewhere in your project's directory.
@@ -691,27 +692,28 @@ Your `index.html` needs to contain  `!HEAD` and `!BODY`:
 
 To set HTML meta tags of only one page, use the page config:
 ~~~js
-// /examples/html/pages/product.page.js
+// /examples/html/pages/products.page.js
 
 import React from 'react';
 import logoUrl from './logo.png';
 import manifestUrl from './manifest.webmanifest';
 import fetchProduct from './fetchProduct';
+import Product from './Product';
 
 export default {
-  view: () => <h1>Welcome</h1>,
+  view: Product,
 
   // ssr-coin uses the package @brillout/html (https://github.com/brillout/html) to generate HTML.
   // All @brillout/html's options are available over the page config.
 
   // Adds <title>Welcome</title>
-  title: 'Welcome',
+  title: 'Product Page',
 
   // Adds <link rel="shortcut icon" href="/logo.hash_85dcecf7a6ad1f1ae4d590bb3078e4b1.png">
   favicon: logoUrl,
 
   // Adds <meta name="description" content="A welcome page.">
-  description: 'A welcome page.',
+  description: 'Describes a product',
 
   // Adds <script src="https://example.org/awesome-lib.js" type="text/javascript"></script>
   scripts: [
@@ -736,14 +738,14 @@ export default {
     // Make sure that the HTML you inject here is safe and escape all user generated content.
   ],
 
-  // You can generate HTML dynamically.
-  // E.g. to have page meta tags generatetd upon loaded data.
-  route: '/product/:productId',
+  // You can also generate HTML dynamically:
+  route: '/products/:productId',
   addInitialProps: async ({productId}) => {
     const product = await fetchProduct(productId);
     return {product};
   },
   title: ({product, productId}) => product.name+' ('+productId+')',
+  description: ({product}) => product.description,
   head: ({product}) => [
     // Open Graph tags
     '<meta property="og:title" content="'+product.name+'">',
@@ -940,7 +942,7 @@ and your `package.json`'s scripts would be:
 }
 ~~~
 
-Note that `ssr-coin` always transpiles and auto-reloads your views and browser code.
+Note that `ssr-coin` always transpiles and auto-reloads your browser code.
 
 
 <br/>
@@ -1112,6 +1114,7 @@ import fetchProduct from './fetchProduct';
 import getHtmlOptions from './getHtmlOptions';
 // Definition of `assert_initialProps` is shown below.
 import assert_initialProps from './assert_initialProps';
+import Product from './Product';
 
 export default getPageConfig();
 
@@ -1119,7 +1122,7 @@ function getPageConfig() {
   return {
     // The url of the page.
     // The routing is done by `path-to-regexp` (https://github.com/pillarjs/path-to-regexp).
-    route: '/products/:productId',
+    route: '/product-details/:productId',
 
     // Add additional inital props, for example data loaded from an API.
     // `addInitialProps` can be async and `ssr-coin` awaits `addInitialProps` before
@@ -1128,7 +1131,7 @@ function getPageConfig() {
 
     // The content of your page.
     // `view` is rendered by the render plugin you installed.
-    view,
+    view: Product,
 
     // Control when the page is rendered.
     // See section "Performance: `doNotRenderInBrowser` & `renderHtmlAtBuildTime`".
@@ -1147,21 +1150,6 @@ async function addInitialProps(initialProps) {
   const {productId} = initialProps;
   const product = await fetchProduct(productId);
   return {product};
-}
-
-function view(initialProps) {
-  assert_initialProps(initialProps);
-
-  // The props returned by `addInitialProps` are available to `view`.
-  const {product} = initialProps;
-
-  return (
-    <div>
-      Product id: <b>{initialProps.productId}</b><br/>
-      Product name: <b>{initialProps.product.name}</b><br/>
-      Product description: <b>{initialProps.product.description}</b><br/>
-    </div>
-  );
 }
 ~~~
 
@@ -1416,7 +1404,7 @@ module.exports = {
   renderToHtml: require.resolve('./path/to/your/renderToHtml'),
   renderToDom: require.resolve('./path/to/your/renderToDom'),
 
-  // Make `ssr-coin` log to the console only for errors.
+  // Make `ssr-coin` silent in the terminal (but it will still prints errors).
   silent: true,
 };
 ~~~
@@ -1560,7 +1548,7 @@ We enjoy talking with our users :-).
 <br/>
 
 
-## Control Transpilation: Babel / TypeScript /  ES6 / ...
+## Transpilation: Babel / TypeScript /  ES6 / ...
 
 You can configure Babel and the JavaScript transpilation by creating a `.babelrc` file.
 See [/examples/babel](/examples/babel) for an example of configuring babel.
@@ -1659,7 +1647,7 @@ If there is a [transpilation plugin](#transpilation-plugins) for the CSS pre-pro
 then simply use it.
 
 If there isn't one,
-then see [controlling transpilation](#control-transpilation-babel--typescript---es6--).
+then see [controlling transpilation](#transpilation-babel--typescript---es6--).
 
 Example:
  - [/examples/postcss](/examples/postcss)
@@ -1692,7 +1680,7 @@ We enjoy talking with our users :-).
 
 
 
-## Control Routing: Server-side Routing / Browser-side Routing / React Router / ...
+## Routing: Server-side Routing / Browser-side Routing / React Router / ...
 
 On the web, there are two ways to do routing:
 *server-side routing*
@@ -1827,7 +1815,7 @@ We enjoy talking with our users :-).
 
 ## Frontend Libraries: Google Analytics / jQuery / Bootstrap / Semantic UI / ...
 
-To load a frontend library that is hosted on a cdn, add `<script>`/`<style>` tags to your HTML, see <a href=#html-meta-tags-indexhtml-title-meta-link->HTML Meta Tags: `index.html`, `<title/>`, `<meta/>`, `<link/>`, ...</a>.
+To load a frontend library that is hosted on a cdn, add `<script>`/`<style>` tags to your HTML, see <a href=#html-indexhtml-head-meta-link->HTML: `index.html`, `<head>`, `<meta>`, `<link>`, ...</a>.
 
 To load a frontend library that is saved on disk, use a file that is loaded by all your pages:
 

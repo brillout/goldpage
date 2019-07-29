@@ -99,14 +99,11 @@ the `view` property of your page configs is now rendered with Vue.
 // ./example/pages/vue-welcome.page.js
 
 import Vue from 'vue';
-
-const app = new Vue({
-    render: createElement => createElement('div', 'Hello from Vue'),
-});
+import App from './App.vue';
 
 export default {
-    route: '/',
-    view: app,
+  route: '/',
+  view: App,
 };
 ~~~
 

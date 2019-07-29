@@ -14,7 +14,7 @@
 
 !VAR CSS_AND_ASSETS CSS & Static Assets
 !VAR ASYNC_DATA Async Data: `addInitialProps`
-!VAR CONTROL_HTML HTML: `index.html`, `<title/>`, `<meta/>`, `<link/>`, ...
+!VAR CONTROL_HTML HTML: `index.html`, `<head>`, `<meta>`, `<link>`, ...
 !VAR CONTROL_RENDERING Control Rendering
 !VAR SERVER_SIDE Server-Side Transpilation & Server-side Autoreload
 !VAR PERFORMANCE_TUNING Performance: `doNotRenderInBrowser` & `renderHtmlAtBuildTime`
