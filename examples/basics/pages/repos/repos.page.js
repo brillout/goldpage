@@ -9,7 +9,9 @@ import Counter from './views/Counter';
 // The page config:
 export default {
   route: '/repos/:username',
-  addInitialProps, view, title,
+  addInitialProps,
+  view: Repos,
+  title,
 };
 
 // `getRepositories(username)` uses the GitHub API
@@ -21,7 +23,7 @@ async function addInitialProps({username}) {
   return {repositories};
 }
 
-function view({username, repositories}) {
+function Repos({username, repositories}) {
   return (
     <div>
       Hello <b>{username}</b>,

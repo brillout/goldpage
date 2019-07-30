@@ -7,7 +7,7 @@
   },
   "devDependencies": {
     "@brillout/check-deps": "^0.1.5",
-    "@brillout/mdocs": "^0.1.26"
+    "@brillout/mdocs": "^0.1.30"
   },
   "workspaces": [
     "examples/frontend-libraries",

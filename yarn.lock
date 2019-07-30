@@ -816,10 +816,10 @@
     "@brillout/project-files" "^0.4.0"
     "@brillout/reassert" "^0.1.1"
 
-"@brillout/mdocs@^0.1.26":
-  version "0.1.29"
-  resolved "https://registry.yarnpkg.com/@brillout/mdocs/-/mdocs-0.1.29.tgz#93a2924831c4e57c0537a4681daebd9a2971ca18"
-  integrity sha512-y7+I5vu1RkJRKOOqVGlNGMLiOhjjYfF5Hbga0N6sUtO8NLthC3gdKiMxJ2+FvtsgW//DOkQWd6MT3Dws1HvE5A==
+"@brillout/mdocs@^0.1.30":
+  version "0.1.30"
+  resolved "https://registry.yarnpkg.com/@brillout/mdocs/-/mdocs-0.1.30.tgz#50406924333513fa7bdff3a46354246ca3307644"
+  integrity sha512-oP5cSb0xJaEO1T8ScjIrL/hVhFycUDHCzt0MNP7Ube8RMk2lvyV28TEmsAhTXvTWJaUY5ohrPrbrIvWG9slg0A==
   dependencies:
     "@brillout/find-package-files" "^0.1.0"
     "@brillout/reassert" "^0.1.1"

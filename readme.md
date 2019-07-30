@@ -171,7 +171,9 @@ import Counter from './views/Counter';
 // The page config:
 export default {
   route: '/repos/:username',
-  addInitialProps, view, title,
+  addInitialProps,
+  view: Repos,
+  title,
 };
 
 // `getRepositories(username)` uses the GitHub API
@@ -183,7 +185,7 @@ async function addInitialProps({username}) {
   return {repositories};
 }
 
-function view({username, repositories}) {
+function Repos({username, repositories}) {
   return (
     <div>
       Hello <b>{username}</b>,
@@ -463,20 +465,39 @@ then use a [Reframe starter](https://github.com/topics/reframe-starter).
    ~~~js
    // pages/hello.page.js
 
+   import React, {useState} from 'react';
+
    export default {
-     route: 'hello/:name',
-     view: ({data, name}) => (
-       <div>
-         Your name: <span>{name}</span><br/>
-         Loaded data: <span>{data}</span>
-       </div>
-     ),
-     tittle: ({name}) => 'Hi '+name,
-     addInitialProps: async () => {
-       await sleep(0.3);
-       return {data: "This is some async data;"};
-     },
+     route: '/hello/:name',
+     addInitialProps,
+     view: Hello,
+     title,
    };
+
+   async function addInitialProps({name}) {
+     // We simulate a network request delay
+     await sleep(0.5);
+
+     const nameReverse = name.split('').reverse().join('');
+     return {nameReverse};
+   }
+
+   function Hello({name, nameReverse}) {
+     const [isReversed, setReverse] = useState(false);
+
+     return (
+       <div>
+         Hello <span>{isReversed ? nameReverse : name}</span>, welcome to ssr-coin.
+         <br/>
+         <button onClick={() => setReverse(!isReversed)}>Reverse name</button>
+       </div>
+     );
+   }
+
+   function title({name}) {
+     return 'Hi '+name;
+   }
+
    function sleep(seconds) {
      let resolve;
      const p = new Promise(r => resolve=r);
@@ -492,7 +513,13 @@ then use a [Reframe starter](https://github.com/topics/reframe-starter).
    ~~~js
    // pages/hello.page.js
 
-   !INLINE /examples/vue/pages/vue-welcome.page.js --hide-source-path
+   import Vue from 'vue';
+   import App from './App.vue';
+
+   export default {
+     route: '/',
+     view: App,
+   };
    ~~~
    </details>
 

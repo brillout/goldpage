@@ -279,28 +279,7 @@ then use a [Reframe starter](https://github.com/topics/reframe-starter).
 
    With React:
    ~~~js
-   // pages/hello.page.js
-
-   export default {
-     route: 'hello/:name',
-     view: ({data, name}) => (
-       <div>
-         Your name: <span>{name}</span><br/>
-         Loaded data: <span>{data}</span>
-       </div>
-     ),
-     tittle: ({name}) => 'Hi '+name,
-     addInitialProps: async () => {
-       await sleep(0.3);
-       return {data: "This is some async data;"};
-     },
-   };
-   function sleep(seconds) {
-     let resolve;
-     const p = new Promise(r => resolve=r);
-     setTimeout(resolve, seconds*1000);
-     return p;
-   }
+   !INLINE /examples/basics/pages/hello.page.js --hide-source-path
    ~~~
 
    <details>
