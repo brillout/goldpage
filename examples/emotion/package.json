@@ -3,7 +3,10 @@
   "private": true,
   "version": "0.3.2",
   "scripts": {
-    "dev": "ssr-coin dev ./server.js"
+    "dev": "ssr-coin dev ./server.js",
+    "build": "ssr-coin build ./server.js",
+    "prod": "npm run build && npm run start",
+    "start": "export NODE_ENV='production' && node ./.build/nodejs/server"
   },
   "dependencies": {
     "@emotion/core": "^10.0.10",

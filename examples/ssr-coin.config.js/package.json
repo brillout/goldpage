@@ -4,11 +4,10 @@
   "version": "0.3.2",
   "main": "dev.js",
   "scripts": {
-    "dev": "ssr-coin dev ./server.js"
-  },
-  "scripts-new": {
-    "dev": "ssr-coin && node .build/server",
-    "build": "export NODE_ENV='production' && ssr-coin"
+    "dev": "ssr-coin dev ./server.js",
+    "build": "ssr-coin build ./server.js",
+    "prod": "npm run build && npm run start",
+    "start": "export NODE_ENV='production' && node ./.build/nodejs/server"
   },
   "dependencies": {
     "@ssr-coin/react": "0.3.2",
