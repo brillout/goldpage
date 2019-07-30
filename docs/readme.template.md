@@ -288,6 +288,7 @@ then use a [Reframe starter](https://github.com/topics/reframe-starter).
    <summary>
    With Vue
    </summary>
+
    ~~~js
    // pages/hello.page.js
 
