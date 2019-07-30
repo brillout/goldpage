@@ -1,11 +1,10 @@
-const Vue = require('vue');
+import Vue from 'vue';
+import getVueInstance from './getVueInstance';
 
-module.exports = renderToDom;
+export default renderToDom;
 
 async function renderToDom({page, initialProps, CONTAINER_ID}) {
-  const vm = new Vue({
-    render: createElement => createElement(page.view, {props: initialProps}),
-  });
+  const vm = getVueInstance(page.view, initialProps);
 
   vm.$mount('#'+CONTAINER_ID);
 }

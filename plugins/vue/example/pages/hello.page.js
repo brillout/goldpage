@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import Hello from './Hello.vue';
 
 export default {
   route: '/hello/:name',
@@ -13,18 +13,6 @@ async function addInitialProps({name}) {
 
   const nameReversed = name.split('').reverse().join('');
   return {nameReversed};
-}
-
-function Hello({name, nameReversed}) {
-  const [isReversed, setReverse] = useState(false);
-
-  return (
-    <div>
-      Hello <span>{isReversed ? nameReversed : name}</span>, welcome to ssr-coin.
-      <br/>
-      <button onClick={() => setReverse(!isReversed)}>Reverse name</button>
-    </div>
-  );
 }
 
 function title({name}) {

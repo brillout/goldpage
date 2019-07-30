@@ -279,6 +279,8 @@ then use a [Reframe starter](https://github.com/topics/reframe-starter).
 
    With React:
    ~~~js
+   // pages/hello.page.js
+
    !INLINE /examples/basics/pages/hello.page.js --hide-source-path
    ~~~
 
@@ -289,7 +291,7 @@ then use a [Reframe starter](https://github.com/topics/reframe-starter).
    ~~~js
    // pages/hello.page.js
 
-   !INLINE /examples/vue/pages/vue-welcome.page.js --hide-source-path
+   !INLINE /examples/vue/pages/hello.page.js --hide-source-path
    ~~~
    </details>
 
