@@ -11,49 +11,47 @@ function getBuildInfo({shouldBeProductionBuild}={}) {
     const assetInfos = getAssetInfos({outputDir, shouldBeProductionBuild});
 
     const {pageAssets, ...assetInfos__rest} = assetInfos;
-    const pageConfigs = getPageConfigs({pageAssets});
+    const pages__fullProps = get_pages({pageAssets});
 
-    return {...assetInfos__rest, pageConfigs};
+    return {...assetInfos__rest, pages__fullProps};
 }
 
-function getPageConfigs({pageAssets}) {
-    const pageConfigs = (
-        pageAssets
-        .map(({pageName, pageFile, pageFileTranspiled, pageExport, styles, scripts}) => {
-            const pageConfig = {};
+function get_pages({pageAssets}) {
+  const pages__fullProps = (
+    pageAssets
+    .map(({pageName, pageFile, pageFileTranspiled, pageExport: pageConfig, styles, scripts}) => {
+      const pageFullProps = {
+        ...config.ssrCoin.defaultPageConfig,
+        ...pageConfig,
+        pageName,
+        pageFile,
+        pageFileTranspiled,
+        pageConfig,
+      };
 
-            Object.assign(
-                pageConfig,
-                config.ssrCoin.defaultPageConfig,
-                pageExport,
-            );
+      Object.assign(
+        pageFullProps,
+        {
+          scripts: (
+            makeUnique([
+              ...(scripts||[]),
+              ...(pageFullProps.scripts||[]),
+            ])
+          ),
+          styles: (
+            makeUnique([
+              ...(styles||[]),
+              ...(pageFullProps.styles||[])
+            ])
+          ),
+        }
+      );
 
-            Object.assign(
-                pageConfig,
-                {
-                    scripts: (
-                        makeUnique([
-                            ...(scripts||[]),
-                            ...(pageConfig.scripts||[]),
-                        ])
-                    ),
-                    styles: (
-                        makeUnique([
-                            ...(styles||[]),
-                            ...(pageConfig.styles||[])
-                        ])
-                    ),
-                    pageName,
-                    pageFile,
-                    pageFileTranspiled,
-                }
-            );
+      return pageFullProps;
+    })
+  );
 
-            return pageConfig;
-        })
-    );
-
-    return pageConfigs;
+  return pages__fullProps;
 }
 function makeUnique(paths) {
     return [...new Set(paths)];

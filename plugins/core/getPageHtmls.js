@@ -6,7 +6,7 @@ const getStaticPageHtmls = require('@brillout/repage/getStaticPageHtmls');
 module.exports = getPageHtmls;
 
 async function getPageHtmls() {
-    const {pageConfigs} = config.ssrCoin.getBuildInfo();
+    const {pages__fullProps} = config.ssrCoin.getBuildInfo();
 
     const {router: routerFile, renderPageToHtml} = config.ssrCoin;
     assert_usage(renderPageToHtml);
@@ -24,7 +24,7 @@ async function getPageHtmls() {
     assert_usage(renderToHtml);
 
     return (
-        (await getStaticPageHtmls({pageConfigs, router, renderToHtml}))
+        (await getStaticPageHtmls({pageConfigs: pages__fullProps, router, renderToHtml}))
         .map(({url, html}) => {
             assert_internal(html===null || html && html.constructor===String, html);
             assert_internal(url.startsWith('/'));
