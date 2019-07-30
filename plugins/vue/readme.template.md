@@ -20,5 +20,5 @@ the `view` property of your page configs is now rendered with Vue.
 ### Example
 
 ~~~js
-!INLINE ./example/pages/vue-welcome.page.js
+!INLINE ./example/pages/hello.page.js
 ~~~

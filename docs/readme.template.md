@@ -293,6 +293,11 @@ then use a [Reframe starter](https://github.com/topics/reframe-starter).
 
    !INLINE /examples/vue/pages/hello.page.js --hide-source-path
    ~~~
+   ~~~js
+   // pages/Hello.vue
+
+   !INLINE /examples/vue/pages/Hello.vue --hide-source-path
+   ~~~
    </details>
 
 3. Add the `ssr-coin` scripts to your `package.json`:
