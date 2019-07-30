@@ -1,7 +1,7 @@
 require('source-map-support/register');
 
 const config = require('@brillout/reconfig');
-const assert = require('reassert');
+const assert = require('@brillout/reassert');
 const path = require('path');
 const {projectDir, findFiles} = require('@brillout/project-files');
 

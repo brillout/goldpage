@@ -10,8 +10,10 @@
     "@brillout/reconfig": "0.3.2",
     "@ssr-coin/core": "0.3.2",
     "@ssr-coin/browser": "0.3.2",
+    "@ssr-coin/path-to-regexp": "0.3.2",
     "@ssr-coin/server": "0.3.2",
-    "kill-port": "^1.5.1"
+    "@ssr-coin/webpack": "0.3.2",
+    "source-map-support": "^0.5.12"
   },
   "repository": "github:reframejs/ssr-coin"
 }

@@ -2,7 +2,6 @@
   "name": "@brillout/reconfig",
   "version": "0.3.2",
   "dependencies": {
-    "reassert": "^1.1.12"
   },
   "publishConfig": {
     "access": "public"

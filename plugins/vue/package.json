@@ -3,9 +3,9 @@
   "version": "0.3.2",
   "@brillout/autoload": true,
   "dependencies": {
-    "@brillout/reassert": "^0.1.1",
     "@brillout/reconfig": "0.3.2",
     "@ssr-coin/html": "0.3.2",
+    "vue": "^2.6.10",
     "vue-loader": "^15.7.0",
     "vue-server-renderer": "^2.6.10"
   },
