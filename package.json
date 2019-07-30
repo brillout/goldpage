@@ -5,14 +5,17 @@
     "deps": "check-deps",
     "docs": "mdocs",
     "upgrade-deps": "node ./helpers/dev-utils/package-management/dependency-management/upgradeDeps.js",
+
+    "release-prepare": "lerna publish --force-publish=* --npm-tag=next",
+    "release-check": "node ./helpers/dev-utils/package-management/npm-registry/checkIfCorrectlyPublished.js",
+    "release": "npm run release-deploy && npm run release-clean",
+    "release-deploy": "node ./helpers/dev-utils/package-management/npm-registry/setNpmTag.js latest",
+    "release-clean": "node ./helpers/dev-utils/package-management/npm-registry/removeNpmTags.js next",
+
     "release-next": "lerna publish --force-publish=* --npm-tag=next --cd-version=prerelease --preid=next",
     "release-dry-run": "lerna publish --force-publish=* --npm-tag=next --skip-git --skip-npm",
     "release-retry-npm": "lerna publish --force-publish=* --npm-tag=next --skip-git",
-    "release-update-code": "lerna publish --force-publish=* --npm-tag=next --skip-npm",
-    "release": "lerna publish --force-publish=* --npm-tag=next",
-    "release-check": "node ./helpers/dev-utils/package-management/npm-registry/checkIfCorrectlyPublished.js",
-    "release-final": "node ./helpers/dev-utils/package-management/npm-registry/setNpmTag.js latest",
-    "release-clean": "node ./helpers/dev-utils/package-management/npm-registry/removeNpmTags.js next"
+    "release-update-code": "lerna publish --force-publish=* --npm-tag=next --skip-npm"
   },
   "devDependencies": {
     "@brillout/check-deps": "^0.1.5",

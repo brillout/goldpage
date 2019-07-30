@@ -97,6 +97,10 @@ function getExecFunctions({packageDir: cwd}) {
 
             if( ! previewMode ) {
                 const executioner = (sync?execa.sync:execa);
+                // When getting 401 errors:
+                //  - https://github.com/yarnpkg/yarn/issues/4451#issuecomment-331073810
+                //  - https://github.com/yarnpkg/yarn/issues/4451#issuecomment-493426977
+                //  - https://github.com/yarnpkg/yarn/issues/4451
                 const ret = executioner(cmd, cmdArgs, execOpts);
                 if( logOutput ) {
                     if( logCommand ) console.log();
