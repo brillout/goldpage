@@ -96,7 +96,7 @@ the `view` property of your page configs is now rendered with React.
 ### Example
 
 ~~~js
-// /examples/basic/pages/welcome.page.js
+// /examples/basics/pages/welcome.page.js
 
 import React, {useEffect, useState} from 'react';
 

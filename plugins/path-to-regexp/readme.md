@@ -98,7 +98,7 @@ the `route` property of your page configs is now handled by `path-to-regexp`.
 ### Example
 
 ~~~js
-// /examples/basic/pages/welcome.page.js
+// /examples/basics/pages/welcome.page.js
 
 import React, {useEffect, useState} from 'react';
 
