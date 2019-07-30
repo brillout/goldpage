@@ -1,11 +1,11 @@
 {
   "name": "@ssr-coin/react",
-  "version": "0.3.3",
+  "version": "0.3.4",
   "@brillout/autoload": true,
   "dependencies": {
-    "@ssr-coin/html": "0.3.3",
-    "@ssr-coin/render-react": "0.3.3",
-    "@ssr-coin/webpack-react": "0.3.3"
+    "@ssr-coin/html": "0.3.4",
+    "@ssr-coin/render-react": "0.3.4",
+    "@ssr-coin/webpack-react": "0.3.4"
   },
   "publishConfig": {
     "access": "public"

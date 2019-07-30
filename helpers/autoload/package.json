@@ -1,6 +1,6 @@
 {
   "name": "@brillout/autoload",
-  "version": "0.3.3",
+  "version": "0.3.4",
   "dependencies": {
     "@brillout/project-files": "^0.4.0",
     "find-up": "^4.0.0",

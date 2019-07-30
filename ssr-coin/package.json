@@ -1,18 +1,18 @@
 {
   "name": "ssr-coin",
-  "version": "0.3.3",
+  "version": "0.3.4",
   "main": "./ssr.js",
   "bin": "./bin.js",
   "dependencies": {
-    "@brillout/autoload": "0.3.3",
+    "@brillout/autoload": "0.3.4",
     "@brillout/project-files": "^0.4.0",
     "@brillout/reassert": "^0.1.1",
-    "@brillout/reconfig": "0.3.3",
-    "@ssr-coin/browser": "0.3.3",
-    "@ssr-coin/core": "0.3.3",
-    "@ssr-coin/path-to-regexp": "0.3.3",
-    "@ssr-coin/server": "0.3.3",
-    "@ssr-coin/webpack": "0.3.3",
+    "@brillout/reconfig": "0.3.4",
+    "@ssr-coin/browser": "0.3.4",
+    "@ssr-coin/core": "0.3.4",
+    "@ssr-coin/path-to-regexp": "0.3.4",
+    "@ssr-coin/server": "0.3.4",
+    "@ssr-coin/webpack": "0.3.4",
     "source-map-support": "^0.5.12"
   },
   "repository": "github:reframejs/ssr-coin"

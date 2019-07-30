@@ -1,7 +1,7 @@
 {
   "name": "example_frontend-libraries",
   "private": true,
-  "version": "0.3.3",
+  "version": "0.3.4",
   "scripts": {
     "dev": "ssr-coin dev ./server.js",
     "build": "ssr-coin build ./server.js",
@@ -9,11 +9,11 @@
     "start": "export NODE_ENV='production' && node ./.build/nodejs/server"
   },
   "dependencies": {
-    "@ssr-coin/express": "0.3.3",
-    "@ssr-coin/react": "0.3.3",
+    "@ssr-coin/express": "0.3.4",
+    "@ssr-coin/react": "0.3.4",
     "express": "^4.17.1",
     "react": "^16.8.6",
-    "ssr-coin": "0.3.3"
+    "ssr-coin": "0.3.4"
   },
   "checkDeps": {
     "skip": true

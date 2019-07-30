@@ -1,9 +1,9 @@
 {
   "name": "@ssr-coin/postcss",
-  "version": "0.3.3",
+  "version": "0.3.4",
   "@brillout/autoload": true,
   "dependencies": {
-    "@brillout/reconfig": "0.3.3",
+    "@brillout/reconfig": "0.3.4",
     "css-loader": "^2.1.1",
     "mini-css-extract-plugin": "^0.6.0",
     "postcss-loader": "^3.0.0"

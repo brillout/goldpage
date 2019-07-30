@@ -1,9 +1,9 @@
 {
   "name": "@ssr-coin/render-react",
-  "version": "0.3.3",
+  "version": "0.3.4",
   "@brillout/autoload": true,
   "dependencies": {
-    "@brillout/reconfig": "0.3.3",
+    "@brillout/reconfig": "0.3.4",
     "react": "^16.8.6",
     "react-dom": "^16.8.6"
   },
