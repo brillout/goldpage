@@ -116,11 +116,11 @@ API Reference
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 Recipes
 </sub>
-<br/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a href=#providers-redux--react-router--graphql-apollo--relay-->Providers: Redux / React Router / GraphQL Apollo / Relay / ...</a>
+<br/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a href=#providers-redux--react-router--vuex--vue-router--graphql-apollo--relay-->Providers: Redux / React Router / Vuex / Vue Router / GraphQL Apollo / Relay / ...</a>
 <br/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a href=#transpilation-babel--typescript---es6-->Transpilation: Babel / TypeScript /  ES6 / ...</a>
 <br/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a href=#css-in-js-emotion--styled-components-->CSS-in-JS: Emotion / styled-components / ...</a>
 <br/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a href=#css-pre-processors-postcss--sass--less-->CSS pre-processors: PostCSS / Sass / Less / ...</a>
-<br/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a href=#routing-server-side-routing--browser-side-routing--react-router-->Routing: Server-side Routing / Browser-side Routing / React Router / ...</a>
+<br/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a href=#routing-server-side-routing--browser-side-routing--react-router--vue-router-->Routing: Server-side Routing / Browser-side Routing / React Router / Vue Router / ...</a>
 <br/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a href=#frontend-libraries-google-analytics--jquery--bootstrap--semantic-ui-->Frontend Libraries: Google Analytics / jQuery / Bootstrap / Semantic UI / ...</a>
 <br/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a href=#server-frameworks-express--koa--hapi--fastify-->Server Frameworks: Express / Koa / Hapi / Fastify / ...</a>
 <br/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a href=#view-libraries-react--vue--preact-->View Libraries: React / Vue / Preact / ...</a>
@@ -247,7 +247,7 @@ and works with:
 - Any view libray: React, Vue, React Native Web, ...
 - Any server framework: Express, Koa, Hapi, ...
 - Any language: ES7, TypeScript, PostCSS, ...
-- Any provider: Redux, React Router, GraphQL Apollo, Relay, ...
+- Any provider: Redux, React Router, Vuex, Vue Router, GraphQL Apollo, Relay, ...
 - Any CSS-in-JS: Emotion, styled-components, ...
 - Any process manager: Docker, systemd, PM2, ...
 
@@ -1594,7 +1594,7 @@ We enjoy talking with our users :-).
 
 
 
-## Providers: Redux / React Router / GraphQL Apollo / Relay / ...
+## Providers: Redux / React Router / Vuex / Vue Router / GraphQL Apollo / Relay / ...
 
 By controlling the rendering of your pages you can add providers for Redux, GraphQL, etc.
 
@@ -1764,7 +1764,7 @@ We enjoy talking with our users :-).
 
 
 
-## Routing: Server-side Routing / Browser-side Routing / React Router / ...
+## Routing: Server-side Routing / Browser-side Routing / React Router / Vue Router / ...
 
 On the web, there are two ways to do routing:
 *server-side routing*
