@@ -1,7 +1,7 @@
 {
   "name": "example_ssr-coin.config.js",
   "private": true,
-  "version": "0.3.2",
+  "version": "0.3.3",
   "main": "dev.js",
   "scripts": {
     "dev": "ssr-coin dev ./server.js",
@@ -10,11 +10,11 @@
     "start": "export NODE_ENV='production' && node ./.build/nodejs/server"
   },
   "dependencies": {
-    "@ssr-coin/react": "0.3.2",
-    "@ssr-coin/express": "0.3.2",
-    "ssr-coin": "0.3.2",
+    "@ssr-coin/express": "0.3.3",
+    "@ssr-coin/react": "0.3.3",
     "hapi": "^18.1.0",
-    "react": "^16.8.6"
+    "react": "^16.8.6",
+    "ssr-coin": "0.3.3"
   },
   "checkDeps": {
     "skip": true

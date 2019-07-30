@@ -1,11 +1,11 @@
 {
   "name": "@ssr-coin/webpack",
-  "version": "0.3.2",
+  "version": "0.3.3",
   "@brillout/autoload": true,
   "dependencies": {
-    "@brillout/reconfig": "0.3.2",
+    "@brillout/reconfig": "0.3.3",
     "reassert": "^1.1.12",
-    "webpack-ssr": "0.3.2"
+    "webpack-ssr": "0.3.3"
   },
   "publishConfig": {
     "access": "public"

@@ -1,13 +1,13 @@
 {
   "name": "@ssr-coin/typescript",
-  "version": "0.3.2",
+  "version": "0.3.3",
   "@brillout/autoload": true,
   "dependencies": {
     "@babel/plugin-proposal-class-properties": "^7.4.0",
     "@babel/plugin-proposal-decorators": "^7.4.0",
     "@babel/preset-typescript": "^7.3.3",
     "@brillout/project-files": "^0.4.0",
-    "@brillout/reconfig": "0.3.2",
+    "@brillout/reconfig": "0.3.3",
     "find-up": "^3.0.0",
     "fork-ts-checker-webpack-plugin": "^1.1.0",
     "reassert": "^1.1.12",

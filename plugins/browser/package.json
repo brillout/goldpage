@@ -1,11 +1,11 @@
 {
   "name": "@ssr-coin/browser",
-  "version": "0.3.2",
+  "version": "0.3.3",
   "@brillout/autoload": true,
   "dependencies": {
-    "@brillout/browser-config": "0.3.2",
-    "@brillout/reconfig": "0.3.2",
-    "@brillout/repage": "0.3.2"
+    "@brillout/browser-config": "0.3.3",
+    "@brillout/reconfig": "0.3.3",
+    "@brillout/repage": "0.3.3"
   },
   "publishConfig": {
     "access": "public"
