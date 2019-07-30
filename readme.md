@@ -1489,7 +1489,7 @@ Use your `package.json`'s `scripts` instead:
 ~~~json
 {
   "dependencies": {
-    "ssr-coin": "^0.3.2",
+    "ssr-coin": "^0.3.3",
   },
   "scripts": {
     "dev": "ssr-coin dev ./path/to/your/server.js",

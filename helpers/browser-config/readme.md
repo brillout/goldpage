@@ -7,7 +7,7 @@
 
     WARNING, READ THIS.
     This is a computed file. Do not edit.
-    Edit `/helpers/browser-config/readme.template.md` instead.
+    Instead, edit `/helpers/browser-config/readme.template.md` and run `npm run docs` (or `yarn docs`).
 
 
 
@@ -22,7 +22,7 @@
 
     WARNING, READ THIS.
     This is a computed file. Do not edit.
-    Edit `/helpers/browser-config/readme.template.md` instead.
+    Instead, edit `/helpers/browser-config/readme.template.md` and run `npm run docs` (or `yarn docs`).
 
 
 
@@ -37,7 +37,7 @@
 
     WARNING, READ THIS.
     This is a computed file. Do not edit.
-    Edit `/helpers/browser-config/readme.template.md` instead.
+    Instead, edit `/helpers/browser-config/readme.template.md` and run `npm run docs` (or `yarn docs`).
 
 
 
@@ -52,7 +52,7 @@
 
     WARNING, READ THIS.
     This is a computed file. Do not edit.
-    Edit `/helpers/browser-config/readme.template.md` instead.
+    Instead, edit `/helpers/browser-config/readme.template.md` and run `npm run docs` (or `yarn docs`).
 
 
 
@@ -67,7 +67,7 @@
 
     WARNING, READ THIS.
     This is a computed file. Do not edit.
-    Edit `/helpers/browser-config/readme.template.md` instead.
+    Instead, edit `/helpers/browser-config/readme.template.md` and run `npm run docs` (or `yarn docs`).
 
 
 
@@ -83,7 +83,7 @@ A 1-LOC package to have a global configuration object in the browser. (Works in 
 ### Usage
 
 ~~~js
-// /helpers/browser-config/example/config.js
+// ./example/config.js
 
 const browswerConfig = require('@brillout/browser-config'); // npm install @brillout/browser-config
 
@@ -91,7 +91,7 @@ browswerConfig.myNewConfig = 42;
 ~~~
 
 ~~~js
-// /helpers/browser-config/example/run.js
+// ./example/run.js
 
 require('./config');
 
@@ -108,7 +108,7 @@ It's trivial: The package simply exports a plain JavaScript object that acts as 
 The source code is:
 
 ~~~js
-// /helpers/browser-config/index.js
+// ./index.js
 
 module.exports = {};
 ~~~
@@ -122,7 +122,7 @@ module.exports = {};
 
     WARNING, READ THIS.
     This is a computed file. Do not edit.
-    Edit `/helpers/browser-config/readme.template.md` instead.
+    Instead, edit `/helpers/browser-config/readme.template.md` and run `npm run docs` (or `yarn docs`).
 
 
 
@@ -137,7 +137,7 @@ module.exports = {};
 
     WARNING, READ THIS.
     This is a computed file. Do not edit.
-    Edit `/helpers/browser-config/readme.template.md` instead.
+    Instead, edit `/helpers/browser-config/readme.template.md` and run `npm run docs` (or `yarn docs`).
 
 
 
@@ -152,7 +152,7 @@ module.exports = {};
 
     WARNING, READ THIS.
     This is a computed file. Do not edit.
-    Edit `/helpers/browser-config/readme.template.md` instead.
+    Instead, edit `/helpers/browser-config/readme.template.md` and run `npm run docs` (or `yarn docs`).
 
 
 
@@ -167,7 +167,7 @@ module.exports = {};
 
     WARNING, READ THIS.
     This is a computed file. Do not edit.
-    Edit `/helpers/browser-config/readme.template.md` instead.
+    Instead, edit `/helpers/browser-config/readme.template.md` and run `npm run docs` (or `yarn docs`).
 
 
 
@@ -182,7 +182,7 @@ module.exports = {};
 
     WARNING, READ THIS.
     This is a computed file. Do not edit.
-    Edit `/helpers/browser-config/readme.template.md` instead.
+    Instead, edit `/helpers/browser-config/readme.template.md` and run `npm run docs` (or `yarn docs`).
 
 
 
