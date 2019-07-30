@@ -861,7 +861,7 @@ export default renderToDom;
 
 async function renderToDom({page, initialProps, CONTAINER_ID}) {
   ReactDOM.hydrate(
-    <page.view {...initialProps}/>,
+    React.createElement(page.view, initialProps),
     document.getElementById(CONTAINER_ID)
   );
 }
