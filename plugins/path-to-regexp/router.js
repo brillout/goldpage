@@ -17,18 +17,18 @@ const router = {
 
 module.exports = router;
 
-function doesMatchUrl(urlProps, pageFullProps) {
-    assert_pageFullProps(pageFullProps);
-    const match_info = get_match_info(urlProps, pageFullProps);
+function doesMatchUrl(urlProps, pageInfo) {
+    assert_pageInfo(pageInfo);
+    const match_info = get_match_info(urlProps, pageInfo);
     return !!match_info;
     if( ! match_info ) {
         return false;
     }
 }
 
-function getRouteArguments(urlProps, pageFullProps) {
-    const match_info = get_match_info(urlProps, pageFullProps);
-    assert_pageFullProps(pageFullProps);
+function getRouteArguments(urlProps, pageInfo) {
+    const match_info = get_match_info(urlProps, pageInfo);
+    assert_pageInfo(pageInfo);
     if( ! match_info ) {
         return null;
     }
@@ -37,18 +37,18 @@ function getRouteArguments(urlProps, pageFullProps) {
     return match_info.params;
 }
 
-function getRouteUrl(routeArguments, pageFullProps) {
-    assert_pageFullProps(pageFullProps);
+function getRouteUrl(routeArguments, pageInfo) {
+    assert_pageInfo(pageInfo);
     assert.usage(
         routeArguments && routeArguments.constructor===Object && Object.keys(routeArguments).length===0,
         "`getRouteUrl` not supported for parameterized routes."
     );
-    const urlPartial = pageFullProps.route;
+    const urlPartial = pageInfo.route;
     return urlPartial;
 }
 
-function get_match_info(urlProps, pageFullProps) {
-    const route = pageFullProps && pageFullProps.route;
+function get_match_info(urlProps, pageInfo) {
+    const route = pageInfo && pageInfo.route;
     if( ! route ) {
         return null;
     }
@@ -65,24 +65,25 @@ function get_match_info(urlProps, pageFullProps) {
     return matchPath(pathname, options);
 }
 
-function assert_pageFullProps(pageFullProps) {
-  const {pageConfig, pageFile} = pageFullProps;
+function assert_pageInfo(pageInfo) {
+  const pageConfig = pageInfo.pageConfig || pageInfo;
+  const pageConfigPath = pageInfo.pageFile && (' `'+pageInfo.pageFile+'`');
   assert.usage(
     pageConfig.route,
     {pageConfig},
-    "Your page config `"+pageFile+"`is missing a `route`.",
+    "Your page config"+pageConfigPath+" is missing a `route`.",
   );
   assert.usage(
     pageConfig.route.startsWith,
     {pageConfig},
-    "The `route` of your page config `"+pageFile+"` is `"+pageConfig.route+"` but it should be a string.",
+    "The `route` of your page config"+pageConfigPath+" is `"+pageConfig.route+"` but it should be a string.",
   );
   assert.usage(
     pageConfig.route.startsWith('/'),
     {pageConfig},
-    "The `route` of your page config `"+pageFile+"` is `"+pageConfig.route+"` but it should start with a leading `/`, e.g. `/hello/:name`.",
+    "The `route` of your page config"+pageConfigPath+" is `"+pageConfig.route+"` but it should start with a leading `/`, e.g. `/hello/:name`.",
   );
-  assert.internal(pageFullProps.route.startsWith('/'));
+  assert.internal(pageInfo.route.startsWith('/'));
 }
 
 function assert_urlProps(urlProps) {
