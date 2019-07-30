@@ -315,66 +315,6 @@ We enjoy talking with our users :-).
 
 
 
-## Plugins
-
-#### Server Plugins
-
-Server integration plugins.
-
-- [Express](/plugins/express)
-- [Koa](/plugins/koa)
-- [Hapi](/plugins/hapi)
-
-#### Render Plugins
-
-View library integration plugins.
-
-- [React](/plugins/react)
-- [Vue](/plugins/vue)
-- [React Native Web](/plugins/react-native-web)
-
-#### Transpilation Plugins
-
-Transpilation plugins to add languages.
-
-- [TypeScript](/plugins/typescript)
-- [PostCSS](/plugins/postcss)
-
-#### Router Plugins
-
-Plugins to (statically) route your pages.
-
-- [`path-to-regexp`](/plugins/path-to-regexp)
-- [Crossroads](/plugins/crossroads)
-
-
-<br/>
-
-<p align="center">
-
-<sup>
-<a href="https://github.com/reframejs/ssr-coin/issues/new">Open a ticket</a> or
-<a href="https://discord.gg/kqXf65G">chat with us</a>
-if you have questions, feature requests, or if you just want to talk to us.
-</sup>
-
-<sup>
-We enjoy talking with our users :-).
-</sup>
-
-<br/>
-
-<sup>
-<a href="#readme"><b>&#8679;</b> <b>TOP</b> <b>&#8679;</b></a>
-</sup>
-
-</p>
-
-<br/>
-<br/>
-
-
-
 ## Getting Started
 
 This getting started is about adding `ssr-coin` to an exisiting app.
@@ -2113,6 +2053,66 @@ simply run `$ ssr-coin build`
 and copy the directory `.build/browser/`
 (which is the directory that contains the browser assets)
 to your static host.
+
+
+<br/>
+
+<p align="center">
+
+<sup>
+<a href="https://github.com/reframejs/ssr-coin/issues/new">Open a ticket</a> or
+<a href="https://discord.gg/kqXf65G">chat with us</a>
+if you have questions, feature requests, or if you just want to talk to us.
+</sup>
+
+<sup>
+We enjoy talking with our users :-).
+</sup>
+
+<br/>
+
+<sup>
+<a href="#readme"><b>&#8679;</b> <b>TOP</b> <b>&#8679;</b></a>
+</sup>
+
+</p>
+
+<br/>
+<br/>
+
+
+
+## Plugins
+
+#### Server Plugins
+
+Server integration plugins.
+
+- [Express](/plugins/express)
+- [Koa](/plugins/koa)
+- [Hapi](/plugins/hapi)
+
+#### Render Plugins
+
+View library integration plugins.
+
+- [React](/plugins/react)
+- [Vue](/plugins/vue)
+- [React Native Web](/plugins/react-native-web)
+
+#### Transpilation Plugins
+
+Transpilation plugins to add languages.
+
+- [TypeScript](/plugins/typescript)
+- [PostCSS](/plugins/postcss)
+
+#### Router Plugins
+
+Plugins to (statically) route your pages.
+
+- [`path-to-regexp`](/plugins/path-to-regexp)
+- [Crossroads](/plugins/crossroads)
 
 
 <br/>

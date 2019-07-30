@@ -155,42 +155,6 @@ This makes it resilient and future-proof.
 
 
 
-## !VAR PLUGIN_LIST
-
-#### !VAR PLUGINS_SERVER
-
-Server integration plugins.
-
-- [Express](/plugins/express)
-- [Koa](/plugins/koa)
-- [Hapi](/plugins/hapi)
-
-#### !VAR PLUGINS_RENDER
-
-View library integration plugins.
-
-- [React](/plugins/react)
-- [Vue](/plugins/vue)
-- [React Native Web](/plugins/react-native-web)
-
-#### !VAR PLUGINS_TRANSPILATION
-
-Transpilation plugins to add languages.
-
-- [TypeScript](/plugins/typescript)
-- [PostCSS](/plugins/postcss)
-
-#### Router Plugins
-
-Plugins to (statically) route your pages.
-
-- [`path-to-regexp`](/plugins/path-to-regexp)
-- [Crossroads](/plugins/crossroads)
-
-!INLINE ./snippets/section-footer.md #readme --hide-source-path
-
-
-
 ## !VAR GETTING_STARTED
 
 This getting started is about adding `ssr-coin` to an exisiting app.
@@ -913,6 +877,42 @@ simply run `$ ssr-coin build`
 and copy the directory `.build/browser/`
 (which is the directory that contains the browser assets)
 to your static host.
+
+!INLINE ./snippets/section-footer.md #readme --hide-source-path
+
+
+
+## !VAR PLUGIN_LIST
+
+#### !VAR PLUGINS_SERVER
+
+Server integration plugins.
+
+- [Express](/plugins/express)
+- [Koa](/plugins/koa)
+- [Hapi](/plugins/hapi)
+
+#### !VAR PLUGINS_RENDER
+
+View library integration plugins.
+
+- [React](/plugins/react)
+- [Vue](/plugins/vue)
+- [React Native Web](/plugins/react-native-web)
+
+#### !VAR PLUGINS_TRANSPILATION
+
+Transpilation plugins to add languages.
+
+- [TypeScript](/plugins/typescript)
+- [PostCSS](/plugins/postcss)
+
+#### Router Plugins
+
+Plugins to (statically) route your pages.
+
+- [`path-to-regexp`](/plugins/path-to-regexp)
+- [Crossroads](/plugins/crossroads)
 
 !INLINE ./snippets/section-footer.md #readme --hide-source-path
 
