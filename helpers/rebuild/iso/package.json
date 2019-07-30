@@ -1,9 +1,9 @@
 {
   "name": "@rebuild/iso",
-  "version": "0.3.2",
+  "version": "0.1.0",
   "dependencies": {
-    "@rebuild/build": "0.3.2",
-    "@rebuild/serve": "0.3.2",
+    "@rebuild/build": "0.1.0",
+    "@rebuild/serve": "0.1.0",
     "chalk": "^2.4.2",
     "deep-equal": "^1.0.1",
     "reassert": "^1.1.12"

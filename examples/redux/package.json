@@ -1,7 +1,7 @@
 {
   "name": "example_redux",
   "private": true,
-  "version": "0.3.2",
+  "version": "0.1.0",
   "scripts": {
     "dev": "ssr-coin dev ./server.js",
     "build": "ssr-coin build ./server.js",
@@ -9,14 +9,14 @@
     "start": "export NODE_ENV='production' && node ./.build/nodejs/server"
   },
   "dependencies": {
-    "@ssr-coin/express": "0.3.2",
-    "@ssr-coin/react": "0.3.2",
+    "@ssr-coin/express": "0.1.0",
+    "@ssr-coin/react": "0.1.0",
     "express": "^4.17.1",
     "prop-types": "^15.7.2",
     "react": "^16.8.6",
     "react-redux": "^7.1.0",
     "redux": "^4.0.1",
-    "ssr-coin": "0.3.2"
+    "ssr-coin": "0.1.0"
   },
   "checkDeps": {
     "skip": true

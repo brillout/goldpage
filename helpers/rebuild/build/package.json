@@ -1,6 +1,6 @@
 {
   "name": "@rebuild/build",
-  "version": "0.3.2",
+  "version": "0.1.0",
   "dependencies": {
     "@brillout/cli-theme": "0.3.2",
     "@brillout/format-text": "^0.1.0",

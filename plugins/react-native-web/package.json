@@ -1,11 +1,11 @@
 {
   "name": "@ssr-coin/react-native-web",
-  "version": "0.3.2",
+  "version": "0.1.0",
   "@brillout/autoload": true,
   "dependencies": {
-    "@brillout/reconfig": "0.3.2",
-    "@ssr-coin/html": "0.3.2",
-    "@ssr-coin/webpack-react": "0.3.2",
+    "@brillout/reconfig": "0.1.0",
+    "@ssr-coin/html": "0.1.0",
+    "@ssr-coin/webpack-react": "0.1.0",
     "babel-plugin-react-native-web": "^0.11.4",
     "react": "^16.8.6",
     "react-art": "^16.8.6",

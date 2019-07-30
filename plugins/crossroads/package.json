@@ -1,9 +1,9 @@
 {
   "name": "@ssr-coin/crossroads",
-  "version": "0.3.2",
+  "version": "0.1.0",
   "@brillout/autoload": true,
   "dependencies": {
-    "@brillout/reconfig": "0.3.2",
+    "@brillout/reconfig": "0.1.0",
     "crossroads": "^0.12.2",
     "reassert": "^1.1.12"
   },
