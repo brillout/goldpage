@@ -1,10 +1,10 @@
 {
   "name": "@ssr-coin/vue",
-  "version": "0.3.4",
+  "version": "0.4.0",
   "@brillout/autoload": true,
   "dependencies": {
-    "@brillout/reconfig": "0.3.4",
-    "@ssr-coin/html": "0.3.4",
+    "@brillout/reconfig": "0.4.0",
+    "@ssr-coin/html": "0.4.0",
     "vue": "^2.6.10"
   },
   "peerDependencies": {

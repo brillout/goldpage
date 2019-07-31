@@ -1,12 +1,12 @@
 {
   "name": "@ssr-coin/core",
-  "version": "0.3.4",
+  "version": "0.4.0",
   "@brillout/autoload": true,
   "dependencies": {
-    "@brillout/browser-config": "0.3.4",
+    "@brillout/browser-config": "0.4.0",
     "@brillout/reassert": "^0.1.1",
-    "@brillout/reconfig": "0.3.4",
-    "@brillout/repage": "0.3.4",
+    "@brillout/reconfig": "0.4.0",
+    "@brillout/repage": "0.4.0",
     "reassert": "^1.1.12"
   },
   "publishConfig": {

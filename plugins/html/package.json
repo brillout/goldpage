@@ -1,12 +1,12 @@
 {
   "name": "@ssr-coin/html",
-  "version": "0.3.4",
+  "version": "0.4.0",
   "@brillout/autoload": true,
   "dependencies": {
-    "@brillout/browser-config": "0.3.4",
+    "@brillout/browser-config": "0.4.0",
     "@brillout/html": "^0.3.1",
     "@brillout/reassert": "0.0.1",
-    "@brillout/reconfig": "0.3.4"
+    "@brillout/reconfig": "0.4.0"
   },
   "publishConfig": {
     "access": "public"

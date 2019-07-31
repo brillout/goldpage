@@ -1,7 +1,7 @@
 {
   "name": "example_react-native-web",
   "private": true,
-  "version": "0.3.4",
+  "version": "0.4.0",
   "scripts": {
     "dev": "ssr-coin dev ./server.js",
     "build": "ssr-coin build ./server.js",
@@ -9,12 +9,12 @@
     "start": "export NODE_ENV='production' && node ./.build/nodejs/server"
   },
   "dependencies": {
-    "@ssr-coin/express": "0.3.4",
-    "@ssr-coin/react-native-web": "0.3.4",
+    "@ssr-coin/express": "0.4.0",
+    "@ssr-coin/react-native-web": "0.4.0",
     "react": "^16.8.6",
     "react-art": "^16.8.6",
     "react-native-web": "^0.11.4",
-    "ssr-coin": "0.3.4"
+    "ssr-coin": "0.4.0"
   },
   "checkDeps": {
     "skip": true

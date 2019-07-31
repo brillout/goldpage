@@ -1,11 +1,11 @@
 {
   "name": "example_rebuild",
   "private": true,
-  "version": "0.3.4",
+  "version": "0.4.0",
   "dependencies": {
-    "@rebuild/build": "0.3.4",
-    "@rebuild/config": "0.3.4",
-    "@rebuild/serve": "0.3.4",
+    "@rebuild/build": "0.4.0",
+    "@rebuild/config": "0.4.0",
+    "@rebuild/serve": "0.4.0",
     "reassert": "^1.1.12"
   },
   "repository": "github:reframejs/ssr-coin"
