@@ -12,7 +12,8 @@
     "@ssr-coin/express": "0.3.4",
     "@ssr-coin/vue": "0.3.4",
     "ssr-coin": "0.3.4",
-    "vue": "^2.6.10",
+    "vue-loader": "^15.7.0",
+    "vue-server-renderer": "^2.6.10",
     "vue-template-compiler": "^2.6.10"
   },
   "checkDeps": {

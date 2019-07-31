@@ -5,9 +5,12 @@
   "dependencies": {
     "@brillout/reconfig": "0.3.4",
     "@ssr-coin/html": "0.3.4",
-    "vue": "^2.6.10",
-    "vue-loader": "^15.7.0",
-    "vue-server-renderer": "^2.6.10"
+    "vue": "^2.6.10"
+  },
+  "peerDependencies": {
+    "vue": "*",
+    "vue-server-renderer": "*",
+    "vue-template-compiler": "*"
   },
   "publishConfig": {
     "access": "public"

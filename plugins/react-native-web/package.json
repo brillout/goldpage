@@ -6,11 +6,13 @@
     "@brillout/reconfig": "0.3.4",
     "@ssr-coin/html": "0.3.4",
     "@ssr-coin/webpack-react": "0.3.4",
-    "babel-plugin-react-native-web": "^0.11.4",
-    "react": "^16.8.6",
-    "react-art": "^16.8.6",
-    "react-dom": "^16.8.6",
-    "react-native-web": "^0.11.4"
+    "babel-plugin-react-native-web": "^0.11.4"
+  },
+  "peerDependencies": {
+    "react": "*",
+    "react-art": "*",
+    "react-dom": "*",
+    "react-native-web": "*"
   },
   "publishConfig": {
     "access": "public"
