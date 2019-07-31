@@ -13,6 +13,7 @@
     "@ssr-coin/react": "0.3.4",
     "koa": "^2.7.0",
     "react": "^16.8.6",
+    "react-dom": "^16.8.6",
     "ssr-coin": "0.3.4"
   },
   "checkDeps": {
