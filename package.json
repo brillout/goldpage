@@ -69,6 +69,7 @@
     "plugins/react",
     "plugins/render-react",
     "plugins/server",
+    "plugins/static-website",
     "plugins/typescript",
     "plugins/vue/example",
     "plugins/vue",

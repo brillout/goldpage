@@ -2,11 +2,14 @@
 
 const assert = require('@brillout/reassert');
 const path = require('path');
+const config = require('@brillout/reconfig');
+const ssr = require('./ssr');
+
+const USAGE_PATH_ARG = './path/to/server/start.js';
 
 (() => {
   const {isDev, serverEntryFile} = parseArguments();
   if( serverEntryFile ){
-    const ssr = require('./ssr');
     ssr.serverEntryFile = serverEntryFile;
   }
   if( isDev ){
@@ -20,10 +23,14 @@ const path = require('path');
 function parseArguments() {
   let args = process.argv.slice(2);
 
-  assert_usage(
-    args.length===2,
+  assert_cli_usage(
+    args.length===2 || args.length===1
   );
-  assert_usage(
+  assert_cli_usage(
+    args.length===2 || config.ssrCoin.serverEntryFile,
+    "Couldn't not find the server. Please add the server path argument `"+USAGE_PATH_ARG+"`.",
+  );
+  assert_cli_usage(
     ['build', 'dev'].includes(args[0]),
     "Unknown argument `"+args[0]+"`.",
   );
@@ -43,14 +50,14 @@ function parseArguments() {
     try {
       serverEntryFile = require.resolve(serverEntryFile);
     } catch(err) {
-      assert_usage(
+      assert_cli_usage(
         false,
         "Could not find `"+serverEntrySpec+"`.",
       );
     }
   }
 
-  assert_usage(
+  assert_cli_usage(
     args.length===0,
   );
   assert.usage(
@@ -64,7 +71,7 @@ function parseArguments() {
   };
 }
 
-function assert_usage(bool, failureReason) {
+function assert_cli_usage(bool, failureReason) {
   assert.usage(
     bool,
     [
@@ -75,9 +82,9 @@ function assert_usage(bool, failureReason) {
       ),
       'Usage:',
       '  ssr-coin dev',
-      '  ssr-coin dev ./path/to/server/start.js',
+      '  ssr-coin dev '+USAGE_PATH_ARG,
       '  ssr-coin build',
-      '  ssr-coin build ./path/to/server/start.js',
+      '  ssr-coin build '+USAGE_PATH_ARG,
     ]
     .join('\n')
   )

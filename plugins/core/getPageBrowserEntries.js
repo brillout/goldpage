@@ -27,9 +27,10 @@ function getPageBrowserEntries(pageModules) {
 function assert_usage__defaultPageConfig() {
     const configsUsedInBrowser = ['route', 'view', 'addInitialProps'];
     const {defaultPageConfig} = config.ssrCoin;
+    if( !defaultPageConfig ) return;
     configsUsedInBrowser.forEach(prop => {
         assert_usage(
-            !defaultPageConfig || !(prop in defaultPageConfig),
+            !(prop in defaultPageConfig),
             "ssr-coin doesn't support setting a default `"+prop+"` page configuration via `defaultPageConfig`.",
             "Open a GitHub issue if you need to do that."
         );
