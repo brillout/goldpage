@@ -66,11 +66,11 @@
 
 ## !VAR WHAT_SSR_COIN
 
-`ssr-coin` is a do-one-thing-do-it-well library to add [server-side rendering (SSR)](https://github.com/brillout/awesome-universal-rendering#introduction) to your Node.js app.
+`ssr-coin` is a library to add [server-side rendering (SSR)](https://github.com/brillout/awesome-universal-rendering#introduction) to your Node.js app.
+
+It's a do-one-thing-do-it-well library: it takes care of SSR and SSR only &mdash; it leaves the rest to you.
 
 You define so-called page configs
-and `ssr-coin` takes care of the rest:
-it transpiles, bundles, routes, renders, and serves your pages.
 
 ~~~js
 // A page config
@@ -84,11 +84,18 @@ export default {
 };
 ~~~
 
+and `ssr-coin` takes care of SSR:
+- It transpiles & bundles your pages' JavaScript, CSS, and other static assets (with Webpack)
+- It routes your pages (with path-to-regexp)
+- It servers your pages (with server middlewares for Express, Koa, Hapi, ...)
+
+With `ssr-coin`, you can add SSR to your app with only a couple of lines.
+
 **Example**
 
-SSR showcase; the `/repos/brillout` page is:
- - Interactive &mdash; the user can modify the state of a counter.
- - Server-side rendered &mdash; the content of the page is rendered to HTML, such as "brillout/awesome-react-components".
+This the `/repos/brillout` page showcases SSR:
+- The page is interactive &mdash; the user can modify the state of the counter.
+- The page is server-side rendered &mdash; the content of the page is rendered to HTML, such as "brillout/awesome-react-components".
 
 <img align="right" src="https://github.com/reframejs/ssr-coin/raw/master/docs/ssr-coin_example_video.gif" width=336 height=706 style="max-width:100%;"/>
 
