@@ -851,6 +851,8 @@ module.exports = {
 };
 ~~~
 
+With React:
+
 ~~~js
 // render/renderToDom.js
 
@@ -900,6 +902,69 @@ async function renderToHtml({page, initialProps, CONTAINER_ID}) {
 ~~~
 
 This allows you to add providers such as Redux's `<Provider store={store} />` or React Router's `<BrowserRouter />`.
+
+<details>
+<summary>
+With Vue
+</summary>
+
+~~~js
+// render/renderToDom.js
+
+import Vue from 'vue';
+import getVueInstance from './getVueInstance';
+
+export default renderToDom;
+
+async function renderToDom({page, initialProps, CONTAINER_ID}) {
+  const vm = getVueInstance(page.view, initialProps);
+
+  vm.$mount('#'+CONTAINER_ID);
+}
+~~~
+
+~~~js
+// render/renderToHtml.js
+
+const VueServerRenderer = require('vue-server-renderer');
+const getVueInstance = require('./getVueInstance');
+
+module.exports = renderToHtml;
+
+async function renderToHtml({page, initialProps}) {
+  const renderer = VueServerRenderer.createRenderer();
+
+  const vm = getVueInstance(page.view, initialProps);
+
+  const html = await renderer.renderToString(vm);
+
+  return html;
+}
+~~~
+
+~~~js
+// render/getVueInstance.js
+
+let Vue = require('vue');
+Vue = Vue.default || Vue;
+
+module.exports = getViewInstance;
+
+function getViewInstance(view, initialProps) {
+  if( view instanceof Function ){
+    return view(initialProps);
+  } else {
+    return (
+      new Vue({
+        render: createElement => createElement(view, {props: initialProps}),
+      })
+    );
+  }
+}
+~~~
+
+This allows you to add providers for Vuex or Vue Router.
+</details>
 
 Examples:
 - [/examples/react-router](/examples/react-router)

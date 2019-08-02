@@ -377,6 +377,8 @@ You can control how your pages are rendered to HTML and to the DOM:
 !INLINE /examples/react-router/ssr-coin.config.js --hide-source-path
 ~~~
 
+With React:
+
 ~~~js
 // render/renderToDom.js
 
@@ -390,6 +392,32 @@ You can control how your pages are rendered to HTML and to the DOM:
 ~~~
 
 This allows you to add providers such as Redux's `<Provider store={store} />` or React Router's `<BrowserRouter />`.
+
+<details>
+<summary>
+With Vue
+</summary>
+
+~~~js
+// render/renderToDom.js
+
+!INLINE /plugins/vue/renderToDom.js --hide-source-path
+~~~
+
+~~~js
+// render/renderToHtml.js
+
+!INLINE /plugins/vue/renderToHtml.js --hide-source-path
+~~~
+
+~~~js
+// render/getVueInstance.js
+
+!INLINE /plugins/vue/getVueInstance.js --hide-source-path
+~~~
+
+This allows you to add providers for Vuex or Vue Router.
+</details>
 
 Examples:
 - [/examples/react-router](/examples/react-router)

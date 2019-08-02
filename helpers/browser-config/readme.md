@@ -110,7 +110,7 @@ The source code is:
 ~~~js
 // ./index.js
 
-module.exports = {};
+module.exports = window['@brillout/browser-config'] = window['@brillout/browser-config'] || {};
 ~~~
 
 <!---
