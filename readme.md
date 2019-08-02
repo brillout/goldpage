@@ -149,7 +149,7 @@ export default {
 };
 ~~~
 
-and `ssr-coin` takes care of SSR:
+and `ssr-coin` takes care of SSR'ing your pages:
 - It transpiles & bundles your pages' JavaScript, CSS, and other static assets (with Webpack)
 - It routes your pages (with path-to-regexp)
 - It servers your pages (with server middlewares for Express, Koa, Hapi, ...)
@@ -847,8 +847,9 @@ We enjoy talking with our users :-).
 
 ## Control Rendering
 
-You can control how your pages are rendered to HTML and to the DOM:
+You can control how your pages are rendered to HTML and the DOM.
 
+For that, add `renderToHtml` and `renderToDom` in a `ssr-coin.config.js` file at the root directory of your project:
 ~~~js
 // ssr-coin.config.js
 
@@ -857,6 +858,8 @@ module.exports = {
   renderToDom: './render/renderToDom.js',
 };
 ~~~
+
+Then create the `renderToDom` and `renderToHtml` files.
 
 With React:
 
