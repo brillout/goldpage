@@ -963,7 +963,7 @@ function getViewInstance(view, initialProps) {
 }
 ~~~
 
-This allows you to add providers for Vuex or Vue Router.
+This allows you to add providers such as for Vuex or Vue Router.
 </details>
 
 Examples:

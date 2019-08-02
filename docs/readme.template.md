@@ -416,7 +416,7 @@ With Vue
 !INLINE /plugins/vue/getVueInstance.js --hide-source-path
 ~~~
 
-This allows you to add providers for Vuex or Vue Router.
+This allows you to add providers such as for Vuex or Vue Router.
 </details>
 
 Examples:
