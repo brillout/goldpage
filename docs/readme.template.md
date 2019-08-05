@@ -68,7 +68,7 @@
 
 `ssr-coin` is a library to add [server-side rendering (SSR)](https://github.com/brillout/awesome-universal-rendering#introduction) to your Node.js app.
 
-It's a do-one-thing-do-it-well library: it takes care of SSR and SSR only &mdash; it leaves the rest to you.
+It's a do-one-thing-do-it-well library: it takes care of SSR and SSR only and leaves the rest to you.
 
 You define so-called page configs
 
@@ -85,7 +85,7 @@ export default {
 ~~~
 
 and `ssr-coin` takes care of SSR'ing your pages:
-- It transpiles & bundles your pages' JavaScript, CSS, and other static assets (with Webpack)
+- It transpiles and bundles your pages' JavaScript, CSS, and other static assets (with Webpack)
 - It routes your pages (with path-to-regexp)
 - It servers your pages (with server middlewares for Express, Koa, Hapi, ...)
 
@@ -93,8 +93,8 @@ With `ssr-coin`, you can add SSR to your app with only a couple of lines.
 
 **Example**
 
-This the `/repos/brillout` page showcases SSR:
-- The page is interactive &mdash; the user can modify the state of the counter.
+The `/repos/brillout` page showcases SSR:
+- The page is interactive &mdash; the user can modify the state of a counter.
 - The page is server-side rendered &mdash; the content of the page is rendered to HTML, such as "brillout/awesome-react-components".
 
 <img align="right" src="https://github.com/reframejs/ssr-coin/raw/master/docs/ssr-coin_example_video.gif" width=336 height=706 style="max-width:100%;"/>
@@ -126,7 +126,7 @@ and works with:
 :sparkles:&nbsp; <b>Easy</b>
 
 We designed `ssr-coin` to be highly flexible with minimal configuration.
-Resulting into, what we believe to be, the easiest SSR solution out there.
+Resulting into what we believe to be the easiest SSR solution out there.
 
 <br/>
 :battery:&nbsp; <b>Batteries Included</b>
@@ -153,7 +153,7 @@ For non-interactive pages, removing browser-side JavaScript is an effective way 
 
 `ssr-coin` takes care of SSR and SSR only &mdash;
 it is agnostic to the JavaScript ecosystem
-and can easily adopt the libraries of the future.
+and can easily adapt to the libraries of the future.
 This makes it resilient and future-proof.
 
 `ssr-coin` will likely survive a long time and will eventually become rock-solid.
@@ -165,9 +165,8 @@ This makes it resilient and future-proof.
 ## !VAR GETTING_STARTED
 
 This getting started is about adding `ssr-coin` to an exisiting app.
-
-If you want to create a new app or if you just want to play around with `ssr-coin`,
-then use a [Reframe starter](https://github.com/topics/reframe-starter).
+If you don't already have an app or if you just want to try out `ssr-coin`,
+then use a [Reframe starter](https://github.com/reframejs/reframe#getting-started).
 
 0. Install `ssr-coin`.
 
@@ -284,7 +283,7 @@ then use a [Reframe starter](https://github.com/topics/reframe-starter).
    }
    ~~~
 
-You can now run `npm run dev` (`yarn dev`) and go to your newly created page `/hello/jon`.
+That's it: you can now run `npm run dev` (`yarn dev`), go to [http://localhost:3000/hello/jon](http://localhost:3000/hello/jon), and start hacking.
 
 !INLINE ./snippets/section-footer.md #readme --hide-source-path
 
@@ -299,11 +298,11 @@ import './path/to/style.css';
 ~~~
 
 Importing static assets such as images, fonts, or videos
-returns a URL:
+returns an URL:
 
 ~~~js
 import imageUrl from './path/to/image.png';
-// `imageUrl` is the URL serving `image.png`.
+// `imageUrl` is the URL that serves `./path/to/image.png`.
 // Do something with imageUrl, e.g. `await fetch(imageUrl)` or `<img src={imageUrl}/>`.
 ~~~
 
@@ -312,13 +311,13 @@ You can also reference static assets in CSS:
 ~~~css
 .logo {
     /* Your file's path on your disk `./path/to/image.png`
-       will automatically be replaced with the URL serving `image.png` */
+       will automatically be replaced with the URL that serves `./path/to/image.png` */
     background-image: url('./path/to/image.png');
 }
 @font-face {
     font-family: 'MyAwesomeFont';
     /* Your file's path on your disk `./path/to/my-awesome-font.ttf`
-       will automatically be replaced with the URL serving `my-awesome-font.ttf` */
+       will automatically be replaced with the URL that serves `./path/to/my-awesome-font.ttf` */
     src: url('./path/to/my-awesome-font.ttf') format('truetype');
 }
 ~~~
@@ -332,7 +331,7 @@ Example of a page that uses all kinds of static assets:
 
 ## !VAR ASYNC_DATA
 
-You can load and render data by adding a `addInitialProps` function to your page config:
+You can load and render data by adding an `addInitialProps` function to your page config:
 
 ~~~js
 !INLINE /examples/html/pages/product.page.js --hide-source-path
@@ -341,7 +340,7 @@ You can load and render data by adding a `addInitialProps` function to your page
 Alternatively, you can fetch data in a stateful component.
 But the page's content is then rendered to the DOM only (and not to HTML).
 
-We explain the difference between using a stateful component and `addInitialProps` at:
+We further explain the difference between using a stateful component and `addInitialProps` at:
  - [/examples/async-data/](/examples/async-data/)
 
 !INLINE ./snippets/section-footer.md #readme --hide-source-path
@@ -350,14 +349,14 @@ We explain the difference between using a stateful component and `addInitialProp
 
 ## !VAR CONTROL_HTML
 
-To set HTML meta tags for all your pages,
-create a `index.html` file somewhere in your project's directory.
+To set the HTML meta tags of all your pages,
+create an `index.html` file somewhere in your project's directory.
 Your `index.html` needs to contain  `!HEAD` and `!BODY`:
 ~~~html
 !INLINE /examples/html/index.html --hide-source-path
 ~~~
 
-To set HTML meta tags of only one page, use the page config:
+To set the HTML meta tags of only one page, use the page config:
 ~~~js
 !INLINE /examples/html/pages/products.page.js
 ~~~
@@ -378,7 +377,9 @@ Example:
 
 You can control how your pages are rendered to HTML and the DOM.
 
-For that, add `renderToHtml` and `renderToDom` in a `ssr-coin.config.js` file at the root directory of your project:
+For that,
+save a `ssr-coin.config.js` file at your project's root directory and
+add the `renderToHtml` and `renderToDom` configs:
 ~~~js
 // ssr-coin.config.js
 
@@ -483,32 +484,31 @@ With `doNotRenderInBrowser` and `renderHtmlAtBuildTime` you can control when you
 
 By default,
 a page is rendered twice:
-it is first rendered to HTML on the server and then rendered again to the DOM in the browser.
-(Modern view libraries, such as React and Vue, are able to render views to the DOM as well as to HTML.)
-(You can read an explanation of why rendering a page twice makes sense at [Awesome Universal Rendering](https://github.com/brillout/awesome-universal-rendering).)
-With `ssr-coin` you can choose whether your pages are rendered to the DOM and/or to HTML.
+it is first rendered to HTML on the server and then re-rendered to the DOM in the browser.
+(Modern view libraries, such as React and Vue, are able to render views to the DOM as well as to HTML.
+You can read an explanation of why rendering a page twice makes sense at [Awesome Universal Rendering](https://github.com/brillout/awesome-universal-rendering).)
 
 ###### doNotRenderInBrowser
 
 With `doNotRenderInBrowser` you control whether your page is rendered in the browser.
 
 - `doNotRenderInBrowser: false` (default value)
-  - Slower Performance
+  - Slower Performance.
     <br/>
     The page's views (e.g. React components) and view libraries (e.g. React) are loaded, executed, and rendered in the browser.
-    This can be slow on mobile devices.
-  - Interactive
+    This can be very slow on mobile devices.
+  - Interactive.
     <br/>
     Because your page is rendered to the browser's DOM, your page's views (e.g. React components) can be stateful and interactive.
 - `doNotRenderInBrowser: true`
-  - Increased performance
+  - Increased performance.
     <br/>
     The page's views and view libraries are not loaded nor executed in the browser.
-    This means that considerably less JavaScript is loaded/executed in the browser.
-    This performance gain is substantial on mobile devices.
-  - Not interactive
+    Considerably less JavaScript is loaded/executed in the browser.
+    A page that has (or very little) browser-side JavaScript is blazing fast on mobile.
+  - Non-interactive.
     <br/>
-    Because your page is not rendered to the browser's DOM, your page connot have stateful nor interacrive views.
+    Because your page is not rendered to the browser's DOM, your page connot have stateful views / interacrive views.
 
 In a nutshell:
 If your page needs to be interactive then you have to rendered it in the browser and set `doNotRenderInBrowser` to `false`.
@@ -529,7 +529,7 @@ dynamically at request-time.
   <br/>
   The page is rendered to HTML at build-time.
   <br/>
-  The page is rendered to HTML only once, when your app is transpiled and built.
+  The page is rendered to HTML only once, when `ssr-coin` transpiles and builds your pages.
 
 By default,
 a page is rendered to HTML at request-time.
@@ -542,7 +542,7 @@ you can remove the need for a Node.js server.
 You can then deploy your app to a static host such as Netlify or GitHub Pages.
 
 If you don't want to render your page to HTML at all,
-then do something like that:
+then use a stateful component:
 ~~~jsx
 import Loading from './path/to/your/loading/component';
 import Search from './path/to/your/search/component';
@@ -554,9 +554,9 @@ const SearchPage = {
   title: 'Search products',
   route: '/search',
   view: SearchPage,
-  // We render <Loading> to HTML at build-time
+  // We render the <Loading> component to HTML at build-time
   renderHtmlAtBuildTime: true,
-  // We render <Search> to the DOM
+  // We render the <Search> component to the DOM
   doNotRenderInBrowser: false,
 };
 

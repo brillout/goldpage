@@ -6,13 +6,13 @@ export default {
   route: '/product/:productId',
 
   // `ssr-coin` calls `addInitialProps()` before rendering `view` to HTML or to the DOM.
-  // Everything returned in `addInitialProps()` is passed to the `view`'s prop.
+  // Alls props returned in `addInitialProps()` are passed to the `view`'s props.
   addInitialProps: async ({productId}) => {
     const product = await fetchProduct(productId);
     return {product};
   },
 
-  // The `product` returned by `addInitialProps` is available to `view`
+  // The `product` returned by `addInitialProps` is available to `view`.
   view: initialProps => {
     const {product} = initialProps;
     return (
@@ -20,7 +20,7 @@ export default {
     );
   },
 
-  // The initial props are also available when generating HTML
+  // The initial props are also available for generating HTML code.
   title: initialProps => {
     const {product, productId} = initialProps;
     return (
@@ -28,4 +28,3 @@ export default {
     );
   },
 };
-
