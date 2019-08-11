@@ -3,6 +3,7 @@
 !INLINE ./snippets/header.md --hide-source-path
 
 !VAR WHAT_SSR_COIN What is `ssr-coin`
+!VAR VS_ECO Isopage VS Next.js/Nuxt.js/create-react-app/vue-cli/Gatsby/...
 !VAR WHY_SSR_COIN Why `ssr-coin`
 
 !VAR PLUGIN_LIST Plugins
@@ -66,6 +67,51 @@
 
 ## !VAR WHAT_SSR_COIN
 
+**Iso**morphic pages &mdash; build & render pages and
+easily create SPAs, static websites, MPAs, SSR apps, and more.
+
+Isopage is a little tool that makes creating a modern app super easy.
+
+You define so-called page configs
+
+~~~js
+// A page config
+export default {
+  route: '/hello/:name',
+  view: ({name}) => (
+    <div>
+      Hello {name}, welcome to ssr-coin.
+    </div>
+  ),
+};
+~~~
+
+and Isopage takes care of the rest:
+- Building. (It transpiles and bundles your pages' JavaScript, CSS, and other static assets (with Webpack)
+- Routing. (It routes your pages)
+- Rendering. (It renders your pages)
+
+With 
+it allows 
+
+Isopage is a little tool
+
+What makes Isopage special is that is supports all types of apps:
+- SPA
+- MPA
+- Frontend-only
+- Backend-only
+- Frontend + Backend
+
+You can easily add Isopage to your existing app.
+We provide middlewares for Express, Koa, and Hapi. For example for Express:
+
+And the best is that easily switching between them.
+So you can start with a static website and later add SSR, and vice versa.
+
+
+
+
 `ssr-coin` is a library to add [server-side rendering (SSR)](https://github.com/brillout/awesome-universal-rendering#introduction) to your Node.js app.
 
 It's a do-one-thing-do-it-well library: it takes care of SSR and SSR only and leaves the rest to you.
@@ -106,6 +152,49 @@ The following page showcases SSR:
 !INLINE ./snippets/section-footer.md #readme --hide-source-path
 
 
+## !VAR VS_ECO
+
+The problem is that tools support only one type of app.
+For example for React, you have the choice between:
+- create-react-app to create an SPA
+- Next.js to create a SSR app
+- Gatsby to create a static website
+
+If you already know whether you need an SPA, SSR app, or a static website, then you can choose the right tool.
+But, most often than not,
+what app type is right becomes clear only after you have written and battle-tested your first protoype.
+
+Isopage supports *all* app types:
+- SPA
+- MPA
+- Static website
+- SSR app
+- **new** Frontend-less app
+- **new** Hybrid app
+
+We believe you should be able to get started as quickly as possible without having to worry what app type is right for you:
+with Isopage you can easily change the type of your app further down the line.
+For example, you start with an SPA and later add SSR to it.
+
+
+Also, most tools are too framework-ish.
+(It's often difficult and sometimes even impossible to integrate them)
+In contrast,
+Isopage is unopinionated, do-one-thing-do-it-well,
+and designed to work with:
+- Any view libray: React, Vue, React Native Web, ...
+- Any server framework: Express, Koa, Hapi, ...
+- Any language: ES7, TypeScript, PostCSS, ...
+- Any provider: Redux, React Router, Vuex, Vue Router, GraphQL Apollo, Relay, ...
+- Any CSS-in-JS: Emotion, styled-components, ...
+- Any process manager: Docker, systemd, PM2, ...
+
+Using Isopage with your favorite tool is easy.
+
+Our goal is to enable
+you to go from idea to prototype, MVP, or startup as quickly as possible.
+
+Prototyping should be quick & fun!
 
 ## !VAR WHY_SSR_COIN
 
