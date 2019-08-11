@@ -93,9 +93,9 @@ With `ssr-coin`, you can add SSR to your app with only a couple of lines.
 
 **Example**
 
-The `/repos/brillout` page showcases SSR:
-- The page is interactive &mdash; the user can modify the state of a counter.
-- The page is server-side rendered &mdash; the content of the page is rendered to HTML, such as "brillout/awesome-react-components".
+The following page showcases SSR:
+- The page is interactive (as you can see in the video, the user can modify the state of the counter).
+- The page is server-side rendered (as you can see in the video, the content of the page is rendered to HTML, such as "brillout/awesome-react-components").
 
 <img align="right" src="https://github.com/reframejs/ssr-coin/raw/master/docs/ssr-coin_example_video.gif" width=336 height=706 style="max-width:100%;"/>
 
