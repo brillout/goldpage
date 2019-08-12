@@ -13,7 +13,6 @@
 !VAR CONTROL_HTML HTML: `index.html`, `<head>`, `<meta>`, `<link>`, ...
 !VAR RENDER_WHEN Render - When: `renderToDom`, `renderToHtml` & `renderHtmlAtBuildTime`
 !VAR RENDER_HOW Render - How
-!VAR SERVER_SIDE Server-Side Transpilation & Server-side Autoreload
 
 !VAR SPA_MPA_APP SPA/MPA
 !VAR SSR_APP SSR
@@ -54,7 +53,6 @@
 !INLINE li-2 !VAR|LINK CONTROL_HTML
 !INLINE li-2 !VAR|LINK RENDER_HOW
 !INLINE li-2 !VAR|LINK RENDER_WHEN
-!INLINE li-2 !VAR|LINK SERVER_SIDE
 !INLINE li-2-header App Types
 !INLINE li-2 !VAR|LINK SPA_MPA_APP
 !INLINE li-2 !VAR|LINK SSR_APP
@@ -523,45 +521,6 @@ Examples:
 - [/examples/react-router](/examples/react-router)
 - [/examples/redux](/examples/redux)
 - [/examples/styled-components](/examples/styled-components)
-
-!INLINE ./snippets/section-footer.md #readme --hide-source-path
-
-
-
-## !VAR SERVER_SIDE
-
-If you specify a path when calling `ssr-coin dev ./path/to/your/server.js` then:
- - `ssr-coin` transpiles your server code. Allowing you, for example, to use TypeScript for your server code.
- - `ssr-coin` auto-reloads the server whenever you make changes to your server code
-
-Your `package.json`'s scripts would be:
-
-~~~json
-{
-  "scripts": {
-    "dev": "ssr-coin dev ./path/to/your/server.js",
-    "prod": "npm run build && npm run start",
-    "build": "ssr-coin build ./path/to/your/server.js",
-    "start": "export NODE_ENV='production' && node ./.build/nodejs/server"
-  }
-}
-~~~
-
-By not specifying your server path `ssr-coin` doesn't transpile nor auto reloads your server,
-and your `package.json`'s scripts would be:
-
-~~~json
-{
-  "scripts": {
-    "dev": "node ./path/to/your/server.js",
-    "prod": "npm run build && npm run start",
-    "build": "ssr-coin build",
-    "start": "export NODE_ENV='production' && node .path/to/your/server.js"
-  }
-}
-~~~
-
-Note that `ssr-coin` always transpiles and auto-reloads your browser code.
 
 !INLINE ./snippets/section-footer.md #readme --hide-source-path
 
