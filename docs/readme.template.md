@@ -528,7 +528,7 @@ Examples:
 
 ## !VAR RENDER_WHEN
 
-With `doNotRenderInBrowser` and `renderHtmlAtBuildTime` you can control when your pages are rendered.
+With `renderToDom` and `renderHtmlAtBuildTime` you can control when your pages are rendered.
 
 By default,
 a page is rendered twice:
@@ -536,11 +536,11 @@ it is first rendered to HTML on the server and then re-rendered to the DOM in th
 (Modern view libraries, such as React and Vue, are able to render views to the DOM as well as to HTML.
 You can read an explanation of why rendering a page twice makes sense at [Awesome Universal Rendering](https://github.com/brillout/awesome-universal-rendering).)
 
-###### doNotRenderInBrowser
+###### renderToDom
 
-With `doNotRenderInBrowser` you control whether your page is rendered in the browser.
+With `renderToDom` you control whether your page is rendered in the browser.
 
-- `doNotRenderInBrowser: false` (default value)
+- `renderToDom: true` (default value)
   - Slower Performance.
     <br/>
     The page's views (e.g. React components) and view libraries (e.g. React) are loaded, executed, and rendered in the browser.
@@ -548,7 +548,7 @@ With `doNotRenderInBrowser` you control whether your page is rendered in the bro
   - Interactive.
     <br/>
     Because your page is rendered to the browser's DOM, your page's views (e.g. React components) can be stateful and interactive.
-- `doNotRenderInBrowser: true`
+- `renderToDom: false`
   - Increased performance.
     <br/>
     The page's views and view libraries are not loaded nor executed in the browser.
@@ -556,11 +556,22 @@ With `doNotRenderInBrowser` you control whether your page is rendered in the bro
     A page that has (or very little) browser-side JavaScript is blazing fast on mobile.
   - Non-interactive.
     <br/>
-    Because your page is not rendered to the browser's DOM, your page connot have stateful views / interacrive views.
+    Because your page is not rendered to the browser's DOM, your page connot have stateful views / interactive views.
 
 In a nutshell:
-If your page needs to be interactive then you have to rendered it in the browser and set `doNotRenderInBrowser` to `false`.
-But if your page isn't interactive then you can set `doNotRenderInBrowser` to `true` for increased performance and a blazing fast page on mobile devices.
+If your page is interactive then you have to rendered it in the browser and set `renderToDom` to `true`.
+But if your page isn't interactive then you can set `renderToDom` to `false` for increased performance and a blazing fast page on mobile devices.
+
+###### renderToHtml
+
+With `renderToHtml` you control whether your page is rendered to HTML.
+
+By setting `renderToHtml` to `true` you get:
+- SEO
+- Social sharing
+- Slower dev speed
+- Faster time-to-first-paint
+- Slower performance
 
 ###### renderHtmlAtBuildTime
 
@@ -586,7 +597,8 @@ But if the page's content is static
 it is wasteful to re-render its HTML on every page request.
 
 By setting `renderHtmlAtBuildTime: true` to all your pages,
-you can remove the need for a Node.js server.
+you can remove the need for a Node.js server,
+and your app is now a static website.
 You can then deploy your app to a static host such as Netlify or GitHub Pages.
 
 If you don't want to render your page to HTML at all,
@@ -605,7 +617,7 @@ const SearchPage = {
   // We render the <Loading> component to HTML at build-time
   renderHtmlAtBuildTime: true,
   // We render the <Search> component to the DOM
-  doNotRenderInBrowser: false,
+  renderToDom: true,
 };
 
 export default SearchPage;
