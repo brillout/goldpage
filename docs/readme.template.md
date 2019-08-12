@@ -568,8 +568,14 @@ With `renderToHtml` you control whether your page is rendered to HTML.
 
 By setting `renderToHtml` to `true` you get:
 - SEO
-- Social sharing
-- Slower dev speed
+  <br/>
+  The Google crawler is the only one that executes JavaScript.
+  This means that if you want your page's content to be crawled by all search engines (Bing, Baidu, DuckDuckGo, etc.) then you need to render your page to HTML.
+  Also note that Google's capab crawler's 
+- Social sharing.
+  When someone shares your page on social sites, such as Facebook or Twitter, a preview of your content is shown (Your page's title
+- Slightly increased dev cost
+  Your pages' React/Vue components will run in Node.js and this sometimes make things a bit more complex.
 - Faster time-to-first-paint
 - Slower performance
 
