@@ -601,36 +601,6 @@ you can remove the need for a Node.js server,
 and your app is now a static website.
 You can then deploy your app to a static host such as Netlify or GitHub Pages.
 
-If you don't want to render your page to HTML at all,
-then use a stateful component:
-~~~jsx
-import Loading from './path/to/your/loading/component';
-import Search from './path/to/your/search/component';
-
-// Rendering a search page to HTML doesn't make much sense.
-// We render the search page only to the DOM.
-
-const SearchPage = {
-  title: 'Search products',
-  route: '/search',
-  view: SearchPage,
-  // We render the <Loading> component to HTML at build-time
-  renderHtmlAtBuildTime: true,
-  // We render the <Search> component to the DOM
-  renderToDom: true,
-};
-
-export default SearchPage;
-
-function SearchPage(props) {
-  if( props.isNodejs ) {
-    return <Loading/>;
-  } else {
-    return <Search {...props}/>;
-  }
-}
-~~~
-
 !INLINE ./snippets/section-footer.md #readme --hide-source-path
 
 
