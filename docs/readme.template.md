@@ -4,7 +4,7 @@
 
 !VAR WHAT_SSR_COIN What is `ssr-coin`
 !VAR VS_ECO Isopage VS Next.js/Nuxt.js/create-react-app/vue-cli/Gatsby/...
-!VAR WHY_SSR_COIN Why `ssr-coin`
+!VAR HOW_IT_WORKS How It Works
 
 !VAR PLUGIN_LIST Plugins
 !VAR PLUGINS_SERVER Server Plugins
@@ -35,9 +35,11 @@
 !VAR PROCESS_MANAGERS Process Managers: Docker / systemd / PM2 / ...
 !VAR STATIC_WEBSITES Generate Static Websites
 
-!INLINE li-1 !VAR|LINK WHAT_SSR_COIN
-!INLINE li-1 !VAR|LINK WHY_SSR_COIN
-!INLINE li-1 !VAR|LINK PLUGIN_LIST
+!INLINE li-1 Intro
+!INLINE li-2 !VAR|LINK WHAT_SSR_COIN
+!INLINE li-2 !VAR|LINK VS_ECO
+!INLINE li-2 !VAR|LINK HOW_IT_WORKS
+
 !INLINE li-1 Usage
 !INLINE li-2 !VAR|LINK GETTING_STARTED
 !INLINE li-2-header Basics
@@ -63,14 +65,16 @@
 !INLINE li-2 !VAR|LINK PROCESS_MANAGERS
 !INLINE li-2 !VAR|LINK STATIC_WEBSITES
 
+!INLINE li-1 !VAR|LINK PLUGIN_LIST
+
 <br/>
 
 ## !VAR WHAT_SSR_COIN
 
-**Iso**morphic pages &mdash; build & render pages and
-easily create SPAs, static websites, MPAs, SSR apps, and more.
+**Iso**page &mdash; build & render pages.
+(To easily create SPAs, static websites, MPAs, SSR apps, and more.)
 
-Isopage is a little tool that makes creating a modern app super easy.
+Isopage is a tool that makes creating a modern app super easy.
 
 You define so-called page configs
 
@@ -90,11 +94,6 @@ and Isopage takes care of the rest:
 - Building. (It transpiles and bundles your pages' JavaScript, CSS, and other static assets (with Webpack)
 - Routing. (It routes your pages)
 - Rendering. (It renders your pages)
-
-With 
-it allows 
-
-Isopage is a little tool
 
 What makes Isopage special is that is supports all types of apps:
 - SPA
@@ -154,101 +153,47 @@ The following page showcases SSR:
 
 ## !VAR VS_ECO
 
-The problem is that tools support only one type of app.
-For example for React, you have the choice between:
+The problem with our current tools is that their support only one type of app.
+For React you have the choice between:
 - create-react-app to create an SPA
 - Next.js to create a SSR app
 - Gatsby to create a static website
 
-If you already know whether you need an SPA, SSR app, or a static website, then you can choose the right tool.
+If you already know what an SPA, SSR app, or a static website is and if you know which one is right for you then you can choose the right tool.
 But, most often than not,
 what app type is right becomes clear only after you have written and battle-tested your first protoype.
 
-Isopage supports *all* app types:
-- SPA
-- MPA
-- Static website
-- SSR app
-- **new** Frontend-less app
-- **new** Hybrid app
+Isopage, in contrast, supports *all* app types.
+And, we believe you shouldn't have to know what "SPA", "SSR", and "static website" mean before creating your first prototype.
+With Isopage,
+you just start creating an app and later adopt the app type further down the line as what you need becomes clear.
 
-We believe you should be able to get started as quickly as possible without having to worry what app type is right for you:
-with Isopage you can easily change the type of your app further down the line.
-For example, you start with an SPA and later add SSR to it.
+You will notice that our documentation will not mention the terms SPA, SSR, etc.
+Instead, you configure the page configurations `renderToHtml`, `renderToDom`, `renderHtmlAtBuildTime`.
+These three page configs allow you to build any kind of app.
+Thinking in terms of "do I want my page to be rendered to the DOM" and "do I want my page to be rendered to HTML? At build-time or request-time?" will feel more natural than thinking in terms of "SPA", "SSR", etc.
+We further elaborate in the next secion !VAR|LINK HOW_IT_WORKS.
 
+## !VAR HOW_IT_WORKS
 
-Also, most tools are too framework-ish.
-(It's often difficult and sometimes even impossible to integrate them)
-In contrast,
-Isopage is unopinionated, do-one-thing-do-it-well,
-and designed to work with:
-- Any view libray: React, Vue, React Native Web, ...
-- Any server framework: Express, Koa, Hapi, ...
-- Any language: ES7, TypeScript, PostCSS, ...
-- Any provider: Redux, React Router, Vuex, Vue Router, GraphQL Apollo, Relay, ...
-- Any CSS-in-JS: Emotion, styled-components, ...
-- Any process manager: Docker, systemd, PM2, ...
+By default,
+Isopage generates a MPA, that is:
 
-Using Isopage with your favorite tool is easy.
+~~~js
+// A page config
+export default {
+  route: '/',
+  view: ({name}) => (
+    <div>
+      Welcome to my MPA.
+    </div>
+  ),
+};
+~~~
 
-Our goal is to enable
-you to go from idea to prototype, MVP, or startup as quickly as possible.
-
-Prototyping should be quick & fun!
-
-## !VAR WHY_SSR_COIN
-
-<br/>
-:dove:&nbsp;&nbsp; <b>Freedom</b>
-
-`ssr-coin` takes care of SSR and SSR only &mdash;
-it is unopinionated about the rest of your stack
-and works with:
-- Any view libray: React, Vue, React Native Web, ...
-- Any server framework: Express, Koa, Hapi, ...
-- Any language: ES7, TypeScript, PostCSS, ...
-- Any provider: Redux, React Router, Vuex, Vue Router, GraphQL Apollo, Relay, ...
-- Any CSS-in-JS: Emotion, styled-components, ...
-- Any process manager: Docker, systemd, PM2, ...
-
-<br/>
-:sparkles:&nbsp; <b>Easy</b>
-
-We designed `ssr-coin` to be highly flexible with minimal configuration.
-Resulting into what we believe to be the easiest SSR solution out there.
-
-<br/>
-:battery:&nbsp; <b>Batteries Included</b>
-
-`ssr-coin` comes with lots of features.
-Such as:
-- Browser auto-reload
-- Server auto-reload
-- Fully controllable rendering (how & when your pages are rendered)
-- Automatic code splitting
-- Optimal HTTP caching
-
-<br/>
-:zap:&nbsp; <b>Blazing Fast Mobile Pages</b>
-
-With the page config
-`doNotRenderInBrowser` you control whether a page is loaded & rendered in the browser.
-By setting `doNotRenderInBrowser: true`, the page has no (or very little) browser-side JavaScript.
-
-For non-interactive pages, removing browser-side JavaScript is an effective way to achieve blazing fast performance on mobile.
-
-<br/>
-:mountain:&nbsp;&nbsp; <b>Future-proof & Rock-solid</b>
-
-`ssr-coin` takes care of SSR and SSR only &mdash;
-it is agnostic to the JavaScript ecosystem
-and can easily adapt to the libraries of the future.
-This makes it resilient and future-proof.
-
-`ssr-coin` will likely survive a long time and will eventually become rock-solid.
-
-!INLINE ./snippets/section-footer.md #readme --hide-source-path
-
+renderToHTML
+renderToDom
+renderHtmlAtBuildTime
 
 
 ## !VAR GETTING_STARTED
