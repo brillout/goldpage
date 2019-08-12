@@ -3,22 +3,22 @@
 !INLINE ./snippets/header.md --hide-source-path
 
 !VAR WHAT_SSR_COIN What is `ssr-coin`
-!VAR VS_ECO Isopage VS Next.js/Nuxt.js/create-react-app/vue-cli/Gatsby/...
+!VAR VS_ECO Goldpage VS Next.js/Nuxt.js/create-react-app/vue-cli/Gatsby/...
 !VAR HOW_IT_WORKS How It Works
-
-!VAR PLUGIN_LIST Plugins
-!VAR PLUGINS_SERVER Server Plugins
-!VAR PLUGINS_RENDER Render Plugins
-!VAR PLUGINS_TRANSPILATION Transpilation Plugins
 
 !VAR GETTING_STARTED Getting Started
 
 !VAR CSS_AND_ASSETS CSS & Static Assets
 !VAR ASYNC_DATA Async Data: `addInitialProps`
 !VAR CONTROL_HTML HTML: `index.html`, `<head>`, `<meta>`, `<link>`, ...
-!VAR CONTROL_RENDERING Control Rendering
+!VAR RENDER_WHEN Render - When: `renderToDom`, `renderToHtml` & `renderHtmlAtBuildTime`
+!VAR RENDER_HOW Render - How
 !VAR SERVER_SIDE Server-Side Transpilation & Server-side Autoreload
-!VAR PERFORMANCE_TUNING Performance: `doNotRenderInBrowser` & `renderHtmlAtBuildTime`
+
+!VAR SPA_MPA_APP SPA/MPA
+!VAR SSR_APP SSR
+!VAR BACKEND_ONLY_APP Backend-only
+!VAR STATIC_WEBSITE Static Website
 
 !VAR PAGE_CONFIG Page Config `*page.js`
 !VAR SSR_COIN_CONFIG Global Config `ssr-coin.config.js`
@@ -33,7 +33,13 @@
 !VAR SERVER_FRAMEWORKS Server Frameworks: Express / Koa / Hapi / Fastify / ...
 !VAR VIEW_LIBRARIES View Libraries: React / Vue / Preact / ...
 !VAR PROCESS_MANAGERS Process Managers: Docker / systemd / PM2 / ...
-!VAR STATIC_WEBSITES Generate Static Websites
+
+!VAR PLUGIN_LIST Plugins
+!VAR PLUGINS_SERVER Server Plugins
+!VAR PLUGINS_RENDER Render Plugins
+!VAR PLUGINS_TRANSPILATION Transpilation Plugins
+
+
 
 !INLINE li-1 Intro
 !INLINE li-2 !VAR|LINK WHAT_SSR_COIN
@@ -46,9 +52,14 @@
 !INLINE li-2 !VAR|LINK CSS_AND_ASSETS
 !INLINE li-2 !VAR|LINK ASYNC_DATA
 !INLINE li-2 !VAR|LINK CONTROL_HTML
-!INLINE li-2 !VAR|LINK CONTROL_RENDERING
+!INLINE li-2 !VAR|LINK RENDER_HOW
+!INLINE li-2 !VAR|LINK RENDER_WHEN
 !INLINE li-2 !VAR|LINK SERVER_SIDE
-!INLINE li-2 !VAR|LINK PERFORMANCE_TUNING
+!INLINE li-2-header App Types
+!INLINE li-2 !VAR|LINK SPA_MPA_APP
+!INLINE li-2 !VAR|LINK SSR_APP
+!INLINE li-2 !VAR|LINK BACKEND_ONLY_APP
+!INLINE li-2 !VAR|LINK STATIC_WEBSITE
 !INLINE li-2-header API Reference
 !INLINE li-2 !VAR|LINK PAGE_CONFIG
 !INLINE li-2 !VAR|LINK SSR_COIN_CONFIG
@@ -63,7 +74,6 @@
 !INLINE li-2 !VAR|LINK SERVER_FRAMEWORKS
 !INLINE li-2 !VAR|LINK VIEW_LIBRARIES
 !INLINE li-2 !VAR|LINK PROCESS_MANAGERS
-!INLINE li-2 !VAR|LINK STATIC_WEBSITES
 
 !INLINE li-1 !VAR|LINK PLUGIN_LIST
 
@@ -71,49 +81,10 @@
 
 ## !VAR WHAT_SSR_COIN
 
-**Iso**page &mdash; build & render pages.
-(To easily create SPAs, static websites, MPAs, SSR apps, and more.)
+Easily create any kind of app. (SPA/MPA, SSR, static websites, etc.)
 
-Isopage is a tool that makes creating a modern app super easy.
-
-You define so-called page configs
-
-~~~js
-// A page config
-export default {
-  route: '/hello/:name',
-  view: ({name}) => (
-    <div>
-      Hello {name}, welcome to ssr-coin.
-    </div>
-  ),
-};
-~~~
-
-and Isopage takes care of the rest:
-- Building. (It transpiles and bundles your pages' JavaScript, CSS, and other static assets (with Webpack)
-- Routing. (It routes your pages)
-- Rendering. (It renders your pages)
-
-What makes Isopage special is that is supports all types of apps:
-- SPA
-- MPA
-- Frontend-only
-- Backend-only
-- Frontend + Backend
-
-You can easily add Isopage to your existing app.
-We provide middlewares for Express, Koa, and Hapi. For example for Express:
-
-And the best is that easily switching between them.
-So you can start with a static website and later add SSR, and vice versa.
-
-
-
-
-`ssr-coin` is a library to add [server-side rendering (SSR)](https://github.com/brillout/awesome-universal-rendering#introduction) to your Node.js app.
-
-It's a do-one-thing-do-it-well library: it takes care of SSR and SSR only and leaves the rest to you.
+Goldpage is a small (but powerful) tool that makes it easy to create an app
+using a modern view library such as React or Vue.
 
 You define so-called page configs
 
@@ -123,32 +94,46 @@ export default {
   route: '/hello/:name',
   view: ({name}) => (
     <div>
-      Hello {name}, welcome to ssr-coin.
+      Hello {name}, welcome to Goldpage.
     </div>
   ),
 };
 ~~~
 
-and `ssr-coin` takes care of SSR'ing your pages:
-- It transpiles and bundles your pages' JavaScript, CSS, and other static assets (with Webpack)
-- It routes your pages (with path-to-regexp)
-- It servers your pages (with server middlewares for Express, Koa, Hapi, ...)
+and Goldpage takes care of the rest:
+- Building. (It transpiles and bundles your pages' JavaScript, CSS, and static assets with Webpack.)
+- Routing. (It maps URLs to your pages.)
+- Rendering. (It renders your pages to the DOM and/or to HTML.)
 
-With `ssr-coin`, you can add SSR to your app with only a couple of lines.
+What makes Goldpage special is that it supports all app types (such as SPA or SSR) and allows you to
+easily switch between app type at any given time.
+We further elaborate at !VAR|LINK VS_ECO.
 
-**Example**
+Goldpage is unopinionated, do-one-thing-do-it-well,
+and designed to work with:
+- Any view libray: React, Vue, React Native Web, ...
+- Any server framework: Express, Koa, Hapi, ...
+- Any language: ES7, TypeScript, PostCSS, ...
+- Any provider: Redux, React Router, Vuex, Vue Router, GraphQL Apollo, Relay, ...
+- Any CSS-in-JS: Emotion, styled-components, ...
+- Any process manager: Docker, systemd, PM2, ...
 
-The following page showcases SSR:
-- The page is interactive (as you can see in the video, the user can modify the state of the counter).
-- The page is server-side rendered (as you can see in the video, the content of the page is rendered to HTML, such as "brillout/awesome-react-components").
+You can easily add Goldpage to your existing app and
+we provide middlewares for Express, Koa, and Hapi.
+For example with Express:
 
-<img align="right" src="https://github.com/reframejs/ssr-coin/raw/master/docs/ssr-coin_example_video.gif" width=336 height=706 style="max-width:100%;"/>
+ ~~~js
+ const express = require('express');
+ const ssr = require('ssr-coin');
 
-~~~js
-!INLINE /examples/basics/pages/repos/repos.page.js
-~~~
+ const app = express();
+
+ // The `ssr.express` middleware routes & serves your pages.
+ app.use(ssr.express);
+ ~~~
 
 !INLINE ./snippets/section-footer.md #readme --hide-source-path
+
 
 
 ## !VAR VS_ECO
@@ -163,38 +148,107 @@ If you already know what an SPA, SSR app, or a static website is and if you know
 But, most often than not,
 what app type is right becomes clear only after you have written and battle-tested your first protoype.
 
-Isopage, in contrast, supports *all* app types.
+Goldpage, in contrast, supports *all* app types.
 And, we believe you shouldn't have to know what "SPA", "SSR", and "static website" mean before creating your first prototype.
-With Isopage,
-you just start creating an app and later adopt the app type further down the line as what you need becomes clear.
+With Goldpage,
+you start creating an app and adopt the right app type further down the line as it becomes clearer what you need.
 
-You will notice that our documentation will not mention the terms SPA, SSR, etc.
-Instead, you configure the page configurations `renderToHtml`, `renderToDom`, `renderHtmlAtBuildTime`.
-These three page configs allow you to build any kind of app.
+Goldpage gives you three page configs `renderToHtml`, `renderToDom`, and `renderHtmlAtBuildTime`
+that allow you to build any kind of app.
 Thinking in terms of "do I want my page to be rendered to the DOM" and "do I want my page to be rendered to HTML? At build-time or request-time?" will feel more natural than thinking in terms of "SPA", "SSR", etc.
 We further elaborate in the next secion !VAR|LINK HOW_IT_WORKS.
 
 ## !VAR HOW_IT_WORKS
 
-By default,
-Isopage generates a MPA, that is:
+Reading this section is optional &mdash; if you already decided to use Goldpage then
+you can go straight to !VAR|LINK GETTING_STARTED and start writing your app.
+
+But if you are still evaluating whether to use Goldpage,
+then this section will give you a sneak peek into how Goldpage allow you to build any kind of app.
+
+By default Goldpage renders your pages only in the browser to the DOM.
 
 ~~~js
-// A page config
+// We use React here but note that Goldpage also supports Vue, React Native Web, etc.
+import React from 'react';
+
+// Page config
 export default {
   route: '/',
-  view: ({name}) => (
-    <div>
-      Welcome to my MPA.
-    </div>
-  ),
+  view: LandingPage,
+
+  // `true` is the default value -- `<LandingPage/>` is rendered to the DOM in the browser
+  renderToDom: true,
+  // `false` is the default value -- `<LandingPage/>` is not rendered to HTML
+  renderToHtml: false,
 };
+
+function LandingPage() {
+  return (
+    <div>
+      Welcome to my first Goldpage app.
+    </div>
+  );
+}
 ~~~
 
-renderToHTML
-renderToDom
-renderHtmlAtBuildTime
+This default setting works for most cases.
 
+But, there are cases where you need to render your pages to HTML:
+
+~~~js
+import React from 'react';
+
+export default {
+  route: '/',
+  view: LandingPage,
+
+  renderToDom: true,
+  // We also render the page to HTML
+  renderToHtml: true,
+};
+
+function LandingPage() {
+  return (
+    <div>
+      Welcome to my first Goldpage app.
+    </div>
+  );
+}
+~~~
+
+You can even render your page to HTML only:
+~~~js
+import React from 'react';
+
+export default {
+  route: '/',
+  view: LandingPage,
+
+  // We don't render the page to the DOM in the browser
+  renderToDom: false,
+  // We only render it to HTML
+  renderToHtml: true,
+};
+
+function LandingPage() {
+  return (
+    <div>
+      Welcome to my first Goldpage app.
+    </div>
+  );
+}
+~~~
+
+As you can see in the screenshot above, the HTML as no `<sript>` tag and no JavaScript is loaded in the browser.
+For non-interactive pages, removing browser-side JavaScript is an effective way to achieve blazing fast performance on mobile.
+Also, non-interactive pages are easier and faster to develop than interactive ones &mdash;
+using React/Vue as HTML template engine is a wonderful experience.
+Goldpage is the only tool we are aware of that offers you a browser-less usage of React/Vue.
+More at !VAR|LINK BACKEND_ONLY_APP.
+
+In !VAR|LINK RENDER_WHEN we explain a third page config `renderHtmlAtBuildTime` and
+whether you should render your pages to HTML and/or to the DOM.
 
 ## !VAR GETTING_STARTED
 
@@ -407,9 +461,10 @@ Example:
 
 
 
-## !VAR CONTROL_RENDERING
+## !VAR RENDER_HOW
 
-You can control how your pages are rendered to HTML and the DOM.
+Goldpage gives you full control
+over how your pages are rendered to HTML and the DOM.
 
 For that,
 save a `ssr-coin.config.js` file at your project's root directory and
@@ -512,7 +567,7 @@ Note that `ssr-coin` always transpiles and auto-reloads your browser code.
 
 
 
-## !VAR PERFORMANCE_TUNING
+## !VAR RENDER_WHEN
 
 With `doNotRenderInBrowser` and `renderHtmlAtBuildTime` you can control when your pages are rendered.
 
@@ -609,6 +664,65 @@ function SearchPage(props) {
 
 
 
+## !VAR SPA_MPA_APP
+
+!INLINE ./snippets/section-footer.md #readme --hide-source-path
+
+
+
+## !VAR SSR_APP
+
+By setting `renderToHtml: true`
+you essentially add
+[server-side rendering (SSR)](https://github.com/brillout/awesome-universal-rendering#introduction)
+to your page.
+
+The following page showcases SSR:
+- The page is interactive (as you can see in the screencast, the user can modify the state of the counter).
+- The page is server-side rendered (as you can see in the video, the content of the page is rendered to HTML, such as "brillout/awesome-react-components").
+
+<img align="right" src="https://github.com/reframejs/ssr-coin/raw/master/docs/ssr-coin_example_video.gif" width=336 height=706 style="max-width:100%;"/>
+
+~~~js
+!INLINE /examples/basics/pages/repos/repos.page.js
+~~~
+
+!INLINE ./snippets/section-footer.md #readme --hide-source-path
+
+
+## !VAR BACKEND_ONLY_APP
+
+!INLINE ./snippets/section-footer.md #readme --hide-source-path
+
+
+
+## !VAR STATIC_WEBSITE
+
+If you set `renderHtmlAtBuildTime: true` to all your page configs,
+then your entire browser-side code is generated at built-time.
+
+This means that no Node.js server is required to serve your frontend.
+
+If you don't need the Node.js server beyond serving your browser-side code then your app is essentially
+just a collection of static assets for the browser.
+Your app is then what is commonly called a "static website".
+
+You can deploy a static website using a static host such as
+[Netlify](https://www.netlify.com/),
+[Amazon S3](https://aws.amazon.com/s3/), or
+[GitHub Pages](https://pages.github.com/).
+
+To deploy,
+simply run `$ ssr-coin build`
+(or better `npm run build` where `require('./package.json').scripts.build === 'ssr-coin build'`)
+and copy the directory `.build/browser/`
+(which is the directory that contains the browser assets)
+to your static host.
+
+!INLINE ./snippets/section-footer.md #readme --hide-source-path
+
+
+
 ## !VAR PAGE_CONFIG
 
 #### Contents
@@ -658,7 +772,7 @@ hence `ssr.config.js` has only few options.
 // ssr.config.js
 
 module.exports = {
-  // Control how pages are rendered. (See section "!VAR CONTROL_RENDERING").
+  // Control how pages are rendered. (See section "!VAR RENDER_HOW").
   renderToHtml: require.resolve('./path/to/your/renderToHtml'),
   renderToDom: require.resolve('./path/to/your/renderToDom'),
 
@@ -724,7 +838,7 @@ A local install has couple of advantages over a global install:
 
 By controlling the rendering of your pages you can add providers for Redux, GraphQL, etc.
 
-See !VAR|LINK CONTROL_RENDERING for how to take over control of the rendering of your pages.
+See !VAR|LINK RENDER_HOW for how to take over control of the rendering of your pages.
 
 Examples:
 - [/examples/react-router](/examples/react-router)
@@ -769,7 +883,7 @@ work with SSR out of the box and no additional setup is required.
 For some others,
 such as [styled-components](https://github.com/styled-components/styled-components),
 you make need to
-[take control over rendering](!VAR|ANCHOR CONTROL_RENDERING).
+[take control over rendering](!VAR|ANCHOR RENDER_HOW).
 
 Examples:
 - [/examples/emotion](/examples/emotion)
@@ -836,7 +950,7 @@ Whenever possible, server-side routing should be used instead of browser-side re
 But if server-side routing is not an option,
 you can opt to do browser-side routing.
 You can do browser-side routing by
-[taking control over rendering](!VAR|ANCHOR CONTROL_RENDERING).
+[taking control over rendering](!VAR|ANCHOR RENDER_HOW).
 
 For example,
 if you use React,
@@ -899,7 +1013,7 @@ If there is a [render plugin](!VAR|ANCHOR PLUGINS_RENDER) for the view library y
 then simply use it.
 
 If there is no render plugin,
-then [take control over rendering](!VAR|ANCHOR CONTROL_RENDERING).
+then [take control over rendering](!VAR|ANCHOR RENDER_HOW).
 That way you are able to use any view library.
 
 !INLINE ./snippets/section-footer.md #readme --hide-source-path
@@ -922,33 +1036,6 @@ then use your server entry file:
 ~~~bash
 pm2 start ./path/to/your/server.js
 ~~~
-
-!INLINE ./snippets/section-footer.md #readme --hide-source-path
-
-
-
-## !VAR STATIC_WEBSITES
-
-If you set `renderHtmlAtBuildTime: true` to all your page configs,
-then your entire browser-side code is generated at built-time.
-
-This means that no Node.js server is required to serve your frontend.
-
-If you don't need the Node.js server beyond serving your browser-side code then your app is essentially
-just a collection of static assets for the browser.
-Your app is then what is commonly called a "static website".
-
-You can deploy a static website using a static host such as
-[Netlify](https://www.netlify.com/),
-[Amazon S3](https://aws.amazon.com/s3/), or
-[GitHub Pages](https://pages.github.com/).
-
-To deploy,
-simply run `$ ssr-coin build`
-(or better `npm run build` where `require('./package.json').scripts.build === 'ssr-coin build'`)
-and copy the directory `.build/browser/`
-(which is the directory that contains the browser assets)
-to your static host.
 
 !INLINE ./snippets/section-footer.md #readme --hide-source-path
 
