@@ -2,8 +2,8 @@
 !OUTPUT ../readme.md
 !INLINE ./snippets/header.md
 
-!VAR WHAT_SSR_COIN What is `ssr-coin`
-!VAR VS_ECO Goldpage VS Next.js/Nuxt.js/create-react-app/vue-cli/Gatsby/...
+!VAR WHAT_IS_GOLDPAGE What is `ssr-coin`
+!VAR WHY_GOLDPAGE Goldpage VS create-react-app/Next.js/vue-cli/Nuxt.js/Gatsby/...
 !VAR HOW_IT_WORKS How It Works
 
 !VAR GETTING_STARTED Getting Started
@@ -42,8 +42,8 @@
 
 
 !INLINE li-1 Intro
-!INLINE li-2 !VAR|LINK WHAT_SSR_COIN
-!INLINE li-2 !VAR|LINK VS_ECO
+!INLINE li-2 !VAR|LINK WHAT_IS_GOLDPAGE
+!INLINE li-2 !VAR|LINK WHY_GOLDPAGE
 !INLINE li-2 !VAR|LINK HOW_IT_WORKS
 
 !INLINE li-1 Usage
@@ -79,12 +79,14 @@
 
 <br/>
 
-## !VAR WHAT_SSR_COIN
+## !VAR WHAT_IS_GOLDPAGE
 
-Easily create any kind of app. (SPA/MPA, SSR, static websites, etc.)
+Easily create an app &mdash;
+define pages and Goldpage takes of the rest.
+For React / Vue / RNW / ...
 
-Goldpage is a small (but powerful) tool that makes it easy to create an app
-using a modern view library such as React or Vue.
+Goldpage is a small (but powerful) tool that makes it easy to create an app.
+It works with any view library such as React and Vue.
 
 You define so-called page configs
 
@@ -105,9 +107,8 @@ and Goldpage takes care of the rest:
 - Routing. (It maps URLs to your pages.)
 - Rendering. (It renders your pages to the DOM and/or to HTML.)
 
-What makes Goldpage special is that it supports all app types (such as SPA or SSR) and allows you to
+What makes Goldpage special is that it supports all app types (SPA, MPA, SSR, static website, ...) and allows you to
 easily switch between app type at any given time.
-We further elaborate at !VAR|LINK VS_ECO.
 
 Goldpage is unopinionated, do-one-thing-do-it-well,
 and designed to work with:
@@ -118,7 +119,7 @@ and designed to work with:
 - Any CSS-in-JS: Emotion, styled-components, ...
 - Any process manager: Docker, systemd, PM2, ...
 
-You can easily add Goldpage to your existing app and
+You can easily add Goldpage to your existing app &mdash;
 we provide middlewares for Express, Koa, and Hapi.
 For example with Express:
 
@@ -128,7 +129,7 @@ For example with Express:
 
  const app = express();
 
- // The `ssr.express` middleware routes & serves your pages.
+ // The `ssr.express` middleware serves your pages.
  app.use(ssr.express);
  ~~~
 
@@ -136,27 +137,26 @@ For example with Express:
 
 
 
-## !VAR VS_ECO
+## !VAR WHY_GOLDPAGE
 
-The problem with our current tools is that their support only one type of app.
-For React you have the choice between:
-- create-react-app to create an SPA
-- Next.js to create a SSR app
-- Gatsby to create a static website
+The problem with the current tools is that they support only one app type.
+For example for React:
+- create-react-app creates an SPA
+- Next.js creates a SSR app
+- Gatsby creates a static website
 
-If you already know what an SPA, SSR app, or a static website is and if you know which one is right for you then you can choose the right tool.
+Before you choose one of these three tools you have to know what "SPA", "SSR", and "static website" mean, their difference, and which one is right for you.
 But, most often than not,
 what app type is right becomes clear only after you have written and battle-tested your first protoype.
 
-Goldpage, in contrast, supports *all* app types.
-And, we believe you shouldn't have to know what "SPA", "SSR", and "static website" mean before creating your first prototype.
+Goldpage supports all app types &mdash;
+we believe you shouldn't have to know what "SPA", "SSR", and "static website" mean before starting writing your first prototype.
 With Goldpage,
 you start creating an app and adopt the right app type further down the line as it becomes clearer what you need.
 
-Goldpage gives you three page configs `renderToHtml`, `renderToDom`, and `renderHtmlAtBuildTime`
-that allow you to build any kind of app.
-Thinking in terms of "do I want my page to be rendered to the DOM" and "do I want my page to be rendered to HTML? At build-time or request-time?" will feel more natural than thinking in terms of "SPA", "SSR", etc.
-We further elaborate in the next secion !VAR|LINK HOW_IT_WORKS.
+What often happens is that you start with one tool and later switch to another tool.
+Investigating and changing tools.
+We believe things should be easier: just start writing your app and figure out later what app type is right for you.
 
 ## !VAR HOW_IT_WORKS
 
@@ -165,6 +165,11 @@ you can go straight to !VAR|LINK GETTING_STARTED and start writing your app.
 
 But if you are still evaluating whether to use Goldpage,
 then this section will give you a sneak peek into how Goldpage allows you to build any kind of app.
+
+Goldpage gives you three page configs `renderToHtml`, `renderToDom`, and `renderHtmlAtBuildTime`
+that allow you to build any kind of app.
+Thinking in terms of "do I want my page to be rendered to the DOM" and "do I want my page to be rendered to HTML? At build-time or request-time?" will feel more natural than thinking in terms of "SPA", "SSR", etc.
+We further elaborate in the next secion !VAR|LINK HOW_IT_WORKS.
 
 By default Goldpage renders your pages only in the browser to the DOM.
 
