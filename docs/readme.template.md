@@ -11,8 +11,8 @@
 !VAR CSS_AND_ASSETS CSS & Static Assets
 !VAR ASYNC_DATA Async Data: `addInitialProps`
 !VAR CONTROL_HTML HTML: `index.html`, `<head>`, `<meta>`, `<link>`, ...
-!VAR RENDER_WHEN Render - When: `renderToDom`, `renderToHtml` & `renderHtmlAtBuildTime`
-!VAR RENDER_HOW Render - How
+!VAR RENDER_WHEN Control Rendering - When: `renderToDom`, `renderToHtml` & `renderHtmlAtBuildTime`
+!VAR RENDER_HOW Control Rendering - How
 
 !VAR SPA_MPA_APP SPA/MPA
 !VAR SSR_APP SSR
@@ -528,13 +528,26 @@ Examples:
 
 ## !VAR RENDER_WHEN
 
-With `renderToDom` and `renderHtmlAtBuildTime` you can control when your pages are rendered.
+`renderToDom` - Whether the page is rendered to the DOM (in the browser)
 
-By default,
-a page is rendered twice:
-it is first rendered to HTML on the server and then re-rendered to the DOM in the browser.
-(Modern view libraries, such as React and Vue, are able to render views to the DOM as well as to HTML.
-You can read an explanation of why rendering a page twice makes sense at [Awesome Universal Rendering](https://github.com/brillout/awesome-universal-rendering).)
+`renderToHtml` - Whether the page is rendered to HTML (on Node.js)
+
+`renderHtmlAtBuildTime` - Whether the page is rendered to HTML at request-time or at build-time.
+
+We now discuss the different combination of 
+
+###### `renderToDom: true` & `renderToHtml: false`
+
+###### `renderToDom: true` & `renderToHtml: true`
+
+###### `renderToDom: false` & `renderToHtml: true`
+
+###### `renderToDom: false` & `renderToHtml: true`
+
+###### `renderToDom: true` & `renderToHtml: true` & `renderHtmlAtBuildTime: true`
+
+We first that allows you to control
+With `renderToDom` and `renderHtmlAtBuildTime` you can control when your pages are rendered.
 
 ###### renderToDom
 
@@ -566,18 +579,72 @@ But if your page isn't interactive then you can set `renderToDom` to `false` for
 
 With `renderToHtml` you control whether your page is rendered to HTML.
 
-By setting `renderToHtml` to `true` you get:
+By setting `renderToHtml: true` and `renderToDom: true` you get:
+- SEO
+  Rendering your page's content 
+  Content that are accessible only over the DOM:
+  <br/>
+  - Google-only
+    <br/>
+    The Google crawler is the only one that executes JavaScript and only Google will know about content that are only rendered to the DOM.
+    if you want your page's content to be crawled by all other search engines (Bing, Baidu, DuckDuckGo, etc.) then you need to render your page's content to HTML.
+  - Delay on Google
+    <br/>
+    The Google crawler first crawls your page without executing JavaScript
+  and re-crawls your page after [~1 week](https://twitter.com/Paul_Kinlan/status/1039852756113080320)
+  with executing JavaScript.
+  This means that content accessible only over the DOM appear later than content
+  This means that if your page's content is rendered to the DOM and not to HTML then it will appear only one week later
+  (for popular sites, Google manages to track HTML changes almost instantly)
+  Rendering your page to HTML solves these problems.
+  Rendering your page to both HTML to the DOM is not difficult but to entirely trivial either:
+   - 
+  We recommend to first experiment if Google's crawler exectuing works out for you first.
+  And only after you realize is not an option to render your page to HTML.
+  And only if the result to resort ;
+  see "slightly increased dev cost".
+- Slightly 
+- Social sharing
+  <br/>
+  When someone shares your page on social sites, such as Facebook or Twitter, a preview of your content is shown: the HTML of your page is (Your page's title
+- Slightly increased dev cost
+  <br/>
+  Rendering your page to both HTML and the DOM means that your page's code will run in both Node.js and the browser:
+  - Your libraries need to be able to run in Node.js.
+    <br/>
+    Certain libraries expect to be run in the browser and will crash when run in Node.js.
+    You can often solve this by lazy loading your library loading it with `require('a-library-that-works-only-in-the-browser')` only after the React/Vue component is mounted. That way the libray is loaded only in the browser.
+  - Only the inital state of your React/Vue components are rendered to HTML.
+    <br/>
+    You'll have to make sure that your content is available.
+    But thanks to !VAR|LINK ASYNC_DATA this is often easy to achieve.
+- Faster time-to-first-paint
+  <br/>
+  The user can see your page's content rendered to HTML before the browser loads any JavaScript and before your pages is rendered in the browser.
+  This results the user being able to see the page's content faster.
+  Keep in mind that 
+  Note that sites, e.g. Hacker News with only ~150 LOC.
+- Slower time-to-first-interaction
+  <br/>
+  On the other hand, rendering your page to HTML slows down the initial HTML download
+  and, before the user is able to interact with your page, the JavaScript needs to be loaded and your page rendered to the DOM.
+
+By setting `renderToHtml: true` and `renderToDom: false` you get:
 - SEO
   <br/>
-  The Google crawler is the only one that executes JavaScript.
-  This means that if you want your page's content to be crawled by all search engines (Bing, Baidu, DuckDuckGo, etc.) then you need to render your page to HTML.
-  Also note that Google's capab crawler's 
-- Social sharing.
-  When someone shares your page on social sites, such as Facebook or Twitter, a preview of your content is shown (Your page's title
-- Slightly increased dev cost
-  Your pages' React/Vue components will run in Node.js and this sometimes make things a bit more complex.
-- Faster time-to-first-paint
-- Slower performance
+  You have full control
+- No interactive page
+  all the aforementioned benefits without the dr
+
+So, if your page is non-interactive we recommend to render it only to HTML.
+Also note that interactive (i.e. stateful) views are more time consuming to implement.
+It is often underestimated.
+Using React/Vue as HTML template engine is a wonderful experience (using JavaScript to generate HTML is neat)
+Using 
+
+Alternatively,
+and if your page is non-interactive,
+you can render your page to HTML only to get all the aforementioned benefits
 
 ###### renderHtmlAtBuildTime
 
@@ -615,14 +682,39 @@ You can then deploy your app to a static host such as Netlify or GitHub Pages.
 
 !INLINE ./snippets/section-footer.md #readme --hide-source-path
 
+An Single Page app (SPA) and Multi Page App (MPA) are the classical way of using React/Vue.
 
+A SPA denotes that all browser-side and servered to all routes.
+If your app 
+
+This is what you get when you use create-react-app, webpack, and parcel.
+
+If your app is mostly about user inteactions
+then this 
+(a music player, an email app, a graphical editor, a chat app, ...).
+
+If your app is mostly about content
+(a blog, a newspaper, a e-commerce shop, ...).
+
+Choose this type of app if y
+
+This is typically is highly interactive
 
 ## !VAR SSR_APP
 
-By setting `renderToHtml: true`
-you essentially add
-[server-side rendering (SSR)](https://github.com/brillout/awesome-universal-rendering#introduction)
-to your page.
+[SSR (Server-Side Rendering)](https://github.com/brillout/awesome-universal-rendering#introduction)
+denotes the practice of rendering a page twice:
+the page is first rendered to HTML with Node.js and then re-rendered to the DOM in the browser.
+(The browser-side re-rendering is commonly called "hydration".)
+(Modern view libraries, such as React and Vue, are able to render views to the DOM as well as to HTML.)
+
+The idea here is to render your page's content to HTML for gains in SEO, social sharing, and performance.
+The page is then re-rendered to the DOM to be able to have stateful React/Vue components and thus interactive views.
+
+You can enable SSR for a page by setting both `renderToHtml: true` and `renderToDom: true`.
+We elaborate further and explain when to SSR at !VAR-LINK RENDER_WHEN.
+
+**Example**
 
 The following page showcases SSR:
 - The page is interactive (as you can see in the screencast, the user can modify the state of the counter).
@@ -638,6 +730,45 @@ The following page showcases SSR:
 
 
 ## !VAR BACKEND_ONLY_APP
+
+Goldpage introduces a new kind of app we call *backend-only app*.
+
+Instead of creating interactive views,
+a backend-only app uses React (or Vue) as a HTML template engine.
+
+Using React to generate HTML is a wonderful experience;
+
+There are plenty of benefits:
+- Full control over SEO & social sharing.
+- Blazing fast performance, especially on mobile.
+  <br/>
+  Loading all views and views libraries
+- High dev speed
+  <br/>
+  It turns out that create interactive views (state management is notoriously complex) is time consuming.
+  No API
+  Instead 
+
+A backend-only and we believe it's good thing.
+And if you happen to 
+
+Keep in mind: there are hugely successful websites that have (almost) no browser-side JavaScript, such as Hacker News have only ~150 LOC of browser-side JavaScript.
+
+A backend-only app like the old days
+
+Thanks to 
+
+The benefits are mutli
+Why would someone want?
+
+And more importantly, if you happen to require
+
+Interactive views are inherently complicated and time consuming to implement.
+
+Many complain that the web dev of 10 years ago was esaier than today's web development.
+
+the and 
+But this is not necessarily
 
 !INLINE ./snippets/section-footer.md #readme --hide-source-path
 
