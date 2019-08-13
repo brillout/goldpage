@@ -1,6 +1,6 @@
 !MENU_LINK /../../
 !OUTPUT ../readme.md
-!INLINE ./snippets/header.md --hide-source-path
+!INLINE ./snippets/header.md
 
 !VAR WHAT_SSR_COIN What is `ssr-coin`
 !VAR VS_ECO Goldpage VS Next.js/Nuxt.js/create-react-app/vue-cli/Gatsby/...
@@ -17,6 +17,7 @@
 !VAR SPA_MPA_APP SPA/MPA
 !VAR SSR_APP SSR
 !VAR BACKEND_ONLY_APP Backend-only
+!VAR MIXED_APP Mixed
 !VAR STATIC_WEBSITE Static Website
 
 !VAR PAGE_CONFIG Page Config `*page.js`
@@ -51,13 +52,14 @@
 !INLINE li-2 !VAR|LINK CSS_AND_ASSETS
 !INLINE li-2 !VAR|LINK ASYNC_DATA
 !INLINE li-2 !VAR|LINK CONTROL_HTML
-!INLINE li-2 !VAR|LINK RENDER_HOW
-!INLINE li-2 !VAR|LINK RENDER_WHEN
-!INLINE li-2-header App Types
+!INLINE li-2-header Advanced - App Types
 !INLINE li-2 !VAR|LINK SPA_MPA_APP
 !INLINE li-2 !VAR|LINK SSR_APP
 !INLINE li-2 !VAR|LINK BACKEND_ONLY_APP
 !INLINE li-2 !VAR|LINK STATIC_WEBSITE
+!INLINE li-2-header Advanced - Control Rendering
+!INLINE li-2 !VAR|LINK RENDER_HOW
+!INLINE li-2 !VAR|LINK RENDER_WHEN
 !INLINE li-2-header API Reference
 !INLINE li-2 !VAR|LINK PAGE_CONFIG
 !INLINE li-2 !VAR|LINK SSR_COIN_CONFIG
@@ -130,7 +132,7 @@ For example with Express:
  app.use(ssr.express);
  ~~~
 
-!INLINE ./snippets/section-footer.md #readme --hide-source-path
+!INLINE ./snippets/section-footer.md #readme
 
 
 
@@ -162,7 +164,7 @@ Reading this section is optional &mdash; if you already decided to use Goldpage 
 you can go straight to !VAR|LINK GETTING_STARTED and start writing your app.
 
 But if you are still evaluating whether to use Goldpage,
-then this section will give you a sneak peek into how Goldpage allow you to build any kind of app.
+then this section will give you a sneak peek into how Goldpage allows you to build any kind of app.
 
 By default Goldpage renders your pages only in the browser to the DOM.
 
@@ -371,7 +373,7 @@ then use a [Reframe starter](https://github.com/reframejs/reframe#getting-starte
 
 That's it: you can now run `npm run dev` (`yarn dev`), go to [http://localhost:3000/hello/jon](http://localhost:3000/hello/jon), and start hacking.
 
-!INLINE ./snippets/section-footer.md #readme --hide-source-path
+!INLINE ./snippets/section-footer.md #readme
 
 
 
@@ -411,7 +413,7 @@ You can also reference static assets in CSS:
 Example of a page that uses all kinds of static assets:
  - [/examples/static-assets/](/examples/static-assets/)
 
-!INLINE ./snippets/section-footer.md #readme --hide-source-path
+!INLINE ./snippets/section-footer.md #readme
 
 
 
@@ -429,7 +431,7 @@ But the page's content is then rendered to the DOM only (and not to HTML).
 We further explain the difference between using a stateful component and `addInitialProps` at:
  - [/examples/async-data/](/examples/async-data/)
 
-!INLINE ./snippets/section-footer.md #readme --hide-source-path
+!INLINE ./snippets/section-footer.md #readme
 
 
 
@@ -455,7 +457,7 @@ See [`@brillout/html`'s documentation](https://github.com/brillout/html) for the
 Example:
  - [/examples/html](/examples/html)
 
-!INLINE ./snippets/section-footer.md #readme --hide-source-path
+!INLINE ./snippets/section-footer.md #readme
 
 
 
@@ -522,21 +524,45 @@ Examples:
 - [/examples/redux](/examples/redux)
 - [/examples/styled-components](/examples/styled-components)
 
-!INLINE ./snippets/section-footer.md #readme --hide-source-path
+!INLINE ./snippets/section-footer.md #readme
 
 
 
 ## !VAR RENDER_WHEN
 
-`renderToDom` - Whether the page is rendered to the DOM (in the browser)
+Goldpage allows you to fully control when and how your pages are rendered.
 
-`renderToHtml` - Whether the page is rendered to HTML (on Node.js)
+This section is about when your pages are rendered.
 
-`renderHtmlAtBuildTime` - Whether the page is rendered to HTML at request-time or at build-time.
+Modern view libraries, such as React or Vue, allow ...
+All kinds of app (SPA, SSR, static website, etc.)
 
-We now discuss the different combination of 
+There are three page configs that are at the core of Goldpage's unique ability to generate any app type.
+Set `renderToDom: true` and `renderToHtml: false` to your page configs and you get an SPA (more precisely, a MPA).
+Set `renderToDom: true` and `renderToHtml: true` to your page configs and you get a SSR app.
+So one and so forth.
+And the best
+is that you can mix: one page can be an SPA and another page can be a SSR page.
+
+`renderToDom` - If set to true, your page is rendered in the browser (to the DOM).
+
+`renderToHtml` - If set to true, your page is rendered on Node.js (to HTML).
+
+`renderHtmlAtBuildTime` - Whether your page is rendered to HTML at request-time or at build-time.
+
+We now discuss the different combination and when to use what.
+
+> NOTE: You do NOT need to know this section before starting to create your app.
+> We recommend you to start writing your first prototype and come back to this section only once you start asking yourself following questions:
+> - SEO and Google ranking are important to me - how can I get the best SEO result?
+> - Mobile users are important to me - how can I achieve great mobile performance?
+> - 
+> The nice thing about Goldpage is that it allows you to easily change app type at any type &mdash;
+> don't worry about choosing the right app type and just start writing code.
 
 ###### `renderToDom: true` & `renderToHtml: false`
+
+This is Goldpage's default setting.
 
 ###### `renderToDom: true` & `renderToHtml: true`
 
@@ -674,20 +700,72 @@ you can remove the need for a Node.js server,
 and your app is now a static website.
 You can then deploy your app to a static host such as Netlify or GitHub Pages.
 
-!INLINE ./snippets/section-footer.md #readme --hide-source-path
+!INLINE ./snippets/section-footer.md #readme
 
 
 
 ## !VAR SPA_MPA_APP
 
-!INLINE ./snippets/section-footer.md #readme --hide-source-path
+!INLINE ./snippets/warning-advanced.md
+
+With Goldpage, you get a MPA by default.
+This is because the page config's default values are `renderToDom: true` and `renderToHtml: false` which corresponds to what a MPA does.
+
+At !VAR|LINK RENDER_WHEN we explain what the page configs `renderToDom` and `renderToHtml` mean.
+
+For more information about `
+
+Note that a MPA is basically the same than an SPA but with improved performance.
+
+If you are curious, we elaborate more about what SPA and MPA means then check.
+
+You shoudn't worry whether
+Whether the default values `renderToDom: true` and `renderToHtml: true` are the right one for your app.
+
+But note that you don't have to know what SPA and MPA mean to use Goldpage and to build a great app.
+(We prefer to reseaon in terms of `renderToDom` and `renderToHtml` instead of "SPA"/"SSR"/...)
+
+you get a SPA (more precisely, a MPA) by setting:
+- `renderToDom: true`
+- `renderToHtml: false`
+to your page configs.
+
+A SPA (Single Page App) is the "mother" of all frontends.
+
+Both SPAs
+
+A MPA (Multi Page App) is like a SPA but 
+
+With React and Vue, not only can you render your pages to the DOM, but you can also render them to HTML.
+The question arises: should I render my page to the DOM or to HTML?
+
+A SPA (and a MPA) renders your page to the DOM.
+
+A MPA is like an SPA but instead of bundling all browser-side JavaScript into one bundle,
+and server-side routed.
+with couple of nicess
+
+
+
+Modern view libraries 
+
+In an SPA and a MPA,
+your pages are rendered in the browser
 
 An Single Page app (SPA) and Multi Page App (MPA) are the classical way of using React/Vue.
 
-A SPA denotes that all browser-side and servered to all routes.
-If your app 
+In an SPA all browser-side JavaScript are bundled into one file and
+this file is served at all URLs
 
-This is what you get when you use create-react-app, webpack, and parcel.
+This is what you get when you use create-react-app, vue-cli, Webpack, and Parcel.
+
+With Goldpage, you get an MPA by default.
+(The default page config has `renderToDom: true` and `renderToHtml: false`,
+more about `renderToDom` and `renderToHtml` at !VAR|LINK RENDER_WHEN.)
+
+to your pages.
+You generate 
+This is also the default app type that Goldpage generates.
 
 If your app is mostly about user inteactions
 then this 
@@ -696,9 +774,16 @@ then this
 If your app is mostly about content
 (a blog, a newspaper, a e-commerce shop, ...).
 
+If your app is a mix
+(a website with a questionnaire)
+then a mixed app
+
 Choose this type of app if y
 
 This is typically is highly interactive
+
+!INLINE ./snippets/section-footer.md #readme
+
 
 ## !VAR SSR_APP
 
@@ -726,7 +811,7 @@ The following page showcases SSR:
 !INLINE /examples/basics/pages/repos/repos.page.js
 ~~~
 
-!INLINE ./snippets/section-footer.md #readme --hide-source-path
+!INLINE ./snippets/section-footer.md #readme
 
 
 ## !VAR BACKEND_ONLY_APP
@@ -770,11 +855,27 @@ Many complain that the web dev of 10 years ago was esaier than today's web devel
 the and 
 But this is not necessarily
 
-!INLINE ./snippets/section-footer.md #readme --hide-source-path
+!INLINE ./snippets/section-footer.md #readme
 
+
+## !VAR MIXED_APP
+
+With a *mixed app* we denote an app that has non-interactive pages (`renderTo`)
+
+This is for website
+have both pages that are content and pages with lots of user interactions
+(A e-commerce shop with a complex checkout process or a advanced. A)
+
+
+Non-interactive first approach
+Whenever possible 
+
+We believe such mixed app to be the future of web developement.
 
 
 ## !VAR STATIC_WEBSITE
+
+A static website is like a SPA/MPA but where 
 
 If you set `renderHtmlAtBuildTime: true` to all your page configs,
 then your entire browser-side code is generated at built-time.
@@ -797,7 +898,7 @@ and copy the directory `.build/browser/`
 (which is the directory that contains the browser assets)
 to your static host.
 
-!INLINE ./snippets/section-footer.md #readme --hide-source-path
+!INLINE ./snippets/section-footer.md #readme
 
 
 
@@ -821,7 +922,7 @@ to your static host.
 !INLINE /examples/html/pages/product-details.page.js --hide-source-path
 ~~~
 
-!INLINE ./snippets/section-footer.md #contents --hide-source-path
+!INLINE ./snippets/section-footer.md #contents
 
 #### !VAR INITIAL_PROPS
 
@@ -829,7 +930,7 @@ to your static host.
 !INLINE /examples/html/pages/assert_initialProps.js --hide-source-path
 ~~~
 
-!INLINE ./snippets/section-footer.md #contents --hide-source-path
+!INLINE ./snippets/section-footer.md #contents
 
 #### !VAR HTML_CONFIGS
 
@@ -837,7 +938,7 @@ to your static host.
 !INLINE /examples/html/pages/getHtmlOptions.js --hide-source-path
 ~~~
 
-!INLINE ./snippets/section-footer.md #contents --hide-source-path
+!INLINE ./snippets/section-footer.md #contents
 
 
 
@@ -859,7 +960,7 @@ module.exports = {
 };
 ~~~
 
-!INLINE ./snippets/section-footer.md #readme --hide-source-path
+!INLINE ./snippets/section-footer.md #readme
 
 
 
@@ -908,7 +1009,7 @@ A local install has couple of advantages over a global install:
  - Many projects can have many different `ssr-coin` versions.
  - Removing your project's directory also removes `ssr-coin`.
 
-!INLINE ./snippets/section-footer.md #readme --hide-source-path
+!INLINE ./snippets/section-footer.md #readme
 
 
 
@@ -923,7 +1024,7 @@ Examples:
 - [/examples/redux](/examples/redux)
 - [/examples/styled-components](/examples/styled-components)
 
-!INLINE ./snippets/section-footer.md #readme --hide-source-path
+!INLINE ./snippets/section-footer.md #readme
 
 
 ## !VAR CONTROL_TRANSPILATION
@@ -948,7 +1049,7 @@ Examples:
 - [/examples/typescript](/examples/typescript)
 - [/examples/babel](/examples/babel)
 
-!INLINE ./snippets/section-footer.md #readme --hide-source-path
+!INLINE ./snippets/section-footer.md #readme
 
 
 
@@ -967,7 +1068,7 @@ Examples:
 - [/examples/emotion](/examples/emotion)
 - [/examples/styled-components](/examples/styled-components)
 
-!INLINE ./snippets/section-footer.md #readme --hide-source-path
+!INLINE ./snippets/section-footer.md #readme
 
 
 
@@ -982,7 +1083,7 @@ then see [controlling transpilation](!VAR|ANCHOR CONTROL_TRANSPILATION).
 Example:
  - [/examples/postcss](/examples/postcss)
 
-!INLINE ./snippets/section-footer.md #readme --hide-source-path
+!INLINE ./snippets/section-footer.md #readme
 
 
 
@@ -1049,7 +1150,7 @@ you can do browser-side rendering by taking control over rendering in order to a
 The example's entire source code is at:
 - [/examples/react-router](/examples/react-router)
 
-!INLINE ./snippets/section-footer.md #readme --hide-source-path
+!INLINE ./snippets/section-footer.md #readme
 
 
 
@@ -1069,7 +1170,7 @@ To load a frontend library that is saved on disk, use a file that is loaded by a
 !INLINE /examples/frontend-libraries/pages/about.page.js
 ~~~
 
-!INLINE ./snippets/section-footer.md #readme --hide-source-path
+!INLINE ./snippets/section-footer.md #readme
 
 
 
@@ -1081,7 +1182,7 @@ To use `ssr-coin` with another server framework, open a GitHub issue.
 `ssr-coin` can be used with any server framework
 but there is no documentation for this (yet).
 
-!INLINE ./snippets/section-footer.md #readme --hide-source-path
+!INLINE ./snippets/section-footer.md #readme
 
 
 
@@ -1094,7 +1195,7 @@ If there is no render plugin,
 then [take control over rendering](!VAR|ANCHOR RENDER_HOW).
 That way you are able to use any view library.
 
-!INLINE ./snippets/section-footer.md #readme --hide-source-path
+!INLINE ./snippets/section-footer.md #readme
 
 
 
@@ -1115,7 +1216,7 @@ then use your server entry file:
 pm2 start ./path/to/your/server.js
 ~~~
 
-!INLINE ./snippets/section-footer.md #readme --hide-source-path
+!INLINE ./snippets/section-footer.md #readme
 
 
 
@@ -1151,7 +1252,7 @@ Plugins to (statically) route your pages.
 - [`path-to-regexp`](/plugins/path-to-regexp)
 - [Crossroads](/plugins/crossroads)
 
-!INLINE ./snippets/section-footer.md #readme --hide-source-path
+!INLINE ./snippets/section-footer.md #readme
 
 
 
