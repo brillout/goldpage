@@ -109,12 +109,13 @@ all you need to know to create your first prototype
 is written in "Getting Started" and the "Usage - Basics" sections.
 
 Goldpage is also designed to scale:
-- Choose any app type: SPA, MPA, SSR, static website, ...
+- Choose any app type. ("SPA", "MPA", "SSR", "static website", ...)
   <br/>
   Not only does Goldpage support all app types
-  but it also allows you to easily switch from one app type to another one.
-  This means that you can get started before even deciding whether you want your app
-  to be an SPA, a SSR app, etc.
+  but it also allows you to easily switch from one app type to another.
+  This means that you can get started before deciding an app type
+  and before even knowing what "SPA", "SSR", and "static website" mean.
+  You can trust Goldpage to support whatever you'll end up needing.
 - Use it with any tool you want.
   <br/>
   Goldpage is unopinionated, do-one-thing-do-it-well, and designed to work with
@@ -145,40 +146,47 @@ For example for React:
 - Next.js creates an SSR app
 - Gatsby creates a static website
 
-To choose the right tool you have to know the differences between an SPA, an SSR app, and a static website and then you have to decided which one of these app types is the right one for your app.
+Before choosing one of these tools you have to know what "SPA", "SSR", and "static website" mean, the differences between them, and decided which one of these app types is the right one for your app.
 But, most often than not,
 which app type is the right one becomes clear only after you have written and battle-tested your first protoype.
+It also not unusual to start with an app type and realize later that you actually need another one and at that point you'll have to choice than to switch out your tool.
 
-Goldpage supports all app types
-and switching from one app type to another is easy
-&mdash;
-with Goldpage,
-you can start creating an app, test the different app types further down the line, and settle for an app type once it becomes clear which one is the right one for you.
+Goldpage is different; it supports all app types
+and switching from one app type to another is easy.
+With Goldpage,
+you can create a prototype before even knowing what "SPA" or "SSR" mean,
+and only later try out the different app types and see which one works best for you.
+We actually encourage you to not spend time about learning all these different app types and instead just start create a first prototype.
+You'll get to know all app types while developing your app
+and you'll eventually figure out
+what app type works best for your app.
 
-At the core of this.
-It's super simple and easier to reason in terms of "". 
-All boils down and we would.
-Simply configure and see what works for you.
+For example SSR.
+By default, Goldpage generates an MPA and easily add SSR at a later point.
+This means that you can (and we recommend you to) start without SSR and later,
+if you encounter SEO problems, then add SSR to your app.
 
-the right app type further down the line as it becomes clearer what you need.
-We believe you shouldn't even have to know what "SPA", "SSR", and "static website" mean before starting writing your first prototype
-
-We actually encourage you to not spend time about learning al these terms and instead just start create a first prototype.
-You'll eventually figure out what it the right render strategy for you.
+Switching between app types is only a matter of setting three page configs:
+`renderToDom` - If set to true, your page is rendered in the browser (to the DOM).
+`renderToHtml` - If set to true, your page is rendered on Node.js (to HTML).
+`renderHtmlAtBuildTime` - Whether your page is rendered to HTML at request-time or at build-time.
+These three flags allow you to achieve any app type.
+For example, by setting `renderToDom: true` and `renderToHtml: true` you get SSR,
+and by setting `renderToDom: true` and `renderToHtml: false` you get an MPA.
+We further elaborate in the next section.
 
 ## !VAR HOW_IT_WORKS
 
 !INLINE ./snippets/warning-advanced-2.md
 
-But if you are still evaluating whether to use Goldpage,
-then this section will give you a sneak peek into how Goldpage allows you to build any kind of app.
+This section gives you a sneak peek into how Goldpage allows you to build any kind of app.
 
 Goldpage gives you three page configs `renderToHtml`, `renderToDom`, and `renderHtmlAtBuildTime`
 that allow you to build any kind of app.
-Thinking in terms of "do I want my page to be rendered to the DOM" and "do I want my page to be rendered to HTML? At build-time or request-time?" will feel more natural than thinking in terms of "SPA", "SSR", etc.
-We further elaborate in the next secion !VAR|LINK HOW_IT_WORKS.
 
-By default Goldpage renders your pages only in the browser to the DOM.
+Thinking in terms of "do I want my page to be rendered to the DOM" and "do I want my page to be rendered to HTML? At build-time or request-time?" will eventually feel more natural than thinking in terms of "SPA", "SSR", etc.
+
+By default Goldpage renders your pages only in the browser to the DOM:
 
 ~~~js
 // We use React here but note that Goldpage also supports Vue, React Native Web, etc.
@@ -204,9 +212,9 @@ function LandingPage() {
 }
 ~~~
 
-This default setting works for most cases.
+These default settings generate an MPA.
 
-But, there are cases where you need to render your pages to HTML:
+To add SSR to a page:
 
 ~~~js
 import React from 'react';
@@ -229,7 +237,8 @@ function LandingPage() {
 }
 ~~~
 
-You can even render your page to HTML only:
+You can also render your page to HTML only:
+
 ~~~js
 import React from 'react';
 
@@ -252,15 +261,41 @@ function LandingPage() {
 }
 ~~~
 
-As you can see in the screenshot above, the HTML as no `<sript>` tag and no JavaScript is loaded in the browser.
+As you can see in the screenshot above,
+the HTML has no `<sript>` tag &mdash;
+no JavaScript is loaded nor executed in the browser.
 For non-interactive pages, removing browser-side JavaScript is an effective way to achieve blazing fast performance on mobile.
-Also, non-interactive pages are easier and faster to develop than interactive ones &mdash;
-using React/Vue as HTML template engine is a wonderful experience.
-Goldpage is the only tool we are aware of that offers you a browser-less usage of React/Vue.
-More at !VAR|LINK BACKEND_ONLY_APP.
 
-In !VAR|LINK RENDER_WHEN we explain a third page config `renderHtmlAtBuildTime` and
-whether you should render your pages to HTML and/or to the DOM.
+To get a static website you set `renderHtmlAtBuildTime: true` to all your page configs:
+
+~~~js
+import React from 'react';
+
+export default {
+  route: '/',
+  view: LandingPage,
+
+  // A static website can still have a dynamic browser-side.
+  // (The word "static" in "static website" denotes a static server-side.)
+  renderToDom: true,
+
+  // Generate the HTML at build-time.
+  // No Node.js server is needed and the app can be
+  // served by a static host such as GitHub pages or Netlify
+  renderToHtml: true,
+  renderHtmlAtBuildTime: true,
+};
+
+function LandingPage() {
+  return (
+    <div>
+      Welcome to my first Goldpage app.
+    </div>
+  );
+}
+~~~
+
+At !VAR|LINK RENDER_WHEN we discuss whether you should render your pages to HTML and/or to the DOM.
 
 ## !VAR GETTING_STARTED
 
@@ -866,6 +901,12 @@ Many complain that the web dev of 10 years ago was esaier than today's web devel
 
 the and 
 But this is not necessarily
+
+Also, non-interactive pages are easier and faster to develop than interactive ones &mdash;
+using React/Vue as HTML template engine is a wonderful experience.
+Goldpage is the only tool we are aware of that offers you a browser-less usage of React/Vue.
+More at !VAR|LINK BACKEND_ONLY_APP.
+
 
 !INLINE ./snippets/section-footer.md #readme
 
