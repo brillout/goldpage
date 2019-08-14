@@ -11,6 +11,7 @@
 !VAR CSS_AND_ASSETS CSS & Static Assets
 !VAR ASYNC_DATA Async Data: `addInitialProps`
 !VAR CONTROL_HTML HTML: `index.html`, `<head>`, `<meta>`, `<link>`, ...
+
 !VAR RENDER_WHEN Control Rendering - When: `renderToDom`, `renderToHtml` & `renderHtmlAtBuildTime`
 !VAR RENDER_HOW Control Rendering - How
 
@@ -57,7 +58,7 @@
 !INLINE li-2 !VAR|LINK SSR_APP
 !INLINE li-2 !VAR|LINK BACKEND_ONLY_APP
 !INLINE li-2 !VAR|LINK STATIC_WEBSITE
-!INLINE li-2-header Advanced - Control Rendering
+!INLINE li-2-header Advanced - Rendering
 !INLINE li-2 !VAR|LINK RENDER_HOW
 !INLINE li-2 !VAR|LINK RENDER_WHEN
 !INLINE li-2-header API Reference
@@ -81,12 +82,11 @@
 
 ## !VAR WHAT_IS_GOLDPAGE
 
-Easily create an app &mdash;
-define pages and Goldpage takes of the rest.
+Easily create a frontend.
 For React / Vue / RNW / ...
 
-Goldpage is a small (but powerful) tool that makes it easy to create an app.
-It works with any view library such as React and Vue.
+Goldpage is a small (but powerful) tool that makes it easy to create a frontend.
+It works with any view library, such as React and Vue.
 
 You define so-called page configs
 
@@ -102,36 +102,34 @@ export default {
 };
 ~~~
 
-and Goldpage takes care of the rest:
-- Building. (It transpiles and bundles your pages' JavaScript, CSS, and static assets with Webpack.)
-- Routing. (It maps URLs to your pages.)
-- Rendering. (It renders your pages to the DOM and/or to HTML.)
+and the rest is taken care of: Goldpage builds, routes, renders, and serves your pages.
 
-What makes Goldpage special is that it supports all app types (SPA, MPA, SSR, static website, ...) and allows you to
-easily switch between app type at any given time.
+Goldpage is easy to get started &mdash;
+all you need to know to create your first prototype
+is written in "Getting Started" and the "Usage - Basics" sections.
 
-Goldpage is unopinionated, do-one-thing-do-it-well,
-and designed to work with:
-- Any view libray: React, Vue, React Native Web, ...
-- Any server framework: Express, Koa, Hapi, ...
-- Any language: ES7, TypeScript, PostCSS, ...
-- Any provider: Redux, React Router, Vuex, Vue Router, GraphQL Apollo, Relay, ...
-- Any CSS-in-JS: Emotion, styled-components, ...
-- Any process manager: Docker, systemd, PM2, ...
+Goldpage is also designed to scale:
+- Choose any app type: SPA, MPA, SSR, static website, ...
+  <br/>
+  Not only does Goldpage support all app types
+  but it also allows you to easily switch from one app type to another one.
+  This means that you can get started before even deciding whether you want your app
+  to be an SPA, a SSR app, etc.
+- Use it with any tool you want.
+  <br/>
+  Goldpage is unopinionated, do-one-thing-do-it-well, and designed to work with
+  any view libray (React, Vue, React Native Web, ...),
+  any server framework (Express, Koa, Hapi, ...),
+  any language (ES7, TypeScript, PostCSS, ...),
+  any provider (Redux, React Router, Vuex, Vue Router, GraphQL Apollo, Relay, ...),
+  any CSS-in-JS library (Emotion, styled-components, ...),
+  and any process manager (Docker, systemd, PM2, ...).
 
-You can easily add Goldpage to your existing app &mdash;
-we provide middlewares for Express, Koa, and Hapi.
-For example with Express:
+No other tool out there supports all app types.
+Nor does any other tool integrate as well with other libraries.
 
- ~~~js
- const express = require('express');
- const ssr = require('ssr-coin');
-
- const app = express();
-
- // The `ssr.express` middleware serves your pages.
- app.use(ssr.express);
- ~~~
+If you are hesitating whether you want to use Goldpage, then read the next sections.
+Otherwise you can go straight to !VAR|LINK GETTING_STARTED.
 
 !INLINE ./snippets/section-footer.md #readme
 
@@ -139,29 +137,38 @@ For example with Express:
 
 ## !VAR WHY_GOLDPAGE
 
+!INLINE ./snippets/warning-advanced-2.md
+
 The problem with the current tools is that they support only one app type.
 For example for React:
 - create-react-app creates an SPA
-- Next.js creates a SSR app
+- Next.js creates an SSR app
 - Gatsby creates a static website
 
-Before you choose one of these three tools you have to know what "SPA", "SSR", and "static website" mean, their difference, and which one is right for you.
+To choose the right tool you have to know the differences between an SPA, an SSR app, and a static website and then you have to decided which one of these app types is the right one for your app.
 But, most often than not,
-what app type is right becomes clear only after you have written and battle-tested your first protoype.
+which app type is the right one becomes clear only after you have written and battle-tested your first protoype.
 
-Goldpage supports all app types &mdash;
-we believe you shouldn't have to know what "SPA", "SSR", and "static website" mean before starting writing your first prototype.
-With Goldpage,
-you start creating an app and adopt the right app type further down the line as it becomes clearer what you need.
+Goldpage supports all app types
+and switching from one app type to another is easy
+&mdash;
+with Goldpage,
+you can start creating an app, test the different app types further down the line, and settle for an app type once it becomes clear which one is the right one for you.
 
-What often happens is that you start with one tool and later switch to another tool.
-Investigating and changing tools.
-We believe things should be easier: just start writing your app and figure out later what app type is right for you.
+At the core of this.
+It's super simple and easier to reason in terms of "". 
+All boils down and we would.
+Simply configure and see what works for you.
+
+the right app type further down the line as it becomes clearer what you need.
+We believe you shouldn't even have to know what "SPA", "SSR", and "static website" mean before starting writing your first prototype
+
+We actually encourage you to not spend time about learning al these terms and instead just start create a first prototype.
+You'll eventually figure out what it the right render strategy for you.
 
 ## !VAR HOW_IT_WORKS
 
-Reading this section is optional &mdash; if you already decided to use Goldpage then
-you can go straight to !VAR|LINK GETTING_STARTED and start writing your app.
+!INLINE ./snippets/warning-advanced-2.md
 
 But if you are still evaluating whether to use Goldpage,
 then this section will give you a sneak peek into how Goldpage allows you to build any kind of app.
