@@ -157,25 +157,33 @@ It also not unusual to start with an app type and realize later that you actuall
 Goldpage is different; it supports all app types
 and switching from one app type to another is easy.
 With Goldpage,
-you can create a prototype before even knowing what "SPA" or "SSR" mean,
-and only later try out the different app types and see which one works best for you.
+you can create a prototype before even knowing what "SPA" or "SSR" mean
+and, once you finished a first prototype, you can experiment with different app types and see which one works best for your app.
 We actually encourage you to not spend time about learning all these different app types and instead just start create a first prototype.
 You'll get to know all app types while developing your app
 and you'll eventually figure out
 what app type works best for your app.
 
-For example SSR.
+For example SSR and SEO.
+Google executes JavaScript but it has limitations and it's not clear whether you will need.
+We recommend you to experiement without SSR first and if you're not satisfied with
+Googlebot's capability of executing JavaScript crawler
+and if
+'s not 
+Whether or not you will require to render your pages to HTML to achieve
+now always clear and requires you to experiment if 
 By default, Goldpage generates an MPA and easily add SSR at a later point.
-This means that you can (and we recommend you to) start without SSR and later,
-if you encounter SEO problems, then add SSR to your app.
+You can start without SSR and later,
+if you encounter SEO problems, add SSR to your app.
+We fur
 
 Switching between app types is only a matter of setting three page configs:
 `renderToDom` - If set to true, your page is rendered in the browser (to the DOM).
 `renderToHtml` - If set to true, your page is rendered on Node.js (to HTML).
 `renderHtmlAtBuildTime` - Whether your page is rendered to HTML at request-time or at build-time.
 These three flags allow you to get any app type.
-For example, by setting `renderToDom: true` and `renderToHtml: true` you get SSR,
-and by setting `renderToDom: true` and `renderToHtml: false` you get an MPA.
+For example, to get SSR, you set `renderToDom: true` and `renderToHtml: true`,
+and to get an MPA you set `renderToDom: true` and `renderToHtml: false`.
 We further elaborate in the next section.
 
 !INLINE ./snippets/section-footer.md #readme
@@ -588,10 +596,93 @@ Examples:
 
 ## !VAR RENDER_WHEN
 
+
+
+
 There are three page configs that allow you to control when your page is rendered:
 - `renderToDom` - If set to true, your page is rendered in the browser (to the DOM).
 - `renderToHtml` - If set to true, your page is rendered on Node.js (to HTML).
 - `renderHtmlAtBuildTime` - Whether your page is rendered to HTML at request-time or at build-time.
+
+By configurating `renderToDom`, `renderToHtml`, and `renderHtmlAtBuildTime` is about achieving improvements in:
+- SEO
+- SSO
+- Performance
+
+We recommand to not care about these aspects at first.
+Instead of digging into these, build your first prototype.
+And once you have your first protype, you can configure these 3 flags and see what works out best for your app
+in terms of SEO, SSO, and performance
+
+###### `renderToDom` VS `renderToHtml`
+
+With *non-interactive page* we denote a page that has no stateful components.
+
+
+
+
+Modern view libraries, such as React and Vue, are able to render views to the DOM as well as to HTML.
+This means that you have the choice whether you want to render your page to the DOM and to HTML.
+
+
+A non-interactive page shoudl be configured with `renderToHtml: true` and `renderToDom: false`.
+A non-interacive page doesn't need to be rendered to the DOM and rendering to HTML only is best:
+- Performance
+  <br/>
+  Epsecially on mobile devices, a without any browser-side JavaScript is dramatically faster than a
+  with many MBs of browser-side JavaScript.
+- SEO & Social sharing
+  All your page's content is accessible to search engines and social sites crawling page's HTML.
+
+As explained in [Interactive Page VS Non-interactive Page](),
+an interactive page needs to be rendered to the DOM,
+you have the choie between:
+ - `renderToDom: true` & `renderToHtml: false`, or
+ - `renderToDom: true` & `renderToHtml: true`
+
+Whether you want to,
+depends whether you 
+which we explain in more depth at [SSR or not to SSR?]().
+Also have different characteristics.
+
+We recommend to 
+
+Loose the SEO & Social sharing benefits.
+
+
+The second option, that is to render your page twice, is also known as SSR (Server-Side Rendering):
+the page is first rendered to HTML with Node.js and then re-rendered to the DOM in the browser.
+(The browser-side re-rendering is commonly called "hydration".)
+
+The motivation of rendering your page twice is to be able to have a page that is both interacative while also having its content rendered to HTML to make the content more accessible to HTML crawlers for search engines and social sharing sites.
+
+
+
+
+An interactive page needs to be rendered to the DOM.
+
+- Interactive VS non-interactive page
+
+If you
+
+Instead of (or in addition to) rendering your page to the DOM,
+you may want to render your page to HTML.
+
+You may want 
+There are three aspects why you may want to render your page to HTML:
+- SEO
+- Social Sharing
+- Performance
+We further elaborate at 
+
+For non-interactive pages you can
+set `renderToHtml: true` and `renderToDom: false`.
+For pages that have interactive views (that is stateful components),
+you'll need to hydrate your page, that is:
+set `renderToHtml: true` and `renderToDom: true`.
+We give further explanation at 
+
+
 
 - more details renderToDom
 - more details renderToHtml
@@ -643,11 +734,6 @@ We now discuss the different combination and when to use what.
 This is Goldpage's default setting.
 
 ###### `renderToDom: true` & `renderToHtml: true`
-
-denotes the practice of rendering a page twice:
-the page is first rendered to HTML with Node.js and then re-rendered to the DOM in the browser.
-(The browser-side re-rendering is commonly called "hydration".)
-(Modern view libraries, such as React and Vue, are able to render views to the DOM as well as to HTML.)
 
 The idea here is to render your page's content to HTML for gains in SEO, social sharing, and performance.
 The page is then re-rendered to the DOM to be able to have stateful React/Vue components and thus interactive views.
