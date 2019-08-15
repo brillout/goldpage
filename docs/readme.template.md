@@ -15,7 +15,9 @@
 !VAR RENDER_WHEN Control Rendering - When: `renderToDom`, `renderToHtml` & `renderHtmlAtBuildTime`
 !VAR RENDER_HOW Control Rendering - How
 
-!VAR SPA_MPA_APP SPA/MPA
+!VAR APP_TYPES App Types (Advanced)
+!VAR MPA_APP MPA
+!VAR SPA_APP SPA
 !VAR SSR_APP SSR
 !VAR BACKEND_ONLY_APP Backend-only
 !VAR MIXED_APP Mixed
@@ -29,7 +31,7 @@
 !VAR CONTROL_TRANSPILATION Transpilation: Babel / TypeScript /  ES6 / ...
 !VAR CSS_IN_JS CSS-in-JS: Emotion / styled-components / ...
 !VAR CSS_PRE_PROCESSORS CSS pre-processors: PostCSS / Sass / Less / ...
-!VAR ROUTING Routing: Server-side Routing / Browser-side Routing / React Router / Vue Router / ...
+!VAR CONTROL_ROUTING Routing: Server-side Routing / Browser-side Routing / React Router / Vue Router / ...
 !VAR FRONTEND_LIBRARIRES Frontend Libraries: Google Analytics / jQuery / Bootstrap / Semantic UI / ...
 !VAR SERVER_FRAMEWORKS Server Frameworks: Express / Koa / Hapi / Fastify / ...
 !VAR VIEW_LIBRARIES View Libraries: React / Vue / Preact / ...
@@ -53,8 +55,9 @@
 !INLINE li-2 !VAR|LINK CSS_AND_ASSETS
 !INLINE li-2 !VAR|LINK ASYNC_DATA
 !INLINE li-2 !VAR|LINK CONTROL_HTML
-!INLINE li-2-header Advanced - App Types
-!INLINE li-2 !VAR|LINK SPA_MPA_APP
+!INLINE li-2-header !VAR APP_TYPES
+!INLINE li-2 !VAR|LINK MPA_APP
+!INLINE li-2 !VAR|LINK SPA_APP
 !INLINE li-2 !VAR|LINK SSR_APP
 !INLINE li-2 !VAR|LINK BACKEND_ONLY_APP
 !INLINE li-2 !VAR|LINK STATIC_WEBSITE
@@ -70,7 +73,7 @@
 !INLINE li-2 !VAR|LINK CONTROL_TRANSPILATION
 !INLINE li-2 !VAR|LINK CSS_IN_JS
 !INLINE li-2 !VAR|LINK CSS_PRE_PROCESSORS
-!INLINE li-2 !VAR|LINK ROUTING
+!INLINE li-2 !VAR|LINK CONTROL_ROUTING
 !INLINE li-2 !VAR|LINK FRONTEND_LIBRARIRES
 !INLINE li-2 !VAR|LINK SERVER_FRAMEWORKS
 !INLINE li-2 !VAR|LINK VIEW_LIBRARIES
@@ -170,10 +173,14 @@ Switching between app types is only a matter of setting three page configs:
 `renderToDom` - If set to true, your page is rendered in the browser (to the DOM).
 `renderToHtml` - If set to true, your page is rendered on Node.js (to HTML).
 `renderHtmlAtBuildTime` - Whether your page is rendered to HTML at request-time or at build-time.
-These three flags allow you to achieve any app type.
+These three flags allow you to get any app type.
 For example, by setting `renderToDom: true` and `renderToHtml: true` you get SSR,
 and by setting `renderToDom: true` and `renderToHtml: false` you get an MPA.
 We further elaborate in the next section.
+
+!INLINE ./snippets/section-footer.md #readme
+
+
 
 ## !VAR HOW_IT_WORKS
 
@@ -296,6 +303,10 @@ function LandingPage() {
 ~~~
 
 At !VAR|LINK RENDER_WHEN we discuss whether you should render your pages to HTML and/or to the DOM.
+
+!INLINE ./snippets/section-footer.md #readme
+
+
 
 ## !VAR GETTING_STARTED
 
@@ -577,6 +588,31 @@ Examples:
 
 ## !VAR RENDER_WHEN
 
+There are three page configs that allow you to control when your page is rendered:
+- `renderToDom` - If set to true, your page is rendered in the browser (to the DOM).
+- `renderToHtml` - If set to true, your page is rendered on Node.js (to HTML).
+- `renderHtmlAtBuildTime` - Whether your page is rendered to HTML at request-time or at build-time.
+
+- more details renderToDom
+- more details renderToHtml
+- more details renderHtmlAtBuildTime
+- overview renderToDom vs renderToHtml
+- extra doc renderToDom vs renderToHtml
+
+
+At [!VAR APP_TYPES](#readme) we show you what app types corresponds to what `renderToHtml`, `renderToDom`, and `renderHtmlAtBuildTime` configuration.
+
+
+By default Goldpages renders your pages to the DOM:
+
+~~~js
+EXAMPLE
+~~~
+
+k(`renderToDom: true` and `renderToHtml
+
+
+
 Goldpage allows you to fully control when and how your pages are rendered.
 
 This section is about when your pages are rendered.
@@ -591,11 +627,6 @@ So one and so forth.
 And the best
 is that you can mix: one page can be an SPA and another page can be a SSR page.
 
-`renderToDom` - If set to true, your page is rendered in the browser (to the DOM).
-
-`renderToHtml` - If set to true, your page is rendered on Node.js (to HTML).
-
-`renderHtmlAtBuildTime` - Whether your page is rendered to HTML at request-time or at build-time.
 
 We now discuss the different combination and when to use what.
 
@@ -613,7 +644,28 @@ This is Goldpage's default setting.
 
 ###### `renderToDom: true` & `renderToHtml: true`
 
-###### `renderToDom: false` & `renderToHtml: true`
+denotes the practice of rendering a page twice:
+the page is first rendered to HTML with Node.js and then re-rendered to the DOM in the browser.
+(The browser-side re-rendering is commonly called "hydration".)
+(Modern view libraries, such as React and Vue, are able to render views to the DOM as well as to HTML.)
+
+The idea here is to render your page's content to HTML for gains in SEO, social sharing, and performance.
+The page is then re-rendered to the DOM to be able to have stateful React/Vue components and thus interactive views.
+
+You can enable SSR for a page by setting both `renderToHtml: true` and `renderToDom: true`.
+We elaborate further and explain when to SSR at !VAR-LINK RENDER_WHEN.
+
+**Example**
+
+The following page showcases SSR:
+- The page is interactive (as you can see in the screencast, the user can modify the state of the counter).
+- The page is server-side rendered (as you can see in the video, the content of the page is rendered to HTML, such as "brillout/awesome-react-components").
+
+<img align="right" src="https://github.com/reframejs/ssr-coin/raw/master/docs/ssr-coin_example_video.gif" width=336 height=706 style="max-width:100%;"/>
+
+~~~js
+!INLINE /examples/basics/pages/repos/repos.page.js
+~~~
 
 ###### `renderToDom: false` & `renderToHtml: true`
 
@@ -751,12 +803,14 @@ You can then deploy your app to a static host such as Netlify or GitHub Pages.
 
 
 
-## !VAR SPA_MPA_APP
+## !VAR MPA_APP
 
 !INLINE ./snippets/warning-advanced.md
+> This section assumes that you know what MPA means.
 
-With Goldpage, you get a MPA by default.
-This is because the page config's default values are `renderToDom: true` and `renderToHtml: false` which corresponds to what a MPA does.
+An MPA is what you get by default.
+
+The default values are `renderToDom: true` and `renderToHtml: false` which corresponds to what a MPA does.
 
 At !VAR|LINK RENDER_WHEN we explain what the page configs `renderToDom` and `renderToHtml` mean.
 
@@ -796,14 +850,6 @@ with couple of nicess
 
 Modern view libraries 
 
-In an SPA and a MPA,
-your pages are rendered in the browser
-
-An Single Page app (SPA) and Multi Page App (MPA) are the classical way of using React/Vue.
-
-In an SPA all browser-side JavaScript are bundled into one file and
-this file is served at all URLs
-
 This is what you get when you use create-react-app, vue-cli, Webpack, and Parcel.
 
 With Goldpage, you get an MPA by default.
@@ -831,44 +877,70 @@ This is typically is highly interactive
 
 !INLINE ./snippets/section-footer.md #readme
 
+## !VAR SPA_APP
+
+!INLINE ./snippets/warning-advanced.md
+>
+> This section assumes that you know what SPA, MPA, [browser-side routing, and server-side routing](!VAR|ANCHOR CONTROL_ROUTING) mean.
+
+By default,
+Goldpage generates an MPA which most of the a better alterantive to an SPA.
+(MPA is basically the same than an SPA but with server-side routing and code-splitting.)
+
+An SPA is what you get when you use create-create-app, vue-cli, the Webpack CLI, and Parcel.
+
+If you're curious:
+you could still have an SPA by have a single page with a catch-all route and use a browser-side routing library such as React Router.
 
 ## !VAR SSR_APP
 
-[SSR (Server-Side Rendering)](https://github.com/brillout/awesome-universal-rendering#introduction)
-denotes the practice of rendering a page twice:
-the page is first rendered to HTML with Node.js and then re-rendered to the DOM in the browser.
-(The browser-side re-rendering is commonly called "hydration".)
-(Modern view libraries, such as React and Vue, are able to render views to the DOM as well as to HTML.)
+!INLINE ./snippets/warning-advanced.md
+>
+> This section assumes that you know about `renderToHtml`, `renderToDom` and that you know what [SSR](https://github.com/brillout/awesome-universal-rendering#introduction) means.
 
-The idea here is to render your page's content to HTML for gains in SEO, social sharing, and performance.
-The page is then re-rendered to the DOM to be able to have stateful React/Vue components and thus interactive views.
+Set the page configs `renderToHtml: true` and `renderToDom: true` in order add SSR to a page.
 
-You can enable SSR for a page by setting both `renderToHtml: true` and `renderToDom: true`.
-We elaborate further and explain when to SSR at !VAR-LINK RENDER_WHEN.
+By setting `renderToHtml: true` and `renderToDom: true` to all page configs you get an SSR app.
 
-**Example**
-
-The following page showcases SSR:
-- The page is interactive (as you can see in the screencast, the user can modify the state of the counter).
-- The page is server-side rendered (as you can see in the video, the content of the page is rendered to HTML, such as "brillout/awesome-react-components").
-
-<img align="right" src="https://github.com/reframejs/ssr-coin/raw/master/docs/ssr-coin_example_video.gif" width=336 height=706 style="max-width:100%;"/>
-
-~~~js
-!INLINE /examples/basics/pages/repos/repos.page.js
-~~~
+An SSR app is what you get when you use Next.js and Nuxt.js.
 
 !INLINE ./snippets/section-footer.md #readme
 
 
 ## !VAR BACKEND_ONLY_APP
 
+!INLINE ./snippets/warning-advanced.md
+
+
+- overview backend-only
+- extra doc details backend-only
+
+
+
+
 Goldpage introduces a new kind of app we call *backend-only app*.
 
-Instead of creating interactive views,
-a backend-only app uses React (or Vue) as a HTML template engine.
+By setting the page configs `renderToHtml: true` and `renderToDom: false` you
+end up using React (or Vue) merely as a HTML template engine.
 
-Using React to generate HTML is a wonderful experience;
+Why should one use React to generate plain old HTML?
+It turns out that JSX can also be used to generate HTML in a delightful way; it allows you to leverage your knowledge about and the full power of JavaScript to generate HTML.
+
+You can use the same stack and use your JavaScript knowledge to create an old-school and simple non-interactive backend-only app.
+
+For apps that are mainly about content, this makes a lot of sense.
+
+
+
+In short, Goldpage and `renderToDom: false` allow you to implement an old-school backend by using your knowledge of a modern JavaScript stack.
+
+
+Non-interactive pages are much easier and much faster to implement.
+And if you happen to absolutely need an interactive page you can always do so and set `renderToDom: true`.
+
+means that no browser-side (or little) JavaScript
+Long debate about that interactive apps are overkill and just use 
+React can do that to today.
 
 There are plenty of benefits:
 - Full control over SEO & social sharing.
@@ -881,21 +953,17 @@ There are plenty of benefits:
   No API
   Instead 
 
-A backend-only and we believe it's good thing.
-And if you happen to 
+The nice thing is that you
+interactive escape hatch:
+If you happen to actually
+absolutely need to implement a interactive page you selectively add `renderToDom: true`.
 
-Keep in mind: there are hugely successful websites that have (almost) no browser-side JavaScript, such as Hacker News have only ~150 LOC of browser-side JavaScript.
-
-A backend-only app like the old days
-
-Thanks to 
-
-The benefits are mutli
-Why would someone want?
-
-And more importantly, if you happen to require
+Non-interactive 
 
 Interactive views are inherently complicated and time consuming to implement.
+
+
+A backend-only and we believe it's good thing.
 
 Many complain that the web dev of 10 years ago was esaier than today's web development.
 
@@ -904,7 +972,7 @@ But this is not necessarily
 
 Also, non-interactive pages are easier and faster to develop than interactive ones &mdash;
 using React/Vue as HTML template engine is a wonderful experience.
-Goldpage is the only tool we are aware of that offers you a browser-less usage of React/Vue.
+
 More at !VAR|LINK BACKEND_ONLY_APP.
 
 
@@ -912,6 +980,8 @@ More at !VAR|LINK BACKEND_ONLY_APP.
 
 
 ## !VAR MIXED_APP
+
+!INLINE ./snippets/warning-advanced.md
 
 With a *mixed app* we denote an app that has non-interactive pages (`renderTo`)
 
@@ -927,6 +997,8 @@ We believe such mixed app to be the future of web developement.
 
 
 ## !VAR STATIC_WEBSITE
+
+!INLINE ./snippets/warning-advanced.md
 
 A static website is like a SPA/MPA but where 
 
@@ -1140,7 +1212,7 @@ Example:
 
 
 
-## !VAR ROUTING
+## !VAR CONTROL_ROUTING
 
 On the web, there are two ways to do routing:
 *server-side routing*
