@@ -150,18 +150,38 @@ Before choosing one of these tools you have to know what "SPA", "SSR", and "stat
 But, most often than not,
 which app type is the right one becomes clear only after you have written and battle-tested your first protoype.
 
-Goldpage is different; it supports all app types
-and switching from one app type to another is easy.
-With Goldpage,
+Goldpage supports all app types
+and you can easily switch from one app type to another.
+That way,
 you can create a prototype before even knowing what "SPA" or "SSR" mean
 and, once you finished a first prototype, you can experiment with different app types and see which one works best for your app.
-We actually encourage you to not spend time about learning all these different app types and instead just start create a first prototype.
-You'll get to know all app types while developing your app
-and you'll eventually figure out
-what app type works best for your app.
 
-For example, there is a technique called "SSR" that helps search engines to successfully crawl your app.
+Instead of spending time learning about the different kinds of app types,
+we encourage you start creating a first prototype.
+You'll eventually get familiar with the different kind of app types while developing your app,
+and you'll eventually figure out
+which app type works best for your app.
+
+Switching between app types is simply a matter of setting three page configs:
+`renderToDom` - If set to true, your page is rendered in the browser (to the DOM).
+`renderToHtml` - If set to true, your page is rendered on Node.js (to HTML).
+`renderHtmlAtBuildTime` - Whether your page is rendered to HTML at request-time or at build-time.
+These three flags allow you to get any app type.
+For example, to add SSR to your page, you set `renderToDom: true` and `renderToHtml: true`,
+and to get an MPA you set `renderToDom: true` and `renderToHtml: false`..
+
+For example, there is a technique called "SSR" that allows search engines successfully crawl the content of your pages.
 The best way to know if you need SSR is to try it out.
+(for example from create-react-app to Next.js).
+You cannot easily jusdo that with other tools.
+But with Goldpage you can.
+You can add SSR to one of your page by setting `renderToHtml: true` to the page config
+and then test how SSR works out for that page.
+If it does, you can then add SSR to your other pages.
+
+With Goldpage you can add SSR a one of your page and see if it works out for you.
+If it does you can add SSR to your other pages and 
+
 Now you .
 You can even try SSR with only one page.
 If you are hestitating whether 
@@ -181,15 +201,6 @@ By default, Goldpage generates an MPA and easily add SSR at a later point.
 You can start without SSR and later,
 if you encounter SEO problems, add SSR to your app.
 We fur
-
-Switching between app types is only a matter of setting three page configs:
-`renderToDom` - If set to true, your page is rendered in the browser (to the DOM).
-`renderToHtml` - If set to true, your page is rendered on Node.js (to HTML).
-`renderHtmlAtBuildTime` - Whether your page is rendered to HTML at request-time or at build-time.
-These three flags allow you to get any app type.
-For example, to get SSR, you set `renderToDom: true` and `renderToHtml: true`,
-and to get an MPA you set `renderToDom: true` and `renderToHtml: false`.
-We further elaborate in the next section.
 
 Also, other tools are too framework-ish;
 they come with lots of (create-react-app 
