@@ -83,10 +83,11 @@
 
 ## !VAR WHAT_IS_GOLDPAGE
 
-Easily create a modern frontend.
-Works with React, Vue, RNW, etc.
-Supports all app types.
-(so-called "SPA", "MPA", "SSR", "static website", etc.)
+Page Builder &mdash;
+to easily create a modern frontend.
+Works with any view library (React, Vue, RNW, ...)
+and supports all app types
+(so-called "SPA", "MPA", "SSR", "static website", ...).
 
 Goldpage is a small (but powerful) tool that makes it easy to create a frontend.
 It works with any view library, such as React or Vue.
@@ -107,16 +108,21 @@ export default {
 
 and the rest is taken care of: Goldpage builds, routes, renders, and serves your pages.
 
-Goldpage is designed to be easy to use and easy to get started with &mdash;
-all you need to know to create your first prototype
+Goldpage is designed from the ground up to be easy & flexible.
+
+**Easy**
+
+All you need to get started is to define your page config(s),
+add the Goldpage middleware to your favorite server framework (Express, Koa, Hapi, ...),
+and add couple of lines to your `package.json`.
+
+And all you need to know to create your first prototype
 is written in the "Getting Started" and "Usage - Basics" sections.
 
 **App types**
 
 Goldpage supports all app types.
-(What are commonly called "SPA", "MPA", "SSR", "static website", etc.)
-(So-called "SPA", "MPA", "SSR", "static website", etc.)
-(In case you are familiar with following terms: Goldpages supports SPAs, MPAs, SSR apps, static websites, and more.)
+(What are commonly denoted as "SPA", "MPA", "SSR", "static website", etc.)
 
 Switching from one app type to another is easy, which means that you can start
 writing your app, and, once you have finished a first prototype,
@@ -126,9 +132,11 @@ We believe you shouldn't have to know what "SPA", "MPA", "SSR", and "static webs
 
 **Do-one-thing-do-it-well**
 
-Goldpage is designed as do-one-thing-do-it-well and works with
-any view libray (React, Vue, React Native Web, ...),
+Goldpage only takes care of building your pages,
+leaves the rest of your stack to you,
+and works with
 any server framework (Express, Koa, Hapi, ...),
+any view libray (React, Vue, React Native Web, ...),
 any language (ES7, TypeScript, PostCSS, ...),
 any provider (Redux, React Router, Vuex, Vue Router, GraphQL Apollo, Relay, ...),
 any CSS-in-JS library (Emotion, styled-components, ...),
@@ -140,7 +148,8 @@ and any process manager (Docker, systemd, PM2, ...).
 
 ## !VAR WHY_GOLDPAGE
 
-What distiguishes Goldpage most is that it supports all app types whereas
+The most distinguishing feature of Goldpage is that
+it supports all app types whereas
 ohter tools support only one. For example for React:
 - create-react-app creates a so-called "SPA"
 - Next.js creates a so-called "SSR app"
@@ -150,11 +159,10 @@ Before choosing one of these tools you have to know what "SPA", "SSR", and "stat
 But, most often than not,
 which app type is the right one becomes clear only after you have written and battle-tested your first protoype.
 
-Goldpage supports all app types
-and you can easily switch from one app type to another.
-That way,
-you can create a prototype before even knowing what "SPA" or "SSR" mean
-and, once you finished a first prototype, you can experiment with different app types and see which one works best for your app.
+With Goldpage,
+you can start creating a prototype before settling for an app type,
+and, once you finished a first prototype,
+you can switch from one app type to another and experiment which one works best for your app.
 
 Instead of spending time learning about the different kinds of app types,
 we encourage you start creating a first prototype.
@@ -167,17 +175,18 @@ Switching between app types is simply a matter of setting three page configs:
 `renderToHtml` - If set to true, your page is rendered on Node.js (to HTML).
 `renderHtmlAtBuildTime` - Whether your page is rendered to HTML at request-time or at build-time.
 These three flags allow you to get any app type.
-For example, to add SSR to your page, you set `renderToDom: true` and `renderToHtml: true`,
-and to get an MPA you set `renderToDom: true` and `renderToHtml: false`..
 
-For example, there is a technique called "SSR" that allows search engines successfully crawl the content of your pages.
-The best way to know if you need SSR is to try it out.
+For example, let's consider the technique called "SSR",
+which is a technique that allows search engines to successfully crawl the content of your pages.
+The best way to know Whether you need SSR is to try it out.
+With Goldpage, you can add SSR to one of your page by setting `renderToHtml: true` to its page config
+and then test if SSR works out for that page.
+If it does, then you can progressively add SSR to your other pages.
+
+
+You cannot easily do that with other tools.
 (for example from create-react-app to Next.js).
-You cannot easily jusdo that with other tools.
 But with Goldpage you can.
-You can add SSR to one of your page by setting `renderToHtml: true` to the page config
-and then test how SSR works out for that page.
-If it does, you can then add SSR to your other pages.
 
 With Goldpage you can add SSR a one of your page and see if it works out for you.
 If it does you can add SSR to your other pages and 
@@ -202,9 +211,21 @@ You can start without SSR and later,
 if you encounter SEO problems, add SSR to your app.
 We fur
 
-Also, other tools are too framework-ish;
-they come with lots of (create-react-app 
-Goldpage is unopinionated can.
+**Do-one-thing-do-it-well**
+
+Also, we find other tools are too "framework-ish".
+We believe monolithic frameworks to be a thing of the past and we're into libraries with a well confined
+that take care of one thing only.
+Goldpage only takes care of building your pages and leaves the rest of your stack up to you.
+Where you may feel restricted using other tools
+Goldpage gives you freedom.
+For example,
+Gatsby 
+GraphQL is useless for many applictions
+Many applications 
+(for example, Gatsby forces you to use GraphQL)
+
+unopinionated about the rest of your stack
 restrictive but you should be free to achieve whatever you want.
 For example, Reframe Starters are opinionated
 
