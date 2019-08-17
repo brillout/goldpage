@@ -11,10 +11,9 @@
 !VAR ASYNC_DATA Async Data: `addInitialProps`
 !VAR CONTROL_HTML HTML: `index.html`, `<head>`, `<meta>`, `<link>`, ...
 
-!VAR RENDER_WHEN Control Rendering - When: `renderToDom`, `renderToHtml` & `renderHtmlAtBuildTime`
-!VAR RENDER_HOW Control Rendering - How
+!VAR RENDER_WHEN Rendering - When: `renderToDom`, `renderToHtml` & `renderHtmlAtBuildTime`
+!VAR RENDER_HOW Rendering - How
 
-!VAR APP_TYPES App Types (Advanced)
 !VAR MPA_APP MPA
 !VAR SPA_APP SPA
 !VAR SSR_APP SSR
@@ -53,15 +52,15 @@
 !INLINE li-2 !VAR|LINK CSS_AND_ASSETS
 !INLINE li-2 !VAR|LINK ASYNC_DATA
 !INLINE li-2 !VAR|LINK CONTROL_HTML
-!INLINE li-2-header !VAR APP_TYPES
+!INLINE li-2-header Advanced - App Types
 !INLINE li-2 !VAR|LINK MPA_APP
 !INLINE li-2 !VAR|LINK SPA_APP
 !INLINE li-2 !VAR|LINK SSR_APP
 !INLINE li-2 !VAR|LINK BACKEND_ONLY_APP
 !INLINE li-2 !VAR|LINK STATIC_WEBSITE
-!INLINE li-2-header Advanced - Rendering
-!INLINE li-2 !VAR|LINK RENDER_HOW
+!INLINE li-2-header Advanced - Control Rendering
 !INLINE li-2 !VAR|LINK RENDER_WHEN
+!INLINE li-2 !VAR|LINK RENDER_HOW
 !INLINE li-2-header API Reference
 !INLINE li-2 !VAR|LINK PAGE_CONFIG
 !INLINE li-2 !VAR|LINK SSR_COIN_CONFIG
@@ -89,8 +88,8 @@ Works with any view library (React, Vue, RNW, ...)
 and supports all app types
 (so-called "SPA", "MPA", "SSR", "static website", ...).
 
-Goldpage is a small (but powerful) tool that makes it easy to create a frontend.
-It works with any view library, such as React or Vue.
+Goldpage is a small (but powerful) tool that makes it easy to create a frontend
+with a modern view library, such as React or Vue.
 
 You define so-called page configs
 
@@ -117,12 +116,12 @@ add the Goldpage middleware to your favorite server framework (Express, Koa, Hap
 and add couple of lines to your `package.json`.
 
 And all you need to know to create your first prototype
-is written in the "Getting Started" and "Usage - Basics" sections.
+is written in the "Usage - Basics" sections.
 
 **App types**
 
 Goldpage supports all app types.
-(What are commonly denoted as "SPA", "MPA", "SSR", "static website", etc.)
+(Commonly denoted as "SPA", "MPA", "SSR", "static website", etc.)
 
 Switching from one app type to another is easy, which means that you can start
 writing your app, and, once you have finished a first prototype,
@@ -150,84 +149,54 @@ and any process manager (Docker, systemd, PM2, ...).
 
 The most distinguishing feature of Goldpage is that
 it supports all app types whereas
-ohter tools support only one. For example for React:
-- create-react-app creates a so-called "SPA"
-- Next.js creates a so-called "SSR app"
-- Gatsby creates a so-called "static website"
+ohter tools support only one.
 
-Before choosing one of these tools you have to know what "SPA", "SSR", and "static website" mean, the differences between them, and decide which of these app types is the right one for your app.
+For example for React:
+<br/> &nbsp;&nbsp;&nbsp;&#8226;&nbsp;
+create-react-app creates a so-called "SPA"
+<br/> &nbsp;&nbsp;&nbsp;&#8226;&nbsp;
+Next.js creates a so-called "SSR app"
+<br/> &nbsp;&nbsp;&nbsp;&#8226;&nbsp;
+Gatsby creates a so-called "static website"
+<br/>
+Before choosing one of these tools you have to know what "SPA", "SSR", and "static website" mean,
+the differences between them,
+and decide which of these app types is the right one for your app.
 But, most often than not,
 which app type is the right one becomes clear only after you have written and battle-tested your first protoype.
 
 With Goldpage,
 you can start creating a prototype before settling for an app type,
-and, once you finished a first prototype,
+and, once you finished your first prototype,
 you can switch from one app type to another and experiment which one works best for your app.
 
-Instead of spending time learning about the different kinds of app types,
-we encourage you start creating a first prototype.
-You'll eventually get familiar with the different kind of app types while developing your app,
-and you'll eventually figure out
-which app type works best for your app.
-
 Switching between app types is simply a matter of setting three page configs:
+<br/> &nbsp;&nbsp;&nbsp;&#8226;&nbsp;
 `renderToDom` - If set to true, your page is rendered in the browser (to the DOM).
-`renderToHtml` - If set to true, your page is rendered on Node.js (to HTML).
+<br/> &nbsp;&nbsp;&nbsp;&#8226;&nbsp;
+`renderToHtml` - If set to true, your page is rendered to HTML (in Node.js).
+<br/> &nbsp;&nbsp;&nbsp;&#8226;&nbsp;
 `renderHtmlAtBuildTime` - Whether your page is rendered to HTML at request-time or at build-time.
+<br/>
 These three flags allow you to get any app type.
 
 For example, let's consider the technique called "SSR",
-which is a technique that allows search engines to successfully crawl the content of your pages.
-The best way to know Whether you need SSR is to try it out.
-With Goldpage, you can add SSR to one of your page by setting `renderToHtml: true` to its page config
+which allows search engines to successfully crawl the content of your pages.
+The best way to know whether you need SSR is to try it out.
+With Goldpage, you can add SSR to one of your page (by setting `renderToHtml: true` to its page config)
 and then test if SSR works out for that page.
-If it does, then you can progressively add SSR to your other pages.
-
-
-You cannot easily do that with other tools.
-(for example from create-react-app to Next.js).
-But with Goldpage you can.
-
-With Goldpage you can add SSR a one of your page and see if it works out for you.
-If it does you can add SSR to your other pages and 
-
-Now you .
-You can even try SSR with only one page.
-If you are hestitating whether 
-
-then you know that it's not clear 
-then you most likely asked yourself the question
-know 
-SSR and SEO.
-Google executes JavaScript but it has limitations and it's not clear whether you will need.
-We recommend you to experiement without SSR first and if you're not satisfied with
-Googlebot's capability of executing JavaScript crawler
-and if
-'s not 
-Whether or not you will require to render your pages to HTML to achieve
-now always clear and requires you to experiment if 
-By default, Goldpage generates an MPA and easily add SSR at a later point.
-You can start without SSR and later,
-if you encounter SEO problems, add SSR to your app.
-We fur
+You can then progressively add SSR to your other pages.
 
 **Do-one-thing-do-it-well**
 
-Also, we find other tools are too "framework-ish".
-We believe monolithic frameworks to be a thing of the past and we're into libraries with a well confined
-that take care of one thing only.
-Goldpage only takes care of building your pages and leaves the rest of your stack up to you.
-Where you may feel restricted using other tools
+We find other tools too "framework-ish".
+Goldpage only takes care of building your pages and leaves the rest of the stack to you.
+Where you feel restricted with other tools
 Goldpage gives you freedom.
 For example,
-Gatsby 
-GraphQL is useless for many applictions
-Many applications 
-(for example, Gatsby forces you to use GraphQL)
-
-unopinionated about the rest of your stack
-restrictive but you should be free to achieve whatever you want.
-For example, Reframe Starters are opinionated
+Gatsby forces you to use GraphQL
+whereas Goldpage leaves the choice
+whether to use GraphQL to you.
 
 !INLINE ./snippets/section-footer.md #readme
 
@@ -513,27 +482,50 @@ Examples:
 
 ## !VAR RENDER_WHEN
 
-> This section assumes what you know [differences between non-interactive and interactive] pages are.
+> This section is about advanced optimization in SEO, SMO, and performance.
+> We recommend to build a prototype before digging too much into this section.
+> You can however, quickly gaze over just so you know that we offer you these optimizations.
 
 There are three page configs that allow you to control when and where your page is rendered:
 - `renderToDom` - If set to true, your page is rendered in the browser (to the DOM).
-- `renderToHtml` - If set to true, your page is rendered on Node.js (to HTML).
+- `renderToHtml` - If set to true, your page is rendered to HTML (in Node.js).
 - `renderHtmlAtBuildTime` - Whether your page is rendered to HTML at request-time or at build-time.
 
 Configuring these page configs is about achieving improvements in:
 - SEO
-- SSO
+- SMO
 - Performance
 
 We recommand to not care about these aspects at first
 but to build a prototype instead first.
 And once you have your first protype, you can experiment with these three page configs and see what works best for you.
 
-We now discuss the different combination of setting `renderToDom` and `renderToHtml` and `renderHtmlAtBuildTime`.
+We now discuss how to configure `renderToDom`, `renderToHtml` and `renderHtmlAtBuildTime`.
 
 ###### `renderToDom: true` & `renderToHtml: false`
 
-This is Goldpage's default setting.
+This is the default configuration;
+your page is loaded & rendered only in the browser.
+
+Because the page is rendered to the DOM, the page can be interactive.
+(We explain why at [Interactive vs Non-interactive]().
+
+###### `renderToDom: false` & `renderToHtml: true`
+
+If your page is non-interactive, this is the best configuration:
+- SEO
+  <br/>
+  The content of your page is rendered to HTML and search engines merely have to crawl your page's HTML to get your page's content.
+  Your page will appear to all search engines.
+- SMO
+  <br/>
+- Performance
+
+If your page has interactive views then your page needs to be rendered to the DOM and this configuration is not an option.
+(We explain why at [Interactive vs Non-interactive]().)
+If you still want the aforementioned SEO and SMO benefits you can your pages to both HTML and the DOM,
+see the next section.
+
 
 ###### `renderToDom: true` & `renderToHtml: true`
 
@@ -582,10 +574,6 @@ This is then the best configuration:
 
 The main motivation for this configuration is to get rid of the need for a Node.js server and create a static website.
 This is mainly to create a 
-
-###### `renderToDom: false` & `renderToHtml: false`
-
-Doesn't make sense ;-).
 
 ###### `renderToHtml: false` & `renderHtmlAtBuildTime: true`
 
