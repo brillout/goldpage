@@ -505,7 +505,7 @@ We now discuss how to configure `renderToDom`, `renderToHtml` and `renderHtmlAtB
 ###### `renderToDom: true` & `renderToHtml: false`
 
 This is the default configuration;
-your page is loaded & rendered only in the browser.
+your page is loaded & rendered in the browser only.
 
 Because the page is rendered to the DOM, the page can be interactive.
 (We explain why at [Interactive vs Non-interactive]().
@@ -517,9 +517,11 @@ If your page is non-interactive, this is the best configuration:
   <br/>
   The content of your page is rendered to HTML and search engines merely have to crawl your page's HTML to get your page's content.
   Your page will appear to all search engines.
-- SMO
-  <br/>
 - Performance
+  <br/>
+  Rendering your page in Node.js is almost always faster than rendering it in the browser.
+  The difference in speed can be drastic for low-end devices such as mobile phones.
+  (Your page is already loaded in Node.js whereas in the browser it has to be loaded over the internet.
 
 If your page has interactive views then your page needs to be rendered to the DOM and this configuration is not an option.
 (We explain why at [Interactive vs Non-interactive]().)
