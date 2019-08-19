@@ -413,68 +413,225 @@ Example:
 
 
 
-## !VAR RENDER_HOW
+## !VAR MPA_APP
 
-Goldpage gives you full control
-over how your pages are rendered to HTML and the DOM.
+!INLINE ./snippets/warning-advanced.md
+> This section assumes that you know what MPA means.
 
-For that,
-save a `ssr-coin.config.js` file at your project's root directory and
-add the `renderToHtml` and `renderToDom` configs:
-~~~js
-// ssr-coin.config.js
+An MPA is what you get by default.
 
-!INLINE /examples/react-router/ssr-coin.config.js --hide-source-path
-~~~
+The default values are `renderToDom: true` and `renderToHtml: false` which corresponds to what a MPA does.
 
-Then create the `renderToDom` and `renderToHtml` files.
+At !VAR|LINK RENDER_WHEN we explain what the page configs `renderToDom` and `renderToHtml` mean.
 
-With React:
+For more information about `
 
-~~~js
-// render/renderToDom.js
+Note that a MPA is basically the same than an SPA but with improved performance.
 
-!INLINE /plugins/render-react/renderToDom.js --hide-source-path
-~~~
+If you are curious, we elaborate more about what SPA and MPA means then check.
 
-~~~js
-// render/renderToHtml.js
+You shoudn't worry whether
+Whether the default values `renderToDom: true` and `renderToHtml: true` are the right one for your app.
 
-!INLINE /plugins/render-react/renderToHtml.js --hide-source-path
-~~~
+But note that you don't have to know what SPA and MPA mean to use Goldpage and to build a great app.
+(We prefer to reseaon in terms of `renderToDom` and `renderToHtml` instead of "SPA"/"SSR"/...)
 
-This allows you to add providers such as Redux's `<Provider store={store} />` or React Router's `<BrowserRouter />`.
+you get a SPA (more precisely, a MPA) by setting:
+- `renderToDom: true`
+- `renderToHtml: false`
+to your page configs.
 
-<details>
-<summary>
-With Vue
-</summary>
+A SPA (Single Page App) is the "mother" of all frontends.
 
-~~~js
-// render/renderToDom.js
+Both SPAs
 
-!INLINE /plugins/vue/renderToDom.js --hide-source-path
-~~~
+A MPA (Multi Page App) is like a SPA but 
 
-~~~js
-// render/renderToHtml.js
+With React and Vue, not only can you render your pages to the DOM, but you can also render them to HTML.
+The question arises: should I render my page to the DOM or to HTML?
 
-!INLINE /plugins/vue/renderToHtml.js --hide-source-path
-~~~
+A SPA (and a MPA) renders your page to the DOM.
 
-~~~js
-// render/getVueInstance.js
+A MPA is like an SPA but instead of bundling all browser-side JavaScript into one bundle,
+and server-side routed.
+with couple of nicess
 
-!INLINE /plugins/vue/getVueInstance.js --hide-source-path
-~~~
 
-This allows you to add providers such as for Vuex or Vue Router.
-</details>
 
-Examples:
-- [/examples/react-router](/examples/react-router)
-- [/examples/redux](/examples/redux)
-- [/examples/styled-components](/examples/styled-components)
+Modern view libraries 
+
+This is what you get when you use create-react-app, vue-cli, Webpack, and Parcel.
+
+With Goldpage, you get an MPA by default.
+(The default page config has `renderToDom: true` and `renderToHtml: false`,
+more about `renderToDom` and `renderToHtml` at !VAR|LINK RENDER_WHEN.)
+
+to your pages.
+You generate 
+This is also the default app type that Goldpage generates.
+
+If your app is mostly about user inteactions
+then this 
+(a music player, an email app, a graphical editor, a chat app, ...).
+
+If your app is mostly about content
+(a blog, a newspaper, a e-commerce shop, ...).
+
+If your app is a mix
+(a website with a questionnaire)
+then a mixed app
+
+Choose this type of app if y
+
+This is typically is highly interactive
+
+!INLINE ./snippets/section-footer.md #readme
+
+## !VAR SPA_APP
+
+!INLINE ./snippets/warning-advanced.md
+>
+> This section assumes that you know what SPA, MPA, [browser-side routing, and server-side routing](!VAR|ANCHOR CONTROL_ROUTING) mean.
+
+By default,
+Goldpage generates an MPA which most of the a better alterantive to an SPA.
+(MPA is basically the same than an SPA but with server-side routing and code-splitting.)
+
+An SPA is what you get when you use create-create-app, vue-cli, the Webpack CLI, and Parcel.
+
+If you're curious:
+you could still have an SPA by have a single page with a catch-all route and use a browser-side routing library such as React Router.
+
+## !VAR SSR_APP
+
+!INLINE ./snippets/warning-advanced.md
+>
+> This section assumes that you know about `renderToHtml`, `renderToDom` and that you know what [SSR](https://github.com/brillout/awesome-universal-rendering#introduction) means.
+
+Set the page configs `renderToHtml: true` and `renderToDom: true` in order add SSR to a page.
+
+By setting `renderToHtml: true` and `renderToDom: true` to all page configs you get an SSR app.
+
+An SSR app is what you get when you use Next.js and Nuxt.js.
+
+!INLINE ./snippets/section-footer.md #readme
+
+
+## !VAR BACKEND_ONLY_APP
+
+!INLINE ./snippets/warning-advanced.md
+
+
+- overview backend-only
+- extra doc details backend-only
+
+
+
+
+Goldpage introduces a new kind of app we call *backend-only app*.
+
+By setting the page configs `renderToHtml: true` and `renderToDom: false` you
+end up using React (or Vue) merely as a HTML template engine.
+
+Why should one use React to generate plain old HTML?
+It turns out that JSX can also be used to generate HTML in a delightful way; it allows you to leverage your knowledge about and the full power of JavaScript to generate HTML.
+
+You can use the same stack and use your JavaScript knowledge to create an old-school and simple non-interactive backend-only app.
+
+For apps that are mainly about content, this makes a lot of sense.
+
+
+
+In short, Goldpage and `renderToDom: false` allow you to implement an old-school backend by using your knowledge of a modern JavaScript stack.
+
+
+Non-interactive pages are much easier and much faster to implement.
+And if you happen to absolutely need an interactive page you can always do so and set `renderToDom: true`.
+
+means that no browser-side (or little) JavaScript
+Long debate about that interactive apps are overkill and just use 
+React can do that to today.
+
+There are plenty of benefits:
+- Full control over SEO & social sharing.
+- Blazing fast performance, especially on mobile.
+  <br/>
+  Loading all views and views libraries
+- High dev speed
+  <br/>
+  It turns out that create interactive views (state management is notoriously complex) is time consuming.
+  No API
+  Instead 
+
+The nice thing is that you
+interactive escape hatch:
+If you happen to actually
+absolutely need to implement a interactive page you selectively add `renderToDom: true`.
+
+Non-interactive 
+
+Interactive views are inherently complicated and time consuming to implement.
+
+
+A backend-only and we believe it's good thing.
+
+Many complain that the web dev of 10 years ago was esaier than today's web development.
+
+the and 
+But this is not necessarily
+
+Also, non-interactive pages are easier and faster to develop than interactive ones &mdash;
+using React/Vue as HTML template engine is a wonderful experience.
+
+More at !VAR|LINK BACKEND_ONLY_APP.
+
+
+!INLINE ./snippets/section-footer.md #readme
+
+
+## !VAR MIXED_APP
+
+!INLINE ./snippets/warning-advanced.md
+
+With a *mixed app* we denote an app that has non-interactive pages (`renderTo`)
+
+This is for website
+have both pages that are content and pages with lots of user interactions
+(A e-commerce shop with a complex checkout process or a advanced. A)
+
+
+Non-interactive first approach
+Whenever possible 
+
+We believe such mixed app to be the future of web developement.
+
+
+## !VAR STATIC_WEBSITE
+
+!INLINE ./snippets/warning-advanced.md
+
+A static website is like a SPA/MPA but where 
+
+If you set `renderHtmlAtBuildTime: true` to all your page configs,
+then your entire browser-side code is generated at built-time.
+
+This means that no Node.js server is required to serve your frontend.
+
+If you don't need the Node.js server beyond serving your browser-side code then your app is essentially
+just a collection of static assets for the browser.
+Your app is then what is commonly called a "static website".
+
+You can deploy a static website using a static host such as
+[Netlify](https://www.netlify.com/),
+[Amazon S3](https://aws.amazon.com/s3/), or
+[GitHub Pages](https://pages.github.com/).
+
+To deploy,
+simply run `$ ssr-coin build`
+(or better `npm run build` where `require('./package.json').scripts.build === 'ssr-coin build'`)
+and copy the directory `.build/browser/`
+(which is the directory that contains the browser assets)
+to your static host.
 
 !INLINE ./snippets/section-footer.md #readme
 
@@ -755,225 +912,68 @@ You can then deploy your app to a static host such as Netlify or GitHub Pages.
 
 
 
-## !VAR MPA_APP
+## !VAR RENDER_HOW
 
-!INLINE ./snippets/warning-advanced.md
-> This section assumes that you know what MPA means.
+Goldpage gives you full control
+over how your pages are rendered to HTML and the DOM.
 
-An MPA is what you get by default.
+For that,
+save a `ssr-coin.config.js` file at your project's root directory and
+add the `renderToHtml` and `renderToDom` configs:
+~~~js
+// ssr-coin.config.js
 
-The default values are `renderToDom: true` and `renderToHtml: false` which corresponds to what a MPA does.
+!INLINE /examples/react-router/ssr-coin.config.js --hide-source-path
+~~~
 
-At !VAR|LINK RENDER_WHEN we explain what the page configs `renderToDom` and `renderToHtml` mean.
+Then create the `renderToDom` and `renderToHtml` files.
 
-For more information about `
+With React:
 
-Note that a MPA is basically the same than an SPA but with improved performance.
+~~~js
+// render/renderToDom.js
 
-If you are curious, we elaborate more about what SPA and MPA means then check.
+!INLINE /plugins/render-react/renderToDom.js --hide-source-path
+~~~
 
-You shoudn't worry whether
-Whether the default values `renderToDom: true` and `renderToHtml: true` are the right one for your app.
+~~~js
+// render/renderToHtml.js
 
-But note that you don't have to know what SPA and MPA mean to use Goldpage and to build a great app.
-(We prefer to reseaon in terms of `renderToDom` and `renderToHtml` instead of "SPA"/"SSR"/...)
+!INLINE /plugins/render-react/renderToHtml.js --hide-source-path
+~~~
 
-you get a SPA (more precisely, a MPA) by setting:
-- `renderToDom: true`
-- `renderToHtml: false`
-to your page configs.
+This allows you to add providers such as Redux's `<Provider store={store} />` or React Router's `<BrowserRouter />`.
 
-A SPA (Single Page App) is the "mother" of all frontends.
+<details>
+<summary>
+With Vue
+</summary>
 
-Both SPAs
+~~~js
+// render/renderToDom.js
 
-A MPA (Multi Page App) is like a SPA but 
+!INLINE /plugins/vue/renderToDom.js --hide-source-path
+~~~
 
-With React and Vue, not only can you render your pages to the DOM, but you can also render them to HTML.
-The question arises: should I render my page to the DOM or to HTML?
+~~~js
+// render/renderToHtml.js
 
-A SPA (and a MPA) renders your page to the DOM.
+!INLINE /plugins/vue/renderToHtml.js --hide-source-path
+~~~
 
-A MPA is like an SPA but instead of bundling all browser-side JavaScript into one bundle,
-and server-side routed.
-with couple of nicess
+~~~js
+// render/getVueInstance.js
 
+!INLINE /plugins/vue/getVueInstance.js --hide-source-path
+~~~
 
+This allows you to add providers such as for Vuex or Vue Router.
+</details>
 
-Modern view libraries 
-
-This is what you get when you use create-react-app, vue-cli, Webpack, and Parcel.
-
-With Goldpage, you get an MPA by default.
-(The default page config has `renderToDom: true` and `renderToHtml: false`,
-more about `renderToDom` and `renderToHtml` at !VAR|LINK RENDER_WHEN.)
-
-to your pages.
-You generate 
-This is also the default app type that Goldpage generates.
-
-If your app is mostly about user inteactions
-then this 
-(a music player, an email app, a graphical editor, a chat app, ...).
-
-If your app is mostly about content
-(a blog, a newspaper, a e-commerce shop, ...).
-
-If your app is a mix
-(a website with a questionnaire)
-then a mixed app
-
-Choose this type of app if y
-
-This is typically is highly interactive
-
-!INLINE ./snippets/section-footer.md #readme
-
-## !VAR SPA_APP
-
-!INLINE ./snippets/warning-advanced.md
->
-> This section assumes that you know what SPA, MPA, [browser-side routing, and server-side routing](!VAR|ANCHOR CONTROL_ROUTING) mean.
-
-By default,
-Goldpage generates an MPA which most of the a better alterantive to an SPA.
-(MPA is basically the same than an SPA but with server-side routing and code-splitting.)
-
-An SPA is what you get when you use create-create-app, vue-cli, the Webpack CLI, and Parcel.
-
-If you're curious:
-you could still have an SPA by have a single page with a catch-all route and use a browser-side routing library such as React Router.
-
-## !VAR SSR_APP
-
-!INLINE ./snippets/warning-advanced.md
->
-> This section assumes that you know about `renderToHtml`, `renderToDom` and that you know what [SSR](https://github.com/brillout/awesome-universal-rendering#introduction) means.
-
-Set the page configs `renderToHtml: true` and `renderToDom: true` in order add SSR to a page.
-
-By setting `renderToHtml: true` and `renderToDom: true` to all page configs you get an SSR app.
-
-An SSR app is what you get when you use Next.js and Nuxt.js.
-
-!INLINE ./snippets/section-footer.md #readme
-
-
-## !VAR BACKEND_ONLY_APP
-
-!INLINE ./snippets/warning-advanced.md
-
-
-- overview backend-only
-- extra doc details backend-only
-
-
-
-
-Goldpage introduces a new kind of app we call *backend-only app*.
-
-By setting the page configs `renderToHtml: true` and `renderToDom: false` you
-end up using React (or Vue) merely as a HTML template engine.
-
-Why should one use React to generate plain old HTML?
-It turns out that JSX can also be used to generate HTML in a delightful way; it allows you to leverage your knowledge about and the full power of JavaScript to generate HTML.
-
-You can use the same stack and use your JavaScript knowledge to create an old-school and simple non-interactive backend-only app.
-
-For apps that are mainly about content, this makes a lot of sense.
-
-
-
-In short, Goldpage and `renderToDom: false` allow you to implement an old-school backend by using your knowledge of a modern JavaScript stack.
-
-
-Non-interactive pages are much easier and much faster to implement.
-And if you happen to absolutely need an interactive page you can always do so and set `renderToDom: true`.
-
-means that no browser-side (or little) JavaScript
-Long debate about that interactive apps are overkill and just use 
-React can do that to today.
-
-There are plenty of benefits:
-- Full control over SEO & social sharing.
-- Blazing fast performance, especially on mobile.
-  <br/>
-  Loading all views and views libraries
-- High dev speed
-  <br/>
-  It turns out that create interactive views (state management is notoriously complex) is time consuming.
-  No API
-  Instead 
-
-The nice thing is that you
-interactive escape hatch:
-If you happen to actually
-absolutely need to implement a interactive page you selectively add `renderToDom: true`.
-
-Non-interactive 
-
-Interactive views are inherently complicated and time consuming to implement.
-
-
-A backend-only and we believe it's good thing.
-
-Many complain that the web dev of 10 years ago was esaier than today's web development.
-
-the and 
-But this is not necessarily
-
-Also, non-interactive pages are easier and faster to develop than interactive ones &mdash;
-using React/Vue as HTML template engine is a wonderful experience.
-
-More at !VAR|LINK BACKEND_ONLY_APP.
-
-
-!INLINE ./snippets/section-footer.md #readme
-
-
-## !VAR MIXED_APP
-
-!INLINE ./snippets/warning-advanced.md
-
-With a *mixed app* we denote an app that has non-interactive pages (`renderTo`)
-
-This is for website
-have both pages that are content and pages with lots of user interactions
-(A e-commerce shop with a complex checkout process or a advanced. A)
-
-
-Non-interactive first approach
-Whenever possible 
-
-We believe such mixed app to be the future of web developement.
-
-
-## !VAR STATIC_WEBSITE
-
-!INLINE ./snippets/warning-advanced.md
-
-A static website is like a SPA/MPA but where 
-
-If you set `renderHtmlAtBuildTime: true` to all your page configs,
-then your entire browser-side code is generated at built-time.
-
-This means that no Node.js server is required to serve your frontend.
-
-If you don't need the Node.js server beyond serving your browser-side code then your app is essentially
-just a collection of static assets for the browser.
-Your app is then what is commonly called a "static website".
-
-You can deploy a static website using a static host such as
-[Netlify](https://www.netlify.com/),
-[Amazon S3](https://aws.amazon.com/s3/), or
-[GitHub Pages](https://pages.github.com/).
-
-To deploy,
-simply run `$ ssr-coin build`
-(or better `npm run build` where `require('./package.json').scripts.build === 'ssr-coin build'`)
-and copy the directory `.build/browser/`
-(which is the directory that contains the browser assets)
-to your static host.
+Examples:
+- [/examples/react-router](/examples/react-router)
+- [/examples/redux](/examples/redux)
+- [/examples/styled-components](/examples/styled-components)
 
 !INLINE ./snippets/section-footer.md #readme
 
