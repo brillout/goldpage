@@ -111,9 +111,10 @@ Goldpage is designed from the ground up to be easy & flexible.
 
 **Easy**
 
-All you need to get started is to define your page config(s),
-add the Goldpage middleware to your favorite server framework (Express, Koa, Hapi, ...),
+All you need to get started is to define a page config,
+add the Goldpage Express/Koa/Hapi middleware to your server,
 and add couple of lines to your `package.json`.
+That's it.
 
 And all you need to know to create your first prototype
 is written in the "Usage - Basics" sections.
@@ -124,8 +125,9 @@ Goldpage supports all app types.
 (Commonly denoted as "SPA", "MPA", "SSR", "static website", etc.)
 
 Switching from one app type to another is easy, which means that you can start
-writing your app, and, once you have finished a first prototype,
-you can try out different app types and see what works out best for your app.
+writing your app before settling for an app type.
+Once you have finished your first prototype,
+you can try and experiement with different app types and see what works out best for your app.
 
 We believe you shouldn't have to know what "SPA", "MPA", "SSR", and "static website" mean before getting started.
 
@@ -146,6 +148,77 @@ and any process manager (Docker, systemd, PM2, ...).
 
 
 ## !VAR WHY_GOLDPAGE
+
+The problem of current tools is that they support only one app type.
+For example for React:
+
+By choosing one of these tools you are essentially choosing an app type and locking yourself into it.
+This means that before choosing one of these tools you have to research about what "SPA", "SSR", and "static website" mean and
+the differences between them.
+But, most often than not,
+it's not possible to know which app type
+is the right one
+before having created and battle-tested a first prototype.
+
+For example, the so-called "SSR" technique.
+It's a technique mainly used to ensure that search engines can crawl your website.
+(The idea is to render your page's content to HTML.)
+But SSR often comes with a cost of slower developing time,
+so the question arises whether or not you should use SSR.
+The best way to know is to try.
+And you cannot easily do that with the current existing tools.
+With Goldpage you can:
+you can start without SSR,
+and, if later the need arises,
+add SSR to one of your pages,
+see whether or not SSR works out for that page,
+and, if yes, add SSR to all your other pages.
+
+Another example are so called "static websites".
+A static website is about generating HTML at build-time.
+Whether or not is as well not always predictable.
+With Goldpage, you can turn
+You don't need to know what a static website is.
+
+Mixed
+
+have a frontend that 
+a server altogether.
+A static website is basically the idea of entirely
+is difficult to before
+And again, with Goldpage, you can experiment and try out if
+and turn it into a static website.
+
+Often, it is not clear 
+Whether or not you need SSR often only becomes clear
+But this is seldomly the case
+With Goldpage,
+you can
+don't even have to know the "SSR" technique
+
+Another example so called "static websites"
+
+before even writing one line of code you have to research.
+That's annoying.
+
+With Goldpage, this fastidious researching before even getting started
+is a thing of a past.
+
+Not only does Goldpage support all app types but it also make switching from one app type to another easy.
+
+You can start with Goldpage's default app type (so-called "MPA")
+and, once you've finished your firt prototype,
+you can experiment with other app types and see what works best for your app.
+
+Also,
+
+With Gold
+no matter what app type you'll eventually end up needing, Goldpage got you back.
+
+At last but not least,
+we find other tools too framework-ish
+
+
 
 The most distinguishing feature of Goldpage is that
 it supports all app types whereas
@@ -191,12 +264,11 @@ You can then progressively add SSR to your other pages.
 
 We find other tools too "framework-ish".
 Goldpage only takes care of building your pages and leaves the rest of the stack to you.
-Where you feel restricted with other tools
+Where you may feel restricted with other tools
 Goldpage gives you freedom.
 For example,
 Gatsby forces you to use GraphQL
-whereas Goldpage leaves the choice
-whether to use GraphQL to you.
+whereas Goldpage leaves the choice of using GraphQL to you.
 
 !INLINE ./snippets/section-footer.md #readme
 
