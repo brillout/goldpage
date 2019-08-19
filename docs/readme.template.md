@@ -482,19 +482,63 @@ Examples:
 
 ## !VAR RENDER_WHEN
 
-> This section is about advanced optimization in SEO, SMO, and performance.
-> We recommend to build a prototype before digging too much into this section.
-> You can however, quickly gaze over just so you know that we offer you these optimizations.
-
 There are three page configs that allow you to control when and where your page is rendered:
 - `renderToDom` - If set to true, your page is rendered in the browser (to the DOM).
 - `renderToHtml` - If set to true, your page is rendered to HTML (in Node.js).
 - `renderHtmlAtBuildTime` - Whether your page is rendered to HTML at request-time or at build-time.
 
+The default values are `renderToDom: true` and `renderToHtml: true`,
+which means that your page is rendered only in the browser.
+
+We further explain `renderToDom` and `renderToHtml`
+at
+[What is the difference between Browser-side Rendering and Server-side Rendering?]()
+
+The reasons for configuring these three page configs are:
+
+- [Search Engine Results]()
+  <br/>
+  All search engines other than Google (Bing, Baidu, Yandex, DuckDuckGo, ...) cannot crawl content that is renderd in the browser.
+  only crawls your page's content renderd to HTML.
+- [Google Search Results]()
+  <br/>
+  Google is capable of crawling content that is renderd in the browser but it does so with limitations.
+- [Social Sharing Previews]()
+  <br/>
+  When your page is shared on a social site (Facebook, Twitter, ...) then a little preview (title, description and image) of your page is shown.
+- [Mobile Performance]()
+  <br/>
+  Browser-side JavaScript is a performance killer for low-end devices such as mobile phones.
+  Rendering your page to HTML can be drastically faster then rendering it to the DOM.
+
+If these aren't important to your app, then you can skip this section.
+
+At [Should I do Browser-side Rendering or Server-side Rendering?]() how to configure `renderToDom`, `renderToHtml` we further elaborate these and how to 
+
+
+
+
+###### `renderToDom` VS `renderToHtml`
+
+
+
+###### Google Search Results
+
+Google is capable of crawling content that is rendered in the browser
+
+We recommend to build a prototype before digging too much into this section.
+You can however, take a quick gaze over it just so you know that we offer you these optimizations.
+
+Social Sharing
+
+Mobile Performance
+
 Configuring these page configs is about achieving improvements in:
 - SEO
 - SMO
 - Performance
+
+If you don't care about 
 
 We recommand to not care about these aspects at first
 but to build a prototype instead first.
@@ -508,19 +552,20 @@ This is the default configuration;
 your page is loaded & rendered in the browser only.
 
 Because the page is rendered to the DOM, the page can be interactive.
-(We explain why at [Interactive vs Non-interactive]().
+(We explain why at [Interactive vs Non-interactive]().)
 
 ###### `renderToDom: false` & `renderToHtml: true`
 
 If your page is non-interactive, this is the best configuration:
 - SEO
   <br/>
-  The content of your page is rendered to HTML and search engines merely have to crawl your page's HTML to get your page's content.
-  Your page will appear to all search engines.
+  The content of your page is rendered to HTML &mdash; search engines merely have to crawl your page's HTML to get your page's content.
+  Your pages will appear to all search engines.
 - Performance
   <br/>
-  Rendering your page in Node.js is almost always faster than rendering it in the browser.
-  The difference in speed can be drastic for low-end devices such as mobile phones.
+  Rendering your page in Node.js is generally faster than rendering it in the browser.
+  The difference in speed can be drastic for low-end devices such as mobile phones where
+  loading & executing browser-side JavaScript is slow.
   (Your page is already loaded in Node.js whereas in the browser it has to be loaded over the internet.
 
 If your page has interactive views then your page needs to be rendered to the DOM and this configuration is not an option.
@@ -537,7 +582,11 @@ the page is first rendered to HTML with Node.js and then re-rendered to the DOM 
 
 This practice is known as SSR (Server-Side Rendering).
 
-The main motivation of doing SSR is to make your page's content available to search engine and social site that crawler your' pages HTML.
+The main motivation of doing SSR is to make your page's content available to search engines and social sharing sites.
+
+Also, SSR faster time-to-first-print (but slower time-to-first-interaction)
+
+Also, the page and its `initialProps` have to be loaded
 
 We give a little overview of SSR's advantages and disadvantages and we
 further elaborate at [SSR or not to SSR?]().
