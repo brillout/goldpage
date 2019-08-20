@@ -127,10 +127,11 @@ Goldpage supports all app types.
 (Commonly denoted as "SPA", "MPA", "SSR", "static website", etc.)
 
 Switching from one app type to another is easy,
-and you can start
-writing a prototype before settling for an app type.
+so that you can start
+writing a prototype before choosing an app type.
 Once you have finished your first prototype,
-you can try and experiement with different app types and see what works out best for your app.
+you can try and experiement different app types with your prototype,
+and see what works out best for your.
 We believe you shouldn't have to know what "SPA", "MPA", "SSR", and "static website" mean before even getting started.
 
 Goldpage introduces new app types
@@ -155,6 +156,8 @@ and any process manager (Docker, systemd, PM2, ...).
 
 ## !VAR WHY_GOLDPAGE
 
+**App types**
+
 The problem of current tools is that they support only one app type.
 For example for React:
 <br/> &nbsp;&nbsp;&nbsp;&#8226;&nbsp;
@@ -177,180 +180,28 @@ before having created and battle-tested a first prototype.
 
 Goldpage solves that problem;
 it supports all app types and makes switching from one app type to another easy &mdash;
-you can start writing a prototype and worry about the app type later.
+you can start writing a prototype and worry about app type later.
 
-<details>
-<summary>
-Case study: Goldpage & SSR
-</summary>
+We encourage you to start with Goldpage's default app type
+and, only after you finished your first prototype,
+you can learn about other app types,
+experiment differenet app types with your prototye,
+and see what app type works best for you.
 
-> This case study assumes that you know what SSR is.
+We illustrate and showcase Goldpage's app type flexibility at
+[Case study: Goldpage & SSR]()
+and
+[Case study: Goldpage & Static Websites]().
 
-> If you don't know what SSR is, you can skip this case study and start writing your prototype instead of learning
-> about SSR. (Goldpage allows you to remove/add and worry about SSR later.)
-> you can start writing your app without knowing anything about SSR.
-> You can learn about SSR later and, if you realize that your app does need SSR, add SSR to your pages later.
-> So, if you don't know what SSR is and your goal is to quickly get started then you can skip this case study.
+**Mobile Peformance**
 
-In this case study we show that whether you need SSR or not is not always clear,
-and we show that with Goldpage you can
-easily experiement SSR and later add/remove
-as you realize that you need SSR
+With Goldpage you can create pages that have no (or little) browser-side JavaScript
+for blazing fast pages on mobile.
+We are not aware of any other tool capable of that.
+More at [Case Study: Goldpage & Mobile Performance]().
 
-As you already know, SSR is about rendering your page's content to HTML.
-Besides improvements in first-time-to-print performance,
-the main reason to SSR is to ensure that search engines and social sharing sites
-can successfully crawl your pages.
+**Flexibility**
 
-If you care about having your pages appear in search engines results other than Google (Baidu, DuckDuckGo, ...)
-or if you care about your app having a nice preview while someones shares a link of your app,
-then SSR is necessary and
-the question whether you need SSR or not is a no-brainer.
-
-But,
-if you only care about having your pages appear in Google Search,
-then things are less clear.
-
-On one hand,
-the Google crawler is capable of executing your app's JavaScript.
-This means that you don't need SSR to appear in Google Search.
-But, the problem is that Google crawls content rendered to the DOM much later
-than content rendered to HTML.
-
-On the other hand,
-SSR has caveats.
-Your pages are executed in both the browser and in Node.js,
-thus you have to make sure that you code is able to run in both the browser and in Node.js,
-which can be problematic with libraries that are not Node.js compatible.
-(Note that the two other common problems with SSR, namely routing and data fetching, are mostly not a problem with Goldpage.)
-
-So, depending on your app, it's not clear whether you need SSR or not.
-But with Goldpage,
-That's not a problem with Goldpage:
-you can start
-
-More precisely, adding SSR to a page is a matter of settting `
-With other tools you'd have to refactor your code
-
-In the end it's not clear
-
-The caveat with that is that Google crawls JavaScript much later than
-SSR is still beneficial for Google and the question arises: do I need SSR for Google?
-The best way to know is to try.
-
-You cannot "just try" with the current tools:
-if, for example,
-you use create-react-app then you'll have to switch to.
-Switching from create-react-app to Next.js will require you
-to re-write many parts of your apps
-(your route logic, your data fetching logic, etc.)
-
-With Goldpage,
-you can add SSR to a page by setting `renderToHtml: true` to its page config
-and removing SSR by settting `renderToHtml: false`.
-
-Where trying out SSR means refactoring with other tools, with Goldpage it's only a matter of changing the page config `renderToHtml`.
-
-Goldpage allows you to without SSR at first and later add SSR to a page,
-...
-
-
-
-whether your 
-If you care about then adding a SSR is 
-whether or not you need SSR is a no-brainer
-
-But if you care only about Google, then the question
-Google is able to execute your app's JavaScript crawl 
-
-So
-and becausei
-Using SSR is not a no brainer.
-But SSR is not entirely trivial,
-even though it improves
-(you have to make sure that you can can
-
-So the question 
-Should
-
-There is no
-
-For example, the so-called "SSR" technique.
-It's a technique mainly used to ensure that search engines can crawl your website.
-
-(The idea is to render your page's content to HTML.)
-
-But SSR often comes with a cost of slower developing time,
-so the question arises whether or not you should use SSR.
-
-The best way to know is to try.
-And you cannot easily do that with the current existing tools.
-With Goldpage you can:
-you can start without even knowing what SSR is,
-and, if later the need arises,
-add SSR to one of your pages,
-see whether or not SSR works out for that page,
-and, if yes, add SSR to all your other pages.
-
-don't even have to know the "SSR" technique
-</details>
-
-Case study: Goldpage & Static Websites
-
-Another example are so called "static websites".
-A static website is about generating HTML at build-time.
-Whether or not is as well not always predictable.
-With Goldpage, you can turn
-You don't need to know what a static website is.
-
-
-Not only does Goldpage support all app types but it also make switching from one app type to another easy.
-
-You can start with Goldpage's default app type (so-called "MPA")
-and, once you've finished your firt prototype,
-you can experiment with other app types and see what works best for your app.
-
-Also,
-
-With Gold
-no matter what app type you'll eventually end up needing, Goldpage got you back.
-
-At last but not least,
-we find other tools too framework-ish
-
-
-
-Before choosing one of these tools you have to know what "SPA", "SSR", and "static website" mean,
-the differences between them,
-and decide which of these app types is the right one for your app.
-But, most often than not,
-which app type is the right one becomes clear only after you have written and battle-tested your first protoype.
-
-With Goldpage,
-you can start creating a prototype before settling for an app type,
-and, once you finished your first prototype,
-you can switch from one app type to another and experiment which one works best for your app.
-
-Switching between app types is simply a matter of setting three page configs:
-<br/> &nbsp;&nbsp;&nbsp;&#8226;&nbsp;
-`renderToDom` - If set to true, your page is rendered in the browser (to the DOM).
-<br/> &nbsp;&nbsp;&nbsp;&#8226;&nbsp;
-`renderToHtml` - If set to true, your page is rendered to HTML (in Node.js).
-<br/> &nbsp;&nbsp;&nbsp;&#8226;&nbsp;
-`renderHtmlAtBuildTime` - Whether your page is rendered to HTML at request-time or at build-time.
-<br/>
-These three flags allow you to get any app type.
-
-For example, let's consider the technique called "SSR",
-which allows search engines to successfully crawl the content of your pages.
-The best way to know whether you need SSR is to try it out.
-With Goldpage, you can add SSR to one of your page (by setting `renderToHtml: true` to its page config)
-and then test if SSR works out for that page.
-You can then progressively add SSR to your other pages.
-
-
-
-At least but not last,
 we find other tools too "framework-ish".
 Goldpage only takes care of building your pages and leaves the rest of the stack to you.
 Where you may feel restricted with other tools
