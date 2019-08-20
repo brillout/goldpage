@@ -30,15 +30,7 @@ The best way to know whether you need SSR is to try it out.
 
 
 
-If you care about having your pages appear in search engines results other than Google (Baidu, DuckDuckGo, ...)
-or if you care about your app being correctly previewed when someones shares a link of your app,
-then SSR is necessary and
-the question whether you need SSR or not is a no-brainer.
-
-But,
-if you only care about having your pages appear in Google Search,
-then things are less clear.
-
+If you care about having your pages appear in search engines results other than Google (Baidu, DuckDuckGo, ...) or if you care about your app being correctly previewed when someones shares a link of your app, then SSR is necessary and the question whether you need SSR or not is a no-brainer.  But, if you only care about having your pages appear in Google Search, then things are less clear.  
 On one hand,
 the Google crawler is capable of executing your app's JavaScript and
 SSR is not necessary to appear in Google Search.
@@ -102,10 +94,22 @@ see whether or not SSR works out for that page,
 and, if yes, add SSR to all your other pages.
 
 
-The best thing about Goldpage is that it allows you to quickly get started without
-having to know about all app types.
-This is a general approach we
+One thing we care a lot about,
+is to allow you to quickly get started without
+having to know about all app types out there.
+This is a general
 Not only do we encourage you to start without SSR and
 to try out only once SSR when the need arises.
 you don't even have to know the "SSR" technique
 
+That's fine,
+you'll eventually get to know SSR and.
+And,
+not matter what app type you end up needing,
+Goldpage's got you back.
+
+Instead of spending time learning about the different kinds of app types,
+we encourage you start creating a first prototype.
+You'll eventually get familiar with the different kind of app types while developing your app,
+and you'll eventually figure out
+which app type works best for your app.
