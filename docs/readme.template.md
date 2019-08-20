@@ -155,24 +155,103 @@ For example for React:
 By choosing one of these tools you are essentially choosing an app type and locking yourself into it.
 This means that before choosing one of these tools you have to research about what "SPA", "SSR", and "static website" mean and
 the differences between them.
+before even writing one line of code you have to research.
+That's annoying.
+
 But, most often than not,
 it's not possible to know which app type
 is the right one
 before having created and battle-tested a first prototype.
 
+
+<details>
+<summary>
+Case study: Goldpage & SSR
+</summary>
+
+> This case study assumes that you know what SSR is.
+
+> If you don't know what SSR is, you can skip this case study and start writing your prototype instead of learning
+> about SSR. With Goldpage,
+> you can start writing your app without knowing anything about SSR.
+> You can learn about SSR later and, if you realize that your app does need SSR, add SSR to your pages later.
+> So, if you don't know what SSR is and your goal is to quickly get started then you can skip this case study.
+
+In the case study we show whether you need SSR or not is not always clear,
+and we show that with Goldpage you can easily experiement SSR and later add/remove
+as you realize that you need SSR
+
+As you know, SSR is about rendering your page's content to HTML.
+Besides improved first-time-to-print performance,
+the main reason people use SSR is to ensure that search engines and social sharing sites
+can successfully crawl your pages.
+
+If you care about having your pages appear in search engines results other than Google (Baidu, DuckDuckGo, ...)
+or social sharing,
+then SSR is necessary and
+the question whether you need SSR or not is a no-brainer.
+
+But,
+if you care only about having your pages appearch in Google search results,
+then things are different.
+Google is capable of crawling your websites by executing your app's JavaScript.
+So for Google it's okay if your pages' content are not rendered to HTML but only rendered to the DOM.
+The caveat with that is that Google crawls JavaScript much later than
+SSR is still beneficial for Google and the question arises: do I need SSR for Google?
+The best way to know is to try.
+
+You cannot "just try" with the current tools:
+if, for example,
+you started create-react-app.
+
+With Goldpage,
+adding SSR to a page is simply a matter of setting `renderToHtml: true` to your page's config.
+
+Goldpage allows you to without SSR at first and later add SSR to a page,
+...
+
+
+
+whether your 
+If you care about then adding a SSR is 
+whether or not you need SSR is a no-brainer
+
+But if you care only about Google, then the question
+Google is able to execute your app's JavaScript crawl 
+
+So
+and becausei
+Using SSR is not a no brainer.
+But SSR is not entirely trivial,
+even though it improves
+(you have to make sure that you can can
+
+So the question 
+Should
+
+There is no
+
 For example, the so-called "SSR" technique.
 It's a technique mainly used to ensure that search engines can crawl your website.
+
 (The idea is to render your page's content to HTML.)
+
 But SSR often comes with a cost of slower developing time,
 so the question arises whether or not you should use SSR.
+
 The best way to know is to try.
 And you cannot easily do that with the current existing tools.
 With Goldpage you can:
-you can start without SSR,
+you can start without even knowing what SSR is,
 and, if later the need arises,
 add SSR to one of your pages,
 see whether or not SSR works out for that page,
 and, if yes, add SSR to all your other pages.
+
+don't even have to know the "SSR" technique
+</details>
+
+Case study: Goldpage & Static Websites
 
 Another example are so called "static websites".
 A static website is about generating HTML at build-time.
@@ -180,29 +259,6 @@ Whether or not is as well not always predictable.
 With Goldpage, you can turn
 You don't need to know what a static website is.
 
-Mixed
-
-have a frontend that 
-a server altogether.
-A static website is basically the idea of entirely
-is difficult to before
-And again, with Goldpage, you can experiment and try out if
-and turn it into a static website.
-
-Often, it is not clear 
-Whether or not you need SSR often only becomes clear
-But this is seldomly the case
-With Goldpage,
-you can
-don't even have to know the "SSR" technique
-
-Another example so called "static websites"
-
-before even writing one line of code you have to research.
-That's annoying.
-
-With Goldpage, this fastidious researching before even getting started
-is a thing of a past.
 
 Not only does Goldpage support all app types but it also make switching from one app type to another easy.
 
