@@ -4,9 +4,9 @@
 
 > If you don't know what SSR is then skip this case study and start writing your prototype instead.
 
-In this case study we show that whether you need SSR or not is not always clear,
-and we show that with Goldpage you can
-easily experiement SSR on one of your page and then
+In this case study we show that whether you need SSR is not always clear,
+and we how Goldpage can help
+you try SSR on one of your page to then
 decided whether you want to use SSR for all your pages.
 
 Note that, wiht Goldpage, you don't need to know what SSR is to start writing a prototype.

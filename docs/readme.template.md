@@ -17,8 +17,7 @@
 !VAR MPA_APP MPA
 !VAR SPA_APP SPA
 !VAR SSR_APP SSR
-!VAR BACKEND_ONLY_APP Backend-only
-!VAR MIXED_APP Mixed
+!VAR BFA_APP BFA
 !VAR STATIC_WEBSITE Static Website
 
 !VAR PAGE_CONFIG Page Config `*page.js`
@@ -52,16 +51,15 @@
 !INLINE li-2 !VAR|LINK CSS_AND_ASSETS
 !INLINE li-2 !VAR|LINK ASYNC_DATA
 !INLINE li-2 !VAR|LINK CONTROL_HTML
-!INLINE li-2-header Advanced - App Types
+!INLINE li-2-header Control Rendering
+!INLINE li-2 !VAR|LINK RENDER_WHEN
+!INLINE li-2 !VAR|LINK RENDER_HOW
+!INLINE li-2-header App Types
 !INLINE li-2 !VAR|LINK MPA_APP
 !INLINE li-2 !VAR|LINK SPA_APP
 !INLINE li-2 !VAR|LINK SSR_APP
-!INLINE li-2 !VAR|LINK BACKEND_ONLY_APP
-!INLINE li-2 !VAR|LINK MIXED_APP
+!INLINE li-2 !VAR|LINK BFA_APP
 !INLINE li-2 !VAR|LINK STATIC_WEBSITE
-!INLINE li-2-header Advanced - Control Rendering
-!INLINE li-2 !VAR|LINK RENDER_WHEN
-!INLINE li-2 !VAR|LINK RENDER_HOW
 !INLINE li-2-header API Reference
 !INLINE li-2 !VAR|LINK PAGE_CONFIG
 !INLINE li-2 !VAR|LINK SSR_COIN_CONFIG
@@ -89,8 +87,9 @@ Works with any view library (React, Vue, RNW, ...).
 Supports all app types
 (so-called "SPA", "MPA", "SSR", "static website", ...).
 
-Goldpage is a small tool that makes it easy to create a frontend
-with a modern view library such as React or Vue.
+Goldpage is a small (yet powerful) tool
+that makes it easy to create a frontend
+with React, Vue, React Native Web, etc.
 
 You define so-called page configs
 
@@ -118,7 +117,7 @@ add the Goldpage Express/Koa/Hapi middleware to your server,
 and add couple of lines to your `package.json`.
 That's it.
 
-And all you need to know to create your first prototype
+And all you need to know to get started
 is written in the "Usage - Basics" sections.
 
 **App types**
@@ -128,21 +127,29 @@ Goldpage supports all app types.
 
 Switching from one app type to another is easy,
 so that you can start
-writing a prototype before choosing an app type.
-Once you have finished your first prototype,
-you can try and experiement different app types with your prototype,
-and see what works out best for your.
-We believe you shouldn't have to know what "SPA", "MPA", "SSR", and "static website" mean before even getting started.
+writing a prototype before even choosing an app type.
 
-Goldpage introduces new app types
-([Backend-only App](!VAR|ANCHOR BACKEND_ONLY_APP) & [Mixed App](!VAR|ANCHOR MIXED_APP))
-for blazing fast pages on mobile devices.
+Once you have finished your first prototype,
+you can try and experiement different app types with your prototype
+and see what works best for you.
+
+We believe you shouldn't have to know what "SPA", "MPA", "SSR", and "static website" mean before getting started.
+
+**BFA**
+
+Goldpage introduces a new app type
+we call Backend First App (BFA)
+that achieves blazing fast pages on mobile devices.
+
+A BFA can be a simple and performant alternative to a native mobile app.
+
+More at [BFA](/bfa.md)
 
 **Do-one-thing-do-it-well**
 
-Goldpage only takes care of building your pages,
-leaves the rest of the stack to you,
-and works with
+Goldpage only takes care of building your pages.
+We leave the rest of the stack to you and
+Goldpage works with
 any server framework (Express, Koa, Hapi, ...),
 any view libray (React, Vue, React Native Web, ...),
 any language (ES7, TypeScript, PostCSS, ...),
@@ -156,9 +163,9 @@ and any process manager (Docker, systemd, PM2, ...).
 
 ## !VAR WHY_GOLDPAGE
 
-**App types**
+**Only One App Type**
 
-The problem of current tools is that they support only one app type.
+The main problem of our current tools is that they support only one app type.
 For example for React:
 <br/> &nbsp;&nbsp;&nbsp;&#8226;&nbsp;
 create-react-app creates a so-called "SPA"
@@ -171,44 +178,61 @@ Gatsby creates a so-called "static website"
 By choosing one of these tools you are essentially choosing an app type and locking yourself into that app type.
 This means that before choosing one of these tools you have to research about what "SPA", "SSR", and "static website" mean and
 what the differences between them are.
-Before even having started writing one line of code.
+And that before even having started writing one line of code.
 
 Even worse is that, most often than not,
-it's not even possible to predict which app type
+it's not possible to predict which app type
 is the right one
 before having created and battle-tested a first prototype.
 
-Goldpage solves that problem;
+Goldpage solves this problem:
 it supports all app types and makes switching from one app type to another easy &mdash;
 you can start writing a prototype and worry about app type later.
 
 We encourage you to start with Goldpage's default app type
-and, only after you finished your first prototype,
-you can learn about other app types,
-experiment differenet app types with your prototye,
-and see what app type works best for you.
+and, once you finished your first prototype,
+to experiment different app types with your prototye
+and see what works best for you.
 
-We illustrate and showcase Goldpage's app type flexibility at
+With Goldpage,
+you can start writing your app without even knowing
+what "SPA", "MPA", "SSR", and "static website" mean.
+
+For readers that know what SSR is,
+at
 [Case study: Goldpage & SSR]()
-and
-[Case study: Goldpage & Static Websites]().
+we illustrate how, with Goldpage, you can
+start without SSR,
+add SSR to one of your pages,
+see if SSR works out for that pages,
+and add SSR to all your other pages.
+
+And, for readers that know what a static website is,
+at
+[Case study: Goldpage & Static Websites]()
+we showcase how, with Goldpage, you can easily experiment and try out
+if a static website is something that works out for you.
 
 **Mobile Peformance**
 
-With Goldpage you can create pages that have no (or little) browser-side JavaScript
-for blazing fast pages on mobile.
-We are not aware of any other tool capable of that.
-More at [Case Study: Goldpage & Mobile Performance]().
+Goldpage is the only tool (that we are aware of) allowing you
+to remove the browser-side JavaScript of a page
+yealding super fast mobile performance.
+
+More at [BFA](/bfa.md).
 
 **Flexibility**
 
-we find other tools too "framework-ish".
+We find other tools too "framework-ish".
 Goldpage only takes care of building your pages and leaves the rest of the stack to you.
 Where you may feel restricted with other tools
 Goldpage gives you freedom.
 For example,
 Gatsby forces you to use GraphQL
 whereas Goldpage leaves the choice of using GraphQL to you.
+
+The backbone of Goldpage's flexibility is to
+allow you to fully control how and when your pages are rendered.
 
 !INLINE ./snippets/section-footer.md #readme
 
@@ -529,93 +553,11 @@ An SSR app is what you get when you use Next.js and Nuxt.js.
 !INLINE ./snippets/section-footer.md #readme
 
 
-## !VAR BACKEND_ONLY_APP
+## !VAR BFA_APP
 
 !INLINE ./snippets/warning-advanced.md
 
-
-- overview backend-only
-- extra doc details backend-only
-
-
-
-
-Goldpage introduces a new kind of app we call *backend-only app*.
-
-By setting the page configs `renderToHtml: true` and `renderToDom: false` you
-end up using React (or Vue) merely as a HTML template engine.
-
-Why should one use React to generate plain old HTML?
-It turns out that JSX can also be used to generate HTML in a delightful way; it allows you to leverage your knowledge about and the full power of JavaScript to generate HTML.
-
-You can use the same stack and use your JavaScript knowledge to create an old-school and simple non-interactive backend-only app.
-
-For apps that are mainly about content, this makes a lot of sense.
-
-
-
-In short, Goldpage and `renderToDom: false` allow you to implement an old-school backend by using your knowledge of a modern JavaScript stack.
-
-
-Non-interactive pages are much easier and much faster to implement.
-And if you happen to absolutely need an interactive page you can always do so and set `renderToDom: true`.
-
-means that no browser-side (or little) JavaScript
-Long debate about that interactive apps are overkill and just use 
-React can do that to today.
-
-There are plenty of benefits:
-- Full control over SEO & social sharing.
-- Blazing fast performance, especially on mobile.
-  <br/>
-  Loading all views and views libraries
-- High dev speed
-  <br/>
-  It turns out that create interactive views (state management is notoriously complex) is time consuming.
-  No API
-  Instead 
-
-The nice thing is that you
-interactive escape hatch:
-If you happen to actually
-absolutely need to implement a interactive page you selectively add `renderToDom: true`.
-
-Non-interactive 
-
-Interactive views are inherently complicated and time consuming to implement.
-
-
-A backend-only and we believe it's good thing.
-
-Many complain that the web dev of 10 years ago was esaier than today's web development.
-
-the and 
-But this is not necessarily
-
-Also, non-interactive pages are easier and faster to develop than interactive ones &mdash;
-using React/Vue as HTML template engine is a wonderful experience.
-
-More at !VAR|LINK BACKEND_ONLY_APP.
-
-
-!INLINE ./snippets/section-footer.md #readme
-
-
-## !VAR MIXED_APP
-
-!INLINE ./snippets/warning-advanced.md
-
-With a *mixed app* we denote an app that has non-interactive pages (`renderTo`)
-
-This is for website
-have both pages that are content and pages with lots of user interactions
-(A e-commerce shop with a complex checkout process or a advanced. A)
-
-
-Non-interactive first approach
-Whenever possible 
-
-We believe such mixed app to be the future of web developement.
+More at [BFA](/bfa.md)
 
 
 ## !VAR STATIC_WEBSITE
@@ -651,7 +593,7 @@ to your static host.
 
 ## !VAR RENDER_WHEN
 
-There are three page configs that allow you to control when and where your page is rendered:
+There are three page configs that allow you to control when your page is rendered:
 - `renderToDom` - If set to true, your page is rendered in the browser (to the DOM).
 - `renderToHtml` - If set to true, your page is rendered to HTML (in Node.js).
 - `renderHtmlAtBuildTime` - Whether your page is rendered to HTML at request-time or at build-time.
@@ -659,30 +601,38 @@ There are three page configs that allow you to control when and where your page 
 The default values are `renderToDom: true` and `renderToHtml: false`,
 which means that your page is rendered only in the browser.
 
-We further explain `renderToDom` and `renderToHtml`
+if you encounter problems:
+
+We illustrate the differences between `renderToDom` and `renderToHtml`
 at
-[What is the difference between Browser-side Rendering and Server-side Rendering?]()
+[Differences between Browser-side Rendering and Server-side Rendering]()
 
-The reasons for configuring these three page configs are:
+Configuring these three page configs are about achieving improvements in:
 
-- [Search Engine Results]()
+- Search Engine
   <br/>
-  All search engines other than Google (Bing, Baidu, Yandex, DuckDuckGo, ...) cannot crawl content that is renderd in the browser.
-  only crawls your page's content renderd to HTML.
-- [Google Search Results]()
+  All search engines other than Google (Bing, Baidu, Yandex, DuckDuckGo, ...) cannot crawl content renderd to the DOM.
+  They only crawl content renderd to HTML.
+- Google Search
   <br/>
   Google is capable of crawling content that is renderd in the browser but it does so with limitations.
-- [Social Sharing Previews]()
+- Social Sharing Previews
   <br/>
   When your page is shared on a social site (Facebook, Twitter, ...) then a little preview (title, description and image) of your page is shown.
-- [Mobile Performance]()
+- Performance
   <br/>
   Browser-side JavaScript is a performance killer for low-end devices such as mobile phones.
   Rendering your page to HTML can be drastically faster then rendering it to the DOM.
+- Mobile Performance
+  <br/>
+
+At,
+we further explain `renderToHtml`, `renderToDom`, `renderHtmlAtBuildTime`
+and how to configure them to achieve improvements in the above points.
 
 If these aren't important to your app, then you can skip this section.
 
-At [Should I do Browser-side Rendering or Server-side Rendering?]()
+At [Browser-side Rendering VS Server-side Rendering]()
 we further elaborate the aforementioned points and
 explain how to configure `renderToDom`, `renderToHtml`, `renderHtmlAtBuildTime`.
 
@@ -692,8 +642,8 @@ explain how to configure `renderToDom`, `renderToHtml`, `renderHtmlAtBuildTime`.
 
 ## !VAR RENDER_HOW
 
-Goldpage gives you full control
-over how your pages are rendered to HTML and the DOM.
+You can control how your pages are rendered
+to HTML and the DOM.
 
 For that,
 save a `ssr-coin.config.js` file at your project's root directory and
