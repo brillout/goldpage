@@ -601,40 +601,36 @@ There are three page configs that allow you to control when your page is rendere
 The default values are `renderToDom: true` and `renderToHtml: false`,
 which means that your page is rendered only in the browser.
 
-if you encounter problems:
-
-We illustrate the differences between `renderToDom` and `renderToHtml`
-at
-[Differences between Browser-side Rendering and Server-side Rendering]()
-
 Configuring these three page configs are about achieving improvements in:
 
-- Search Engine
+- Search Engines
   <br/>
-  All search engines other than Google (Bing, Baidu, Yandex, DuckDuckGo, ...) cannot crawl content renderd to the DOM.
-  They only crawl content renderd to HTML.
+  All search engines other than Google (Bing, Baidu, Yandex, DuckDuckGo, ...) cannot crawl content rendered to the DOM.
+  If you want your pages to appear in these search engines,
+  then you need to render them to HTML.
 - Google Search
   <br/>
-  Google is capable of crawling content that is renderd in the browser but it does so with limitations.
+  Google is capable of crawling content rendered to the DOM but with limitations.
+  Rendering your pages to HTML can still be beneficial.
 - Social Sharing Previews
   <br/>
-  When your page is shared on a social site (Facebook, Twitter, ...) then a little preview (title, description and image) of your page is shown.
+  When your page is shared on a social site (Facebook, Twitter, ...) then a little preview (title, description, and image) of your page is shown.
+  To have a correct preview the meta data of your page needs to be rendered to HTML.
+  (No social site can crawl meta data rendered dynamically to the DOM.)
 - Performance
   <br/>
-  Browser-side JavaScript is a performance killer for low-end devices such as mobile phones.
-  Rendering your page to HTML can be drastically faster then rendering it to the DOM.
+  Your page's performance can vastly differ depending on whether your page is rendered to the DOM and/or to HTML.
 - Mobile Performance
   <br/>
+  Browser-side JavaScript is a performance killer for low-end devices such as mobile phones.
+  On mobile,
+  rendering your page to HTML is drastically faster then rendering it to the DOM.
 
-At,
-we further explain `renderToHtml`, `renderToDom`, `renderHtmlAtBuildTime`
-and how to configure them to achieve improvements in the above points.
-
-If these aren't important to your app, then you can skip this section.
-
-At [Browser-side Rendering VS Server-side Rendering]()
-we further elaborate the aforementioned points and
-explain how to configure `renderToDom`, `renderToHtml`, `renderHtmlAtBuildTime`.
+At
+[Browser-side Rendering VS Server-side Rendering](),
+we illustrate `renderToHtml`, `renderToDom`, `renderHtmlAtBuildTime`,
+and how you can configure them to achieve improvements in the above points.
+But before you learn more about these page configs and what you can achieve with them, we recommend that you first implement a prototype and learn more only after you need improvements in the above points.
 
 !INLINE ./snippets/section-footer.md #readme
 
@@ -646,8 +642,9 @@ You can control how your pages are rendered
 to HTML and the DOM.
 
 For that,
-save a `ssr-coin.config.js` file at your project's root directory and
-add the `renderToHtml` and `renderToDom` configs:
+save a `ssr-coin.config.js` file at your project's root directory
+(the directory that contains your `package.json`)
+and add the `renderToHtml` and `renderToDom` configs:
 ~~~js
 // ssr-coin.config.js
 
