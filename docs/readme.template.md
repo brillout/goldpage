@@ -51,7 +51,7 @@
 !INLINE li-2 !VAR|LINK CSS_AND_ASSETS
 !INLINE li-2 !VAR|LINK ASYNC_DATA
 !INLINE li-2 !VAR|LINK CONTROL_HTML
-!INLINE li-2-header Control Rendering
+!INLINE li-2-header Rendering
 !INLINE li-2 !VAR|LINK RENDER_WHEN
 !INLINE li-2 !VAR|LINK RENDER_HOW
 !INLINE li-2-header App Types
@@ -453,36 +453,41 @@ Example:
 
 !INLINE ./snippets/warning-advanced.md
 
-> This section assumes that you know what an MPA is.
->
-> You do not need to know what an MPA is nor do you need to read this section to create an app with Goldpage.
+> :warning: This section is only meant for readers that know what an MPA is.
 
-An MPA is what Goldpage builds by default:
- - 
- - The routing Your page config routes are done on is server-side routing.
+> :warning: You can use Goldpage and create a prototype without knowing what an MPA is.
 
-You don't have to do anything to get an MPA:
-by default,
-Goldpage builds an MPA.
+We recommend to not spend time learning about the different app types,
+instead we recommend to start writing a prototype and worry about this later.
 
-That's because
-By default,
-Goldpage sets `renderToDom: true` and `renderToHtml: true` to your page config.
-The 
-That's because the default values
+And, instead of reasoning in terms of "app types" we recommend to reason in terms of:
+- "Do I need my page to be rendered to HTML?", which we elaborate at !VAR|LINK RENDER_WHEN.
+- "Do I need browser-side routing?", which we elaborate at !VAR|LINK CONTROL_ROUTING.
 
+And we recommend to start asking yourself these two questions only after you
+encounter problems.
+These two questions will eventually feel more natural than "Do I want an MPA, SPA, BFA, SSR app, or static website?".
+Goldpage's default settings works for most cases.
 
+If you know what an MPA is and you already know 
+For those 
+This section is meant for a reader that knows what an MPA is and already knows that an MPA is what he needs.
 
+You don't need to do anything to get an MPA as, by default, an MPA is what Goldpage builds by default:
+ - By default, a page is rendered only in the browser (`renderToDom: true` and `renderToHtml: false` at).
+ - By default, pages are routed server-side routed. (It 
+
+These two 
 For more information about `renderToHtml` and `renderToDom` 
 An MPA is what you get by default.
 
-The default values are `renderToDom: true` and `renderToHtml: false` which corresponds to what a MPA does.
+The default values are `renderToDom: true` and `renderToHtml: false` which corresponds to what an MPA does.
 
 At !VAR|LINK RENDER_WHEN we explain what the page configs `renderToDom` and `renderToHtml` mean.
 
 For more information about `
 
-Note that a MPA is basically the same than an SPA but with improved performance.
+Note that an MPA is basically the same than an SPA but with improved performance.
 
 If you are curious, we elaborate more about what SPA and MPA means then check.
 
@@ -492,7 +497,7 @@ Whether the default values `renderToDom: true` and `renderToHtml: true` are the 
 But note that you don't have to know what SPA and MPA mean to use Goldpage and to build a great app.
 (We prefer to reseaon in terms of `renderToDom` and `renderToHtml` instead of "SPA"/"SSR"/...)
 
-you get a SPA (more precisely, a MPA) by setting:
+you get a SPA (more precisely, an MPA) by setting:
 - `renderToDom: true`
 - `renderToHtml: false`
 to your page configs.
@@ -501,14 +506,14 @@ A SPA (Single Page App) is the "mother" of all frontends.
 
 Both SPAs
 
-A MPA (Multi Page App) is like a SPA but 
+An MPA (Multi Page App) is like a SPA but 
 
 With React and Vue, not only can you render your pages to the DOM, but you can also render them to HTML.
 The question arises: should I render my page to the DOM or to HTML?
 
-A SPA (and a MPA) renders your page to the DOM.
+A SPA (and an MPA) renders your page to the DOM.
 
-A MPA is like an SPA but instead of bundling all browser-side JavaScript into one bundle,
+An MPA is like an SPA but instead of bundling all browser-side JavaScript into one bundle,
 and server-side routed.
 with couple of nicess
 
@@ -935,27 +940,27 @@ export default {
 
 are server-side routes:
 when navigating from `/hello/jon` to `/hello/alice`
-the browser terminates the current `/hello/jon` page and starts a new page at `/hello/alice`,
-as if you would close your `/hello/jon` browser tab and open a new tab at `/hello/alice`.
+the browser terminates the current `/hello/jon` page and starts a new page `/hello/alice`.
+It is the same as if you would close your `/hello/jon` browser tab and open a new tab at `/hello/alice`.
+
 It is the server that does the job of mapping URLs to pages and the browser is not involved in the routing process.
 
 ###### Browser-side Routing
 
-HTML5 introduced a new browser API `history` that allows you to manipulate the browser URL history.
+HTML5 introduced a new browser API `window.history` that allows you to manipulate the browser URL history.
 This enables browser-side routing:
-when navigating from `/previous-page` to `/next-page`, instead of terminating the current page `/previous-page` and starting a new page at `/next-page`, the current page `/previous-page` is preserved, its URL changed to `/next-page` (with `history.pushState()`), and the content of `/next-page` is rendered to the DOM replacing the DOM of `/previous-page`.
+when navigating from `/previous-page` to `/next-page`, instead of terminating the current page `/previous-page` and starting a new page `/next-page`, the current page `/previous-page` is preserved, its URL changed to `/next-page` (with `window.history.pushState()`), and the content of `/next-page` is rendered to the DOM replacing the DOM of `/previous-page`.
 
-Server-side routing is simpler than browser-side routing.
-Whenever possible, server-side routing should be used instead of browser-side rendering.
+Server-side routing is simpler than browser-side routing;
+whenever possible, server-side routing should be used instead of browser-side rendering.
 
 But if server-side routing is not an option,
-you can opt to do browser-side routing.
-You can do browser-side routing by
-[taking control over rendering](!VAR|ANCHOR RENDER_HOW).
+you can opt to do browser-side routing
+by [taking control over rendering](!VAR|ANCHOR RENDER_HOW).
 
 For example,
 if you use React,
-you can do browser-side rendering by taking control over rendering in order to add React Router:
+you take control over rendering in order to add React Router (which does browser-side routing):
 
 ~~~js
 !INLINE /examples/react-router/render/renderToDom.js
