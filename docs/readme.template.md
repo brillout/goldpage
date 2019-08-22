@@ -455,98 +455,33 @@ Example:
 
 > :warning: This section is only meant for readers that know what an MPA is.
 
-> :warning: You can use Goldpage and create a prototype without knowing what an MPA is.
+> :warning: You can use Goldpage and create a prototype without reading this section and without knowing what an MPA is.
 
-We recommend to not spend time learning about the different app types,
-instead we recommend to start writing a prototype and worry about this later.
+We recommend to not spend time learning about the different app types there is,
+but to start writing a prototype instead,
+and to worry about this later.
 
 And, instead of reasoning in terms of "app types" we recommend to reason in terms of:
-- "Do I need my page to be rendered to HTML?", which we elaborate at !VAR|LINK RENDER_WHEN.
-- "Do I need browser-side routing?", which we elaborate at !VAR|LINK CONTROL_ROUTING.
+- "Do I want my page to be rendered to HTML and/or the DOM?" (Which we elaborate at !VAR|LINK RENDER_WHEN.)
+- "Do I want browser-side routing or server-side routing?" (Which we elaborate at !VAR|LINK CONTROL_ROUTING.)
+
+These two questions will eventually feel more natural than "Do I want an MPA, SPA, BFA, SSR app, or static website?".
 
 And we recommend to start asking yourself these two questions only after you
 encounter problems.
-These two questions will eventually feel more natural than "Do I want an MPA, SPA, BFA, SSR app, or static website?".
-Goldpage's default settings works for most cases.
+Goldpage's defaults work for most cases.
 
-If you know what an MPA is and you already know 
-For those 
-This section is meant for a reader that knows what an MPA is and already knows that an MPA is what he needs.
+That said, if you want an MPA,
+then you don't have to do anything;
+by default, Goldpage builds an MPA:
+- By default, a page is rendered only in the browser. (That is: `renderToDom: true` and `renderToHtml: false`. We explain `renderToHtml` and `renderToDom` at !VAR|LINK RENDER_WHEN.)
+- By default, pages are routed on the server-side. (We explain what "server-side routing" means at !VAR|LINK CONTROL_ROUTING.)
 
-You don't need to do anything to get an MPA as, by default, an MPA is what Goldpage builds by default:
- - By default, a page is rendered only in the browser (`renderToDom: true` and `renderToHtml: false` at).
- - By default, pages are routed server-side routed. (It 
-
-These two 
-For more information about `renderToHtml` and `renderToDom` 
-An MPA is what you get by default.
-
-The default values are `renderToDom: true` and `renderToHtml: false` which corresponds to what an MPA does.
-
-At !VAR|LINK RENDER_WHEN we explain what the page configs `renderToDom` and `renderToHtml` mean.
-
-For more information about `
-
-Note that an MPA is basically the same than an SPA but with improved performance.
-
-If you are curious, we elaborate more about what SPA and MPA means then check.
-
-You shoudn't worry whether
-Whether the default values `renderToDom: true` and `renderToHtml: true` are the right one for your app.
-
-But note that you don't have to know what SPA and MPA mean to use Goldpage and to build a great app.
-(We prefer to reseaon in terms of `renderToDom` and `renderToHtml` instead of "SPA"/"SSR"/...)
-
-you get a SPA (more precisely, an MPA) by setting:
-- `renderToDom: true`
-- `renderToHtml: false`
-to your page configs.
-
-A SPA (Single Page App) is the "mother" of all frontends.
-
-Both SPAs
-
-An MPA (Multi Page App) is like a SPA but 
-
-With React and Vue, not only can you render your pages to the DOM, but you can also render them to HTML.
-The question arises: should I render my page to the DOM or to HTML?
-
-A SPA (and an MPA) renders your page to the DOM.
-
-An MPA is like an SPA but instead of bundling all browser-side JavaScript into one bundle,
-and server-side routed.
-with couple of nicess
-
-
-
-Modern view libraries 
-
-This is what you get when you use create-react-app, vue-cli, Webpack, and Parcel.
-
-With Goldpage, you get an MPA by default.
-(The default page config has `renderToDom: true` and `renderToHtml: false`,
-more about `renderToDom` and `renderToHtml` at !VAR|LINK RENDER_WHEN.)
-
-to your pages.
-You generate 
-This is also the default app type that Goldpage generates.
-
-If your app is mostly about user inteactions
-then this 
-(a music player, an email app, a graphical editor, a chat app, ...).
-
-If your app is mostly about content
-(a blog, a newspaper, a e-commerce shop, ...).
-
-If your app is a mix
-(a website with a questionnaire)
-then a mixed app
-
-Choose this type of app if y
-
-This is typically is highly interactive
+These defaults corresponds to an MPA.
 
 !INLINE ./snippets/section-footer.md #readme
+
+
 
 ## !VAR SPA_APP
 
@@ -563,6 +498,10 @@ An SPA is what you get when you use create-create-app, vue-cli, the Webpack CLI,
 If you're curious:
 you could still have an SPA by have a single page with a catch-all route and use a browser-side routing library such as React Router.
 
+(FYI, a SPA is what you get when you use create-react-app, vue-cli, Webpack, and Parcel.)
+
+
+
 ## !VAR SSR_APP
 
 !INLINE ./snippets/warning-advanced.md
@@ -578,11 +517,13 @@ An SSR app is what you get when you use Next.js and Nuxt.js.
 !INLINE ./snippets/section-footer.md #readme
 
 
+
 ## !VAR BFA_APP
 
 !INLINE ./snippets/warning-advanced.md
 
 More at [BFA](/bfa.md)
+
 
 
 ## !VAR STATIC_WEBSITE

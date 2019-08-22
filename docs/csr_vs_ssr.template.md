@@ -1,3 +1,25 @@
+With React and Vue, not only can you render your pages to the DOM, but you can also render them to HTML.
+The question arises: should I render my page to the DOM or to HTML?
+
+
+
+
+If your app is mostly about user inteactions
+then this 
+(a music player, an email app, a graphical editor, a chat app, ...).
+
+If your app is mostly about content
+(a blog, a newspaper, a e-commerce shop, ...).
+
+If your app is a mix
+(a website with a questionnaire)
+then a mixed app
+
+
+
+
+
+
 
 
 ###### Google Search Results
