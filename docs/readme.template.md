@@ -452,8 +452,28 @@ Example:
 ## !VAR MPA_APP
 
 !INLINE ./snippets/warning-advanced.md
-> This section assumes that you know what MPA means.
 
+> This section assumes that you know what an MPA is.
+>
+> You do not need to know what an MPA is nor do you need to read this section to create an app with Goldpage.
+
+An MPA is what Goldpage builds by default:
+ - 
+ - The routing Your page config routes are done on is server-side routing.
+
+You don't have to do anything to get an MPA:
+by default,
+Goldpage builds an MPA.
+
+That's because
+By default,
+Goldpage sets `renderToDom: true` and `renderToHtml: true` to your page config.
+The 
+That's because the default values
+
+
+
+For more information about `renderToHtml` and `renderToDom` 
 An MPA is what you get by default.
 
 The default values are `renderToDom: true` and `renderToHtml: false` which corresponds to what a MPA does.
