@@ -252,3 +252,12 @@ and your app is now a static website.
 You can then deploy your app to a static host such as Netlify or GitHub Pages.
 
 
+
+
+
+
+
+If you don't need the Node.js server beyond serving your browser-side code then your app is essentially
+just a collection of static assets for the browser.
+Your app is then what is commonly called a "static website".
+

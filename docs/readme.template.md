@@ -451,27 +451,7 @@ Example:
 
 ## !VAR MPA_APP
 
-!INLINE ./snippets/warning-advanced.md
-
-> :warning: This section is only meant for readers that know what an MPA is.
-
-> :warning: You can use Goldpage and create a prototype without reading this section and without knowing what an MPA is.
-
-We recommend to not spend time learning about the different app types there is,
-but to start writing a prototype instead,
-and to worry about this later.
-
-And, instead of reasoning in terms of "app types" we recommend to reason in terms of:
-- "Do I want my page to be rendered to HTML and/or the DOM?" (Which we elaborate at !VAR|LINK RENDER_WHEN.)
-- "Do I want browser-side routing or server-side routing?" (Which we elaborate at !VAR|LINK CONTROL_ROUTING.)
-
-These two questions will eventually feel more natural than "Do I want an MPA, SPA, BFA, SSR app, or static website?".
-
-And we recommend to start asking yourself these two questions only after you
-encounter problems.
-Goldpage's defaults work for most cases.
-
-That said, if you want an MPA,
+!INLINE ./snippets/app-type-intro.md an MPA
 then you don't have to do anything;
 by default, Goldpage builds an MPA:
 - By default, a page is rendered only in the browser. (That is: `renderToDom: true` and `renderToHtml: false`. We explain `renderToHtml` and `renderToDom` at !VAR|LINK RENDER_WHEN.)
@@ -485,34 +465,28 @@ These defaults corresponds to an MPA.
 
 ## !VAR SPA_APP
 
-!INLINE ./snippets/warning-advanced.md
->
-> This section assumes that you know what SPA, MPA, [browser-side routing, and server-side routing](!VAR|ANCHOR CONTROL_ROUTING) mean.
+!INLINE ./snippets/app-type-intro.md an SPA
+then:
+- Create a single page with a catch-all route. (That is, create only one page config with `route: '/:param*`; all URLs will be routed to this single page.)
+- Use a browser-side routing such as React Router. (We elaborate more at !VAR|LINK CONTROL_ROUTING.)
 
-By default,
-Goldpage generates an MPA which most of the a better alterantive to an SPA.
-(MPA is basically the same than an SPA but with server-side routing and code-splitting.)
+Note that an MPA is almost always a better alternative than an SPA.
+And, by default, Goldpage builds an MPA.
+So, if you want an SPA, this means that you most likely don't have to do anything.
+(AN MPA is basically the same than an SPA but with server-side routing and code-splitting.)
 
-An SPA is what you get when you use create-create-app, vue-cli, the Webpack CLI, and Parcel.
+(FYI, a SPA is what you get when you use create-react-app, vue-cli, Webpack, or Parcel.)
 
-If you're curious:
-you could still have an SPA by have a single page with a catch-all route and use a browser-side routing library such as React Router.
-
-(FYI, a SPA is what you get when you use create-react-app, vue-cli, Webpack, and Parcel.)
 
 
 
 ## !VAR SSR_APP
 
-!INLINE ./snippets/warning-advanced.md
->
-> This section assumes that you know about `renderToHtml`, `renderToDom` and that you know what [SSR](https://github.com/brillout/awesome-universal-rendering#introduction) means.
+!INLINE ./snippets/app-type-intro.md an SSR app
+then:
+- Set `renderToHtml: true` and `renderToDom: true` to all your page configs. (We explain `renderToHtml` and `renderToDom` at !VAR|LINK RENDER_WHEN.)
 
-Set the page configs `renderToHtml: true` and `renderToDom: true` in order add SSR to a page.
-
-By setting `renderToHtml: true` and `renderToDom: true` to all page configs you get an SSR app.
-
-An SSR app is what you get when you use Next.js and Nuxt.js.
+(FYI, an SSR app is what you get when you use Next.js or Nuxt.js.)
 
 !INLINE ./snippets/section-footer.md #readme
 
@@ -520,38 +494,33 @@ An SSR app is what you get when you use Next.js and Nuxt.js.
 
 ## !VAR BFA_APP
 
-!INLINE ./snippets/warning-advanced.md
-
 More at [BFA](/bfa.md)
 
 
 
 ## !VAR STATIC_WEBSITE
 
-!INLINE ./snippets/warning-advanced.md
+!INLINE ./snippets/app-type-intro.md a static website
+then:
+- Set `renderHtmlAtBuildTime: true` to all your page configs. (We explain `renderHtmlAtBuildTime` at !VAR|LINK RENDER_WHEN.)
 
-A static website is like a SPA/MPA but where 
+By setting `renderHtmlAtBuildTime: true` to all your page configs,
+all browser-side code and assets are generated at built-time.
 
-If you set `renderHtmlAtBuildTime: true` to all your page configs,
-then your entire browser-side code is generated at built-time.
-
-This means that no Node.js server is required to serve your frontend.
-
-If you don't need the Node.js server beyond serving your browser-side code then your app is essentially
-just a collection of static assets for the browser.
-Your app is then what is commonly called a "static website".
-
-You can deploy a static website using a static host such as
+This means that no Node.js server is required to serve your frontend and
+you can deploy your frontend using a static host such as
 [Netlify](https://www.netlify.com/),
 [Amazon S3](https://aws.amazon.com/s3/), or
 [GitHub Pages](https://pages.github.com/).
 
 To deploy,
-simply run `$ ssr-coin build`
-(or better `npm run build` where `require('./package.json').scripts.build === 'ssr-coin build'`)
-and copy the directory `.build/browser/`
-(which is the directory that contains the browser assets)
+simply run `$ goldpage build`
+(or better: `npm run build` while `require('./package.json').scripts.build === 'goldpage build'`)
+and deploy the directory `.build/browser/`
+(this is the directory that contains all browser assets)
 to your static host.
+
+(FYI, a static website is what you get when you use Gastby.)
 
 !INLINE ./snippets/section-footer.md #readme
 
