@@ -1,8 +1,6 @@
 import React from 'react';
 import fetchProduct from './fetchProduct';
-// Definition of `getHtmlOptions` is shown below.
 import getHtmlOptions from './getHtmlOptions';
-// Definition of `assert_initialProps` is shown below.
 import assert_initialProps from './assert_initialProps';
 import Product from './Product';
 
@@ -24,20 +22,26 @@ function getPageConfig() {
     view: Product,
 
     // Control when the page is rendered.
-    // See section "Performance: `doNotRenderInBrowser` & `renderHtmlAtBuildTime`".
+    // More in a section below.
+    // renderToDom: true, // (default value)
+    // renderToHtml: false, // (default value)
     doNotRenderInBrowser: false,
-    renderHtmlAtBuildTime: false,
+    renderHtmlAtBuildTime: false, // default value
 
+    // The definition of `getHtmlOptions` is shown in a section below
+    // and shows all HTML configs.
     ...getHtmlOptions()
   };
 }
 
 async function addInitialProps(initialProps) {
-  // See the definition of `assert_initialProps` for
-  // a full referance of what `initialProps` contains.
+  // The definition of `assert_initialProps` is shown in a section below
+  // and shows all `initialProps`.
   assert_initialProps(initialProps);
 
   const {productId} = initialProps;
+
   const product = await fetchProduct(productId);
+
   return {product};
 }

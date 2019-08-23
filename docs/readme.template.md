@@ -20,7 +20,10 @@
 !VAR BFA_APP BFA
 !VAR STATIC_WEBSITE Static Website
 
-!VAR PAGE_CONFIG Page Config `*page.js`
+!VAR PAGE_CONFIG Page Config `*.page.js` - Overview
+!VAR INITIAL_PROPS Page Config `*.page.js` - Initial Props `initialProps`
+!VAR HTML_CONFIG Page Config `*.page.js` - HTML
+!VAR RENDER_CONFIG Page Config `*.page.js` - Rendering
 !VAR SSR_COIN_CONFIG Global Config `ssr-coin.config.js`
 !VAR CLI_REF CLI
 
@@ -62,6 +65,9 @@
 !INLINE li-2 !VAR|LINK STATIC_WEBSITE
 !INLINE li-2-header API Reference
 !INLINE li-2 !VAR|LINK PAGE_CONFIG
+!INLINE li-2 !VAR|LINK INITIAL_PROPS
+!INLINE li-2 !VAR|LINK HTML_CONFIG
+!INLINE li-2 !VAR|LINK RENDER_CONFIG
 !INLINE li-2 !VAR|LINK SSR_COIN_CONFIG
 !INLINE li-2 !VAR|LINK CLI_REF
 !INLINE li-2-header Recipes
@@ -367,7 +373,7 @@ That's it: you can now run `npm run dev` (`yarn dev`), go to [http://localhost:3
 
 ## !VAR CSS_AND_ASSETS
 
-To load CSS, simply import it:
+To load a CSS file, simply import it:
 
 ~~~js
 import './path/to/style.css';
@@ -477,6 +483,7 @@ So, if you want an SPA, this means that you most likely don't have to do anythin
 
 (FYI, a SPA is what you get when you use create-react-app, vue-cli, Webpack, or Parcel.)
 
+!INLINE ./snippets/section-footer.md #readme
 
 
 
@@ -500,34 +507,16 @@ Goldpage introduces a new app type
 we call BFA (Backend First App).
 
 The idea of a BFA is to
-use React (or another ismorphic view library such as Vue)
-primarily as an HTML template engine (and only secondarily
-to implement interactive views).
+use React (or Vue)
+primarily as an HTML template engine and only secondarily
+to implement interactive views.
 
-A BFA is essentially an app with mixed `renderToDom` and `renderToHtml` settings.
-
-We further elaborate at [BFA](/bfa.md).
-
-
-
-
-while trying to set
-`renderToDom: false` as much as possible. (We call this the non-interactive first approach
-
-The advantages are:
-- Super fast on mobile
+A BFA is an app with mixed `renderToDom` and `renderToHtml` settings to achieve:
+- Fast mobile pages
 - High development speed
 - Reliable SEO & social sharing
 
-A BFA is essentially a mix of pages
-- Set `renderToHtml: true` and `renderToDom: false` for a page that is non-interactive.
-- Set `renderToHtml: false` and `renderToDom: true` for a page that is interactive.
-- Set `renderToHtml: true` and `renderToDom: true` for a page that is interactive where the page's content needs to be rendered to HTML (for SEO reasons).
-
-while trying to implement as few interactive views as possible.
-While following the non-interactive first approach: any feature that can be implemented by a non-interactive
-
-We further elaborate at [BFA](/bfa.md).
+More at [BFA](/bfa.md).
 
 !INLINE ./snippets/section-footer.md #readme
 
@@ -597,9 +586,9 @@ Configuring these three page configs are about achieving improvements in:
   rendering your page to HTML is drastically faster then rendering it to the DOM.
 
 At
-[Browser-side Rendering VS Server-side Rendering](),
-we illustrate `renderToHtml`, `renderToDom`, `renderHtmlAtBuildTime`,
-and how you can configure them to achieve improvements in the above points.
+[Client-side Rendering (CSR) VS Server-side Rendering (SSR)](),
+we elaborate how to set `renderToHtml`, `renderToDom` and `renderHtmlAtBuildTime`,
+in order to achieve improvements in the above points.
 But before you learn more about these page configs and what you can achieve with them, we recommend that you first implement a prototype and learn more only after you need improvements in the above points.
 
 !INLINE ./snippets/section-footer.md #readme
@@ -614,27 +603,27 @@ to HTML and the DOM.
 For that,
 save a `ssr-coin.config.js` file at your project's root directory
 (the directory that contains your `package.json`)
-and add the `renderToHtml` and `renderToDom` configs:
+and add the `htmlRender` and `domRender` configs:
 ~~~js
 // ssr-coin.config.js
 
 !INLINE /examples/react-router/ssr-coin.config.js --hide-source-path
 ~~~
 
-Then create the `renderToDom` and `renderToHtml` files.
+Then create the `domRender` and `htmlRender` files.
 
 With React:
 
 ~~~js
-// render/renderToDom.js
+// render/domRender.js
 
-!INLINE /plugins/render-react/renderToDom.js --hide-source-path
+!INLINE /plugins/render-react/domRender.js --hide-source-path
 ~~~
 
 ~~~js
-// render/renderToHtml.js
+// render/htmlRender.js
 
-!INLINE /plugins/render-react/renderToHtml.js --hide-source-path
+!INLINE /plugins/render-react/htmlRender.js --hide-source-path
 ~~~
 
 This allows you to add providers such as Redux's `<Provider store={store} />` or React Router's `<BrowserRouter />`.
@@ -645,15 +634,15 @@ With Vue
 </summary>
 
 ~~~js
-// render/renderToDom.js
+// render/domRender.js
 
-!INLINE /plugins/vue/renderToDom.js --hide-source-path
+!INLINE /plugins/vue/domRender.js --hide-source-path
 ~~~
 
 ~~~js
-// render/renderToHtml.js
+// render/htmlRender.js
 
-!INLINE /plugins/vue/renderToHtml.js --hide-source-path
+!INLINE /plugins/vue/htmlRender.js --hide-source-path
 ~~~
 
 ~~~js
@@ -676,17 +665,7 @@ Examples:
 
 ## !VAR PAGE_CONFIG
 
-#### Contents
-
-!VAR PAGE_CONFIGS Page Configs
-!VAR INITIAL_PROPS Initial Props
-!VAR HTML_CONFIGS HTML Configs
-
-- !VAR|LINK PAGE_CONFIGS - List of all page configs.
-- !VAR|LINK INITIAL_PROPS - List of all initial props.
-- !VAR|LINK HTML_CONFIGS - List of HTML configs.
-
-#### !VAR PAGE_CONFIGS
+This page config example showcases all page configs.
 
 ~~~js
 // pages/*.page.js
@@ -694,38 +673,125 @@ Examples:
 !INLINE /examples/html/pages/product-details.page.js --hide-source-path
 ~~~
 
-!INLINE ./snippets/section-footer.md #contents
+!INLINE ./snippets/section-footer.md #readme
 
-#### !VAR INITIAL_PROPS
+
+
+## !VAR INITIAL_PROPS
+
+This `initialProps` assertion showcases all `initialProps`.
 
 ~~~js
 !INLINE /examples/html/pages/assert_initialProps.js --hide-source-path
 ~~~
 
-!INLINE ./snippets/section-footer.md #contents
+!INLINE ./snippets/section-footer.md #readme
 
-#### !VAR HTML_CONFIGS
+
+
+## !VAR HTML_CONFIGS
+
+List of all HTML configs:
 
 ~~~js
 !INLINE /examples/html/pages/getHtmlOptions.js --hide-source-path
 ~~~
 
-!INLINE ./snippets/section-footer.md #contents
+!INLINE ./snippets/section-footer.md #readme
+
+
+
+## !VAR RENDER_CONFIG
+
+A page has three render configs:
+ - `renderToDom`
+ - `renderToHtml`
+ - `renderHtmlAtBuildTime`
+
+In this section we only explain what each config does.
+At !VAR|LINK RENDER_WHEN we explain how to set these three render configs.
+
+###### `renderToDom`
+
+With `renderToDom` you control whether your page is rendered in the browser (to the DOM).
+
+- `renderToDom: true` (default value)
+  - Slower Performance.
+    <br/>
+    The page's views (e.g. React components) and view libraries (e.g. React) are loaded, executed, and rendered in the browser.
+    This can be very slow on mobile devices.
+  - Interactive.
+    <br/>
+    Because your page is rendered to the browser's DOM, your page's views (e.g. React components) can be stateful and interactive.
+- `renderToDom: false`
+  - Increased performance.
+    <br/>
+    The page's views and view libraries are not loaded nor executed in the browser.
+    Considerably less JavaScript is loaded/executed in the browser.
+    A page that has (or very little) browser-side JavaScript is blazing fast on mobile.
+  - Non-interactive.
+    <br/>
+    Because your page is not rendered to the browser's DOM, your page connot have stateful views / interactive views.
+
+In a nutshell:
+If your page is interactive then you have to rendered it in the browser and set `renderToDom` to `true`.
+But if your page isn't interactive then you can set `renderToDom` to `false` for increased performance and a blazing fast page on mobile devices.
+
+###### `renderToHtml`
+
+With `renderToDom` you control whether your page is rendered to HTML (in Node.js).
+
+- `renderToHtml: false` (default value)
+  <br/>
+  Your page's `view` component is not rendered to HTML.
+- `renderToHtml: true`
+  <br/>
+  Your page's `view` component is rendered to HTML.
+
+###### `renderHtmlAtBuildTime`
+
+With `renderHtmlAtBuildTime` you can control whether the page's HTML is
+rendered statically at build-time or
+dynamically at request-time.
+
+- `renderHtmlAtBuildTime: false` (default value)
+  <br/>
+  The page is rendered to HTML at request-time.
+  <br/>
+  The page is (re-)rendered to HTML every time the user requests the page.
+- `renderHtmlAtBuildTime: true`
+  <br/>
+  The page is rendered to HTML at build-time.
+  <br/>
+  The page is rendered to HTML only once, when `ssr-coin` transpiles and builds your pages.
+
+By default,
+a page is rendered to HTML at request-time.
+But if the page's content is static
+(a landing page, an about page, a blog post, a personal homepage, etc.)
+it is wasteful to re-render its HTML on every page request.
+
+By setting `renderHtmlAtBuildTime: true` to all your pages,
+you can remove the need for a Node.js server
+and have your frontend be a static website.
+You can then deploy your frontend to a static host such as Netlify or GitHub Pages.
+
+!INLINE ./snippets/section-footer.md #readme
 
 
 
 ## !VAR SSR_COIN_CONFIG
 
-We try keep `ssr-coin` as zero-config as possible,
-hence `ssr.config.js` has only few options.
+We try to keep `ssr-coin` as zero-config as possible
+and `ssr.config.js` has only few options.
 
 ~~~js
 // ssr.config.js
 
 module.exports = {
   // Control how pages are rendered. (See section "!VAR RENDER_HOW").
-  renderToHtml: require.resolve('./path/to/your/renderToHtml'),
-  renderToDom: require.resolve('./path/to/your/renderToDom'),
+  htmlRender: require.resolve('./path/to/your/htmlRender'),
+  domRender: require.resolve('./path/to/your/domRender'),
 
   // Make `ssr-coin` silent in the terminal (but it will still prints errors).
   silent: true,
@@ -908,11 +974,11 @@ if you use React,
 you take control over rendering in order to add React Router (which does browser-side routing):
 
 ~~~js
-!INLINE /examples/react-router/render/renderToDom.js
+!INLINE /examples/react-router/render/domRender.js
 ~~~
 
 ~~~js
-!INLINE /examples/react-router/render/renderToHtml.js
+!INLINE /examples/react-router/render/htmlRender.js
 ~~~
 
 ~~~js
