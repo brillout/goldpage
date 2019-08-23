@@ -494,7 +494,42 @@ then:
 
 ## !VAR BFA_APP
 
-More at [BFA](/bfa.md)
+> :warning: You can use Goldpage and create a prototype without reading this section and without knowing what a BFA is.
+
+Goldpage introduces a new app type
+we call BFA (Backend First App).
+
+The idea of a BFA is to
+use React (or another ismorphic view library such as Vue)
+primarily as an HTML template engine (and only secondarily
+to implement interactive views).
+
+A BFA is essentially an app with mixed `renderToDom` and `renderToHtml` settings.
+
+We further elaborate at [BFA](/bfa.md).
+
+
+
+
+while trying to set
+`renderToDom: false` as much as possible. (We call this the non-interactive first approach
+
+The advantages are:
+- Super fast on mobile
+- High development speed
+- Reliable SEO & social sharing
+
+A BFA is essentially a mix of pages
+- Set `renderToHtml: true` and `renderToDom: false` for a page that is non-interactive.
+- Set `renderToHtml: false` and `renderToDom: true` for a page that is interactive.
+- Set `renderToHtml: true` and `renderToDom: true` for a page that is interactive where the page's content needs to be rendered to HTML (for SEO reasons).
+
+while trying to implement as few interactive views as possible.
+While following the non-interactive first approach: any feature that can be implemented by a non-interactive
+
+We further elaborate at [BFA](/bfa.md).
+
+!INLINE ./snippets/section-footer.md #readme
 
 
 
