@@ -4,37 +4,31 @@
 > We recommend to start writing a prototype first and to learn about CSR and SSR later.
 
 In a nutshel,
-*Client-Side Rendering* (CSR) denotes the practice of rendering a page in the browser (to the DOM),
-and *Server-Side Rendering* (SSR) denotes the practice of rendering a page to HTML (on the server).
+*Client-Side Rendering* (CSR) denotes the practice of rendering an app in the browser (to the DOM),
+and *Server-Side Rendering* (SSR) denotes the practice of rendering an app to HTML (on the server).
 
 This document assumes that you know that:
 - Interactive views need CSR
 - Vews with SSR without CSR can be dynamic but cannot be interactive
 - Hydration means SSR + CSR
+- `renderToHtml: true` => SSR
+- `renderToDom: true` => CSR
+- `renderToHtml: true` && `renderToDom` => 
 
 If the above points are not obvious to you,
 then take a look at [CSR & SSR Explained]()
 before you continue reading.
 
-With Goldpage you can configure
-you can 
-CSR corresponds to setting `renderToDom: true` to a page's config, and
-SSR corresponds to setting `renderToHtml: true`.
+Usually CSR and SSR is all or nothing:
+your entire app is either CSR'd or SSR'd.
+Not with Goldpage: you can set CSR and SSR on a page-by-page basis.
 
-Whether you want CSR and/or SSR for a page, depends on the following.
+By default, your page is CSR'd.
+(That is, the default is `renderToDom: true` and `renderToHtml: false`.)
+By setting the page config `renerToDom: false` you remove CSR,
+and by setting `renderToHtml: true` you add SSR.
 
-With Goldpage,
-you can add SSR to a page by you set its page config,
-and you can add CSR to a page by setting `renderToDom: true` to its page config.
-To add CSR to a page, you set 
-
-By default, Goldpage does CSR only.
-(That is, the default page config has `renderToDom: true` and `renderToHtml: false`.)
-
-
-Whether you want your page to be rendered in the browser or on the server depends on:
-
-Whether CSR or SSR depends on the following:
+Whether you want CSR and/or SSR for a page, depends on the following points.
 - Interactive
   <br/>
   Whether your page has interactive views (a like button, a video player, a to-do list, ...).
@@ -50,16 +44,16 @@ Whether CSR or SSR depends on the following:
   <br/>
   When your page is shared on a social site (Facebook, Twitter, ...) then a little preview (title, description, and image) of your page is shown.
   To have a correct preview the meta data of your page needs to be rendered to HTML.
-- Mobile peformance
-  <br/>
-  On mobile devices,
-  rendering your page to HTML is drastically faster then rendering it to the DOM.
 - Performance
   <br/>
   Your page's performance can vastly differ depending on whether your page is rendered to the DOM and/or to HTML.
+- Mobile peformance
+  <br/>
+  Performance varies most notably on mobile phones.
+  In particular, rendering your page to HTML is drastically faster then rendering it to the DOM fow low-end devices.
 
 We now go into the details of each point.
-In each point we explain how to configure `renderToDom`, `renderToHtml`, and `renderHtmlAtBuildTime`.
+We also explain how to configure `renderToDom`, `renderToHtml`, and `renderHtmlAtBuildTime` for each point.
 
 - [Interactive](#interactive)
 - [Development Speed](#development-speed)
@@ -68,9 +62,6 @@ In each point we explain how to configure `renderToDom`, `renderToHtml`, and `re
 - Mobile peformance
 - Performance
 
-
-
-(a like button, a video player, a to-do list, etc.)
 
 
 
@@ -108,10 +99,70 @@ Google is capable of crawling content that is rendered in the browser
 
 ## Social Sharing
 
-## Mobile peformance
+
+
+
 
 ## Performance
 
+The best performance is achieved by setting:
+- `renderToDom: false`
+- `renderToHtml: true`
+- `renderHtmlAtBuildTime: true`
+
+This means that your page is rendered to HTML at build-time.
+But this is not an option for interactive or dynamic pages.
+(We explain what *interactive* and *dynamic* mean at
+[CSR & SSR Explained]().)
+
+If your page is non-interactive but needs to be dynamic, then set:
+- `renderToDom: false`
+- `renderToHtml: true`
+- `renderHtmlAtBuildTime: false`
+
+This configuration is still blazing fast.
+
+For interactive pages you have two options:
+- CSR-only (that is `renderToDom: true` and `renderToHtml: false`), or
+- CSR+SSR (that is `renderToDom: true` and `renderToHtml: true`).
+
+From a time-to-print perspective
+(that is the time it takes for your user to first see content on your page),
+CSR+SSR is more performant;
+Rendering your page to HTML on the server is faster than the intial rendering of your page to the browser's DOM.
+(The browser needs to load your page whereas the page is already loaded in the server.
+Data is often fetched faster on the server than in the browser.
+And HTML rendering is less complex (therefore faster) than DOM rendering;
+DOM rendering you maintain some sort of virtual DOM (or somekind of tree) for
+future DOM mutations whereas HMTL rendering
+
+From a time-to-interactive perspective
+(that is the time it takes for your user to first be able to interact with your page),
+CSR-only is more performant;
+the user can interact with your page only after your page is rendered to the browser's DOM,
+and any prior HTML rendering is superfluous.
+(Even though DOM hydrating is faster than an intial DOM render on a blank page &mdash;
+the performance gains of hydration are marginal in comparison to the loss of time of initally redering your page to HTML.)
+
+
+## Mobile peformance
+
+The most effective way to achieve high performance on mobile is to remove browser-side JavaScript.
+
+If you care about mobile,
+then we recommend to implement as few interactive views as possible.
+As explained in [non-interactive first](),
+a non-interactive page doesn't need to be rendered to the browser's DOM.
+You can then set:
+- `renderToHtml: true`
+- `renderToDom: false`
+
+Your page is not loaded in the browser and
+much less JavaScript
+(and potentially no JavaScript at all)
+is loaded in the browser.
+
+SSR without CSR is drastically faster on low-end devices.
 
 
 
@@ -120,14 +171,6 @@ Google is capable of crawling content that is rendered in the browser
 
 
 
-
-###### `renderToDom: true` & `renderToHtml: false`
-
-This is the default configuration;
-your page is loaded & rendered in the browser only.
-
-Because the page is rendered to the DOM, the page can be interactive.
-(We explain why at [Interactive vs Non-interactive]().)
 
 ###### `renderToDom: false` & `renderToHtml: true`
 
@@ -163,17 +206,14 @@ Also, SSR faster time-to-first-print (but slower time-to-first-interaction)
 
 Also, the page and its `initialProps` have to be loaded
 
-We give a little overview of SSR's advantages and disadvantages and we
-further elaborate at [SSR or not to SSR?]().
-
 The advantages:
 - SEO
   
 - Social Sharing
-- Faster time-to-first-print
+- Faster time-to-print
 
 The disadvantages:
-- Slower time-to-first-interaction
+- Slower time-to-interactive
 - Slightly slower dev speed
 
 - SEO
