@@ -1,23 +1,31 @@
 # Client-side Rendering (CSR) VS Server-side Rendering (SSR)
 
-> :warning: You do not need to what about CSR and SSR in order to use Goldpage.
+> :warning:
+> You do not need to know what CSR and SSR mean and
+> you do not need to read this document in order to use Goldpage.
 > We recommend to start writing a prototype first and to learn about CSR and SSR later.
 
 In a nutshel,
 *Client-Side Rendering* (CSR) denotes the practice of rendering an app in the browser (to the DOM),
 and *Server-Side Rendering* (SSR) denotes the practice of rendering an app to HTML (on the server).
 
-This document assumes that you know that:
-- Interactive views need CSR
-- Vews with SSR without CSR can be dynamic but cannot be interactive
-- Hydration means SSR + CSR
-- `renderToHtml: true` => SSR
-- `renderToDom: true` => CSR
-- `renderToHtml: true` && `renderToDom` => 
-
-If the above points are not obvious to you,
+This document assumes that you are familiar with CSR,
+SSR,
+`renderToDom`,
+`renderToHtml`,
+`renderHtmlAtBuildTime`,
+what an *interative* page/view means,
+and what a *dynamic* page means.
+Before reading on, the following points should be clear to you:
+- `renderToHtml: true` <=> SSR
+- `renderToDom: true` <=> CSR
+- `renderToHtml: true` && `renderToDom: true` <=> CSR+SSR
+- An interactive page needs CSR
+- A dynamic page needs `renderHtmlAtBuildTime: false` or `renderToDom: true`
+If the above points are not clear to you,
 then take a look at [CSR & SSR Explained]()
 before you continue reading.
+Knowing about all this is crucial to be able to properly set your pages' render configs.
 
 Usually CSR and SSR is all or nothing:
 your entire app is either CSR'd or SSR'd.
@@ -47,7 +55,7 @@ Whether you want CSR and/or SSR for a page, depends on the following points.
 - Performance
   <br/>
   Your page's performance can vastly differ depending on whether your page is rendered to the DOM and/or to HTML.
-- Mobile peformance
+- Mobile Performance
   <br/>
   Performance varies most notably on mobile phones.
   In particular, rendering your page to HTML is drastically faster then rendering it to the DOM fow low-end devices.
@@ -58,10 +66,9 @@ We also explain how to configure `renderToDom`, `renderToHtml`, and `renderHtmlA
 - [Interactive](#interactive)
 - [Development Speed](#development-speed)
 - [Search Engines](#search-engines)
-- Social Sharing
-- Mobile peformance
-- Performance
-
+- [Social Sharing](#social-sharing)
+- [Performance](#performance)
+- [Mobile Performance](#mobile-performance)
 
 
 
@@ -109,29 +116,51 @@ consider that the non-interactive first approach allows you to set `renderToDom:
 
 ### Search Engines
 
-- SEO
-  Rendering your page's content 
-  Content that are accessible only over the DOM:
+**Search Engines**
+
+Other than Google,
+if you want your page's content to be crawled by all search engines (Bing, Baidu, Yandex, DuckDuckGo, etc.)
+then you need to render your page's content to HTML.
+The practice of rendering a page to HTML is what is commonly called *SSR*.
+With Goldpage you add SSR to a page by settings `renderToHtml: true` to its page config.
+
+**Google**
+
+Goolge's capability to execute your pages' JavaScript and to crawl your page's DOM has limitations:
+- Delayed indexing
   <br/>
-  - Google-only
-    <br/>
-    The Google crawler is the only one that executes JavaScript and only Google will know about content that are only rendered to the DOM.
-    if you want your page's content to be crawled by all other search engines (Bing, Baidu, DuckDuckGo, etc.) then you need to render your page's content to HTML.
-  - Delay on Google
-    <br/>
-    The Google crawler first crawls your page without executing JavaScript
+  The Google crawler first crawls your page without executing JavaScript
   and re-crawls your page after [~1 week](https://twitter.com/Paul_Kinlan/status/1039852756113080320)
   with executing JavaScript.
-  This means that content accessible only over the DOM appear later than content
-  This means that if your page's content is rendered to the DOM and not to HTML then it will appear only one week later
-  (for popular sites, Google manages to track HTML changes almost instantly)
-  Rendering your page to HTML solves these problems.
-  Rendering your page to both HTML to the DOM is not difficult but to entirely trivial either:
-   - 
-  We recommend to first experiment if Google's crawler exectuing works out for you first.
-  And only after you realize is not an option to render your page to HTML.
-  And only if the result to resort ;
-  see "slightly increased dev cost".
+  This means that content accessible only over the DOM appears later than content
+  accessible over your page's HTML.
+  In contrast,
+  and for popular sites,
+  Google manages to track HTML changes almost instantly.
+
+**SSR & Interactive**
+
+If your page is interactive,
+you can both set `renderToDom: true` and `renderToHtml: true` and your page will be rendered twice:
+it is first rendered to HTML on the server and then re-rendered to the DOM in the browser.
+(FYI, the practive of re-rendering the same view in the browser is called *hydrating*.)
+That way you can have both: a page that is interactive as well as a page with its content rendered to HTML.
+
+**SSR or not to SSR**
+
+Adding SSR can induce a slower developing speed
+(which we explain at [Development Speed](#development-speed))
+and can potentially reduce the performance of your page
+(wich we explain at [Performance](#performance)).
+
+Whether SSR is worth it is often not clear.
+So, before deciding whether you want to use SSR,
+we recommend to try out SSR first.
+
+You can experiment by adding SSR to one of your pages,
+and see if SSR is worth it for this page.
+If you realize that SSR works out for you,
+you can then add SSR to your other pages.
 
 !INLINE ./snippets/section-footer.md #readme
 
@@ -192,11 +221,6 @@ Correctly setting the render configs `renderToHtml`, `renderToDom`, `renderHtmlA
 can yield drastic performance improvements.
 
 How to configure the render configs depends on how "static" your page is.
-
-- [Fully static pages](#fully-static-pages)
-- [Dynamic pages](#dynamic-pages)
-- [Interactive pages](#interactive-pages)
-
 
 #### Fully static pages
 
@@ -294,7 +318,7 @@ but the performance gains of hydration are marginal in comparison to the loss of
 
 
 
-## Mobile peformance
+## Mobile Performance
 
 The most effective way to achieve high performance on mobile is to remove browser-side JavaScript.
 
