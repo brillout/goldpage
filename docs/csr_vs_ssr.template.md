@@ -74,6 +74,10 @@ If your page has an interactive view (in other words, a stateful component),
 then your page needs CSR and
 you need to set `renderToDom: true`.
 
+!INLINE ./snippets/section-footer.md #readme
+
+
+
 ### Development Speed
 
 As shown in [non-interactive first](),
@@ -89,60 +93,205 @@ While deciding how to configure your page's `renderToDom` and `renderToHtml`,
 consider that the non-interactive first approach allows you to set `renderToDom: false` which is a good thing.
 
 
+  Rendering your page to both HTML and the DOM means that your page's code will run in both Node.js and the browser:
+  - Your libraries need to be able to run in Node.js.
+    <br/>
+    Certain libraries expect to be run in the browser and will crash when run in Node.js.
+    You can often solve this by lazy loading your library loading it with `require('a-library-that-works-only-in-the-browser')` only after the React/Vue component is mounted. That way the libray is loaded only in the browser.
+  - Only the inital state of your React/Vue components are rendered to HTML.
+    <br/>
+    You'll have to make sure that your content is available.
+    But thanks to !VAR|LINK ASYNC_DATA this is often easy to achieve.
+
+!INLINE ./snippets/section-footer.md #readme
+
 
 
 ### Search Engines
 
-Google is capable of crawling content that is rendered in the browser
+- SEO
+  Rendering your page's content 
+  Content that are accessible only over the DOM:
+  <br/>
+  - Google-only
+    <br/>
+    The Google crawler is the only one that executes JavaScript and only Google will know about content that are only rendered to the DOM.
+    if you want your page's content to be crawled by all other search engines (Bing, Baidu, DuckDuckGo, etc.) then you need to render your page's content to HTML.
+  - Delay on Google
+    <br/>
+    The Google crawler first crawls your page without executing JavaScript
+  and re-crawls your page after [~1 week](https://twitter.com/Paul_Kinlan/status/1039852756113080320)
+  with executing JavaScript.
+  This means that content accessible only over the DOM appear later than content
+  This means that if your page's content is rendered to the DOM and not to HTML then it will appear only one week later
+  (for popular sites, Google manages to track HTML changes almost instantly)
+  Rendering your page to HTML solves these problems.
+  Rendering your page to both HTML to the DOM is not difficult but to entirely trivial either:
+   - 
+  We recommend to first experiment if Google's crawler exectuing works out for you first.
+  And only after you realize is not an option to render your page to HTML.
+  And only if the result to resort ;
+  see "slightly increased dev cost".
+
+!INLINE ./snippets/section-footer.md #readme
 
 
 
 ## Social Sharing
 
+When someone shares a page on a social site, such as Facebook or Twitter, a preview of the page is shown.
 
+<img align="center" src="https://github.com/reframejs/goldpage/raw/master/docs/social-sharing-preview.png?sanitize=true"/>
+
+Facebook, for example, looks for the following HTML meta tags:
+~~~html
+<meta property="og:title"              content="When Great Minds Don’t Think Alike" />
+<meta property="og:description"        content="How much does culture influence creative thinking?" />
+<meta property="og:image"              content="http://static01.nyt.com/images/2015/02/19/arts/international/19iht-btnumbers19A/19iht-btnumbers19A-facebookJumbo-v2.jpg" />
+~~~
+
+You can define these meta tags by using your page's config:
+~~~js
+// Page config
+export default {
+  head: [
+    '<meta property="og:title"              content="When Great Minds Don’t Think Alike" />',
+    '<meta property="og:description"        content="How much does culture influence creative thinking?" />',
+    '<meta property="og:image"              content="http://static01.nyt.com/images/2015/02/19/arts/international/19iht-btnumbers19A/19iht-btnumbers19A-facebookJumbo-v2.jpg" />',
+  ],
+  route: '2015/02/19/arts/international/when-great-minds-dont-think-alike',
+  view: () => (
+    <div>
+      <h1>When Great Minds Don’t Think Alike<h1/>
+      <div>
+        Content here.
+      </div>
+    </div>
+  ),
+
+  // Contrary to most SSR tools out there,
+  // you can render your page's HTML meta data while
+  // not rendering the page's view to HTML.
+  renderToHtml: false,
+  renderToDom: true,
+};
+~~~
+
+Also note that you can render your meta data at request-time:
+~~~js
+!INLINE /examples/html/pages/product-data.page.js
+~~~
+
+!INLINE ./snippets/section-footer.md #readme
 
 
 
 ## Performance
 
-The best performance is achieved by setting:
+Correctly setting the render configs `renderToHtml`, `renderToDom`, `renderHtmlAtBuildTime`
+can yield drastic performance improvements.
+
+How to configure the render configs depends on how "static" your page is.
+
+- [Fully static pages](#fully-static-pages)
+- [Dynamic pages](#dynamic-pages)
+- [Interactive pages](#interactive-pages)
+
+
+#### Fully static pages
+
+The fastest configuration is:
 - `renderToDom: false`
 - `renderToHtml: true`
 - `renderHtmlAtBuildTime: true`
 
-This means that your page is rendered to HTML at build-time.
-But this is not an option for interactive or dynamic pages.
-(We explain what *interactive* and *dynamic* mean at
-[CSR & SSR Explained]().)
+Your page is pre-rendered to a static `.html` file &mdash;
+when a user requests your page then Goldpage simply serves the pre-rendered static `.html` file.
+Your page is not rendered in the browser nor on the server.
+It is rendered only once at build-time.
 
-If your page is non-interactive but needs to be dynamic, then set:
+This configuration is super fast but your page is fully static:
+- Non-interactive
+  <br/>
+  Your page is not rendered in the browser which means that
+  the browser's DOM is static and your page's views will not
+  change. In a nutshell: your page's view components cannot be stateful.
+- Non-dynamic
+  <br/>
+  Your page is rendered to HTML at build-time.
+  This means that the content of your page
+  is generated at build-time;
+  to change your page's content you'd have
+  to re-build and re-deploy your frontend.
+At
+[CSR & SSR Explained]()
+we further illustrate what
+*interactive* and *dynamic* mean with examples and demos.
+If you are not sure what dynamic and interactive means,
+then take a look
+before you continue
+reading.
+
+
+#### Dynamic pages
+
+If your page needs to be dynamic, then set:
 - `renderToDom: false`
 - `renderToHtml: true`
 - `renderHtmlAtBuildTime: false`
+Your page is rendered to HTML at request-time;
+whenever a user requests yours page,
+Goldpage (re-)renders your page to HTML.
+This allows your page's content to change.
+For exampe,
+you can render data from your database to your page's HTML.
 
-This configuration is still blazing fast.
+An can also have dynamic page by setting:
+- `renderToDom: false`
+- `renderToHtml: true`
+- `renderHtmlAtBuildTime: false`
+But this configuration is less performant.
+Rendering a page to HTML is faster than rendering it to the DOM:
+- Loading a page in the browser is substantially slower than loading the page on the server.
+- Data is usually fetched faster on the server than in the browser.
+  (Especially if the data you fetch is on your server's database and
+  if you your user has a slow internet connection.)
+- DOM rendering itself is fundamentally more complex and slower than HTML rendering;
+  DOM rendering needs to maintain a tree representing the current state of the DOM to be able
+  to efficiently translate future view state changes to DOM mutations.
+  (FYI, this tree is often called *virtual DOM*.)
 
-For interactive pages you have two options:
+
+#### Interactive pages
+
+If your page is interactive,
+then your page needs to be rendered to the browser's DOM.
+You then have the option to additionally render it to the HTML.
+That leaves us with two options:
 - CSR-only (that is `renderToDom: true` and `renderToHtml: false`), or
 - CSR+SSR (that is `renderToDom: true` and `renderToHtml: true`).
 
-From a time-to-print perspective
-(that is the time it takes for your user to first see content on your page),
-CSR+SSR is more performant;
-Rendering your page to HTML on the server is faster than the intial rendering of your page to the browser's DOM.
-(The browser needs to load your page whereas the page is already loaded in the server.
-Data is often fetched faster on the server than in the browser.
-And HTML rendering is less complex (therefore faster) than DOM rendering;
-DOM rendering you maintain some sort of virtual DOM (or somekind of tree) for
-future DOM mutations whereas HMTL rendering
+From a time-to-print perspective,
+CSR+SSR is more performant.
+(That is the time it takes for your user to first see content on your page.)
 
-From a time-to-interactive perspective
-(that is the time it takes for your user to first be able to interact with your page),
-CSR-only is more performant;
-the user can interact with your page only after your page is rendered to the browser's DOM,
-and any prior HTML rendering is superfluous.
-(Even though DOM hydrating is faster than an intial DOM render on a blank page &mdash;
-the performance gains of hydration are marginal in comparison to the loss of time of initally redering your page to HTML.)
+Rendering your page to HTML on the server is faster than intially rendering your page to the browser's DOM.
+Your user will be able to quickly see your page's content before
+the browser loaded/exectuded any JavaScript.
+This is most notable on mobile devices where browser-side JavaScript is slow.
+
+From a time-to-interactive perspective,
+CSR-only is more performant.
+(That is the time it takes for your user to first be able to interact with your page.)
+
+Before the user can have his first interaction with your page, you page needs to be loaded and rendered to the browser's DOM.
+From a time-to-interactive perspective, any prior HTML rendering is superfluous and just slows down the initial HTML download.
+
+(Note that DOM hydrating is faster than a DOM render on a blank page
+but the performance gains of hydration are marginal in comparison to the loss of time of initally redering your page to HTML.)
+
+!INLINE ./snippets/section-footer.md #readme
+
 
 
 ## Mobile peformance
@@ -164,102 +313,7 @@ is loaded in the browser.
 
 SSR without CSR is drastically faster on low-end devices.
 
-
-
-
-
-
-
-
-
-###### `renderToDom: false` & `renderToHtml: true`
-
-If your page is non-interactive, this is the best configuration:
-- SEO
-  <br/>
-  The content of your page is rendered to HTML &mdash; search engines merely have to crawl your page's HTML to get your page's content.
-  Your pages will appear to all search engines.
-- Performance
-  <br/>
-  Rendering your page in Node.js is generally faster than rendering it in the browser.
-  The difference in speed can be drastic for low-end devices such as mobile phones where
-  loading & executing browser-side JavaScript is slow.
-  (Your page is already loaded in Node.js whereas in the browser it has to be loaded over the internet.
-
-If your page has interactive views then your page needs to be rendered to the DOM and this configuration is not an option.
-(We explain why at [Interactive vs Non-interactive]().)
-If you still want the aforementioned SEO and SMO benefits you can your pages to both HTML and the DOM,
-see the next section.
-
-
-###### `renderToDom: true` & `renderToHtml: true`
-
-With this configuration your page is rendered twice:
-the page is first rendered to HTML with Node.js and then re-rendered to the DOM in the browser.
-(The browser-side re-rendering is commonly called "hydration".)
-
-This practice is known as SSR (Server-Side Rendering).
-
-The main motivation of doing SSR is to make your page's content available to search engines and social sharing sites.
-
-Also, SSR faster time-to-first-print (but slower time-to-first-interaction)
-
-Also, the page and its `initialProps` have to be loaded
-
-The advantages:
-- SEO
-  
-- Social Sharing
-- Faster time-to-print
-
-The disadvantages:
-- Slower time-to-interactive
-- Slightly slower dev speed
-
-- SEO
-- Social Sharing
-- Performance
-
-The motivation of rendering your page twice is to be able to have a page that is both interacative while also having its content rendered to HTML to make the content more accessible to HTML crawlers for search engines and social sharing sites.
-
-###### `renderToDom: false` & `renderToHtml: true`
-
-As explained in [Interactive Page VS Non-interactive Page](),
-an interactive page needs to be rendered to the DOM.
-
-But if your page is non-interactive then you can rendered it to HTML only.
-This is then the best configuration:
-- Performance
-  <br/>
-  Epsecially on mobile devices, a without any browser-side JavaScript is dramatically faster than a
-  with many MBs of browser-side JavaScript.
-- SEO & Social sharing
-  All your page's content is accessible to search engines and social sites crawling page's HTML.
-
-###### `renderToHtml: true` & `renderToHtml: true`
-
-The main motivation for this configuration is to get rid of the need for a Node.js server and create a static website.
-This is mainly to create a 
-
-###### `renderToHtml: false` & `renderHtmlAtBuildTime: true`
-
-
-
-
-
-
-###### `renderToDom: true` & `renderToHtml: true`
-
-The idea here is to render your page's content to HTML for gains in SEO, social sharing, and performance.
-The page is then re-rendered to the DOM to be able to have stateful React/Vue components and thus interactive views.
-
-You can enable SSR for a page by setting both `renderToHtml: true` and `renderToDom: true`.
-We elaborate further and explain when to SSR at !VAR-LINK RENDER_WHEN.
-
-
-
-
-
+!INLINE ./snippets/section-footer.md #readme
 
 
 
