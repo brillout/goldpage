@@ -3,7 +3,7 @@
 !INLINE ./snippets/header.md
 
 !VAR WHAT_IS_GOLDPAGE What is `ssr-coin`
-!VAR WHY_GOLDPAGE Goldpage VS create-react-app/Next.js/vue-cli/Nuxt.js/Gatsby/...
+!VAR WHY_GOLDPAGE Goldpage VS create-react-app/Next.js/vue-cli/Nuxt.js/Gatsby/webpack/parcel/...
 
 !VAR GETTING_STARTED Getting Started
 
@@ -97,7 +97,7 @@ Goldpage is a small (yet powerful) tool
 that makes it easy to create a frontend
 with React, Vue, React Native Web, etc.
 
-You define so-called page configs
+You define so-called page configs:
 
 ~~~js
 // A page config
@@ -111,16 +111,50 @@ export default {
 };
 ~~~
 
-and the rest is taken care of: Goldpage builds, routes, renders, and serves your pages.
+Goldpage takes care of the rest:
+- Goldpage builds your pages.
+  <br>
+  The Goldpage builder transpiles and bundles your pages:
+  ~~~shell
+  # Creates a production build
+  $ goldpage build
+  #
+  ~~~
+  ~~~shell
+  $ goldpage dev
+  ~~~
+  (Run `$ goldpage build` for production build and `$ goldpage dev` you for auto-reload development build.)
+  (or `goldpage dev` for a auto-reload)
+  Goldpage's builder is built on top of webpack.
+- Goldpage serves your pages.
+  <br>
+  The Goldpage Middleware serves your pages:
+  ~~~js
+  const express = require('express');
+  const goldpage = require('@goldpage/express');
+
+  const app = express();
+
+  // The `goldpage` middleware serves your pages.
+  app.use(goldpage);
+  ~~~
+  There are also middlewares for Koa and Hapi.
+  (And Goldpage can easily be used without middleware for any other server framework.)
+
+> :information_source: **Goldpage VS Webpack**
+> The Goldpage builder is built on top of Webpack so you may wonder &mdash; what's the difference between them?
+> The Goldpage builder makes it easy to build any app type whereas 
+> (whereas by default Webpack builds a so-called "SPA").
+> We elaborate more at !VAR|LINK WHY_GOLDPAGE.
 
 Goldpage is designed from the ground up to be
 easy to use, robust, and flexible.
 
 **Easy**
 
-All you need to install Goldpage is to define your page configs,
+All you need to use Goldpage is to define your page configs,
 add the Goldpage Express/Koa/Hapi middleware to your server,
-and add couple of lines to your `package.json`.
+and add couple of Goldpage commands to your `package.json`.
 That's it.
 
 And all you need to know to get started
