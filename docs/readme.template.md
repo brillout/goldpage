@@ -116,36 +116,28 @@ Goldpage takes care of the rest:
   <br>
   The Goldpage builder transpiles and bundles your pages:
   ~~~shell
-  # Creates a production build
   $ goldpage build
-  #
   ~~~
-  ~~~shell
-  $ goldpage dev
-  ~~~
-  (Run `$ goldpage build` for production build and `$ goldpage dev` you for auto-reload development build.)
-  (or `goldpage dev` for a auto-reload)
-  Goldpage's builder is built on top of webpack.
+  Goldpage's builder is built on top of Webpack.
 - Goldpage serves your pages.
   <br>
-  The Goldpage Middleware serves your pages:
+  The Goldpage middleware serves your pages:
   ~~~js
   const express = require('express');
   const goldpage = require('@goldpage/express');
 
   const app = express();
 
-  // The `goldpage` middleware serves your pages.
+  // The middleware `goldpage` serves our pages.
   app.use(goldpage);
   ~~~
   There are also middlewares for Koa and Hapi.
   (And Goldpage can easily be used without middleware for any other server framework.)
 
 > :information_source: **Goldpage VS Webpack**
-> The Goldpage builder is built on top of Webpack so you may wonder &mdash; what's the difference between them?
-> The Goldpage builder makes it easy to build any app type whereas 
-> (whereas by default Webpack builds a so-called "SPA").
-> We elaborate more at !VAR|LINK WHY_GOLDPAGE.
+> The Goldpage builder is built on top of Webpack so you may wonder &mdash; what's the difference?
+> Basically Goldpage wraps Webpack in an easier and more flexible tool.
+> We elaborate more later.
 
 Goldpage is designed from the ground up to be
 easy to use, robust, and flexible.
@@ -153,7 +145,7 @@ easy to use, robust, and flexible.
 **Easy**
 
 All you need to use Goldpage is to define your page configs,
-add the Goldpage Express/Koa/Hapi middleware to your server,
+add the Goldpage Express/Koa/Hapi middleware,
 and add couple of Goldpage commands to your `package.json`.
 That's it.
 
@@ -165,9 +157,8 @@ is written in the "Usage - Basics" sections.
 Goldpage supports all app types.
 (Commonly denoted as "SPA", "MPA", "SSR", "static website", etc.)
 
-Switching from one app type to another is easy,
-so that you can start
-writing a prototype before even choosing an app type.
+Switching from one app type to another is easy.
+You can start writing a prototype before even choosing an app type.
 
 Once you have finished your first prototype,
 you can try and experiement different app types with your prototype
@@ -178,10 +169,10 @@ We believe you shouldn't have to know what "SPA", "MPA", "SSR", and "static webs
 **BFA**
 
 Goldpage introduces a new app type
-we call Backend First App (BFA)
-that achieves blazing fast pages on mobile devices.
+we call Backend First App (BFA).
+It achieves blazing fast performance on mobile devices.
 
-A BFA can be a simple and performant alternative to a native mobile app.
+A BFA can be a simpler yet performant alternative to a native mobile app.
 
 More at [BFA](/bfa.md)
 
@@ -229,8 +220,8 @@ Goldpage solves this problem:
 it supports all app types and makes switching from one app type to another easy &mdash;
 you can start writing a prototype and worry about app type later.
 
-We encourage you to start with Goldpage's default app type
-and, once you finished your first prototype,
+We encourage you to start with Goldpage's default app type and,
+once you finished your first prototype,
 to experiment different app types with your prototye
 and see what works best for you.
 
@@ -247,7 +238,8 @@ add SSR to one of your pages,
 see if SSR works out for that pages,
 and add SSR to all your other pages.
 
-And, for readers that know what a static website is,
+And,
+for readers that know what a static website is,
 at
 [Case study: Goldpage & Static Websites]()
 we showcase how, with Goldpage, you can easily experiment and try out
@@ -256,8 +248,9 @@ if a static website is something that works out for you.
 **Mobile Peformance**
 
 Goldpage is the only tool (that we are aware of) allowing you
-to remove the browser-side JavaScript of a page
-yealding super fast mobile performance.
+to remove the browser-side JavaScript.
+Removing browser-side JavaScript
+yealds a fast mobile performance.
 
 More at [BFA](/bfa.md).
 
@@ -271,8 +264,8 @@ For example,
 Gatsby forces you to use GraphQL
 whereas Goldpage leaves the choice of using GraphQL to you.
 
-The backbone of Goldpage's flexibility is to
-allow you to fully control how and when your pages are rendered.
+The backbone of Goldpage's flexibility is that it
+allows you to fully control how and when your pages are rendered.
 
 !INLINE ./snippets/section-footer.md #readme
 
