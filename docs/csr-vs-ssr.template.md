@@ -1,15 +1,11 @@
 # Client-side Rendering (CSR) VS Server-side Rendering (SSR)
 
 > :warning:
-> You do not need to know what CSR and SSR mean and
+> You do not need to know what CSR and SSR is and
 > you do not need to read this document in order to use Goldpage.
-> We recommend to start writing a prototype first and to learn about CSR and SSR later.
+> And we recommend that you start writing a prototype first and learn about CSR and SSR later.
 
-In a nutshel,
-*Client-Side Rendering* (CSR) denotes the practice of rendering an app in the browser (to the DOM),
-and *Server-Side Rendering* (SSR) denotes the practice of rendering an app to HTML (on the server).
-
-> :information_source:
+> :warning:
 > This document assumes that you are familiar with CSR,
 > SSR,
 > `renderToDom`,
@@ -18,8 +14,12 @@ and *Server-Side Rendering* (SSR) denotes the practice of rendering an app to HT
 > the difference between an interative page and a non-interactive page,
 > and the difference between a dynamic page and a static page.
 > At [CSR & SSR Explained](/docs/csr-and-ssr-explained.md)
-> we illustrate all of it with examples and demos
-> and we recommend you to have a look at it before continuing reading.
+> we illustrate all of this with examples and demos.
+> We recommend that you have a look at it before continuing reading.
+
+In a nutshell,
+*Client-Side Rendering* (CSR) denotes the practice of rendering an app in the browser (to the DOM),
+and *Server-Side Rendering* (SSR) denotes the practice of rendering an app to HTML (on the server).
 
 Usually CSR and SSR are all-or-nothing:
 your entire app is either entirely CSR'd or SSR'd.
