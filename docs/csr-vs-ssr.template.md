@@ -9,30 +9,24 @@ In a nutshel,
 *Client-Side Rendering* (CSR) denotes the practice of rendering an app in the browser (to the DOM),
 and *Server-Side Rendering* (SSR) denotes the practice of rendering an app to HTML (on the server).
 
-This document assumes that you are familiar with CSR,
-SSR,
-`renderToDom`,
-`renderToHtml`,
-`renderHtmlAtBuildTime`,
-what an *interative* page/view means,
-and what a *dynamic* page means.
-Before reading on, the following points should be clear to you:
-- `renderToHtml: true` <=> SSR
-- `renderToDom: true` <=> CSR
-- `renderToHtml: true` && `renderToDom: true` <=> CSR+SSR
-- An interactive page needs CSR
-- A dynamic page needs `renderHtmlAtBuildTime: false` or `renderToDom: true`
-If the above points are not clear to you,
-then take a look at [CSR & SSR Explained]()
-before you continue reading.
-Knowing about all this is crucial to be able to properly set your pages' render configs.
+> :information_source:
+> This document assumes that you are familiar with CSR,
+> SSR,
+> `renderToDom`,
+> `renderToHtml`,
+> `renderHtmlAtBuildTime`,
+> the difference between an interative page and a non-interactive page,
+> and the difference between a dynamic page and a static page.
+> At [CSR & SSR Explained](/docs/csr-and-ssr-explained.md)
+> we illustrate all of it with examples and demos
+> and we recommend you to have a look at it before continuing reading.
 
-Usually CSR and SSR is all or nothing:
-your entire app is either CSR'd or SSR'd.
+Usually CSR and SSR are all-or-nothing:
+your entire app is either entirely CSR'd or SSR'd.
 Not with Goldpage: you can set CSR and SSR on a page-by-page basis.
 
-By default, your page is CSR'd.
-(That is, the default is `renderToDom: true` and `renderToHtml: false`.)
+By default, your page is CSR'd;
+The default page config is `renderToDom: true` and `renderToHtml: false`.
 By setting the page config `renerToDom: false` you remove CSR,
 and by setting `renderToHtml: true` you add SSR.
 
@@ -74,12 +68,13 @@ We also explain how to configure `renderToDom`, `renderToHtml`, and `renderHtmlA
 
 ### Interactive
 
-As shown in [CSR & SSR Explained](),
-interactive views need to be rendered to the browser's DOM.
-
-If your page has an interactive view (in other words, a stateful component),
+If your page has an interactive view,
 then your page needs CSR and
 you need to set `renderToDom: true`.
+
+> :information_source:
+> At [CSR & SSR Explained](/docs/csr-and-ssr-explained.md)
+> we illustrate with demos why interactive views need to be rendered to the browser's DOM.
 
 !INLINE ./snippets/section-footer.md #readme
 
@@ -138,29 +133,37 @@ Goolge's capability to execute your pages' JavaScript and to crawl your page's D
   and for popular sites,
   Google manages to track HTML changes almost instantly.
 
-**SSR & Interactive**
+**SSR+CSR**
 
 If your page is interactive,
 you can both set `renderToDom: true` and `renderToHtml: true` and your page will be rendered twice:
 it is first rendered to HTML on the server and then re-rendered to the DOM in the browser.
-(FYI, the practive of re-rendering the same view in the browser is called *hydrating*.)
-That way you can have both: a page that is interactive as well as a page with its content rendered to HTML.
+(FYI, the practice of re-rendering the page in the browser is called *hydrating*.)
+That way you can have both: a page that is interactive with its content rendered to HTML.
 
-**SSR or not to SSR**
+**SSR+CSR or not?**
 
-Adding SSR can induce a slower developing speed
-(which we explain at [Development Speed](#development-speed))
-and can potentially reduce the performance of your page
-(wich we explain at [Performance](#performance)).
+If your page is non-interactive, then doing SSR only is a no-brainer and the way to go.
 
-Whether SSR is worth it is often not clear.
-So, before deciding whether you want to use SSR,
-we recommend to try out SSR first.
+But for interactive pages,
+whether you should do SSR+CSR is not always clear.
 
-You can experiment by adding SSR to one of your pages,
-and see if SSR is worth it for this page.
-If you realize that SSR works out for you,
-you can then add SSR to your other pages.
+A SSR+CSR setup can slower your developing speed
+and impacts (positively and negatively) the performance of your page.
+
+> :information_source:
+> We elaborate how SSR can slower your developing speed
+> at [Development Speed](#development-speed) and we elaborate on
+> how SSR impacts the performance of your page at
+> [Performance](#performance).
+
+Before deciding whether you want to do SSR+CSR,
+we recommend you to try out first.
+
+You can experiment SSR+CSR by doing it with only one of your pages
+and see if it works out for you.
+If it does,
+then you can set SSR+CSR to all your pages.
 
 !INLINE ./snippets/section-footer.md #readme
 
@@ -168,15 +171,18 @@ you can then add SSR to your other pages.
 
 ## Social Sharing
 
+> :information_source:
+> A particularity of Goldpage is that you can do SMO without SSR.
+
 When someone shares a page on a social site, such as Facebook or Twitter, a preview of the page is shown.
 
 <img align="center" src="https://github.com/reframejs/goldpage/raw/master/docs/social-sharing-preview.png?sanitize=true"/>
 
 Facebook, for example, looks for the following HTML meta tags:
 ~~~html
-<meta property="og:title"              content="When Great Minds Don’t Think Alike" />
-<meta property="og:description"        content="How much does culture influence creative thinking?" />
-<meta property="og:image"              content="http://static01.nyt.com/images/2015/02/19/arts/international/19iht-btnumbers19A/19iht-btnumbers19A-facebookJumbo-v2.jpg" />
+<meta property="og:title"       content="When Great Minds Don’t Think Alike" />
+<meta property="og:description" content="How much does culture influence creative thinking?" />
+<meta property="og:image"       content="http://static01.nyt.com/images/2015/02/19/arts/international/19iht-btnumbers19A/19iht-btnumbers19A-facebookJumbo-v2.jpg" />
 ~~~
 
 You can define these meta tags by using your page's config:
@@ -206,10 +212,15 @@ export default {
 };
 ~~~
 
-Also note that you can render your meta data at request-time:
+You can also render your meta data at request-time:
 ~~~js
 !INLINE /examples/html/pages/product-data.page.js
 ~~~
+
+This means that Goldpage allows you to render the social sharing HTML meta tags
+without rendering your page to HTML.
+
+In a nutshell: you can do SMO (Social media optimization) without SSR.
 
 !INLINE ./snippets/section-footer.md #readme
 
@@ -222,7 +233,7 @@ can yield drastic performance improvements.
 
 How to configure the render configs depends on how "static" your page is.
 
-#### Fully static pages
+#### Non-interactive static pages
 
 The fastest configuration is:
 - `renderToDom: false`
@@ -234,28 +245,23 @@ when a user requests your page then Goldpage simply serves the pre-rendered stat
 Your page is not rendered in the browser nor on the server.
 It is rendered only once at build-time.
 
-This configuration is super fast but your page is fully static:
+This configuration is super fast but works only for a non-interactive and static page:
 - Non-interactive
   <br/>
   Your page is not rendered in the browser which means that
-  the browser's DOM is static and your page's views will not
-  change. In a nutshell: your page's view components cannot be stateful.
-- Non-dynamic
+  the browser's DOM is static and your page's components cannot be stateful.
+- Static
   <br/>
   Your page is rendered to HTML at build-time.
   This means that the content of your page
   is generated at build-time;
   to change your page's content you'd have
   to re-build and re-deploy your frontend.
-At
-[CSR & SSR Explained]()
-we further illustrate what
-*interactive* and *dynamic* mean with examples and demos.
-If you are not sure what dynamic and interactive means,
-then take a look
-before you continue
-reading.
 
+> :information_source:
+> We illustrate what
+> *non-interactive* and *static* mean at
+> [CSR & SSR Explained](/docs/csr-and-ssr-explained.md).
 
 #### Dynamic pages
 
@@ -323,19 +329,23 @@ but the performance gains of hydration are marginal in comparison to the loss of
 The most effective way to achieve high performance on mobile is to remove browser-side JavaScript.
 
 If you care about mobile,
-then we recommend to implement as few interactive views as possible.
-As explained in [non-interactive first](),
-a non-interactive page doesn't need to be rendered to the browser's DOM.
-You can then set:
+then we recommend that you implement as few interactive views as possible.
+
+A non-interactive page doesn't need to be rendered to the browser's DOM and you can set:
 - `renderToHtml: true`
 - `renderToDom: false`
 
-Your page is not loaded in the browser and
-much less JavaScript
-(and potentially no JavaScript at all)
+> :information_source:
+> At [CSR & SSR Explained](/docs/csr-and-ssr-explained.md)
+> we illustrate with demos why a non-interactive page doesn't need to be rendered in the browser.
+
+When setting `renderToDom: true`,
+your page is not loaded in the browser.
+This means that (almost) no JavaScript
 is loaded in the browser.
 
-SSR without CSR is drastically faster on low-end devices.
+Removing browser-side JavaScript drastically improves mobile performance &mdash;
+browser-side JavaScript is a performance killer on low-end devices.
 
 !INLINE ./snippets/section-footer.md #readme
 
