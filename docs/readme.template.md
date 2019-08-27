@@ -33,7 +33,7 @@
 !VAR CSS_PRE_PROCESSORS CSS pre-processors: PostCSS / Sass / Less / ...
 !VAR CONTROL_ROUTING Routing: Server-side Routing / Browser-side Routing / React Router / Vue Router / ...
 !VAR FRONTEND_LIBRARIRES Frontend Libraries: Google Analytics / jQuery / Bootstrap / Semantic UI / ...
-!VAR SERVER_FRAMEWORKS Server Frameworks: Express / Koa / Hapi / Fastify / ...
+!VAR SERVER_FRAMEWORKS Server: Express / Koa / Hapi / Fastify / ...
 !VAR VIEW_LIBRARIES View Libraries: React / Vue / Preact / ...
 !VAR PROCESS_MANAGERS Process Managers: Docker / systemd / PM2 / ...
 
@@ -118,7 +118,7 @@ Goldpage takes care of the rest:
   ~~~shell
   $ goldpage build
   ~~~
-  Goldpage's builder is built on top of Webpack.
+  The Goldpage builder is built on top of Webpack.
 - Goldpage serves your pages.
   <br>
   The Goldpage middleware serves your pages:
@@ -131,15 +131,9 @@ Goldpage takes care of the rest:
   // The middleware `goldpage` serves our pages.
   app.use(goldpage);
   ~~~
-  There are also middlewares for Koa and Hapi.
-  (And Goldpage can easily be used without middleware for any other server framework.)
+  Goldpage can be used with any server (Express/Koa/Hapi/...).
 
-> :information_source: **Goldpage VS Webpack**
-> The Goldpage builder is built on top of Webpack so you may wonder &mdash; what's the difference?
-> Basically Goldpage wraps Webpack in an easier and more flexible tool.
-> We elaborate more later.
-
-Goldpage is designed from the ground up to be
+Goldpage is designed to be
 easy to use, robust, and flexible.
 
 **Easy**
@@ -181,7 +175,7 @@ More at [BFA](/bfa.md)
 Goldpage only takes care of building your pages.
 We leave the rest of the stack to you and
 Goldpage works with
-any server framework (Express, Koa, Hapi, ...),
+any server (Express, Koa, Hapi, ...),
 any view libray (React, Vue, React Native Web, ...),
 any language (ES7, TypeScript, PostCSS, ...),
 any provider (Redux, React Router, Vuex, Vue Router, GraphQL Apollo, Relay, ...),
@@ -273,8 +267,8 @@ allows you to fully control how and when your pages are rendered.
 
 ## !VAR GETTING_STARTED
 
-This getting started is about adding `ssr-coin` to an exisiting app.
-If you don't already have an app or if you just want to try out `ssr-coin`,
+This getting started adds `ssr-coin` to an exisiting app.
+If you don't have an app yet or if you just want to try out `ssr-coin`,
 then use a [Reframe starter](https://github.com/reframejs/reframe#getting-started).
 
 0. Install `ssr-coin`.
@@ -391,6 +385,12 @@ then use a [Reframe starter](https://github.com/reframejs/reframe#getting-starte
      }
    }
    ~~~
+
+   > :information_source:
+   > Goldpage is purposely designed to also build your server code.
+   > This allows you to use the same language,
+   > such as TypeScript,
+   > for your browser and server code.
 
 That's it: you can now run `npm run dev` (`yarn dev`), go to [http://localhost:3000/hello/jon](http://localhost:3000/hello/jon), and start hacking.
 
@@ -613,10 +613,10 @@ Configuring these three page configs are about achieving improvements in:
   rendering your page to HTML is drastically faster then rendering it to the DOM.
 
 At
-[Client-side Rendering (CSR) VS Server-side Rendering (SSR)](),
+[Client-side Rendering (CSR) VS Server-side Rendering (SSR)](/docs/csr-vs-ssr.md),
 we elaborate how to set `renderToHtml`, `renderToDom` and `renderHtmlAtBuildTime`,
 in order to achieve improvements in the above points.
-But before you learn more about these page configs and what you can achieve with them, we recommend that you first implement a prototype and learn more only after you need improvements in the above points.
+But before you learn more about these page configs and what you can achieve with them, we recommend you to first implement a prototype and to learn more only after you need improvements in the above points.
 
 !INLINE ./snippets/section-footer.md #readme
 
