@@ -85,6 +85,8 @@ you need to set `renderToDom: true`.
 As shown in [non-interactive first](),
 non-interactive views are often much easier and faster to implement than interactive views.
 
+**Non-interactive**
+
 While considering whether to implement a feature with interactie views or not,
 keep in mind that a non-interavive page doesn't need CSR.
 And rendering your page only to HTML (`renderToDom: false` and `renderToHtml: true`) means:
@@ -94,12 +96,16 @@ And rendering your page only to HTML (`renderToDom: false` and `renderToHtml: tr
 While deciding how to configure your page's `renderToDom` and `renderToHtml`,
 consider that the non-interactive first approach allows you to set `renderToDom: false` which is a good thing.
 
+**SSR+CSR**
 
-  Rendering your page to both HTML and the DOM means that your page's code will run in both Node.js and the browser:
-  - Your libraries need to be able to run in Node.js.
-    <br/>
+Rendering pages to HTML as well as to the DOM may slow down your development speed.
+- Wrapping your head around SSR+CSR can take some time.
+- Some tools will require a slightly more complicated setup. (Such as React Router or Redux.)
+- The libraries you use need to be able to run in Node.js. But that's not too much of a problem; most libraries support SSR.
+
     Certain libraries expect to be run in the browser and will crash when run in Node.js.
     You can often solve this by lazy loading your library loading it with `require('a-library-that-works-only-in-the-browser')` only after the React/Vue component is mounted. That way the libray is loaded only in the browser.
+- Many view tools, such as React Router or Redux, often require a slightly more complicated setup.
   - Only the inital state of your React/Vue components are rendered to HTML.
     <br/>
     You'll have to make sure that your content is available.
@@ -158,7 +164,7 @@ and impacts (positively and negatively) the performance of your page.
 > [Performance](#performance).
 
 Before deciding whether you want to do SSR+CSR,
-we recommend you to try out first.
+we recommend that you try it out first.
 
 You can experiment SSR+CSR by doing it with only one of your pages
 and see if it works out for you.

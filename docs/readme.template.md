@@ -616,7 +616,8 @@ At
 [Client-side Rendering (CSR) VS Server-side Rendering (SSR)](/docs/csr-vs-ssr.md),
 we elaborate how to set `renderToHtml`, `renderToDom` and `renderHtmlAtBuildTime`,
 in order to achieve improvements in the above points.
-But before you learn more about these page configs and what you can achieve with them, we recommend you to first implement a prototype and to learn more only after you need improvements in the above points.
+But before you learn more about these page configs and what you can achieve with them,
+we recommend that you first implement a prototype and learn more only after you need improvements in the above mentioned points.
 
 !INLINE ./snippets/section-footer.md #readme
 
