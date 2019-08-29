@@ -276,7 +276,7 @@ If your page needs to be dynamic, then set:
 - `renderToHtml: true`
 - `renderHtmlAtBuildTime: false`
 Your page is rendered to HTML at request-time;
-whenever a user requests yours page,
+whenever a user requests your page,
 Goldpage (re-)renders your page to HTML.
 This allows your page's content to change.
 For exampe,
