@@ -1,14 +1,29 @@
 # CSR & SSR Explained
 
-In this document we explain what CSR and SSR are and what you can achieve with them.
+This document explains CSR which is a technique to build desktop-like interactive apps: a music player, an email app, a graphical editor, a dashboard, a chat app, ...
+
+We also expalin SSR which is a technique to build websites that are mostly about content: a blog, an online newspaper, a landing page, marketing pages, ...
+
+And we explain the common technique of doing both CSR *and* SSR for apps that are about interactions as well as about content: a e-commerce shop, a social news site, ...
 
 > :information_source:
 >
-> If you already have a good understanding of CSR and SSR then checkout
+> If you already know what CSR, SSR, and CSR+SSR is then checkout
 > [Client-side Rendering (CSR) VS Server-side Rendering (SSR)](/docs/csr-vs-ssr.md)
-> instead. There we compare and explain whether you should do CSR, SSR, or both.
+> instead. There we help you decide whether you should do CSR, SSR, or CSR+SSR.
 >
-> If you don't know or if you are not sure what CSR and SSR are, then read on.
+> If you don't know (or if you are not sure) what CSR, SSR, and CSR+SSR mean, then read on.
+
+> :warning:
+> <br/>
+> This document assumes that you know:
+> - What the DOM is.
+> - That anything you see on a page in the browser is represented by the DOM tree and the DOM manipulation APIs is what allows the page to change; the DOM manipulation API is what allows a page to be interactive.
+> - You are somewhat familiar / you have seen the basic DOM manipulation APIs before. (`document.getElementById(id)`, `element.appendChild(aChild)`, `document.createElement(tagName)`, `element.setAttribute(name, value)`, ...)
+> - View libraries (React/Vue/...) are essentially helper libraries that call the DOM manipulation APIs for you.
+> - HTML is essentially a declarative representation of the initial DOM.
+> - HTML is generated on the server-side and the DOM is manipulated on the browser-side.
+> If any of the above is not clear to you, then learn about the DOM before reading this document.
 
 - [What is CSR and SSR?]()
 - [Interactive vs Non-interactive]()
@@ -18,64 +33,93 @@ In this document we explain what CSR and SSR are and what you can achieve with t
 
 # What is CSR and SSR?
 
-*Client-Side Rendering* (CSR) denotes the practice of rendering a page in the browser (to the DOM),
-and *Server-Side Rendering* (SSR) denotes the practice of rendering a page on the server (to HTML).
+Modern view libraries (React/Vue/...) can be run in the browser and in Node.js.
+In the browser they render your page to the browser's DOM,
+and in Node.js they render your page to HTML.
+
+This means that when you define a page with React (or Vue),
+you have the choice between rendering your page to the DOM in the browser or rendering your page to HTML on the server.
+
+> :information_source: **Modern view libraries**
+> We will talk only about React from now on. But note that everything here is applicable to all modern view libraries that supports CSR and SSR, most being React, Vue, and Angular.
+
+*Server-Side Rendering* (SSR) denotes the practice of rendering a page to HTML on the server.
+
+For example:
+
+*Client-Side Rendering* (CSR) denotes the practice of rendering a page in the browser.
+- Your page's code is loaded in the browser
+- Your page is rendered to the DOM
+
+For example:
+
+Note how the content of the page is not shown in the page's HTML. That's because the page is loaded and rendered to the DOM.
+
+You can also do both: CSR *and* SSR.
+This means that you page is rendered twice:
+first to HTML and then again to the DOM.
+At [CSR + SSR]() we explain why rendering a page twice like this can be beneficial.
 
 > :information_source:
 > **History**
 > <br/>
 > In the old days (before React came out in 2013)
-> the situation was either or:
-> either you used a HTML template engine (you may have heared about some such as "jinja" or "handlebars")
-> to render your page to HTML on the server or
-> or you'd used a browser library (the most popular back then was called "Backbone" and "EmberJS" and "AngularJS") that would manipulate the DOM and would rednder your view to the DOM.
->
-> React was the first tool that was able to do both CSR *and* SSR:
-> you define a React component and React is able to render your component to the DOM as well as to HTML.
-> you'd use server-side HTML template engine (if you are familiar)
-
-Modern view libraries, such as React or Vue, are able to render pages to the DOM as well as to HTML. With React (or Vue), you can do both: CSR *and* SSR.
-
-> :information_source: **React, Vue, etc.**
-> We will talk only about React from now on. But note that everything here is applicable to any view library that supports CSR and SSR, such as Vue.
-
-You can define a page with React, the question arises: should I render my page to HTML or the DOM?
-
-In the example you can the difference between both.
-
-Also you can
-The choices are plenty:
-- 
-
-This is what CSR and SSR is all about.
-
-
-You can also use both CSR and SSR and the same,
-You even have the choice to render your page twice twice:
-first to HTML and then again to the DOM. This may seem wasteful to render a page twice,
-but this actually has some benefits we will disuss later.
-We explain at [CSR + SSR]().
-
-You can also have mix
-
-> :information_source:
-> Having different CSR-SSR configuration on a page-by-page basis is a fairly new technique and is not widespread yet.
+> tools were doing SSR or CSR but they were not able to do both.
+> You had only 2 types of tools:
+> - HTML template engines
+>   that render your page to HTML on the server, in other words SSR.
+    (You may already have heard about some, such as "handlebars" and "jinja".)
+> - Browser libraries
+>   that render your page by manipulating the DOM in the browser, in other words CSR.
+>   (The most popular were the so-called "Backbone" and "EmberJS".)
+> React was the first popular tool that was able to do CSR as well as SSR. This means that React can not only be used to create interactive views but it can also be used as a HTML tempate engine.
 
 
 # Interactive vs Non-interactive
 
-*non-interactive*
-
-When you render your pages
-
-You cannot have an interactive page with SSR alone.
-
 *interactive*
 
-The reason to of doing
+The main motivation for rendering your page to the DOM is to be able to have interactive views:
+a view that when interact
+
+The DOM is what allows your page to be interactive
+
+The whole idea of the DOM and its DOM manipulation APIs
+
+It's all about DOM manipulations
+
 doesn't need a full reload of your page.
 
-If you want your page to be interactive then you'll have to usr CSR.
+If you want your page to be interactive then you'll have to use CSR.
+
+
+Strictly speaking the user never interacts with that page, but  we still call this page interative.
+Technically speaking we denote a view interative view whenever it is stateful. In short:
+- Non-interactive = stateless
+- Interactive = stateful
+
+When you render (with is equivalent to say that the view is stateless).
+(Stateless is somewhat of a misnomer and a better name would be "one-state")
+You can render a stateful view to 
+When 
+when you think about,
+rendering a 
+
+
+
+> :information_source:
+> **History**
+> <br/>
+> Gmail and Google Maps where among the first to implement desktop-like web apps by using DOM manipulation APIs.
+> CSR was called *ajax* back then.
+
+*non-interactive*
+
+When you render your pages only to HTML than your page's DOM will not change and your page is what we call *non-interactive*.
+
+You cannot have an interactive page with HTML/SSR alone; you need the DOM and CSR to implement interative views.
+
+
 
 # Static vs dynamic
 
@@ -122,7 +166,7 @@ from the perspective of a crawler:
 
 The crawler sees only bunch of script tags; your page's content is invisible to the crawler.
 
-Anything you render to the DOM is invisible to crawlers; if you want your page's content to be crawled then you have no choice than to use SSR to render your page's content to HTML.
+Anything you render to the DOM is not crawlabe; if you want your page's content to be crawled then you have no choice than to use SSR and render your page's content to HTML.
 
 Note that Google is capable of executing JavaScript and discover content rendered to the DOM but it has limitations.
 
@@ -151,24 +195,15 @@ We explain the performance differences at
 
 
 
-interactive view
-(a music player, an email app, a graphical editor, a chat app, ...).
-
-If your app is mostly about content
-(a blog, a newspaper, a e-commerce shop, ...).
-
-If your app is a mix
-(a website with a questionnaire)
-then a mixed app
 
 
 
 
 
+# CSR + SSR
 
-
-
-
+It may seem wasteful to render your page twice
+but this actually has some benefits we will disuss later.
 
 
 
