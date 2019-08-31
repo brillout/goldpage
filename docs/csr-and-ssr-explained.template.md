@@ -79,9 +79,14 @@ At [CSR + SSR]() we explain why rendering a page twice like this can be benefici
 
 *interactive*
 
-The main motivation for rendering your page to the DOM is to be able to have interactive views:
-a view that when interact
+The main motivation to use CSR and to render your page to the DOM is to be able to have interactive views.
 
+For example:
+
+As you can see your page changes.
+What happens
+
+This is basically CSR.
 The DOM is what allows your page to be interactive
 
 The whole idea of the DOM and its DOM manipulation APIs
@@ -93,10 +98,12 @@ doesn't need a full reload of your page.
 If you want your page to be interactive then you'll have to use CSR.
 
 
-Strictly speaking the user never interacts with that page, but  we still call this page interative.
-Technically speaking we denote a view interative view whenever it is stateful. In short:
-- Non-interactive = stateless
-- Interactive = stateful
+> :information_source:
+> <br/>
+> Strictly speaking the user never interacts with that page, but  we still call this page interative.
+> Technically speaking we denote a view interative view whenever it is stateful. In short:
+> - Non-interactive = stateless
+> - Interactive = stateful
 
 When you render (with is equivalent to say that the view is stateless).
 (Stateless is somewhat of a misnomer and a better name would be "one-state")
@@ -115,7 +122,10 @@ rendering a
 
 *non-interactive*
 
+Without CSR.
 When you render your pages only to HTML than your page's DOM will not change and your page is what we call *non-interactive*.
+
+For example, when rendering the same `<Time/>` component to HTML yields
 
 You cannot have an interactive page with HTML/SSR alone; you need the DOM and CSR to implement interative views.
 
