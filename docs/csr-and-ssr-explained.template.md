@@ -25,6 +25,13 @@ And we explain the common technique of doing both CSR *and* SSR for apps that ar
 > - HTML is generated on the server-side and the DOM is manipulated on the browser-side.
 > If any of the above is not clear to you, then learn about the DOM before reading this document.
 
+This document covers following topics.
+This document explains:
+- What CSR and SSR means
+- What interative means
+- What dynamic means
+- The benefits of CSR and SSR
+
 - [What is CSR and SSR?]()
 - [Interactive vs Non-interactive]()
 - [Static vs Dynamic]()
@@ -33,63 +40,72 @@ And we explain the common technique of doing both CSR *and* SSR for apps that ar
 
 # What is CSR and SSR?
 
-Modern view libraries (React/Vue/...) can be run in the browser and in Node.js.
-In the browser they render your page to the browser's DOM,
-and in Node.js they render your page to HTML.
+Modern view libraries (React/Vue/...) are able to run in the browser as well as in Node.js.
+In the browser your page is rendered to the browser's DOM,
+and in Node.js your pages is rendered to HTML.
 
 This means that when you define a page with React (or Vue),
-you have the choice between rendering your page to the DOM in the browser or rendering your page to HTML on the server.
+you have the choice between rendering your page to the DOM or to HTML.
 
 > :information_source: **Modern view libraries**
-> We will talk only about React from now on. But note that everything here is applicable to all modern view libraries that supports CSR and SSR, most being React, Vue, and Angular.
+> We will mention only React from now on. But note that everything here is applicable to all modern view libraries that supports CSR and SSR. The most popular being React, Vue, and Angular.
 
 *Server-Side Rendering* (SSR) denotes the practice of rendering a page to HTML on the server.
 
 For example:
 
-*Client-Side Rendering* (CSR) denotes the practice of rendering a page in the browser.
-- Your page's code is loaded in the browser
-- Your page is rendered to the DOM
+This page has no `<script>` tags; the HTML is generated in Node.js and no browser-side JavaScript is needed.
+
+*Client-Side Rendering* (CSR) denotes the practice of loading a page and rendering it in the browser.
 
 For example:
 
-Note how the content of the page is not shown in the page's HTML. That's because the page is loaded and rendered to the DOM.
+The page's HTML doesn't contain the page's content but has `<script/>` tags instead; the page's code is loaded and rendered in the browser.
 
 You can also do both: CSR *and* SSR.
-This means that you page is rendered twice:
-first to HTML and then again to the DOM.
-At [CSR + SSR]() we explain why rendering a page twice like this can be beneficial.
+Your page is then rendered twice:
+first to HTML in Node.js and then again to the DOM in the browser.
+It may seem wasteful to render a page twice but it actually brings many benefetis which we explain at
+[CSR + SSR]().
 
 > :information_source:
 > **History**
 > <br/>
 > In the old days (before React came out in 2013)
-> tools were doing SSR or CSR but they were not able to do both.
+> tools were doing either SSR or CSR &mdash; they were not able to do both.
 > You had only 2 types of tools:
 > - HTML template engines
->   that render your page to HTML on the server, in other words SSR.
-    (You may already have heard about some, such as "handlebars" and "jinja".)
+>   that rendered your page to HTML on the server, in other words SSR.
+    (You may already have heard about some, such as "Handlebars" and "Jinja".)
 > - Browser libraries
->   that render your page by manipulating the DOM in the browser, in other words CSR.
->   (The most popular were the so-called "Backbone" and "EmberJS".)
-> React was the first popular tool that was able to do CSR as well as SSR. This means that React can not only be used to create interactive views but it can also be used as a HTML tempate engine.
+>   that rendered interactive views by manipulating the DOM in the browser, in other words CSR.
+>   (The most popular were the so-called "Backbone.js" and "Ember.js".)
+> React was the first popular tool that was able to do CSR as well as SSR. This means that React can be used for interactive views and can as well be used as an HTML tempate engine.
 
 
 # Interactive vs Non-interactive
 
-*interactive*
+**interactive**
 
-The main motivation to use CSR and to render your page to the DOM is to be able to have interactive views.
+The DOM and the DOM manipulation APIs are what allow a page to be interactive.
 
 For example:
 
-As you can see your page changes.
-What happens
+EXAMPLE
 
-This is basically CSR.
-The DOM is what allows your page to be interactive
+This pages does CSR: the `<script/>` tags load the page's and React's source code,
+and whenever the state changes,
+React applies the changes by manipulating the DOM.
 
-The whole idea of the DOM and its DOM manipulation APIs
+> :information_source:
+> <br/>
+> Even though the user has no interactions with that page but we still call this page interative because it is stateful:
+> we use `useState` and the value of `currentTime` changes every second.
+> With *interactive* with denote any page that is stateful.
+
+In short, any interactive page needs CSR.
+
+
 
 It's all about DOM manipulations
 
@@ -98,12 +114,10 @@ doesn't need a full reload of your page.
 If you want your page to be interactive then you'll have to use CSR.
 
 
-> :information_source:
-> <br/>
-> Strictly speaking the user never interacts with that page, but  we still call this page interative.
-> Technically speaking we denote a view interative view whenever it is stateful. In short:
-> - Non-interactive = stateless
-> - Interactive = stateful
+For example:
+
+As you can see your page changes.
+
 
 When you render (with is equivalent to say that the view is stateless).
 (Stateless is somewhat of a misnomer and a better name would be "one-state")
@@ -117,10 +131,52 @@ rendering a
 > :information_source:
 > **History**
 > <br/>
-> Gmail and Google Maps where among the first to implement desktop-like web apps by using DOM manipulation APIs.
-> CSR was called *ajax* back then.
+> Gmail and Google Maps where among the first desktop-like web apps and they popularized the practice of implementing interactive apps by using DOM manipulation APIs.
+> You may have heard the term *ajax* before &mdahs; this is what CSR was called back then.
 
-*non-interactive*
+**non-interactive**
+
+As shown above,
+CSR allows a page to be interactive.
+
+EXAMPLE
+  // We don't render the page in the browser.
+  // We could however render the page to the browser *as well*,
+  // which is a common technique we explain in the section "CSR + SSR".
+  renderToDom: false,
+ - reload page to show user that state changes only between full page reloads.
+
+As we can see the time is rendered to HTML and the page doesn't load any JavaScript.
+
+with SSR it's allways a full .
+A new request.
+It would be prohabitively slow;
+the page's code and React's code need to be loaded in the browser.
+
+You cannot have an interacive page With SSR alone;
+
+You cannot ha
+
+But you can still have 
+
+But you can have dynamic pages
+
+When React renders a stateful view to HTML it takes the initial state of the view.
+On SSR the state mutations.
+
+You can however reload the page -- you'll see that .
+The state never changes when doing SSR.
+
+
+
+Any subsequent state are irrelevant from a SSR perspective.
+
+
+SSR
+
+We'd need but the practice is not done.
+
+that said
 
 Without CSR.
 When you render your pages only to HTML than your page's DOM will not change and your page is what we call *non-interactive*.
@@ -128,7 +184,6 @@ When you render your pages only to HTML than your page's DOM will not change and
 For example, when rendering the same `<Time/>` component to HTML yields
 
 You cannot have an interactive page with HTML/SSR alone; you need the DOM and CSR to implement interative views.
-
 
 
 # Static vs dynamic
