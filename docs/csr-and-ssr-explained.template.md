@@ -2,7 +2,7 @@
 
 This document explains CSR which is a technique to build desktop-like interactive apps: a music player, an email app, a graphical editor, a dashboard, a chat app, ...
 
-We also expalin SSR which is a technique to build websites that are mostly about content: a blog, an online newspaper, a landing page, marketing pages, ...
+We also explain SSR which is a technique to build websites that are mostly about content: a blog, an online newspaper, a landing page, marketing pages, ...
 
 And we explain the common technique of doing both CSR *and* SSR for apps that are about interactions as well as about content: a e-commerce shop, a social news site, ...
 
@@ -54,13 +54,19 @@ you have the choice between rendering your page to the DOM or to HTML.
 
 For example:
 
+EXAMPLE
+
 This page has no `<script>` tags; the HTML is generated in Node.js and no browser-side JavaScript is needed.
 
 *Client-Side Rendering* (CSR) denotes the practice of loading a page and rendering it in the browser.
 
 For example:
 
+EXAMPLE
+
 The page's HTML doesn't contain the page's content but has `<script/>` tags instead; the page's code is loaded and rendered in the browser.
+
+We further illustrate how CSR and SSR work in the following sections.
 
 You can also do both: CSR *and* SSR.
 Your page is then rendered twice:
@@ -85,29 +91,35 @@ It may seem wasteful to render a page twice but it actually brings many benefeti
 
 # Interactive vs Non-interactive
 
-**interactive**
-
-The DOM and the DOM manipulation APIs are what allow a page to be interactive.
+This section shows how CSR works and how it enables a page to be interactive.
 
 For example:
 
 EXAMPLE
+ - show HTML
+ - show DOM changing
 
-This pages does CSR: the `<script/>` tags load the page's and React's source code,
+This illustrates how CSR works:
+the `<script/>` tags load the page's source code and React's source code,
 and whenever the state changes,
 React applies the changes by manipulating the DOM.
 
+This is ho
+
+In short, we load `<Time/>` in the browser and render it to the DOM.
+
 > :information_source:
 > <br/>
-> Even though the user has no interactions with that page but we still call this page interative because it is stateful:
+> Our example isn't, strictly speaking, interactive:
+> we merely show the current time and the user has no interactions with the page.
+> We sill the page interative.
+> The page is stateful:
 > we use `useState` and the value of `currentTime` changes every second.
-> With *interactive* with denote any page that is stateful.
+> With *interactive* we denote any page that is stateful.
 
-In short, any interactive page needs CSR.
-
-
-
+Every interactive view is about DOM 
 It's all about DOM manipulations
+and we need to 
 
 doesn't need a full reload of your page.
 
@@ -131,8 +143,8 @@ rendering a
 > :information_source:
 > **History**
 > <br/>
-> Gmail and Google Maps where among the first desktop-like web apps and they popularized the practice of implementing interactive apps by using DOM manipulation APIs.
-> You may have heard the term *ajax* before &mdahs; this is what CSR was called back then.
+> Gmail and Google Maps where among the first desktop-like web apps and they popularized the practice of using DOM manipulations APIs to implement interactive apps.
+> CSR was called *ajax* back then.
 
 **non-interactive**
 

@@ -89,6 +89,7 @@
 
 Page Builder &mdash;
 easily create a modern frontend.
+
 Works with any view library (React, Vue, RNW, ...).
 Supports all app types
 (so-called "SPA", "MPA", "SSR", "static website", ...).
