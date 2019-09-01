@@ -1,3 +1,9 @@
+you start creating a prototype with our default app type,
+and,
+once you have finished your first prototype,
+you can try out and experiement different app types
+to see which one works best for you.
+
 
 **App types**
 
@@ -80,7 +86,7 @@ if a static website is something that works out for you.
 Goldpage is the only tool (that we are aware of) allowing you
 to remove the browser-side JavaScript.
 Removing browser-side JavaScript
-yealds a fast mobile performance.
+yealds blazing fast mobile performance.
 
 More at [BFA](/bfa.md).
 

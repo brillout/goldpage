@@ -11,8 +11,8 @@
 !VAR ASYNC_DATA Async Data: `addInitialProps`
 !VAR CONTROL_HTML HTML: `index.html`, `<head>`, `<meta>`, `<link>`, ...
 
-!VAR RENDER_WHEN Rendering - When: `renderToDom`, `renderToHtml` & `renderHtmlAtBuildTime`
-!VAR RENDER_HOW Rendering - How
+!VAR RENDER_WHEN `renderToDom`, `renderToHtml` & `renderHtmlAtBuildTime`
+!VAR RENDER_HOW `htmlRender` & `domRender`
 
 !VAR MPA_APP MPA
 !VAR SPA_APP SPA
@@ -54,15 +54,18 @@
 !INLINE li-2 !VAR|LINK CSS_AND_ASSETS
 !INLINE li-2 !VAR|LINK ASYNC_DATA
 !INLINE li-2 !VAR|LINK CONTROL_HTML
-!INLINE li-2-header Rendering
+
+!INLINE li-2-header Render Control
 !INLINE li-2 !VAR|LINK RENDER_WHEN
 !INLINE li-2 !VAR|LINK RENDER_HOW
+
 !INLINE li-2-header App Types
 !INLINE li-2 !VAR|LINK MPA_APP
 !INLINE li-2 !VAR|LINK SPA_APP
 !INLINE li-2 !VAR|LINK SSR_APP
 !INLINE li-2 !VAR|LINK BFA_APP
 !INLINE li-2 !VAR|LINK STATIC_WEBSITE
+
 !INLINE li-2-header API Reference
 !INLINE li-2 !VAR|LINK PAGE_CONFIG
 !INLINE li-2 !VAR|LINK INITIAL_PROPS
@@ -70,6 +73,7 @@
 !INLINE li-2 !VAR|LINK RENDER_CONFIG
 !INLINE li-2 !VAR|LINK SSR_COIN_CONFIG
 !INLINE li-2 !VAR|LINK CLI_REF
+
 !INLINE li-2-header Recipes
 !INLINE li-2 !VAR|LINK ADD_PROVIDERS
 !INLINE li-2 !VAR|LINK CONTROL_TRANSPILATION
@@ -84,6 +88,8 @@
 !INLINE li-1 !VAR|LINK PLUGIN_LIST
 
 <br/>
+
+
 
 ## !VAR WHAT_IS_GOLDPAGE
 
@@ -108,16 +114,15 @@ export default {
 And Goldpage takes care of the rest:
 - Goldpage builds your pages.
   <br>
-  The Goldpage builder transpiles and bundles your pages.
   ~~~shell
-  # This CLI command transpiles and bundles your pages
+  # This CLI command transpiles and bundles the source code of your pages
   $ goldpage build
   ~~~
 - Goldpage serves your pages.
   <br>
-  The Goldpage middleware serves your pages.
   ~~~js
   // Simply add the Goldpage middleware to serve your pages.
+
   // Note that Goldpage can be used with any server (Express/Koa/Hapi/...).
 
   const express = require('express');
@@ -130,6 +135,7 @@ And Goldpage takes care of the rest:
   ~~~
 
 
+
 ## !VAR WHY_GOLDPAGE
 
 Goldpage supports all app types: you can create a so-called "SPA", or an "MPA", or an "SSR" app, or a "static website", etc.
@@ -137,15 +143,12 @@ Goldpage supports all app types: you can create a so-called "SPA", or an "MPA", 
 You don't know what "SPA", "SSR" and all that stuff means?
 That's fine;
 with Goldpage,
-you start creating a prototype with our default app type,
-and,
-once you have finished your first prototype,
-you can try out and experiement different app types
-to see what works best for you.
+you can start creating a prototype without knowing all that
+and later try out and experiment which of all these app types works best for you.
 
 We also introduce new app types such as, what we call, *Backend First Apps*.
 
-Goldpage is designed with a focus on do-one-thing-do-it-well, ease of use, and flexibility.
+Goldpage is designed as a simple do-one-thing-do-it-well library with a focus on ease of use and flexibility.
 Goldpage can easily be used with
 any server (Express, Koa, Hapi, ...),
 any view libray (React, Vue, React Native Web, ...),
@@ -157,11 +160,10 @@ and any process manager (Docker, systemd, PM2, ...).
 At last but not least, we enjoy writing opulent and beginner-friendly documentation.
 
 Take a look at [Goldage VS Others](/docs/goldpage-vs-others.md)
-if you want to know more about how Goldpage compares with other tools.
+for a more detailed comparison of Goldpage with other tools
+(CRA, Next.js, Nuxt.js, Gatsby, Vue CLI, ...).
 
 !INLINE ./snippets/section-footer.md #readme
-
-
 
 
 
