@@ -2,8 +2,8 @@
 !OUTPUT ../readme.md
 !INLINE ./snippets/header.md
 
-!VAR WHAT_IS_GOLDPAGE What is `ssr-coin`
-!VAR WHY_GOLDPAGE Goldpage VS create-react-app/Next.js/vue-cli/Nuxt.js/Gatsby/webpack/parcel/...
+!VAR WHAT_IS_GOLDPAGE What is Goldpage
+!VAR WHY_GOLDPAGE Why Goldpage
 
 !VAR GETTING_STARTED Getting Started
 
@@ -87,16 +87,9 @@
 
 ## !VAR WHAT_IS_GOLDPAGE
 
-Page Builder &mdash;
-easily create a modern frontend.
+Goldpage is a small tool to easily create a frontend.
 
-Works with any view library (React, Vue, RNW, ...).
-Supports all app types
-(so-called "SPA", "MPA", "SSR", "static website", ...).
-
-Goldpage is a small (yet powerful) tool
-that makes it easy to create a frontend
-with React, Vue, React Native Web, etc.
+Goldpage works with any view library: React, Vue, RNW, ...
 
 You define so-called page configs:
 
@@ -112,70 +105,48 @@ export default {
 };
 ~~~
 
-Goldpage takes care of the rest:
+And Goldpage takes care of the rest:
 - Goldpage builds your pages.
   <br>
-  The Goldpage builder transpiles and bundles your pages:
+  The Goldpage builder transpiles and bundles your pages.
   ~~~shell
+  # This CLI command transpiles and bundles your pages
   $ goldpage build
   ~~~
-  The Goldpage builder is built on top of Webpack.
 - Goldpage serves your pages.
   <br>
-  The Goldpage middleware serves your pages:
+  The Goldpage middleware serves your pages.
   ~~~js
+  // Simply add the Goldpage middleware to serve your pages.
+  // Note that Goldpage can be used with any server (Express/Koa/Hapi/...).
+
   const express = require('express');
   const goldpage = require('@goldpage/express');
 
   const app = express();
 
-  // The middleware `goldpage` serves our pages.
+  // This middleware serves our pages.
   app.use(goldpage);
   ~~~
-  Goldpage can be used with any server (Express/Koa/Hapi/...).
 
-Goldpage is designed to be
-easy to use, robust, and flexible.
 
-**Easy**
+## !VAR WHY_GOLDPAGE
 
-All you need to use Goldpage is to define your page configs,
-add the Goldpage Express/Koa/Hapi middleware,
-and add couple of Goldpage commands to your `package.json`.
-That's it.
+Goldpage supports all app types: you can create a so-called "SPA", or an "MPA", or an "SSR" app, or a "static website", etc.
 
-And all you need to know to get started
-is written in the "Usage - Basics" sections.
+You don't know what "SPA", "SSR" and all that stuff means?
+That's fine;
+with Goldpage,
+you start creating a prototype with our default app type,
+and,
+once you have finished your first prototype,
+you can try out and experiement different app types
+to see what works best for you.
 
-**App types**
+We also introduce new app types such as, what we call, *Backend First Apps*.
 
-Goldpage supports all app types.
-(Commonly denoted as "SPA", "MPA", "SSR", "static website", etc.)
-
-Switching from one app type to another is easy.
-You can start writing a prototype before even choosing an app type.
-
-Once you have finished your first prototype,
-you can try and experiement different app types with your prototype
-and see what works best for you.
-
-We believe you shouldn't have to know what "SPA", "MPA", "SSR", and "static website" mean before getting started.
-
-**BFA**
-
-Goldpage introduces a new app type
-we call Backend First App (BFA).
-It achieves blazing fast performance on mobile devices.
-
-A BFA can be a simpler yet performant alternative to a native mobile app.
-
-More at [BFA](/bfa.md)
-
-**Do-one-thing-do-it-well**
-
-Goldpage only takes care of building your pages.
-We leave the rest of the stack to you and
-Goldpage works with
+Goldpage is designed with a focus on do-one-thing-do-it-well, ease of use, and flexibility.
+Goldpage can easily be used with
 any server (Express, Koa, Hapi, ...),
 any view libray (React, Vue, React Native Web, ...),
 any language (ES7, TypeScript, PostCSS, ...),
@@ -183,86 +154,14 @@ any provider (Redux, React Router, Vuex, Vue Router, GraphQL Apollo, Relay, ...)
 any CSS-in-JS library (Emotion, styled-components, ...),
 and any process manager (Docker, systemd, PM2, ...).
 
-!INLINE ./snippets/section-footer.md #readme
+At last but not least, we enjoy writing opulent and beginner-friendly documentation.
 
-
-
-## !VAR WHY_GOLDPAGE
-
-**Only One App Type**
-
-The main problem of our current tools is that they support only one app type.
-For example for React:
-<br/> &nbsp;&nbsp;&nbsp;&#8226;&nbsp;
-create-react-app creates a so-called "SPA"
-<br/> &nbsp;&nbsp;&nbsp;&#8226;&nbsp;
-Next.js creates a so-called "SSR app"
-<br/> &nbsp;&nbsp;&nbsp;&#8226;&nbsp;
-Gatsby creates a so-called "static website"
-<br/>
-
-By choosing one of these tools you are essentially choosing an app type and locking yourself into that app type.
-This means that before choosing one of these tools you have to research about what "SPA", "SSR", and "static website" mean and
-what the differences between them are.
-And that before even having started writing one line of code.
-
-Even worse is that, most often than not,
-it's not possible to predict which app type
-is the right one
-before having created and battle-tested a first prototype.
-
-Goldpage solves this problem:
-it supports all app types and makes switching from one app type to another easy &mdash;
-you can start writing a prototype and worry about app type later.
-
-We encourage you to start with Goldpage's default app type and,
-once you finished your first prototype,
-to experiment different app types with your prototye
-and see what works best for you.
-
-With Goldpage,
-you can start writing your app without even knowing
-what "SPA", "MPA", "SSR", and "static website" mean.
-
-For readers that know what SSR is,
-at
-[Case study: Goldpage & SSR]()
-we illustrate how, with Goldpage, you can
-start without SSR,
-add SSR to one of your pages,
-see if SSR works out for that pages,
-and add SSR to all your other pages.
-
-And,
-for readers that know what a static website is,
-at
-[Case study: Goldpage & Static Websites]()
-we showcase how, with Goldpage, you can easily experiment and try out
-if a static website is something that works out for you.
-
-**Mobile Peformance**
-
-Goldpage is the only tool (that we are aware of) allowing you
-to remove the browser-side JavaScript.
-Removing browser-side JavaScript
-yealds a fast mobile performance.
-
-More at [BFA](/bfa.md).
-
-**Flexibility**
-
-We find other tools too "framework-ish".
-Goldpage only takes care of building your pages and leaves the rest of the stack to you.
-Where you may feel restricted with other tools
-Goldpage gives you freedom.
-For example,
-Gatsby forces you to use GraphQL
-whereas Goldpage leaves the choice of using GraphQL to you.
-
-The backbone of Goldpage's flexibility is that it
-allows you to fully control how and when your pages are rendered.
+Take a look at [Goldage VS Others](/docs/goldpage-vs-others.md)
+if you want to know more about how Goldpage compares with other tools.
 
 !INLINE ./snippets/section-footer.md #readme
+
+
 
 
 
