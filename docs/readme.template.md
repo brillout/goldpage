@@ -138,22 +138,31 @@ And Goldpage takes care of the rest:
 
 ## !VAR WHY_GOLDPAGE
 
+**All app types**
+
 Goldpage supports all app types: you can create a so-called "SPA", or an "MPA", or an "SSR" app, or a "static website", etc.
 
-You don't know what "SPA", "SSR" and all that stuff means?
-That's fine.
-We believe you shouldn't have to know what "SPA", "MPA", "SSR", and "static website" mean before getting started;
-with Goldpage,
-you can start creating a prototype with our default app type,
-and,
-once you have finished your first prototype,
-you can try out and experiement different app types
-to see which one works best for you.
+You don't know what "SPA", "SSR" and what "app types" mean?
+That's fine;
+with Goldpage you can start creating your app
+and learn about all that stuff later.
 
-We also introduce new app types such as
-[BFAs](/bfa.md).
+> :information_source:
+>
+For those who knows:
+Golpage allows you to easily switch from one app type to another which means.
+And 
+Not only do we support all current app types but we also
+introduce new app types.
+At
+[Goldpage VS Others]()
+we talk about how Goldpages allows you to create any app type and why it matters.
+We also showcase the new app types Goldpage introduces.
 
-Goldpage is designed as a simple do-one-thing-do-it-well library with a focus on ease of use and flexibility.
+**Design & Docs**
+
+Goldpage is a do-one-thing-do-it-well library with a simple design and a focus on ease of use and flexibility.
+
 Goldpage can easily be used with
 any server (Express, Koa, Hapi, ...),
 any view libray (React, Vue, React Native Web, ...),
@@ -162,11 +171,10 @@ any provider (Redux, React Router, Vuex, Vue Router, GraphQL Apollo, Relay, ...)
 any CSS-in-JS library (Emotion, styled-components, ...),
 and any process manager (Docker, systemd, PM2, ...).
 
-At last but not least, we enjoy writing opulent and beginner-friendly documentation.
+Our simple design makes Goldpage a flexible and rock-solid tool. In case you are curious; we explain why
+at [Goldpage VS Others]().
 
-Take a look at [Goldage VS Others](/docs/goldpage-vs-others.md)
-for a more detailed comparison of Goldpage with other tools
-(CRA, Next.js, Nuxt.js, Gatsby, Vue CLI, ...).
+At last but not least, we enjoy writing opulent and beginner-friendly documentation.
 
 !INLINE ./snippets/section-footer.md #readme
 
