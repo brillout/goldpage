@@ -310,16 +310,14 @@ That leaves us with two options:
 From a time-to-print perspective,
 CSR+SSR is more performant.
 (That is the time it takes for your user to first see content on your page.)
-
 Rendering your page to HTML on the server is faster than intially rendering your page to the browser's DOM.
-Your user will be able to quickly see your page's content before
-the browser loaded/exectuded any JavaScript.
+Your user will be able to see your page's content rendered to HTML before
+the browser has loaded any JavaScript.
 This is most notable on mobile devices where browser-side JavaScript is slow.
 
 From a time-to-interactive perspective,
 CSR-only is more performant.
 (That is the time it takes for your user to first be able to interact with your page.)
-
 Before the user can have his first interaction with your page, you page needs to be loaded and rendered to the browser's DOM.
 From a time-to-interactive perspective, any prior HTML rendering is superfluous and just slows down the initial HTML download.
 

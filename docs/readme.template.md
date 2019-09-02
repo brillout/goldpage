@@ -18,6 +18,7 @@
 !VAR SPA_APP SPA
 !VAR SSR_APP SSR
 !VAR BFA_APP BFA
+!VAR MIXED_APPS Mixed Apps
 !VAR STATIC_WEBSITE Static Website
 
 !VAR PAGE_CONFIG Page Config `*.page.js` - Overview
@@ -64,6 +65,7 @@
 !INLINE li-2 !VAR|LINK SPA_APP
 !INLINE li-2 !VAR|LINK SSR_APP
 !INLINE li-2 !VAR|LINK BFA_APP
+!INLINE li-2 !VAR|LINK MIXED_APPS
 !INLINE li-2 !VAR|LINK STATIC_WEBSITE
 
 !INLINE li-2-header API Reference
@@ -468,6 +470,24 @@ A BFA is an app with mixed `renderToDom` and `renderToHtml` settings to achieve:
 - Reliable SEO & social sharing
 
 More at [BFA](/bfa.md).
+
+!INLINE ./snippets/section-footer.md #readme
+
+
+
+## !VAR MIXED_APPS
+
+With a *mixed app* we denote an app that has non-interactive pages (`renderTo`)
+
+This is for website
+have both pages that are content and pages with lots of user interactions
+(A e-commerce shop with a complex checkout process or a advanced. A)
+
+For a mobile app that is highly interactive (a music player, an email app, a graphical editor, ...),
+native is still the way to go.
+
+But, for a mobile app that is mainly about content (a blog, a newspaper, a e-commerce shop, ...),
+
 
 !INLINE ./snippets/section-footer.md #readme
 
