@@ -1,3 +1,7 @@
+A BFA can be a simpler yet performant alternative to a native mobile app.
+
+
+
 # Backend First App
 
 > This sections assumes that you have are familiar with the page configs `renderToDom` and `renderToHtml`,

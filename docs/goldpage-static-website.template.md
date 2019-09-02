@@ -1,3 +1,12 @@
+And,
+for readers that know what a static website is,
+at
+[Case study: Goldpage & Static Websites]()
+we showcase how, with Goldpage, you can easily experiment and try out
+if a static website is something that works out for you.
+
+
+
 Another example are so called "static websites".
 A static website is about generating HTML at build-time.
 Whether or not is as well not always predictable.

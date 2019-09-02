@@ -1,3 +1,15 @@
+For readers that know what SSR is,
+at
+[Case study: Goldpage & SSR]()
+we illustrate how, with Goldpage, you can
+start without SSR,
+add SSR to one of your pages,
+see if SSR works out for that pages,
+and add SSR to all your other pages.
+
+
+
+
 # Case Study: Goldpage & SSR
 
 > This case study assumes that you know what SSR is.

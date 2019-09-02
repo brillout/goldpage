@@ -141,12 +141,17 @@ And Goldpage takes care of the rest:
 Goldpage supports all app types: you can create a so-called "SPA", or an "MPA", or an "SSR" app, or a "static website", etc.
 
 You don't know what "SPA", "SSR" and all that stuff means?
-That's fine;
+That's fine.
+We believe you shouldn't have to know what "SPA", "MPA", "SSR", and "static website" mean before getting started;
 with Goldpage,
-you can start creating a prototype without knowing all that
-and later try out and experiment which of all these app types works best for you.
+you can start creating a prototype with our default app type,
+and,
+once you have finished your first prototype,
+you can try out and experiement different app types
+to see which one works best for you.
 
-We also introduce new app types such as, what we call, *Backend First Apps*.
+We also introduce new app types such as
+[BFAs](/bfa.md).
 
 Goldpage is designed as a simple do-one-thing-do-it-well library with a focus on ease of use and flexibility.
 Goldpage can easily be used with
