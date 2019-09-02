@@ -163,7 +163,10 @@ and learn about all that stuff later.
 > we show how Goldpage allows you to create any app type and why it matters.
 > We also talk about our new app types.
 
+<!---
 **Design & Docs**
+-->
+**Design**
 
 Goldpage is a do-one-thing-do-it-well library with a simple design.
 
@@ -178,7 +181,9 @@ and any process manager (Docker, systemd, PM2, ...).
 Our simple design makes Goldpage a flexible and rock-solid tool that is easy to use.
 We explain why at [Goldpage VS Others]() &mdash; if you're curious.
 
+<!---
 At last but not least, we enjoy writing opulent and beginner-friendly documentation.
+-->
 
 !INLINE ./snippets/section-footer.md #readme
 
