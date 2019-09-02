@@ -93,9 +93,8 @@
 
 ## !VAR WHAT_IS_GOLDPAGE
 
-Goldpage is a small tool to easily create a frontend.
-
-Goldpage works with any view library: React, Vue, RNW, ...
+Goldpage is a small tool to easily create a frontend
+with a modern view library: React, Vue, RNW, ...
 
 You define so-called page configs:
 
@@ -113,24 +112,20 @@ export default {
 
 And Goldpage takes care of the rest:
 - Goldpage builds your pages.
-  <br>
   ~~~shell
   # This CLI command transpiles and bundles the source code of your pages
   $ goldpage build
   ~~~
 - Goldpage serves your pages.
-  <br>
   ~~~js
-  // Simply add the Goldpage middleware to serve your pages.
-
-  // Note that Goldpage can be used with any server (Express/Koa/Hapi/...).
+  // Note that Goldpage can be used with any server (Express/Koa/Hapi/...)
 
   const express = require('express');
   const goldpage = require('@goldpage/express');
 
   const app = express();
 
-  // This middleware serves our pages.
+  // The Goldpage middleware serves our pages.
   app.use(goldpage);
   ~~~
 
@@ -142,28 +137,37 @@ And Goldpage takes care of the rest:
 
 Goldpage supports all app types: you can create a so-called "SPA", or an "MPA", or an "SSR" app, or a "static website", etc.
 
-You don't know what "SPA", "SSR" and what "app types" mean?
+You don't know what "SPA", "SSR" and "app type" mean?
 That's fine;
 with Goldpage you can start creating your app
 and learn about all that stuff later.
 
 > :information_source:
+> <br/>
+> We elaborate for those who are already somewhat familiar with these different app types.
+> (If you are not: just skip this info bubble.)
 >
-For those who knows:
-Golpage allows you to easily switch from one app type to another which means.
-And 
-Not only do we support all current app types but we also
-introduce new app types.
-At
-[Goldpage VS Others]()
-we talk about how Goldpages allows you to create any app type and why it matters.
-We also showcase the new app types Goldpage introduces.
+> Not only does Goldpage allow you to create any app type but it also
+> allows you to easily switch from one app type to another.
+> This means that you can quickly create a prototype and worry about
+> choosing the right app type later.
+> For example, you can start with an SPA and
+> add SSR later.
+>
+> And,
+> not only do we support all common app types,
+> but we also introduce new app types.
+>
+> At
+> [Goldpage VS Others]()
+> we show how Goldpage allows you to create any app type and why it matters.
+> We also talk about our new app types.
 
 **Design & Docs**
 
-Goldpage is a do-one-thing-do-it-well library with a simple design and a focus on ease of use and flexibility.
+Goldpage is a do-one-thing-do-it-well library with a simple design.
 
-Goldpage can easily be used with
+Goldpage can be used with
 any server (Express, Koa, Hapi, ...),
 any view libray (React, Vue, React Native Web, ...),
 any language (ES7, TypeScript, PostCSS, ...),
@@ -171,8 +175,8 @@ any provider (Redux, React Router, Vuex, Vue Router, GraphQL Apollo, Relay, ...)
 any CSS-in-JS library (Emotion, styled-components, ...),
 and any process manager (Docker, systemd, PM2, ...).
 
-Our simple design makes Goldpage a flexible and rock-solid tool. In case you are curious; we explain why
-at [Goldpage VS Others]().
+Our simple design makes Goldpage a flexible and rock-solid tool that is easy to use.
+We explain why at [Goldpage VS Others]() &mdash; if you're curious.
 
 At last but not least, we enjoy writing opulent and beginner-friendly documentation.
 
