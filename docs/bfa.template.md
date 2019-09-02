@@ -1,14 +1,50 @@
-A BFA can be a simpler yet performant alternative to a native mobile app.
-
-
-
 # Backend First App
 
-> This sections assumes that you have are familiar with the page configs `renderToDom` and `renderToHtml`,
-> and with the differences between browser-side rendering and server-side rendering.
-> You can learn more at [Browser-side Rendering VS Server-side Rendering]().
+> :warning:
+> This document assumes that you have are familiar with the page configs `renderToDom` and `renderToHtml`.
+>
+> You can use Goldpage and start creating a prototype without reading this document.
 
-Goldpage introduces a new type of app we call Backend First App (BFA).
+Goldpage introduces a new app type we call *Backend First App* (BFA).
+
+A Backend First App is an app that uses React (or Vue) primarily as an HTML template engine;
+only the pages that need to be interactive are rendered to the DOM.
+
+In other words most page have this configuration:
+- `renderToHtml: true`
+- `renderToDom: false`
+
+And pages that need to be interactive have:
+- `renderToHtml: false`
+- `renderToDom: true`
+
+Pages that 
+
+The idea here is that non-interactive pages are much fast to implement.
+
+simpler and usually much more performant than 
+
+*Non-interactive First*
+
+The modern stack has a reputation to be complex.
+This is true because interactive pages are inherently complex, error prone, and performance optimization is hard.
+In short, interactive pages are vastly more time consuming to implement than non-interactive pages.
+
+But, when using the modern stack to implement non-interactive pages,
+things are different.
+But, if we use React only as an HTML template engine,
+then things are vastly simpler
+
+You may ask yourself: why would I use React for non-interactive?
+
+In the end, you learn one stack to be able to create any kind of app.
+You don't want to spend time on a stack that is crippled by nature.
+
+Whenever possible, implement a feature using non-interactive pages.
+Use interactive views as last resort.
+
+
+A BFA can be a simpler yet performant alternative to a native mobile app.
 
 The idea of a BFA is to follow the non-interactive first approach:
 whenever possible implement a feature by create non-interactive views.
