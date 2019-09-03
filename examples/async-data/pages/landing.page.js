@@ -15,4 +15,5 @@ export default {
       </ul>
     </div>
   ),
+  renderToHtml: true,
 };

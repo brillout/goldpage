@@ -9,4 +9,5 @@ export default {
       <a href="/hello/jon">/hello/jon</a>
     </div>
   ),
+  renderToHtml: true,
 };

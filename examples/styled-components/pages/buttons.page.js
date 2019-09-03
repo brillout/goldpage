@@ -27,4 +27,5 @@ export default {
     </Container>
   ),
   route: '/',
+  renderToHtml: true,
 };

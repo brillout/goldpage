@@ -5,6 +5,7 @@ const GlitterPage = {
   title: 'Glamorous Page',
   view: Glitter,
   renderToDom: false,
+  renderToHtml: true,
 };
 
 module.exports = GlitterPage;

@@ -18,4 +18,5 @@ class Characters extends React.Component {
 export default {
   view: Characters,
   route: '/dom',
+  renderToHtml: true,
 };

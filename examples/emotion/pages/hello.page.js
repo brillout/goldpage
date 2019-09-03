@@ -5,6 +5,7 @@ import { css, jsx } from '@emotion/core'
 export default {
   view: Hello,
   route: '/',
+  renderToHtml: true,
 };
 
 function Hello() {

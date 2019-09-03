@@ -11,6 +11,7 @@ export default {
   view: ({characters}) => <CharacterList characters={characters}/>,
 
   renderToDom: false,
+  renderToHtml: true,
 
   route: '/html',
 };

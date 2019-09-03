@@ -5,6 +5,7 @@ export default {
   addInitialProps,
   view: Hello,
   title,
+  renderToHtml: true,
 };
 
 async function addInitialProps({name}) {

@@ -8,6 +8,7 @@ export default {
       <Time/>
     </div>
   ),
+  renderToHtml: true,
 };
 
 function Time() {

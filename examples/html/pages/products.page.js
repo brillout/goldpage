@@ -55,5 +55,7 @@ export default {
     '<meta property="og:title" content="'+product.name+'">',
     '<meta property="og:description" name="description" content="'+product.description+'">',
   ],
+
+  renderToHtml: true,
 };
 

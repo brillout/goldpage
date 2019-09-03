@@ -27,4 +27,6 @@ export default {
       product.name+' ('+productId+')'
     );
   },
+
+  renderToHtml: true,
 };

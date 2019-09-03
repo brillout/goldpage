@@ -24,6 +24,7 @@ class Hey extends React.Component {
 const WelcomePage = {
     route: '/',
     view: Hey,
+    renderToHtml: true,
 };
 
 export default WelcomePage;

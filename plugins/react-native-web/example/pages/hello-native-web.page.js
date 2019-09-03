@@ -20,4 +20,5 @@ export default {
   route: '/',
   view: App,
 //renderToDom: false,
+  renderToHtml: true,
 };

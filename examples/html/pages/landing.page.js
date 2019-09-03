@@ -8,6 +8,7 @@ export default {
     <Link href="/products/123?productColor=blue#reviews"/>
     <Link href="/about"/>
   </div>,
+  renderToHtml: true,
 }
 
 function Link({href}) {

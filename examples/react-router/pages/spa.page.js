@@ -51,6 +51,7 @@ function HtmlSource({pathname}) {
 const pageConfig = {
   route: '/:params*',
   view: App,
+  renderToHtml: true,
 };
 
 function Counter() {

@@ -3,6 +3,7 @@ import React, {useState} from 'react';
 export default {
   route: '/counter',
   view: Counter,
+  renderToHtml: true,
 };
 
 function Counter() {

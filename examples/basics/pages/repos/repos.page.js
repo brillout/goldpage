@@ -12,6 +12,7 @@ export default {
   addInitialProps,
   view: Repos,
   title,
+  renderToHtml: true,
 };
 
 // `getRepositories(username)` uses the GitHub API

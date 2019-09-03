@@ -6,6 +6,7 @@ export default {
   route: '/',
   view: Counter,
   addInitialProps,
+  renderToHtml: true,
 };
 
 async function addInitialProps({isNodejs}) {
