@@ -9,9 +9,9 @@ async function renderPageToHtml({initialProps}) {
   assert_initialProps(initialProps);
   const {htmlRender, projectDir} = config.ssrCoin;
   assert.internal(projectDir);
-  let renderToHtml__file;
+  let htmlRender__file;
   try {
-    renderToHtml__file = (
+    htmlRender__file = (
    // eval('require')
       require
       .resolve(htmlRender, {paths: [projectDir]})
@@ -29,18 +29,18 @@ async function renderPageToHtml({initialProps}) {
       "  };",
     );
   }
-  const renderToHtml__function = (
+  const htmlRender__function = (
  // eval('require')
     require
-    (renderToHtml__file)
+    (htmlRender__file)
   );
-  const renderToHtml__value = await renderToHtml__function({
+  const htmlRender__value = await htmlRender__function({
     page: initialProps.__sources.pageConfig,
     CONTAINER_ID,
     initialProps
   });
   assert.usage(
-    renderToHtml__value && [String, Object].includes(renderToHtml__value.constructor),
+    htmlRender__value && [String, Object].includes(htmlRender__value.constructor),
     "`htmlRender` should return a HTML string or a `@brillout/html` parameter object.",
   );
 
@@ -49,14 +49,14 @@ async function renderPageToHtml({initialProps}) {
     initialProps,
   };
 
-  if( renderToHtml__value.constructor===String ){
+  if( htmlRender__value.constructor===String ){
     htmlOptions.body = htmlOptions.body || [];
     htmlOptions.body = [
       ...htmlOptions.body,
-      '<div id="'+CONTAINER_ID+'">'+renderToHtml__value+'</div>'
+      '<div id="'+CONTAINER_ID+'">'+htmlRender__value+'</div>'
     ];
   } else {
-    Object.assign(htmlOptions, renderToHtml__value);
+    Object.assign(htmlOptions, htmlRender__value);
   }
 
   return html(htmlOptions);
