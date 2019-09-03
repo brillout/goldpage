@@ -1,16 +1,17 @@
 # Backend First App
 
-> :warning:
->
-> This document assumes that you are familiar with CSR and SSR and their differences.
-> You can learn about CSR and SSR at
-> [CSR & SSR Explained](/docs/csr-and-ssr-explained.md)
-> and
-> [Client-side Rendering (CSR) VS Server-side Rendering (SSR)](/docs/csr-vs-ssr.md).
-
 > :information_source:
 >
 > You can use Goldpage and start creating a prototype without reading this document.
+
+> :warning:
+>
+> This document assumes that you are familiar with the differences between CSR and SSR,
+> between an interactive page and a non-interactive page, and between `renderToDom` and `renderToHtml`.
+> You can learn about all this at
+> [CSR & SSR Explained](/docs/csr-and-ssr-explained.md)
+> and
+> [Client-side Rendering (CSR) VS Server-side Rendering (SSR)](/docs/csr-vs-ssr.md).
 
 Goldpage introduces a new app type we call *Backend First App* (BFA).
 
