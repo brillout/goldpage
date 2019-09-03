@@ -454,7 +454,7 @@ then:
 
 ## !VAR BFA_APP
 
-> :warning: You can use Goldpage and create a prototype without reading this section and without knowing what a BFA is.
+> :information_source: You can use Goldpage and create a prototype without reading this section and without knowing what a BFA is.
 
 Goldpage introduces a new app type
 we call BFA (Backend First App).
@@ -477,17 +477,25 @@ More at [BFA](/bfa.md).
 
 ## !VAR MIXED_APPS
 
-With a *mixed app* we denote an app that has non-interactive pages (`renderTo`)
+> :information_source: You can use Goldpage and create a prototype without reading this section and without knowing what a BFA is.
 
-This is for website
-have both pages that are content and pages with lots of user interactions
-(A e-commerce shop with a complex checkout process or a advanced. A)
+> :warning:
+>
+> This document assumes that you know the difference between CSR and SSR,
+> between `renderToDom` and `renderToHtml`,
+> and between an interactive page and a non-interactive page.
+> You can learn about all this
+> at [CSR & SSR Explained](/docs/csr-and-ssr-explained.md).
 
-For a mobile app that is highly interactive (a music player, an email app, a graphical editor, ...),
-native is still the way to go.
+Tools usually offer CSR or SSR in an all-or-nothing way:
+either your entire app is CSR'd or SSR'd.
 
-But, for a mobile app that is mainly about content (a blog, a newspaper, a e-commerce shop, ...),
+Our `renderToHtml` and `renderToDom` page configs give you fine grain control and
+allow you to mix all kinds of pages &mdash; one page can use CSR (`renderToDom: true` & `renderToHtml: false`) while another page can use SSR (`renderToDom: false` & `renderToHtml: true`).
 
+For example,
+if your app is non-interactive with the exception of one interactive page, then
+you can use CSR for that interactive page (`renderToDom: true` and `renderToHtml: false`) and use SSR for all your other non-interactive pages (`renderToDom: false` and `renderToHtml: true`).
 
 !INLINE ./snippets/section-footer.md #readme
 
@@ -706,7 +714,7 @@ With `renderToDom` you control whether your page is rendered in the browser (to 
     Because your page is not rendered to the browser's DOM, your page connot have stateful views / interactive views.
 
 In a nutshell:
-If your page is interactive then you have to rendered it in the browser and set `renderToDom` to `true`.
+If your page is interactive then you have to render it in the browser and set `renderToDom` to `true`.
 But if your page isn't interactive then you can set `renderToDom` to `false` for increased performance and a blazing fast page on mobile devices.
 
 ###### `renderToHtml`
