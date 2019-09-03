@@ -27,17 +27,16 @@ And only few pages are interactive and have:
 - `renderToHtml: false` (or `renderToHtml: true`)
 
 The idea of a BFA is to prefer non-interactive pages over interactive ones
-for a higher development speed and increased (mobile) performance.
+for a higher development speed, increased (mobile) performance, and better SEO.
 
 **Non-interactive First**
 
-The modern stack has a reputation to be complex.
-This is mostly true because interactive views are inherently complex.
-In particular state changes are hard to manage and error prone.
+Interactive views are inherently complex.
+Mostly because state changes are hard to manage and error prone.
 Interactive views need considerably more time to be developed than non-interactive views.
 
-But things are different when using the modern stack to implement non-interactive pages.
-There is no state managemenet and using
+Non-interactive views need
+no state managemenet and using
 React solely as an HTML template engine
 is vastly simpler.
 
@@ -55,7 +54,7 @@ but also about (mobile) performance and SEO, which we will discuss later.
 
 **Fast prototyping**
 
-Interactive views offer more choice for a better user experience.
+Interactive views offer more possibilities to implement a good user experience.
 The trade-off is often between dev speed and user experience.
 
 One way to approach this is to
@@ -65,7 +64,7 @@ Later,
 as your prototype grows,
 as you get to know what your users need,
 and as you get to product-market-fit,
-you can re-write your non-interactive pages that you quickly built into interactive pages for a richer user experience.
+you re-write your non-interactive pages into interactive pages for a better user experience.
 
 **Performance & Mobile**
 
@@ -75,7 +74,7 @@ rendering to HTML is vastly more peformant than rendering to the DOM.
 
 On slow internet connections, non-interactive pages are vastly more performant as well.
 
-Developing a native mobile app is substantially slower than developing a mobile web app.
+Developing a native mobile app takes substantially more time than developing a mobile web app.
 For a mobile app that is highly interactive (a music player, an email app, a video editor, ...),
 writing the app in native code is the way to go &mdash; interactive views on web apps are too slow on mobile.
 But, for a mobile app that is mainly about content (a meditation app, a news app, ...),
@@ -89,43 +88,43 @@ Non-interactive pages are rendered to HTML and are easily crawlable by search en
 
 For example,
 a BFA is usually a good fit for an online newspaper.
-News article are mostly about
+News articles are mostly about
 text and images &mdash;
 there is no need for interactive views.
-And, if a news article,
-contain an interactive view,
-for example a an interactive US Election Poll,
-then can the news arcticle can be made interactive by setting `renderToDom: true`.
+And, if a news article
+contains an interactive view,
+for example an interactive US Election Poll,
+then the news arcticle page can be made interactive by setting `renderToDom: true`.
 
-Both SEO and mobile performance are crucial for a newspaper and a BFA devivers
-a near-optimal web mobile performance and SEO.
+Both SEO and mobile performance are crucial for a newspaper and a BFA delivers
+a near-optimal mobile web performance and SEO.
 
 **Modern Stack**
 
-Using the modern stack to generate HTML:
+There are many benefits to use the modern stack to generate HTML:
 - JSX is a simple and powerful HTML template engine.
   <br/>
   Using the JavaScript language to declaratively generate HTML is simple and powerful:
-  You can re-use your JavaScript knowledge to generate HTML,
+  You can use your JavaScript knowledge to generate HTML,
   and using a full-blown programming language as a template language is vastly
-  superiour then the usual template operators such as `{% for todo in todos %} <li>{{ todo.text }}</li> {% endfor %}`.
-- JS stack.
-  <br/>
-  The JS stack is evovling at a speed never seen before &mdash; it's a hotbed of innovation.
-  The speed can be daunting but we expect only the best tools will survive and the ecosystem to stabilize.
-  And the JS stack lies right in the middle of the promising WebAssembly future.
+  superiour than the usual template operators such as `{% for todo in todos %} <li>{{ todo.text }}</li> {% endfor %}`.
 - Possibility to have interative views.
   <br/>
   Even though we follow the non-interactive first approach,
   we can still write interactive views when necessary.
 - Learn one stack to create any kind of app.
   <br/>
-  You learn and use the same tools
+  You can learn and use the same tools
   to create a modern desktop-like interactive app as well as a goold old plain HTML website.
+- JS stack.
+  <br/>
+  The JS stack is evovling at a speed never seen before &mdash; it's a hotbed of innovation.
+  (The speed can be daunting but we expect only the best tools to survive and the ecosystem to stabilize.)
+  The JS stack lies right in the middle of the promising WebAssembly future.
 
 **Conclusion**
 
-A BFA is about following the non-interactive first approach: we prefer to implement features by using non-interactive pages and we avoid interactive views whenever possible.
+A BFA is about following the non-interactive first approach, that is we prefer to implement features by using non-interactive pages and we avoid interactive views whenever possible.
 
 The non-interactive first approach and a BFA can achieve:
 - High development speed.
