@@ -1,9 +1,9 @@
 const React = require('react');
 const ReactDOMServer = require('react-dom/server');
 
-module.exports = renderToHtml;
+module.exports = htmlRender;
 
-async function renderToHtml({page, initialProps, CONTAINER_ID}) {
+async function htmlRender({page, initialProps, CONTAINER_ID}) {
   const html = (
     ReactDOMServer.renderToStaticMarkup(
       React.createElement(page.view, initialProps)

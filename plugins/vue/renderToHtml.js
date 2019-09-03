@@ -1,9 +1,9 @@
 const VueServerRenderer = require('vue-server-renderer');
 const getVueInstance = require('./getVueInstance');
 
-module.exports = renderToHtml;
+module.exports = htmlRender;
 
-async function renderToHtml({page, initialProps}) {
+async function htmlRender({page, initialProps}) {
   const renderer = VueServerRenderer.createRenderer();
 
   const vm = getVueInstance(page.view, initialProps);

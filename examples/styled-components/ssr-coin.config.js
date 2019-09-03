@@ -1,3 +1,3 @@
 module.exports = {
-  renderToHtml: './render/renderToHtml.js',
+  htmlRender: './render/htmlRender.js',
 };

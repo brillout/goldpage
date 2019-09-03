@@ -2,9 +2,9 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 
-export default renderToDom;
+export default domRender;
 
-async function renderToDom({page, initialProps, CONTAINER_ID}) {
+async function domRender({page, initialProps, CONTAINER_ID}) {
   const {store} = initialProps;
   ReactDOM.hydrate(
     <Provider store={store}>

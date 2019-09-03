@@ -2,9 +2,9 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter } from 'react-router-dom';
 
-export default renderToDom;
+export default domRender;
 
-async function renderToDom({page, initialProps, CONTAINER_ID}) {
+async function domRender({page, initialProps, CONTAINER_ID}) {
   ReactDOM.hydrate(
     <BrowserRouter>
       <page.view {...initialProps}/>

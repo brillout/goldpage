@@ -7,24 +7,24 @@ module.exports = renderPageToHtml;
 
 async function renderPageToHtml({initialProps}) {
   assert_initialProps(initialProps);
-  const {renderToHtml, projectDir} = config.ssrCoin;
+  const {htmlRender, projectDir} = config.ssrCoin;
   assert.internal(projectDir);
   let renderToHtml__file;
   try {
     renderToHtml__file = (
    // eval('require')
       require
-      .resolve(renderToHtml, {paths: [projectDir]})
+      .resolve(htmlRender, {paths: [projectDir]})
     );
   } catch (err) {
     assert.usage(
       false,
-      "`renderToHtml` is set to `"+renderToHtml+"`.",
-      "But `renderToHtml` should be the path of your `renderToHtml` file.",
+      "`htmlRender` is set to `"+htmlRender+"`.",
+      "But `htmlRender` should be the path of your `htmlRender` file.",
       "E.g.:",
       "  // ssr-coin.config.js",
       "  module.exports = {",
-      "   renderToHtml: './path/to/your/renderToHtml.js'",
+      "   htmlRender: './path/to/your/htmlRender.js'",
       "   /* ... */",
       "  };",
     );
@@ -41,7 +41,7 @@ async function renderPageToHtml({initialProps}) {
   });
   assert.usage(
     renderToHtml__value && [String, Object].includes(renderToHtml__value.constructor),
-    "`renderToHtml` should return a HTML string or a `@brillout/html` parameter object.",
+    "`htmlRender` should return a HTML string or a `@brillout/html` parameter object.",
   );
 
   const htmlOptions = {

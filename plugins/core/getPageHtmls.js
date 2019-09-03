@@ -10,7 +10,7 @@ async function getPageHtmls() {
 
     const {router: routerFile, renderPageToHtml} = config.ssrCoin;
     assert_usage(renderPageToHtml);
-    const renderToHtml = (
+    const htmlRender = (
    // eval('require')
       require
       (renderPageToHtml)
@@ -21,10 +21,10 @@ async function getPageHtmls() {
       (routerFile)
     );
     assert_usage(router);
-    assert_usage(renderToHtml);
+    assert_usage(htmlRender);
 
     return (
-        (await getStaticPageHtmls({pageConfigs: pages__fullProps, router, renderToHtml}))
+        (await getStaticPageHtmls({pageConfigs: pages__fullProps, router, htmlRender}))
         .map(({url, html}) => {
             assert_internal(html===null || html && html.constructor===String, html);
             assert_internal(url.startsWith('/'));

@@ -2,9 +2,9 @@ const React = require('react');
 const ReactDOMServer = require('react-dom/server');
 const {AppRegistry} = require('react-native-web');
 
-module.exports = renderToHtml;
+module.exports = htmlRender;
 
-async function renderToHtml({page, initialProps, CONTAINER_ID}) {
+async function htmlRender({page, initialProps, CONTAINER_ID}) {
   /*
   AppRegistry.registerComponent('App', () => page.view);
   /*/

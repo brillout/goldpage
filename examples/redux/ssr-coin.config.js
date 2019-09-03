@@ -1,4 +1,4 @@
 module.exports = {
-  renderToHtml: './render/renderToHtml.js',
-  renderToDom: './render/renderToDom.js',
+  htmlRender: './render/htmlRender.js',
+  domRender: './render/domRender.js',
 };

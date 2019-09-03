@@ -7,7 +7,7 @@ module.exports = renderPageToDom;
 async function renderPageToDom({initialProps}) {
   assert.internal(initialProps);
 
-  await browserConfig.renderToDom({
+  await browserConfig.domRender({
     page: initialProps.__sources.pageConfig,
     CONTAINER_ID,
     initialProps,

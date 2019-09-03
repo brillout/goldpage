@@ -12,4 +12,4 @@ Object.assign(
 );
 
 config.ssrCoin.browserConfigs = config.ssrCoin.browserConfigs || [];
-config.ssrCoin.browserConfigs.push('renderPageToDom', 'renderToDom');
+config.ssrCoin.browserConfigs.push('renderPageToDom', 'domRender');

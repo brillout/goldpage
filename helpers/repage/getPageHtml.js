@@ -4,7 +4,7 @@ const parseUrl = require('@brillout/parse-url');
 
 module.exports = getPageHtml;
 
-async function getPageHtml({pageConfigs, url, renderToHtml, router, requestObject}) {
+async function getPageHtml({pageConfigs, url, htmlRender, router, requestObject}) {
     const urlProps = parseUrl(url);
     const pageConfigMatches = (
         pageConfigs
@@ -22,7 +22,7 @@ async function getPageHtml({pageConfigs, url, renderToHtml, router, requestObjec
         'Performance warning; dynamically rendering a static page at `'+url+'`.'
     );
 
-    const html = await renderPageHtml({renderToHtml, pageConfig, url, router, requestObject});
+    const html = await renderPageHtml({htmlRender, pageConfig, url, router, requestObject});
 
     return html;
 }

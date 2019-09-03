@@ -2,9 +2,9 @@ const React = require('react');
 const ReactDOMServer = require('react-dom/server');
 const {StaticRouter} = require('react-router');
 
-module.exports = renderToHtml;
+module.exports = htmlRender;
 
-async function renderToHtml({page, initialProps}) {
+async function htmlRender({page, initialProps}) {
   const {pathname, search, hash} = initialProps;
   return (
     ReactDOMServer.renderToStaticMarkup(

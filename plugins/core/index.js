@@ -51,12 +51,12 @@ function getBrowserConfigs() {
                 } catch(err) {
                   assert.usage(
                     false,
-                    "The `renderToDom` config is set to `"+filePath+"`.",
-                    "But `renderToDom` should be the path of your `renderToDom` file.",
+                    "The `domRender` config is set to `"+filePath+"`.",
+                    "But `domRender` should be the path of your `domRender` file.",
                     "E.g.:",
                     "  // ssr-coin.config.js",
                     "  module.exports = {",
-                    "   renderToDom: './path/to/your/renderToDom.js'",
+                    "   domRender: './path/to/your/domRender.js'",
                     "   /* ... */",
                     "  };",
                   );

@@ -3,11 +3,11 @@ const html = require('@brillout/html');
 
 module.exports = {renderPageHtml};
 
-async function renderPageHtml({renderToHtml, pageConfig, url, router, requestObject}) {
+async function renderPageHtml({htmlRender, pageConfig, url, router, requestObject}) {
     let html;
     try {
         const initialProps = await getInitialProps({pageConfig, url, router, requestObject, isNodejs: true});
-        html = await renderToHtml({pageConfig, initialProps});
+        html = await htmlRender({pageConfig, initialProps});
     } catch(err) {
         if( isProduction() ) {
             throw err;

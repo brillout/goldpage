@@ -3,7 +3,7 @@ const {renderPageHtml} = require('./common/renderPageHtml');
 
 module.exports = getStaticPageHtmls;
 
-async function getStaticPageHtmls({pageConfigs, router, renderToHtml}) {
+async function getStaticPageHtmls({pageConfigs, router, htmlRender}) {
     return (
         Promise.all(
             pageConfigs
@@ -27,7 +27,7 @@ async function getStaticPageHtmls({pageConfigs, router, renderToHtml}) {
             .map(async pageConfig => {
                 const url = router.getRouteUrl({}, pageConfig);
 
-                const html = await renderPageHtml({renderToHtml, pageConfig, url, router});
+                const html = await renderPageHtml({htmlRender, pageConfig, url, router});
 
                 return {url, html};
             })

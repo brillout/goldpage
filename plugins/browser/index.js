@@ -14,7 +14,7 @@ config.ssrCoin.browserInitFunctions.push(
     executionOrder: -50,
     browserConfigsNeeded: [
       'renderPageToDom',
-      'renderToDom',
+      'domRender',
       'pageConfig',
       'router',
     ],

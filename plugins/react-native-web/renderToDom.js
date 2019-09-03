@@ -1,9 +1,9 @@
 const React = require('react');
 const {AppRegistry} = require('react-native-web');
 
-module.exports = renderToDom;
+module.exports = domRender;
 
-async function renderToDom({page, initialProps, CONTAINER_ID}) {
+async function domRender({page, initialProps, CONTAINER_ID}) {
   const viewElement = React.createElement(page.view, initialProps);
   AppRegistry.registerComponent('App', () => () => viewElement);
 
