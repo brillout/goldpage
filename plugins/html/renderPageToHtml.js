@@ -34,15 +34,26 @@ async function renderPageToHtml({initialProps}) {
     require
     (htmlRender__file)
   );
-  const htmlRender__value = await htmlRender__function({
-    page: initialProps.__sources.pageConfig,
-    CONTAINER_ID,
-    initialProps
-  });
+  const {pageConfig} = initialProps.__sources;
+  let htmlRender__value;
   assert.usage(
-    htmlRender__value && [String, Object].includes(htmlRender__value.constructor),
-    "`htmlRender` should return a HTML string or a `@brillout/html` parameter object.",
+    !('renderToHtml' in pageConfig) || [true, false].includes(pageConfig.renderToHtml),
+    {pageConfig},
+    "`renderToHtml` should be `true` or `false`",
   );
+  if( pageConfig.renderToHtml ){
+    htmlRender__value = await htmlRender__function({
+      page: pageConfig,
+      CONTAINER_ID,
+      initialProps
+    });
+    assert.usage(
+      htmlRender__value && [String, Object].includes(htmlRender__value.constructor),
+      "`htmlRender` should return a HTML string or a `@brillout/html` parameter object.",
+    );
+  } else {
+    htmlRender__value = '';
+  }
 
   const htmlOptions = {
     ...initialProps.__sources.pageConfig,
