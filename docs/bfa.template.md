@@ -1,18 +1,24 @@
 # Backend First App
 
 > :warning:
-> <br/>
 >
-> This document assumes that you have are familiar with `renderToDom` and `renderToHtml`.
+> This document assumes that you are familiar with CSR and SSR and their differences.
+> You can learn about CSR and SSR at
+> [CSR & SSR Explained](/docs/csr-and-ssr-explained.md)
+> and
+> [Client-side Rendering (CSR) VS Server-side Rendering (SSR)](/docs/csr-vs-ssr.md).
+
+> :information_source:
 >
 > You can use Goldpage and start creating a prototype without reading this document.
 
 Goldpage introduces a new app type we call *Backend First App* (BFA).
 
-A Backend First App is an app that uses React (or Vue) primarily as an HTML template engine
-and where only a few pages that need to be interactive are rendered to the DOM.
+A Backend First App is an app that uses React (or Vue)
+primarily as an HTML template engine and
+only secondarily to implement interactive views.
 
-In other words, most page have;
+In other words, most pages are non-interactive and have:
 - `renderToDom: false`
 - `renderToHtml: true`
 
@@ -20,15 +26,15 @@ And only few pages are interactive and have:
 - `renderToDom: true`
 - `renderToHtml: false` (or `renderToHtml: true`)
 
-The idea of a BFA is to prefer non-interactive pages over interactive ones.
-For an increased development speed and for increased performance.
+The idea of a BFA is to prefer non-interactive pages over interactive ones
+for a higher development speed and increased (mobile) performance.
 
 **Non-interactive First**
 
-Interactive modern apps are more a reputation to be complex.
-This is true mostly because interactive views are inherently complex,
-in particular state managment is hard to comprehend and error prone.
-Interactive views need considerably more time to develop than non-interactive views.
+The modern stack has a reputation to be complex.
+This is mostly true because interactive views are inherently complex.
+In particular state changes are hard to manage and error prone.
+Interactive views need considerably more time to be developed than non-interactive views.
 
 But things are different when using the modern stack to implement non-interactive pages.
 There is no state managemenet and using
@@ -36,7 +42,7 @@ React solely as an HTML template engine
 is vastly simpler.
 
 In short,
-implementing non-interactive vies is much simpler and much faster than implementing interactive views,
+implementing non-interactive views is much faster than implementing interactive views,
 which leads us to the *non-interactive first* approach:
 
 > **Non-interactive first**
@@ -44,75 +50,86 @@ which leads us to the *non-interactive first* approach:
 > Whenever possible, implement features using non-interactive pages.
 > Use interactive views as last resort.
 
-leads to high developing speed.
-
-Using
-Using has many benefits:
-- It turns out that JSX can also be used to generate HTML in a way;
-it allows you to leverage your knowledge about and the full power of JavaScript to generate HTML.
-- You can use the same stack and use your JavaScript knowledge to create an old-school and simple non-interactive backend-only app.
-- In short, Goldpage and `renderToDom: false` allow you to implement an old-school backend by using your knowledge of a modern JavaScript stack.
-- In the end, you end up learning one stack to be able to create any kind of app.
-
-
+Following the non-interactive first approach is not only about achieving a higher development speed
+but also about (mobile) performance and SEO, which we will discuss later.
 
 **Fast prototyping**
 
-Often the trade off is to choose between a simpler non-interactive view a
-interactive view for a richer user experience.
+Interactive views offer more choice for a better user experience.
+The trade-off is often between dev speed and user experience.
 
-Fast prototyping
-Also, as your app scales and as you hit product-market-fit,
-the quality of your app becomes increasingly important.
-At that point interactive views can offer a better 
+One way to approach this is to
+implement an inferior user experience with non-interactive pages at first in order to quickly build an MVP.
 
+Later,
+as your prototype grows,
+as you get to know what your users need,
+and as you get to product-market-fit,
+you can re-write your non-interactive pages that you quickly built into interactive pages for a richer user experience.
 
 **Performance & Mobile**
 
-Non-interactive pages are also usually more performant, especially on mobile;
-removing browser-side JavaScript leads to substantial performance improvements.
+Non-interactive pages are rendered to HTML only and have (almost) no browser-side JavaScript.
+This makes non-interactive pages more performant, especially on mobile where
+rendering to HTML is vastly more peformant than rendering to the DOM.
 
-The idea is to remove browser-side JavaScript
-for a fundamental improvement in performance, especially
-on mobile devices.
+On slow internet connections, non-interactive pages are vastly more performant as well.
 
+Developing a native mobile app is substantially slower than developing a mobile web app.
 For a mobile app that is highly interactive (a music player, an email app, a video editor, ...),
-writing the app in native code is still the way to go.
-But, for a mobile app that is mainly about content (a meditatron app, a news app, ...),
-a BFA can be a alternative with good enough performance and drastically faster developing speed.
+writing the app in native code is the way to go &mdash; interactive views on web apps are too slow on mobile.
+But, for a mobile app that is mainly about content (a meditation app, a news app, ...),
+a BFA can be an alternative for a drastically higher developing speed.
 
 **SEO**
 
-All pages that are only rendered to HTML are easily crawlable by search engines.
-
-Your.
-And for pages you can have both `renderToHtml: true` and `renderToDom: true`.
-Since most pages are rendered to HTML, SEO comes "for free".
+Non-interactive pages are rendered to HTML and are easily crawlable by search engines.
 
 **Example**
 
-Let's for example imagine a newspaper.
-Is mostly about images and text.
-There is no need.
-This means that the vast majority of the pages are only rendered to HTML
-and the page config.
-The advantage is that these page would have (almost) no browser-side JavaScript.
-(`renderToDom: false` & `renderToHtml: true`)
-Most newspaper artciles are most likely to be about text only and no interview views are necessary.
-But, some arcticle may (e.g. a interactive US Election Poll that 
+For example,
+a BFA is usually a good fit for an online newspaper.
+News article are mostly about
+text and images &mdash;
+there is no need for interactive views.
+And, if a news article,
+contain an interactive view,
+for example a an interactive US Election Poll,
+then can the news arcticle can be made interactive by setting `renderToDom: true`.
 
-**One universal stack**
+Both SEO and mobile performance are crucial for a newspaper and a BFA devivers
+a near-optimal web mobile performance and SEO.
 
+**Modern Stack**
 
+Using the modern stack to generate HTML:
+- JSX is a simple and powerful HTML template engine.
+  <br/>
+  Using the JavaScript language to declaratively generate HTML is simple and powerful:
+  You can re-use your JavaScript knowledge to generate HTML,
+  and using a full-blown programming language as a template language is vastly
+  superiour then the usual template operators such as `{% for todo in todos %} <li>{{ todo.text }}</li> {% endfor %}`.
+- JS stack.
+  <br/>
+  The JS stack is evovling at a speed never seen before &mdash; it's a hotbed of innovation.
+  The speed can be daunting but we expect only the best tools will survive and the ecosystem to stabilize.
+  And the JS stack lies right in the middle of the promising WebAssembly future.
+- Possibility to have interative views.
+  <br/>
+  Even though we follow the non-interactive first approach,
+  we can still write interactive views when necessary.
+- Learn one stack to create any kind of app.
+  <br/>
+  You learn and use the same tools
+  to create a modern desktop-like interactive app as well as a goold old plain HTML website.
 
 **Conclusion**
 
-A BFA is about following the non-interactive first approach: features are implemented using non-interactive pages and we avoid interactive views whenever possible.
+A BFA is about following the non-interactive first approach: we prefer to implement features by using non-interactive pages and we avoid interactive views whenever possible.
 
-In this document we showed that
-the non-interactive first approach and a BFA can achieve:
+The non-interactive first approach and a BFA can achieve:
 - High development speed.
 - High performance, especially on mobile.
 - Crawlability for SEO and social sharing.
-- Possibility to have a couple of interative pages.
+- Possibility to have interative views.
 

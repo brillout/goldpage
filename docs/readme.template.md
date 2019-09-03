@@ -461,8 +461,8 @@ we call BFA (Backend First App).
 
 The idea of a BFA is to
 use React (or Vue)
-primarily as an HTML template engine and only secondarily
-to implement interactive views.
+primarily as an HTML template engine and
+only secondarily to implement interactive views.
 
 A BFA is an app with mixed `renderToDom` and `renderToHtml` settings to achieve:
 - Fast mobile pages

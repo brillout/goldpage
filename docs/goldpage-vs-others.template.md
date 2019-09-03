@@ -2,7 +2,7 @@
 
 > :warning:
 >
-> You can use Goldpage and create an app without reading this document.
+> You can use Goldpage and create a prototype without reading this document.
 >
 > This document is meant for readers
 > that roughly know what the different app types, such as "SPA" and "SSR", are about.
