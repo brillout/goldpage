@@ -26,13 +26,9 @@ export default {
     ];
   },
 
-  /*
   // We can do SMO (Social media optimization) without SSR.
   renderToHtml: false,
   renderToDom: true,
-  */
-    // TODO
-    doNotRenderInBrowser: false,
 
   // We compute the page's meta data at request-time.
   renderHtmlAtBuildTime: false,

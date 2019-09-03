@@ -23,9 +23,8 @@ function getPageConfig() {
 
     // Control when the page is rendered.
     // More in a section below.
-    // renderToDom: true, // (default value)
-    // renderToHtml: false, // (default value)
-    doNotRenderInBrowser: false,
+    renderToDom: true, // (default value)
+    renderToHtml: false, // (default value)
     renderHtmlAtBuildTime: false, // default value
 
     // The definition of `getHtmlOptions` is shown in a section below

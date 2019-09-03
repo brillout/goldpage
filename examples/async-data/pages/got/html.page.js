@@ -10,7 +10,7 @@ export default {
 
   view: ({characters}) => <CharacterList characters={characters}/>,
 
-  doNotRenderInBrowser: true,
+  renderToDom: false,
 
   route: '/html',
 };

@@ -8,7 +8,7 @@ config.ssrCoin.browserInitFunctions.push(
   {
     name: 'hydratePage',
     initFunctionFile: hydratePageFile,
-    doNotInclude: ({pageConfig}) => !!pageConfig.doNotRenderInBrowser,
+    doNotInclude: ({pageConfig}) => pageConfig.renderToDom===false,
     // -50 is fairly aggressive to ensure that hydration is
     // one of the first thing that happens in the browser
     executionOrder: -50,
