@@ -1,3 +1,5 @@
+!INLINE ./snippets/header.md
+
 # CSR & SSR Explained
 
 > :information_source:

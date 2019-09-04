@@ -1,3 +1,5 @@
+!INLINE ./snippets/header.md
+
 # Client-side Rendering (CSR) VS Server-side Rendering (SSR)
 
 > :information_source:

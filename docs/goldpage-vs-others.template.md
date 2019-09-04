@@ -1,3 +1,5 @@
+!INLINE ./snippets/header.md
+
 # Goldpage VS Others
 
 > :warning:
