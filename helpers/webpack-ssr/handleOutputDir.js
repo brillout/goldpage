@@ -68,8 +68,8 @@ function moveAndStampOutputDir({outputDir}) {
         const stamp_content = fs__path_exists(stamp_path) && fs__read(stamp_path).trim();
         assert_usage(
             stamp_content,
-            colorError('ssr-coin stamp is missing')+' at `'+stamp_path+'`.',
-            "It is therefore assumed that `"+outputDir+"` has not been created by ssr-coin.",
+            colorError('goldpage stamp is missing')+' at `'+stamp_path+'`.',
+            "It is therefore assumed that `"+outputDir+"` has not been created by goldpage.",
             colorEmphasisLight('Remove `'+outputDir+'` and retry.'),
         );
         assert_internal(stamp_content && !/\s/.test(stamp_content), stamp_content);
