@@ -14,7 +14,7 @@ Install `@goldpage/typescript`.
 $ npm install @goldpage/typescript
 ~~~
 
-The `ssr-coin/typescript` plugin is automatically loaded.
+The `@goldpage/typescript` plugin is automatically loaded.
 
 Configure TypeScript:
 

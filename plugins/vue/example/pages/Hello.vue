@@ -1,6 +1,6 @@
 <template>
   <div>
-    Hello {{isReversed?nameReversed:name}}, welcome to <code>ssr-coin</code>.
+    Hello {{isReversed?nameReversed:name}}, welcome to <code>Goldpage</code>.
     <br/>
     <button v-on:click="toggleReverse">Reverse name</button>
   </div>

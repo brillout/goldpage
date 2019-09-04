@@ -1,2 +1,2 @@
-const CONTAINER_ID = 'ssr-coin_view-root';
+const CONTAINER_ID = 'goldpage_view-root';
 module.exports = CONTAINER_ID;

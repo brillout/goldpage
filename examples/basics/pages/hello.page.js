@@ -21,7 +21,7 @@ function Hello({name, nameReversed}) {
 
   return (
     <div>
-      Hello <span>{isReversed ? nameReversed : name}</span>, welcome to ssr-coin.
+      Hello <span>{isReversed ? nameReversed : name}</span>, welcome to Goldpage.
       <br/>
       <button onClick={() => setReverse(!isReversed)}>Reverse name</button>
     </div>
