@@ -1,5 +1,5 @@
 {
-  "name": "@ssr-coin/koa",
+  "name": "@goldpage/koa",
   "version": "0.4.0",
   "@brillout/autoload": true,
   "dependencies": {
@@ -10,5 +10,5 @@
   "publishConfig": {
     "access": "public"
   },
-  "repository": "github:reframejs/ssr-coin"
+  "repository": "github:reframejs/goldpage"
 }

@@ -16,5 +16,5 @@
     "mkdirp": "^0.5.1",
     "reassert": "^1.1.12"
   },
-  "repository": "github:reframejs/ssr-coin"
+  "repository": "github:reframejs/goldpage"
 }

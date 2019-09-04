@@ -1,5 +1,5 @@
 {
-  "name": "@ssr-coin/html",
+  "name": "@goldpage/html",
   "version": "0.4.0",
   "@brillout/autoload": true,
   "dependencies": {
@@ -11,5 +11,5 @@
   "publishConfig": {
     "access": "public"
   },
-  "repository": "github:reframejs/ssr-coin"
+  "repository": "github:reframejs/goldpage"
 }

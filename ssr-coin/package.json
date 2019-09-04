@@ -1,5 +1,5 @@
 {
-  "name": "ssr-coin",
+  "name": "goldpage",
   "version": "0.4.0",
   "main": "./ssr.js",
   "bin": "./bin.js",
@@ -8,12 +8,12 @@
     "@brillout/project-files": "^0.4.0",
     "@brillout/reassert": "^0.1.1",
     "@brillout/reconfig": "0.4.0",
-    "@ssr-coin/browser": "0.4.0",
-    "@ssr-coin/core": "0.4.0",
-    "@ssr-coin/path-to-regexp": "0.4.0",
-    "@ssr-coin/server": "0.4.0",
-    "@ssr-coin/webpack": "0.4.0",
+    "@goldpage/browser": "0.4.0",
+    "@goldpage/core": "0.4.0",
+    "@goldpage/path-to-regexp": "0.4.0",
+    "@goldpage/server": "0.4.0",
+    "@goldpage/webpack": "0.4.0",
     "source-map-support": "^0.5.12"
   },
-  "repository": "github:reframejs/ssr-coin"
+  "repository": "github:reframejs/goldpage"
 }

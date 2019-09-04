@@ -1,5 +1,5 @@
 {
-  "name": "@ssr-coin/typescript",
+  "name": "@goldpage/typescript",
   "version": "0.4.0",
   "@brillout/autoload": true,
   "dependencies": {
@@ -21,5 +21,5 @@
       "typescript"
     ]
   },
-  "repository": "github:reframejs/ssr-coin"
+  "repository": "github:reframejs/goldpage"
 }

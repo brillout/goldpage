@@ -32,7 +32,7 @@
     "examples/postcss",
     "examples/react-router",
     "examples/redux",
-    "examples/ssr-coin.config.js",
+    "examples/goldpage.config.js",
     "examples/static-assets",
     "examples/styled-components",
     "examples/typescript",
@@ -76,6 +76,6 @@
     "plugins/webpack",
     "plugins/webpack-react",
 
-    "ssr-coin/"
+    "goldpage/"
   ]
 }
