@@ -2,16 +2,16 @@
 
 `ssr-coin` + React Native Web = :heart:
 
-# `@ssr-coin/react-native-web`
+# `@goldpage/react-native-web`
 
 Use `ssr-coin` with [React Native Web](https://github.com/necolas/react-native-web).
 
 ### Usage
 
-Install `@ssr-coin/react-native-web`.
+Install `@goldpage/react-native-web`.
 
 ~~~shell
-$ npm install @ssr-coin/react-native-web
+$ npm install @goldpage/react-native-web
 ~~~
 
 The plugin is automatically loaded and

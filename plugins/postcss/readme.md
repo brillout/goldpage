@@ -78,16 +78,16 @@
 
 `ssr-coin` + PostCSS = :heart:
 
-# `@ssr-coin/postcss`
+# `@goldpage/postcss`
 
 Use `ssr-coin` with PostCSS.
 
 ### Usage
 
-Install `@ssr-coin/postcss`.
+Install `@goldpage/postcss`.
 
 ~~~shell
-$ npm install @ssr-coin/postcss
+$ npm install @goldpage/postcss
 ~~~
 
 The `ssr-coin/postcss` plugin is automatically loaded.

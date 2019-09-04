@@ -2,16 +2,16 @@
 
 `ssr-coin` + Vue = :heart:
 
-# `@ssr-coin/vue`
+# `@goldpage/vue`
 
 Use `ssr-coin` with [Vue](https://github.com/vuejs/vue).
 
 ### Usage
 
-Install `@ssr-coin/vue`.
+Install `@goldpage/vue`.
 
 ~~~shell
-$ npm install @ssr-coin/vue
+$ npm install @goldpage/vue
 ~~~
 
 The plugin is automatically loaded and

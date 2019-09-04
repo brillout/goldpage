@@ -2,16 +2,16 @@
 
 `ssr-coin` + Crossroads = :heart:
 
-# `@ssr-coin/crossroads`
+# `@goldpage/crossroads`
 
 Routing with [Crossroads.js](https://github.com/millermedeiros/crossroads.js).
 
 ### Usage
 
-Install `@ssr-coin/crossroads`.
+Install `@goldpage/crossroads`.
 
 ~~~bash
-$ npm install @ssr-coin/crossroads
+$ npm install @goldpage/crossroads
 ~~~
 
 The plugin is automatically loaded and

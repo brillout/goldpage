@@ -78,16 +78,16 @@
 
 `ssr-coin` + Hapi = :heart:
 
-# `@ssr-coin/hapi`
+# `@goldpage/hapi`
 
 Use `ssr-coin` with [Hapi](https://github.com/hapijs/hapi).
 
 ### Usage
 
-Install `@ssr-coin/hapi`.
+Install `@goldpage/hapi`.
 
 ~~~shell
-$ npm install @ssr-coin/hapi
+$ npm install @goldpage/hapi
 ~~~
 
 The plugin is automatically loaded and

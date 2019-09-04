@@ -78,16 +78,16 @@
 
 `ssr-coin` + Koa = :heart:
 
-# `@ssr-coin/koa`
+# `@goldpage/koa`
 
 Use `ssr-coin` with [Koa](https://github.com/koajs/koa).
 
 ### Usage
 
-Install `@ssr-coin/koa`.
+Install `@goldpage/koa`.
 
 ~~~shell
-$ npm install @ssr-coin/koa
+$ npm install @goldpage/koa
 ~~~
 
 The plugin is automatically loaded and

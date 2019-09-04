@@ -1,3 +1,3 @@
-require('@ssr-coin/html');
-require('@ssr-coin/render-react');
-require('@ssr-coin/webpack-react');
+require('@goldpage/html');
+require('@goldpage/render-react');
+require('@goldpage/webpack-react');

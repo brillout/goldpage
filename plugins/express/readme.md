@@ -78,16 +78,16 @@
 
 `ssr-coin` + Express = :heart:
 
-# `@ssr-coin/express`
+# `@goldpage/express`
 
 Use `ssr-coin` with [Express](https://github.com/expressjs/express).
 
 ### Usage
 
-Install `@ssr-coin/express`.
+Install `@goldpage/express`.
 
 ~~~shell
-$ npm install @ssr-coin/express
+$ npm install @goldpage/express
 ~~~
 
 The plugin is automatically loaded and

@@ -78,16 +78,16 @@
 
 `ssr-coin` + React = :heart:
 
-# `@ssr-coin/react`
+# `@goldpage/react`
 
 Use `ssr-coin` with [React](https://github.com/facebook/react).
 
 ### Usage
 
-Install `@ssr-coin/react`.
+Install `@goldpage/react`.
 
 ~~~shell
-$ npm install @ssr-coin/react
+$ npm install @goldpage/react
 ~~~
 
 The plugin is automatically loaded and

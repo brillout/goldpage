@@ -78,16 +78,16 @@
 
 `ssr-coin` + TypeScript = :heart:
 
-# `@ssr-coin/typescript`
+# `@goldpage/typescript`
 
 Use `ssr-coin` with TypeScript.
 
 ### Usage
 
-Install `@ssr-coin/typescript`.
+Install `@goldpage/typescript`.
 
 ~~~shell
-$ npm install @ssr-coin/typescript
+$ npm install @goldpage/typescript
 ~~~
 
 The `ssr-coin/typescript` plugin is automatically loaded.

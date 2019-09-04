@@ -12,11 +12,11 @@ module.exports = create_ssr();
 function create_ssr() {
   config.ssrCoin = {};
 
-  require('@ssr-coin/core');
-  require('@ssr-coin/browser');
-  require('@ssr-coin/server');
-  require('@ssr-coin/path-to-regexp');
-  require('@ssr-coin/webpack');
+  require('@goldpage/core');
+  require('@goldpage/browser');
+  require('@goldpage/server');
+  require('@goldpage/path-to-regexp');
+  require('@goldpage/webpack');
 
   const {packageJsonFile, loaded: loadedPlugins} = loadDependencies();
 
@@ -88,9 +88,9 @@ function create_ssr() {
       if( isServerMiddleware(prop) ){
         assert.usage(
           value,
-          "The plugin `@ssr-coin/"+prop+"` needs to be listed in the `dependencies` list of "+packageJsonFile,
-          "Did you `npm install @ssr-coin/"+prop+"`?",
-          "Once `@ssr-coin/"+prop+"` is listed as dependency, it is automatically loaded and require('ssr-coin')."+prop+" available.",
+          "The plugin `@goldpage/"+prop+"` needs to be listed in the `dependencies` list of "+packageJsonFile,
+          "Did you `npm install @goldpage/"+prop+"`?",
+          "Once `@goldpage/"+prop+"` is listed as dependency, it is automatically loaded and require('ssr-coin')."+prop+" available.",
         );
         autobuild();
       }
@@ -138,7 +138,7 @@ function create_ssr() {
     assert.usage(
       isMissing,
       {loadedPlugins},
-      "A builder plugin is missing. Add one, such as `@ssr-coin/webpack`, to "+packageJsonFile,
+      "A builder plugin is missing. Add one, such as `@goldpage/webpack`, to "+packageJsonFile,
     );
     await config.ssrCoin.runBuild();
   }
@@ -148,7 +148,7 @@ function create_ssr() {
     assert_usage(
       config.ssrCoin.rend,
       {loadedPlugins},
-      "A builder plugin is missing. Add one, such as `@ssr-coin/webpack`, to "+packageJsonFile,
+      "A builder plugin is missing. Add one, such as `@goldpage/webpack`, to "+packageJsonFile,
     );
   }
   */

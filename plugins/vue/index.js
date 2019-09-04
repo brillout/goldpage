@@ -1,4 +1,4 @@
-require('@ssr-coin/html');
+require('@goldpage/html');
 
 const config = require('@brillout/reconfig');
 

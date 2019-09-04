@@ -2,18 +2,18 @@
 
 `ssr-coin` + `path-to-regexp` = :heart:
 
-# `@ssr-coin/path-to-regexp`
+# `@goldpage/path-to-regexp`
 
 Routing with [`path-to-regexp`](https://github.com/pillarjs/path-to-regexp).
 
-(Note that `@ssr-coin/path-to-regexp` doesn't use the npm module `path-to-regexp` directly, but uses React Router's wrapper `react-router/matchPath`.)
+(Note that `@goldpage/path-to-regexp` doesn't use the npm module `path-to-regexp` directly, but uses React Router's wrapper `react-router/matchPath`.)
 
 ### Usage
 
-Install `@ssr-coin/path-to-regexp`.
+Install `@goldpage/path-to-regexp`.
 
 ~~~bash
-$ npm install @ssr-coin/path-to-regexp
+$ npm install @goldpage/path-to-regexp
 ~~~
 
 The plugin is automatically loaded and

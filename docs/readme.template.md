@@ -203,14 +203,14 @@ then use a [Reframe starter](https://github.com/reframejs/reframe#getting-starte
    npm install ssr-coin
    ~~~
 
-   Install a [render plugin](!VAR|ANCHOR PLUGINS_RENDER), such as `@ssr-coin/react`:
+   Install a [render plugin](!VAR|ANCHOR PLUGINS_RENDER), such as `@goldpage/react`:
    ~~~shell
-   npm install @ssr-coin/react
+   npm install @goldpage/react
    ~~~
 
-   Install a [server plugin](!VAR|ANCHOR PLUGINS_SERVER), such as `@ssr-coin/express`:
+   Install a [server plugin](!VAR|ANCHOR PLUGINS_SERVER), such as `@goldpage/express`:
    ~~~shell
-   npm install @ssr-coin/express
+   npm install @goldpage/express
    ~~~
 
 1. Add `ssr-coin` to your Node.js server.

@@ -1,4 +1,4 @@
-require('@ssr-coin/hapi');
+require('@goldpage/hapi');
 const serverFile = require.resolve('./server');
 
 const config = require('@brillout/reconfig');
