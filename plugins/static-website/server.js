@@ -1,5 +1,5 @@
 const Hapi = require('hapi');
-const ssr = require('ssr-coin');
+const ssr = require('goldpage');
 
 startServer();
 

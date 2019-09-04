@@ -218,7 +218,7 @@ then use a [Reframe starter](https://github.com/reframejs/reframe#getting-starte
    With Express:
    ~~~js
    const express = require('express');
-   const ssr = require('ssr-coin');
+   const ssr = require('goldpage');
 
    const app = express();
    app.use(ssr.express);
@@ -231,7 +231,7 @@ then use a [Reframe starter](https://github.com/reframejs/reframe#getting-starte
 
    ~~~js
    const Hapi = require('hapi');
-   const ssr = require('ssr-coin');
+   const ssr = require('goldpage');
 
    (async ()=>{
      const server = Hapi.Server();
@@ -247,7 +247,7 @@ then use a [Reframe starter](https://github.com/reframejs/reframe#getting-starte
 
    ~~~js
    const Koa = require('koa');
-   const ssr = require('ssr-coin');
+   const ssr = require('goldpage');
 
    const app = new Koa();
    app.use(ssr.koa);

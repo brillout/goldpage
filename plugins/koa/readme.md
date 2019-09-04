@@ -91,7 +91,7 @@ $ npm install @goldpage/koa
 ~~~
 
 The plugin is automatically loaded and
-a Koa middleware is now available at `require('ssr-coin').koa`.
+a Koa middleware is now available at `require('goldpage').koa`.
 
 ### Example
 
@@ -99,7 +99,7 @@ a Koa middleware is now available at `require('ssr-coin').koa`.
 // ./example/server.js
 
 const Koa = require('koa');
-const ssr = require('ssr-coin');
+const ssr = require('goldpage');
 
 const app = new Koa();
 

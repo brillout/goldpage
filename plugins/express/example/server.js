@@ -1,5 +1,5 @@
 const express = require('express');
-const ssr = require('ssr-coin');
+const ssr = require('goldpage');
 
 const app = express();
 

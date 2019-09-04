@@ -91,7 +91,7 @@ $ npm install @goldpage/hapi
 ~~~
 
 The plugin is automatically loaded and
-a Hapi plugin is now available at `require('ssr-coin').hapi`.
+a Hapi plugin is now available at `require('goldpage').hapi`.
 
 ### Example
 
@@ -99,7 +99,7 @@ a Hapi plugin is now available at `require('ssr-coin').hapi`.
 // ./example/server.js
 
 const Hapi = require('hapi');
-const ssr = require('ssr-coin');
+const ssr = require('goldpage');
 
 startServer();
 

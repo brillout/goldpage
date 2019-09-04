@@ -15,7 +15,7 @@ $ npm install @goldpage/express
 ~~~
 
 The plugin is automatically loaded and
-an Express middleware is now available at `require('ssr-coin').express`.
+an Express middleware is now available at `require('goldpage').express`.
 
 ### Example
 
