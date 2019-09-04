@@ -25,7 +25,7 @@
 !VAR INITIAL_PROPS Page Config `*.page.js` - Initial Props `initialProps`
 !VAR HTML_CONFIG Page Config `*.page.js` - HTML
 !VAR RENDER_CONFIG Page Config `*.page.js` - Rendering
-!VAR SSR_COIN_CONFIG Global Config `ssr-coin.config.js`
+!VAR SSR_COIN_CONFIG Global Config `goldpage.config.js`
 !VAR CLI_REF CLI
 
 !VAR ADD_PROVIDERS Providers: Redux / React Router / Vuex / Vue Router / GraphQL Apollo / Relay / ...
@@ -581,13 +581,13 @@ You can control how your pages are rendered
 to HTML and the DOM.
 
 For that,
-save a `ssr-coin.config.js` file at your project's root directory
+save a `goldpage.config.js` file at your project's root directory
 (the directory that contains your `package.json`)
 and add the `htmlRender` and `domRender` configs:
 ~~~js
-// ssr-coin.config.js
+// goldpage.config.js
 
-!INLINE /examples/react-router/ssr-coin.config.js --hide-source-path
+!INLINE /examples/react-router/goldpage.config.js --hide-source-path
 ~~~
 
 Then create the `domRender` and `htmlRender` files.
@@ -962,7 +962,7 @@ you take control over rendering in order to add React Router (which does browser
 ~~~
 
 ~~~js
-!INLINE /examples/react-router/ssr-coin.config.js
+!INLINE /examples/react-router/goldpage.config.js
 ~~~
 
 The example's entire source code is at:

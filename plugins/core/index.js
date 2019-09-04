@@ -54,7 +54,7 @@ function getBrowserConfigs() {
                     "The `domRender` config is set to `"+filePath+"`.",
                     "But `domRender` should be the path of your `domRender` file.",
                     "E.g.:",
-                    "  // ssr-coin.config.js",
+                    "  // goldpage.config.js",
                     "  module.exports = {",
                     "   domRender: './path/to/your/domRender.js'",
                     "   /* ... */",

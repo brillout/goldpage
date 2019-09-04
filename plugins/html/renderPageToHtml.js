@@ -22,7 +22,7 @@ async function renderPageToHtml({initialProps}) {
       "`htmlRender` is set to `"+htmlRender+"`.",
       "But `htmlRender` should be the path of your `htmlRender` file.",
       "E.g.:",
-      "  // ssr-coin.config.js",
+      "  // goldpage.config.js",
       "  module.exports = {",
       "   htmlRender: './path/to/your/htmlRender.js'",
       "   /* ... */",

@@ -133,7 +133,7 @@ export default {
 ~~~
 
 ~~~js
-// ./example/ssr-coin.config.js
+// ./example/goldpage.config.js
 
 module.exports = {
   typescript: {

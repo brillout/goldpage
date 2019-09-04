@@ -159,7 +159,7 @@ export default LandingPage;
 ~~~
 
 ~~~js
-// ./example/ssr-coin.config.js
+// ./example/goldpage.config.js
 
 module.exports = {
   // All options defined here are passed down as options for `postcss-loader`.

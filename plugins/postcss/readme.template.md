@@ -19,7 +19,7 @@ The `ssr-coin/postcss` plugin is automatically loaded.
 Configure PostCSS:
 
 ~~~js
-!INLINE ./example/ssr-coin.config.js --hide-source-path
+!INLINE ./example/goldpage.config.js --hide-source-path
 ~~~
 
 ### Example
@@ -33,5 +33,5 @@ Configure PostCSS:
 ~~~
 
 ~~~js
-!INLINE ./example/ssr-coin.config.js
+!INLINE ./example/goldpage.config.js
 ~~~

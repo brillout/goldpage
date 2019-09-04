@@ -19,7 +19,7 @@ The `ssr-coin/typescript` plugin is automatically loaded.
 Configure TypeScript:
 
 ~~~js
-!INLINE ./example/ssr-coin.config.js --hide-source-path
+!INLINE ./example/goldpage.config.js --hide-source-path
 ~~~
 
 ### Example
@@ -29,5 +29,5 @@ Configure TypeScript:
 ~~~
 
 ~~~js
-!INLINE ./example/ssr-coin.config.js
+!INLINE ./example/goldpage.config.js
 ~~~
