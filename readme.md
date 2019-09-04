@@ -91,77 +91,68 @@
 
 
 
+<br/> &nbsp;&nbsp;&nbsp;&#8226;&nbsp; Intro
+<br/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a href=#what-is-goldpage>What is Goldpage</a>
+<br/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a href=#why-goldpage>Why Goldpage</a>
+
+<br/> &nbsp;&nbsp;&nbsp;&#8226;&nbsp; Usage
+<br/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a href=#getting-started>Getting Started</a>
 <sub>
 <br/>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-Intro
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Basics
 </sub>
-<br/> &nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a href=#what-is-goldpage>What is Goldpage</a>
-<br/> &nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a href=#why-goldpage>Why Goldpage</a>
-
-<br/> &nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a href=#getting-started>Getting Started</a>
-
-<sub>
-<br/>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-Usage Basics
-</sub>
-<br/> &nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a href=#css--static-assets>CSS & Static Assets</a>
-<br/> &nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a href=#async-data-addinitialprops>Async Data: `addInitialProps`</a>
-<br/> &nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a href=#html-indexhtml-head-meta-link->HTML: `index.html`, `<head>`, `<meta>`, `<link>`, ...</a>
+<br/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a href=#css--static-assets>CSS & Static Assets</a>
+<br/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a href=#async-data-addinitialprops>Async Data: `addInitialProps`</a>
+<br/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a href=#html-indexhtml-head-meta-link->HTML: `index.html`, `<head>`, `<meta>`, `<link>`, ...</a>
 
 <sub>
 <br/>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 Render Control
 </sub>
-<br/> &nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a href=#rendertodom-rendertohtml--renderhtmlatbuildtime>`renderToDom`, `renderToHtml` & `renderHtmlAtBuildTime`</a>
-<br/> &nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a href=#htmlrender--domrender>`htmlRender` & `domRender`</a>
+<br/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a href=#rendertodom-rendertohtml--renderhtmlatbuildtime>`renderToDom`, `renderToHtml` & `renderHtmlAtBuildTime`</a>
+<br/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a href=#htmlrender--domrender>`htmlRender` & `domRender`</a>
 
 <sub>
 <br/>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 App Types
 </sub>
-<br/> &nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a href=#mpa>MPA</a>
-<br/> &nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a href=#spa>SPA</a>
-<br/> &nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a href=#ssr>SSR</a>
-<br/> &nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a href=#bfa>BFA</a>
-<br/> &nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a href=#mixed-apps>Mixed Apps</a>
-<br/> &nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a href=#static-website>Static Website</a>
+<br/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a href=#mpa>MPA</a>
+<br/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a href=#spa>SPA</a>
+<br/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a href=#ssr>SSR</a>
+<br/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a href=#bfa>BFA</a>
+<br/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a href=#mixed-apps>Mixed Apps</a>
+<br/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a href=#static-website>Static Website</a>
 
 <sub>
 <br/>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 API Reference
 </sub>
-<br/> &nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a href=#page-config-pagejs---overview>Page Config `*.page.js` - Overview</a>
-<br/> &nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a href=#page-config-pagejs---initial-props-initialprops>Page Config `*.page.js` - Initial Props `initialProps`</a>
-<br/> &nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a href=#page-config-pagejs---html>Page Config `*.page.js` - HTML</a>
-<br/> &nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a href=#page-config-pagejs---rendering>Page Config `*.page.js` - Rendering</a>
-<br/> &nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a href=#global-config-goldpageconfigjs>Global Config `goldpage.config.js`</a>
-<br/> &nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a href=#cli>CLI</a>
+<br/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a href=#page-config-pagejs---overview>Page Config `*.page.js` - Overview</a>
+<br/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a href=#page-config-pagejs---initial-props-initialprops>Page Config `*.page.js` - Initial Props `initialProps`</a>
+<br/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a href=#page-config-pagejs---html>Page Config `*.page.js` - HTML</a>
+<br/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a href=#page-config-pagejs---rendering>Page Config `*.page.js` - Rendering</a>
+<br/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a href=#global-config-goldpageconfigjs>Global Config `goldpage.config.js`</a>
+<br/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a href=#cli>CLI</a>
 
 <sub>
 <br/>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 Recipes
 </sub>
-<br/> &nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a href=#providers-redux--react-router--vuex--vue-router--graphql-apollo--relay-->Providers: Redux / React Router / Vuex / Vue Router / GraphQL Apollo / Relay / ...</a>
-<br/> &nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a href=#transpilation-babel--typescript---es6-->Transpilation: Babel / TypeScript /  ES6 / ...</a>
-<br/> &nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a href=#css-in-js-emotion--styled-components-->CSS-in-JS: Emotion / styled-components / ...</a>
-<br/> &nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a href=#css-pre-processors-postcss--sass--less-->CSS pre-processors: PostCSS / Sass / Less / ...</a>
-<br/> &nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a href=#routing-server-side-routing--browser-side-routing--react-router--vue-router-->Routing: Server-side Routing / Browser-side Routing / React Router / Vue Router / ...</a>
-<br/> &nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a href=#frontend-libraries-google-analytics--jquery--bootstrap--semantic-ui-->Frontend Libraries: Google Analytics / jQuery / Bootstrap / Semantic UI / ...</a>
-<br/> &nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a href=#server-express--koa--hapi--fastify-->Server: Express / Koa / Hapi / Fastify / ...</a>
-<br/> &nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a href=#view-libraries-react--vue--preact-->View Libraries: React / Vue / Preact / ...</a>
-<br/> &nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a href=#process-managers-docker--systemd--pm2-->Process Managers: Docker / systemd / PM2 / ...</a>
+<br/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a href=#providers-redux--react-router--vuex--vue-router--graphql-apollo--relay-->Providers: Redux / React Router / Vuex / Vue Router / GraphQL Apollo / Relay / ...</a>
+<br/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a href=#transpilation-babel--typescript---es6-->Transpilation: Babel / TypeScript /  ES6 / ...</a>
+<br/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a href=#css-in-js-emotion--styled-components-->CSS-in-JS: Emotion / styled-components / ...</a>
+<br/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a href=#css-pre-processors-postcss--sass--less-->CSS pre-processors: PostCSS / Sass / Less / ...</a>
+<br/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a href=#routing-server-side-routing--browser-side-routing--react-router--vue-router-->Routing: Server-side Routing / Browser-side Routing / React Router / Vue Router / ...</a>
+<br/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a href=#frontend-libraries-google-analytics--jquery--bootstrap--semantic-ui-->Frontend Libraries: Google Analytics / jQuery / Bootstrap / Semantic UI / ...</a>
+<br/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a href=#server-express--koa--hapi--fastify-->Server: Express / Koa / Hapi / Fastify / ...</a>
+<br/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a href=#view-libraries-react--vue--preact-->View Libraries: React / Vue / Preact / ...</a>
+<br/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a href=#process-managers-docker--systemd--pm2-->Process Managers: Docker / systemd / PM2 / ...</a>
 
-<sub>
-<br/>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-
-</sub>
 <br/> &nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a href=#plugins>Plugins</a>
 
 <br/>
