@@ -94,6 +94,7 @@
 <br/> &nbsp;&nbsp;&nbsp;&#8226;&nbsp; Introduction
 <br/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a href=#what-is-goldpage>What is Goldpage</a>
 <br/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a href=#why-goldpage>Why Goldpage</a>
+<br/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a href=#more-resources>More Resources</a>
 <br/> &nbsp;&nbsp;&nbsp;&#8226;&nbsp; Usage
 <br/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a href=#getting-started>Getting Started</a>
 <br/>
@@ -169,15 +170,14 @@ export default {
 ~~~
 
 And Goldpage takes care of the rest:
-- Goldpage builds your pages.
+- The Goldpage CLI builds your pages.
   ~~~shell
-  # This CLI command transpiles and bundles the source code of your pages
+  # Transpiles and bundles the source code of our pages
   $ goldpage build
   ~~~
-- Goldpage serves your pages.
+- The Goldpage middleware serves your pages.
   ~~~js
   // Note that Goldpage can be used with any server (Express/Koa/Hapi/...)
-
   const express = require('express');
   const goldpage = require('@goldpage/express');
 
@@ -249,6 +249,52 @@ We talk about Goldpage's design at [Goldpage VS Others](/docs/goldpage-vs-others
 <!---
 At last but not least, we enjoy writing opulent and beginner-friendly documentation.
 -->
+
+<br/>
+
+<p align="center">
+
+<sup>
+<a href="https://github.com/reframejs/goldpage/issues/new">Open a ticket</a> or
+<a href="https://discord.gg/kqXf65G">chat with us</a>
+if you have questions, feature requests, or if you just want to talk to us.
+</sup>
+
+<sup>
+We enjoy talking with our users :-).
+</sup>
+
+<br/>
+
+<sup>
+<a href="#readme"><b>&#8679;</b> <b>TOP</b> <b>&#8679;</b></a>
+</sup>
+
+</p>
+
+<br/>
+<br/>
+
+
+
+## More Resources
+
+Collection of documents related to Goldpage.
+
+- [Plugins](/docs/plugins.md)
+  <br/>
+  List all Goldpage plugins.
+- [Goldpage VS Others](/docs/goldpage-vs-others.md)
+  <br/>
+  Compares Goldpage with other tools:
+  CRA, Next.js, Nuxt.js, Gatsby, Vue CLI, etc.
+- [CSR & SSR Explained](/docs/csr-and-ssr-explained.md)
+  <br/>
+  Explains what CSR and SSR are.
+- [Client-side Rendering (CSR) VS Server-side Rendering (SSR)](/docs/csr-vs-ssr.md)
+  <br/>
+  Helps you decide whether to use CSR, SSR, or CSR + SSR.
+
 
 <br/>
 

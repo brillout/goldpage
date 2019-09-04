@@ -85,8 +85,9 @@
 
 > :information_source:
 >
-> You do not need to know what CSR and SSR is and
-> you do not need to read this document in order to use Goldpage.
+> You do not need to read this document
+> and you do not need to know what CSR and SSR is
+> in order to use Goldpage.
 > We recommend that you start writing a prototype first and learn about CSR and SSR later.
 
 This document explains:
