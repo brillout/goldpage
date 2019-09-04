@@ -90,7 +90,7 @@ function create_ssr() {
           value,
           "The plugin `@goldpage/"+prop+"` needs to be listed in the `dependencies` list of "+packageJsonFile,
           "Did you `npm install @goldpage/"+prop+"`?",
-          "Once `@goldpage/"+prop+"` is listed as dependency, it is automatically loaded and require('ssr-coin')."+prop+" available.",
+          "Once `@goldpage/"+prop+"` is listed as dependency, it is automatically loaded and require('goldpage')."+prop+" available.",
         );
         autobuild();
       }
@@ -100,7 +100,7 @@ function create_ssr() {
 
   function applySsrCoinConfig() {
     assert.internal(projectDir);
-    let ssrCoinConfigPath = path.resolve(projectDir, 'ssr-coin.config.js');
+    let ssrCoinConfigPath = path.resolve(projectDir, 'goldpage.config.js');
     try {
       ssrCoinConfigPath = require.resolve(ssrCoinConfigPath);
     } catch(err) {

@@ -62,7 +62,7 @@ function parseArguments() {
   );
   assert.usage(
     isDev===false || process.env.NODE_ENV!=='production',
-    "`process.env.NODE_ENV` should not be equal to `'production'` when running `ssr-coin dev`",
+    "`process.env.NODE_ENV` should not be equal to `'production'` when running `goldpage dev`",
   );
 
   return {
@@ -76,15 +76,15 @@ function assert_cli_usage(bool, failureReason) {
     bool,
     [
       "Wrong Goldpage CLI usage.",
-      "  ssr-coin "+process.argv.slice(2).join(' '),
+      "  goldpage "+process.argv.slice(2).join(' '),
       ...(
         failureReason ? [failureReason] : []
       ),
       'Usage:',
-      '  ssr-coin dev',
-      '  ssr-coin dev '+USAGE_PATH_ARG,
-      '  ssr-coin build',
-      '  ssr-coin build '+USAGE_PATH_ARG,
+      '  goldpage dev',
+      '  goldpage dev '+USAGE_PATH_ARG,
+      '  goldpage build',
+      '  goldpage build '+USAGE_PATH_ARG,
     ]
     .join('\n')
   )
