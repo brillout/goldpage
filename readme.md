@@ -93,17 +93,14 @@
 
 <sub>
 <br/>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 Intro
 </sub>
 <br/> &nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a href=#what-is-goldpage>What is Goldpage</a>
 <br/> &nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a href=#why-goldpage>Why Goldpage</a>
-
+<br/>
 <br/> &nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a href=#getting-started>Getting Started</a>
-
 <sub>
 <br/>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 Usage Basics
 </sub>
 <br/> &nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a href=#css--static-assets>CSS & Static Assets</a>
@@ -112,7 +109,6 @@ Usage Basics
 
 <sub>
 <br/>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 Render Control
 </sub>
 <br/> &nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a href=#rendertodom-rendertohtml--renderhtmlatbuildtime>`renderToDom`, `renderToHtml` & `renderHtmlAtBuildTime`</a>
@@ -120,7 +116,6 @@ Render Control
 
 <sub>
 <br/>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 App Types
 </sub>
 <br/> &nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a href=#mpa>MPA</a>
@@ -132,7 +127,6 @@ App Types
 
 <sub>
 <br/>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 API Reference
 </sub>
 <br/> &nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a href=#page-config-pagejs---overview>Page Config `*.page.js` - Overview</a>
@@ -144,7 +138,6 @@ API Reference
 
 <sub>
 <br/>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 Recipes
 </sub>
 <br/> &nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a href=#providers-redux--react-router--vuex--vue-router--graphql-apollo--relay-->Providers: Redux / React Router / Vuex / Vue Router / GraphQL Apollo / Relay / ...</a>
@@ -159,7 +152,6 @@ Recipes
 
 <sub>
 <br/>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
 </sub>
 <br/> &nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a href=#plugins>Plugins</a>
