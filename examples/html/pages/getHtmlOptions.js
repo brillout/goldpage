@@ -3,7 +3,7 @@ import manifestUrl from './manifest.webmanifest';
 export default getHtmlOptions;
 
 function getHtmlOptions() {
-  // ssr-coin uses `@brillout/html` (https://github.com/brillout/html) to generate HTML.
+  // Goldpage uses `@brillout/html` (https://github.com/brillout/html) to generate HTML.
   // All `@brillout/html` options are available over the page config.
 
   return {

@@ -7,7 +7,7 @@ import Product from './Product';
 export default {
   view: Product,
 
-  // ssr-coin uses the package @brillout/html (https://github.com/brillout/html) to generate HTML.
+  // Goldpage uses the package @brillout/html (https://github.com/brillout/html) to generate HTML.
   // All @brillout/html's options are available over the page config.
 
   // Adds <title>Welcome</title>
