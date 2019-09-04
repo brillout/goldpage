@@ -176,6 +176,12 @@ Collection of documents related to Goldpage.
 - [Client-side Rendering (CSR) VS Server-side Rendering (SSR)](/docs/csr-vs-ssr.md)
   <br/>
   Helps you decide whether to use CSR, SSR, or CSR + SSR.
+- [Backend First App (BFA)](/docs/bfa.md)
+  <br/>
+  Introduction to BFAs.
+  A BFA uses React (or Vue)
+  primarily as an HTML template engine and
+  only secondarily to implement interactive views.
 
 !INLINE ./snippets/section-footer.md #readme
 
@@ -303,10 +309,10 @@ then use a [Reframe starter](https://github.com/reframejs/reframe#getting-starte
    ~~~
 
    > :information_source:
-   > Goldpage also builds your server code to
-   > allow you to use the same language,
-   > such as TypeScript,
-   > for your browser and server code.
+   > Goldpage also builds your server's source code
+   > so that you can use the same language,
+   > for example TypeScript,
+   > for browser-side code as well as for server-side code.
 
 That's it: you can now run `npm run dev` (`yarn dev`) and go to [http://localhost:3000/hello/jon](http://localhost:3000/hello/jon).
 
