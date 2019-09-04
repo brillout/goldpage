@@ -91,7 +91,7 @@
 
 
 
-<br/> &nbsp;&nbsp;&nbsp;&#8226;&nbsp; Intro
+<br/> &nbsp;&nbsp;&nbsp;&#8226;&nbsp; Introduction
 <br/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a href=#what-is-goldpage>What is Goldpage</a>
 <br/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a href=#why-goldpage>Why Goldpage</a>
 <br/> &nbsp;&nbsp;&nbsp;&#8226;&nbsp; Usage
@@ -109,29 +109,24 @@ Basics
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 Render Control
 </sub>
-<br/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a href=#rendertodom-rendertohtml--renderhtmlatbuildtime>`renderToDom`, `renderToHtml` & `renderHtmlAtBuildTime`</a>
-<br/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a href=#htmlrender--domrender>`htmlRender` & `domRender`</a>
+<br/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a href=#where--when-rendertodom-rendertohtml--renderhtmlatbuildtime>Where & when: `renderToDom`, `renderToHtml` & `renderHtmlAtBuildTime`</a>
+<br/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a href=#how-htmlrender--domrender>How: `htmlRender` & `domRender`</a>
 <br/>
 <sub>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 App Types
 </sub>
-<br/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a href=#mpa>MPA</a>
-<br/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a href=#spa>SPA</a>
+<br/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a href=#spa--mpa>SPA & MPA</a>
 <br/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a href=#ssr>SSR</a>
-<br/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a href=#bfa>BFA</a>
-<br/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a href=#mixed-apps>Mixed Apps</a>
 <br/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a href=#static-website>Static Website</a>
+<br/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a href=#mixed-apps--bfa>Mixed Apps & BFA</a>
 <br/>
 <sub>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 API Reference
 </sub>
-<br/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a href=#page-config-pagejs---overview>Page Config `*.page.js` - Overview</a>
-<br/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a href=#page-config-pagejs---initial-props-initialprops>Page Config `*.page.js` - Initial Props `initialProps`</a>
-<br/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a href=#page-config-pagejs---html>Page Config `*.page.js` - HTML</a>
-<br/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a href=#page-config-pagejs---rendering>Page Config `*.page.js` - Rendering</a>
-<br/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a href=#global-config-goldpageconfigjs>Global Config `goldpage.config.js`</a>
+<br/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a href=#page-config-pagejs>Page Config `*.page.js`</a>
+<br/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a href=#goldpage-config-goldpageconfigjs>Goldpage Config `goldpage.config.js`</a>
 <br/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a href=#cli>CLI</a>
 <br/>
 <sub>
@@ -817,60 +812,26 @@ We enjoy talking with our users :-).
 
 
 
-## MPA
+## SPA & MPA
 
-> :information_source: You can use Goldpage and create a prototype without knowing what an MPA is and without reading this section.
+> :information_source: You can use Goldpage and create a prototype without reading this section and without knowing what an SPA or an MPA is.
 
-> :warning: This section is meant for readers that know what an MPA is.
+> :warning: This section is meant for readers that know what SPAs and MPAs are.
 
-If you want an MPA,
+If you want an MPA
 then you don't have to do anything;
 by default, Goldpage builds an MPA:
-- By default, a page is rendered only in the browser. (That is: `renderToDom: true` and `renderToHtml: false`. We explain `renderToHtml` and `renderToDom` at <a href=#rendertodom-rendertohtml--renderhtmlatbuildtime>`renderToDom`, `renderToHtml` & `renderHtmlAtBuildTime`</a>.)
+- By default, a page is rendered only in the browser. (That is: `renderToDom: true` and `renderToHtml: false`. We explain `renderToHtml` and `renderToDom` at <a href=#where--when-rendertodom-rendertohtml--renderhtmlatbuildtime>Where & when: `renderToDom`, `renderToHtml` & `renderHtmlAtBuildTime`</a>.)
 - By default, pages are routed on the server-side. (We explain what "server-side routing" means at <a href=#routing-server-side-routing--browser-side-routing--react-router--vue-router-->Routing: Server-side Routing / Browser-side Routing / React Router / Vue Router / ...</a>.)
 
 These defaults corresponds to an MPA.
 
-
-<br/>
-
-<p align="center">
-
-<sup>
-<a href="https://github.com/reframejs/goldpage/issues/new">Open a ticket</a> or
-<a href="https://discord.gg/kqXf65G">chat with us</a>
-if you have questions, feature requests, or if you just want to talk to us.
-</sup>
-
-<sup>
-We enjoy talking with our users :-).
-</sup>
-
-<br/>
-
-<sup>
-<a href="#readme"><b>&#8679;</b> <b>TOP</b> <b>&#8679;</b></a>
-</sup>
-
-</p>
-
-<br/>
-<br/>
-
-
-
-## SPA
-
-> :information_source: You can use Goldpage and create a prototype without knowing what an SPA is and without reading this section.
-
-> :warning: This section is meant for readers that know what an SPA is.
-
-If you want an SPA,
+If you want an SPA
 then:
 - Create a single page with a catch-all route. (That is, create only one page config with `route: '/:param*`; all URLs will be routed to this single page.)
 - Use a browser-side routing such as React Router. (We elaborate more at <a href=#routing-server-side-routing--browser-side-routing--react-router--vue-router-->Routing: Server-side Routing / Browser-side Routing / React Router / Vue Router / ...</a>.)
 
-Note that an MPA is almost always a better alternative than an SPA.
+Note that an MPA is usually a better alternative than an SPA.
 And, by default, Goldpage builds an MPA.
 So, if you want an SPA, this means that you most likely don't have to do anything.
 (AN MPA is basically the same than an SPA but with server-side routing and code-splitting.)
@@ -907,13 +868,13 @@ We enjoy talking with our users :-).
 
 ## SSR
 
-> :information_source: You can use Goldpage and create a prototype without knowing what an SSR app is and without reading this section.
+> :information_source: You can use Goldpage and create a prototype without reading this section and without knowing what an SSR app is.
 
 > :warning: This section is meant for readers that know what an SSR app is.
 
 If you want an SSR app,
 then:
-- Set `renderToHtml: true` and `renderToDom: true` to all your page configs. (We explain `renderToHtml` and `renderToDom` at <a href=#rendertodom-rendertohtml--renderhtmlatbuildtime>`renderToDom`, `renderToHtml` & `renderHtmlAtBuildTime`</a>.)
+- Set `renderToHtml: true` and `renderToDom: true` to all your page configs. (We explain `renderToHtml` and `renderToDom` at <a href=#where--when-rendertodom-rendertohtml--renderhtmlatbuildtime>Where & when: `renderToDom`, `renderToHtml` & `renderHtmlAtBuildTime`</a>.)
 
 (FYI, an SSR app is what you get when you use Next.js or Nuxt.js.)
 
@@ -945,112 +906,15 @@ We enjoy talking with our users :-).
 
 
 
-## BFA
-
-> :information_source: You can use Goldpage and create a prototype without reading this section and without knowing what a BFA is.
-
-Goldpage introduces a new app type
-we call BFA (Backend First App).
-
-The idea of a BFA is to
-use React (or Vue)
-primarily as an HTML template engine and
-only secondarily to implement interactive views.
-
-A BFA is an app with mixed `renderToDom` and `renderToHtml` settings to achieve:
-- Fast mobile pages
-- High development speed
-- Reliable SEO & social sharing
-
-More at [BFA](/bfa.md).
-
-
-<br/>
-
-<p align="center">
-
-<sup>
-<a href="https://github.com/reframejs/goldpage/issues/new">Open a ticket</a> or
-<a href="https://discord.gg/kqXf65G">chat with us</a>
-if you have questions, feature requests, or if you just want to talk to us.
-</sup>
-
-<sup>
-We enjoy talking with our users :-).
-</sup>
-
-<br/>
-
-<sup>
-<a href="#readme"><b>&#8679;</b> <b>TOP</b> <b>&#8679;</b></a>
-</sup>
-
-</p>
-
-<br/>
-<br/>
-
-
-
-## Mixed Apps
-
-> :information_source: You can use Goldpage and create a prototype without reading this section and without knowing what a BFA is.
-
-> :warning:
->
-> This document assumes that you know the difference between CSR and SSR,
-> between `renderToDom` and `renderToHtml`,
-> and between an interactive page and a non-interactive page.
-> You can learn about all this
-> at [CSR & SSR Explained](/docs/csr-and-ssr-explained.md).
-
-Tools usually offer CSR or SSR in an all-or-nothing way:
-either your entire app is CSR'd or SSR'd.
-
-Our `renderToHtml` and `renderToDom` page configs give you fine grain control and
-allow you to mix all kinds of pages &mdash; one page can use CSR (`renderToDom: true` & `renderToHtml: false`) while another page can use SSR (`renderToDom: false` & `renderToHtml: true`).
-
-For example,
-if your app is non-interactive with the exception of one interactive page, then
-you can use CSR for that interactive page (`renderToDom: true` and `renderToHtml: false`) and use SSR for all your other non-interactive pages (`renderToDom: false` and `renderToHtml: true`).
-
-
-<br/>
-
-<p align="center">
-
-<sup>
-<a href="https://github.com/reframejs/goldpage/issues/new">Open a ticket</a> or
-<a href="https://discord.gg/kqXf65G">chat with us</a>
-if you have questions, feature requests, or if you just want to talk to us.
-</sup>
-
-<sup>
-We enjoy talking with our users :-).
-</sup>
-
-<br/>
-
-<sup>
-<a href="#readme"><b>&#8679;</b> <b>TOP</b> <b>&#8679;</b></a>
-</sup>
-
-</p>
-
-<br/>
-<br/>
-
-
-
 ## Static Website
 
-> :information_source: You can use Goldpage and create a prototype without knowing what a static website is and without reading this section.
+> :information_source: You can use Goldpage and create a prototype without reading this section and without knowing what a static website is.
 
 > :warning: This section is meant for readers that know what a static website is.
 
 If you want a static website,
 then:
-- Set `renderHtmlAtBuildTime: true` to all your page configs. (We explain `renderHtmlAtBuildTime` at <a href=#rendertodom-rendertohtml--renderhtmlatbuildtime>`renderToDom`, `renderToHtml` & `renderHtmlAtBuildTime`</a>.)
+- Set `renderHtmlAtBuildTime: true` to all your page configs. (We explain `renderHtmlAtBuildTime` at <a href=#where--when-rendertodom-rendertohtml--renderhtmlatbuildtime>Where & when: `renderToDom`, `renderToHtml` & `renderHtmlAtBuildTime`</a>.)
 
 By setting `renderHtmlAtBuildTime: true` to all your page configs,
 all browser-side code and assets are generated at built-time.
@@ -1098,7 +962,70 @@ We enjoy talking with our users :-).
 
 
 
-## `renderToDom`, `renderToHtml` & `renderHtmlAtBuildTime`
+## Mixed Apps & BFA
+
+> :information_source: You can use Goldpage and create a prototype without reading this section and without knowing what mixed apps are and what a BFA is.
+
+> :warning:
+> This document assumes that you know the difference between CSR and SSR,
+> between `renderToDom` and `renderToHtml`,
+> and between an interactive page and a non-interactive page.
+> You can learn about all this
+> at [CSR & SSR Explained](/docs/csr-and-ssr-explained.md).
+
+Tools usually offer CSR or SSR in an all-or-nothing way:
+either your entire app is CSR'd or SSR'd.
+
+Our `renderToHtml` and `renderToDom` page configs give you fine grain control and
+allow you to mix all kinds of pages &mdash; one page can use CSR (`renderToDom: true` & `renderToHtml: false`) while another page can use SSR (`renderToDom: false` & `renderToHtml: true`).
+
+For example,
+if your app is non-interactive with the exception of one interactive page, then
+you can use CSR for that interactive page (`renderToDom: true` and `renderToHtml: false`) and use SSR for all your other non-interactive pages (`renderToDom: false` and `renderToHtml: true`).
+
+Such mixed app is what we
+call a BFA (Backend First App).
+
+The idea of a BFA is to
+use React (or Vue)
+primarily as an HTML template engine and
+only secondarily to implement interactive views.
+To achieve:
+- Fast mobile pages
+- High development speed
+- Reliable SEO
+
+More at [BFA](/bfa.md).
+
+
+<br/>
+
+<p align="center">
+
+<sup>
+<a href="https://github.com/reframejs/goldpage/issues/new">Open a ticket</a> or
+<a href="https://discord.gg/kqXf65G">chat with us</a>
+if you have questions, feature requests, or if you just want to talk to us.
+</sup>
+
+<sup>
+We enjoy talking with our users :-).
+</sup>
+
+<br/>
+
+<sup>
+<a href="#readme"><b>&#8679;</b> <b>TOP</b> <b>&#8679;</b></a>
+</sup>
+
+</p>
+
+<br/>
+<br/>
+
+
+
+## Where & when: `renderToDom`, `renderToHtml` & `renderHtmlAtBuildTime`
 
 There are three page configs that allow you to control when your page is rendered:
 - `renderToDom` - If set to true, your page is rendered in the browser (to the DOM).
@@ -1168,7 +1095,7 @@ We enjoy talking with our users :-).
 
 
 
-## `htmlRender` & `domRender`
+## How: `htmlRender` & `domRender`
 
 You can control how your pages are rendered
 to HTML and the DOM.
@@ -1336,9 +1263,9 @@ We enjoy talking with our users :-).
 
 
 
-## Page Config `*.page.js` - Overview
+## Page Config `*.page.js`
 
-This page config example showcases all page configs.
+The following page config showcases an overview of the available page configs.
 
 ~~~js
 // pages/*.page.js
@@ -1390,36 +1317,14 @@ async function addInitialProps(initialProps) {
   return {product};
 }
 ~~~
+We now list all configs.
 
 
-<br/>
+- <a href=#all-initial-props-initialprops>All initial props `initialProps`</a>
+- <a href=#all-page-configs-for-the-pages-html-document>All page configs for the page's HTML document</a>
+- <a href=#all-render-page-configs-rendertodom-rendertohtml--renderhtmlatbuildtime>All render page configs: `renderToDom`, `renderToHtml` & `renderHtmlAtBuildTime`</a>
 
-<p align="center">
-
-<sup>
-<a href="https://github.com/reframejs/goldpage/issues/new">Open a ticket</a> or
-<a href="https://discord.gg/kqXf65G">chat with us</a>
-if you have questions, feature requests, or if you just want to talk to us.
-</sup>
-
-<sup>
-We enjoy talking with our users :-).
-</sup>
-
-<br/>
-
-<sup>
-<a href="#readme"><b>&#8679;</b> <b>TOP</b> <b>&#8679;</b></a>
-</sup>
-
-</p>
-
-<br/>
-<br/>
-
-
-
-## Page Config `*.page.js` - Initial Props `initialProps`
+##### All initial props `initialProps`
 
 This `initialProps` assertion showcases all `initialProps`.
 
@@ -1510,35 +1415,7 @@ function assert_initialProps(initialProps){
 }
 ~~~
 
-
-<br/>
-
-<p align="center">
-
-<sup>
-<a href="https://github.com/reframejs/goldpage/issues/new">Open a ticket</a> or
-<a href="https://discord.gg/kqXf65G">chat with us</a>
-if you have questions, feature requests, or if you just want to talk to us.
-</sup>
-
-<sup>
-We enjoy talking with our users :-).
-</sup>
-
-<br/>
-
-<sup>
-<a href="#readme"><b>&#8679;</b> <b>TOP</b> <b>&#8679;</b></a>
-</sup>
-
-</p>
-
-<br/>
-<br/>
-
-
-
-## !VAR HTML_CONFIGS
+##### !VAR HTML_CONFIGS
 
 List of all HTML configs:
 
@@ -1609,35 +1486,7 @@ function getHtmlOptions() {
 }
 ~~~
 
-
-<br/>
-
-<p align="center">
-
-<sup>
-<a href="https://github.com/reframejs/goldpage/issues/new">Open a ticket</a> or
-<a href="https://discord.gg/kqXf65G">chat with us</a>
-if you have questions, feature requests, or if you just want to talk to us.
-</sup>
-
-<sup>
-We enjoy talking with our users :-).
-</sup>
-
-<br/>
-
-<sup>
-<a href="#readme"><b>&#8679;</b> <b>TOP</b> <b>&#8679;</b></a>
-</sup>
-
-</p>
-
-<br/>
-<br/>
-
-
-
-## Page Config `*.page.js` - Rendering
+##### All render page configs: `renderToDom`, `renderToHtml` & `renderHtmlAtBuildTime`
 
 A page has three render configs:
  - `renderToDom`
@@ -1645,7 +1494,7 @@ A page has three render configs:
  - `renderHtmlAtBuildTime`
 
 In this section we only explain what each config does.
-At <a href=#rendertodom-rendertohtml--renderhtmlatbuildtime>`renderToDom`, `renderToHtml` & `renderHtmlAtBuildTime`</a> we explain how to set these three render configs.
+At <a href=#where--when-rendertodom-rendertohtml--renderhtmlatbuildtime>Where & when: `renderToDom`, `renderToHtml` & `renderHtmlAtBuildTime`</a> we explain how to set these three render configs.
 
 ###### `renderToDom`
 
@@ -1740,7 +1589,7 @@ We enjoy talking with our users :-).
 
 
 
-## Global Config `goldpage.config.js`
+## Goldpage Config `goldpage.config.js`
 
 We try to keep Goldpage as zero-config as possible
 and `ssr.config.js` has only few options.
@@ -1749,7 +1598,7 @@ and `ssr.config.js` has only few options.
 // ssr.config.js
 
 module.exports = {
-  // Control how pages are rendered. (See section "`htmlRender` & `domRender`").
+  // Control how pages are rendered. (See section "How: `htmlRender` & `domRender`").
   htmlRender: require.resolve('./path/to/your/htmlRender'),
   domRender: require.resolve('./path/to/your/domRender'),
 
@@ -1863,7 +1712,7 @@ We enjoy talking with our users :-).
 
 By controlling the rendering of your pages you can add providers for Redux, GraphQL, etc.
 
-See <a href=#htmlrender--domrender>`htmlRender` & `domRender`</a> for how to take over control of the rendering of your pages.
+See <a href=#how-htmlrender--domrender>How: `htmlRender` & `domRender`</a> for how to take over control of the rendering of your pages.
 
 Examples:
 - [/examples/react-router](/examples/react-router)
@@ -1956,7 +1805,7 @@ work with SSR out of the box and no additional setup is required.
 For some others,
 such as [styled-components](https://github.com/styled-components/styled-components),
 you make need to
-[take control over rendering](#htmlrender--domrender).
+[take control over rendering](#how-htmlrender--domrender).
 
 Examples:
 - [/examples/emotion](/examples/emotion)
@@ -2071,7 +1920,7 @@ whenever possible, server-side routing should be used instead of browser-side re
 
 But if server-side routing is not an option,
 you can opt to do browser-side routing
-by [taking control over rendering](#htmlrender--domrender).
+by [taking control over rendering](#how-htmlrender--domrender).
 
 For example,
 if you use React,
@@ -2281,7 +2130,7 @@ If there is a [render plugin](#render-plugins) for the view library you want to 
 then simply use it.
 
 If there is no render plugin,
-then [take control over rendering](#htmlrender--domrender).
+then [take control over rendering](#how-htmlrender--domrender).
 That way you are able to use any view library.
 
 

@@ -11,21 +11,16 @@
 !VAR ASYNC_DATA Async Data: `addInitialProps`
 !VAR CONTROL_HTML HTML: `index.html`, `<head>`, `<meta>`, `<link>`, ...
 
-!VAR RENDER_WHEN `renderToDom`, `renderToHtml` & `renderHtmlAtBuildTime`
-!VAR RENDER_HOW `htmlRender` & `domRender`
+!VAR RENDER_WHEN Where & when: `renderToDom`, `renderToHtml` & `renderHtmlAtBuildTime`
+!VAR RENDER_HOW How: `htmlRender` & `domRender`
 
-!VAR MPA_APP MPA
-!VAR SPA_APP SPA
+!VAR SPA_APP SPA & MPA
 !VAR SSR_APP SSR
-!VAR BFA_APP BFA
-!VAR MIXED_APPS Mixed Apps
 !VAR STATIC_WEBSITE Static Website
+!VAR MIXED_APPS Mixed Apps & BFA
 
-!VAR PAGE_CONFIG Page Config `*.page.js` - Overview
-!VAR INITIAL_PROPS Page Config `*.page.js` - Initial Props `initialProps`
-!VAR HTML_CONFIG Page Config `*.page.js` - HTML
-!VAR RENDER_CONFIG Page Config `*.page.js` - Rendering
-!VAR SSR_COIN_CONFIG Global Config `goldpage.config.js`
+!VAR PAGE_CONFIG Page Config `*.page.js`
+!VAR GOLDPAGE_CONFIG Goldpage Config `goldpage.config.js`
 !VAR CLI_REF CLI
 
 !VAR ADD_PROVIDERS Providers: Redux / React Router / Vuex / Vue Router / GraphQL Apollo / Relay / ...
@@ -45,7 +40,7 @@
 
 
 
-!INLINE li-1 Intro
+!INLINE li-1 Introduction
 !INLINE li-2 !VAR|LINK WHAT_IS_GOLDPAGE
 !INLINE li-2 !VAR|LINK WHY_GOLDPAGE
 !INLINE li-1 Usage
@@ -58,18 +53,13 @@
 !INLINE li-2 !VAR|LINK RENDER_WHEN
 !INLINE li-2 !VAR|LINK RENDER_HOW
 !INLINE li-2-header App Types
-!INLINE li-2 !VAR|LINK MPA_APP
 !INLINE li-2 !VAR|LINK SPA_APP
 !INLINE li-2 !VAR|LINK SSR_APP
-!INLINE li-2 !VAR|LINK BFA_APP
-!INLINE li-2 !VAR|LINK MIXED_APPS
 !INLINE li-2 !VAR|LINK STATIC_WEBSITE
+!INLINE li-2 !VAR|LINK MIXED_APPS
 !INLINE li-2-header API Reference
 !INLINE li-2 !VAR|LINK PAGE_CONFIG
-!INLINE li-2 !VAR|LINK INITIAL_PROPS
-!INLINE li-2 !VAR|LINK HTML_CONFIG
-!INLINE li-2 !VAR|LINK RENDER_CONFIG
-!INLINE li-2 !VAR|LINK SSR_COIN_CONFIG
+!INLINE li-2 !VAR|LINK GOLDPAGE_CONFIG
 !INLINE li-2 !VAR|LINK CLI_REF
 !INLINE li-2-header Recipes
 !INLINE li-2 !VAR|LINK ADD_PROVIDERS
@@ -385,9 +375,13 @@ Example:
 
 
 
-## !VAR MPA_APP
+## !VAR SPA_APP
 
-!INLINE ./snippets/app-type-intro.md an MPA
+> :information_source: You can use Goldpage and create a prototype without reading this section and without knowing what an SPA or an MPA is.
+
+> :warning: This section is meant for readers that know what SPAs and MPAs are.
+
+If you want an MPA
 then you don't have to do anything;
 by default, Goldpage builds an MPA:
 - By default, a page is rendered only in the browser. (That is: `renderToDom: true` and `renderToHtml: false`. We explain `renderToHtml` and `renderToDom` at !VAR|LINK RENDER_WHEN.)
@@ -395,18 +389,12 @@ by default, Goldpage builds an MPA:
 
 These defaults corresponds to an MPA.
 
-!INLINE ./snippets/section-footer.md #readme
-
-
-
-## !VAR SPA_APP
-
-!INLINE ./snippets/app-type-intro.md an SPA
+If you want an SPA
 then:
 - Create a single page with a catch-all route. (That is, create only one page config with `route: '/:param*`; all URLs will be routed to this single page.)
 - Use a browser-side routing such as React Router. (We elaborate more at !VAR|LINK CONTROL_ROUTING.)
 
-Note that an MPA is almost always a better alternative than an SPA.
+Note that an MPA is usually a better alternative than an SPA.
 And, by default, Goldpage builds an MPA.
 So, if you want an SPA, this means that you most likely don't have to do anything.
 (AN MPA is basically the same than an SPA but with server-side routing and code-splitting.)
@@ -424,55 +412,6 @@ then:
 - Set `renderToHtml: true` and `renderToDom: true` to all your page configs. (We explain `renderToHtml` and `renderToDom` at !VAR|LINK RENDER_WHEN.)
 
 (FYI, an SSR app is what you get when you use Next.js or Nuxt.js.)
-
-!INLINE ./snippets/section-footer.md #readme
-
-
-
-## !VAR BFA_APP
-
-> :information_source: You can use Goldpage and create a prototype without reading this section and without knowing what a BFA is.
-
-Goldpage introduces a new app type
-we call BFA (Backend First App).
-
-The idea of a BFA is to
-use React (or Vue)
-primarily as an HTML template engine and
-only secondarily to implement interactive views.
-
-A BFA is an app with mixed `renderToDom` and `renderToHtml` settings to achieve:
-- Fast mobile pages
-- High development speed
-- Reliable SEO & social sharing
-
-More at [BFA](/bfa.md).
-
-!INLINE ./snippets/section-footer.md #readme
-
-
-
-## !VAR MIXED_APPS
-
-> :information_source: You can use Goldpage and create a prototype without reading this section and without knowing what a BFA is.
-
-> :warning:
->
-> This document assumes that you know the difference between CSR and SSR,
-> between `renderToDom` and `renderToHtml`,
-> and between an interactive page and a non-interactive page.
-> You can learn about all this
-> at [CSR & SSR Explained](/docs/csr-and-ssr-explained.md).
-
-Tools usually offer CSR or SSR in an all-or-nothing way:
-either your entire app is CSR'd or SSR'd.
-
-Our `renderToHtml` and `renderToDom` page configs give you fine grain control and
-allow you to mix all kinds of pages &mdash; one page can use CSR (`renderToDom: true` & `renderToHtml: false`) while another page can use SSR (`renderToDom: false` & `renderToHtml: true`).
-
-For example,
-if your app is non-interactive with the exception of one interactive page, then
-you can use CSR for that interactive page (`renderToDom: true` and `renderToHtml: false`) and use SSR for all your other non-interactive pages (`renderToDom: false` and `renderToHtml: true`).
 
 !INLINE ./snippets/section-footer.md #readme
 
@@ -501,6 +440,45 @@ and deploy the directory `.build/browser/`
 to your static host.
 
 (FYI, a static website is what you get when you use Gastby.)
+
+!INLINE ./snippets/section-footer.md #readme
+
+
+
+## !VAR MIXED_APPS
+
+> :information_source: You can use Goldpage and create a prototype without reading this section and without knowing what mixed apps are and what a BFA is.
+
+> :warning:
+> This document assumes that you know the difference between CSR and SSR,
+> between `renderToDom` and `renderToHtml`,
+> and between an interactive page and a non-interactive page.
+> You can learn about all this
+> at [CSR & SSR Explained](/docs/csr-and-ssr-explained.md).
+
+Tools usually offer CSR or SSR in an all-or-nothing way:
+either your entire app is CSR'd or SSR'd.
+
+Our `renderToHtml` and `renderToDom` page configs give you fine grain control and
+allow you to mix all kinds of pages &mdash; one page can use CSR (`renderToDom: true` & `renderToHtml: false`) while another page can use SSR (`renderToDom: false` & `renderToHtml: true`).
+
+For example,
+if your app is non-interactive with the exception of one interactive page, then
+you can use CSR for that interactive page (`renderToDom: true` and `renderToHtml: false`) and use SSR for all your other non-interactive pages (`renderToDom: false` and `renderToHtml: true`).
+
+Such mixed app is what we
+call a BFA (Backend First App).
+
+The idea of a BFA is to
+use React (or Vue)
+primarily as an HTML template engine and
+only secondarily to implement interactive views.
+To achieve:
+- Fast mobile pages
+- High development speed
+- Reliable SEO
+
+More at [BFA](/bfa.md).
 
 !INLINE ./snippets/section-footer.md #readme
 
@@ -622,19 +600,24 @@ Examples:
 
 ## !VAR PAGE_CONFIG
 
-This page config example showcases all page configs.
+The following page config showcases an overview of the available page configs.
 
 ~~~js
 // pages/*.page.js
 
 !INLINE /examples/html/pages/product-details.page.js --hide-source-path
 ~~~
+We now list all configs.
 
-!INLINE ./snippets/section-footer.md #readme
+!VAR INITIAL_PROPS All initial props `initialProps`
+!VAR HTML_CONFIG All page configs for the page's HTML document
+!VAR RENDER_CONFIG All render page configs: `renderToDom`, `renderToHtml` & `renderHtmlAtBuildTime`
 
+- !VAR|LINK INITIAL_PROPS
+- !VAR|LINK HTML_CONFIG
+- !VAR|LINK RENDER_CONFIG
 
-
-## !VAR INITIAL_PROPS
+##### !VAR INITIAL_PROPS
 
 This `initialProps` assertion showcases all `initialProps`.
 
@@ -642,11 +625,7 @@ This `initialProps` assertion showcases all `initialProps`.
 !INLINE /examples/html/pages/assert_initialProps.js --hide-source-path
 ~~~
 
-!INLINE ./snippets/section-footer.md #readme
-
-
-
-## !VAR HTML_CONFIGS
+##### !VAR HTML_CONFIGS
 
 List of all HTML configs:
 
@@ -654,11 +633,7 @@ List of all HTML configs:
 !INLINE /examples/html/pages/getHtmlOptions.js --hide-source-path
 ~~~
 
-!INLINE ./snippets/section-footer.md #readme
-
-
-
-## !VAR RENDER_CONFIG
+##### !VAR RENDER_CONFIG
 
 A page has three render configs:
  - `renderToDom`
@@ -737,7 +712,7 @@ You can then deploy your frontend to a static host such as Netlify or GitHub Pag
 
 
 
-## !VAR SSR_COIN_CONFIG
+## !VAR GOLDPAGE_CONFIG
 
 We try to keep Goldpage as zero-config as possible
 and `ssr.config.js` has only few options.
