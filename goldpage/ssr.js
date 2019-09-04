@@ -10,7 +10,7 @@ const {loadDependencies} = require('@brillout/autoload');
 module.exports = create_ssr();
 
 function create_ssr() {
-  config.ssrCoin = {};
+  config.goldpage = {};
 
   require('@goldpage/core');
   require('@goldpage/browser');
@@ -20,7 +20,7 @@ function create_ssr() {
 
   const {packageJsonFile, loaded: loadedPlugins} = loadDependencies();
 
-  config.ssrCoin.projectDir = projectDir;
+  config.goldpage.projectDir = projectDir;
 
   const ssr = new SSR();
 
@@ -35,7 +35,7 @@ function create_ssr() {
 
   function SSR() {
 
-    config.ssrCoin.getPageConfigFiles = () => {
+    config.goldpage.getPageConfigFiles = () => {
       assert.usage(
         ssr.pagesDir,
         "You need to set `pagesDir`",
@@ -52,7 +52,7 @@ function create_ssr() {
     this.build = build;
     Object.assign(
       this,
-      config.ssrCoin.serverAdapters,
+      config.goldpage.serverAdapters,
       {build},
     );
 
@@ -67,18 +67,18 @@ function create_ssr() {
 
       /*
       if( prop==='log' ){
-        config.ssrCoin.logOptions = config.ssrCoin.logOptions || {};
+        config.goldpage.logOptions = config.goldpage.logOptions || {};
         prop = 'logOptions';
         return true;
       }
       */
       if( prop==='silent' ){
-        config.ssrCoin.logOptions = config.ssrCoin.logOptions || {};
-        config.ssrCoin.logOptions.onlyLogFailure = true;
+        config.goldpage.logOptions = config.goldpage.logOptions || {};
+        config.goldpage.logOptions.onlyLogFailure = true;
         return true;
       }
 
-      config.ssrCoin[prop] = value;
+      config.goldpage[prop] = value;
 
       return true;
     }
@@ -100,16 +100,16 @@ function create_ssr() {
 
   function applySsrCoinConfig() {
     assert.internal(projectDir);
-    let ssrCoinConfigPath = path.resolve(projectDir, 'goldpage.config.js');
+    let goldpageConfigPath = path.resolve(projectDir, 'goldpage.config.js');
     try {
-      ssrCoinConfigPath = require.resolve(ssrCoinConfigPath);
+      goldpageConfigPath = require.resolve(goldpageConfigPath);
     } catch(err) {
       return;
     }
-    const ssrCoinConfig = require(ssrCoinConfigPath);
+    const goldpageConfig = require(goldpageConfigPath);
     Object.assign(
       ssr,
-      ssrCoinConfig,
+      goldpageConfig,
     );
   }
 
@@ -120,7 +120,7 @@ function create_ssr() {
   function autobuild() {
     /*
     process.nextTick(() => {
-      if( isDev() && !config.ssrCoin.buildStarted && !process.env.ALREADY_BUILT ){
+      if( isDev() && !config.goldpage.buildStarted && !process.env.ALREADY_BUILT ){
         build();
       }
     });
@@ -131,22 +131,22 @@ function create_ssr() {
     /*
     assert.usage(
       loadedPlugins.length>0,
-      "No ssrCoin Plugins loaded. Add some to "+packageJsonFile,
+      "No goldpage Plugins loaded. Add some to "+packageJsonFile,
     );
     */
-    const isMissing = !!config.ssrCoin.runBuild;
+    const isMissing = !!config.goldpage.runBuild;
     assert.usage(
       isMissing,
       {loadedPlugins},
       "A builder plugin is missing. Add one, such as `@goldpage/webpack`, to "+packageJsonFile,
     );
-    await config.ssrCoin.runBuild();
+    await config.goldpage.runBuild();
   }
 
   /*
   function assert_reconfig() {
     assert_usage(
-      config.ssrCoin.rend,
+      config.goldpage.rend,
       {loadedPlugins},
       "A builder plugin is missing. Add one, such as `@goldpage/webpack`, to "+packageJsonFile,
     );

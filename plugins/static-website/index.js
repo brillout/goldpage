@@ -3,7 +3,7 @@ const serverFile = require.resolve('./server');
 
 const config = require('@brillout/reconfig');
 
-config.ssrCoin.serverEntryFile = serverFile;
+config.goldpage.serverEntryFile = serverFile;
 
-config.ssrCoin.defaultPageConfig = config.ssrCoin.defaultPageConfig || {};
-config.ssrCoin.defaultPageConfig.renderHtmlAtBuildTime = true;
+config.goldpage.defaultPageConfig = config.goldpage.defaultPageConfig || {};
+config.goldpage.defaultPageConfig.renderHtmlAtBuildTime = true;

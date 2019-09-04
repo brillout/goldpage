@@ -26,7 +26,7 @@ function getPageBrowserEntries(pageModules) {
 
 function assert_usage__defaultPageConfig() {
     const configsUsedInBrowser = ['route', 'view', 'addInitialProps'];
-    const {defaultPageConfig} = config.ssrCoin;
+    const {defaultPageConfig} = config.goldpage;
     if( !defaultPageConfig ) return;
     configsUsedInBrowser.forEach(prop => {
         assert_usage(
@@ -118,7 +118,7 @@ function getAllBrowserConfigs({browserEntrySpec, pageConfig, pageFile, pageName}
 
     function addBrowserConfigs() {
         config
-        .ssrCoin
+        .goldpage
         .getBrowserConfigs()
         .forEach(({configName, configFile, configFiles}) => {
             assert_internal(!configFiles === !!configFile);
@@ -157,7 +157,7 @@ function getAllBrowserConfigs({browserEntrySpec, pageConfig, pageFile, pageName}
     }
 
     function addInitFunctions() {
-        let initFcts = config.ssrCoin.browserInitFunctions.slice();
+        let initFcts = config.goldpage.browserInitFunctions.slice();
         initFcts = initFcts.filter(({doNotInclude}) => !doNotInclude || !doNotInclude({pageConfig}));
         initFcts.sort((f1, f2) => f1.executionOrder - f2.executionOrder);
         initFcts.forEach(({initFunctionFile, name, browserConfigsNeeded}) => {
@@ -187,7 +187,7 @@ function getBrowserEntrySpec({pageConfig, pageFile, pageName}) {
         browserInitPath = pathModule.resolve(pageDir, initFile);
         assert_browserInitPath({browserInitPath, initFile, pageName, pageDir});
     } else {
-        const {browserInitFile} = config.ssrCoin;
+        const {browserInitFile} = config.goldpage;
         assert_usage(browserInitFile);
         assert_usage(pathModule.isAbsolute(browserInitFile));
         browserInitPath = browserInitFile;

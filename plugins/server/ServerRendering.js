@@ -30,8 +30,8 @@ async function getHtml(requestObject) {
     const {url} = requestObject;
     assert_internal(url.startsWith('http'), {url});
 
-    const {pages__fullProps} = config.ssrCoin.getBuildInfo();
-    const {renderPageToHtml, router: routerFile} = config.ssrCoin;
+    const {pages__fullProps} = config.goldpage.getBuildInfo();
+    const {renderPageToHtml, router: routerFile} = config.goldpage;
     const htmlRender = (
    // eval('require')
       require

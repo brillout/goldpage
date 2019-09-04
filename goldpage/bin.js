@@ -27,7 +27,7 @@ function parseArguments() {
     args.length===2 || args.length===1
   );
   assert_cli_usage(
-    args.length===2 || config.ssrCoin.serverEntryFile,
+    args.length===2 || config.goldpage.serverEntryFile,
     "Couldn't not find the server. Please add the server path argument `"+USAGE_PATH_ARG+"`.",
   );
   assert_cli_usage(

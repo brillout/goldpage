@@ -1,14 +1,14 @@
 const config = require('@brillout/reconfig');
 
-config.ssrCoin.transpileServerCode = true;
+config.goldpage.transpileServerCode = true;
 
-config.ssrCoin.typescript = config.ssrCoin.typescript || {};
+config.goldpage.typescript = config.goldpage.typescript || {};
 
-config.ssrCoin.webpackBrowserConfig = config.ssrCoin.webpackBrowserConfig || [];
-config.ssrCoin.webpackBrowserConfig.push(webpackMod);
+config.goldpage.webpackBrowserConfig = config.goldpage.webpackBrowserConfig || [];
+config.goldpage.webpackBrowserConfig.push(webpackMod);
 
-config.ssrCoin.webpackNodejsConfig = config.ssrCoin.webpackNodejsConfig || [];
-config.ssrCoin.webpackNodejsConfig.push(webpackMod);
+config.goldpage.webpackNodejsConfig = config.goldpage.webpackNodejsConfig || [];
+config.goldpage.webpackNodejsConfig.push(webpackMod);
 
 function webpackMod({config: webpackConfig, getRule, setRule, addExtension, addBabelPreset, addBabelPlugin}) {
   addSyntaxTransforms({webpackConfig, addBabelPreset, addBabelPlugin});
@@ -24,7 +24,7 @@ function addSyntaxTransforms({webpackConfig, addBabelPreset, addBabelPlugin}) {
   const presetOptions = {
     isTSX: true,
     allExtensions: true,
-    ...config.ssrCoin.typescript.babelPresetTypescript,
+    ...config.goldpage.typescript.babelPresetTypescript,
   };
 
   addBabelPreset(webpackConfig, [require.resolve('@babel/preset-typescript'), presetOptions]);
@@ -33,17 +33,17 @@ function addSyntaxTransforms({webpackConfig, addBabelPreset, addBabelPlugin}) {
 }
 
 function addTypechecking({webpackConfig}) {
-  if( ! (config.ssrCoin.typescript.forkTsCheckerWebpackPlugin||{}).enable ) {
+  if( ! (config.goldpage.typescript.forkTsCheckerWebpackPlugin||{}).enable ) {
     return;
   }
 
-  const tsconfig = (config.ssrCoin.typescript.forkTsCheckerWebpackPlugin||{}).tsconfig || get_tsconfig_path(webpackConfig);
+  const tsconfig = (config.goldpage.typescript.forkTsCheckerWebpackPlugin||{}).tsconfig || get_tsconfig_path(webpackConfig);
 
   const checkerOptions = {
     silent: true,
     async: false,
     tsconfig,
-    ...config.ssrCoin.typescript.forkTsCheckerWebpackPlugin,
+    ...config.goldpage.typescript.forkTsCheckerWebpackPlugin,
   };
 
   const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');

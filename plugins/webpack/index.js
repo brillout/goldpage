@@ -3,7 +3,7 @@ const runBuild = require('./runBuild');
 const getBuildInfo = require('./getBuildInfo');
 
 Object.assign(
-  config.ssrCoin,
+  config.goldpage,
   {
     runBuild,
     getBuildInfo,

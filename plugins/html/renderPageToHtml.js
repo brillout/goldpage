@@ -7,7 +7,7 @@ module.exports = renderPageToHtml;
 
 async function renderPageToHtml({initialProps}) {
   assert_initialProps(initialProps);
-  const {htmlRender, projectDir} = config.ssrCoin;
+  const {htmlRender, projectDir} = config.goldpage;
   assert.internal(projectDir);
   let htmlRender__file;
   try {

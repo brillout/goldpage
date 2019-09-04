@@ -3,7 +3,7 @@ const getPageBrowserEntriesFile = require.resolve('./getPageBrowserEntries');
 const getPageHtmlsFile = require.resolve('./getPageHtmls');
 
 Object.assign(
-  config.ssrCoin,
+  config.goldpage,
   {
     getPageHtmlsFile,
     getPageBrowserEntriesFile,
@@ -17,7 +17,7 @@ function getBrowserConfigs() {
 
     const configPaths = {};
     config
-    .ssrCoin
+    .goldpage
     .browserConfigs
     .forEach(browserConfigSpec => {
         if( browserConfigSpec.constructor === String ) {
@@ -45,9 +45,9 @@ function getBrowserConfigs() {
 
             const configFile = (() => {
                 if( configIsList ) return null;
-                let filePath = config.ssrCoin[configPath];
+                let filePath = config.goldpage[configPath];
                 try {
-                  filePath = require.resolve(filePath, {paths: [config.ssrCoin.projectDir]});
+                  filePath = require.resolve(filePath, {paths: [config.goldpage.projectDir]});
                 } catch(err) {
                   assert.usage(
                     false,
@@ -68,7 +68,7 @@ function getBrowserConfigs() {
             const configFiles = (() => {
                 if( ! configIsList ) return null;
                 const filePaths = (
-                  config.ssrCoin[configPath]
+                  config.goldpage[configPath]
                   .map(filePath => {
                     assert_plugin(filePath);
                     filePath = require.resolve(filePath);

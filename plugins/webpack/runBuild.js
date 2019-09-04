@@ -9,7 +9,7 @@ module.exports = runBuild;
 let alreadyRun = false;
 
 function runBuild() {
-  reconfig.ssrCoin.buildStarted = true;
+  reconfig.goldpage.buildStarted = true;
   assert.usage(
     alreadyRun===false,
     "You can start the build only once.",
@@ -32,7 +32,7 @@ function runBuild() {
     getPageBrowserEntriesFile,
     transpileServerCode,
     serverEntryFile,
-  } = reconfig.ssrCoin;
+  } = reconfig.goldpage;
 
   const getPageHtmls = require(getPageHtmlsFile);
   const getPageBrowserEntries = require(getPageBrowserEntriesFile);
@@ -59,7 +59,7 @@ function runBuild() {
 let onBuildPromise;
 let alreadyQueued;
 async function onBuildDone(...args) {
-  const {onBuild} = reconfig.ssrCoin;
+  const {onBuild} = reconfig.goldpage;
   if( alreadyQueued ) return;
   if( onBuildPromise ) {
     alreadyQueued = true;
@@ -77,7 +77,7 @@ function assemble_modifiers(modifier_name) {
     // `config` holds a webpack config
     let supra_modifier = ({config}) => config;
 
-    const modifiers = reconfig.ssrCoin[modifier_name] || [];
+    const modifiers = reconfig.goldpage[modifier_name] || [];
 
     // We assemble all `configParts`'s config modifiers into one `supra_modifier`
     modifiers
@@ -107,7 +107,7 @@ function getPageFiles() {
     const {
       pagesDir,
       getPageConfigFiles,
-    } = reconfig.ssrCoin;
+    } = reconfig.goldpage;
     const configFileNames = getPageConfigFiles();
 
     assert.usage(configFileNames.constructor===Array);

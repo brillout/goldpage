@@ -7,7 +7,7 @@ const domRender = require.resolve('./domRender');
 const htmlRender = require.resolve('./htmlRender');
 
 Object.assign(
-  config.ssrCoin,
+  config.goldpage,
   {
     htmlRender,
     domRender,
@@ -17,8 +17,8 @@ Object.assign(
 
 const webpackMod = require('./webpackMod');
 
-config.ssrCoin.webpackBrowserConfig = config.ssrCoin.webpackBrowserConfig || [];
-config.ssrCoin.webpackBrowserConfig.push(webpackMod);
+config.goldpage.webpackBrowserConfig = config.goldpage.webpackBrowserConfig || [];
+config.goldpage.webpackBrowserConfig.push(webpackMod);
 
-config.ssrCoin.webpackNodejsConfig = config.ssrCoin.webpackNodejsConfig || [];
-config.ssrCoin.webpackNodejsConfig.push(webpackMod);
+config.goldpage.webpackNodejsConfig = config.goldpage.webpackNodejsConfig || [];
+config.goldpage.webpackNodejsConfig.push(webpackMod);

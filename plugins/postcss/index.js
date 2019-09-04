@@ -4,11 +4,11 @@ const config = require('@brillout/reconfig');
 // The server doesn't load any CSS
 // Thus we modify only the browser config and not the server config
 
-config.ssrCoin.webpackBrowserConfig = config.ssrCoin.webpackBrowserConfig || [];
-config.ssrCoin.webpackBrowserConfig.push(webpackMod);
+config.goldpage.webpackBrowserConfig = config.goldpage.webpackBrowserConfig || [];
+config.goldpage.webpackBrowserConfig.push(webpackMod);
 
 function webpackMod({config: webpackConfig, setRule}) {
-  const loaderOptions = config.ssrCoin.postcss;
+  const loaderOptions = config.goldpage.postcss;
 
   const use = [
     require.resolve('css-loader'),

@@ -3,8 +3,8 @@ const webpackNodejsConfig = require('./webpackNodejsConfig');
 
 const config = require('@brillout/reconfig');
 
-config.ssrCoin.webpackBrowserConfig = config.ssrCoin.webpackBrowserConfig || [];
-config.ssrCoin.webpackBrowserConfig.push(webpackBrowserConfig);
+config.goldpage.webpackBrowserConfig = config.goldpage.webpackBrowserConfig || [];
+config.goldpage.webpackBrowserConfig.push(webpackBrowserConfig);
 
-config.ssrCoin.webpackNodejsConfig = config.ssrCoin.webpackNodejsConfig || [];
-config.ssrCoin.webpackNodejsConfig.push(webpackNodejsConfig);
+config.goldpage.webpackNodejsConfig = config.goldpage.webpackNodejsConfig || [];
+config.goldpage.webpackNodejsConfig.push(webpackNodejsConfig);
