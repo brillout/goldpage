@@ -90,7 +90,7 @@ Install `@goldpage/postcss`.
 $ npm install @goldpage/postcss
 ~~~
 
-The `ssr-coin/postcss` plugin is automatically loaded.
+The `@goldpage/postcss` plugin is automatically loaded.
 
 Configure PostCSS:
 
@@ -152,7 +152,8 @@ const LandingComponent = () => (
 const LandingPage = {
   route: '/',
   view: LandingComponent,
-  doNotRenderInBrowser: true,
+  renderToDom: false,
+  renderToHtml: true,
 };
 
 export default LandingPage;

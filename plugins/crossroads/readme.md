@@ -105,6 +105,7 @@ export default {
   view: ({name}) => (
     <div>Hello {name}</div>
   ),
+  renderToHtml: true,
 };
 ~~~
 

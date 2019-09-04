@@ -106,10 +106,11 @@ export default {
   route: '/',
   view: () => (
     <div>
-      Welcome to ssr-coin.
+      Welcome to Goldpage.
       <Time/>
     </div>
   ),
+  renderToHtml: true,
 };
 
 function Time() {

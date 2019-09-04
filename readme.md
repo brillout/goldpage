@@ -77,7 +77,7 @@
 -->
 <p align="center">
   <a href="/../../#readme">
-    <img align="center" src="https://github.com/reframejs/ssr-coin/raw/master/docs/ssr-coin.min.svg?sanitize=true" height=96 style="max-width:100%;" alt="ssr-coin"/>
+    <img align="center" src="https://github.com/reframejs/goldpage/raw/master/docs/assets/icon-with-text.svg?sanitize=true" height=96 style="max-width:100%;" alt="Goldpage"/>
   </a>
 </p>
 
@@ -87,9 +87,14 @@
 
 
 
-<br/> &nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a href=#what-is-ssr-coin>What is `ssr-coin`</a>
-<br/> &nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a href=#why-ssr-coin>Why `ssr-coin`</a>
-<br/> &nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a href=#plugins>Plugins</a>
+
+
+
+
+<br/> &nbsp;&nbsp;&nbsp;&#8226;&nbsp; Intro
+<br/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a href=#what-is-goldpage>What is Goldpage</a>
+<br/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a href=#why-goldpage>Why Goldpage</a>
+
 <br/> &nbsp;&nbsp;&nbsp;&#8226;&nbsp; Usage
 <br/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a href=#getting-started>Getting Started</a>
 <sub>
@@ -100,17 +105,39 @@ Basics
 <br/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a href=#css--static-assets>CSS & Static Assets</a>
 <br/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a href=#async-data-addinitialprops>Async Data: `addInitialProps`</a>
 <br/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a href=#html-indexhtml-head-meta-link->HTML: `index.html`, `<head>`, `<meta>`, `<link>`, ...</a>
-<br/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a href=#control-rendering>Control Rendering</a>
-<br/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a href=#server-side-transpilation--server-side-autoreload>Server-Side Transpilation & Server-side Autoreload</a>
-<br/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a href=#performance-donotrenderinbrowser--renderhtmlatbuildtime>Performance: `doNotRenderInBrowser` & `renderHtmlAtBuildTime`</a>
+
+<sub>
+<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Render Control
+</sub>
+<br/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a href=#rendertodom-rendertohtml--renderhtmlatbuildtime>`renderToDom`, `renderToHtml` & `renderHtmlAtBuildTime`</a>
+<br/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a href=#htmlrender--domrender>`htmlRender` & `domRender`</a>
+
+<sub>
+<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+App Types
+</sub>
+<br/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a href=#mpa>MPA</a>
+<br/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a href=#spa>SPA</a>
+<br/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a href=#ssr>SSR</a>
+<br/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a href=#bfa>BFA</a>
+<br/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a href=#mixed-apps>Mixed Apps</a>
+<br/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a href=#static-website>Static Website</a>
+
 <sub>
 <br/>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 API Reference
 </sub>
-<br/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a href=#page-config-pagejs>Page Config `*page.js`</a>
-<br/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a href=#global-config-ssr-coinconfigjs>Global Config `ssr-coin.config.js`</a>
+<br/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a href=#page-config-pagejs---overview>Page Config `*.page.js` - Overview</a>
+<br/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a href=#page-config-pagejs---initial-props-initialprops>Page Config `*.page.js` - Initial Props `initialProps`</a>
+<br/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a href=#page-config-pagejs---html>Page Config `*.page.js` - HTML</a>
+<br/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a href=#page-config-pagejs---rendering>Page Config `*.page.js` - Rendering</a>
+<br/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a href=#global-config-goldpageconfigjs>Global Config `goldpage.config.js`</a>
 <br/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a href=#cli>CLI</a>
+
 <sub>
 <br/>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -122,20 +149,22 @@ Recipes
 <br/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a href=#css-pre-processors-postcss--sass--less-->CSS pre-processors: PostCSS / Sass / Less / ...</a>
 <br/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a href=#routing-server-side-routing--browser-side-routing--react-router--vue-router-->Routing: Server-side Routing / Browser-side Routing / React Router / Vue Router / ...</a>
 <br/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a href=#frontend-libraries-google-analytics--jquery--bootstrap--semantic-ui-->Frontend Libraries: Google Analytics / jQuery / Bootstrap / Semantic UI / ...</a>
-<br/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a href=#server-frameworks-express--koa--hapi--fastify-->Server Frameworks: Express / Koa / Hapi / Fastify / ...</a>
+<br/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a href=#server-express--koa--hapi--fastify-->Server: Express / Koa / Hapi / Fastify / ...</a>
 <br/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a href=#view-libraries-react--vue--preact-->View Libraries: React / Vue / Preact / ...</a>
 <br/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a href=#process-managers-docker--systemd--pm2-->Process Managers: Docker / systemd / PM2 / ...</a>
-<br/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a href=#generate-static-websites>Generate Static Websites</a>
+
+<br/> &nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a href=#plugins>Plugins</a>
 
 <br/>
 
-## What is `ssr-coin`
 
-`ssr-coin` is a library to add [server-side rendering (SSR)](https://github.com/brillout/awesome-universal-rendering#introduction) to your Node.js app.
 
-It's a do-one-thing-do-it-well library: it takes care of SSR and SSR only and leaves the rest to you.
+## What is Goldpage
 
-You define so-called page configs
+Goldpage is a small tool to easily create a frontend
+with a modern view library: React, Vue, RNW, ...
+
+You define so-called page configs:
 
 ~~~js
 // A page config
@@ -143,156 +172,86 @@ export default {
   route: '/hello/:name',
   view: ({name}) => (
     <div>
-      Hello {name}, welcome to ssr-coin.
+      Hello {name}, welcome to Goldpage.
     </div>
   ),
 };
 ~~~
 
-and `ssr-coin` takes care of SSR'ing your pages:
-- It transpiles and bundles your pages' JavaScript, CSS, and other static assets (with Webpack)
-- It routes your pages (with path-to-regexp)
-- It servers your pages (with server middlewares for Express, Koa, Hapi, ...)
+And Goldpage takes care of the rest:
+- Goldpage builds your pages.
+  ~~~shell
+  # This CLI command transpiles and bundles the source code of your pages
+  $ goldpage build
+  ~~~
+- Goldpage serves your pages.
+  ~~~js
+  // Note that Goldpage can be used with any server (Express/Koa/Hapi/...)
 
-With `ssr-coin`, you can add SSR to your app with only a couple of lines.
+  const express = require('express');
+  const goldpage = require('@goldpage/express');
 
-**Example**
+  const app = express();
 
-The following page showcases SSR:
-- The page is interactive (as you can see in the video, the user can modify the state of the counter).
-- The page is server-side rendered (as you can see in the video, the content of the page is rendered to HTML, such as "brillout/awesome-react-components").
-
-<img align="right" src="https://github.com/reframejs/ssr-coin/raw/master/docs/ssr-coin_example_video.gif" width=336 height=706 style="max-width:100%;"/>
-
-~~~js
-// /examples/basics/pages/repos/repos.page.js
-
-// We use React but ssr-coin also works with Vue, RNW, ...
-import React from 'react';
-
-import getRepositories from './data/getRepositories';
-
-import RepoList from './views/RepoList';
-import Counter from './views/Counter';
-
-// The page config:
-export default {
-  route: '/repos/:username',
-  addInitialProps,
-  view: Repos,
-  title,
-};
-
-// `getRepositories(username)` uses the GitHub API
-// to load the repositories of `username`.
-// `addInitialProps` makes `repositories` available
-// to `view`.
-async function addInitialProps({username}) {
-  const repositories = await getRepositories(username);
-  return {repositories};
-}
-
-function Repos({username, repositories}) {
-  return (
-    <div>
-      Hello <b>{username}</b>,
-
-      <br/><br/>
-      Your repositories are:
-      <RepoList repositories={repositories} />
-
-      <br/><br/>
-      This page is interactive:
-      <Counter/>
-    </div>
-  );
-}
-
-function title({username, repositories}) {
-  return (
-    username+' repositories ('+repositories.length+')'
-  );
-}
-~~~
-
-
-<br/>
-
-<p align="center">
-
-<sup>
-<a href="https://github.com/reframejs/ssr-coin/issues/new">Open a ticket</a> or
-<a href="https://discord.gg/kqXf65G">chat with us</a>
-if you have questions, feature requests, or if you just want to talk to us.
-</sup>
-
-<sup>
-We enjoy talking with our users :-).
-</sup>
-
-<br/>
-
-<sup>
-<a href="#readme"><b>&#8679;</b> <b>TOP</b> <b>&#8679;</b></a>
-</sup>
-
-</p>
-
-<br/>
-<br/>
+  // The Goldpage middleware serves our pages.
+  app.use(goldpage);
+  ~~~
 
 
 
-## Why `ssr-coin`
+## Why Goldpage
 
-<br/>
-:dove:&nbsp;&nbsp; <b>Freedom</b>
+**All app types**
 
-`ssr-coin` takes care of SSR and SSR only &mdash;
-it is unopinionated about the rest of your stack
-and works with:
-- Any view libray: React, Vue, React Native Web, ...
-- Any server framework: Express, Koa, Hapi, ...
-- Any language: ES7, TypeScript, PostCSS, ...
-- Any provider: Redux, React Router, Vuex, Vue Router, GraphQL Apollo, Relay, ...
-- Any CSS-in-JS: Emotion, styled-components, ...
-- Any process manager: Docker, systemd, PM2, ...
+Goldpage supports all app types: you can create a so-called "SPA", or an "MPA", or an "SSR" app, or a "static website", etc.
 
-<br/>
-:sparkles:&nbsp; <b>Easy</b>
+You don't know what "SPA", "SSR" and "app type" mean?
+That's fine;
+with Goldpage you can start creating your app
+and learn about all that stuff later.
 
-We designed `ssr-coin` to be highly flexible with minimal configuration.
-Resulting into what we believe to be the easiest SSR solution out there.
+> :information_source:
+> <br/>
+> We elaborate for those who are already somewhat familiar with these different app types.
+> (If you are not: just skip this info bubble.)
+>
+> Not only does Goldpage allow you to create any app type but it also
+> allows you to easily switch from one app type to another.
+> This means that you can quickly create a prototype and worry about
+> choosing the right app type later.
+> For example, you can start with an SPA and
+> add SSR later.
+>
+> And,
+> not only do we support all common app types,
+> but we also introduce new app types.
+>
+> At
+> [Goldpage VS Others]()
+> we show how Goldpage allows you to create any app type and why it matters.
+> We also talk about our new app types.
 
-<br/>
-:battery:&nbsp; <b>Batteries Included</b>
+<!---
+**Design & Docs**
+-->
+**Design**
 
-`ssr-coin` comes with lots of features.
-Such as:
-- Browser auto-reload
-- Server auto-reload
-- Fully controllable rendering (how & when your pages are rendered)
-- Automatic code splitting
-- Optimal HTTP caching
+Goldpage is a do-one-thing-do-it-well library with a simple design.
 
-<br/>
-:zap:&nbsp; <b>Blazing Fast Mobile Pages</b>
+Goldpage can be used with
+any server (Express, Koa, Hapi, ...),
+any view libray (React, Vue, React Native Web, ...),
+any language (ES7, TypeScript, PostCSS, ...),
+any provider (Redux, React Router, Vuex, Vue Router, GraphQL Apollo, Relay, ...),
+any CSS-in-JS library (Emotion, styled-components, ...),
+and any process manager (Docker, systemd, PM2, ...).
 
-With the page config
-`doNotRenderInBrowser` you control whether a page is loaded & rendered in the browser.
-By setting `doNotRenderInBrowser: true`, the page has no (or very little) browser-side JavaScript.
+Our simple design makes Goldpage a flexible and rock-solid tool that is easy to use.
+We explain why at [Goldpage VS Others]() &mdash; if you're curious.
 
-For non-interactive pages, removing browser-side JavaScript is an effective way to achieve blazing fast performance on mobile.
-
-<br/>
-:mountain:&nbsp;&nbsp; <b>Future-proof & Rock-solid</b>
-
-`ssr-coin` takes care of SSR and SSR only &mdash;
-it is agnostic to the JavaScript ecosystem
-and can easily adapt to the libraries of the future.
-This makes it resilient and future-proof.
-
-`ssr-coin` will likely survive a long time and will eventually become rock-solid.
+<!---
+At last but not least, we enjoy writing opulent and beginner-friendly documentation.
+-->
 
 
 <br/>
@@ -300,7 +259,7 @@ This makes it resilient and future-proof.
 <p align="center">
 
 <sup>
-<a href="https://github.com/reframejs/ssr-coin/issues/new">Open a ticket</a> or
+<a href="https://github.com/reframejs/goldpage/issues/new">Open a ticket</a> or
 <a href="https://discord.gg/kqXf65G">chat with us</a>
 if you have questions, feature requests, or if you just want to talk to us.
 </sup>
@@ -324,32 +283,32 @@ We enjoy talking with our users :-).
 
 ## Getting Started
 
-This getting started is about adding `ssr-coin` to an exisiting app.
-If you don't already have an app or if you just want to try out `ssr-coin`,
+This getting started adds Goldpage to an exisiting app.
+If you don't have an app yet or if you just want to try out Goldpage,
 then use a [Reframe starter](https://github.com/reframejs/reframe#getting-started).
 
-0. Install `ssr-coin`.
+0. Install Goldpage.
 
    ~~~shell
-   npm install ssr-coin
+   npm install goldpage
    ~~~
 
-   Install a [render plugin](#render-plugins), such as `@ssr-coin/react`:
+   Install a [render plugin](#render-plugins), such as `@goldpage/react`:
    ~~~shell
-   npm install @ssr-coin/react
+   npm install @goldpage/react
    ~~~
 
-   Install a [server plugin](#server-plugins), such as `@ssr-coin/express`:
+   Install a [server plugin](#server-plugins), such as `@goldpage/express`:
    ~~~shell
-   npm install @ssr-coin/express
+   npm install @goldpage/express
    ~~~
 
-1. Add `ssr-coin` to your Node.js server.
+1. Add Goldpage to your Node.js server.
 
    With Express:
    ~~~js
    const express = require('express');
-   const ssr = require('ssr-coin');
+   const ssr = require('goldpage');
 
    const app = express();
    app.use(ssr.express);
@@ -362,7 +321,7 @@ then use a [Reframe starter](https://github.com/reframejs/reframe#getting-starte
 
    ~~~js
    const Hapi = require('hapi');
-   const ssr = require('ssr-coin');
+   const ssr = require('goldpage');
 
    (async ()=>{
      const server = Hapi.Server();
@@ -378,7 +337,7 @@ then use a [Reframe starter](https://github.com/reframejs/reframe#getting-starte
 
    ~~~js
    const Koa = require('koa');
-   const ssr = require('ssr-coin');
+   const ssr = require('goldpage');
 
    const app = new Koa();
    app.use(ssr.koa);
@@ -390,10 +349,10 @@ then use a [Reframe starter](https://github.com/reframejs/reframe#getting-starte
    With other server frameworks
    </summary>
 
-   `ssr-coin` can be used with any server framework.
+   Goldpage can be used with any server framework.
    But there is no documentation for this (yet).
    Open a GitHub issue
-   if you want to use `ssr-coin` with a server framework other than
+   if you want to use Goldpage with a server framework other than
    Express, Koa, or Hapi.
    </details>
 
@@ -418,6 +377,7 @@ then use a [Reframe starter](https://github.com/reframejs/reframe#getting-starte
      addInitialProps,
      view: Hello,
      title,
+     renderToHtml: true,
    };
 
    async function addInitialProps({name}) {
@@ -433,7 +393,7 @@ then use a [Reframe starter](https://github.com/reframejs/reframe#getting-starte
 
      return (
        <div>
-         Hello <span>{isReversed ? nameReversed : name}</span>, welcome to ssr-coin.
+         Hello <span>{isReversed ? nameReversed : name}</span>, welcome to Goldpage.
          <br/>
          <button onClick={() => setReverse(!isReversed)}>Reverse name</button>
        </div>
@@ -467,6 +427,7 @@ then use a [Reframe starter](https://github.com/reframejs/reframe#getting-starte
      addInitialProps,
      view: Hello,
      title,
+     renderToHtml: true,
    };
 
    async function addInitialProps({name}) {
@@ -493,7 +454,7 @@ then use a [Reframe starter](https://github.com/reframejs/reframe#getting-starte
 
    <template>
      <div>
-       Hello {{isReversed?nameReversed:name}}, welcome to <code>ssr-coin</code>.
+       Hello {{isReversed?nameReversed:name}}, welcome to <code>Goldpage</code>.
        <br/>
        <button v-on:click="toggleReverse">Reverse name</button>
      </div>
@@ -526,17 +487,23 @@ then use a [Reframe starter](https://github.com/reframejs/reframe#getting-starte
    ~~~
    </details>
 
-3. Add the `ssr-coin` scripts to your `package.json`:
+3. Add the Goldpage scripts to your `package.json`:
    ~~~json
    {
      "scripts": {
-       "dev": "ssr-coin dev ./path/to/your/server.js",
+       "dev": "goldpage dev ./path/to/your/server.js",
        "prod": "npm run build && npm run start",
-       "build": "ssr-coin build ./path/to/your/server.js",
+       "build": "goldpage build ./path/to/your/server.js",
        "start": "export NODE_ENV='production' && node ./.build/nodejs/server"
      }
    }
    ~~~
+
+   > :information_source:
+   > Goldpage is purposely designed to also build your server code.
+   > This allows you to use the same language,
+   > such as TypeScript,
+   > for your browser and server code.
 
 That's it: you can now run `npm run dev` (`yarn dev`), go to [http://localhost:3000/hello/jon](http://localhost:3000/hello/jon), and start hacking.
 
@@ -546,7 +513,7 @@ That's it: you can now run `npm run dev` (`yarn dev`), go to [http://localhost:3
 <p align="center">
 
 <sup>
-<a href="https://github.com/reframejs/ssr-coin/issues/new">Open a ticket</a> or
+<a href="https://github.com/reframejs/goldpage/issues/new">Open a ticket</a> or
 <a href="https://discord.gg/kqXf65G">chat with us</a>
 if you have questions, feature requests, or if you just want to talk to us.
 </sup>
@@ -570,7 +537,7 @@ We enjoy talking with our users :-).
 
 ## CSS & Static Assets
 
-To load CSS, simply import it:
+To load a CSS file, simply import it:
 
 ~~~js
 import './path/to/style.css';
@@ -610,7 +577,7 @@ Example of a page that uses all kinds of static assets:
 <p align="center">
 
 <sup>
-<a href="https://github.com/reframejs/ssr-coin/issues/new">Open a ticket</a> or
+<a href="https://github.com/reframejs/goldpage/issues/new">Open a ticket</a> or
 <a href="https://discord.gg/kqXf65G">chat with us</a>
 if you have questions, feature requests, or if you just want to talk to us.
 </sup>
@@ -644,7 +611,7 @@ import Product from './Product';
 export default {
   route: '/product/:productId',
 
-  // `ssr-coin` calls `addInitialProps()` before rendering `view` to HTML or to the DOM.
+  // Goldpage calls `addInitialProps()` before rendering `view` to HTML or to the DOM.
   // Alls props returned in `addInitialProps()` are passed to the `view`'s props.
   addInitialProps: async ({productId}) => {
     const product = await fetchProduct(productId);
@@ -666,6 +633,8 @@ export default {
       product.name+' ('+productId+')'
     );
   },
+
+  renderToHtml: true,
 };
 ~~~
 
@@ -681,7 +650,7 @@ We further explain the difference between using a stateful component and `addIni
 <p align="center">
 
 <sup>
-<a href="https://github.com/reframejs/ssr-coin/issues/new">Open a ticket</a> or
+<a href="https://github.com/reframejs/goldpage/issues/new">Open a ticket</a> or
 <a href="https://discord.gg/kqXf65G">chat with us</a>
 if you have questions, feature requests, or if you just want to talk to us.
 </sup>
@@ -734,7 +703,7 @@ import Product from './Product';
 export default {
   view: Product,
 
-  // ssr-coin uses the package @brillout/html (https://github.com/brillout/html) to generate HTML.
+  // Goldpage uses the package @brillout/html (https://github.com/brillout/html) to generate HTML.
   // All @brillout/html's options are available over the page config.
 
   // Adds <title>Welcome</title>
@@ -782,6 +751,8 @@ export default {
     '<meta property="og:title" content="'+product.name+'">',
     '<meta property="og:description" name="description" content="'+product.description+'">',
   ],
+
+  renderToHtml: true,
 };
 ~~~
 ~~~js
@@ -808,6 +779,7 @@ export default {
 
   route: '/about',
   view: () => <h1>About Page</h1>,
+  renderToHtml: true,
 };
 ~~~
 
@@ -822,7 +794,7 @@ Example:
 <p align="center">
 
 <sup>
-<a href="https://github.com/reframejs/ssr-coin/issues/new">Open a ticket</a> or
+<a href="https://github.com/reframejs/goldpage/issues/new">Open a ticket</a> or
 <a href="https://discord.gg/kqXf65G">chat with us</a>
 if you have questions, feature requests, or if you just want to talk to us.
 </sup>
@@ -844,35 +816,388 @@ We enjoy talking with our users :-).
 
 
 
-## Control Rendering
+## MPA
 
-You can control how your pages are rendered to HTML and the DOM.
+> :information_source: You can use Goldpage and create a prototype without knowing what an MPA is and without reading this section.
+
+> :warning: This section is meant for readers that know what an MPA is.
+
+If you want an MPA,
+then you don't have to do anything;
+by default, Goldpage builds an MPA:
+- By default, a page is rendered only in the browser. (That is: `renderToDom: true` and `renderToHtml: false`. We explain `renderToHtml` and `renderToDom` at <a href=#rendertodom-rendertohtml--renderhtmlatbuildtime>`renderToDom`, `renderToHtml` & `renderHtmlAtBuildTime`</a>.)
+- By default, pages are routed on the server-side. (We explain what "server-side routing" means at <a href=#routing-server-side-routing--browser-side-routing--react-router--vue-router-->Routing: Server-side Routing / Browser-side Routing / React Router / Vue Router / ...</a>.)
+
+These defaults corresponds to an MPA.
+
+
+<br/>
+
+<p align="center">
+
+<sup>
+<a href="https://github.com/reframejs/goldpage/issues/new">Open a ticket</a> or
+<a href="https://discord.gg/kqXf65G">chat with us</a>
+if you have questions, feature requests, or if you just want to talk to us.
+</sup>
+
+<sup>
+We enjoy talking with our users :-).
+</sup>
+
+<br/>
+
+<sup>
+<a href="#readme"><b>&#8679;</b> <b>TOP</b> <b>&#8679;</b></a>
+</sup>
+
+</p>
+
+<br/>
+<br/>
+
+
+
+## SPA
+
+> :information_source: You can use Goldpage and create a prototype without knowing what an SPA is and without reading this section.
+
+> :warning: This section is meant for readers that know what an SPA is.
+
+If you want an SPA,
+then:
+- Create a single page with a catch-all route. (That is, create only one page config with `route: '/:param*`; all URLs will be routed to this single page.)
+- Use a browser-side routing such as React Router. (We elaborate more at <a href=#routing-server-side-routing--browser-side-routing--react-router--vue-router-->Routing: Server-side Routing / Browser-side Routing / React Router / Vue Router / ...</a>.)
+
+Note that an MPA is almost always a better alternative than an SPA.
+And, by default, Goldpage builds an MPA.
+So, if you want an SPA, this means that you most likely don't have to do anything.
+(AN MPA is basically the same than an SPA but with server-side routing and code-splitting.)
+
+(FYI, a SPA is what you get when you use create-react-app, vue-cli, Webpack, or Parcel.)
+
+
+<br/>
+
+<p align="center">
+
+<sup>
+<a href="https://github.com/reframejs/goldpage/issues/new">Open a ticket</a> or
+<a href="https://discord.gg/kqXf65G">chat with us</a>
+if you have questions, feature requests, or if you just want to talk to us.
+</sup>
+
+<sup>
+We enjoy talking with our users :-).
+</sup>
+
+<br/>
+
+<sup>
+<a href="#readme"><b>&#8679;</b> <b>TOP</b> <b>&#8679;</b></a>
+</sup>
+
+</p>
+
+<br/>
+<br/>
+
+
+
+## SSR
+
+> :information_source: You can use Goldpage and create a prototype without knowing what an SSR app is and without reading this section.
+
+> :warning: This section is meant for readers that know what an SSR app is.
+
+If you want an SSR app,
+then:
+- Set `renderToHtml: true` and `renderToDom: true` to all your page configs. (We explain `renderToHtml` and `renderToDom` at <a href=#rendertodom-rendertohtml--renderhtmlatbuildtime>`renderToDom`, `renderToHtml` & `renderHtmlAtBuildTime`</a>.)
+
+(FYI, an SSR app is what you get when you use Next.js or Nuxt.js.)
+
+
+<br/>
+
+<p align="center">
+
+<sup>
+<a href="https://github.com/reframejs/goldpage/issues/new">Open a ticket</a> or
+<a href="https://discord.gg/kqXf65G">chat with us</a>
+if you have questions, feature requests, or if you just want to talk to us.
+</sup>
+
+<sup>
+We enjoy talking with our users :-).
+</sup>
+
+<br/>
+
+<sup>
+<a href="#readme"><b>&#8679;</b> <b>TOP</b> <b>&#8679;</b></a>
+</sup>
+
+</p>
+
+<br/>
+<br/>
+
+
+
+## BFA
+
+> :information_source: You can use Goldpage and create a prototype without reading this section and without knowing what a BFA is.
+
+Goldpage introduces a new app type
+we call BFA (Backend First App).
+
+The idea of a BFA is to
+use React (or Vue)
+primarily as an HTML template engine and
+only secondarily to implement interactive views.
+
+A BFA is an app with mixed `renderToDom` and `renderToHtml` settings to achieve:
+- Fast mobile pages
+- High development speed
+- Reliable SEO & social sharing
+
+More at [BFA](/bfa.md).
+
+
+<br/>
+
+<p align="center">
+
+<sup>
+<a href="https://github.com/reframejs/goldpage/issues/new">Open a ticket</a> or
+<a href="https://discord.gg/kqXf65G">chat with us</a>
+if you have questions, feature requests, or if you just want to talk to us.
+</sup>
+
+<sup>
+We enjoy talking with our users :-).
+</sup>
+
+<br/>
+
+<sup>
+<a href="#readme"><b>&#8679;</b> <b>TOP</b> <b>&#8679;</b></a>
+</sup>
+
+</p>
+
+<br/>
+<br/>
+
+
+
+## Mixed Apps
+
+> :information_source: You can use Goldpage and create a prototype without reading this section and without knowing what a BFA is.
+
+> :warning:
+>
+> This document assumes that you know the difference between CSR and SSR,
+> between `renderToDom` and `renderToHtml`,
+> and between an interactive page and a non-interactive page.
+> You can learn about all this
+> at [CSR & SSR Explained](/docs/csr-and-ssr-explained.md).
+
+Tools usually offer CSR or SSR in an all-or-nothing way:
+either your entire app is CSR'd or SSR'd.
+
+Our `renderToHtml` and `renderToDom` page configs give you fine grain control and
+allow you to mix all kinds of pages &mdash; one page can use CSR (`renderToDom: true` & `renderToHtml: false`) while another page can use SSR (`renderToDom: false` & `renderToHtml: true`).
+
+For example,
+if your app is non-interactive with the exception of one interactive page, then
+you can use CSR for that interactive page (`renderToDom: true` and `renderToHtml: false`) and use SSR for all your other non-interactive pages (`renderToDom: false` and `renderToHtml: true`).
+
+
+<br/>
+
+<p align="center">
+
+<sup>
+<a href="https://github.com/reframejs/goldpage/issues/new">Open a ticket</a> or
+<a href="https://discord.gg/kqXf65G">chat with us</a>
+if you have questions, feature requests, or if you just want to talk to us.
+</sup>
+
+<sup>
+We enjoy talking with our users :-).
+</sup>
+
+<br/>
+
+<sup>
+<a href="#readme"><b>&#8679;</b> <b>TOP</b> <b>&#8679;</b></a>
+</sup>
+
+</p>
+
+<br/>
+<br/>
+
+
+
+## Static Website
+
+> :information_source: You can use Goldpage and create a prototype without knowing what a static website is and without reading this section.
+
+> :warning: This section is meant for readers that know what a static website is.
+
+If you want a static website,
+then:
+- Set `renderHtmlAtBuildTime: true` to all your page configs. (We explain `renderHtmlAtBuildTime` at <a href=#rendertodom-rendertohtml--renderhtmlatbuildtime>`renderToDom`, `renderToHtml` & `renderHtmlAtBuildTime`</a>.)
+
+By setting `renderHtmlAtBuildTime: true` to all your page configs,
+all browser-side code and assets are generated at built-time.
+
+This means that no Node.js server is required to serve your frontend and
+you can deploy your frontend using a static host such as
+[Netlify](https://www.netlify.com/),
+[Amazon S3](https://aws.amazon.com/s3/), or
+[GitHub Pages](https://pages.github.com/).
+
+To deploy,
+simply run `$ goldpage build`
+(or better: `npm run build` while `require('./package.json').scripts.build === 'goldpage build'`)
+and deploy the directory `.build/browser/`
+(this is the directory that contains all browser assets)
+to your static host.
+
+(FYI, a static website is what you get when you use Gastby.)
+
+
+<br/>
+
+<p align="center">
+
+<sup>
+<a href="https://github.com/reframejs/goldpage/issues/new">Open a ticket</a> or
+<a href="https://discord.gg/kqXf65G">chat with us</a>
+if you have questions, feature requests, or if you just want to talk to us.
+</sup>
+
+<sup>
+We enjoy talking with our users :-).
+</sup>
+
+<br/>
+
+<sup>
+<a href="#readme"><b>&#8679;</b> <b>TOP</b> <b>&#8679;</b></a>
+</sup>
+
+</p>
+
+<br/>
+<br/>
+
+
+
+## `renderToDom`, `renderToHtml` & `renderHtmlAtBuildTime`
+
+There are three page configs that allow you to control when your page is rendered:
+- `renderToDom` - If set to true, your page is rendered in the browser (to the DOM).
+- `renderToHtml` - If set to true, your page is rendered to HTML (in Node.js).
+- `renderHtmlAtBuildTime` - Whether your page is rendered to HTML at request-time or at build-time.
+
+The default values are `renderToDom: true` and `renderToHtml: false`,
+which means that your page is rendered only in the browser.
+
+Configuring these three page configs are about achieving improvements in:
+
+- Search Engines
+  <br/>
+  All search engines other than Google (Bing, Baidu, Yandex, DuckDuckGo, ...) cannot crawl content rendered to the DOM.
+  If you want your pages to appear in these search engines,
+  then you need to render them to HTML.
+- Google Search
+  <br/>
+  Google is capable of crawling content rendered to the DOM but with limitations.
+  Rendering your pages to HTML can still be beneficial.
+- Social Sharing Previews
+  <br/>
+  When your page is shared on a social site (Facebook, Twitter, ...) then a little preview (title, description, and image) of your page is shown.
+  To have a correct preview the meta data of your page needs to be rendered to HTML.
+  (No social site can crawl meta data rendered dynamically to the DOM.)
+- Performance
+  <br/>
+  Your page's performance can vastly differ depending on whether your page is rendered to the DOM and/or to HTML.
+- Mobile Performance
+  <br/>
+  Browser-side JavaScript is a performance killer for low-end devices such as mobile phones.
+  On mobile,
+  rendering your page to HTML is drastically faster then rendering it to the DOM.
+
+At
+[Client-side Rendering (CSR) VS Server-side Rendering (SSR)](/docs/csr-vs-ssr.md),
+we elaborate how to set `renderToHtml`, `renderToDom` and `renderHtmlAtBuildTime`,
+in order to achieve improvements in the above points.
+But before you learn more about these page configs and what you can achieve with them,
+we recommend that you first implement a prototype and learn more only after you need improvements in the above mentioned points.
+
+
+<br/>
+
+<p align="center">
+
+<sup>
+<a href="https://github.com/reframejs/goldpage/issues/new">Open a ticket</a> or
+<a href="https://discord.gg/kqXf65G">chat with us</a>
+if you have questions, feature requests, or if you just want to talk to us.
+</sup>
+
+<sup>
+We enjoy talking with our users :-).
+</sup>
+
+<br/>
+
+<sup>
+<a href="#readme"><b>&#8679;</b> <b>TOP</b> <b>&#8679;</b></a>
+</sup>
+
+</p>
+
+<br/>
+<br/>
+
+
+
+## `htmlRender` & `domRender`
+
+You can control how your pages are rendered
+to HTML and the DOM.
 
 For that,
-save a `ssr-coin.config.js` file at your project's root directory and
-add the `renderToHtml` and `renderToDom` configs:
+save a `goldpage.config.js` file at your project's root directory
+(the directory that contains your `package.json`)
+and add the `htmlRender` and `domRender` configs:
 ~~~js
-// ssr-coin.config.js
+// goldpage.config.js
 
 module.exports = {
-  renderToHtml: './render/renderToHtml.js',
-  renderToDom: './render/renderToDom.js',
+  htmlRender: './render/htmlRender.js',
+  domRender: './render/domRender.js',
 };
 ~~~
 
-Then create the `renderToDom` and `renderToHtml` files.
+Then create the `domRender` and `htmlRender` files.
 
 With React:
 
 ~~~js
-// render/renderToDom.js
+// render/domRender.js
 
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-export default renderToDom;
+export default domRender;
 
-async function renderToDom({page, initialProps, CONTAINER_ID}) {
+async function domRender({page, initialProps, CONTAINER_ID}) {
   ReactDOM.hydrate(
     React.createElement(page.view, initialProps),
     document.getElementById(CONTAINER_ID)
@@ -881,14 +1206,14 @@ async function renderToDom({page, initialProps, CONTAINER_ID}) {
 ~~~
 
 ~~~js
-// render/renderToHtml.js
+// render/htmlRender.js
 
 const React = require('react');
 const ReactDOMServer = require('react-dom/server');
 
-module.exports = renderToHtml;
+module.exports = htmlRender;
 
-async function renderToHtml({page, initialProps, CONTAINER_ID}) {
+async function htmlRender({page, initialProps, CONTAINER_ID}) {
   const html = (
     ReactDOMServer.renderToStaticMarkup(
       React.createElement(page.view, initialProps)
@@ -920,14 +1245,14 @@ With Vue
 </summary>
 
 ~~~js
-// render/renderToDom.js
+// render/domRender.js
 
 import Vue from 'vue';
 import getVueInstance from './getVueInstance';
 
-export default renderToDom;
+export default domRender;
 
-async function renderToDom({page, initialProps, CONTAINER_ID}) {
+async function domRender({page, initialProps, CONTAINER_ID}) {
   const vm = getVueInstance(page.view, initialProps);
 
   vm.$mount('#'+CONTAINER_ID);
@@ -935,14 +1260,14 @@ async function renderToDom({page, initialProps, CONTAINER_ID}) {
 ~~~
 
 ~~~js
-// render/renderToHtml.js
+// render/htmlRender.js
 
 const VueServerRenderer = require('vue-server-renderer');
 const getVueInstance = require('./getVueInstance');
 
-module.exports = renderToHtml;
+module.exports = htmlRender;
 
-async function renderToHtml({page, initialProps}) {
+async function htmlRender({page, initialProps}) {
   const renderer = VueServerRenderer.createRenderer();
 
   const vm = getVueInstance(page.view, initialProps);
@@ -988,7 +1313,7 @@ Examples:
 <p align="center">
 
 <sup>
-<a href="https://github.com/reframejs/ssr-coin/issues/new">Open a ticket</a> or
+<a href="https://github.com/reframejs/goldpage/issues/new">Open a ticket</a> or
 <a href="https://discord.gg/kqXf65G">chat with us</a>
 if you have questions, feature requests, or if you just want to talk to us.
 </sup>
@@ -1010,209 +1335,16 @@ We enjoy talking with our users :-).
 
 
 
-## Server-Side Transpilation & Server-side Autoreload
+## Page Config `*.page.js` - Overview
 
-If you specify a path when calling `ssr-coin dev ./path/to/your/server.js` then:
- - `ssr-coin` transpiles your server code. Allowing you, for example, to use TypeScript for your server code.
- - `ssr-coin` auto-reloads the server whenever you make changes to your server code
-
-Your `package.json`'s scripts would be:
-
-~~~json
-{
-  "scripts": {
-    "dev": "ssr-coin dev ./path/to/your/server.js",
-    "prod": "npm run build && npm run start",
-    "build": "ssr-coin build ./path/to/your/server.js",
-    "start": "export NODE_ENV='production' && node ./.build/nodejs/server"
-  }
-}
-~~~
-
-By not specifying your server path `ssr-coin` doesn't transpile nor auto reloads your server,
-and your `package.json`'s scripts would be:
-
-~~~json
-{
-  "scripts": {
-    "dev": "node ./path/to/your/server.js",
-    "prod": "npm run build && npm run start",
-    "build": "ssr-coin build",
-    "start": "export NODE_ENV='production' && node .path/to/your/server.js"
-  }
-}
-~~~
-
-Note that `ssr-coin` always transpiles and auto-reloads your browser code.
-
-
-<br/>
-
-<p align="center">
-
-<sup>
-<a href="https://github.com/reframejs/ssr-coin/issues/new">Open a ticket</a> or
-<a href="https://discord.gg/kqXf65G">chat with us</a>
-if you have questions, feature requests, or if you just want to talk to us.
-</sup>
-
-<sup>
-We enjoy talking with our users :-).
-</sup>
-
-<br/>
-
-<sup>
-<a href="#readme"><b>&#8679;</b> <b>TOP</b> <b>&#8679;</b></a>
-</sup>
-
-</p>
-
-<br/>
-<br/>
-
-
-
-## Performance: `doNotRenderInBrowser` & `renderHtmlAtBuildTime`
-
-With `doNotRenderInBrowser` and `renderHtmlAtBuildTime` you can control when your pages are rendered.
-
-By default,
-a page is rendered twice:
-it is first rendered to HTML on the server and then re-rendered to the DOM in the browser.
-(Modern view libraries, such as React and Vue, are able to render views to the DOM as well as to HTML.
-You can read an explanation of why rendering a page twice makes sense at [Awesome Universal Rendering](https://github.com/brillout/awesome-universal-rendering).)
-
-###### doNotRenderInBrowser
-
-With `doNotRenderInBrowser` you control whether your page is rendered in the browser.
-
-- `doNotRenderInBrowser: false` (default value)
-  - Slower Performance.
-    <br/>
-    The page's views (e.g. React components) and view libraries (e.g. React) are loaded, executed, and rendered in the browser.
-    This can be very slow on mobile devices.
-  - Interactive.
-    <br/>
-    Because your page is rendered to the browser's DOM, your page's views (e.g. React components) can be stateful and interactive.
-- `doNotRenderInBrowser: true`
-  - Increased performance.
-    <br/>
-    The page's views and view libraries are not loaded nor executed in the browser.
-    Considerably less JavaScript is loaded/executed in the browser.
-    A page that has (or very little) browser-side JavaScript is blazing fast on mobile.
-  - Non-interactive.
-    <br/>
-    Because your page is not rendered to the browser's DOM, your page connot have stateful views / interacrive views.
-
-In a nutshell:
-If your page needs to be interactive then you have to rendered it in the browser and set `doNotRenderInBrowser` to `false`.
-But if your page isn't interactive then you can set `doNotRenderInBrowser` to `true` for increased performance and a blazing fast page on mobile devices.
-
-###### renderHtmlAtBuildTime
-
-With `renderHtmlAtBuildTime` you can control whether the page's HTML is
-rendered statically at build-time or
-dynamically at request-time.
-
-- `renderHtmlAtBuildTime: false` (default value)
-  <br/>
-  The page is rendered to HTML at request-time.
-  <br/>
-  The page is (re-)rendered to HTML every time the user requests the page.
-- `renderHtmlAtBuildTime: true`
-  <br/>
-  The page is rendered to HTML at build-time.
-  <br/>
-  The page is rendered to HTML only once, when `ssr-coin` transpiles and builds your pages.
-
-By default,
-a page is rendered to HTML at request-time.
-But if the page's content is static
-(a landing page, an about page, a blog post, a personal homepage, etc.)
-it is wasteful to re-render its HTML on every page request.
-
-By setting `renderHtmlAtBuildTime: true` to all your pages,
-you can remove the need for a Node.js server.
-You can then deploy your app to a static host such as Netlify or GitHub Pages.
-
-If you don't want to render your page to HTML at all,
-then use a stateful component:
-~~~jsx
-import Loading from './path/to/your/loading/component';
-import Search from './path/to/your/search/component';
-
-// Rendering a search page to HTML doesn't make much sense.
-// We render the search page only to the DOM.
-
-const SearchPage = {
-  title: 'Search products',
-  route: '/search',
-  view: SearchPage,
-  // We render the <Loading> component to HTML at build-time
-  renderHtmlAtBuildTime: true,
-  // We render the <Search> component to the DOM
-  doNotRenderInBrowser: false,
-};
-
-export default SearchPage;
-
-function SearchPage(props) {
-  if( props.isNodejs ) {
-    return <Loading/>;
-  } else {
-    return <Search {...props}/>;
-  }
-}
-~~~
-
-
-<br/>
-
-<p align="center">
-
-<sup>
-<a href="https://github.com/reframejs/ssr-coin/issues/new">Open a ticket</a> or
-<a href="https://discord.gg/kqXf65G">chat with us</a>
-if you have questions, feature requests, or if you just want to talk to us.
-</sup>
-
-<sup>
-We enjoy talking with our users :-).
-</sup>
-
-<br/>
-
-<sup>
-<a href="#readme"><b>&#8679;</b> <b>TOP</b> <b>&#8679;</b></a>
-</sup>
-
-</p>
-
-<br/>
-<br/>
-
-
-
-## Page Config `*page.js`
-
-#### Contents
-
-
-- <a href=#page-configs>Page Configs</a> - List of all page configs.
-- <a href=#initial-props>Initial Props</a> - List of all initial props.
-- <a href=#html-configs>HTML Configs</a> - List of HTML configs.
-
-#### Page Configs
+This page config example showcases all page configs.
 
 ~~~js
 // pages/*.page.js
 
 import React from 'react';
 import fetchProduct from './fetchProduct';
-// Definition of `getHtmlOptions` is shown below.
 import getHtmlOptions from './getHtmlOptions';
-// Definition of `assert_initialProps` is shown below.
 import assert_initialProps from './assert_initialProps';
 import Product from './Product';
 
@@ -1225,7 +1357,7 @@ function getPageConfig() {
     route: '/product-details/:productId',
 
     // Add additional inital props, for example data loaded from an API.
-    // `addInitialProps` can be async and `ssr-coin` awaits `addInitialProps` before
+    // `addInitialProps` can be async and Goldpage awaits `addInitialProps` before
     // rendering `view` to the DOM / HTML.
     addInitialProps,
 
@@ -1234,21 +1366,26 @@ function getPageConfig() {
     view: Product,
 
     // Control when the page is rendered.
-    // See section "Performance: `doNotRenderInBrowser` & `renderHtmlAtBuildTime`".
-    doNotRenderInBrowser: false,
-    renderHtmlAtBuildTime: false,
+    // More in a section below.
+    renderToDom: true, // (default value)
+    renderToHtml: false, // (default value)
+    renderHtmlAtBuildTime: false, // default value
 
+    // The definition of `getHtmlOptions` is shown in a section below
+    // and shows all HTML configs.
     ...getHtmlOptions()
   };
 }
 
 async function addInitialProps(initialProps) {
-  // See the definition of `assert_initialProps` for
-  // a full referance of what `initialProps` contains.
+  // The definition of `assert_initialProps` is shown in a section below
+  // and shows all `initialProps`.
   assert_initialProps(initialProps);
 
   const {productId} = initialProps;
+
   const product = await fetchProduct(productId);
+
   return {product};
 }
 ~~~
@@ -1259,7 +1396,7 @@ async function addInitialProps(initialProps) {
 <p align="center">
 
 <sup>
-<a href="https://github.com/reframejs/ssr-coin/issues/new">Open a ticket</a> or
+<a href="https://github.com/reframejs/goldpage/issues/new">Open a ticket</a> or
 <a href="https://discord.gg/kqXf65G">chat with us</a>
 if you have questions, feature requests, or if you just want to talk to us.
 </sup>
@@ -1271,7 +1408,7 @@ We enjoy talking with our users :-).
 <br/>
 
 <sup>
-<a href="#contents"><b>&#8679;</b> <b>TOP</b> <b>&#8679;</b></a>
+<a href="#readme"><b>&#8679;</b> <b>TOP</b> <b>&#8679;</b></a>
 </sup>
 
 </p>
@@ -1279,7 +1416,11 @@ We enjoy talking with our users :-).
 <br/>
 <br/>
 
-#### Initial Props
+
+
+## Page Config `*.page.js` - Initial Props `initialProps`
+
+This `initialProps` assertion showcases all `initialProps`.
 
 ~~~js
 import assert from '@brillout/reassert';
@@ -1374,7 +1515,7 @@ function assert_initialProps(initialProps){
 <p align="center">
 
 <sup>
-<a href="https://github.com/reframejs/ssr-coin/issues/new">Open a ticket</a> or
+<a href="https://github.com/reframejs/goldpage/issues/new">Open a ticket</a> or
 <a href="https://discord.gg/kqXf65G">chat with us</a>
 if you have questions, feature requests, or if you just want to talk to us.
 </sup>
@@ -1386,7 +1527,7 @@ We enjoy talking with our users :-).
 <br/>
 
 <sup>
-<a href="#contents"><b>&#8679;</b> <b>TOP</b> <b>&#8679;</b></a>
+<a href="#readme"><b>&#8679;</b> <b>TOP</b> <b>&#8679;</b></a>
 </sup>
 
 </p>
@@ -1394,7 +1535,11 @@ We enjoy talking with our users :-).
 <br/>
 <br/>
 
-#### HTML Configs
+
+
+## !VAR HTML_CONFIGS
+
+List of all HTML configs:
 
 ~~~js
 import manifestUrl from './manifest.webmanifest';
@@ -1402,7 +1547,7 @@ import manifestUrl from './manifest.webmanifest';
 export default getHtmlOptions;
 
 function getHtmlOptions() {
-  // ssr-coin uses `@brillout/html` (https://github.com/brillout/html) to generate HTML.
+  // Goldpage uses `@brillout/html` (https://github.com/brillout/html) to generate HTML.
   // All `@brillout/html` options are available over the page config.
 
   return {
@@ -1469,7 +1614,7 @@ function getHtmlOptions() {
 <p align="center">
 
 <sup>
-<a href="https://github.com/reframejs/ssr-coin/issues/new">Open a ticket</a> or
+<a href="https://github.com/reframejs/goldpage/issues/new">Open a ticket</a> or
 <a href="https://discord.gg/kqXf65G">chat with us</a>
 if you have questions, feature requests, or if you just want to talk to us.
 </sup>
@@ -1481,7 +1626,7 @@ We enjoy talking with our users :-).
 <br/>
 
 <sup>
-<a href="#contents"><b>&#8679;</b> <b>TOP</b> <b>&#8679;</b></a>
+<a href="#readme"><b>&#8679;</b> <b>TOP</b> <b>&#8679;</b></a>
 </sup>
 
 </p>
@@ -1491,20 +1636,123 @@ We enjoy talking with our users :-).
 
 
 
-## Global Config `ssr-coin.config.js`
+## Page Config `*.page.js` - Rendering
 
-We try keep `ssr-coin` as zero-config as possible,
-hence `ssr.config.js` has only few options.
+A page has three render configs:
+ - `renderToDom`
+ - `renderToHtml`
+ - `renderHtmlAtBuildTime`
+
+In this section we only explain what each config does.
+At <a href=#rendertodom-rendertohtml--renderhtmlatbuildtime>`renderToDom`, `renderToHtml` & `renderHtmlAtBuildTime`</a> we explain how to set these three render configs.
+
+###### `renderToDom`
+
+With `renderToDom` you control whether your page is rendered in the browser (to the DOM).
+
+- `renderToDom: true` (default value)
+  - Slower Performance.
+    <br/>
+    The page's views (e.g. React components) and view libraries (e.g. React) are loaded, executed, and rendered in the browser.
+    This can be very slow on mobile devices.
+  - Interactive.
+    <br/>
+    Because your page is rendered to the browser's DOM, your page's views (e.g. React components) can be stateful and interactive.
+- `renderToDom: false`
+  - Increased performance.
+    <br/>
+    The page's views and view libraries are not loaded nor executed in the browser.
+    Considerably less JavaScript is loaded/executed in the browser.
+    A page that has (or very little) browser-side JavaScript is blazing fast on mobile.
+  - Non-interactive.
+    <br/>
+    Because your page is not rendered to the browser's DOM, your page connot have stateful views / interactive views.
+
+In a nutshell:
+If your page is interactive then you have to render it in the browser and set `renderToDom` to `true`.
+But if your page isn't interactive then you can set `renderToDom` to `false` for increased performance and a blazing fast page on mobile devices.
+
+###### `renderToHtml`
+
+With `renderToDom` you control whether your page is rendered to HTML (in Node.js).
+
+- `renderToHtml: false` (default value)
+  <br/>
+  Your page's `view` component is not rendered to HTML.
+- `renderToHtml: true`
+  <br/>
+  Your page's `view` component is rendered to HTML.
+
+###### `renderHtmlAtBuildTime`
+
+With `renderHtmlAtBuildTime` you can control whether the page's HTML is
+rendered statically at build-time or
+dynamically at request-time.
+
+- `renderHtmlAtBuildTime: false` (default value)
+  <br/>
+  The page is rendered to HTML at request-time.
+  <br/>
+  The page is (re-)rendered to HTML every time the user requests the page.
+- `renderHtmlAtBuildTime: true`
+  <br/>
+  The page is rendered to HTML at build-time.
+  <br/>
+  The page is rendered to HTML only once, when Goldpage transpiles and builds your pages.
+
+By default,
+a page is rendered to HTML at request-time.
+But if the page's content is static
+(a landing page, an about page, a blog post, a personal homepage, etc.)
+it is wasteful to re-render its HTML on every page request.
+
+By setting `renderHtmlAtBuildTime: true` to all your pages,
+you can remove the need for a Node.js server
+and have your frontend be a static website.
+You can then deploy your frontend to a static host such as Netlify or GitHub Pages.
+
+
+<br/>
+
+<p align="center">
+
+<sup>
+<a href="https://github.com/reframejs/goldpage/issues/new">Open a ticket</a> or
+<a href="https://discord.gg/kqXf65G">chat with us</a>
+if you have questions, feature requests, or if you just want to talk to us.
+</sup>
+
+<sup>
+We enjoy talking with our users :-).
+</sup>
+
+<br/>
+
+<sup>
+<a href="#readme"><b>&#8679;</b> <b>TOP</b> <b>&#8679;</b></a>
+</sup>
+
+</p>
+
+<br/>
+<br/>
+
+
+
+## Global Config `goldpage.config.js`
+
+We try to keep Goldpage as zero-config as possible
+and `ssr.config.js` has only few options.
 
 ~~~js
 // ssr.config.js
 
 module.exports = {
-  // Control how pages are rendered. (See section "Control Rendering").
-  renderToHtml: require.resolve('./path/to/your/renderToHtml'),
-  renderToDom: require.resolve('./path/to/your/renderToDom'),
+  // Control how pages are rendered. (See section "`htmlRender` & `domRender`").
+  htmlRender: require.resolve('./path/to/your/htmlRender'),
+  domRender: require.resolve('./path/to/your/domRender'),
 
-  // Make `ssr-coin` silent in the terminal (but it will still prints errors).
+  // Make Goldpage silent in the terminal (but it will still prints errors).
   silent: true,
 };
 ~~~
@@ -1515,7 +1763,7 @@ module.exports = {
 <p align="center">
 
 <sup>
-<a href="https://github.com/reframejs/ssr-coin/issues/new">Open a ticket</a> or
+<a href="https://github.com/reframejs/goldpage/issues/new">Open a ticket</a> or
 <a href="https://discord.gg/kqXf65G">chat with us</a>
 if you have questions, feature requests, or if you just want to talk to us.
 </sup>
@@ -1539,10 +1787,10 @@ We enjoy talking with our users :-).
 
 ## CLI
 
-`ssr-coin` has two commands:
+Goldpage has two commands:
 
 - ~~~shell
-  $ ssr-coin dev ./path/to/your/server.js
+  $ goldpage dev ./path/to/your/server.js
   ~~~
   The `dev` command starts your server with auto-reload:
   whenever you make a change to your code,
@@ -1550,7 +1798,7 @@ We enjoy talking with our users :-).
   The `dev` command is meant to be used while you develop your app.
 
 - ~~~shell
-  $ ssr-coin build ./path/to/your/server.js
+  $ goldpage build ./path/to/your/server.js
   ~~~
   The `build` command builds your code for production.
   (E.g. it minifies your browser-side code whereas the `dev` command doesn't.)
@@ -1558,29 +1806,29 @@ We enjoy talking with our users :-).
   If your server-side code is written in JavaScript then you can call your server entry directly: `$ node ./path/to/your/server.js`.
   If not, then run the transpiled version which is located in the `.build` directory: `$ node ./build/nodejs/server.js`.
 
-Do not install `ssr-coin` globally and do not call the `ssr-coin` CLI directly.
+Do not install Goldpage globally and do not call the Goldpage CLI directly.
 Use your `package.json`'s `scripts` instead:
 
 ~~~json
 {
   "dependencies": {
-    "ssr-coin": "^0.3.3",
+    "goldpage": "^0.3.3",
   },
   "scripts": {
-    "dev": "ssr-coin dev ./path/to/your/server.js",
+    "dev": "goldpage dev ./path/to/your/server.js",
     "prod": "npm run build && npm run start",
-    "build": "ssr-coin build ./path/to/your/server.js",
+    "build": "goldpage build ./path/to/your/server.js",
     "start": "export NODE_ENV='production' && node ./.build/nodejs/server"
   }
 }
 ~~~
 
-You can then install a local `ssr-coin` copy (`$ npm install` / `$ yarn`) and
+You can then install a local Goldpage copy (`$ npm install` / `$ yarn`) and
 then call `$ npm run dev` (/ `$ yarn dev`).
 
 A local install has couple of advantages over a global install:
- - Many projects can have many different `ssr-coin` versions.
- - Removing your project's directory also removes `ssr-coin`.
+ - Many projects can have many different Goldpage versions.
+ - Removing your project's directory also removes Goldpage.
 
 
 <br/>
@@ -1588,7 +1836,7 @@ A local install has couple of advantages over a global install:
 <p align="center">
 
 <sup>
-<a href="https://github.com/reframejs/ssr-coin/issues/new">Open a ticket</a> or
+<a href="https://github.com/reframejs/goldpage/issues/new">Open a ticket</a> or
 <a href="https://discord.gg/kqXf65G">chat with us</a>
 if you have questions, feature requests, or if you just want to talk to us.
 </sup>
@@ -1614,7 +1862,7 @@ We enjoy talking with our users :-).
 
 By controlling the rendering of your pages you can add providers for Redux, GraphQL, etc.
 
-See <a href=#control-rendering>Control Rendering</a> for how to take over control of the rendering of your pages.
+See <a href=#htmlrender--domrender>`htmlRender` & `domRender`</a> for how to take over control of the rendering of your pages.
 
 Examples:
 - [/examples/react-router](/examples/react-router)
@@ -1627,7 +1875,7 @@ Examples:
 <p align="center">
 
 <sup>
-<a href="https://github.com/reframejs/ssr-coin/issues/new">Open a ticket</a> or
+<a href="https://github.com/reframejs/goldpage/issues/new">Open a ticket</a> or
 <a href="https://discord.gg/kqXf65G">chat with us</a>
 if you have questions, feature requests, or if you just want to talk to us.
 </sup>
@@ -1653,16 +1901,16 @@ We enjoy talking with our users :-).
 You can configure Babel and the JavaScript transpilation by creating a `.babelrc` file.
 See [/examples/babel](/examples/babel) for an example of configuring babel.
 
-`ssr-coin` currently uses Webpack.
-This means that for custom transpilations beyond babel, modifications to `ssr-coin`'s webpack config are required.
-Instead of modifying `ssr-coin`'s webpack config yourself,
+Goldpage currently uses Webpack.
+This means that for custom transpilations beyond babel, modifications to Goldpage's webpack config are required.
+Instead of modifying Goldpage's webpack config yourself,
 see if there is a [transpilation plugin](#transpilation-plugins) [transpilation plugin]
-that modifies `ssr-coin`'s webpack config for you.
+that modifies Goldpage's webpack config for you.
 For exampe, for TypeScript, you can use the [TypeScript plugin](/plugins/typescript).
 If there is no plugin for what you need, then open a GitHub issue and we'll create one together.
 
 Once Parcel v2 is released,
-`ssr-coin` will use Parcel instead of Webpack.
+Goldpage will use Parcel instead of Webpack.
 Since Parcel is zero-config, most of your transpilation needs will then just work.
 (Transpilation plugins will not be required anymore.)
 
@@ -1676,7 +1924,7 @@ Examples:
 <p align="center">
 
 <sup>
-<a href="https://github.com/reframejs/ssr-coin/issues/new">Open a ticket</a> or
+<a href="https://github.com/reframejs/goldpage/issues/new">Open a ticket</a> or
 <a href="https://discord.gg/kqXf65G">chat with us</a>
 if you have questions, feature requests, or if you just want to talk to us.
 </sup>
@@ -1707,7 +1955,7 @@ work with SSR out of the box and no additional setup is required.
 For some others,
 such as [styled-components](https://github.com/styled-components/styled-components),
 you make need to
-[take control over rendering](#control-rendering).
+[take control over rendering](#htmlrender--domrender).
 
 Examples:
 - [/examples/emotion](/examples/emotion)
@@ -1719,7 +1967,7 @@ Examples:
 <p align="center">
 
 <sup>
-<a href="https://github.com/reframejs/ssr-coin/issues/new">Open a ticket</a> or
+<a href="https://github.com/reframejs/goldpage/issues/new">Open a ticket</a> or
 <a href="https://discord.gg/kqXf65G">chat with us</a>
 if you have questions, feature requests, or if you just want to talk to us.
 </sup>
@@ -1758,7 +2006,7 @@ Example:
 <p align="center">
 
 <sup>
-<a href="https://github.com/reframejs/ssr-coin/issues/new">Open a ticket</a> or
+<a href="https://github.com/reframejs/goldpage/issues/new">Open a ticket</a> or
 <a href="https://discord.gg/kqXf65G">chat with us</a>
 if you have questions, feature requests, or if you just want to talk to us.
 </sup>
@@ -1806,38 +2054,38 @@ export default {
 
 are server-side routes:
 when navigating from `/hello/jon` to `/hello/alice`
-the browser terminates the current `/hello/jon` page and starts a new page at `/hello/alice`,
-as if you would close your `/hello/jon` browser tab and open a new tab at `/hello/alice`.
+the browser terminates the current `/hello/jon` page and starts a new page `/hello/alice`.
+It is the same as if you would close your `/hello/jon` browser tab and open a new tab at `/hello/alice`.
+
 It is the server that does the job of mapping URLs to pages and the browser is not involved in the routing process.
 
 ###### Browser-side Routing
 
-HTML5 introduced a new browser API `history` that allows you to manipulate the browser URL history.
+HTML5 introduced a new browser API `window.history` that allows you to manipulate the browser URL history.
 This enables browser-side routing:
-when navigating from `/previous-page` to `/next-page`, instead of terminating the current page `/previous-page` and starting a new page at `/next-page`, the current page `/previous-page` is preserved, its URL changed to `/next-page` (with `history.pushState()`), and the content of `/next-page` is rendered to the DOM replacing the DOM of `/previous-page`.
+when navigating from `/previous-page` to `/next-page`, instead of terminating the current page `/previous-page` and starting a new page `/next-page`, the current page `/previous-page` is preserved, its URL changed to `/next-page` (with `window.history.pushState()`), and the content of `/next-page` is rendered to the DOM replacing the DOM of `/previous-page`.
 
-Server-side routing is simpler than browser-side routing.
-Whenever possible, server-side routing should be used instead of browser-side rendering.
+Server-side routing is simpler than browser-side routing;
+whenever possible, server-side routing should be used instead of browser-side rendering.
 
 But if server-side routing is not an option,
-you can opt to do browser-side routing.
-You can do browser-side routing by
-[taking control over rendering](#control-rendering).
+you can opt to do browser-side routing
+by [taking control over rendering](#htmlrender--domrender).
 
 For example,
 if you use React,
-you can do browser-side rendering by taking control over rendering in order to add React Router:
+you take control over rendering in order to add React Router (which does browser-side routing):
 
 ~~~js
-// /examples/react-router/render/renderToDom.js
+// /examples/react-router/render/domRender.js
 
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter } from 'react-router-dom';
 
-export default renderToDom;
+export default domRender;
 
-async function renderToDom({page, initialProps, CONTAINER_ID}) {
+async function domRender({page, initialProps, CONTAINER_ID}) {
   ReactDOM.hydrate(
     <BrowserRouter>
       <page.view {...initialProps}/>
@@ -1848,15 +2096,15 @@ async function renderToDom({page, initialProps, CONTAINER_ID}) {
 ~~~
 
 ~~~js
-// /examples/react-router/render/renderToHtml.js
+// /examples/react-router/render/htmlRender.js
 
 const React = require('react');
 const ReactDOMServer = require('react-dom/server');
 const {StaticRouter} = require('react-router');
 
-module.exports = renderToHtml;
+module.exports = htmlRender;
 
-async function renderToHtml({page, initialProps}) {
+async function htmlRender({page, initialProps}) {
   const {pathname, search, hash} = initialProps;
   return (
     ReactDOMServer.renderToStaticMarkup(
@@ -1874,11 +2122,11 @@ async function renderToHtml({page, initialProps}) {
 ~~~
 
 ~~~js
-// /examples/react-router/ssr-coin.config.js
+// /examples/react-router/goldpage.config.js
 
 module.exports = {
-  renderToHtml: './render/renderToHtml.js',
-  renderToDom: './render/renderToDom.js',
+  htmlRender: './render/htmlRender.js',
+  domRender: './render/domRender.js',
 };
 ~~~
 
@@ -1891,7 +2139,7 @@ The example's entire source code is at:
 <p align="center">
 
 <sup>
-<a href="https://github.com/reframejs/ssr-coin/issues/new">Open a ticket</a> or
+<a href="https://github.com/reframejs/goldpage/issues/new">Open a ticket</a> or
 <a href="https://discord.gg/kqXf65G">chat with us</a>
 if you have questions, feature requests, or if you just want to talk to us.
 </sup>
@@ -1945,6 +2193,7 @@ import React from 'react';
 export default {
   route: '/',
   view: () => <h1>Landing Page</h1>,
+  renderToHtml: true,
 };
 ~~~
 ~~~js
@@ -1957,6 +2206,7 @@ import React from 'react';
 export default {
   route: '/about',
   view: () => <h1>About Page</h1>,
+  renderToHtml: true,
 };
 ~~~
 
@@ -1966,7 +2216,7 @@ export default {
 <p align="center">
 
 <sup>
-<a href="https://github.com/reframejs/ssr-coin/issues/new">Open a ticket</a> or
+<a href="https://github.com/reframejs/goldpage/issues/new">Open a ticket</a> or
 <a href="https://discord.gg/kqXf65G">chat with us</a>
 if you have questions, feature requests, or if you just want to talk to us.
 </sup>
@@ -1988,12 +2238,12 @@ We enjoy talking with our users :-).
 
 
 
-## Server Frameworks: Express / Koa / Hapi / Fastify / ...
+## Server: Express / Koa / Hapi / Fastify / ...
 
-To use `ssr-coin` with `express`, `koa` or `hapi`, use the corresponding [server plugin](#server-plugins).
+To use Goldpage with `express`, `koa` or `hapi`, use the corresponding [server plugin](#server-plugins).
 
-To use `ssr-coin` with another server framework, open a GitHub issue.
-`ssr-coin` can be used with any server framework
+To use Goldpage with another server framework, open a GitHub issue.
+Goldpage can be used with any server framework
 but there is no documentation for this (yet).
 
 
@@ -2002,7 +2252,7 @@ but there is no documentation for this (yet).
 <p align="center">
 
 <sup>
-<a href="https://github.com/reframejs/ssr-coin/issues/new">Open a ticket</a> or
+<a href="https://github.com/reframejs/goldpage/issues/new">Open a ticket</a> or
 <a href="https://discord.gg/kqXf65G">chat with us</a>
 if you have questions, feature requests, or if you just want to talk to us.
 </sup>
@@ -2030,7 +2280,7 @@ If there is a [render plugin](#render-plugins) for the view library you want to 
 then simply use it.
 
 If there is no render plugin,
-then [take control over rendering](#control-rendering).
+then [take control over rendering](#htmlrender--domrender).
 That way you are able to use any view library.
 
 
@@ -2039,7 +2289,7 @@ That way you are able to use any view library.
 <p align="center">
 
 <sup>
-<a href="https://github.com/reframejs/ssr-coin/issues/new">Open a ticket</a> or
+<a href="https://github.com/reframejs/goldpage/issues/new">Open a ticket</a> or
 <a href="https://discord.gg/kqXf65G">chat with us</a>
 if you have questions, feature requests, or if you just want to talk to us.
 </sup>
@@ -2084,58 +2334,7 @@ pm2 start ./path/to/your/server.js
 <p align="center">
 
 <sup>
-<a href="https://github.com/reframejs/ssr-coin/issues/new">Open a ticket</a> or
-<a href="https://discord.gg/kqXf65G">chat with us</a>
-if you have questions, feature requests, or if you just want to talk to us.
-</sup>
-
-<sup>
-We enjoy talking with our users :-).
-</sup>
-
-<br/>
-
-<sup>
-<a href="#readme"><b>&#8679;</b> <b>TOP</b> <b>&#8679;</b></a>
-</sup>
-
-</p>
-
-<br/>
-<br/>
-
-
-
-## Generate Static Websites
-
-If you set `renderHtmlAtBuildTime: true` to all your page configs,
-then your entire browser-side code is generated at built-time.
-
-This means that no Node.js server is required to serve your frontend.
-
-If you don't need the Node.js server beyond serving your browser-side code then your app is essentially
-just a collection of static assets for the browser.
-Your app is then what is commonly called a "static website".
-
-You can deploy a static website using a static host such as
-[Netlify](https://www.netlify.com/),
-[Amazon S3](https://aws.amazon.com/s3/), or
-[GitHub Pages](https://pages.github.com/).
-
-To deploy,
-simply run `$ ssr-coin build`
-(or better `npm run build` where `require('./package.json').scripts.build === 'ssr-coin build'`)
-and copy the directory `.build/browser/`
-(which is the directory that contains the browser assets)
-to your static host.
-
-
-<br/>
-
-<p align="center">
-
-<sup>
-<a href="https://github.com/reframejs/ssr-coin/issues/new">Open a ticket</a> or
+<a href="https://github.com/reframejs/goldpage/issues/new">Open a ticket</a> or
 <a href="https://discord.gg/kqXf65G">chat with us</a>
 if you have questions, feature requests, or if you just want to talk to us.
 </sup>
@@ -2195,7 +2394,7 @@ Plugins to (statically) route your pages.
 <p align="center">
 
 <sup>
-<a href="https://github.com/reframejs/ssr-coin/issues/new">Open a ticket</a> or
+<a href="https://github.com/reframejs/goldpage/issues/new">Open a ticket</a> or
 <a href="https://discord.gg/kqXf65G">chat with us</a>
 if you have questions, feature requests, or if you just want to talk to us.
 </sup>

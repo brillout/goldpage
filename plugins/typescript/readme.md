@@ -90,7 +90,7 @@ Install `@goldpage/typescript`.
 $ npm install @goldpage/typescript
 ~~~
 
-The `ssr-coin/typescript` plugin is automatically loaded.
+The `@goldpage/typescript` plugin is automatically loaded.
 
 Configure TypeScript:
 
@@ -128,7 +128,7 @@ const Hello = (props: HelloProps) => <h3>Hello from {props.compiler} and {props.
 export default {
     route: '/',
     view: () => <Hello compiler="TypeScript" framework="React" />,
-    doNotRenderInBrowser: true,
+    renderToDom: false,
 };
 ~~~
 

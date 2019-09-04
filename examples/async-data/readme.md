@@ -100,7 +100,8 @@ export default {
 
   view: ({characters}) => <CharacterList characters={characters}/>,
 
-  doNotRenderInBrowser: true,
+  renderToDom: false,
+  renderToHtml: true,
 
   route: '/html',
 };
@@ -136,7 +137,7 @@ Because `aysnc addInitialProps()` is called and waited for prior to rendering th
 </html>
 ~~~
 
-Note that because the HTML already contains the data, we can set `doNotRenderInBrowser: true` for increased performance.
+Note that because the HTML already contains the data, we can set `renderToDom: false` for increased performance.
 
 
 
@@ -166,6 +167,7 @@ class Characters extends React.Component {
 export default {
   view: Characters,
   route: '/dom',
+  renderToHtml: true,
 };
 ~~~
 
