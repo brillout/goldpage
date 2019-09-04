@@ -29,7 +29,7 @@ function create_ssr() {
   // ssr.serverEntryFile = 'server/';
   ssr.buildDir = '.build/';
 
-  applySsrCoinConfig();
+  applyGoldpageConfig();
 
   return ssr;
 
@@ -98,7 +98,7 @@ function create_ssr() {
     }
   }
 
-  function applySsrCoinConfig() {
+  function applyGoldpageConfig() {
     assert.internal(projectDir);
     let goldpageConfigPath = path.resolve(projectDir, 'goldpage.config.js');
     try {
