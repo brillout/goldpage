@@ -76,11 +76,11 @@
 
 -->
 
-`ssr-coin` + Koa = :heart:
+Goldpage + Koa = :heart:
 
 # `@goldpage/koa`
 
-Use `ssr-coin` with [Koa](https://github.com/koajs/koa).
+Use Goldpage with [Koa](https://github.com/koajs/koa).
 
 ### Usage
 

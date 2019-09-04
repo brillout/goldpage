@@ -5,7 +5,7 @@ import Product from './Product';
 export default {
   route: '/product/:productId',
 
-  // `ssr-coin` calls `addInitialProps()` before rendering `view` to HTML or to the DOM.
+  // Goldpage calls `addInitialProps()` before rendering `view` to HTML or to the DOM.
   // Alls props returned in `addInitialProps()` are passed to the `view`'s props.
   addInitialProps: async ({productId}) => {
     const product = await fetchProduct(productId);

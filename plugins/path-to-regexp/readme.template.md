@@ -1,6 +1,6 @@
 !MENU_SKIP
 
-`ssr-coin` + `path-to-regexp` = :heart:
+Goldpage + `path-to-regexp` = :heart:
 
 # `@goldpage/path-to-regexp`
 

@@ -76,11 +76,11 @@
 
 -->
 
-`ssr-coin` + Vue = :heart:
+Goldpage + Vue = :heart:
 
 # `@goldpage/vue`
 
-Use `ssr-coin` with [Vue](https://github.com/vuejs/vue).
+Use Goldpage with [Vue](https://github.com/vuejs/vue).
 
 ### Usage
 

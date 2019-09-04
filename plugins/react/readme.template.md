@@ -1,10 +1,10 @@
 !MENU_SKIP
 
-`ssr-coin` + React = :heart:
+Goldpage + React = :heart:
 
 # `@goldpage/react`
 
-Use `ssr-coin` with [React](https://github.com/facebook/react).
+Use Goldpage with [React](https://github.com/facebook/react).
 
 ### Usage
 

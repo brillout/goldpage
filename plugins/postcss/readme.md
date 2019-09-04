@@ -76,11 +76,11 @@
 
 -->
 
-`ssr-coin` + PostCSS = :heart:
+Goldpage + PostCSS = :heart:
 
 # `@goldpage/postcss`
 
-Use `ssr-coin` with PostCSS.
+Use Goldpage with PostCSS.
 
 ### Usage
 

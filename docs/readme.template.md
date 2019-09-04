@@ -193,11 +193,11 @@ At last but not least, we enjoy writing opulent and beginner-friendly documentat
 
 ## !VAR GETTING_STARTED
 
-This getting started adds `ssr-coin` to an exisiting app.
-If you don't have an app yet or if you just want to try out `ssr-coin`,
+This getting started adds Goldpage to an exisiting app.
+If you don't have an app yet or if you just want to try out Goldpage,
 then use a [Reframe starter](https://github.com/reframejs/reframe#getting-started).
 
-0. Install `ssr-coin`.
+0. Install Goldpage.
 
    ~~~shell
    npm install ssr-coin
@@ -213,7 +213,7 @@ then use a [Reframe starter](https://github.com/reframejs/reframe#getting-starte
    npm install @goldpage/express
    ~~~
 
-1. Add `ssr-coin` to your Node.js server.
+1. Add Goldpage to your Node.js server.
 
    With Express:
    ~~~js
@@ -259,10 +259,10 @@ then use a [Reframe starter](https://github.com/reframejs/reframe#getting-starte
    With other server frameworks
    </summary>
 
-   `ssr-coin` can be used with any server framework.
+   Goldpage can be used with any server framework.
    But there is no documentation for this (yet).
    Open a GitHub issue
-   if you want to use `ssr-coin` with a server framework other than
+   if you want to use Goldpage with a server framework other than
    Express, Koa, or Hapi.
    </details>
 
@@ -300,7 +300,7 @@ then use a [Reframe starter](https://github.com/reframejs/reframe#getting-starte
    ~~~
    </details>
 
-3. Add the `ssr-coin` scripts to your `package.json`:
+3. Add the Goldpage scripts to your `package.json`:
    ~~~json
    {
      "scripts": {
@@ -743,7 +743,7 @@ dynamically at request-time.
   <br/>
   The page is rendered to HTML at build-time.
   <br/>
-  The page is rendered to HTML only once, when `ssr-coin` transpiles and builds your pages.
+  The page is rendered to HTML only once, when Goldpage transpiles and builds your pages.
 
 By default,
 a page is rendered to HTML at request-time.
@@ -762,7 +762,7 @@ You can then deploy your frontend to a static host such as Netlify or GitHub Pag
 
 ## !VAR SSR_COIN_CONFIG
 
-We try to keep `ssr-coin` as zero-config as possible
+We try to keep Goldpage as zero-config as possible
 and `ssr.config.js` has only few options.
 
 ~~~js
@@ -773,7 +773,7 @@ module.exports = {
   htmlRender: require.resolve('./path/to/your/htmlRender'),
   domRender: require.resolve('./path/to/your/domRender'),
 
-  // Make `ssr-coin` silent in the terminal (but it will still prints errors).
+  // Make Goldpage silent in the terminal (but it will still prints errors).
   silent: true,
 };
 ~~~
@@ -784,7 +784,7 @@ module.exports = {
 
 ## !VAR CLI_REF
 
-`ssr-coin` has two commands:
+Goldpage has two commands:
 
 - ~~~shell
   $ ssr-coin dev ./path/to/your/server.js
@@ -803,7 +803,7 @@ module.exports = {
   If your server-side code is written in JavaScript then you can call your server entry directly: `$ node ./path/to/your/server.js`.
   If not, then run the transpiled version which is located in the `.build` directory: `$ node ./build/nodejs/server.js`.
 
-Do not install `ssr-coin` globally and do not call the `ssr-coin` CLI directly.
+Do not install Goldpage globally and do not call the Goldpage CLI directly.
 Use your `package.json`'s `scripts` instead:
 
 ~~~json
@@ -820,12 +820,12 @@ Use your `package.json`'s `scripts` instead:
 }
 ~~~
 
-You can then install a local `ssr-coin` copy (`$ npm install` / `$ yarn`) and
+You can then install a local Goldpage copy (`$ npm install` / `$ yarn`) and
 then call `$ npm run dev` (/ `$ yarn dev`).
 
 A local install has couple of advantages over a global install:
- - Many projects can have many different `ssr-coin` versions.
- - Removing your project's directory also removes `ssr-coin`.
+ - Many projects can have many different Goldpage versions.
+ - Removing your project's directory also removes Goldpage.
 
 !INLINE ./snippets/section-footer.md #readme
 
@@ -850,16 +850,16 @@ Examples:
 You can configure Babel and the JavaScript transpilation by creating a `.babelrc` file.
 See [/examples/babel](/examples/babel) for an example of configuring babel.
 
-`ssr-coin` currently uses Webpack.
-This means that for custom transpilations beyond babel, modifications to `ssr-coin`'s webpack config are required.
-Instead of modifying `ssr-coin`'s webpack config yourself,
+Goldpage currently uses Webpack.
+This means that for custom transpilations beyond babel, modifications to Goldpage's webpack config are required.
+Instead of modifying Goldpage's webpack config yourself,
 see if there is a [transpilation plugin](!VAR|ANCHOR PLUGINS_TRANSPILATION) [transpilation plugin]
-that modifies `ssr-coin`'s webpack config for you.
+that modifies Goldpage's webpack config for you.
 For exampe, for TypeScript, you can use the [TypeScript plugin](/plugins/typescript).
 If there is no plugin for what you need, then open a GitHub issue and we'll create one together.
 
 Once Parcel v2 is released,
-`ssr-coin` will use Parcel instead of Webpack.
+Goldpage will use Parcel instead of Webpack.
 Since Parcel is zero-config, most of your transpilation needs will then just work.
 (Transpilation plugins will not be required anymore.)
 
@@ -994,10 +994,10 @@ To load a frontend library that is saved on disk, use a file that is loaded by a
 
 ## !VAR SERVER_FRAMEWORKS
 
-To use `ssr-coin` with `express`, `koa` or `hapi`, use the corresponding [server plugin](!VAR|ANCHOR PLUGINS_SERVER).
+To use Goldpage with `express`, `koa` or `hapi`, use the corresponding [server plugin](!VAR|ANCHOR PLUGINS_SERVER).
 
-To use `ssr-coin` with another server framework, open a GitHub issue.
-`ssr-coin` can be used with any server framework
+To use Goldpage with another server framework, open a GitHub issue.
+Goldpage can be used with any server framework
 but there is no documentation for this (yet).
 
 !INLINE ./snippets/section-footer.md #readme

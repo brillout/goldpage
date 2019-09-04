@@ -13,7 +13,7 @@ function getPageConfig() {
     route: '/product-details/:productId',
 
     // Add additional inital props, for example data loaded from an API.
-    // `addInitialProps` can be async and `ssr-coin` awaits `addInitialProps` before
+    // `addInitialProps` can be async and Goldpage awaits `addInitialProps` before
     // rendering `view` to the DOM / HTML.
     addInitialProps,
 

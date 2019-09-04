@@ -76,11 +76,11 @@
 
 -->
 
-`ssr-coin` + TypeScript = :heart:
+Goldpage + TypeScript = :heart:
 
 # `@goldpage/typescript`
 
-Use `ssr-coin` with TypeScript.
+Use Goldpage with TypeScript.
 
 ### Usage
 

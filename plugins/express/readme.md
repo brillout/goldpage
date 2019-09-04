@@ -76,11 +76,11 @@
 
 -->
 
-`ssr-coin` + Express = :heart:
+Goldpage + Express = :heart:
 
 # `@goldpage/express`
 
-Use `ssr-coin` with [Express](https://github.com/expressjs/express).
+Use Goldpage with [Express](https://github.com/expressjs/express).
 
 ### Usage
 

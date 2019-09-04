@@ -76,7 +76,7 @@
 
 -->
 
-`ssr-coin` + Crossroads = :heart:
+Goldpage + Crossroads = :heart:
 
 # `@goldpage/crossroads`
 

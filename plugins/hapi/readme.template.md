@@ -1,10 +1,10 @@
 !MENU_SKIP
 
-`ssr-coin` + Hapi = :heart:
+Goldpage + Hapi = :heart:
 
 # `@goldpage/hapi`
 
-Use `ssr-coin` with [Hapi](https://github.com/hapijs/hapi).
+Use Goldpage with [Hapi](https://github.com/hapijs/hapi).
 
 ### Usage
 

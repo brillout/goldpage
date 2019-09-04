@@ -76,11 +76,11 @@
 
 -->
 
-`ssr-coin` + React Native Web = :heart:
+Goldpage + React Native Web = :heart:
 
 # `@goldpage/react-native-web`
 
-Use `ssr-coin` with [React Native Web](https://github.com/necolas/react-native-web).
+Use Goldpage with [React Native Web](https://github.com/necolas/react-native-web).
 
 ### Usage
 

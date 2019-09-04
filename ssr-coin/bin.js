@@ -75,7 +75,7 @@ function assert_cli_usage(bool, failureReason) {
   assert.usage(
     bool,
     [
-      "Wrong `ssr-coin` CLI usage.",
+      "Wrong Goldpage CLI usage.",
       "  ssr-coin "+process.argv.slice(2).join(' '),
       ...(
         failureReason ? [failureReason] : []
