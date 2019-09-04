@@ -93,7 +93,6 @@
 
 <br/> &nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a href=#what-is-goldpage>What is Goldpage</a>
 <br/> &nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a href=#why-goldpage>Why Goldpage</a>
-<br/> &nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a href=#more-resources>More Resources</a>
 <br/> &nbsp;&nbsp;&nbsp;&#8226;&nbsp; Usage
 <br/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a href=#getting-started>Getting Started</a>
 <br/>
@@ -142,6 +141,8 @@ Recipes
 <br/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a href=#server-express--koa--hapi--fastify-->Server: Express / Koa / Hapi / Fastify / ...</a>
 <br/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a href=#view-libraries-react--vue--preact-->View Libraries: React / Vue / Preact / ...</a>
 <br/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a href=#process-managers-docker--systemd--pm2-->Process Managers: Docker / systemd / PM2 / ...</a>
+<br/> &nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a href=#more-resources>More Resources</a>
+<br/> &nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a href=#plugins>Plugins</a>
 
 <br/>
 
@@ -278,9 +279,11 @@ We enjoy talking with our users :-).
 
 Collection of documents related to Goldpage.
 
+<!---
 - [Plugins](/docs/plugins.md)
   <br/>
   List all Goldpage plugins.
+-->
 - [Goldpage VS Others](/docs/goldpage-vs-others.md)
   <br/>
   Compares Goldpage with other tools:

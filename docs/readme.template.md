@@ -43,7 +43,6 @@
 
 !INLINE li-1 !VAR|LINK WHAT_IS_GOLDPAGE
 !INLINE li-1 !VAR|LINK WHY_GOLDPAGE
-!INLINE li-1 !VAR|LINK MORE_RESOURCES
 !INLINE li-1 Usage
 !INLINE li-2 !VAR|LINK GETTING_STARTED
 !INLINE li-2-header Basics
@@ -72,6 +71,8 @@
 !INLINE li-2 !VAR|LINK SERVER_FRAMEWORKS
 !INLINE li-2 !VAR|LINK VIEW_LIBRARIES
 !INLINE li-2 !VAR|LINK PROCESS_MANAGERS
+!INLINE li-1 !VAR|LINK MORE_RESOURCES
+!INLINE li-1 !VAR|LINK PLUGIN_LIST
 
 <br/>
 
@@ -160,9 +161,11 @@ At last but not least, we enjoy writing opulent and beginner-friendly documentat
 
 Collection of documents related to Goldpage.
 
+<!---
 - [Plugins](/docs/plugins.md)
   <br/>
   List all Goldpage plugins.
+-->
 - [Goldpage VS Others](/docs/goldpage-vs-others.md)
   <br/>
   Compares Goldpage with other tools:
