@@ -91,33 +91,21 @@
 
 
 
-<sub>
-<br/>
 Intro
-</sub>
 <br/> &nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a href=#what-is-goldpage>What is Goldpage</a>
 <br/> &nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a href=#why-goldpage>Why Goldpage</a>
-<br/>
+Quick Start
 <br/> &nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a href=#getting-started>Getting Started</a>
-<sub>
-<br/>
 Usage Basics
-</sub>
 <br/> &nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a href=#css--static-assets>CSS & Static Assets</a>
 <br/> &nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a href=#async-data-addinitialprops>Async Data: `addInitialProps`</a>
 <br/> &nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a href=#html-indexhtml-head-meta-link->HTML: `index.html`, `<head>`, `<meta>`, `<link>`, ...</a>
 
-<sub>
-<br/>
 Render Control
-</sub>
 <br/> &nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a href=#rendertodom-rendertohtml--renderhtmlatbuildtime>`renderToDom`, `renderToHtml` & `renderHtmlAtBuildTime`</a>
 <br/> &nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a href=#htmlrender--domrender>`htmlRender` & `domRender`</a>
 
-<sub>
-<br/>
 App Types
-</sub>
 <br/> &nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a href=#mpa>MPA</a>
 <br/> &nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a href=#spa>SPA</a>
 <br/> &nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a href=#ssr>SSR</a>
@@ -125,10 +113,7 @@ App Types
 <br/> &nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a href=#mixed-apps>Mixed Apps</a>
 <br/> &nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a href=#static-website>Static Website</a>
 
-<sub>
-<br/>
 API Reference
-</sub>
 <br/> &nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a href=#page-config-pagejs---overview>Page Config `*.page.js` - Overview</a>
 <br/> &nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a href=#page-config-pagejs---initial-props-initialprops>Page Config `*.page.js` - Initial Props `initialProps`</a>
 <br/> &nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a href=#page-config-pagejs---html>Page Config `*.page.js` - HTML</a>
@@ -136,10 +121,7 @@ API Reference
 <br/> &nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a href=#global-config-goldpageconfigjs>Global Config `goldpage.config.js`</a>
 <br/> &nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a href=#cli>CLI</a>
 
-<sub>
-<br/>
 Recipes
-</sub>
 <br/> &nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a href=#providers-redux--react-router--vuex--vue-router--graphql-apollo--relay-->Providers: Redux / React Router / Vuex / Vue Router / GraphQL Apollo / Relay / ...</a>
 <br/> &nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a href=#transpilation-babel--typescript---es6-->Transpilation: Babel / TypeScript /  ES6 / ...</a>
 <br/> &nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a href=#css-in-js-emotion--styled-components-->CSS-in-JS: Emotion / styled-components / ...</a>
@@ -150,10 +132,7 @@ Recipes
 <br/> &nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a href=#view-libraries-react--vue--preact-->View Libraries: React / Vue / Preact / ...</a>
 <br/> &nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a href=#process-managers-docker--systemd--pm2-->Process Managers: Docker / systemd / PM2 / ...</a>
 
-<sub>
-<br/>
 
-</sub>
 <br/> &nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a href=#plugins>Plugins</a>
 
 <br/>
