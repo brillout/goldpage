@@ -2,13 +2,13 @@
 
 # Goldpage VS Others
 
-> :warning:
->
+> :information_source:
 > You can use Goldpage and create a prototype without reading this document.
->
+
+> :warning:
 > This document is meant for readers
-> that roughly know what the different app types, such as "SPA" and "SSR", are about.
-> and that want to make an educated choice of whether to use Goldpage.
+> that already know about "SPA", "SSR", "static websites", etc.,
+> and want to make an educated choice whether to use Goldpage.
 
 This document explains what differentiates Goldpage from other tools.
 
@@ -32,31 +32,28 @@ Gatsby creates a so-called "static website"
 By choosing one of these tools you are essentially choosing an app type and locking yourself into that app type.
 This means that before choosing one of these tools you have to:
 - Learn about "SPA", "SSR", "static website", and all other app types.
-- Know exactly the differences between them.
+- Know the differences between them.
 - Decide which app type is the right one for the future of your app.
 And you have to do all this before even having started writing one line of code.
 
-Even worse is that,
+And,
 most often than not,
 it's not possible to predict which app type
 is the right one
 before having created and battle-tested a first prototype.
 
 Goldpage solves this problem:
-it supports all app types and makes switching from one app type to another easy &mdash;
+it supports all app types and makes it easy to switch from one app type to another &mdash;
 you can start writing a prototype and worry about app type later.
 
-We actually encourage you to start with Goldpage's default app type and,
-only once you finished your first prototype,
+We encourage you to start with Goldpage's default app type and,
+once you finished your first prototype,
 to try out and experiment different app types on your prototye
 and see what works best for you.
 
-With Goldpage,
-you can start writing your app without even knowing
-what "SPA" or "SSR" mean.
-
-In the next section below we show
-how Goldpages allows you to create any app type.
+We believe you shouldn't have to know what "SPA" or "SSR" means before getting started;
+with Goldpage,
+you start creating a prototype and worry about all that later.
 
 !INLINE ./snippets/section-footer.md #readme
 
@@ -64,30 +61,30 @@ how Goldpages allows you to create any app type.
 
 ### Simple Design
 
-Goldpage is designed to have an interface that is simple and powerful.
+Goldpage has a simple and powerful interface.
 
-For example,
-what allows to achieve any app type are three page configs:
+For example these three page configs:
 - `renderToDom` - If set to true, your page is rendered in the browser (to the DOM).
 - `renderToHtml` - If set to true, your page is rendered to HTML (in Node.js).
 - `renderHtmlAtBuildTime` - Whether your page is rendered to HTML at request-time or at build-time.
+These three page configs allow you achieve any app type;
+For example, if you set `renderToDom: true` and `renderToHtml: false` then your page is basically an SPA.
+Or by setting `renderToHtml: true` you add SSR to your page.
+And so on and so forth.
 
-If you set `renderToDom: true` and `renderToHtml: false` to all your pages then you get an SPA.
-And if you set `renderToHtml: true` to a page then SSR to that page. Etc.
-
-Ironically,
-understanding these three page configs is actually simpler than understanding all these different terms "SPA", "MPA", "SSR", "static website", etc. This means that our `renderToDom`, `renderToHtml`, and `renderHtmlAtBuildTime` interface is simple. And because it allows you to create any app type it is also a powerful. This is example of an interface that is simple and powerful.
+Reasoning in terms of `renderToDom`, `renderToHtml`, and `renderHtmlAtBuildTime` will eventually feel more natural than reasoning in terms of
+"SPA", "MPA", "SSR", "static website", etc.
+Our interface is simple and powerful:
+with `renderToDom`, `renderToHtml`, and `renderHtmlAtBuildTime` you can achieve more things and easier.
 
 Another example
-is that we allow you to define the `htmlRender` and `domRender` functions where:
-- `htmlRender` renders a page to HTML
-- `domRender` renders a page to the DOM
-Allowing you to define these 2 render functions gives you full control over how your pages are rendered
-and full freedom to use Goldpage with any view library
-(React, Vue, RNW, Preact, ...) and any other tool
-(Redux, React Router, ...).
-
-Our `htmlRender` and `domRender` interface is simple and powerful.
+is that we give you the possibility to define `htmlRender` and `domRender`:
+- `htmlRender` renders your pages to HTML
+- `domRender` renders your pages to the DOM
+By defining these two functions you gain full control over how your pages are rendered.
+This is what allows Goldpage to be used any view library
+(React, Vue, RNW, Preact, ...) and any tool (Redux, React Router, ...).
+Here again, our interface is simple and powerful.
 
 !INLINE ./snippets/section-footer.md #readme
 
@@ -95,8 +92,10 @@ Our `htmlRender` and `domRender` interface is simple and powerful.
 
 ### Flexible & Rock-solid
 
-Our simple design makes
-Goldpage's codebase small, easy to understand, and rock-solid.
+Not only does our design makes
+Goldpage easy to use
+a stable and stable contract between you (Goldpage users) and us (Goldand maintainers),
+this also makes Goldpage's rock-solid. Because a stable interface
 
 For example,
 the `htmlRender` and `domRender` functions we have seen in the previous section
@@ -121,24 +120,27 @@ the work of one maintainer can be as effective as the work of up to 10 maintaine
 
 ### New App Types
 
-As we showed in
+As shown in
 [Simple Design](#simple-design)
 the page configs `renderToDom`, `renderToHtml`, and `renderHtmlAtBuildTime`
-allow you to create any app type.
-Not only do these page configs enable you to create all common app types but it also enable new app types.
+allow you to achieve all common app types.
+In addition to commonly used app types,
+you can achieve entirely new app types that are not supported by any other tool other than Goldpage.
 
 For example,
-by setting `renderToDom: false` you remove browser-side JavaScript code from a page.
-If a page is non-interactive, then
-rendering it to HTML makes the page blazing fast (even on mobile) and SEO-friendly.
+by setting `renderToHtml: true` and `renderToDom: false` you remove browser-side JavaScript code from a page.
+That way you can have non-interactive pages that are
+blazing fast (even on mobile) and SEO-friendly.
 
-Also you can configure on page-by-page basis which is a novelty as well;
-parts of your app can be an SPA while other parts of your app can be rendered to HTML only.
+Our page-by-page basis configuration is a novelty as well as it allows you to mix:
+one of your pages can be an SPA while another one uses SSR.
+We call such app a *Mixed App*.
 
-Most notably we introduce a new app type we call *Backend First App* where
-most pages are rendered only to HTML and where only a couple of interactive pages are rendered to the DOM.
-The idea here is to implement features with non-interactive pages whenever possible;
-interactive views are substantially more time consuming to implement than non-interative views.
+One such mixed app is what we call a *Backend First App* where
+most pages are non-interactive and rendered only to HTML,
+and where only a couple of pages are interactive and rendered to the DOM.
+The idea of a BFA is to implement features with non-interactive pages whenever possible;
+non-interactive views are substantially faster to implement than interative views.
 More at [Backend First App](/docs/bfa.md).
 
 !INLINE ./snippets/section-footer.md #readme

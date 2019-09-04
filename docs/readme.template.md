@@ -49,7 +49,6 @@
 !INLINE li-1 !VAR|LINK WHAT_IS_GOLDPAGE
 !INLINE li-1 !VAR|LINK WHY_GOLDPAGE
 
-!INLINE li-header
 !INLINE li-1 !VAR|LINK GETTING_STARTED
 
 !INLINE li-header Usage Basics
@@ -133,6 +132,8 @@ And Goldpage takes care of the rest:
   app.use(goldpage);
   ~~~
 
+!INLINE ./snippets/section-footer.md #readme
+
 
 
 ## !VAR WHY_GOLDPAGE
@@ -142,53 +143,33 @@ And Goldpage takes care of the rest:
 Goldpage supports all app types: you can create a so-called "SPA", or an "MPA", or an "SSR" app, or a "static website", etc.
 
 You don't know what "SPA", "SSR" and "app type" mean?
-That's fine;
-with Goldpage you can start creating your app
-and learn about all that stuff later.
+That's fine:
+with Goldpage, you can start writing your app
+and learn about these things later.
 
-> :information_source:
-> <br/>
-> We elaborate for those who are already somewhat familiar with these different app types.
-> (If you are not: just skip this info bubble.)
->
-> Not only does Goldpage allow you to create any app type but it also
-> allows you to easily switch from one app type to another.
-> This means that you can quickly create a prototype and worry about
-> choosing the right app type later.
-> For example, you can start with an SPA and
-> add SSR later.
->
-> And,
-> not only do we support all common app types,
-> but we also introduce new app types.
->
-> At
-> [Goldpage VS Others]()
-> we show how Goldpage allows you to create any app type and why it matters.
-> We also talk about our new app types.
+We elaborate and show how Goldpage works at
+[Goldpage VS Others](/docs/goldpage-vs-others.md).
 
-<!---
-**Design & Docs**
--->
 **Design**
 
-Goldpage is a do-one-thing-do-it-well library with a simple design.
+Goldpage is a small do-one-thing-do-it-well library that can be used with:
+- Any server (Express, Koa, Hapi, ...).
+- Any view libray (React, Vue, React Native Web, ...).
+- Any language (ES7, TypeScript, PostCSS, ...).
+- Any provider (Redux, React Router, Vuex, Vue Router, GraphQL Apollo, Relay, ...).
+- Any CSS-in-JS library (Emotion, styled-components, ...).
+- Any process manager (Docker, systemd, PM2, ...).
 
-Goldpage can be used with
-any server (Express, Koa, Hapi, ...),
-any view libray (React, Vue, React Native Web, ...),
-any language (ES7, TypeScript, PostCSS, ...),
-any provider (Redux, React Router, Vuex, Vue Router, GraphQL Apollo, Relay, ...),
-any CSS-in-JS library (Emotion, styled-components, ...),
-and any process manager (Docker, systemd, PM2, ...).
+Goldpage has a simple design that makes it rock-solid, super flexible, and easy to use.
 
-Our simple design makes Goldpage a flexible and rock-solid tool that is easy to use.
-We explain why at [Goldpage VS Others]() &mdash; if you're curious.
+We talk about Goldpage's design at [Goldpage VS Others](/docs/goldpage-vs-others.md) &mdash; if you're curious.
 
+<!---
+**Docs**
+-->
 <!---
 At last but not least, we enjoy writing opulent and beginner-friendly documentation.
 -->
-
 !INLINE ./snippets/section-footer.md #readme
 
 
@@ -315,12 +296,12 @@ then use a [Reframe starter](https://github.com/reframejs/reframe#getting-starte
    ~~~
 
    > :information_source:
-   > Goldpage is purposely designed to also build your server code.
-   > This allows you to use the same language,
+   > Goldpage also builds your server code to
+   > allow you to use the same language,
    > such as TypeScript,
    > for your browser and server code.
 
-That's it: you can now run `npm run dev` (`yarn dev`), go to [http://localhost:3000/hello/jon](http://localhost:3000/hello/jon), and start hacking.
+That's it: you can now run `npm run dev` (`yarn dev`) and go to [http://localhost:3000/hello/jon](http://localhost:3000/hello/jon).
 
 !INLINE ./snippets/section-footer.md #readme
 
