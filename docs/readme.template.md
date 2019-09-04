@@ -200,7 +200,7 @@ then use a [Reframe starter](https://github.com/reframejs/reframe#getting-starte
 0. Install Goldpage.
 
    ~~~shell
-   npm install ssr-coin
+   npm install goldpage
    ~~~
 
    Install a [render plugin](!VAR|ANCHOR PLUGINS_RENDER), such as `@goldpage/react`:
@@ -304,9 +304,9 @@ then use a [Reframe starter](https://github.com/reframejs/reframe#getting-starte
    ~~~json
    {
      "scripts": {
-       "dev": "ssr-coin dev ./path/to/your/server.js",
+       "dev": "goldpage dev ./path/to/your/server.js",
        "prod": "npm run build && npm run start",
-       "build": "ssr-coin build ./path/to/your/server.js",
+       "build": "goldpage build ./path/to/your/server.js",
        "start": "export NODE_ENV='production' && node ./.build/nodejs/server"
      }
    }
@@ -787,7 +787,7 @@ module.exports = {
 Goldpage has two commands:
 
 - ~~~shell
-  $ ssr-coin dev ./path/to/your/server.js
+  $ goldpage dev ./path/to/your/server.js
   ~~~
   The `dev` command starts your server with auto-reload:
   whenever you make a change to your code,
@@ -795,7 +795,7 @@ Goldpage has two commands:
   The `dev` command is meant to be used while you develop your app.
 
 - ~~~shell
-  $ ssr-coin build ./path/to/your/server.js
+  $ goldpage build ./path/to/your/server.js
   ~~~
   The `build` command builds your code for production.
   (E.g. it minifies your browser-side code whereas the `dev` command doesn't.)
@@ -809,12 +809,12 @@ Use your `package.json`'s `scripts` instead:
 ~~~json
 {
   "dependencies": {
-    "ssr-coin": "^0.3.3",
+    "goldpage": "^0.3.3",
   },
   "scripts": {
-    "dev": "ssr-coin dev ./path/to/your/server.js",
+    "dev": "goldpage dev ./path/to/your/server.js",
     "prod": "npm run build && npm run start",
-    "build": "ssr-coin build ./path/to/your/server.js",
+    "build": "goldpage build ./path/to/your/server.js",
     "start": "export NODE_ENV='production' && node ./.build/nodejs/server"
   }
 }

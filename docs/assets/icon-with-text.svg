@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg version="1.1" viewBox="0 0 916.92932 225.20002">
+<circle cx="112.88" cy="112.66" r="111.98" fill="#4a4a4a"/>
+<circle cx="112.88" cy="112.66" r="88.539" fill="#5a676f"/>
+<text transform="scale(1.1665 .85723)" x="225.6058" y="138.43915" fill="#595959" font-family="'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif" font-size="114.45px" style="line-height:125%">
+<tspan x="225.6058" y="138.43915">Goldpage</tspan>
+</text>
+<text transform="scale(1.1195 .89327)" x="351.86591" y="212.11336" fill="#595959" font-family="'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif" font-size="52.378px" style="line-height:125%">
+<tspan x="351.86591" y="212.11336">Page Builder</tspan>
+</text>
+<g transform="translate(-3.3421)" fill="#ffd700" shape-rendering="auto">
+<path d="m157.27 112.43-31.799 44.394c-1.1865 2.0569 1.1866 3.5996 5.4581 3.5996h17.798c3.085 0 4.7461-0.68564 7.3565-3.5996l31.799-44.394-32.036-44.566c-2.3731-2.9139-4.2715-3.5996-7.3565-3.5996h-17.798c-4.2715 0-6.6446 1.7141-5.4581 3.5996l32.036 44.566z" color="#000000" color-rendering="auto" image-rendering="auto" solid-color="#000000" style="isolation:auto;mix-blend-mode:normal"/>
+<path d="m73.993 113.3 31.799-44.394c1.1865-2.0569-1.1866-3.5996-5.4581-3.5996h-17.798c-3.085 0-4.7461 0.68563-7.3565 3.5996l-31.562 44.394 31.799 44.394c2.3731 2.9139 4.2715 3.5996 7.3565 3.5996h17.798c4.2715 0 6.6446-1.7141 5.4581-3.5996l-32.037-44.394z" color="#000000" color-rendering="auto" image-rendering="auto" solid-color="#000000" style="isolation:auto;mix-blend-mode:normal"/>
+</g>
+</svg>
