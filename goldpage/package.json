@@ -11,7 +11,7 @@
     "@goldpage/browser": "0.4.0",
     "@goldpage/core": "0.4.0",
     "@goldpage/path-to-regexp": "0.4.0",
-    "@goldpage/server": "0.4.0",
+    "@goldpage/server-universal-middleware": "0.4.0",
     "@goldpage/webpack": "0.4.0",
     "source-map-support": "^0.5.12"
   },

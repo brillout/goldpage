@@ -69,6 +69,8 @@
     "plugins/react",
     "plugins/render-react",
     "plugins/server",
+    "plugins/server-universal-middleware",
+    "plugins/serverless",
     "plugins/static-website",
     "plugins/typescript",
     "plugins/vue/example",

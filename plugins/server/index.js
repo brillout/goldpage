@@ -1,11 +1,6 @@
-const ServerRendering = require('./ServerRendering');
-const StaticAssets = require('./StaticAssets');
+require('@goldpage/hapi');
+const serverFile = require.resolve('./server');
+
 const config = require('@brillout/reconfig');
 
-Object.assign(
-  config.goldpage,
-  {
-    ServerRendering,
-    StaticAssets,
-  },
-);
+config.goldpage.serverEntryFile = serverFile;

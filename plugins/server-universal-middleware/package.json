@@ -1,11 +1,14 @@
 {
-  "name": "@goldpage/static-website",
+  "name": "@goldpage/server-universal-middleware",
   "version": "0.4.0",
   "@brillout/autoload": true,
   "dependencies": {
+    "@brillout/parse-url": "^0.2.1",
     "@brillout/reconfig": "0.4.0",
-    "@goldpage/hapi": "0.4.0",
-    "hapi": "^18.1.0"
+    "@brillout/repage": "0.4.0",
+    "fs-extra": "^7.0.1",
+    "mimos": "^4.0.0",
+    "reassert": "^1.1.12"
   },
   "publishConfig": {
     "access": "public"

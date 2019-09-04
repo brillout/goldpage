@@ -14,7 +14,7 @@ function create_ssr() {
 
   require('@goldpage/core');
   require('@goldpage/browser');
-  require('@goldpage/server');
+  require('@goldpage/server-universal-middleware');
   require('@goldpage/path-to-regexp');
   require('@goldpage/webpack');
 
