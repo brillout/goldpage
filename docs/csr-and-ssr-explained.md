@@ -121,6 +121,9 @@ This document explains:
 - [Performance](#performance)
 - [CSR + SSR](#csr--ssr)
 
+<br/>
+<br/>
+
 # What is CSR and SSR?
 
 Modern view libraries (React/Vue/...) are able to run in the browser as well as in Node.js.
