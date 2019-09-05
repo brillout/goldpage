@@ -22,5 +22,5 @@ the `route` property of your page configs is now handled by `path-to-regexp`.
 ### Example
 
 ~~~js
-!INLINE /examples/basics/pages/welcome.page.js
+!INLINE /examples/basics/pages/hello.page.js
 ~~~

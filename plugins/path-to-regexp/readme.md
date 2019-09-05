@@ -98,49 +98,47 @@ the `route` property of your page configs is now handled by `path-to-regexp`.
 ### Example
 
 ~~~js
-// /examples/basics/pages/welcome.page.js
+// /examples/basics/pages/hello.page.js
 
-import React, {useEffect, useState} from 'react';
+import React, {useState} from 'react';
 
 export default {
-  route: '/',
-  view: () => (
-    <div>
-      Welcome to Goldpage.
-      <Time/>
-      <br/>
-      More:
-      <ul>
-        <Page pathname="/counter"/>
-        <Page pathname="/hello/jon"/>
-        <Page pathname="/repos/brillout"/>
-        <Page pathname="/csr-example"/>
-        <Page pathname="/ssr-example"/>
-      </ul>
-    </div>
-  ),
+  route: '/hello/:name',
+  addInitialProps,
+  view: Hello,
+  title,
   renderToHtml: true,
 };
 
-function Time() {
-  const getTime = () => new Date().toLocaleTimeString();
+async function addInitialProps({name}) {
+  // We simulate a network request delay
+  await sleep(0.5);
 
-  const [time, setTime] = useState(getTime());
+  const nameReversed = name.split('').reverse().join('');
+  return {nameReversed};
+}
 
-  useEffect(() => {
-    const timeout = setInterval(() => setTime(getTime()), 100);
-    return () => clearTimeout(timeout);
-  }, []);
+function Hello({name, nameReversed}) {
+  const [isReversed, setReverse] = useState(false);
 
   return (
     <div>
-      The time is: <span>{time}</span>
+      Hello <span>{isReversed ? nameReversed : name}</span>, welcome to Goldpage.
+      <br/>
+      <button onClick={() => setReverse(!isReversed)}>Reverse name</button>
     </div>
   );
 }
 
-function Page({pathname}) {
-  return <li><a href={pathname}>{pathname}</a></li>;
+function title({name}) {
+  return 'Hi '+name;
+}
+
+function sleep(seconds) {
+  let resolve;
+  const promise = new Promise(r => resolve=r);
+  setTimeout(resolve, seconds*1000);
+  return promise;
 }
 ~~~
 

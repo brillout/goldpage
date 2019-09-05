@@ -96,14 +96,17 @@ the `route` property of your page configs is now handled by Crossroads.
 ### Example
 
 ~~~js
-// ./example/pages/hello.page.js
+// ./example/pages/hello-crossroads.page.js
 
 import React from 'react';
 
 export default {
   route: '/hello/{name}',
   view: ({name}) => (
-    <div>Hello {name}</div>
+    <div>
+      <h1>Hello {name}</h1>
+      Statically routed with Crossroads.
+    </div>
   ),
   renderToHtml: true,
 };

@@ -96,49 +96,54 @@ the `view` property of your page configs is now rendered with React.
 ### Example
 
 ~~~js
-// /examples/basics/pages/welcome.page.js
+// /examples/basics/pages/repos/repos.page.js
 
-import React, {useEffect, useState} from 'react';
+// We use React but Goldpage also works with Vue, RNW, ...
+import React from 'react';
 
+import getRepositories from './data/getRepositories';
+
+import RepoList from './views/RepoList';
+import Counter from './views/Counter';
+
+// The page config:
 export default {
-  route: '/',
-  view: () => (
-    <div>
-      Welcome to Goldpage.
-      <Time/>
-      <br/>
-      More:
-      <ul>
-        <Page pathname="/counter"/>
-        <Page pathname="/hello/jon"/>
-        <Page pathname="/repos/brillout"/>
-        <Page pathname="/csr-example"/>
-        <Page pathname="/ssr-example"/>
-      </ul>
-    </div>
-  ),
+  route: '/repos/:username',
+  addInitialProps,
+  view: Repos,
+  title,
   renderToHtml: true,
 };
 
-function Time() {
-  const getTime = () => new Date().toLocaleTimeString();
+// `getRepositories(username)` uses the GitHub API
+// to load the repositories of `username`.
+// `addInitialProps` makes `repositories` available
+// to `view`.
+async function addInitialProps({username}) {
+  const repositories = await getRepositories(username);
+  return {repositories};
+}
 
-  const [time, setTime] = useState(getTime());
-
-  useEffect(() => {
-    const timeout = setInterval(() => setTime(getTime()), 100);
-    return () => clearTimeout(timeout);
-  }, []);
-
+function Repos({username, repositories}) {
   return (
     <div>
-      The time is: <span>{time}</span>
+      Hello <b>{username}</b>,
+
+      <br/><br/>
+      Your repositories are:
+      <RepoList repositories={repositories} />
+
+      <br/><br/>
+      This page is interactive:
+      <Counter/>
     </div>
   );
 }
 
-function Page({pathname}) {
-  return <li><a href={pathname}>{pathname}</a></li>;
+function title({username, repositories}) {
+  return (
+    username+' repositories ('+repositories.length+')'
+  );
 }
 ~~~
 

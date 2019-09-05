@@ -20,5 +20,5 @@ the `route` property of your page configs is now handled by Crossroads.
 ### Example
 
 ~~~js
-!INLINE ./example/pages/hello.page.js
+!INLINE ./example/pages/hello-crossroads.page.js
 ~~~

@@ -20,5 +20,5 @@ the `view` property of your page configs is now rendered with React.
 ### Example
 
 ~~~js
-!INLINE /examples/basics/pages/welcome.page.js
+!INLINE /examples/basics/pages/repos/repos.page.js
 ~~~
