@@ -63,9 +63,9 @@ you have the choice between rendering your page to the DOM or to HTML.
 
 For example:
 
-<img align="right" src="/docs/assets/screens/ssr-result.png" width=336 height=706 style="max-width:100%;"/>
+<img align="right" src="/docs/assets/screens/ssr-result.png" width=336 style="max-width:100%;"/>
 
-<img align="right" src="/docs/assets/screens/ssr-html.png" width=336 height=706 style="max-width:100%;"/>
+<img align="right" src="/docs/assets/screens/ssr-html.png" width=336 style="max-width:100%;"/>
 
 ~~~js
 !INLINE /examples/basics/pages/ssr.page.js --hide-source-path
@@ -77,9 +77,9 @@ This page has no `<script>` tags; the HTML is generated in Node.js and no browse
 
 For example:
 
-<img align="right" src="/docs/assets/screens/csr-result.png" width=336 height=706 style="max-width:100%;"/>
+<img align="right" src="/docs/assets/screens/csr-result.png" width=336 style="max-width:100%;"/>
 
-<img align="right" src="/docs/assets/screens/csr-html.png" width=336 height=706 style="max-width:100%;"/>
+<img align="right" src="/docs/assets/screens/csr-html.png" width=336 style="max-width:100%;"/>
 
 ~~~js
 !INLINE /examples/basics/pages/csr.page.js --hide-source-path
@@ -87,7 +87,7 @@ For example:
 
 The page's HTML doesn't contain the page's content but has `<script/>` tags instead; the page's code is loaded and rendered in the browser:
 
-<img align="right" src="/docs/assets/screens/csr-dom.png" width=336 height=706 style="max-width:100%;"/>
+<img src="/docs/assets/screens/csr-dom.png" style="max-width:100%;"/>
 
 
 You can also do both CSR *and* SSR which we explain at
