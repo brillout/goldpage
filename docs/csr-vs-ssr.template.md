@@ -1,4 +1,5 @@
 !INLINE ./snippets/header.md
+<br/>
 
 # Client-side Rendering (CSR) VS Server-side Rendering (SSR)
 

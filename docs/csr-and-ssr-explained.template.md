@@ -1,4 +1,5 @@
 !INLINE ./snippets/header.md
+<br/>
 
 # CSR & SSR Explained
 
