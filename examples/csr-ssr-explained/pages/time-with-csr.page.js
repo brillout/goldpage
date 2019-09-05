@@ -1,21 +1,12 @@
 import React, {useEffect, useState} from 'react';
 
 export default {
-  route: '/',
-  view: () => (
-    <div>
-      Welcome to Goldpage.
-      <Time/>
-      <br/>
-      More:
-      <ul>
-        <Page pathname="/counter"/>
-        <Page pathname="/hello/jon"/>
-        <Page pathname="/repos/brillout"/>
-      </ul>
-    </div>
-  ),
-  renderToHtml: true,
+  route: '/time-with-csr',
+  view: Time,
+
+  // We do CSR:
+  renderToDom: true,
+  renderToHtml: false,
 };
 
 function Time() {
@@ -36,8 +27,4 @@ function Time() {
       The time is: <span>{currentTime}</span>
     </div>
   );
-}
-
-function Page({pathname}) {
-  return <li><a href={pathname}>{pathname}</a></li>;
 }

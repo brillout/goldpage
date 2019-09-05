@@ -26,6 +26,7 @@
     "examples/async-data",
     "examples/babel",
     "examples/basics",
+    "examples/csr-ssr-explained",
     "examples/emotion",
     "examples/frontend-libraries",
     "examples/html",

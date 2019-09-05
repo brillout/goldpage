@@ -129,7 +129,7 @@ EXAMPLE
  - show DOM changing
 
 This page illustrates how CSR works:
-the `<script/>` tags load React's and the page's source code,
+the `<script/>` tags load the source code of your page and of React,
 and every time the state `currentTime` changes,
 React applies the changes by manipulating the DOM.
 
