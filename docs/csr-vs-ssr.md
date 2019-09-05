@@ -85,13 +85,11 @@
 # Client-side Rendering (CSR) VS Server-side Rendering (SSR)
 
 > :information_source:
->
 > You do not need to know what CSR and SSR is and
 > you do not need to read this document in order to use Goldpage.
 > We recommend that you start writing a prototype first and learn about CSR and SSR later.
 
 > :warning:
->
 > This document assumes that you are familiar with CSR,
 > SSR,
 > `renderToDom`,

@@ -8,7 +8,6 @@
 > You can use Goldpage and start creating a prototype without reading this document.
 
 > :warning:
->
 > This document assumes that you are familiar with the differences between CSR and SSR,
 > between an interactive page and a non-interactive page, and between `renderToDom` and `renderToHtml`.
 > You can learn about all this at

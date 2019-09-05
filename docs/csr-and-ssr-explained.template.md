@@ -4,7 +4,6 @@
 # CSR & SSR Explained
 
 > :information_source:
->
 > You do not need to read this document
 > and you do not need to know what CSR and SSR is
 > in order to use Goldpage.
@@ -18,14 +17,12 @@ This document explains:
 - The difference between a static page and a dynamic page.
 
 > :information_source:
->
 > If you already know what CSR, SSR, and CSR + SSR is then checkout
 > [Client-side Rendering (CSR) VS Server-side Rendering (SSR)](/docs/csr-vs-ssr.md#readme)
 > instead which helps you decide whether to use CSR, SSR, or CSR + SSR.
 > Otherwise read on.
 
 > :warning:
-> <br/>
 > This document assumes that you know:
 > - What the DOM is.
 > - That anything you see on a page in the browser is represented by the DOM tree
@@ -113,7 +110,6 @@ and every time the state `currentTime` changes,
 React applies the changes by manipulating the DOM.
 
 > :information_source:
-> <br/>
 > Our example isn't, strictly speaking, interactive:
 > we merely show the current time and the user has no interactions with the page.
 > But we sill call the page interactive because it is stateful:
@@ -130,7 +126,6 @@ This is the biggest difference between CSR and SSR;
 CSR enables (and is required for) interactive views.
 
 > :information_source:
-> <br/>
 > Our documentation often talks about "rendering a page in the browser" or "rendering a page to the DOM".
 > Both denote the practice of doing CSR.
 
@@ -212,11 +207,9 @@ EXAMPLE
 The printed time never changes and corresponds to the time the app was built.
 
 > :information_source:
->
 > Tools that generate such static pages are called *Static Site Generators (SSG)*.
 
 > :information_source:
->
 > You can have a non-interactive dynamic page:
 > a page that is not rendered to the DOM but rendered to HTML at request-time.
 > (You can actually have all kinds of (non-)interactive static/dynamic combination)
