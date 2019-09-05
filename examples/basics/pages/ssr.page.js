@@ -1,4 +1,4 @@
-// We use Goldpage to create a page with SSR.
+// This example uses Goldpage to create a SSR page.
 
 import React from 'react';
 
@@ -6,7 +6,7 @@ export default {
   route: '/ssr-example',
   view: SomeText,
 
-  // SSR renders the page to HTML.
+  // We do SSR: we render the page to HTML.
   renderToHtml: true,
 
   // We do SSR only: we don't render the page to the DOM.

@@ -1,4 +1,4 @@
-// We use Goldpage to create a page with CSR.
+// This example uses Goldpage to create a CSR page.
 
 import React from 'react';
 
@@ -6,7 +6,7 @@ export default {
   route: '/csr-example',
   view: SomeText,
 
-  // CSR renders the page to the DOM.
+  // We do CSR: we render the page to the DOM.
   renderToDom: true,
 
   // We do CSR only: we don't render the page to HTML.
