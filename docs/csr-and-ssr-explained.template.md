@@ -33,6 +33,8 @@ This document explains:
 > - HTML is generated on the server-side and the DOM is manipulated on the browser-side.
 > If any of the above is not clear to you, then learn about the DOM before reading this document.
 
+#### Contents
+
 - [What is CSR and SSR?](#what-is-csr-and-ssr)
 - [Interactive vs Non-interactive](#interactive-vs-non-interactive)
 - [Static vs Dynamic](#static-vs-dynamic)
