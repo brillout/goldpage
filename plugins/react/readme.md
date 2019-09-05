@@ -106,6 +106,15 @@ export default {
     <div>
       Welcome to Goldpage.
       <Time/>
+      <br/>
+      More:
+      <ul>
+        <Page pathname="/counter"/>
+        <Page pathname="/hello/jon"/>
+        <Page pathname="/repos/brillout"/>
+        <Page pathname="/csr-example"/>
+        <Page pathname="/ssr-example"/>
+      </ul>
     </div>
   ),
   renderToHtml: true,
@@ -126,6 +135,10 @@ function Time() {
       The time is: <span>{time}</span>
     </div>
   );
+}
+
+function Page({pathname}) {
+  return <li><a href={pathname}>{pathname}</a></li>;
 }
 ~~~
 
