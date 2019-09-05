@@ -1,7 +1,6 @@
 // We use Goldpage to create a page with CSR.
 
 import React from 'react';
-import './style.css';
 
 export default {
   route: '/csr-example',
