@@ -488,7 +488,7 @@ The following page showcases SSR:
 - The page is interactive (as you can see in the screencast, the user can modify the state of the counter).
 - The page is server-side rendered (as you can see in the screencast, the content of the page is rendered to HTML, such as "brillout/awesome-react-components").
 
-<img align="right" src="https://github.com/reframejs/goldpage/raw/master/docs/assets/ssr-screencast.gif" width=336 height=706 style="max-width:100%;"/>
+<img align="right" src="/docs/assets/ssr-screencast.gif" width=336 height=706 style="max-width:100%;"/>
 
 ~~~js
 // /examples/basics/pages/repos/repos.page.js

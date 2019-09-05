@@ -110,7 +110,7 @@ you can set both `renderToDom: true` and `renderToHtml: true` for having a crawl
 
 When someone shares a page on a social site, such as Facebook or Twitter, a preview of the page is shown.
 
-<img align="center" src="https://github.com/reframejs/goldpage/raw/master/docs/assets/social-sharing-preview.png?sanitize=true"/>
+<img align="center" src="/docs/assets/social-sharing-preview.png"/>
 
 Facebook, for example, looks for the following HTML meta tags:
 ~~~html
