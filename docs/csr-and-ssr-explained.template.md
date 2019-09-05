@@ -20,7 +20,7 @@ This document explains:
 > :information_source:
 >
 > If you already know what CSR, SSR, and CSR + SSR is then checkout
-> [Client-side Rendering (CSR) VS Server-side Rendering (SSR)](/docs/csr-vs-ssr.md)
+> [Client-side Rendering (CSR) VS Server-side Rendering (SSR)](/docs/csr-vs-ssr.md#readme)
 > instead which helps you decide whether to use CSR, SSR, or CSR + SSR.
 > Otherwise read on.
 
@@ -251,7 +251,7 @@ Anything you render to the DOM is not crawlabe; if you want your page's content 
 Note that Google is capable of executing JavaScript and discover content rendered to the DOM but it has limitations.
 
 We elaborate furhter at
-[Client-side Rendering (CSR) VS Server-side Rendering (SSR)](/docs/csr-vs-ssr.md).
+[Client-side Rendering (CSR) VS Server-side Rendering (SSR)](/docs/csr-vs-ssr.md#readme).
 
 !INLINE ./snippets/section-footer.md #readme
 
@@ -264,7 +264,7 @@ CSR and SSR have different performance characteristics.
 On low-end devices and/or on slow internet connections, such as mobile, the differences are drastic.
 
 We explain the performance differences in detail at
-[Client-side Rendering (CSR) VS Server-side Rendering (SSR)](/docs/csr-vs-ssr.md).
+[Client-side Rendering (CSR) VS Server-side Rendering (SSR)](/docs/csr-vs-ssr.md#readme).
 
 !INLINE ./snippets/section-footer.md #readme
 

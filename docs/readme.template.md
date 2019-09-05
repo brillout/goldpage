@@ -131,7 +131,7 @@ with Goldpage, you can start writing your app
 and learn about these things later.
 
 We elaborate and show how Goldpage works at
-[Goldpage VS Others](/docs/goldpage-vs-others.md).
+[Goldpage VS Others](/docs/goldpage-vs-others.md#readme).
 
 **Design**
 
@@ -145,7 +145,7 @@ Goldpage is a small do-one-thing-do-it-well library that can be used with:
 
 Goldpage has a simple design that makes it rock-solid, super flexible, and easy to use.
 
-We talk about Goldpage's design at [Goldpage VS Others](/docs/goldpage-vs-others.md) &mdash; if you're curious.
+We talk about Goldpage's design at [Goldpage VS Others](/docs/goldpage-vs-others.md#readme) &mdash; if you're curious.
 
 <!---
 **Docs**
@@ -162,21 +162,21 @@ At last but not least, we enjoy writing opulent and beginner-friendly documentat
 Collection of documents related to Goldpage.
 
 <!---
-- [Plugins](/docs/plugins.md)
+- [Plugins](/docs/plugins.md#readme)
   <br/>
   List all Goldpage plugins.
 -->
-- [Goldpage VS Others](/docs/goldpage-vs-others.md)
+- [Goldpage VS Others](/docs/goldpage-vs-others.md#readme)
   <br/>
   Compares Goldpage with other tools:
   CRA, Next.js, Nuxt.js, Gatsby, Vue CLI, etc.
-- [CSR & SSR Explained](/docs/csr-and-ssr-explained.md)
+- [CSR & SSR Explained](/docs/csr-and-ssr-explained.md#readme)
   <br/>
   Explains what CSR and SSR are.
-- [Client-side Rendering (CSR) VS Server-side Rendering (SSR)](/docs/csr-vs-ssr.md)
+- [Client-side Rendering (CSR) VS Server-side Rendering (SSR)](/docs/csr-vs-ssr.md#readme)
   <br/>
   Helps you decide whether to use CSR, SSR, or CSR + SSR.
-- [Backend First App (BFA)](/docs/bfa.md)
+- [Backend First App (BFA)](/docs/bfa.md#readme)
   <br/>
   Introduction to BFAs.
   A BFA uses React (or Vue)
@@ -483,7 +483,7 @@ to your static host.
 > between `renderToDom` and `renderToHtml`,
 > and between an interactive page and a non-interactive page.
 > You can learn about all this
-> at [CSR & SSR Explained](/docs/csr-and-ssr-explained.md).
+> at [CSR & SSR Explained](/docs/csr-and-ssr-explained.md#readme).
 
 Tools usually offer CSR or SSR in an all-or-nothing way:
 either your entire app is CSR'd or SSR'd.
@@ -507,7 +507,7 @@ To achieve:
 - High development speed
 - Reliable SEO
 
-More at [BFA](/bfa.md).
+More at [BFA](/bfa.md#readme).
 
 !INLINE ./snippets/section-footer.md #readme
 
@@ -549,7 +549,7 @@ Configuring these three page configs are about achieving improvements in:
   rendering your page to HTML is drastically faster then rendering it to the DOM.
 
 At
-[Client-side Rendering (CSR) VS Server-side Rendering (SSR)](/docs/csr-vs-ssr.md),
+[Client-side Rendering (CSR) VS Server-side Rendering (SSR)](/docs/csr-vs-ssr.md#readme),
 we elaborate how to set `renderToHtml`, `renderToDom` and `renderHtmlAtBuildTime`,
 in order to achieve improvements in the above points.
 But before you learn more about these page configs and what you can achieve with them,

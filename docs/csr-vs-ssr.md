@@ -100,7 +100,7 @@
 > the difference between an interative page and a non-interactive page,
 > and the difference between a dynamic page and a static page.
 > We explain and illustrate all this
-> at [CSR & SSR Explained](/docs/csr-and-ssr-explained.md).
+> at [CSR & SSR Explained](/docs/csr-and-ssr-explained.md#readme).
 
 To recap,
 *Client-Side Rendering* (CSR) denotes the practice of rendering a page to the DOM (in the browser) which corresponds to page config `renderToDom: true`,
@@ -146,7 +146,7 @@ then your page needs CSR and
 you need to set `renderToDom: true`.
 
 > :information_source:
-> At [CSR & SSR Explained](/docs/csr-and-ssr-explained.md)
+> At [CSR & SSR Explained](/docs/csr-and-ssr-explained.md#readme)
 > we explain and illustrate why interactive views need to be rendered to the browser's DOM.
 
 
@@ -369,7 +369,7 @@ This configuration is super fast but works only for a non-interactive and static
 > :information_source:
 > We illustrate what
 > *non-interactive* and *static* mean at
-> [CSR & SSR Explained](/docs/csr-and-ssr-explained.md).
+> [CSR & SSR Explained](/docs/csr-and-ssr-explained.md#readme).
 
 #### Dynamic pages
 
