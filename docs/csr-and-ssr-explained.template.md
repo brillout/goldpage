@@ -125,6 +125,11 @@ CSR is what allows a page to be interactive. For example:
 <img align="right" src="/docs/assets/screens/time-with-csr.gif" style="max-width:100%;"/>
 
 ~~~js
+// Time.js
+
+!INLINE /examples/csr-ssr-explained/pages/Time.js --hide-source-path
+~~~
+~~~js
 !INLINE /examples/csr-ssr-explained/pages/time-with-csr.page.js --hide-source-path
 ~~~
 
@@ -164,7 +169,7 @@ With SSR alone you can only implement *non-interactive* pages.
 
 Let's see what happens when we render our stateful `<Time/>` with SSR:
 
-<img align="right" src="/docs/assets/screens/time-with-ssr.gif" style="max-width:100%;"/>
+<img align="right" src="/docs/assets/screens/time-with-ssr.gif" width=600 style="max-width:100%;"/>
 
 ~~~js
 !INLINE /examples/csr-ssr-explained/pages/time-with-ssr.page.js --hide-source-path

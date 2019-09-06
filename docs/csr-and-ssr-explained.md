@@ -294,6 +294,33 @@ CSR is what allows a page to be interactive. For example:
 <img align="right" src="/docs/assets/screens/time-with-csr.gif" style="max-width:100%;"/>
 
 ~~~js
+// Time.js
+
+import React, {useEffect, useState} from 'react';
+
+export default Time;
+
+function Time() {
+  const getTime = () => new Date().toLocaleTimeString();
+
+  const [currentTime, setTime] = useState(getTime());
+
+  useEffect(() => {
+    const timeout = setInterval(
+      () => setTime(getTime()),
+      1000/60 // 60 FPS
+    );
+    return () => clearTimeout(timeout);
+  }, []);
+
+  return (
+    <div>
+      The time is: <span>{currentTime}</span>
+    </div>
+  );
+}
+~~~
+~~~js
 import Time from './Time';
 
 export default {
@@ -342,7 +369,7 @@ With SSR alone you can only implement *non-interactive* pages.
 
 Let's see what happens when we render our stateful `<Time/>` with SSR:
 
-<img align="right" src="/docs/assets/screens/time-with-ssr.gif" style="max-width:100%;"/>
+<img align="right" src="/docs/assets/screens/time-with-ssr.gif" width=600 style="max-width:100%;"/>
 
 ~~~js
 import Time from './Time';
