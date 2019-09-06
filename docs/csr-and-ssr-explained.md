@@ -86,37 +86,37 @@
 
 > :information_source:
 > You do not need to read this document
-> and you do not need to know what CSR and SSR is
+> and you do not need to know what CSR and SSR are
 > in order to use Goldpage.
 > We recommend that you start writing a prototype first and learn about CSR and SSR later.
 
 This document explains:
 - What CSR is.
 - What SSR is.
-- The motivation of doing both CSR and SSR.
+- What CSR + SSR is about.
+- The motivation of doing CSR, SSR, and CSR and SSR.
 - The difference between an interactive page and a non-interactive page.
 - The difference between a static page and a dynamic page.
 
 > :information_source:
-> If you already know what CSR, SSR, and CSR + SSR is then checkout
+> If you already know what CSR, SSR, and CSR + SSR are then checkout
 > [Client-side Rendering (CSR) VS Server-side Rendering (SSR)](/docs/csr-vs-ssr.md#readme)
-> instead which helps you decide whether to use CSR, SSR, or CSR + SSR.
-> Otherwise read on.
+> instead which goes deep into the differences between CSR and SSR and helps you decide what to use.
 
 > :warning:
-> This document assumes that you know:
-> - What the DOM is.
-> - That anything you see on a page in the browser is represented by the DOM tree
-> - The DOM manipulation APIs are what allows a page to change and to be interactive
-> - You are somewhat familiar / you have seen the basic DOM manipulation APIs before: `document.getElementById(id)`, `element.appendChild(aChild)`, `document.createElement(tagName)`, `element.setAttribute(name, value)`, ...
-> - View libraries (React/Vue/...) are essentially helper libraries that call the DOM manipulation APIs for you.
-> - HTML is essentially a declarative specification of the initial DOM.
-> - HTML is generated on the server-side and the DOM is manipulated on the browser-side.
-> If any of the above is not clear to you, then learn about the DOM before reading this document.
+> This document requires you to you have a good understanding of what the DOM is:
+> - You know that anything you see on a page in the browser is represented in the DOM tree.
+> - You know that the DOM manipulation APIs are what allows a page to change and to be interactive.
+> - You are somewhat familiar / you have seen the basic DOM manipulation APIs before: `document.getElementById(id)`, `element.appendChild(aChild)`, `document.createElement(tagName)`, `element.setAttribute(name, value)`, etc.
+> - You know that view libraries (React/Vue/...) are essentially helper libraries that call the DOM manipulation APIs for you.
+> - You know that HTML is essentially a declarative specification of the initial DOM.
+> - You know that HTML is generated on the server-side and that the DOM is manipulated on the browser-side.
+>
+> If any of the above is not clear to you, then learn about the DOM before continuing reading this document.
 
 #### Contents
 
-- [What is CSR and SSR?](#what-is-csr-and-ssr)
+- [What are CSR and SSR?](#what-are-csr-and-ssr)
 - [Interactive vs Non-interactive](#interactive-vs-non-interactive)
 - [Static vs Dynamic](#static-vs-dynamic)
 - [Crawlability](#crawlability)
@@ -126,7 +126,7 @@ This document explains:
 <br/>
 <br/>
 
-# What is CSR and SSR?
+# What are CSR and SSR?
 
 Modern view libraries (React/Vue/...) are able to run in the browser as well as in Node.js.
 In the browser your page is rendered to the browser's DOM,
@@ -135,19 +135,18 @@ and in Node.js your pages is rendered to HTML.
 When you define a page with React (or Vue),
 you have the choice between rendering your page to the DOM or to HTML.
 
-> :information_source: **Modern view libraries**
-> We will only mention React from now on.
-> But note that what we talk about here is applicable to all modern view libraries
-> that support CSR and SSR. The most popular being React, Vue, and Angular.
+> :information_source:
+> We will only mention React from now on,
+> but everything we talk about here is applicable to all modern view libraries
+> that can do both CSR and SSR, such as React, Vue, and Angular.
 
 *Server-Side Rendering* (SSR) denotes the practice of rendering a page to HTML on the server.
-
 For example:
 
 <img align="right" src="/docs/assets/screens/ssr.png" width=336 style="max-width:100%;"/>
 
 ~~~js
-// We use Goldpage to create a page with SSR.
+// This example uses Goldpage to create a SSR page.
 
 import React from 'react';
 
@@ -155,7 +154,7 @@ export default {
   route: '/ssr-example',
   view: SomeText,
 
-  // SSR renders the page to HTML.
+  // We do SSR: we render the page to HTML.
   renderToHtml: true,
 
   // We do SSR only: we don't render the page to the DOM.
@@ -182,16 +181,20 @@ function SomeText() {
 };
 ~~~
 
-This page has no `<script>` tags; the HTML is generated in Node.js and no browser-side JavaScript is needed.
+This page is server-side rendered:
+the page is rendered to HTML.
+Note that this page
+has no `<script>` tags;
+there is no browser-side JavaScript.
+React is only used render HTML in Node.js.
 
-*Client-Side Rendering* (CSR) denotes the practice of loading a page and rendering it in the browser.
-
+*Client-Side Rendering* (CSR) denotes the practice of loading a page in the browser and rendering it to the browser's DOM.
 For example:
 
 <img align="right" src="/docs/assets/screens/csr.png" width=336 style="max-width:100%;"/>
 
 ~~~js
-// We use Goldpage to create a page with CSR.
+// This example uses Goldpage to create a CSR page.
 
 import React from 'react';
 
@@ -199,7 +202,7 @@ export default {
   route: '/csr-example',
   view: SomeText,
 
-  // CSR renders the page to the DOM.
+  // We do CSR: we render the page to the DOM.
   renderToDom: true,
 
   // We do CSR only: we don't render the page to HTML.
@@ -226,30 +229,35 @@ function SomeText() {
 };
 ~~~
 
-The page's HTML doesn't contain the page's content but has `<script/>` tags instead; the page's code is loaded and rendered in the browser:
+This time the page is not rendered to HTML.
+The page's HTML has `<script/>` tags instead which contain the page's and React's source code; the page and React are loaded in the browser
+and React renders the page to the browser's DOM:
 
-<img src="/docs/assets/screens/csr-dom.png" style="max-width:100%;" width=750 align="center"/>
+<p align="center">
+  <img src="/docs/assets/screens/csr-dom.png" style="max-width:100%;" width=750/>
+</p>
 
 
-You can also do both CSR *and* SSR which we explain at
+There is also a common practice of doing both CSR *and* SSR which we talk about at
 [CSR + SSR](#csr--ssr).
 
 > :information_source:
 > **History**
 > <br/>
-> In the old days (before React came out in 2013)
+> In the old days, before React came out in 2013,
 > tools were doing either SSR or CSR &mdash; they were not able to do both.
 > You had two types of tools:
-> - HTML template engines
->   that render your page to HTML on the server, in other words SSR.
-    (You may already have heard about some, such as "Handlebars" and "Jinja".)
-> - Browser libraries
->   that render interactive views by manipulating the DOM in the browser, in other words CSR.
+> - HTML template engines.
+>   <br/>
+>   They render your page to HTML on the server, in other words SSR.
+>   (You may already have heard about some, such as "Handlebars" and "Jinja".)
+> - Browser libraries.
+>   <br/>
+>   They render interactive views by manipulating the DOM in the browser, in other words CSR.
 >   (The most popular were the so-called "Backbone.js" and "Ember.js".)
-> React was the first popular tool that was able to do CSR as well as SSR.
-> This means that React can be used to create interactive views and it can as well be used as an HTML tempate engine.
-
-We now illustrate how CSR and SSR differ in the following sections.
+>
+> React was the first popular tool that was able to do CSR as well as SSR:
+> you could use React can be used to create interactive views and it can as well be used as an HTML tempate engine.
 
 
 <br/>
@@ -281,16 +289,25 @@ We enjoy talking with our users :-).
 
 # Interactive vs Non-interactive
 
-CSR is what allows a page to be interactive.
+CSR is what allows a page to be interactive. For example:
 
-For example:
+<img align="right" src="/docs/assets/screens/time-with-csr.png" style="max-width:100%;"/>
 
-EXAMPLE
- - show HTML
- - show DOM changing
+~~~js
+import Time from './Time';
+
+export default {
+  route: '/time-with-csr',
+  view: Time,
+
+  // We do CSR:
+  renderToDom: true,
+  renderToHtml: false,
+};
+~~~
 
 This page illustrates how CSR works:
-the `<script/>` tags load React's and the page's source code,
+the `<script/>` tags load the source code of the page and of React,
 and every time the state `currentTime` changes,
 React applies the changes by manipulating the DOM.
 
@@ -303,16 +320,15 @@ React applies the changes by manipulating the DOM.
 
 Not only does CSR enable a page to be interactive but it also required.
 Without DOM manipulation,
-the page would need a full reload for every change in the interactive view.
+the page would need a full reload to change.
 This is prohibitively slow for most interactive views.
-In other words, CSR is required for interactive views.
 
-This is the biggest difference between CSR and SSR;
+This is the biggest difference between CSR and SSR:
 CSR enables (and is required for) interactive views.
 
 > :information_source:
-> Our documentation often talks about "rendering a page in the browser" or "rendering a page to the DOM".
-> Both denote the practice of doing CSR.
+> When, in the Goldpage documentation, we talk about "rendering a page in the browser" or "rendering a page to the DOM"
+> we mean "doing CSR".
 
 > :information_source:
 > **History**
@@ -324,24 +340,38 @@ CSR enables (and is required for) interactive views.
 
 With SSR alone you can only implement *non-interactive* pages.
 
-However, we can still render our `<Time/>` view from the example above to HTML:
+Let's see what happens when we render our stateful `<Time/>` with SSR:
 
-EXAMPLE
-  // We don't render the page in the browser.
-  // We could however render the page to the browser *as well*,
-  // which is a common technique we explain in the section "CSR + SSR".
+<img align="right" src="/docs/assets/screens/time-with-ssr.png" style="max-width:100%;"/>
+
+~~~js
+import Time from './Time';
+
+export default {
+  route: '/time-with-ssr',
+  view: Time,
+
+  // We do SSR:
   renderToDom: false,
- - reload page to show user that state changes only between full page reloads.
+  renderToHtml: true,
+};
+~~~
 
 What happens here is that React renders the initial state of `<Time/>` to HTML.
-Because the page is (re-)rendered every time we request the page,
-the initial state is computed anew on each page load;
-the printed time corresponds to time the page was rendered.
+Because the page and React are not loaded in the browser,
+`<Time/>` is stateless in the browser and doesn't update.
+We need to do a full page reload for the time to update:
+every time we request the page,
+the initial state is computed anew.
+The time shown in the page corresponds to time the page was rendered.
 
-Rendering a view to HTML is stateless;
-only the initial state ever be rendered
-and taht initial state will never change.
-States and `useState` are only used when rendering a view to the browser.
+With SSR, views are stateless:
+only the initial state is rendered to HTML.
+
+We can, however, do both SSR and CSR: the initial state of the page is rendered to HTML,
+then the page is rendered to the DOM for the state of the page's components to be able to change.
+More at
+[CSR + SSR](#csr--ssr).
 
 
 <br/>
@@ -459,25 +489,33 @@ We enjoy talking with our users :-).
 
 # Crawlability
 
-Search engines (Google, Yandex, Baidu, DuckDuckGo, Bing, etc.)
-need to be able to crawl your pages for your website to appear in search results.
-
-Social sites (Facebook, Twitter, etc.) need to be able to crawl your pages to be able
-to show a preview of your pages when someone shares your website.
-
 With CSR, this is how your page looks like
 from the perspective of a crawler:
 
-EXAMPLE
+<p align="center">
+<img align="right" src="/docs/assets/screens/csr.png" width=336 style="max-width:100%;"/>
+</p>
 
-The crawler sees only bunch of script tags; your page's content is invisible to the crawler.
+A crawler sees only bunch of script tags; your page's content is invisible to crawlers.
 
-Anything you render to the DOM is not crawlabe; if you want your page's content to be crawled then you have no choice than to use SSR and render your page's content to HTML.
+Anything you render to the DOM is not crawlabe; if you want your pages to be crawled then you have no choice than to use SSR and render your page's content to HTML.
 
-Note that Google is capable of executing JavaScript and discover content rendered to the DOM but it has limitations.
+Search engines (Google, Yandex, Baidu, DuckDuckGo, Bing, etc.)
+need to be able to crawl your pages to show them in their search results.
 
-We elaborate furhter at
-[Client-side Rendering (CSR) VS Server-side Rendering (SSR)](/docs/csr-vs-ssr.md#readme).
+> :information_source:
+> Google is capable of executing JavaScript and discover content rendered to the DOM.
+> But be aware that it has limitations which we discuss at
+> [Client-side Rendering (CSR) VS Server-side Rendering (SSR) - Search Engines](/docs/csr-vs-ssr.md#search-engines).
+
+Social sites (Facebook, Twitter, etc.) need to be able to crawl your pages
+to show a preview of your pages when someone shares your website.
+
+> :information_source:
+> Tools usually require you to use SSR for h.
+> Goldpage is different and renders your page's meta data to HTML even when you don't do SSR.
+> More at
+> [Client-side Rendering (CSR) VS Server-side Rendering (SSR) - Social Sharing](/docs/csr-vs-ssr.md#social-sharing).
 
 
 <br/>
@@ -514,7 +552,7 @@ CSR and SSR have different performance characteristics.
 On low-end devices and/or on slow internet connections, such as mobile, the differences are drastic.
 
 We explain the performance differences in detail at
-[Client-side Rendering (CSR) VS Server-side Rendering (SSR)](/docs/csr-vs-ssr.md#readme).
+[Client-side Rendering (CSR) VS Server-side Rendering (SSR) - Performance](/docs/csr-vs-ssr.md#performance).
 
 
 <br/>
@@ -546,16 +584,20 @@ We enjoy talking with our users :-).
 
 # CSR + SSR
 
-The motivation of doing both CSR and SSR is to
+The main motivation of doing both CSR and SSR is to
 have a crawlabe interactive page:
 the page is rendered to HTML to make its content available to crawlers
 and the page is also rendered to DOM so that it can be interactive.
 
-You get CSR + SSR when you set `renderToDom: true` and `renderToHtml: true`.
+> :information_source:
+> Some people also do CSR + SSR for performace reasons which we talk about at
+> [Client-side Rendering (CSR) VS Server-side Rendering (SSR) - Performance](/docs/csr-vs-ssr.md#performance).
+
+When you use Goldpage,
+you get CSR + SSR when you set `renderToDom: true` and `renderToHtml: true`.
 Your page is then rendered twice:
 first to HTML in Node.js and then again to the DOM in the browser.
 (FYI, the practice of re-rendering the page in the browser is called *hydrating*.)
-
 
 The following page showcases SSR:
 - The page is interactive (as you can see in the screencast, the user can modify the state of the counter).
