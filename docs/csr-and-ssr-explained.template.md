@@ -65,7 +65,7 @@ For example:
 <img align="right" src="/docs/assets/screens/ssr.png" width=336 style="max-width:100%;"/>
 
 ~~~js
-!INLINE /examples/basics/pages/ssr.page.js --hide-source-path
+!INLINE /examples/csr-ssr-explained/pages/ssr.page.js --hide-source-path
 ~~~
 
 This page is server-side rendered:
@@ -81,7 +81,7 @@ For example:
 <img align="right" src="/docs/assets/screens/csr.png" width=336 style="max-width:100%;"/>
 
 ~~~js
-!INLINE /examples/basics/pages/csr.page.js --hide-source-path
+!INLINE /examples/csr-ssr-explained/pages/csr.page.js --hide-source-path
 ~~~
 
 This time the page is not rendered to HTML.
@@ -120,16 +120,16 @@ There is also a common practice of doing both CSR *and* SSR which we talk about 
 
 # Interactive vs Non-interactive
 
-CSR is what allows a page to be interactive.
+CSR is what allows a page to be interactive. For example:
 
-For example:
+<img align="right" src="/docs/assets/screens/time-with-csr.png" style="max-width:100%;"/>
 
-EXAMPLE
- - show HTML
- - show DOM changing
+~~~js
+!INLINE /examples/csr-ssr-explained/pages/time-with-csr.page.js --hide-source-path
+~~~
 
 This page illustrates how CSR works:
-the `<script/>` tags load the source code of your page and of React,
+the `<script/>` tags load the source code of the page and of React,
 and every time the state `currentTime` changes,
 React applies the changes by manipulating the DOM.
 
@@ -142,16 +142,15 @@ React applies the changes by manipulating the DOM.
 
 Not only does CSR enable a page to be interactive but it also required.
 Without DOM manipulation,
-the page would need a full reload for every change in the interactive view.
+the page would need a full reload to change.
 This is prohibitively slow for most interactive views.
-In other words, CSR is required for interactive views.
 
-This is the biggest difference between CSR and SSR;
+This is the biggest difference between CSR and SSR:
 CSR enables (and is required for) interactive views.
 
 > :information_source:
-> Our documentation often talks about "rendering a page in the browser" or "rendering a page to the DOM".
-> Both denote the practice of doing CSR.
+> When, in the Goldpage documentation, we talk about "rendering a page in the browser" or "rendering a page to the DOM"
+> we mean "doing CSR".
 
 > :information_source:
 > **History**
@@ -163,24 +162,29 @@ CSR enables (and is required for) interactive views.
 
 With SSR alone you can only implement *non-interactive* pages.
 
-However, we can still render our `<Time/>` view from the example above to HTML:
+Let's see what happens when we render our stateful `<Time/>` with SSR:
 
-EXAMPLE
-  // We don't render the page in the browser.
-  // We could however render the page to the browser *as well*,
-  // which is a common technique we explain in the section "CSR + SSR".
-  renderToDom: false,
- - reload page to show user that state changes only between full page reloads.
+<img align="right" src="/docs/assets/screens/time-with-ssr.png" style="max-width:100%;"/>
+
+~~~js
+!INLINE /examples/csr-ssr-explained/pages/time-with-ssr.page.js --hide-source-path
+~~~
 
 What happens here is that React renders the initial state of `<Time/>` to HTML.
-Because the page is (re-)rendered every time we request the page,
-the initial state is computed anew on each page load;
-the printed time corresponds to time the page was rendered.
+Because the page and React are not loaded in the browser,
+`<Time/>` is stateless in the browser and doesn't update.
+We need to do a full page reload for the time to update:
+every time we request the page,
+the initial state is computed anew.
+The time shown in the page corresponds to time the page was rendered.
 
-Rendering a view to HTML is stateless;
-only the initial state ever be rendered
-and taht initial state will never change.
-States and `useState` are only used when rendering a view to the browser.
+With SSR, views are stateless:
+only the initial state is rendered to HTML.
+
+We can, however, do both SSR and CSR: the initial state of the page is rendered to HTML,
+then the page is rendered to the DOM for the state of the page's components to be able to change.
+More at
+[CSR + SSR](#csr--ssr).
 
 !INLINE ./snippets/section-footer.md #readme
 
