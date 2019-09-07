@@ -120,7 +120,8 @@ There is also a common practice of doing both CSR *and* SSR which we talk about 
 
 # Interactive vs Non-interactive
 
-CSR is what allows a page to be interactive. For example:
+CSR is what allows a page to be interactive.
+For example:
 
 <img align="right" src="/docs/assets/screens/time-with-csr.gif" style="max-width:100%;"/>
 
@@ -138,13 +139,15 @@ This is what is happening:
 1. The browser loads and executes the source code of React and of our page.
 2. React renders `<Time/>` to the DOM.
 3. `effect` and subsequently `setInterval` are called &mdash; `update` is now called every 30ms.
-4. Every time the second changes `setDisplayedTime` is called, the state `displayedTime` of `<Time/>` changes, and React re-renders `<Time/>` to the DOM.
+4. Every time the second changes, `setDisplayedTime` is called, the state `displayedTime` of `<Time/>` changes, and React re-renders `<Time/>` to the DOM.
 
-This is basically how a stateful component allows a page to be interactive.
-The crucial aspect to remember is that every thing that happens here, happens in the browser.
-You could say that a page is "live" when it is loaded and running in the browser.
+This is basically how a stateful component and the DOM allow a page to be interactive.
+The crucial aspect to remember is that everything that happens here, happens in the browser.
+You could say that,
+loading and running a page in the browser,
+allows it to be "alive" and interactive.
 
-In short, CSR supports interactivity.
+In short, CSR enables interactivity.
 
 > :information_source:
 > Our example isn't, strictly speaking, interactive:
@@ -165,17 +168,16 @@ Let's see what happens when we render `<Time/>` with SSR:
 !INLINE /examples/csr-ssr-explained/pages/time-with-ssr.page.js --hide-source-path
 ~~~
 
-What is happening is the following:
+What happens is the following:
 1. When we start the Node.js server, React and our page are loaded on the server.
 2. When the browser requests the page `/time-with-ssr`, React renders the page to HTML.
-3. The browser loads the server's HTML response and the server is done with the page request &mdash; there is no subsequent re-rendering of the page request, you could say that page is now "frozen".
+3. The browser loads the server's HTML response and the server is done with the page request &mdash; there is no subsequent re-rendering of the page and you could say that page is now "frozen".
 
 > :information_source:
-> When React renders `<Time/>` to HTML it ignores `useEffect` &mdash; `effect` and `update` are never called in Node.js.
-> any interactivity feature of React are ignored
-> All interactivity 
-> On the server, React treats components as stateless; React only renders the inital state of components.
-> Are only used by React in the browser.
+> When React renders `<Time/>` to HTML it ignores `useEffect` &mdash; `effect` and `update` are never called.
+> React renders the initial state of `displayedTime` to HTML and the state of `<Time/>` never changes.
+> In general, React's interactive features are only used in the browser.
+> In Node.js components are stateless and it is always the initial state of a component that is rendered to HTML.
 
 The only way for us to update the displayed current time is to fully reload the page and get a new "frozen" page.
 
@@ -187,14 +189,16 @@ Note that we can also do both SSR and CSR which we discuss at
 [CSR + SSR](#csr--ssr).
 
 > :information_source:
-> The Goldpage documentation often mentions "rendering a page in the browser" or "rendering a page to the DOM"
-> which means CSR.
-
-> :information_source:
 > **History**
 > <br/>
-> Gmail and Google Maps were among the first desktop-like web apps and they popularized the practice of manipulating the DOM to implement interactive apps.
+> Gmail and Google Maps were among the first to show that
+> it is possible to use browser-side JavaScript and the DOM manipulation APIs
+> to build a rich interactive app with a desktop-like experience.
 > CSR was called *ajax* back then.
+
+> :information_source:
+> In the Goldpage documentation, when we talk about "rendering a page in the browser" or "rendering a page to the DOM"
+> we mean CSR.
 
 !INLINE ./snippets/section-footer.md #readme
 
@@ -332,21 +336,21 @@ first to HTML in Node.js and then again to the DOM in the browser.
 > When using Goldpage,
 > you get CSR + SSR when you set `renderToDom: true` and `renderToHtml: true`.
 
-One way to to think about is CSR + SSR is that CSR is about make a "frozen" SSR version of the page "live":
-1. [SSR] On the server, React renders the initial state of your page to HTML on the server.
-At that point your page is "frozen" and in order to
-2. [SSR] The browser &mdash; but the page is "frozen" and cannot interact with it.
-3. 
-4. 
-to "revive" your page, React re-renders your page in the browser.
-then React re-renders the same initial state to the DOM in the browser
-in order to make your app "live"
-.
-Once it's rendered to the DOM, the page can change.
-In the React community, this process of is commonly called *hydration*.
-First render to HTML and any subsequent.
-HTML is b and the browser takes it from there.
+One way to to think about is CSR + SSR is that SSR delivers a "frozen" page and CSR is about making it "alive":
+1. [SSR] When we start our Node.js server, React and our page are loaded on the server.
+2. [SSR] When the browser requests our server and React renders the page to HTML.
+3. [SSR] The browser &mdash; but the page is "frozen" and the user cannot interact with it.
+1. [CSR] The browser loads and executes the source code of React and of the page.
+4. [CSR] React renders the page to the DOM &mdash; the page is now "alive": the user can now use interactive components of the page.
 
+In short,
+the page is initially rendered to HTML and to the DOM,
+and all subsequent renders are done to the browser's DOM.
+
+> :information_source:
+> In the React community, this process of making a "frozen" page "alive" is commonly called *hydration*.
+
+Thanks to CSR our page is interactive and thanks to SSR our page is crawlable.
 
 The following page showcases SSR:
 - The page is interactive (as you can see in the screencast, the user can modify the state of the counter).
