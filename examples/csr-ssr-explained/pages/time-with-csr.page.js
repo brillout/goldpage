@@ -1,4 +1,5 @@
-import Time from './Time';
+import Time
+from './Time';
 
 export default {
   route: '/time-with-csr',

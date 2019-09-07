@@ -3,23 +3,31 @@ import React, {useEffect, useState} from 'react';
 export default Time;
 
 function Time() {
-  const [currentTime, setCurrentTime] = useState(getTime());
-
-  useEffect(() => {
-    const interval = setInterval(
-      () => setCurrentTime(getTime()),
-      1000/60 // 60 FPS
-    );
-    return () => clearTimeout(interval);
-  }, []);
+  // `useEffect` and `useState` are React Hooks.
+  // If you are no familiar with React hooks that's fine: just
+  // know that it allows us to change the state `displayedTime`.
+  const [displayedTime, setDisplayedTime] = useState(getCurrentTime());
+  useEffect(effect, []);
 
   return (
     <div>
-      The time is: <span>{currentTime}</span>
+      The time is: <span>{displayedTime}</span>
     </div>
   );
+
+  function update() {
+    const now = getCurrentTime();
+    if( now!==displayedTime ){
+      setDisplayedTime(now);
+    }
+  }
+
+  function effect() {
+    const interval = setInterval(update, 30);
+    return () => clearTimeout(interval);
+  }
 }
 
-function getTime() {
+function getCurrentTime() {
   return new Date().toLocaleTimeString();
 }
