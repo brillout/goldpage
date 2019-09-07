@@ -8,6 +8,7 @@ export default {
       <Page pathname="/ssr-example"/>
       <Page pathname="/time-with-csr"/>
       <Page pathname="/time-with-ssr"/>
+      <Page pathname="/time-with-sr"/>
     </ul>
   ),
   renderToHtml: true,

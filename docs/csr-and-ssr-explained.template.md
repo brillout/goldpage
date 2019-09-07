@@ -277,7 +277,7 @@ With CSR, this is how your page looks like
 from the perspective of a crawler:
 
 <p align="center">
-<img align="right" src="/docs/assets/screens/csr.png" width=336 style="max-width:100%;"/>
+<img src="/docs/assets/screens/csr.png" width=336 style="max-width:100%;"/>
 </p>
 
 A crawler sees only bunch of script tags; your page's content is invisible to crawlers.
@@ -296,8 +296,7 @@ Social sites (Facebook, Twitter, etc.) need to be able to crawl your pages
 to show a preview of your pages when someone shares your website.
 
 > :information_source:
-> Tools usually require you to use SSR for h.
-> Goldpage is different and renders your page's meta data to HTML even when you don't do SSR.
+> Goldpage allows you to render your page's meta data to HTML without doing SSR.
 > More at
 > [Client-side Rendering (CSR) VS Server-side Rendering (SSR) - Social Sharing](/docs/csr-vs-ssr.md#social-sharing).
 
