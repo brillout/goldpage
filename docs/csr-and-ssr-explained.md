@@ -501,7 +501,7 @@ We call such page *static* and the practive of rendering a page at build-time is
 > :information_source:
 > With Goldpage, you can set `renderHtmlAtBuildTime: true` to your page's config and your page will be rendered at build-time.
 
-<img align="right" src="/docs/assets/screens/time-with-sr.gif" width=600 style="max-width:100%;"/>
+<img align="right" src="/docs/assets/screens/time-with-sr.gif" width=560 style="max-width:100%;"/>
 
 ~~~js
 import Time from './Time';
