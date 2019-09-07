@@ -314,16 +314,14 @@ import React, {useEffect, useState} from 'react';
 export default Time;
 
 function Time() {
-  const getTime = () => new Date().toLocaleTimeString();
-
-  const [currentTime, setTime] = useState(getTime());
+  const [currentTime, setCurrentTime] = useState(getTime());
 
   useEffect(() => {
-    const timeout = setInterval(
-      () => setTime(getTime()),
+    const interval = setInterval(
+      () => setCurrentTime(getTime()),
       1000/60 // 60 FPS
     );
-    return () => clearTimeout(timeout);
+    return () => clearTimeout(interval);
   }, []);
 
   return (
@@ -331,6 +329,10 @@ function Time() {
       The time is: <span>{currentTime}</span>
     </div>
   );
+}
+
+function getTime() {
+  return new Date().toLocaleTimeString();
 }
 ~~~
 
