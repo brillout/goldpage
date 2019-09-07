@@ -207,60 +207,65 @@ Note that we can also do both SSR and CSR which we discuss at
 # Static vs dynamic
 
 As shown in the previous section,
-a page cannot be interactive when it is only rendered to HTML.
-But it can be dynamic:
-the page can be dynamically rendered to HTML; the page's content can change between page (re-)loads.
-
-When you render your page to HTML,
-you have the choice between rendering your page at request-time or at built-time.
+a page cannot be interactive when it is rendered to HTML only.
+But it can be dynamic.
 
 **request-time**
 
-Whenever a user requests a page,
-your server (re-)renders your page.
+When the browser requests your page,
+your server (re-)renders your page to HTML.
 
 This allows your page's content to change.
 For exampe,
-you can render data from your database to HTML.
-And that data from may change over time &mdash; your page is dynamic.
+you can render data from your database to HTML
+and that data may change over time &mdash; your page is what we call *dynamic*.
 
-We call such page *dynamic*.
+> :information_source:
+> With Goldpage, pages are rendered to HTML at request-time by default.
 
-For example:
+Let's reconsider the example of our previous section:
+<img align="right" src="/docs/assets/screens/time-with-ssr.gif" width=600 style="max-width:100%;"/>
 
-EXAMPLE
+~~~js
+!INLINE /examples/csr-ssr-explained/pages/time-with-ssr.page.js --hide-source-path
+~~~
 
-The printed time changes on every page reload.
+As we can see, the displayed time changes on every page reload and our page is dyanmic.
+
+In short, our page is non-interactive but dynamic.
 
 **build-time**
 
-Your page is rendered to HTML at build-time,
-that is when you build your app. (When you transpiltion & bundle your JavaScript code, minify your assets, etc.)
+Your page is rendered to HTML at build-time:
+your page is rendered at the same time as when
+when you transpile & bundle your JavaScript code, minify your assets, etc.
 
 Your page's HTML can change only at deploy-time;
 if you want to change your page's HTML you need to re-build and re-deploy your app.
 
-We call such page *static*.
-
-For example:
-
-EXAMPLE
-
-The printed time never changes and corresponds to the time the app was built.
+We call such page *static* and the practive of rendering a page at build-time is called *static rendering*.
 
 > :information_source:
-> Tools that generate such static pages are called *Static Site Generators (SSG)*.
+> With Goldpage, you can set `renderHtmlAtBuildTime: true` to your page's config and your page will be rendered at build-time.
+
+<img align="right" src="/docs/assets/screens/time-with-sr.gif" width=600 style="max-width:100%;"/>
+
+~~~js
+!INLINE /examples/csr-ssr-explained/pages/time-with-sr.page.js --hide-source-path
+~~~
+
+As we can see,
+the displayed time never changes, even when we reload the page.
+The time shown corresponds to the time the app was built.
 
 > :information_source:
-> You can have a non-interactive dynamic page:
-> a page that is not rendered to the DOM but rendered to HTML at request-time.
-> (You can actually have all kinds of (non-)interactive static/dynamic combination)
+> Tools that generate websites where all pages are static are called *Static Site Generators (SSG)*.
 
 To sum up:
 - `renderToDom: true` &rArr; interactive
 - `renderToDom: false` &rArr; non-interactive
-- `renderToHtml: true` & `renderHtmlAtBuildTime: true` &rArr; static
 - `renderToHtml: true` & `renderHtmlAtBuildTime: false` &rArr; dynamic
+- `renderToHtml: true` & `renderHtmlAtBuildTime: true` &rArr; static
 
 !INLINE ./snippets/section-footer.md #readme
 
