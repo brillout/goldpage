@@ -125,12 +125,13 @@ CSR is what allows a page to be interactive. For example:
 <img align="right" src="/docs/assets/screens/time-with-csr.gif" style="max-width:100%;"/>
 
 ~~~js
+!INLINE /examples/csr-ssr-explained/pages/time-with-csr.page.js --hide-source-path
+~~~
+
+~~~js
 // Time.js
 
 !INLINE /examples/csr-ssr-explained/pages/Time.js --hide-source-path
-~~~
-~~~js
-!INLINE /examples/csr-ssr-explained/pages/time-with-csr.page.js --hide-source-path
 ~~~
 
 This page illustrates how CSR works:

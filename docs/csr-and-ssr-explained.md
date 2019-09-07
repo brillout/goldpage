@@ -294,6 +294,19 @@ CSR is what allows a page to be interactive. For example:
 <img align="right" src="/docs/assets/screens/time-with-csr.gif" style="max-width:100%;"/>
 
 ~~~js
+import Time from './Time';
+
+export default {
+  route: '/time-with-csr',
+  view: Time,
+
+  // We do CSR:
+  renderToDom: true,
+  renderToHtml: false,
+};
+~~~
+
+~~~js
 // Time.js
 
 import React, {useEffect, useState} from 'react';
@@ -319,18 +332,6 @@ function Time() {
     </div>
   );
 }
-~~~
-~~~js
-import Time from './Time';
-
-export default {
-  route: '/time-with-csr',
-  view: Time,
-
-  // We do CSR:
-  renderToDom: true,
-  renderToHtml: false,
-};
 ~~~
 
 This page illustrates how CSR works:
