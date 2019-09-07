@@ -289,12 +289,14 @@ We enjoy talking with our users :-).
 
 # Interactive vs Non-interactive
 
-CSR is what allows a page to be interactive. For example:
+CSR is what allows a page to be interactive.
+For example:
 
 <img align="right" src="/docs/assets/screens/time-with-csr.gif" style="max-width:100%;"/>
 
 ~~~js
-import Time from './Time';
+import Time
+from './Time';
 
 export default {
   route: '/time-with-csr',
@@ -314,63 +316,62 @@ import React, {useEffect, useState} from 'react';
 export default Time;
 
 function Time() {
-  const [currentTime, setCurrentTime] = useState(getTime());
-
-  useEffect(() => {
-    const interval = setInterval(
-      () => setCurrentTime(getTime()),
-      1000/60 // 60 FPS
-    );
-    return () => clearTimeout(interval);
-  }, []);
+  // `useEffect` and `useState` are React Hooks.
+  // If you are no familiar with React hooks that's fine: just
+  // know that it allows us to change the state `displayedTime`.
+  const [displayedTime, setDisplayedTime] = useState(getCurrentTime());
+  useEffect(effect, []);
 
   return (
     <div>
-      The time is: <span>{currentTime}</span>
+      The time is: <span>{displayedTime}</span>
     </div>
   );
+
+  function update() {
+    const now = getCurrentTime();
+    if( now!==displayedTime ){
+      setDisplayedTime(now);
+    }
+  }
+
+  function effect() {
+    const interval = setInterval(update, 30);
+    return () => clearTimeout(interval);
+  }
 }
 
-function getTime() {
+function getCurrentTime() {
   return new Date().toLocaleTimeString();
 }
 ~~~
 
-This page illustrates how CSR works:
-the `<script/>` tags load the source code of the page and of React,
-and every time the state `currentTime` changes,
-React applies the changes by manipulating the DOM.
+This is what is happening:
+1. The browser loads and executes the source code of React and of our page.
+2. React renders `<Time/>` to the DOM.
+3. `effect` and subsequently `setInterval` are called &mdash; `update` is now called every 30ms.
+4. Every time the second changes, `setDisplayedTime` is called, the state `displayedTime` of `<Time/>` changes, and React re-renders `<Time/>` to the DOM.
+
+This is basically how a stateful component and the DOM allow a page to be interactive.
+The crucial aspect to remember is that everything that happens here, happens in the browser.
+You could say that,
+loading and running a page in the browser,
+allows it to be "alive" and interactive.
+
+In short, CSR enables interactivity.
 
 > :information_source:
 > Our example isn't, strictly speaking, interactive:
 > we merely show the current time and the user has no interactions with the page.
 > But we sill call the page interactive because it is stateful:
-> we use `useState` and the value of `currentTime` changes every second.
-> With *interactive* we denote any page that is stateful.
-
-Not only does CSR enable a page to be interactive but it also required.
-Without DOM manipulation,
-the page would need a full reload to change.
-This is prohibitively slow for most interactive views.
-
-This is the biggest difference between CSR and SSR:
-CSR enables (and is required for) interactive views.
-
-> :information_source:
-> When, in the Goldpage documentation, we talk about "rendering a page in the browser" or "rendering a page to the DOM"
-> we mean "doing CSR".
-
-> :information_source:
-> **History**
-> <br/>
-> Gmail and Google Maps were among the first desktop-like web apps and they popularized the practice of manipulating the DOM to implement interactive apps.
-> CSR was called *ajax* back then.
+> the value of our `<Time/>`'s state `displayedTime` changes every second.
+> Technically speaking with *interactive* we denote any page that is stateful.
 
 **non-interactive**
 
-With SSR alone you can only implement *non-interactive* pages.
+With SSR alone you cannot have interactivity.
 
-Let's see what happens when we render our stateful `<Time/>` with SSR:
+Let's see what happens when we render `<Time/>` with SSR:
 
 <img align="right" src="/docs/assets/screens/time-with-ssr.gif" width=600 style="max-width:100%;"/>
 
@@ -387,21 +388,37 @@ export default {
 };
 ~~~
 
-What happens here is that React renders the initial state of `<Time/>` to HTML.
-Because the page and React are not loaded in the browser,
-`<Time/>` is stateless in the browser and doesn't update.
-We need to do a full page reload for the time to update:
-every time we request the page,
-the initial state is computed anew.
-The time shown in the page corresponds to time the page was rendered.
+What happens is the following:
+1. When we start the Node.js server, React and our page are loaded on the server.
+2. When the browser requests the page `/time-with-ssr`, React renders the page to HTML.
+3. The browser loads the server's HTML response and the server is done with the page request &mdash; there is no subsequent re-rendering of the page and you could say that page is now "frozen".
 
-With SSR, views are stateless:
-only the initial state is rendered to HTML.
+> :information_source:
+> When React renders `<Time/>` to HTML it ignores `useEffect` &mdash; `effect` and `update` are never called.
+> React renders the initial state of `displayedTime` to HTML and the state of `<Time/>` never changes.
+> In general, React's interactive features are only used in the browser.
+> In Node.js components are stateless and it is always the initial state of a component that is rendered to HTML.
 
-We can, however, do both SSR and CSR: the initial state of the page is rendered to HTML,
-then the page is rendered to the DOM for the state of the page's components to be able to change.
-More at
+The only way for us to update the displayed current time is to fully reload the page and get a new "frozen" page.
+
+In short, SSR doesn't support interactivity.
+
+If your page is interactive, you need CSR.
+
+Note that we can also do both SSR and CSR which we discuss at
 [CSR + SSR](#csr--ssr).
+
+> :information_source:
+> **History**
+> <br/>
+> Gmail and Google Maps were among the first to show that
+> it is possible to use browser-side JavaScript and the DOM manipulation APIs
+> to build a rich interactive app with a desktop-like experience.
+> CSR was called *ajax* back then.
+
+> :information_source:
+> In the Goldpage documentation, when we talk about "rendering a page in the browser" or "rendering a page to the DOM"
+> we mean CSR.
 
 
 <br/>
@@ -434,60 +451,84 @@ We enjoy talking with our users :-).
 # Static vs dynamic
 
 As shown in the previous section,
-a page cannot be interactive when it is only rendered to HTML.
-But it can be dynamic:
-the page can be dynamically rendered to HTML; the page's content can change between page (re-)loads.
-
-When you render your page to HTML,
-you have the choice between rendering your page at request-time or at built-time.
+a page cannot be interactive when it is rendered to HTML only.
+But it can be dynamic.
 
 **request-time**
 
-Whenever a user requests a page,
-your server (re-)renders your page.
+When the browser requests your page,
+your server (re-)renders your page to HTML.
 
 This allows your page's content to change.
 For exampe,
-you can render data from your database to HTML.
-And that data from may change over time &mdash; your page is dynamic.
+you can render data from your database to HTML
+and that data may change over time &mdash; your page is what we call *dynamic*.
 
-We call such page *dynamic*.
+> :information_source:
+> With Goldpage, pages are rendered to HTML at request-time by default.
 
-For example:
+Let's reconsider the example of our previous section:
+<img align="right" src="/docs/assets/screens/time-with-ssr.gif" width=600 style="max-width:100%;"/>
 
-EXAMPLE
+~~~js
+import Time from './Time';
 
-The printed time changes on every page reload.
+export default {
+  route: '/time-with-ssr',
+  view: Time,
+
+  // We do SSR:
+  renderToDom: false,
+  renderToHtml: true,
+};
+~~~
+
+As we can see, the displayed time changes on every page reload and our page is dyanmic.
+
+In short, our page is non-interactive but dynamic.
 
 **build-time**
 
-Your page is rendered to HTML at build-time,
-that is when you build your app. (When you transpiltion & bundle your JavaScript code, minify your assets, etc.)
+Your page is rendered to HTML at build-time:
+your page is rendered at the same time as when
+when you transpile & bundle your JavaScript code, minify your assets, etc.
 
 Your page's HTML can change only at deploy-time;
 if you want to change your page's HTML you need to re-build and re-deploy your app.
 
-We call such page *static*.
-
-For example:
-
-EXAMPLE
-
-The printed time never changes and corresponds to the time the app was built.
+We call such page *static* and the practive of rendering a page at build-time is called *static rendering*.
 
 > :information_source:
-> Tools that generate such static pages are called *Static Site Generators (SSG)*.
+> With Goldpage, you can set `renderHtmlAtBuildTime: true` to your page's config and your page will be rendered at build-time.
+
+<img align="right" src="/docs/assets/screens/time-with-sr.gif" width=600 style="max-width:100%;"/>
+
+~~~js
+import Time from './Time';
+
+export default {
+  route: '/time-with-sr',
+  view: Time,
+
+  // We do Static Rendering:
+  renderToDom: false,
+  renderToHtml: true,
+  renderHtmlAtBuildTime: true,
+};
+~~~
+
+As we can see,
+the displayed time never changes, even when we reload the page.
+The time shown corresponds to the time the app was built.
 
 > :information_source:
-> You can have a non-interactive dynamic page:
-> a page that is not rendered to the DOM but rendered to HTML at request-time.
-> (You can actually have all kinds of (non-)interactive static/dynamic combination)
+> Tools that generate websites where all pages are static are called *Static Site Generators (SSG)*.
 
 To sum up:
 - `renderToDom: true` &rArr; interactive
 - `renderToDom: false` &rArr; non-interactive
-- `renderToHtml: true` & `renderHtmlAtBuildTime: true` &rArr; static
 - `renderToHtml: true` & `renderHtmlAtBuildTime: false` &rArr; dynamic
+- `renderToHtml: true` & `renderHtmlAtBuildTime: true` &rArr; static
 
 
 <br/>
@@ -614,20 +655,42 @@ We enjoy talking with our users :-).
 
 # CSR + SSR
 
+> :warning:
+> This section assumes that you have read
+> [What are CSR and SSR?](#what-are-csr-and-ssr) and
+> [Interactive vs Non-interactive](#interactive-vs-non-interactive).
+
 The main motivation of doing both CSR and SSR is to
 have a crawlabe interactive page:
-the page is rendered to HTML to make its content available to crawlers
-and the page is also rendered to DOM so that it can be interactive.
+the page is rendered to HTML in order to make its content available to crawlers
+and the page is as well rendered to the DOM so that it can be interactive.
 
 > :information_source:
 > Some people also do CSR + SSR for performace reasons which we talk about at
 > [Client-side Rendering (CSR) VS Server-side Rendering (SSR) - Performance](/docs/csr-vs-ssr.md#performance).
 
-When you use Goldpage,
-you get CSR + SSR when you set `renderToDom: true` and `renderToHtml: true`.
-Your page is then rendered twice:
+When doing CSR + SSR your page is rendered twice:
 first to HTML in Node.js and then again to the DOM in the browser.
-(FYI, the practice of re-rendering the page in the browser is called *hydrating*.)
+
+> :information_source:
+> When using Goldpage,
+> you get CSR + SSR when you set `renderToDom: true` and `renderToHtml: true`.
+
+One way to to think about is CSR + SSR is that SSR delivers a "frozen" page and CSR is about making it "alive":
+1. [SSR] When we start our Node.js server, React and our page are loaded on the server.
+2. [SSR] When the browser requests our server and React renders the page to HTML.
+3. [SSR] The browser &mdash; but the page is "frozen" and the user cannot interact with it.
+1. [CSR] The browser loads and executes the source code of React and of the page.
+4. [CSR] React renders the page to the DOM &mdash; the page is now "alive": the user can now use interactive components of the page.
+
+In short,
+the page is initially rendered to HTML and to the DOM,
+and all subsequent renders are done to the browser's DOM.
+
+> :information_source:
+> In the React community, this process of making a "frozen" page "alive" is commonly called *hydration*.
+
+Thanks to CSR our page is interactive and thanks to SSR our page is crawlable.
 
 The following page showcases SSR:
 - The page is interactive (as you can see in the screencast, the user can modify the state of the counter).
