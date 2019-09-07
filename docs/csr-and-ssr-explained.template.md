@@ -277,7 +277,7 @@ With CSR, this is how your page looks like
 from the perspective of a crawler:
 
 <p align="center">
-<img src="/docs/assets/screens/csr.png" width=336 style="max-width:100%;"/>
+  <img src="/docs/assets/screens/csr-html.png" width=336 style="max-width:100%;"/>
 </p>
 
 A crawler sees only bunch of script tags; your page's content is invisible to crawlers.
