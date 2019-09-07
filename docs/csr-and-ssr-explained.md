@@ -560,27 +560,36 @@ We enjoy talking with our users :-).
 
 # Crawlability
 
-With CSR, this is how your page looks like
-from the perspective of a crawler:
+Content rendered to the DOM (and not to HTML) is invisible to crawlers.
+
+Let's for example consider the content of following page.
 
 <p align="center">
-  <img src="/docs/assets/screens/csr-html.png" width=336 style="max-width:100%;"/>
+  <img src="/docs/assets/screens/csr-dom.png" style="max-width:100%;" width=750/>
 </p>
 
-A crawler sees only bunch of script tags; your page's content is invisible to crawlers.
+<p align="center">
+  <img src="/docs/assets/screens/csr-html.png" style="max-width:100%;"/>
+</p>
 
-Anything you render to the DOM is not crawlabe; if you want your pages to be crawled then you have no choice than to use SSR and render your page's content to HTML.
+The content `Lorem ipsum dolor sit amet, ...` is rendered only to the DOM &mdash; the page's HTML doesn't contain the content.
+
+But crawlers are based on HTTP and all they see are your pages' HTML.
+This means that `Lorem ipsum dolor sit amet, ...`
+is invisible to crawlers.
+
+You need to use SSR and render your page to HTML to make its content visible to crawlers.
 
 Search engines (Google, Yandex, Baidu, DuckDuckGo, Bing, etc.)
-need to be able to crawl your pages to show them in their search results.
+need to be able to crawl your pages in order to show them in their search results.
 
 > :information_source:
 > Google is capable of executing JavaScript and discover content rendered to the DOM.
-> But be aware that it has limitations which we discuss at
+> But it has limitations which we discuss at
 > [Client-side Rendering (CSR) VS Server-side Rendering (SSR) - Search Engines](/docs/csr-vs-ssr.md#search-engines).
 
 Social sites (Facebook, Twitter, etc.) need to be able to crawl your pages
-to show a preview of your pages when someone shares your website.
+when showing a preview of your pages when someone shares your website.
 
 > :information_source:
 > Goldpage allows you to render your page's meta data to HTML without doing SSR.
