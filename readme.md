@@ -93,6 +93,7 @@
 
 <br/> &nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a href=#what-is-goldpage>What is Goldpage</a>
 <br/> &nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a href=#why-goldpage>Why Goldpage</a>
+<br/> &nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a href=#more-resources>More Resources</a>
 <br/> &nbsp;&nbsp;&nbsp;&#8226;&nbsp; Usage
 <br/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a href=#getting-started>Getting Started</a>
 <br/>
@@ -141,8 +142,6 @@ Recipes
 <br/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a href=#server-express--koa--hapi--fastify-->Server: Express / Koa / Hapi / Fastify / ...</a>
 <br/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a href=#view-libraries-react--vue--preact-->View Libraries: React / Vue / Preact / ...</a>
 <br/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a href=#process-managers-docker--systemd--pm2-->Process Managers: Docker / systemd / PM2 / ...</a>
-<br/> &nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a href=#more-resources>More Resources</a>
-<br/> &nbsp;&nbsp;&nbsp;&#8226;&nbsp; <a href=#plugins>Plugins</a>
 
 <br/>
 
@@ -341,12 +340,12 @@ then use a [Reframe starter](https://github.com/reframejs/reframe#getting-starte
    npm install goldpage
    ~~~
 
-   Install a [render plugin](#render-plugins), such as `@goldpage/react`:
+   Install a [render plugin](/plugins#render-plugins), such as `@goldpage/react`:
    ~~~shell
    npm install @goldpage/react
    ~~~
 
-   Install a [server plugin](#server-plugins), such as `@goldpage/express`:
+   Install a [server plugin](/plugins#server-plugins), such as `@goldpage/express`:
    ~~~shell
    npm install @goldpage/express
    ~~~
@@ -1806,7 +1805,7 @@ See [/examples/babel](/examples/babel) for an example of configuring babel.
 Goldpage currently uses Webpack.
 This means that for custom transpilations beyond babel, modifications to Goldpage's webpack config are required.
 Instead of modifying Goldpage's webpack config yourself,
-see if there is a [transpilation plugin](#transpilation-plugins) [transpilation plugin]
+see if there is a [transpilation plugin](/plugins#transpilation-plugins) [transpilation plugin]
 that modifies Goldpage's webpack config for you.
 For exampe, for TypeScript, you can use the [TypeScript plugin](/plugins/typescript).
 If there is no plugin for what you need, then open a GitHub issue and we'll create one together.
@@ -1893,7 +1892,7 @@ We enjoy talking with our users :-).
 
 ## CSS pre-processors: PostCSS / Sass / Less / ...
 
-If there is a [transpilation plugin](#transpilation-plugins) for the CSS pre-processor you want to use,
+If there is a [transpilation plugin](/plugins#transpilation-plugins) for the CSS pre-processor you want to use,
 then simply use it.
 
 If there isn't one,
@@ -2142,7 +2141,7 @@ We enjoy talking with our users :-).
 
 ## Server: Express / Koa / Hapi / Fastify / ...
 
-To use Goldpage with `express`, `koa` or `hapi`, use the corresponding [server plugin](#server-plugins).
+To use Goldpage with `express`, `koa` or `hapi`, use the corresponding [server plugin](/plugins#server-plugins).
 
 To use Goldpage with another server framework, open a GitHub issue.
 Goldpage can be used with any server framework
@@ -2178,7 +2177,7 @@ We enjoy talking with our users :-).
 
 ## View Libraries: React / Vue / Preact / ...
 
-If there is a [render plugin](#render-plugins) for the view library you want to use,
+If there is a [render plugin](/plugins#render-plugins) for the view library you want to use,
 then simply use it.
 
 If there is no render plugin,
@@ -2229,66 +2228,6 @@ then use your server entry file:
 ~~~bash
 pm2 start ./path/to/your/server.js
 ~~~
-
-
-<br/>
-
-<p align="center">
-
-<sup>
-<a href="https://github.com/reframejs/goldpage/issues/new">Open a ticket</a> or
-<a href="https://discord.gg/kqXf65G">chat with us</a>
-if you have questions, feature requests, or if you just want to talk to us.
-</sup>
-
-<sup>
-We enjoy talking with our users :-).
-</sup>
-
-<br/>
-
-<sup>
-<a href="#readme"><b>&#8679;</b> <b>TOP</b> <b>&#8679;</b></a>
-</sup>
-
-</p>
-
-<br/>
-<br/>
-
-
-
-## Plugins
-
-#### Server Plugins
-
-Server integration plugins.
-
-- [Express](/plugins/express)
-- [Koa](/plugins/koa)
-- [Hapi](/plugins/hapi)
-
-#### Render Plugins
-
-View library integration plugins.
-
-- [React](/plugins/react)
-- [Vue](/plugins/vue)
-- [React Native Web](/plugins/react-native-web)
-
-#### Transpilation Plugins
-
-Transpilation plugins to add languages.
-
-- [TypeScript](/plugins/typescript)
-- [PostCSS](/plugins/postcss)
-
-#### Router Plugins
-
-Plugins to (statically) route your pages.
-
-- [`path-to-regexp`](/plugins/path-to-regexp)
-- [Crossroads](/plugins/crossroads)
 
 
 <br/>

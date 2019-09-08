@@ -34,7 +34,6 @@
 !VAR VIEW_LIBRARIES View Libraries: React / Vue / Preact / ...
 !VAR PROCESS_MANAGERS Process Managers: Docker / systemd / PM2 / ...
 
-!VAR PLUGIN_LIST Plugins
 !VAR PLUGINS_SERVER Server Plugins
 !VAR PLUGINS_RENDER Render Plugins
 !VAR PLUGINS_TRANSPILATION Transpilation Plugins
@@ -43,6 +42,7 @@
 
 !INLINE li-1 !VAR|LINK WHAT_IS_GOLDPAGE
 !INLINE li-1 !VAR|LINK WHY_GOLDPAGE
+!INLINE li-1 !VAR|LINK MORE_RESOURCES
 !INLINE li-1 Usage
 !INLINE li-2 !VAR|LINK GETTING_STARTED
 !INLINE li-2-header Basics
@@ -71,8 +71,6 @@
 !INLINE li-2 !VAR|LINK SERVER_FRAMEWORKS
 !INLINE li-2 !VAR|LINK VIEW_LIBRARIES
 !INLINE li-2 !VAR|LINK PROCESS_MANAGERS
-!INLINE li-1 !VAR|LINK MORE_RESOURCES
-!INLINE li-1 !VAR|LINK PLUGIN_LIST
 
 <br/>
 
@@ -199,12 +197,12 @@ then use a [Reframe starter](https://github.com/reframejs/reframe#getting-starte
    npm install goldpage
    ~~~
 
-   Install a [render plugin](!VAR|ANCHOR PLUGINS_RENDER), such as `@goldpage/react`:
+   Install a [render plugin](/plugins!VAR|ANCHOR PLUGINS_RENDER), such as `@goldpage/react`:
    ~~~shell
    npm install @goldpage/react
    ~~~
 
-   Install a [server plugin](!VAR|ANCHOR PLUGINS_SERVER), such as `@goldpage/express`:
+   Install a [server plugin](/plugins!VAR|ANCHOR PLUGINS_SERVER), such as `@goldpage/express`:
    ~~~shell
    npm install @goldpage/express
    ~~~
@@ -834,7 +832,7 @@ See [/examples/babel](/examples/babel) for an example of configuring babel.
 Goldpage currently uses Webpack.
 This means that for custom transpilations beyond babel, modifications to Goldpage's webpack config are required.
 Instead of modifying Goldpage's webpack config yourself,
-see if there is a [transpilation plugin](!VAR|ANCHOR PLUGINS_TRANSPILATION) [transpilation plugin]
+see if there is a [transpilation plugin](/plugins!VAR|ANCHOR PLUGINS_TRANSPILATION) [transpilation plugin]
 that modifies Goldpage's webpack config for you.
 For exampe, for TypeScript, you can use the [TypeScript plugin](/plugins/typescript).
 If there is no plugin for what you need, then open a GitHub issue and we'll create one together.
@@ -873,7 +871,7 @@ Examples:
 
 ## !VAR CSS_PRE_PROCESSORS
 
-If there is a [transpilation plugin](!VAR|ANCHOR PLUGINS_TRANSPILATION) for the CSS pre-processor you want to use,
+If there is a [transpilation plugin](/plugins!VAR|ANCHOR PLUGINS_TRANSPILATION) for the CSS pre-processor you want to use,
 then simply use it.
 
 If there isn't one,
@@ -975,7 +973,7 @@ To load a frontend library that is saved on disk, use a file that is loaded by a
 
 ## !VAR SERVER_FRAMEWORKS
 
-To use Goldpage with `express`, `koa` or `hapi`, use the corresponding [server plugin](!VAR|ANCHOR PLUGINS_SERVER).
+To use Goldpage with `express`, `koa` or `hapi`, use the corresponding [server plugin](/plugins!VAR|ANCHOR PLUGINS_SERVER).
 
 To use Goldpage with another server framework, open a GitHub issue.
 Goldpage can be used with any server framework
@@ -987,7 +985,7 @@ but there is no documentation for this (yet).
 
 ## !VAR VIEW_LIBRARIES
 
-If there is a [render plugin](!VAR|ANCHOR PLUGINS_RENDER) for the view library you want to use,
+If there is a [render plugin](/plugins!VAR|ANCHOR PLUGINS_RENDER) for the view library you want to use,
 then simply use it.
 
 If there is no render plugin,
@@ -1014,42 +1012,6 @@ then use your server entry file:
 ~~~bash
 pm2 start ./path/to/your/server.js
 ~~~
-
-!INLINE ./snippets/section-footer.md #readme
-
-
-
-## !VAR PLUGIN_LIST
-
-#### !VAR PLUGINS_SERVER
-
-Server integration plugins.
-
-- [Express](/plugins/express)
-- [Koa](/plugins/koa)
-- [Hapi](/plugins/hapi)
-
-#### !VAR PLUGINS_RENDER
-
-View library integration plugins.
-
-- [React](/plugins/react)
-- [Vue](/plugins/vue)
-- [React Native Web](/plugins/react-native-web)
-
-#### !VAR PLUGINS_TRANSPILATION
-
-Transpilation plugins to add languages.
-
-- [TypeScript](/plugins/typescript)
-- [PostCSS](/plugins/postcss)
-
-#### Router Plugins
-
-Plugins to (statically) route your pages.
-
-- [`path-to-regexp`](/plugins/path-to-regexp)
-- [Crossroads](/plugins/crossroads)
 
 !INLINE ./snippets/section-footer.md #readme
 
