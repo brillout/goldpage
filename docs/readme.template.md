@@ -159,11 +159,9 @@ At last but not least, we enjoy writing opulent and beginner-friendly documentat
 
 Collection of documents related to Goldpage.
 
-<!---
-- [Plugins](/docs/plugins.md#readme)
+- [Plugins](/plugins#readme)
   <br/>
-  List all Goldpage plugins.
--->
+  List of Goldpage plugins.
 - [Goldpage VS Others](/docs/goldpage-vs-others.md#readme)
   <br/>
   Compares Goldpage with other tools:

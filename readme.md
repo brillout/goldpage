@@ -278,11 +278,9 @@ We enjoy talking with our users :-).
 
 Collection of documents related to Goldpage.
 
-<!---
-- [Plugins](/docs/plugins.md#readme)
+- [Plugins](/plugins#readme)
   <br/>
-  List all Goldpage plugins.
--->
+  List of Goldpage plugins.
 - [Goldpage VS Others](/docs/goldpage-vs-others.md#readme)
   <br/>
   Compares Goldpage with other tools:

@@ -4,7 +4,6 @@
 # Backend First App
 
 > :information_source:
->
 > You can use Goldpage and start creating a prototype without reading this document.
 
 > :warning:
