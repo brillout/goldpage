@@ -9,8 +9,14 @@
   },
   "peerDependencies": {
     "vue": "*",
+    "vue-loader": "*",
     "vue-server-renderer": "*",
     "vue-template-compiler": "*"
+  },
+  "checkDeps": {
+    "skip": [
+      "vue-template-compiler"
+    ]
   },
   "publishConfig": {
     "access": "public"

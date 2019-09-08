@@ -5,6 +5,7 @@
   "dependencies": {
     "@brillout/reconfig": "0.4.0",
     "@goldpage/hapi": "0.4.0",
+    "goldpage": "0.4.0",
     "hapi": "^18.1.0"
   },
   "publishConfig": {

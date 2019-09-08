@@ -73,7 +73,6 @@
     "plugins/server",
     "plugins/server-universal-middleware",
     "plugins/serverless",
-    "plugins/static-website",
     "plugins/typescript",
     "plugins/vue/example",
     "plugins/vue",
