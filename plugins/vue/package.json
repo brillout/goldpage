@@ -4,8 +4,7 @@
   "@brillout/autoload": true,
   "dependencies": {
     "@brillout/reconfig": "0.5.0",
-    "@goldpage/html": "0.5.0",
-    "vue": "^2.6.10"
+    "@goldpage/html": "0.5.0"
   },
   "peerDependencies": {
     "vue": "*",
