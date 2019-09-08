@@ -5,6 +5,7 @@
   "bin": "./bin.js",
   "dependencies": {
     "@brillout/autoload": "0.4.0",
+    "@brillout/cli-theme": "0.4.0",
     "@brillout/project-files": "^0.4.0",
     "@brillout/reassert": "^0.1.1",
     "@brillout/reconfig": "0.4.0",

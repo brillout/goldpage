@@ -35,6 +35,7 @@
     "examples/redux",
     "examples/goldpage.config.js",
     "examples/static-assets",
+    "examples/static-website",
     "examples/styled-components",
     "examples/typescript",
 

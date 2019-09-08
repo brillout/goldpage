@@ -4,6 +4,7 @@ const assert = require('@brillout/reassert');
 const path = require('path');
 const config = require('@brillout/reconfig');
 const ssr = require('./ssr');
+const {colorError} = require('@brillout/cli-theme');
 
 const USAGE_PATH_ARG = './path/to/server/start.js';
 
@@ -50,9 +51,11 @@ function parseArguments() {
     try {
       serverEntryFile = require.resolve(serverEntryFile);
     } catch(err) {
+      console.error(err);
+      console.error('');
       assert_cli_usage(
         false,
-        "Could not find `"+serverEntrySpec+"`.",
+        "Could not find `"+serverEntrySpec+"`: No file found at `"+serverEntryFile+"`.",
       );
     }
   }
@@ -76,10 +79,12 @@ function assert_cli_usage(bool, failureReason) {
     bool,
     [
       "Wrong Goldpage CLI usage.",
+      "",
       "  goldpage "+process.argv.slice(2).join(' '),
       ...(
-        failureReason ? [failureReason] : []
+        failureReason ? ['',colorError(failureReason)] : []
       ),
+      "",
       'Usage:',
       '  goldpage dev',
       '  goldpage dev '+USAGE_PATH_ARG,
