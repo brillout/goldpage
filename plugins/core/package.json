@@ -1,12 +1,12 @@
 {
   "name": "@goldpage/core",
-  "version": "0.4.0",
+  "version": "0.5.0",
   "@brillout/autoload": true,
   "dependencies": {
-    "@brillout/browser-config": "0.4.0",
+    "@brillout/browser-config": "0.5.0",
     "@brillout/reassert": "^0.1.1",
-    "@brillout/reconfig": "0.4.0",
-    "@brillout/repage": "0.4.0",
+    "@brillout/reconfig": "0.5.0",
+    "@brillout/repage": "0.5.0",
     "reassert": "^1.1.12"
   },
   "publishConfig": {

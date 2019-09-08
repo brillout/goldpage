@@ -1,7 +1,7 @@
 {
   "name": "example_hapi",
   "private": true,
-  "version": "0.4.0",
+  "version": "0.5.0",
   "scripts": {
     "dev": "goldpage dev ./server.js",
     "build": "goldpage build ./server.js",
@@ -9,12 +9,12 @@
     "start": "export NODE_ENV='production' && node ./.build/nodejs/server"
   },
   "dependencies": {
-    "@goldpage/hapi": "0.4.0",
-    "@goldpage/react": "0.4.0",
+    "@goldpage/hapi": "0.5.0",
+    "@goldpage/react": "0.5.0",
+    "goldpage": "0.5.0",
     "hapi": "^18.1.0",
     "react": "^16.8.6",
-    "react-dom": "^16.8.6",
-    "goldpage": "0.4.0"
+    "react-dom": "^16.8.6"
   },
   "checkDeps": {
     "skip": true
