@@ -878,11 +878,12 @@ Goldpage's default app type is an MPA.
 
 If what you want is an SPA
 then:
-- Create a single page with a catch-all route. (That is, create only one page config with `route: '/:param*`: all URLs will be routed to this single page.)
+- Create a single page with a catch-all route. (That is, create only one page config with `route: '/:param*` to have all URLs routed to this single page.)
 - Use a browser-side routing library such as React Router. (We elaborate more at <a href=#routing-server-side-routing--browser-side-routing--react-router--vue-router-->Routing: Server-side Routing / Browser-side Routing / React Router / Vue Router / ...</a>.)
 
-Note that an MPA is usually a better alternative to an SPA.
-(AN MPA is basically the same than an SPA but with server-side routing and code-splitting.)
+Note that an MPA is usually better than an SPA.
+You most likely want an MPA instead of an SPA.
+(An MPA is basically the same than an SPA but with server-side routing and code-splitting.)
 
 (FYI, an SPA is what you get when you use create-react-app, vue-cli, Webpack, or Parcel.)
 
