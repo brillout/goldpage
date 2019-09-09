@@ -1055,7 +1055,7 @@ To achieve:
 - High development speed
 - Reliable SEO
 
-More at [BFA](/bfa.md#readme).
+More at [BFA](/docs/bfa.md#readme).
 
 
 <br/>
