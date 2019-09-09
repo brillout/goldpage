@@ -36,12 +36,13 @@ Gatsby creates a so-called "Static Website"
 
 By choosing one of these tools you are essentially choosing an app type and locking yourself into that app type.
 This means that before choosing one of these tools you have to:
- - Learn about "SPA", "SSR" and "Static Website".
- - Know the differences between them.
- - Decide which app type is the right one for the future of your app.
+- Learn about "SPA", "SSR" and "Static Website".
+- Know the differences between them.
+- Decide which app type is the right one for the future of your app.
+
 And you have to do all this before even having started writing one line of code.
 
-And,
+Even worse is that,
 most often than not,
 it's not possible to predict which app type
 is the right one
@@ -49,12 +50,12 @@ before having created and battle-tested a first prototype.
 
 Goldpage solves this problem:
 it supports all app types and makes it easy to switch from one app type to another &mdash;
-you can start writing a prototype and worry about app type later.
+you can start writing a prototype and worry about choosing the right app type later.
 
-We actually encourage you to start with Goldpage's default app type and,
+With Goldpage, you can start with default app type and,
 once you finished your first prototype,
-to try out and experiment different app types on your prototye
-and see what works best for you.
+you can try out and experiment different app types on your prototye,
+and then see what works best for you.
 
 We believe you shouldn't have to know what "SPA" or "SSR" means before getting started;
 with Goldpage,
