@@ -866,29 +866,25 @@ We enjoy talking with our users :-).
 
 ## SPA & MPA
 
-> :information_source: You can use Goldpage and create a prototype without reading this section and without knowing what an SPA or an MPA is.
+> :information_source: You can use Goldpage without reading this section.
 
 > :warning: This section is meant for readers that know what SPAs and MPAs are.
 
-If you want an MPA
-then you don't have to do anything;
-by default, Goldpage builds an MPA:
-- By default, a page is rendered only in the browser. (That is: `renderToDom: true` and `renderToHtml: false`. We explain `renderToHtml` and `renderToDom` at <a href=#where--when-rendertodom-rendertohtml--renderhtmlatbuildtime>Where & when: `renderToDom`, `renderToHtml` & `renderHtmlAtBuildTime`</a>.)
-- By default, pages are routed on the server-side. (We explain what "server-side routing" means at <a href=#routing-server-side-routing--browser-side-routing--react-router--vue-router-->Routing: Server-side Routing / Browser-side Routing / React Router / Vue Router / ...</a>.)
+If what you want is an MPA
+then you don't have to do anything:
+Goldpage's default app type is an MPA.
+- By default, your pages are rendered only in the browser. (That is: `renderToDom: true` and `renderToHtml: false`. We explain `renderToHtml` and `renderToDom` at <a href=#where--when-rendertodom-rendertohtml--renderhtmlatbuildtime>Where & when: `renderToDom`, `renderToHtml` & `renderHtmlAtBuildTime`</a>.)
+- By default, your pages are routed on the server-side. (We explain what "server-side routing" means at <a href=#routing-server-side-routing--browser-side-routing--react-router--vue-router-->Routing: Server-side Routing / Browser-side Routing / React Router / Vue Router / ...</a>.)
 
-These defaults corresponds to an MPA.
-
-If you want an SPA
+If what you want is an SPA
 then:
-- Create a single page with a catch-all route. (That is, create only one page config with `route: '/:param*`; all URLs will be routed to this single page.)
-- Use a browser-side routing such as React Router. (We elaborate more at <a href=#routing-server-side-routing--browser-side-routing--react-router--vue-router-->Routing: Server-side Routing / Browser-side Routing / React Router / Vue Router / ...</a>.)
+- Create a single page with a catch-all route. (That is, create only one page config with `route: '/:param*`: all URLs will be routed to this single page.)
+- Use a browser-side routing library such as React Router. (We elaborate more at <a href=#routing-server-side-routing--browser-side-routing--react-router--vue-router-->Routing: Server-side Routing / Browser-side Routing / React Router / Vue Router / ...</a>.)
 
-Note that an MPA is usually a better alternative than an SPA.
-And, by default, Goldpage builds an MPA.
-So, if you want an SPA, this means that you most likely don't have to do anything.
+Note that an MPA is usually a better alternative to an SPA.
 (AN MPA is basically the same than an SPA but with server-side routing and code-splitting.)
 
-(FYI, a SPA is what you get when you use create-react-app, vue-cli, Webpack, or Parcel.)
+(FYI, an SPA is what you get when you use create-react-app, vue-cli, Webpack, or Parcel.)
 
 
 <br/>
@@ -920,7 +916,7 @@ We enjoy talking with our users :-).
 
 ## SSR
 
-> :information_source: You can use Goldpage and create a prototype without reading this section and without knowing what an SSR app is.
+> :information_source: You can use Goldpage without reading this section.
 
 > :warning: This section is meant for readers that know what an SSR app is.
 
@@ -960,7 +956,7 @@ We enjoy talking with our users :-).
 
 ## Static Website
 
-> :information_source: You can use Goldpage and create a prototype without reading this section and without knowing what a static website is.
+> :information_source: You can use Goldpage without reading this section.
 
 > :warning: This section is meant for readers that know what a static website is.
 
@@ -1087,13 +1083,26 @@ We enjoy talking with our users :-).
 
 ## Where & when: `renderToDom`, `renderToHtml` & `renderHtmlAtBuildTime`
 
+> :information_source: You can use Goldpage without reading this section.
+
+> :warning: **Prerequisite Knowledge**
+> <br/>
+> For this section you need to know:
+> <br/> &nbsp;&nbsp;&nbsp;&#8226;&nbsp;
+> CSR & SSR
+> <br/> &nbsp;&nbsp;&nbsp;&#8226;&nbsp;
+> Interactive VS non-interactive
+> <br/>
+> You can learn this
+> at [CSR & SSR Explained](/docs/csr-and-ssr-explained.md#readme).
+
 There are three page configs that allow you to control when your page is rendered:
 - `renderToDom` - If set to true, your page is rendered in the browser (to the DOM).
 - `renderToHtml` - If set to true, your page is rendered to HTML (in Node.js).
 - `renderHtmlAtBuildTime` - Whether your page is rendered to HTML at request-time or at build-time.
 
 The default values are `renderToDom: true` and `renderToHtml: false`,
-which means that your page is rendered only in the browser.
+which means that by default your page is rendered only in the browser.
 
 Configuring these three page configs are about achieving improvements in:
 
@@ -1122,7 +1131,7 @@ Configuring these three page configs are about achieving improvements in:
 
 At
 [Client-side Rendering (CSR) VS Server-side Rendering (SSR)](/docs/csr-vs-ssr.md#readme),
-we elaborate how to set `renderToHtml`, `renderToDom` and `renderHtmlAtBuildTime`,
+we elaborate how to set `renderToHtml`, `renderToDom` and `renderHtmlAtBuildTime`
 in order to achieve improvements in the above points.
 But before you learn more about these page configs and what you can achieve with them,
 we recommend that you first implement a prototype and learn more only after you need improvements in the above mentioned points.

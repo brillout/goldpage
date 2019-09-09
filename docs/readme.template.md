@@ -405,29 +405,25 @@ Example:
 
 ## !VAR SPA_APP
 
-> :information_source: You can use Goldpage and create a prototype without reading this section and without knowing what an SPA or an MPA is.
+> :information_source: You can use Goldpage without reading this section.
 
 > :warning: This section is meant for readers that know what SPAs and MPAs are.
 
-If you want an MPA
-then you don't have to do anything;
-by default, Goldpage builds an MPA:
-- By default, a page is rendered only in the browser. (That is: `renderToDom: true` and `renderToHtml: false`. We explain `renderToHtml` and `renderToDom` at !VAR|LINK RENDER_WHEN.)
-- By default, pages are routed on the server-side. (We explain what "server-side routing" means at !VAR|LINK CONTROL_ROUTING.)
+If what you want is an MPA
+then you don't have to do anything:
+Goldpage's default app type is an MPA.
+- By default, your pages are rendered only in the browser. (That is: `renderToDom: true` and `renderToHtml: false`. We explain `renderToHtml` and `renderToDom` at !VAR|LINK RENDER_WHEN.)
+- By default, your pages are routed on the server-side. (We explain what "server-side routing" means at !VAR|LINK CONTROL_ROUTING.)
 
-These defaults corresponds to an MPA.
-
-If you want an SPA
+If what you want is an SPA
 then:
-- Create a single page with a catch-all route. (That is, create only one page config with `route: '/:param*`; all URLs will be routed to this single page.)
-- Use a browser-side routing such as React Router. (We elaborate more at !VAR|LINK CONTROL_ROUTING.)
+- Create a single page with a catch-all route. (That is, create only one page config with `route: '/:param*`: all URLs will be routed to this single page.)
+- Use a browser-side routing library such as React Router. (We elaborate more at !VAR|LINK CONTROL_ROUTING.)
 
-Note that an MPA is usually a better alternative than an SPA.
-And, by default, Goldpage builds an MPA.
-So, if you want an SPA, this means that you most likely don't have to do anything.
+Note that an MPA is usually a better alternative to an SPA.
 (AN MPA is basically the same than an SPA but with server-side routing and code-splitting.)
 
-(FYI, a SPA is what you get when you use create-react-app, vue-cli, Webpack, or Parcel.)
+(FYI, an SPA is what you get when you use create-react-app, vue-cli, Webpack, or Parcel.)
 
 !INLINE ./snippets/section-footer.md #readme
 
@@ -522,13 +518,26 @@ More at [BFA](/docs/bfa.md#readme).
 
 ## !VAR RENDER_WHEN
 
+> :information_source: You can use Goldpage without reading this section.
+
+> :warning: **Prerequisite Knowledge**
+> <br/>
+> For this section you need to know:
+> <br/> &nbsp;&nbsp;&nbsp;&#8226;&nbsp;
+> CSR & SSR
+> <br/> &nbsp;&nbsp;&nbsp;&#8226;&nbsp;
+> Interactive VS non-interactive
+> <br/>
+> You can learn this
+> at [CSR & SSR Explained](/docs/csr-and-ssr-explained.md#readme).
+
 There are three page configs that allow you to control when your page is rendered:
 - `renderToDom` - If set to true, your page is rendered in the browser (to the DOM).
 - `renderToHtml` - If set to true, your page is rendered to HTML (in Node.js).
 - `renderHtmlAtBuildTime` - Whether your page is rendered to HTML at request-time or at build-time.
 
 The default values are `renderToDom: true` and `renderToHtml: false`,
-which means that your page is rendered only in the browser.
+which means that by default your page is rendered only in the browser.
 
 Configuring these three page configs are about achieving improvements in:
 
@@ -557,7 +566,7 @@ Configuring these three page configs are about achieving improvements in:
 
 At
 [Client-side Rendering (CSR) VS Server-side Rendering (SSR)](/docs/csr-vs-ssr.md#readme),
-we elaborate how to set `renderToHtml`, `renderToDom` and `renderHtmlAtBuildTime`,
+we elaborate how to set `renderToHtml`, `renderToDom` and `renderHtmlAtBuildTime`
 in order to achieve improvements in the above points.
 But before you learn more about these page configs and what you can achieve with them,
 we recommend that you first implement a prototype and learn more only after you need improvements in the above mentioned points.
