@@ -12,6 +12,7 @@
   "dependencies": {
     "@goldpage/express": "0.5.0",
     "@goldpage/react": "0.5.0",
+    "express": "^4.17.1",
     "goldpage": "0.5.0",
     "hapi": "^18.1.0",
     "react": "^16.8.6",
