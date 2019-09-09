@@ -52,10 +52,10 @@ Goldpage solves this problem:
 it supports all app types and makes it easy to switch from one app type to another &mdash;
 you can start writing a prototype and worry about choosing the right app type later.
 
-With Goldpage, you can start with default app type and,
-once you finished your first prototype,
-you can try out and experiment different app types on your prototye,
-and then see what works best for you.
+With Goldpage, you can start with our default app type and,
+while you implement your first prototype,
+you can try out and experiment different app types.
+This allows you to progressively figure out what app type is the right one for you.
 
 We believe you shouldn't have to know what "SPA" or "SSR" means before getting started;
 with Goldpage,
@@ -73,6 +73,7 @@ For example:
 - `renderToDom` - If set to true, your page is rendered in the browser (to the DOM).
 - `renderToHtml` - If set to true, your page is rendered to HTML (in Node.js).
 - `renderHtmlAtBuildTime` - Whether your page is rendered to HTML at request-time or at build-time.
+
 These three page configs allow you achieve any app type.
 If you set `renderToDom: true` and `renderToHtml: false` then your page is an SPA,
 if you set `renderToHtml: true` you add SSR to your page,
@@ -92,6 +93,7 @@ Another example
 is our `htmlRender` and `domRender` interface:
 - `htmlRender` renders your pages to HTML.
 - `domRender` renders your pages to the DOM.
+
 By defining these two functions you gain full control over how your pages are rendered.
 This allows you to use Goldpage with any view library
 (React, Vue, RNW, Preact, ...) and any tool (Redux, React Router, ...).
