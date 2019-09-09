@@ -1977,7 +1977,7 @@ export default {
 are server-side routes:
 when navigating from `/hello/jon` to `/hello/alice`
 the browser terminates the current `/hello/jon` page and starts a new page `/hello/alice`.
-It is the same as if you would close your `/hello/jon` browser tab and open a new tab at `/hello/alice`.
+It is the same as if you would close your `/hello/jon` tab and open a new tab at `/hello/alice`.
 
 It is the server that does the job of mapping URLs to pages and the browser is not involved in the routing process.
 
@@ -1996,7 +1996,7 @@ by [taking control over rendering](#how-htmlrender--domrender).
 
 For example,
 if you use React,
-you take control over rendering in order to add React Router (which does browser-side routing):
+you can take control over rendering in order to use React Router which does browser-side routing:
 
 ~~~js
 // /examples/react-router/render/domRender.js
