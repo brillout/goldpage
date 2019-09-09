@@ -333,7 +333,7 @@ We enjoy talking with our users :-).
 
 This getting started adds Goldpage to an exisiting app.
 If you don't have an app yet or if you just want to try out Goldpage,
-then use a [Reframe starter](https://github.com/reframejs/reframe#getting-started).
+then use a [Goldpage starter](https://github.com/topics/goldpage-stack).
 
 0. Install Goldpage.
 
