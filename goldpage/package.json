@@ -1,19 +1,19 @@
 {
   "name": "goldpage",
-  "version": "0.5.0",
+  "version": "0.5.1",
   "main": "./ssr.js",
   "bin": "./bin.js",
   "dependencies": {
-    "@brillout/autoload": "0.5.0",
-    "@brillout/cli-theme": "0.5.0",
+    "@brillout/autoload": "0.5.1",
+    "@brillout/cli-theme": "0.5.1",
     "@brillout/project-files": "^0.4.0",
     "@brillout/reassert": "^0.1.1",
-    "@brillout/reconfig": "0.5.0",
-    "@goldpage/browser": "0.5.0",
-    "@goldpage/core": "0.5.0",
-    "@goldpage/path-to-regexp": "0.5.0",
-    "@goldpage/server-universal-middleware": "0.5.0",
-    "@goldpage/webpack": "0.5.0",
+    "@brillout/reconfig": "0.5.1",
+    "@goldpage/browser": "0.5.1",
+    "@goldpage/core": "0.5.1",
+    "@goldpage/path-to-regexp": "0.5.1",
+    "@goldpage/server-universal-middleware": "0.5.1",
+    "@goldpage/webpack": "0.5.1",
     "source-map-support": "^0.5.12"
   },
   "repository": "github:reframejs/goldpage"
