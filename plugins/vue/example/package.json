@@ -13,6 +13,7 @@
     "@goldpage/vue": "0.5.1",
     "express": "^4.17.1",
     "goldpage": "0.5.1",
+    "vue": "^2.6.10",
     "vue-loader": "^15.7.0",
     "vue-server-renderer": "^2.6.10",
     "vue-template-compiler": "^2.6.10"
