@@ -3,7 +3,7 @@
   "version": "0.5.0",
   "@brillout/autoload": true,
   "dependencies": {
-    "@brillout/path-to-regexp": "0.1.0",
+    "@brillout/path-to-regexp": "^0.1.2",
     "@brillout/reassert": "^0.1.1",
     "@brillout/reconfig": "0.5.0"
   },

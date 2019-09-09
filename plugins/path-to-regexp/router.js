@@ -28,8 +28,8 @@ function getRouteArguments(urlProps, pageInfo) {
     if( ! match_info ) {
         return null;
     }
-    const params = {match_info};
-    assert.internal(params && params.constructor === Object, params);
+    const {params} = match_info;
+    assert.internal(params && params.constructor === Object, {pageInfo, urlProps, params});
     return match_info.params;
 }
 

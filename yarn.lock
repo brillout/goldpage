@@ -839,10 +839,10 @@
   dependencies:
     "@brillout/reassert" "^0.1.1"
 
-"@brillout/path-to-regexp@0.1.0":
-  version "0.1.0"
-  resolved "https://registry.npmjs.org/@brillout/path-to-regexp/-/path-to-regexp-0.1.0.tgz#f08040d1806d0c1ffd46e2ad37c8da42dca55110"
-  integrity sha512-XcS9jLnarMmkagRTW5XGVQVIgil43Pt1sq8ZBOodnAN3oncLTzOzjkAv3fQd3yO8SYc76BftNhaIT3V7MXan8A==
+"@brillout/path-to-regexp@^0.1.2":
+  version "0.1.2"
+  resolved "https://registry.npmjs.org/@brillout/path-to-regexp/-/path-to-regexp-0.1.2.tgz#f6d415d3dc61c54e2ef59155a4df56e36c8eaf7f"
+  integrity sha512-hGwx0UhXfUmuQlzVv5799k1MkXh/Q6EOxUMDS0cf9iD2ZXMG6INUkkvK2I5rFRH0WD2bqnndnoN1dgaCRo8w7w==
   dependencies:
     path-to-regexp "^1.7.0"
 
@@ -8696,9 +8696,9 @@ terser-webpack-plugin@^1.4.1:
     worker-farm "^1.7.0"
 
 terser@^4.1.2:
-  version "4.3.0"
-  resolved "https://registry.npmjs.org/terser/-/terser-4.3.0.tgz#0259070576ff34d89c5cd2b8d91055cdce0212d5"
-  integrity sha512-w5CzrvQOwYAH54aG22IrUJI4yX1w62XQmMdEOM6H4w0ii6rc3HJ89fmcOGN5mRwBWfUgaqO7RJTp4aoY/uE+qQ==
+  version "4.3.1"
+  resolved "https://registry.npmjs.org/terser/-/terser-4.3.1.tgz#09820bcb3398299c4b48d9a86aefc65127d0ed65"
+  integrity sha512-pnzH6dnFEsR2aa2SJaKb1uSCl3QmIsJ8dEkj0Fky+2AwMMcC9doMqLOQIH6wVTEKaVfKVvLSk5qxPBEZT9mywg==
   dependencies:
     commander "^2.20.0"
     source-map "~0.6.1"
