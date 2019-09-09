@@ -128,7 +128,9 @@ That's fine:
 with Goldpage, you can start writing your app
 and learn about these things later.
 
-We elaborate and show how Goldpage works at
+If you want to know
+how Goldpage works,
+have a look at
 [Goldpage VS Others](/docs/goldpage-vs-others.md#readme).
 
 **Design**
@@ -141,9 +143,10 @@ Goldpage is a small do-one-thing-do-it-well library that can be used with:
 - Any CSS-in-JS library (Emotion, styled-components, ...).
 - Any process manager (Docker, systemd, PM2, ...).
 
-Goldpage has a simple design that makes it rock-solid, super flexible, and easy to use.
+Goldpage is based on a simple design. This makes it rock-solid, flexible, and easy to use.
 
-We talk about Goldpage's design at [Goldpage VS Others](/docs/goldpage-vs-others.md#readme) &mdash; if you're curious.
+If you're curious,
+we talk about Goldpage's design at [Goldpage VS Others](/docs/goldpage-vs-others.md#readme).
 
 <!---
 **Docs**
@@ -476,10 +479,14 @@ to your static host.
 
 > :warning: **Prerequisite Knowledge**
 > <br/>
-> This section assumes that you know:
-> - CSR & SSR
-> - `renderToDom` & `renderToHtml`
-> - Interactive VS non-interactive
+> For this section you need to know:
+> <br/> &nbsp;&nbsp;&nbsp;&#8226;&nbsp;
+> CSR & SSR
+> <br/> &nbsp;&nbsp;&nbsp;&#8226;&nbsp;
+> `renderToDom` & `renderToHtml`
+> <br/> &nbsp;&nbsp;&nbsp;&#8226;&nbsp;
+> Interactive VS non-interactive
+> <br/>
 > You can learn all this
 > at [CSR & SSR Explained](/docs/csr-and-ssr-explained.md#readme).
 

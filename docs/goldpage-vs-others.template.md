@@ -4,14 +4,18 @@
 # Goldpage VS Others
 
 > :information_source:
-> You can use Goldpage and create a prototype without reading this document.
+> You can use Goldpage without reading this document.
 
-> :warning:
-> This document is meant for readers
-> that already know about the different app types there is ("SPA", "SSR", etc.)
-> and that want to make an educated choice whether to use Goldpage.
+This document explains what makes Goldpage different.
 
-This document explains what differentiates Goldpage from other tools.
+> :warning: **Prerequisite Knowledge**
+> <br/>
+> For this document you need to know:
+> <br/> &nbsp;&nbsp;&nbsp;&#8226;&nbsp;
+> Roughly what CSR and SSR are about
+> <br/>
+> You can learn this
+> at [CSR & SSR Explained](/docs/csr-and-ssr-explained.md#readme).
 
 - [All App Types](#all-app-types)
 - [Simple Design](#simple-design)
