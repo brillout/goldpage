@@ -31,14 +31,14 @@ create-react-app creates a so-called "SPA"
 <br/> &nbsp;&nbsp;&nbsp;&#8226;&nbsp;
 Next.js creates a so-called "SSR app"
 <br/> &nbsp;&nbsp;&nbsp;&#8226;&nbsp;
-Gatsby creates a so-called "static website"
+Gatsby creates a so-called "Static Website"
 <br/>
 
 By choosing one of these tools you are essentially choosing an app type and locking yourself into that app type.
 This means that before choosing one of these tools you have to:
-- Learn about "SPA", "SSR" and "static website".
-- Know the differences between them.
-- Decide which app type is the right one for the future of your app.
+ - Learn about "SPA", "SSR" and "Static Website".
+ - Know the differences between them.
+ - Decide which app type is the right one for the future of your app.
 And you have to do all this before even having started writing one line of code.
 
 And,
