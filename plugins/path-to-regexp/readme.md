@@ -82,7 +82,7 @@ Goldpage + `path-to-regexp` = :heart:
 
 Routing with [`path-to-regexp`](https://github.com/pillarjs/path-to-regexp).
 
-(Note that `@goldpage/path-to-regexp` doesn't use the npm module `path-to-regexp` directly, but uses React Router's wrapper `react-router/matchPath`.)
+(Note that `@goldpage/path-to-regexp` doesn't use the npm module `path-to-regexp` directly, but uses a modified version [`@brillout/path-to-regexp`](https://github.com/brillout/path-to-regexp).)
 
 ### Usage
 

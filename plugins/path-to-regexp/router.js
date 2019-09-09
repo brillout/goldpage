@@ -1,11 +1,7 @@
 const assert = require('@brillout/reassert');
 const assert_todo = assert.internal;
 
-// `matchPath` source code:
-//    https://github.com/ReactTraining/react-router/blob/master/packages/react-router/modules/matchPath.js
-const reactRouter = require('react-router');
-const {matchPath} = reactRouter||{};
-assert.internal(matchPath, {matchPath, reactRouter});
+const matchPath = require('@brillout/path-to-regexp');
 
 const router = {
     doesMatchUrl,
