@@ -110,7 +110,7 @@ There are many benefits to use the modern stack to generate HTML:
   You can use your JavaScript knowledge to generate HTML,
   and using a full-blown programming language as a template language is vastly
   superiour than the usual template operators such as `{% for todo in todos %} <li>{{ todo.text }}</li> {% endfor %}`.
-- Possibility to have interative views.
+- Possibility to have interactive views.
   <br/>
   Even though we follow the non-interactive first approach,
   we can still write interactive views when necessary.
@@ -132,5 +132,5 @@ The non-interactive first approach and a BFA can achieve:
 - High development speed.
 - High performance, especially on mobile.
 - Crawlability for SEO and social sharing.
-- Possibility to have interative views.
+- Possibility to have interactive views.
 

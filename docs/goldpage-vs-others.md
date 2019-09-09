@@ -315,7 +315,7 @@ One such mixed app is what we call a *Backend First App* where
 most pages are non-interactive and rendered only to HTML,
 and where only a couple of pages are interactive and rendered to the DOM.
 The idea of a BFA is to implement features with non-interactive pages whenever possible;
-non-interactive views are substantially faster to implement than interative views.
+non-interactive views are substantially faster to implement than interactive views.
 More at [Backend First App](/docs/bfa.md#readme).
 
 

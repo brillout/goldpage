@@ -95,7 +95,7 @@
 > `renderToDom`,
 > `renderToHtml`,
 > `renderHtmlAtBuildTime`,
-> the difference between an interative page and a non-interactive page,
+> the difference between an interactive page and a non-interactive page,
 > and the difference between a dynamic page and a static page.
 > We explain and illustrate all this
 > at [CSR & SSR Explained](/docs/csr-and-ssr-explained.md#readme).
