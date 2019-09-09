@@ -493,7 +493,7 @@ to your static host.
 Tools usually implement CSR and SSR in an all-or-nothing way:
 either all your pages are CSR'd or all your pages are SSR'd.
 
-Our `renderToHtml` and `renderToDom` interface gives you a fine grain control &mdash;
+Our `renderToHtml`/`renderToDom` interface gives you a fine grain control &mdash;
 you can mix CSR and SSR:
 one page can be CSR'd (`renderToDom: true` & `renderToHtml: false`) while another page can be SSR'd (`renderToDom: false` & `renderToHtml: true`).
 

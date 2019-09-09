@@ -12,7 +12,7 @@ This document explains what makes Goldpage different.
 > <br/>
 > For this document you need to know:
 > <br/> &nbsp;&nbsp;&nbsp;&#8226;&nbsp;
-> Roughly what CSR and SSR are about
+> Rough understanding of what SPA and SSR are about
 > <br/>
 > You can learn this
 > at [CSR & SSR Explained](/docs/csr-and-ssr-explained.md#readme).
@@ -61,6 +61,9 @@ We believe you shouldn't have to know what "SPA" or "SSR" means before getting s
 with Goldpage,
 you start creating a prototype and worry about all that later.
 
+In the next section
+we explain how Goldpage supports all app types.
+
 !INLINE ./snippets/section-footer.md #readme
 
 
@@ -74,23 +77,23 @@ For example:
 - `renderToHtml` - If set to true, your page is rendered to HTML (in Node.js).
 - `renderHtmlAtBuildTime` - Whether your page is rendered to HTML at request-time or at build-time.
 
-These three page configs allow you achieve any app type.
-If you set `renderToDom: true` and `renderToHtml: false` then your page is an SPA,
+These three page configs allow you achieve any app type:
+if you set `renderToDom: true` and `renderToHtml: false` then your page is an SPA,
 if you set `renderToHtml: true` you add SSR to your page,
 etc.
 In short,
-the `renderToDom`, `renderToHtml`, and `renderHtmlAtBuildTime`
-interface is powerful and gives you the possibility achieve any app type.
+the `renderToDom`/`renderToHtml`/`renderHtmlAtBuildTime`
+interface is powerful.
 
-And reasoning in terms of `renderToDom`, `renderToHtml`, and `renderHtmlAtBuildTime` will eventually feel more natural than reasoning in terms of
+Reasoning in terms of `renderToDom`, `renderToHtml`, and `renderHtmlAtBuildTime` will eventually feel more natural and easier than reasoning in terms of
 "SPA", "MPA", "SSR", "static website", etc.
-Not only is the
-`renderToDom`, `renderToHtml`, and `renderHtmlAtBuildTime`
+So, not only is the
+`renderToDom`/`renderToHtml`/`renderHtmlAtBuildTime`
 interface
 powerful but it is also simple.
 
 Another example
-is our `htmlRender` and `domRender` interface:
+is our `htmlRender`/`domRender` interface:
 - `htmlRender` renders your pages to HTML.
 - `domRender` renders your pages to the DOM.
 
@@ -99,30 +102,36 @@ This allows you to use Goldpage with any view library
 (React, Vue, RNW, Preact, ...) and any tool (Redux, React Router, ...).
 Here again, our interface is simple and powerful.
 
+These two examples are just the tip of the iceberg.
+We believe that a simple design is key to ambitious (and easily maintainable) projects.
+We elaborate more in the next section.
+
 !INLINE ./snippets/section-footer.md #readme
 
 
 
 ### Flexible & Rock-solid
 
-Not only does our design makes
-Goldpage easy to use
-a stable and stable contract between you (Goldpage users) and us (Goldand maintainers),
-this also makes Goldpage's rock-solid. Because a stable interface
+Not only does our design make
+Goldpage simple and powerful
+but it also makes the life of the Goldpage maintainers much easier.
 
 For example,
-the `htmlRender` and `domRender` functions we have seen in the previous section
-allow you to easily integrate Goldpage with other tools (Redux, React Router, etc.) which
-is crucial for the life of a Goldpage maintainers;
-other tool (Next.js, Gatsby, ...) maintainers suffer from the problem that they integrate poorly leading to an explosion of GitHub issues and required maintenance work to answer users and write ad-hoc patchs.
+our `htmlRender`/`domRender` interface (seen in the previous section)
+allows you to easily integrate Goldpage with the ecosystem (Redux, React Router, etc.).
+In contrast, others (Next.js, Gatsby, ...) integrate poorly with the ecosystem.
+This means that their users open a GitHub ticket every time
+they fail to integrate with the ecosystem leading to an explosion of GitHub tickets.
+This is hell for maintainers: they have to answer all these tickets and constantly ad-hoc patch a broken design.
 
 The same goes for Goldpage's internal APIs.
-For example, our core is agnostic to the web app bundler we use;
+For example, our core is agnostic to the bundler;
 we currently use Webpack but we will migrate to Parcel v2 once it's released.
-(Parcel v2 will bring numerous benefits over Webpack.)
+(Parcel v2 will bring numerous benefits.)
 
 Goldpage is about 10k lines of code
-which is tiny compared to other tools.
+which is very little compared to others.
+This is thanks to our great care to design.
 
 Ultimately, our simple design decreases our developing work by up to an order of magnitude &mdash;
 the work of one maintainer can be as effective as the work of up to 10 maintainers.
