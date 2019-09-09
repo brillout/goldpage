@@ -1013,28 +1013,32 @@ We enjoy talking with our users :-).
 
 ## Mixed Apps & BFA
 
-> :information_source: You can use Goldpage and create a prototype without reading this section and without knowing what mixed apps are and what a BFA is.
+> :information_source: You can use Goldpage without reading this section.
 
-> :warning:
-> This document assumes that you know the difference between CSR and SSR,
-> between `renderToDom` and `renderToHtml`,
-> and between an interactive page and a non-interactive page.
-> You can learn about all this
+> :warning: **Prerequisite Knowledge**
+> <br/>
+> This section assumes that you know:
+> - CSR & SSR
+> - `renderToDom` & `renderToHtml`
+> - Interactive VS non-interactive
+> You can learn all this
 > at [CSR & SSR Explained](/docs/csr-and-ssr-explained.md#readme).
 
-Tools usually offer CSR or SSR in an all-or-nothing way:
-either your entire app is CSR'd or SSR'd.
+Tools usually implement CSR and SSR in an all-or-nothing way:
+either all your pages are CSR'd or all your pages are SSR'd.
 
-Our `renderToHtml` and `renderToDom` page configs give you fine grain control and
-allow you to mix all kinds of pages &mdash; one page can use CSR (`renderToDom: true` & `renderToHtml: false`) while another page can use SSR (`renderToDom: false` & `renderToHtml: true`).
+Our `renderToHtml` and `renderToDom` interface gives you a fine grain control &mdash;
+you can mix CSR and SSR:
+one page can be CSR'd (`renderToDom: true` & `renderToHtml: false`) while another page can be SSR'd (`renderToDom: false` & `renderToHtml: true`).
 
 For example,
 if your app is non-interactive with the exception of one interactive page, then
-you can use CSR for that interactive page (`renderToDom: true` and `renderToHtml: false`) and use SSR for all your other non-interactive pages (`renderToDom: false` and `renderToHtml: true`).
+you can set CSR for that interactive page (`renderToDom: true` and `renderToHtml: false`) and set SSR for all your other pages (`renderToDom: false` and `renderToHtml: true`).
 
-Such mixed app is what we
-call a BFA (Backend First App).
+This mixing enables a whole new range of app types that where previously not possible to achieve.
 
+For example,
+what we call a *BFA (Backend First App)*.
 The idea of a BFA is to
 use React (or Vue)
 primarily as an HTML template engine and
