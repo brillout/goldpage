@@ -2056,6 +2056,9 @@ module.exports = {
 The example's entire source code is at:
 - [/examples/react-router](/examples/react-router)
 
+More Resources:
+- [Understanding client side routing by implementing a router in Vanilla JS](http://willtaylor.blog/client-side-routing-in-vanilla-js/)
+
 
 <br/>
 
