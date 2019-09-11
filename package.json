@@ -28,6 +28,7 @@
     "examples/basics",
     "examples/csr-ssr-explained",
     "examples/emotion",
+    "examples/es-modules",
     "examples/frontend-libraries",
     "examples/html",
     "examples/postcss",
