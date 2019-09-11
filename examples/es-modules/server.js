@@ -1,3 +1,4 @@
+// You can use ES modules in your sever code:
 import express from 'express';
 import ssr from 'goldpage';
 
