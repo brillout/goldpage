@@ -100,14 +100,16 @@ you can set both `renderToDom: true` and `renderToHtml: true` for having a crawl
 
 ## Social Sharing
 
-> :information_source:
-> A particularity of Goldpage is that you can do SMO without SSR.
-
 When someone shares a page on a social site, such as Facebook or Twitter, a preview of the page is shown.
 
-<img align="center" src="/docs/assets/social-sharing-preview.png"/>
+For example on Facebook:
 
-Facebook, for example, looks for the following HTML meta tags:
+<p align="center">
+  <img width=400 src="/docs/assets/social-sharing-preview.png" style="max-width:100%;"/>
+</p>
+
+To be able to show a correct preview of the page,
+Facebook crawls the page's HTML and looks for the following meta tags:
 ~~~html
 <meta property="og:title"       content="When Great Minds Don’t Think Alike" />
 <meta property="og:description" content="How much does culture influence creative thinking?" />
@@ -146,6 +148,9 @@ You can also render your page's meta data at request-time:
 ~~~js
 !INLINE /examples/html/pages/product-data.page.js
 ~~~
+
+> :information_source:
+> Note that a particularity of Goldpage is that you can do SMO without SSR.
 
 !INLINE ./snippets/section-footer.md #readme
 
