@@ -8,7 +8,8 @@
 > you do not need to read this document in order to use Goldpage.
 > We recommend that you start writing a prototype first and learn about CSR and SSR later.
 
-> :warning:
+> :warning: **Prerequisite Knowledge**
+> <br/>
 > This document assumes that you are familiar with CSR,
 > SSR,
 > `renderToDom`,
@@ -18,10 +19,6 @@
 > and the difference between a dynamic page and a static page.
 > We explain and illustrate all this
 > at [CSR & SSR Explained](/docs/csr-and-ssr-explained.md#readme).
-
-To recap,
-*Client-Side Rendering* (CSR) denotes the practice of rendering a page to the DOM (in the browser) which corresponds to page config `renderToDom: true`,
-and *Server-Side Rendering* (SSR) denotes the practice of rendering a page to HTML (on the server) which corresponds to the page config `renderToHtml: true`.
 
 Whether you want CSR and/or SSR for a page, depends on the following.
 - Interactive
