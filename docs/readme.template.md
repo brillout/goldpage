@@ -523,8 +523,8 @@ More at [BFA](/docs/bfa.md#readme).
 
 > :warning: **Prerequisite Knowledge**
 > <br/>
-> This section requires you to know what CSR and SSR are.
-> We explain CSR and SSR at [CSR & SSR Explained](/docs/csr-and-ssr-explained.md#readme).
+> This section requires you to know what CSR and SSR are (which we explain at
+> [CSR & SSR Explained](/docs/csr-and-ssr-explained.md#readme)).
 
 There are three page configs that allow you to control when your page is rendered:
 - `renderToDom` - If set to true, your page is rendered in the browser (to the DOM).
