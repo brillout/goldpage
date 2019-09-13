@@ -184,14 +184,14 @@ With Goldpage you add SSR to a page by settings `renderToHtml: true` to its page
 
 **Google**
 
-Goolge's capability to execute your page's JavaScript and to crawl your page's DOM has a delay:
-Google crawls your page without executing JavaScript
-at first, and after [~1 week](https://twitter.com/Paul_Kinlan/status/1039852756113080320)
-it re-crawls your page but this time it executes JavaScript and crawls your page's DOM.
+Google crawls your page twice:
+- First without executing your page's JavaScript; Goolgle only sees content rendered to HTML.
+- After [~1 week](https://twitter.com/Paul_Kinlan/status/1039852756113080320) Google re-crawls your page but this time it executes JavaScript and is able to see content rendered to the DOM.
 
-This means that content rendered to the DOM appears later in Google's search results than content
-rendered to HTML.
-To compare,
+Crawling the DOM of all your pages
+can take Google [as low as a couple of days and as high as multiple weeks](https://www.reddit.com/r/reactjs/comments/d2hoge/how_difficult_is_it_to_port_an_app_to_ssr/ezvwzjn/).
+
+In contrast,
 Google manages to track HTML changes almost instantly for popular sites.
 
 **SSR + CSR**
