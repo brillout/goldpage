@@ -1,15 +1,15 @@
 {
   "name": "example_es-modules",
   "private": true,
-  "version": "0.5.1",
+  "version": "0.5.2",
   "scripts": {
     "dev": "goldpage dev ./server.js"
   },
   "dependencies": {
-    "@goldpage/express": "0.5.1",
-    "@goldpage/react": "0.5.1",
+    "@goldpage/express": "0.5.2",
+    "@goldpage/react": "0.5.2",
     "express": "^4.17.1",
-    "goldpage": "0.5.1",
+    "goldpage": "0.5.2",
     "react": "^16.8.6",
     "react-dom": "^16.8.6"
   },

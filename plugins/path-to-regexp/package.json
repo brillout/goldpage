@@ -1,11 +1,11 @@
 {
   "name": "@goldpage/path-to-regexp",
-  "version": "0.5.1",
+  "version": "0.5.2",
   "@brillout/autoload": true,
   "dependencies": {
     "@brillout/path-to-regexp": "^0.1.2",
     "@brillout/reassert": "^0.1.1",
-    "@brillout/reconfig": "0.5.1"
+    "@brillout/reconfig": "0.5.2"
   },
   "publishConfig": {
     "access": "public"
