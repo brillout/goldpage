@@ -108,26 +108,25 @@ function getPageFiles() {
       pagesDir,
       getPageConfigFiles,
     } = reconfig.goldpage;
-    const configFileNames = getPageConfigFiles();
+    const configFilePaths = getPageConfigFiles();
 
-    assert.usage(configFileNames.constructor===Array);
-    const pageConfigFiles = {};
+    assert.usage(configFilePaths.constructor===Array);
+    assert.usage(configFilePaths.every(filePath => pathModule.isAbsolute(filePath)));
+    const pageFiles = {};
 
-    configFileNames
-    .filter(isNotDraft)
-    .forEach(pageConfigFile => {
-        assert.internal(pageConfigFile);
-        const pageName = getPageName(pageConfigFile, pagesDir);
-        assert.usage(
-            !pageConfigFiles[pageName],
-            "The page configs `"+pageConfigFiles[pageName]+"` and `"+pageConfigFile+"` have the same page name `"+pageName+"`.",
-            "Rename one of the two page files."
-        );
-        assert.internal(pageName);
-        pageConfigFiles[pageName] = pageConfigFile;
+    stripSameSuffixAndPrefix(
+      configFilePaths
+      .filter(isNotDraft)
+    )
+    .forEach(({original, stripped}) => {
+      const pageName = stripped;
+      const pageConfigFile = original;
+      assert.internal(pageName);
+      assert.internal(pageConfigFile);
+      pageFiles[pageName] = pageConfigFile;
     });
 
-    return pageConfigFiles;
+    return pageFiles;
 
   function isNotDraft(filePath) {
       // We filter out file names that contain a special character in their extension
@@ -145,4 +144,88 @@ function getPageFiles() {
       assert.internal(pageName, endPath, pageConfigFile);
       return pageName;
   }
+}
+
+/*
+Transform array, from:
+  [
+    '/path/to/pages/index.page.js'
+    '/path/to/pages/landing/index.page.js'
+    '/path/to/pages/hello.page.js'
+  ]
+to:
+  [
+    {
+      original: '/path/to/pages/index.page.js',
+      stripped: 'index',
+    },
+    {
+      original: '/path/to/pages/landing/index.page.js',
+      stripped: 'landing/index',
+    },
+    {
+      original: 'hello',
+      stripped: '/path/to/pages/hello.page.js',
+    },
+  ]
+*/
+function stripSameSuffixAndPrefix(arr) {
+  assert_self();
+
+  return doIt(arr);
+
+  function assert_self() {
+    const res = doIt(
+      [
+        '/path/to/pages/index.page.js',
+        '/path/to/pages/landing/index.page.js',
+        '/path/to/pages/hello.page.js',
+      ]
+    );
+    assert.internal(res[0].original==='/path/to/pages/index.page.js');
+    assert.internal(res[0].stripped==='index', res);
+    assert.internal(res[1].stripped==='landing/index');
+    assert.internal(res[2].stripped==='hello');
+  }
+
+  function doIt(arr) {
+    assert.internal(isUnique(arr));
+    if( arr.length===0 ){
+      return arr;
+    }
+
+    const arrNew = [];
+
+    let prefix = arr[0];
+    let suffix = arr[0];
+    arr.forEach(str => {
+      for(let i = 0; i<prefix.length; i++) {
+        if( prefix[i]!==str[i] ){
+          prefix = prefix.slice(0, i);
+          break;
+        }
+      }
+      for(let i = 0; i<suffix.length; i++) {
+        if( suffix[suffix.length-1-i]!==str[str.length-1-i] ) {
+          suffix = suffix.slice(suffix.length-i, suffix.length);
+          break;
+        }
+      }
+    });
+
+    arr.forEach(str => {
+      arrNew.push({
+        original: str,
+        stripped: str.slice(prefix.length, str.length-suffix.length),
+      });
+    });
+
+    assert.internal(isUnique(arrNew));
+    return arrNew;
+  }
+}
+
+function isUnique(arr) {
+  assert.internal(arr.constructor===Array);
+  return arr.length===[...new Set(arr)].length;
 }
