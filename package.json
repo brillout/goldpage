@@ -35,6 +35,7 @@
     "examples/react-router",
     "examples/redux",
     "examples/goldpage.config.js",
+    "examples/same-page-file-names",
     "examples/static-assets",
     "examples/static-website",
     "examples/styled-components",
