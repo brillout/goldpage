@@ -85,7 +85,7 @@
 # Backend First App
 
 > :information_source:
-> You can use Goldpage and start creating a prototype without reading this document.
+> You can use Goldpage and start creating an app without reading this document.
 
 > :warning:
 > This document assumes that you are familiar with the differences between CSR and SSR,
