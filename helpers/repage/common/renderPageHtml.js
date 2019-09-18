@@ -1,5 +1,6 @@
 const {getInitialProps} = require('./getInitialProps');
 const html = require('@brillout/html');
+const stripAnsi = require('strip-ansi');
 
 module.exports = {renderPageHtml};
 
@@ -28,7 +29,7 @@ function renderHtmlError({pageConfig, err}) {
 `<div>
     <h1>Internal Error 500</h1>
     <div>
-        <pre><code>\n${err.stack}</code></pre>
+        <pre><code>\n${stripAnsi(err.stack)}</code></pre>
     </div>
 </div>
 `
