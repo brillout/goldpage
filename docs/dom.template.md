@@ -1,4 +1,7 @@
 !INLINE ./snippets/header.md
+<br/>
+
+# DOM
 
 To be able to develop a web app,
 it is absolutely necessary to have good understanding of what the DOM (Document Object Model) is.

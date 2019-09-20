@@ -84,11 +84,11 @@
 
 # CSR & SSR Explained
 
-> :information_source: You can use Goldpage without reading this document; we recommend that you write your app first and learn about CSR and SSR later.
-
 This document explains the differences between CSR and SSR,
-interactive and non-interactive,
-static and dynamic.
+between interactive and non-interactive,
+and between static and dynamic.
+
+> :information_source: You can use Goldpage without reading this document; we recommend that you write your app first and learn about CSR and SSR later.
 
 > :information_source:
 > If you already know what CSR and SSR are then checkout
@@ -96,7 +96,7 @@ static and dynamic.
 > instead.
 
 > :warning:
-> This document requires you to know what the [DOM is](/docs/dom.md#readme).
+> This document requires you to have a [good understanding of the DOM](/docs/dom.md#readme).
 
 #### Contents
 
