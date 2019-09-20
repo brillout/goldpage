@@ -84,35 +84,19 @@
 
 # CSR & SSR Explained
 
-> :information_source:
-> You do not need to read this document
-> and you do not need to know what CSR and SSR are
-> in order to use Goldpage.
-> We recommend that you start writing a prototype first and learn about CSR and SSR later.
+> :information_source: You can use Goldpage without reading this document; we recommend that you write your app first and learn about CSR and SSR later.
 
-This document explains:
-- What CSR is.
-- What SSR is.
-- What CSR + SSR is about.
-- The motivation of doing CSR, SSR, and CSR and SSR.
-- The difference between an interactive page and a non-interactive page.
-- The difference between a static page and a dynamic page.
+This document explains the differences between CSR and SSR,
+interactive and non-interactive,
+static and dynamic.
 
 > :information_source:
-> If you already know what CSR, SSR, and CSR + SSR are then checkout
+> If you already know what CSR and SSR are then checkout
 > [Client-side Rendering (CSR) VS Server-side Rendering (SSR)](/docs/csr-vs-ssr.md#readme)
-> instead which goes deep into the differences between CSR and SSR and helps you decide what to use.
+> instead.
 
 > :warning:
-> This document requires you to you have a good understanding of what the DOM is:
-> - You know that anything you see on a page in the browser is represented in the DOM tree.
-> - You know that the DOM manipulation APIs are what allows a page to change and to be interactive.
-> - You are somewhat familiar / you have seen the basic DOM manipulation APIs before: `document.getElementById(id)`, `element.appendChild(aChild)`, `document.createElement(tagName)`, `element.setAttribute(name, value)`, etc.
-> - You know that view libraries (React/Vue/...) are essentially helper libraries that call the DOM manipulation APIs for you.
-> - You know that HTML is essentially a declarative specification of the initial DOM.
-> - You know that HTML is generated on the server-side and that the DOM is manipulated on the browser-side.
->
-> If any of the above is not clear to you, then learn about the DOM before continuing reading this document.
+> This document requires you to know what the [DOM is](/docs/dom.md#readme).
 
 #### Contents
 
@@ -136,12 +120,13 @@ When you define a page with React (or Vue),
 you have the choice between rendering your page to the DOM or to HTML.
 
 > :information_source:
-> We will only mention React from now on,
-> but everything we talk about here is applicable to all modern view libraries
-> that can do both CSR and SSR, such as React, Vue, and Angular.
+> We will only talk about React from now on,
+> but everything here is applicable to any modern view library such as Vue or Angular.
 
 *Server-Side Rendering* (SSR) denotes the practice of rendering a page to HTML on the server.
-For example:
+And *Client-Side Rendering* (CSR) denotes the practice of loading a page in the browser and rendering it to the browser's DOM.
+
+SSR example:
 
 <img align="right" src="/docs/assets/screens/ssr.png" width=336 style="max-width:100%;"/>
 
@@ -186,10 +171,9 @@ the page is rendered to HTML.
 Note that this page
 has no `<script>` tags;
 there is no browser-side JavaScript.
-React is only used render HTML in Node.js.
+React is only used to render HTML in Node.js.
 
-*Client-Side Rendering* (CSR) denotes the practice of loading a page in the browser and rendering it to the browser's DOM.
-For example:
+CSR example:
 
 <img align="right" src="/docs/assets/screens/csr.png" width=336 style="max-width:100%;"/>
 
