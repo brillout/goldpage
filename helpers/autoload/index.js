@@ -35,28 +35,26 @@ function loadDependencies() {
   const loaded = [];
   Object.keys(dependencies)
   .forEach(depName => {
-    const depPath = (
-   // eval('require')
-      require
-      .resolve(depName, {paths: [projectDir]})
-    );
-    const depPackageJsonPath = (
-   // eval('require')
-      require
-      .resolve(depName+'/package.json', {paths: [projectDir]})
-    );
-    const depPackageJson = (
-   // eval('require')
-      require
-      (depPackageJsonPath)
-    );
-    if( depPackageJson['@brillout/autoload'] ) {
+    const depConfig = loadDepModule(depName+'/package.json');
+    if( depConfig['@brillout/autoload'] ) {
+      loadDepModule(depName);
       loaded.push(depName);
-   // eval('require')
-      require
-      (depPath);
     }
   });
 
   return {loaded, packageJsonFile};
+}
+
+function loadDepModule(depModule) {
+    const depModulePath = (
+   // eval('require')
+      require
+      .resolve(depModule, {paths: [projectDir]})
+    );
+    const moduleExport = (
+   // eval('require')
+      require
+      (depModulePath)
+    );
+    return moduleExport;
 }
