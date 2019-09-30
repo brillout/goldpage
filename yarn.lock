@@ -857,6 +857,17 @@
     glob-gitignore "^1.0.14"
     ignore "^5.1.1"
 
+"@brillout/project-files@^0.4.1":
+  version "0.4.1"
+  resolved "https://registry.npmjs.org/@brillout/project-files/-/project-files-0.4.1.tgz#933da202318dcdf8085371abf02907e5ba0f0f82"
+  integrity sha512-xB1yNQKJnFjChMIOmCp1fryGPTbYd7Lt27gMoGLyww+S96JQ25jpjktmxFPt2W4sxJk4+Q5YAWJ6ftHsIQ57Iw==
+  dependencies:
+    "@brillout/reassert" "^0.1.0"
+    callsites "^2.0.0"
+    find-up "^4.0.0"
+    glob-gitignore "^1.0.14"
+    ignore "^5.1.1"
+
 "@brillout/reassert@0.0.1":
   version "0.0.1"
   resolved "https://registry.npmjs.org/@brillout/reassert/-/reassert-0.0.1.tgz#68c4bf06f3676d11cda26ee6f8a62a0e2ad4876c"
