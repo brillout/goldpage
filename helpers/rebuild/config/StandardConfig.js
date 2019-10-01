@@ -5,6 +5,7 @@ const pathModule = require('path');
 const webpack = require('webpack');
 const get_caller = require('parent-module');
 const CssConfig = require('./CssConfig');
+const isPackageName = require('validate-npm-package-name');
 
 module.exports = {StandardConfig, StandardNodeConfig};
 
@@ -295,6 +296,15 @@ function config_ignore_node_modules() {
           return true;
         }
         */
+
+        // This seems to cover all logic
+        const isPackage = isPackageName(requirePath).validForNewPackages;
+        assert_internal([true, false].includes(isPackage));
+        return isPackage===false;
+
+        // === TODO ===
+        // remove following code and add knowledge base
+        // ============
 
         // ==HACK==
         // Not sure what such path mean to webpack:
