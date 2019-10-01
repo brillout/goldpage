@@ -281,20 +281,18 @@ function config_ignore_css() {
 
 function config_ignore_node_modules() {
     return {
-        externals: [skip_node_modules],
+        externals: [skip_libraries],
     };
 
-    function skip_node_modules(context, request, callback) {
+    function should_be_transpiled(requirePath) {
         // Hack: `react-native-web` should be transpiled but it isn't
-        if( request.startsWith('react-native-web') ){
-          include();
-          return;
+        if( requirePath.startsWith('react-native-web') ){
+          return true;
         }
 
         /* Attempt to make React Native Web + SSR + CSS work:
-        if( request.startsWith('react') || context.includes('node_modules/react') ){
-          include();
-          return;
+        if( requirePath.startsWith('react') || context.includes('node_modules/react') ){
+          return true;
         }
         */
 
@@ -302,10 +300,9 @@ function config_ignore_node_modules() {
         // Not sure what such path mean to webpack:
         //    -!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../helpers/rebuild/config/fallback-loader.js??ref--2-0!../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./App.vue?vue&type=template&id=7185eed0&scoped=true&
         // But they need to be included to be able to load `.vue` component files
-        // Following also works: `if( request.includes('/vue-loader/') ){ include(); return; }`
-        if( request.startsWith('!') || request.startsWith('-!') ){
-          include();
-          return;
+        // Following also works: `if( requirePath.includes('/vue-loader/') ){ include(); return; }`
+        if( requirePath.startsWith('!') || requirePath.startsWith('-!') ){
+          return true;
         }
 
         // TODO implement a proper solution with require resolve.
@@ -313,36 +310,72 @@ function config_ignore_node_modules() {
         //    - https://github.com/browserify/resolve
         //    - https://github.com/nodejs/node/issues/18009
         //  - For pnp??
-        if( ['.', '/', pathModule.sep].includes(request[0]) ){
-          include();
+        if( ['.', '/', pathModule.sep].includes(requirePath[0]) ){
+          return true;
         } else {
-          skip();
+          return false;
         }
-        return;
 
         /*
         let filePath;
         try {
-            filePath = require.resolve(request, {paths: [context]});
+            filePath = require.resolve(requirePath, {paths: [context]});
         } catch(err) {
-            include();
-            return;
+            return true;
         }
 
         if( filePath.split(pathModule.sep).includes('node_modules') ) {
-            skip();
-            return;
+            return false;
         }
 
-        include();
-        return;
+        return true;
         */
+    }
+
+    function skip_libraries(context, request, callback) {
+        const shouldBeIncluded = should_be_transpiled(request);
+
+        debug_log();
+
+        if( shouldBeIncluded ) {
+          include();
+        } else {
+          skip();
+        }
+
+        return;
 
         function skip() {
             callback(null, "commonjs " + request);
         }
         function include() {
             callback();
+        }
+
+        function debug_log() {
+            //*
+            return;
+            //*/
+
+            let inspectRequirepath;
+            /*
+            inspectRequirepath = 'react-native-web';
+            //*/
+
+            if( inspectRequirepath && request!==inspectRequirepath ) return;
+
+            if( inspectRequirepath ) console.log('===');
+
+            if( shouldBeIncluded ){
+              console.log('***00000**** INCLUDED: '+request);
+            } else {
+              console.log('***00000**** SKIPED: '+request);
+            }
+
+            if( inspectRequirepath ) {
+              console.log(context);
+            }
+            if( inspectRequirepath ) console.log('===');
         }
     }
 }
