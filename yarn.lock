@@ -778,10 +778,10 @@
     lodash "^4.17.13"
     to-fast-properties "^2.0.0"
 
-"@brillout/check-deps@^0.1.5":
-  version "0.1.5"
-  resolved "https://registry.npmjs.org/@brillout/check-deps/-/check-deps-0.1.5.tgz#b5af1ef51c555f8c4ad04caf29c194424b01071b"
-  integrity sha512-Gq8WVVx5mOc3q2PxkwresBLjqGFvi6bk9oPYej8OMi9xhOi4yy807lRrfqgIs0q99QVBTn1Dz9VPT/JfTpR2tw==
+"@brillout/check-deps@^0.1.6":
+  version "0.1.6"
+  resolved "https://registry.npmjs.org/@brillout/check-deps/-/check-deps-0.1.6.tgz#37f9333eabdae5ca67355ab1e69a71d600867042"
+  integrity sha512-Ir5gtoCq+3md38LDXdnyuCBy6z6Yq2f92adW5pZxpceH+bAnI2IygDSKnBI0TyY1Lq3I+WXmrAj7aHuDm+nFmw==
   dependencies:
     "@brillout/find-package-files" "^0.1.1"
     "@brillout/reassert" "0.0.2"

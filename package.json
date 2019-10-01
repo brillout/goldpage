@@ -18,7 +18,7 @@
     "release-update-code": "lerna publish --force-publish=* --npm-tag=next --skip-npm"
   },
   "devDependencies": {
-    "@brillout/check-deps": "^0.1.5",
+    "@brillout/check-deps": "^0.1.6",
     "@brillout/mdocs": "^0.1.30",
     "lerna": "^3.16.4"
   },

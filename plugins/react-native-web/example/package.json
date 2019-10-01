@@ -15,8 +15,5 @@
     "react": "^16.8.6",
     "react-art": "^16.8.6",
     "react-native-web": "^0.11.4"
-  },
-  "checkDeps": {
-    "skip": true
   }
 }

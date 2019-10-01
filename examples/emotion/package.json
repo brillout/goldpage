@@ -17,9 +17,6 @@
     "react": "^16.8.6",
     "react-dom": "^16.8.6"
   },
-  "checkDeps": {
-    "skip": true
-  },
   "devDependencies": {
     "babel-plugin-emotion": "^10.0.13"
   }
