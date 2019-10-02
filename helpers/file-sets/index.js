@@ -39,8 +39,11 @@ function FileSets({pathBase}={}) {
         current_session = null;
     }
 
-    function writeFile({filePath, fileContent, noFileSet}) {
+    function writeFile({filePath, fileDir, fileContent, noFileSet}) {
         assert_usage(noFileSet || current_session);
+        if( fileDir ) {
+            filePath = pathModule.join(fileDir, filePath);
+        }
         if( pathBase ) {
             filePath = path__resolve(pathBase, filePath);
         }

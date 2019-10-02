@@ -11,7 +11,10 @@ const webpackConfigMod = require('@brillout/webpack-config-mod');
 const {colorError} = require('@brillout/cli-theme');
 const handleOutputDir = require('./handleOutputDir');
 const FileSets = require('@brillout/file-sets');
+const fs = require('fs');
+const get_timestamp = require('./get_timestamp');
 
+const GOLDPAGE_BUILD_INFO_DIR = require('./GOLDPAGE_BUILD_INFO_DIR');
 const SOURCE_CODE_OUTPUT_DIR = 'generated-source-code';
 const SOURCE_CODE_OUTPUT_SUFFIX = '.browser-entry';
 const BROWSER_OUTPUT_DIR = 'browser';
@@ -131,6 +134,7 @@ function BuildInstance() {
 
     return async () => {
         const ret = await isoBuilder.build();
+        fs.writeFileSync(pathModule.resolve(outputDir, GOLDPAGE_BUILD_INFO_DIR, 'firstBuildEnd'), get_timestamp());
         assert_internal(ret===undefined);
     };
 }
@@ -373,7 +377,7 @@ function generateBrowserEntries({pageBrowserEntries, fileSets}) {
 
         const fileAbsolutePath = fileSets.writeFile({
             fileContent: browserEntryString,
-            filePath: pathModule.join(SOURCE_CODE_OUTPUT_DIR, 'browser-entries', filename),
+            filePath: pathModule.join(GOLDPAGE_BUILD_INFO_DIR, SOURCE_CODE_OUTPUT_DIR, 'browser-entries', filename),
         });
         assert_internal(fileAbsolutePath);
 
@@ -457,6 +461,7 @@ function writeAssetMap({pageBrowserEntries, pageModules, outputDir, browserEntry
 
     fileSets.writeFile({
         fileContent: JSON.stringify(assetInfos, null, 2),
+        fileDir: GOLDPAGE_BUILD_INFO_DIR,
         filePath: 'assetInfos.json',
         noFileSet: true,
     });

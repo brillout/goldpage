@@ -4,6 +4,7 @@ const fs = require('fs');
 const pathModule = require('path');
 const {colorError} = require('@brillout/cli-theme');
 const require_ = require('@brillout/require-gold');
+const GOLDPAGE_BUILD_INFO_DIR = require('./GOLDPAGE_BUILD_INFO_DIR');
 
 let cache;
 
@@ -56,7 +57,7 @@ function makePathAbsolute(pathRelative, {outputDir}) {
 }
 
 function readAssetMap({outputDir, shouldBeProductionBuild}) {
-    const assetMapPath = pathModule.resolve(outputDir, 'assetInfos.json');
+    const assetMapPath = pathModule.resolve(outputDir, GOLDPAGE_BUILD_INFO_DIR, 'assetInfos.json');
     const assetMapContent = readFile(assetMapPath);
     assert_usage(
         assetMapContent!==null,

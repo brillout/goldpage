@@ -5,16 +5,14 @@ const pathModule = require('path');
 const fs = require('fs');
 const fsExtra = require('fs-extra');
 const {colorError, colorEmphasisLight} = require('@brillout/cli-theme');
+const get_timestamp = require('./get_timestamp');
+const GOLDPAGE_BUILD_INFO_DIR = require('./GOLDPAGE_BUILD_INFO_DIR');
 
 module.exports = handleOutputDir;
 
 function handleOutputDir({outputDir}) {
-    moveAndStampOutputDir({outputDir});
-}
-
-function moveAndStampOutputDir({outputDir}) {
     assert_usage(outputDir && pathModule.isAbsolute(outputDir), outputDir);
-    const stamp_path = path__resolve(outputDir, 'build-stamp');
+    const stamp_path = path__resolve(outputDir, GOLDPAGE_BUILD_INFO_DIR, 'buildStart');
 
     remove_output_dir();
     create_output_dir();
@@ -23,57 +21,34 @@ function moveAndStampOutputDir({outputDir}) {
 
     function create_output_dir() {
         mkdirp.sync(pathModule.dirname(outputDir));
-        const timestamp = get_timestamp();
-        assert_internal(timestamp);
-        const stamp_content = get_timestamp()+'\n';
-        fs__write_file(stamp_path, stamp_content);
-    }
-
-    function get_timestamp() {
-        const now = new Date();
-
-        const date = (
-            [
-                now.getFullYear(),
-                now.getMonth()+1,
-                now.getDate(),
-            ]
-            .map(pad)
-            .join('-')
-        );
-
-        const time = (
-            [
-                now.getHours(),
-                now.getMinutes(),
-                now.getSeconds(),
-            ]
-            .map(pad)
-            .join('-')
-        );
-
-        return date+'_'+time;
-
-        function pad(n) {
-            return (
-                n>9 ? n : ('0'+n)
-            );
-        }
+        fs__write_file(stamp_path, get_timestamp());
     }
 
     function remove_output_dir() {
         if( ! fs__path_exists(outputDir) ) {
             return;
         }
+
+        assert_existing_output_dir();
+
+        fsExtra.removeSync(outputDir);
+    }
+
+    function assert_existing_output_dir() {
+        // TODO remove this line
+        if( fs__path_exists(path__resolve(outputDir, 'build-stamp')) ) return;
+
         const stamp_content = fs__path_exists(stamp_path) && fs__read(stamp_path).trim();
         assert_usage(
             stamp_content,
             colorError('goldpage stamp is missing')+' at `'+stamp_path+'`.',
-            "It is therefore assumed that `"+outputDir+"` has not been created by goldpage.",
+            '',
+            "It is therefore assumed that `"+outputDir+"` has not been created by Goldpage.",
+            '',
             colorEmphasisLight('Remove `'+outputDir+'` and retry.'),
+            '',
         );
         assert_internal(stamp_content && !/\s/.test(stamp_content), stamp_content);
-        fsExtra.removeSync(outputDir);
     }
 }
 
