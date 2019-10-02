@@ -6,7 +6,7 @@ const getStaticPageHtmls = require('@brillout/repage/getStaticPageHtmls');
 module.exports = getPageHtmls;
 
 async function getPageHtmls() {
-    const {pages__fullProps} = config.goldpage.getBuildInfo();
+    const {pages__fullProps} = config.goldpage.getBuildInfo({builtShouldBeFinished: true});
 
     const {router: routerFile, renderPageToHtml} = config.goldpage;
     assert_usage(renderPageToHtml);

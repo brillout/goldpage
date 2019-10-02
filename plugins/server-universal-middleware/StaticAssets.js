@@ -14,9 +14,16 @@ module.exports = StaticAssets;
 StaticAssets.executionPriority = 1000*1000;
 
 async function StaticAssets(requestObject) {
+    const {staticAssetsDir, pagesNotBuilt} = config.goldpage.getBuildInfo();
+
+    if( pagesNotBuilt ) {
+      return null;
+    }
+
     const {url} = requestObject;
     const {pathname} = parseUrl(url);
-    const filePath = getFilePath({pathname});
+
+    const filePath = getFilePath({staticAssetsDir, pathname});
 
     const fileContent = await getFileContent(filePath);
 
@@ -67,9 +74,7 @@ function getCacheHeader(filePath, fileContent) {
     }
 }
 
-function getFilePath({pathname}) {
-    const {staticAssetsDir} = config.goldpage.getBuildInfo();
-
+function getFilePath({staticAssetsDir, pathname}) {
     const filename = (
         pathname==='/' && '/index.html' ||
         pathname.split('/').slice(-1)[0].split('.').length===1 && pathname+'.html' ||

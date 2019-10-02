@@ -4,11 +4,15 @@ const assert = require('reassert');
 
 module.exports = getBuildInfo;
 
-function getBuildInfo({shouldBeProductionBuild}={}) {
+function getBuildInfo({shouldBeProductionBuild, builtShouldBeFinished}={}) {
     const outputDir = config.goldpage.buildDir;
     assert.internal(outputDir);
 
-    const assetInfos = getAssetInfos({outputDir, shouldBeProductionBuild});
+    const assetInfos = getAssetInfos({outputDir, shouldBeProductionBuild, builtShouldBeFinished});
+
+    if( assetInfos.pagesNotBuilt ) {
+        return assetInfos;
+    }
 
     const {pageAssets, ...assetInfos__rest} = assetInfos;
     const pages__fullProps = get_pages({pageAssets});

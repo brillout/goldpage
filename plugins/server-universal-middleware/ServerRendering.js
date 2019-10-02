@@ -10,7 +10,24 @@ module.exports = ServerRendering;
 ServerRendering.executionPriority = -1000;
 
 async function ServerRendering(requestObject) {
-    const html = await getHtml(requestObject);
+    const {pages__fullProps, pagesNotBuilt, goldpageIsBuilding} = config.goldpage.getBuildInfo();
+
+    if( pagesNotBuilt ) {
+      return {
+        body: (
+          '<html><body>'+ (
+            goldpageIsBuilding ? (
+              'Goldpage is currently building your pages.'
+            ) :(
+              'Your pages are not built (yet?).'
+            )
+          ) +
+          '</body></html>'
+        ),
+      };
+    }
+
+    const html = await getHtml({requestObject, pages__fullProps});
 
     if( html === null ) {
         return null;
@@ -26,11 +43,10 @@ async function ServerRendering(requestObject) {
     }
 }
 
-async function getHtml(requestObject) {
+async function getHtml({requestObject, pages__fullProps}) {
     const {url} = requestObject;
     assert_internal(url.startsWith('http'), {url});
 
-    const {pages__fullProps} = config.goldpage.getBuildInfo();
     const {renderPageToHtml, router: routerFile} = config.goldpage;
     const htmlRender = (
    // eval('require')
