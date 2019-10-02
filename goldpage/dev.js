@@ -4,17 +4,17 @@ const build = require('./build');
 
 module.exports = dev;
 
-async function dev({silent=true, serverEntryFile}) {
+async function dev({silent=true, isBuildingServer}) {
   assert.usage(
     process.env.NODE_ENV!=='production',
     "`dev` shouldn't be run with `process.env.NODE_ENV==='production'`.",
   );
 
-  if( serverEntryFile ) {
+  if( isBuildingServer ) {
     serverAutoRestart();
   }
 
-  await build({silent});
+  await build({silent, isBuildingServer});
 }
 
 async function serverAutoRestart() {

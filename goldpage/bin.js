@@ -10,16 +10,18 @@ const USAGE_PATH_ARG = './path/to/server/start.js';
 
 (() => {
   const {silent, isDev, serverEntryFile} = parseArguments();
+  let isBuildingServer = false;
   if( serverEntryFile ){
     ssr.serverEntryFile = serverEntryFile;
+    isBuildingServer = true;
   }
   if( isDev ){
     const dev = require('./dev');
-    dev({serverEntryFile, silent});
+    dev({isBuildingServer, silent});
   } else {
     process.env.NODE_ENV = 'production';
     const build = require('./build');
-    build({serverEntryFile, silent});
+    build({isBuildingServer, silent});
   }
 })();
 

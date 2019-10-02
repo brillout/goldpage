@@ -3,7 +3,9 @@ const assert = require('@brillout/reassert');
 
 module.exports = build;
 
-async function build({silent=true}) {
+async function build({silent=true, isBuildingServer}) {
+  assert.internal([true, false].includes(isBuildingServer));
+  assert.internal([true, false].includes(silent));
   /*
   assert.warning(
     process.env.NODE_ENV==='production',
@@ -11,7 +13,8 @@ async function build({silent=true}) {
     "You may want to run `dev` instead or set `process.env.NODE_ENV` to `'production'`.",
   );
   */
-  !silent && console.log('Building pages...');
+  const serverText = !isBuildingServer ? '' : ' & server';
+  !silent && console.log('Building pages'+serverText+'...');
   await ssr.build();
-  !silent && console.log('Pages built.');
+  !silent && console.log('Pages'+serverText+' built.');
 }
