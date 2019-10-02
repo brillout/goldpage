@@ -10,5 +10,6 @@
   "repository": "https://github.com/reframejs/reframe/tree/master/helpers/cli-theme",
   "publishConfig": {
     "access": "public"
-  }
+  },
+  "gitHead": "98545d89b81958b858132b88995bef5871abcb9a"
 }
