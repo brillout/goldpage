@@ -9,28 +9,35 @@ const {colorError} = require('@brillout/cli-theme');
 const USAGE_PATH_ARG = './path/to/server/start.js';
 
 (() => {
-  const {isDev, serverEntryFile} = parseArguments();
+  const {silent, isDev, serverEntryFile} = parseArguments();
   if( serverEntryFile ){
     ssr.serverEntryFile = serverEntryFile;
   }
   if( isDev ){
-    require('./dev');
+    const dev = require('./dev');
+    dev({serverEntryFile, silent});
   } else {
     process.env.NODE_ENV = 'production';
-    require('./build');
+    const build = require('./build');
+    build({serverEntryFile, silent});
   }
 })();
 
 function parseArguments() {
   let args = process.argv.slice(2);
 
+  const {silent, argsExtracted} = extractOptions(args);
+  args = argsExtracted;
+
   assert_cli_usage(
     args.length===2 || args.length===1
   );
+  /*
   assert_cli_usage(
     args.length===2 || config.goldpage.serverEntryFile,
-    "Couldn't not find the server. Please add the server path argument `"+USAGE_PATH_ARG+"`.",
+    "Could not find the server. Please add the server path argument `"+USAGE_PATH_ARG+"`.",
   );
+  */
   assert_cli_usage(
     ['build', 'dev'].includes(args[0]),
     "Unknown argument `"+args[0]+"`.",
@@ -69,10 +76,29 @@ function parseArguments() {
   );
 
   return {
+    silent,
     isDev,
     serverEntryFile,
   };
 }
+
+function extractOptions(args) {
+  const argsExtracted = [];
+  let silent = false;
+  args.forEach(arg => {
+    if( arg.startsWith('-') ) {
+      if( arg==='--silent' ){
+        silent = true;
+        return;
+      }
+      assert_cli_usage(false, 'Unkown option `'+arg+'`');
+    } else {
+      argsExtracted.push(arg);
+    }
+  });
+  return {silent, argsExtracted};
+}
+
 
 function assert_cli_usage(bool, failureReason) {
   assert.usage(
@@ -86,10 +112,10 @@ function assert_cli_usage(bool, failureReason) {
       ),
       "",
       'Usage:',
-      '  goldpage dev',
-      '  goldpage dev '+USAGE_PATH_ARG,
-      '  goldpage build',
-      '  goldpage build '+USAGE_PATH_ARG,
+      '  goldpage dev [--silent]',
+      '  goldpage dev '+USAGE_PATH_ARG+' [--silent]',
+      '  goldpage build [--silent]',
+      '  goldpage build '+USAGE_PATH_ARG+' [--silent]',
     ]
     .join('\n')
   )

@@ -1,22 +1,33 @@
 const ssr = require('./ssr');
 const assert = require('@brillout/reassert');
-const {fork} = require('child_process');
+const build = require('./build');
 
-assert.usage(
-  process.env.NODE_ENV!=='production',
-  "`dev` shouldn't be run with `process.env.NODE_ENV==='production'`.",
-);
+module.exports = dev;
 
-let server_process;
-ssr.onBuild = async ({serverBuildEntry}) => {
-  if( !serverBuildEntry ){
-    return;
+async function dev({silent=true, serverEntryFile}) {
+  assert.usage(
+    process.env.NODE_ENV!=='production',
+    "`dev` shouldn't be run with `process.env.NODE_ENV==='production'`.",
+  );
+
+  if( serverEntryFile ) {
+    serverAutoRestart();
   }
 
-  if( server_process ){
-    server_process.kill();
-  }
-  server_process = fork(serverBuildEntry, {env: {ALREADY_BUILT: "yes"}});
+  await build({silent});
 }
 
-ssr.build();
+async function serverAutoRestart() {
+  const {fork} = require('child_process');
+
+  let server_process;
+
+  ssr.onBuild = async ({serverBuildEntry}) => {
+    assert.internal(serverBuildEntry);
+
+    if( server_process ){
+      server_process.kill();
+    }
+    server_process = fork(serverBuildEntry, {env: {ALREADY_BUILT: "yes"}});
+  };
+}

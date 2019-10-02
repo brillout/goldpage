@@ -56,6 +56,10 @@ function create_ssr() {
       {build},
     );
 
+    // TODO - extract all logging logic out
+    config.goldpage.logOptions = config.goldpage.logOptions || {};
+    config.goldpage.logOptions.onlyLogFailure = true;
+
     return new Proxy(this, {set, get});
 
     function set(ssr_obj, prop, value) {
@@ -72,11 +76,6 @@ function create_ssr() {
         return true;
       }
       */
-      if( prop==='silent' ){
-        config.goldpage.logOptions = config.goldpage.logOptions || {};
-        config.goldpage.logOptions.onlyLogFailure = true;
-        return true;
-      }
 
       config.goldpage[prop] = value;
 
