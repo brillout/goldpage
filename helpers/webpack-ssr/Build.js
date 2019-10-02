@@ -13,6 +13,7 @@ const handleOutputDir = require('./handleOutputDir');
 const FileSets = require('@brillout/file-sets');
 const fs = require('fs');
 const get_timestamp = require('./get_timestamp');
+const createTmpFile = require('./createTmpFile');
 
 const GOLDPAGE_BUILD_INFO_DIR = require('./GOLDPAGE_BUILD_INFO_DIR');
 const SOURCE_CODE_OUTPUT_DIR = 'generated-source-code';
@@ -133,8 +134,10 @@ function BuildInstance() {
     }).bind(this);
 
     return async () => {
+        const isBuildingFile = createTmpFile(pathModule.resolve(outputDir, GOLDPAGE_BUILD_INFO_DIR, 'isBuilding'));
         const ret = await isoBuilder.build();
         fs.writeFileSync(pathModule.resolve(outputDir, GOLDPAGE_BUILD_INFO_DIR, 'firstBuildEnd'), get_timestamp());
+        isBuildingFile.remove();
         assert_internal(ret===undefined);
     };
 }
