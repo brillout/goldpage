@@ -95,6 +95,7 @@ function IsoBuilder() {
     }
 
     function onBuildFail() {
+        onBuildStart__already_called = false;
         const {logger} = isoBuilder;
         const browserCompilationInfo = browserBuild.getCompilationInfo();
         const nodejsCompilationInfo = nodejsBuild.getCompilationInfo();
@@ -354,16 +355,18 @@ async function buildAll({isoBuilder, latestRun, browserBuild, nodejsBuild, isReb
 
         const isFirstBuild = !isRebuild.value;
         isRebuild.value = true;
+        onBuildStart__already_called = false;
         if( isoBuilder.onBuildDone ) {
             /*await */isoBuilder.onBuildDone({isFirstBuild});
         }
     }
 }
 
+let onBuildStart__already_called;
 function onBuildStart({isoBuilder}) {
-    if( isoBuilder.onBuildStart ) {
-        const promise = isoBuilder.onBuildStart(/*{isFirstBuild}*/);
-        assert_usage(promise===undefined);
+    if( isoBuilder.onBuildStart && !onBuildStart__already_called ) {
+        isoBuilder.onBuildStart();
+        onBuildStart__already_called = true;
     }
 
     const {logger} = isoBuilder;
