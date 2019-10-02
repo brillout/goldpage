@@ -1,4 +1,5 @@
 const html = require('@brillout/html');
+const devalue = require('devalue');
 const CONTAINER_ID = require('./CONTAINER_ID');
 const config = require('@brillout/reconfig');
 const assert = require('@brillout/reassert');
@@ -64,8 +65,12 @@ async function renderPageToHtml({initialProps}) {
     htmlOptions.body = htmlOptions.body || [];
     htmlOptions.body = [
       ...htmlOptions.body,
-      '<div id="'+CONTAINER_ID+'">'+htmlRender__value+'</div>'
+      '<div id="'+CONTAINER_ID+'">'+htmlRender__value+'</div>',
     ];
+    assert.internal([undefined, true, false].includes(pageConfig.renderToDom));
+    if( pageConfig.renderToDom!==false ) {
+      passInitialProps(htmlOptions.body, initialProps);
+    }
   } else {
     Object.assign(htmlOptions, htmlRender__value);
   }
@@ -77,4 +82,27 @@ function assert_initialProps(initialProps) {
   assert.internal(initialProps.__sources, {initialProps});
   assert.internal(initialProps.__sources.pageConfig.view);
   assert.internal(initialProps.__sources.pageConfig.route);
+}
+
+function passInitialProps(bodyArray, initialProps) {
+  const val = initialProps.__sources.addInitialProps;
+  if( !val ) {
+    return;
+  }
+
+  let initialProps__devalued;
+  try {
+    initialProps__devalued = devalue(val);
+  }
+  catch(err) {
+    throw err;
+  }
+
+  if( !initialProps__devalued ) {
+    return;
+  }
+
+  bodyArray.push(
+    `<script>window._goldpage_initialProps = ${initialProps__devalued}</script>`,
+  );
 }

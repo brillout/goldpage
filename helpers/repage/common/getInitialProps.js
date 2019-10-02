@@ -18,10 +18,7 @@ async function getInitialProps({pageConfig, url, router, requestObject, isNodejs
 
   let initialProps = assemble(null);
 
-  const addInitialProps__result = (
-    pageConfig.addInitialProps &&
-    await pageConfig.addInitialProps(initialProps)
-  );
+  const addInitialProps__result = await retrieveInitialProps({pageConfig, initialProps});
 
   initialProps = assemble(addInitialProps__result);
 
@@ -38,7 +35,7 @@ async function getInitialProps({pageConfig, url, router, requestObject, isNodejs
       ...addInitialProps__result,
       __sources: {
         pageConfig,
-        addInitialProps__result,
+        addInitialProps: addInitialProps__result,
         requestObject,
         urlProps,
         routeArguments,
@@ -46,4 +43,15 @@ async function getInitialProps({pageConfig, url, router, requestObject, isNodejs
       },
     });
   }
+}
+
+async function retrieveInitialProps({pageConfig, initialProps}) {
+  if( typeof window !== "undefined" && window._goldpage_initialProps ) {
+    return window._goldpage_initialProps;
+  }
+
+  return (
+    pageConfig.addInitialProps &&
+    await pageConfig.addInitialProps(initialProps)
+  );
 }
