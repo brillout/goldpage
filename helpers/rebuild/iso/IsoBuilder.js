@@ -34,7 +34,7 @@ function IsoBuilder() {
                 compilationName: 'browserCompilation',
             })
         ),
-        onBuildStart,
+        onBuildBegin,
         onBuildFail,
         onSuccessfullWatchChange,
     });
@@ -66,7 +66,7 @@ function IsoBuilder() {
               })
             );
         },
-        onBuildStart,
+        onBuildBegin,
         onBuildFail,
         onSuccessfullWatchChange,
     });
@@ -101,9 +101,8 @@ function IsoBuilder() {
         log_state_fail({logger, browserCompilationInfo, nodejsCompilationInfo});
     }
 
-    function onBuildStart() {
-        const {logger} = isoBuilder;
-        log_state_start({logger});
+    function onBuildBegin() {
+        onBuildStart({isoBuilder});
     }
 
     function onSuccessfullWatchChange(buildName) {
@@ -112,7 +111,7 @@ function IsoBuilder() {
     }
 }
 
-function BuildManager({buildName, buildFunction, onSuccessfullWatchChange, onBuildFail, onBuildStart}) {
+function BuildManager({buildName, buildFunction, onSuccessfullWatchChange, onBuildFail, onBuildBegin}) {
     const _compiler = new WebpackCompilerWithCache();
 
     const that = Object.assign(this, {
@@ -167,7 +166,7 @@ function BuildManager({buildName, buildFunction, onSuccessfullWatchChange, onBui
             const {is_compiling, is_failure, is_first_success} = compilationInfo;
 
             if( is_compiling ) {
-                onBuildStart();
+                onBuildBegin();
             }
 
             if( ! is_compiling && is_failure ) {
@@ -301,7 +300,7 @@ async function buildAll({isoBuilder, latestRun, browserBuild, nodejsBuild, isReb
 
     const logger = isoBuilder.logger = isoBuilder.logger || Logger();
 
-    log_state_start({logger});
+    onBuildStart({isoBuilder});
 
     const runNumber = latestRun.runNumber + 1;
     const runIsOutdated = () => runNumber !== latestRun.runNumber;
@@ -360,6 +359,17 @@ async function buildAll({isoBuilder, latestRun, browserBuild, nodejsBuild, isReb
         }
     }
 }
+
+function onBuildStart({isoBuilder}) {
+    if( isoBuilder.onBuildStart ) {
+        const promise = isoBuilder.onBuildStart(/*{isFirstBuild}*/);
+        assert_usage(promise===undefined);
+    }
+
+    const {logger} = isoBuilder;
+    log_state_start({logger});
+}
+
 function log_state_end({logger, nodejsBuild, browserBuild}) {
     const nodejsCompilationInfo = nodejsBuild.getCompilationInfo();
     const browserCompilationInfo = browserBuild.getCompilationInfo();
@@ -380,13 +390,6 @@ function log_state_end({logger, nodejsBuild, browserBuild}) {
     });
 }
 function log_state_start({logger}){
-    /*
-    if( isoBuilder.onBuildBegin ) {
-        const promise = isoBuilder.onBuildBegin({isFirstBuild});
-        assert_usage(promise===undefined);
-    }
-    */
-
     logger.onNewBuildState({
         is_compiling: true,
     });

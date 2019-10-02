@@ -71,6 +71,8 @@ function BuildInstance() {
 
     const that = this;
 
+    isoBuilder.onBuildStart = (...args) => this.onBuildStart && this.onBuildStart(...args);
+
     isoBuilder.onBuildDone = async (...args) => {
         if( that.onBuildDone ) {
              assert_internal(args.length===1);

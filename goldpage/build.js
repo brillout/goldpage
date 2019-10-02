@@ -13,8 +13,14 @@ async function build({silent=true, isBuildingServer}) {
     "You may want to run `dev` instead or set `process.env.NODE_ENV` to `'production'`.",
   );
   */
+
   const serverText = !isBuildingServer ? '' : ' & server';
-  !silent && console.log('Building pages'+serverText+'...');
+  ssr.onBuildStart = () => {
+    !silent && console.log('Building pages'+serverText+'...');
+  };
+  ssr.onBuildEnd = async () => {
+    !silent && console.log('Pages'+serverText+' built.');
+  };
+
   await ssr.build();
-  !silent && console.log('Pages'+serverText+' built.');
 }

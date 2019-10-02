@@ -49,6 +49,7 @@ function runBuild() {
       doNotWatchBuildFiles,
       entryFileServer,
       onBuildDone,
+      onBuildStart,
   });
 
   watchDir(pagesDir, () => {build()});
@@ -59,16 +60,22 @@ function runBuild() {
 let onBuildPromise;
 let alreadyQueued;
 async function onBuildDone(...args) {
-  const {onBuild} = reconfig.goldpage;
+  const {onBuildEnd} = reconfig.goldpage;
   if( alreadyQueued ) return;
   if( onBuildPromise ) {
     alreadyQueued = true;
     await onBuildPromise;
     alreadyQueued = false;
   }
-  if( onBuild ){
-    onBuildPromise = onBuild(...args);
+  if( onBuildEnd ){
+    onBuildPromise = onBuildEnd(...args);
     await onBuildPromise;
+  }
+}
+
+function onBuildStart(...args) {
+  if( reconfig.goldpage.onBuildStart ) {
+    return reconfig.goldpage.onBuildStart(...args);
   }
 }
 
