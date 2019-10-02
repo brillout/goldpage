@@ -22,7 +22,7 @@ function handleOutputDir({outputDir}) {
     function create_output_dir() {
         mkdirp.sync(pathModule.dirname(outputDir));
         fs__write_file(stamp_path, get_timestamp());
-        fs__write_file(path__resolve(outputDir, GOLDPAGE_BUILD_INFO_DIR, 'README.md'), 'This directory contains internal [Goldpage](https://github.com/reframejs/goldpage) data.\n\nYou can ignore this directory.\n\nIn particular, do **NOT** depend on this directory; anything in this directory may change at any patch semver update. Open a GitHub issue instead.\n');
+        fs__write_file(path__resolve(outputDir, GOLDPAGE_BUILD_INFO_DIR, 'README.md'), 'This directory contains internal [Goldpage](https://github.com/reframejs/goldpage) data.\n\nIgnore this directory.\n\nDo **NOT** depend on this directory; anything in this directory may change at any patch semver update. Open a GitHub issue instead.\n');
     }
 
     function remove_output_dir() {
