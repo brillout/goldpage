@@ -24,35 +24,38 @@ const USAGE_PATH_ARG = './path/to/server/start.js';
 })();
 
 function parseArguments() {
-  let args = process.argv.slice(2);
+  const {cliOptions, cliArgs} = parseCammndLineString();
 
-  const {silent, argsExtracted} = extractOptions(args);
-  args = argsExtracted;
+  const command = cliArgs[0];
+  assert_cli_usage(
+    cliArgs.length>=1
+  );
+  assert_cli_usage(
+    ['build', 'dev'].includes(command),
+    "Unknown command `"+command+"`.",
+  );
+  let isDev = true;
+  if( command==='build' ){
+    isDev = false;
+  }
+  assert.usage(
+    isDev===false || process.env.NODE_ENV!=='production',
+    "`process.env.NODE_ENV` should not be equal to `'production'` when running `goldpage dev`",
+  );
 
   assert_cli_usage(
-    args.length===2 || args.length===1
+    cliArgs.length===2 || cliArgs.length===1
   );
   /*
   assert_cli_usage(
-    args.length===2 || config.goldpage.serverEntryFile,
+    cliArgs.length===2 || config.goldpage.serverEntryFile,
     "Could not find the server. Please add the server path argument `"+USAGE_PATH_ARG+"`.",
   );
   */
-  assert_cli_usage(
-    ['build', 'dev'].includes(args[0]),
-    "Unknown argument `"+args[0]+"`.",
-  );
-
-  let isDev = true;
-  if( args[0]==='build' ){
-    isDev = false;
-  }
-  args = args.slice(1);
 
   let serverEntryFile = null;
-  if( args.length!==0 ){
-    const serverEntrySpec = args[0];
-    args = args.slice(1);
+  const serverEntrySpec = cliArgs[1];
+  if( serverEntrySpec ){
     serverEntryFile = serverEntrySpec;
     serverEntryFile = path.resolve(process.cwd(), serverEntryFile);
     try {
@@ -67,25 +70,17 @@ function parseArguments() {
     }
   }
 
-  assert_cli_usage(
-    args.length===0,
-  );
-  assert.usage(
-    isDev===false || process.env.NODE_ENV!=='production',
-    "`process.env.NODE_ENV` should not be equal to `'production'` when running `goldpage dev`",
-  );
-
   return {
-    silent,
+    ...cliOptions,
     isDev,
     serverEntryFile,
   };
 }
-
-function extractOptions(args) {
-  const argsExtracted = [];
+function parseCammndLineString() {
+  const cliArgs = [];
   let silent = false;
-  args.forEach(arg => {
+  process.argv.slice(2)
+  .forEach(arg => {
     if( arg.startsWith('-') ) {
       if( arg==='--silent' ){
         silent = true;
@@ -93,10 +88,10 @@ function extractOptions(args) {
       }
       assert_cli_usage(false, 'Unkown option `'+arg+'`');
     } else {
-      argsExtracted.push(arg);
+      cliArgs.push(arg);
     }
   });
-  return {silent, argsExtracted};
+  return {cliOptions: {silent}, cliArgs};
 }
 
 
