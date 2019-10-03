@@ -4,7 +4,7 @@ const mkdirp = require('mkdirp');
 const pathModule = require('path');
 const fs = require('fs');
 const fsExtra = require('fs-extra');
-const {colorError, colorEmphasisLight} = require('@brillout/cli-theme');
+const {colorError, colorEmphasis, strDir} = require('@brillout/cli-theme');
 const get_timestamp = require('./get_timestamp');
 const GOLDPAGE_BUILD_INFO_DIR = require('./GOLDPAGE_BUILD_INFO_DIR');
 
@@ -12,7 +12,8 @@ module.exports = handleOutputDir;
 
 function handleOutputDir({outputDir}) {
     assert_usage(outputDir && pathModule.isAbsolute(outputDir), outputDir);
-    const stamp_path = path__resolve(outputDir, GOLDPAGE_BUILD_INFO_DIR, 'buildStart');
+    const goldpage_build_info_dir_path = path__resolve(outputDir, GOLDPAGE_BUILD_INFO_DIR);
+    const stamp_path = path__resolve(goldpage_build_info_dir_path, 'buildStart');
 
     remove_output_dir();
     create_output_dir();
@@ -39,17 +40,16 @@ function handleOutputDir({outputDir}) {
         // TODO remove this line
         if( fs__path_exists(path__resolve(outputDir, 'build-stamp')) ) return;
 
-        const stamp_content = fs__path_exists(stamp_path) && fs__read(stamp_path).trim();
+        const outputDirStr = strDir(outputDir);
         assert_usage(
-            stamp_content,
-            colorError('goldpage stamp is missing')+' at `'+stamp_path+'`.',
+            fs__path_exists(goldpage_build_info_dir_path),
+            colorError('Cannot write '+outputDirStr),
             '',
-            "It is therefore assumed that `"+outputDir+"` has not been created by Goldpage.",
+            "It seems that the build directory `"+outputDirStr+"` has not been created by Goldpage; in order to avoid data loss Goldpage will not overwrite the build directory.",
             '',
-            colorEmphasisLight('Remove `'+outputDir+'` and retry.'),
+            colorEmphasis('Remove `'+outputDirStr+'` and retry.'),
             '',
         );
-        assert_internal(stamp_content && !/\s/.test(stamp_content), stamp_content);
     }
 }
 
