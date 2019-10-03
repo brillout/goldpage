@@ -5,7 +5,7 @@
   "dependencies": {
     "@brillout/reassert": "^0.1.0",
     "@brillout/reconfig": "0.5.3",
-    "@universal-adapter/koa": "^0.4.0"
+    "@universal-adapter/koa": "^0.4.1"
   },
   "publishConfig": {
     "access": "public"
