@@ -1,6 +1,7 @@
 const Build = require('webpack-ssr/Build');
 const watchDir = require('webpack-ssr/watchDir');
 const assert = require('reassert');
+const pathModule = require('path');
 
 const reconfig = require('@brillout/reconfig');
 
@@ -109,8 +110,6 @@ function assemble_modifiers(modifier_name) {
 }
 
 function getPageFiles() {
-    const pathModule = require('path');
-
     const {
       pagesDir,
       getPageConfigFiles,
@@ -193,42 +192,62 @@ function stripSameSuffixAndPrefix(arr) {
     assert.internal(res[0].stripped==='index', res);
     assert.internal(res[1].stripped==='landing/index');
     assert.internal(res[2].stripped==='hello');
+
+    assert.internal(doIt([]).length===0);
+
+    assert.internal(doIt(['/path/to/pages/index.page.js'])[0].stripped==='index');
   }
 
   function doIt(arr) {
-    assert.internal(isUnique(arr));
+    assert.internal(isUnique(arr), {arr});
+    assert.internal(arr.every(p => pathModule.isAbsolute(p)), {arr});
     if( arr.length===0 ){
       return arr;
     }
 
     const arrNew = [];
 
-    let prefix = arr[0];
-    let suffix = arr[0];
-    arr.forEach(str => {
+    const firstPath = arr[0];
+
+    let prefix = pathModule.dirname(firstPath)+'/';
+    let suffix = pathModule.basename(firstPath).split('.').map(s => '.'+s).slice(1).join('');
+
+    // Assert edge case when there is only one page config
+    assert.internal(firstPath.startsWith(prefix), {firstPath, prefix});
+    assert.internal(firstPath.endsWith(suffix), {firstPath, suffix});
+    assert.internal(removePrefixAndSuffix(firstPath, prefix, suffix).length>0, {firstPath, prefix, suffix});
+
+    arr.forEach(filePath => {
       for(let i = 0; i<prefix.length; i++) {
-        if( prefix[i]!==str[i] ){
+        if( prefix[i]!==filePath[i] ){
           prefix = prefix.slice(0, i);
           break;
         }
       }
       for(let i = 0; i<suffix.length; i++) {
-        if( suffix[suffix.length-1-i]!==str[str.length-1-i] ) {
+        if( suffix[suffix.length-1-i]!==filePath[filePath.length-1-i] ) {
           suffix = suffix.slice(suffix.length-i, suffix.length);
           break;
         }
       }
     });
 
-    arr.forEach(str => {
+    arr.forEach(filePath => {
+      const stripped = removePrefixAndSuffix(filePath, prefix, suffix);
+      assert.internal(stripped.length>0, {filePath, stripped});
       arrNew.push({
-        original: str,
-        stripped: str.slice(prefix.length, str.length-suffix.length),
+        original: filePath,
+        stripped,
       });
     });
 
-    assert.internal(isUnique(arrNew));
+    assert.internal(isUnique(arrNew), {arr, arrNew});
     return arrNew;
+  }
+
+  function removePrefixAndSuffix(filePath, prefix, suffix) {
+    const stripped = filePath.slice(prefix.length, filePath.length-suffix.length);
+    return stripped;
   }
 }
 
