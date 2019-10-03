@@ -15,6 +15,12 @@ const require_ = require('@brillout/require-gold');
 
 module.exports = compile;
 
+//*
+const DEBUG = false;
+/*/
+const DEBUG = true;
+//*/
+
 function compile(
     webpack_config,
     {
@@ -35,6 +41,8 @@ function compile(
     assert_tmp(!logger);
     assert_tmp(!onBuild);
     assert_tmp(doNotGenerateIndexHtml);
+
+    if( DEBUG ) log_config(webpack_config);
 
  // webpack_config.profile = true;
  // const resolveTimeout = gen_timeout({name: 'Compilation Build '+compilationName});

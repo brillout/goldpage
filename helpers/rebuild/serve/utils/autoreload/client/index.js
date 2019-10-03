@@ -1,10 +1,17 @@
-const PORT = 3218;
 let isEnabled;
 
 connect();
 
 function connect() {
-    const socket = new WebSocket('ws://localhost:'+PORT);
+    let autoReloadPort;
+    try {
+      autoReloadPort = __WEBPACK__PORT__;
+    } catch(err) {
+      autoReloadPort = 3218;
+      console.warning('Auto-reload port not set. Defaulting to '+autoReloadPort+'.');
+    }
+
+    const socket = new WebSocket('ws://localhost:'+autoReloadPort);
 
     socket.onmessage = ev => {
         if( ev.data === 'RELOAD_BROWSER' ) {

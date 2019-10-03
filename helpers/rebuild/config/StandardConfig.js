@@ -47,6 +47,7 @@ function StandardConfig(args) {
         config_ignore_css,
         //*/
         config_code_splitting,
+        config_constants(args.constants),
     ];
 }
 
@@ -406,6 +407,19 @@ function config_mode() {
         mode: is_production() ? 'production': 'development',
     };
 }
+
+function config_constants(constants) {
+    return () => ({
+        plugins: [
+            new webpack.DefinePlugin({
+                /* Not needed anymore -- Webpack 4+ sets `process.env.NODE_ENV` by default
+                'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV),
+                */
+                ...constants,
+            })
+        ],
+    });
+};
 
 function config_file_fallback_loader({is_node_target}={}) {
     return (

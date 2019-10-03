@@ -68,6 +68,8 @@ function BuildInstance() {
     const fileSets = new FileSets({pathBase: outputDir});
 
     const autoReloadEnabled = process.env.NODE_ENV !== 'production' && ! this.doNotWatchBuildFiles;
+    const {autoReloadPort} = this;
+    assert_usage(autoReloadPort, "The auto-reload port cannot be undefined.", {autoReloadPort});
 
     const that = this;
 
@@ -103,7 +105,7 @@ function BuildInstance() {
         }
 
         if( autoReloadEnabled ) {
-            reloadBrowser();
+            reloadBrowser({autoReloadPort});
         }
     }
 
@@ -126,7 +128,7 @@ function BuildInstance() {
 
         const {getWebpackBrowserConfig} = that;
         assert_usage(getWebpackBrowserConfig);
-        const configBrowser = getBrowserConfig({pageBrowserEntries, outputDir, getWebpackBrowserConfig, fileSets, autoReloadEnabled});
+        const configBrowser = getBrowserConfig({pageBrowserEntries, outputDir, getWebpackBrowserConfig, fileSets, autoReloadEnabled, autoReloadPort});
         const browserEntryPoints = yield buildForBrowser(configBrowser);
         assert_internal(Object.values(browserEntryPoints).length>0, browserEntryPoints);
 
@@ -180,11 +182,11 @@ function getNodejsConfig({getWebpackNodejsConfig, entryFileServer, pageFiles__by
     return configNodejs;
 }
 
-function getBrowserConfig({pageBrowserEntries, outputDir, getWebpackBrowserConfig, fileSets, autoReloadEnabled}) {
+function getBrowserConfig({pageBrowserEntries, outputDir, getWebpackBrowserConfig, fileSets, autoReloadEnabled, autoReloadPort}) {
     const generatedEntries = generateBrowserEntries({pageBrowserEntries, fileSets});
     const browserEntries = getBrowserEntries({generatedEntries, autoReloadEnabled});
     const browserOutputPath = pathModule.resolve(outputDir, BROWSER_OUTPUT_DIR);
-    const defaultBrowserConfig = getDefaultBrowserConfig({entries: browserEntries, outputPath: browserOutputPath});
+    const defaultBrowserConfig = getDefaultBrowserConfig({entries: browserEntries, outputPath: browserOutputPath, autoReloadPort});
     assert_internal(Object.keys(browserEntries).length>0);
     const configBrowser = getWebpackBrowserConfig({config: defaultBrowserConfig, entries: browserEntries, outputPath: browserOutputPath, ...webpackConfigMod});
     assert_config({config: configBrowser, webpackEntries: browserEntries, outputPath: browserOutputPath, getterName: 'getWebpackBrowserConfig'});
