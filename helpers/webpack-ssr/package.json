@@ -4,7 +4,7 @@
   "dependencies": {
     "@brillout/cli-theme": "0.5.3",
     "@brillout/file-sets": "0.5.3",
-    "@brillout/project-files": "^0.4.1",
+    "@brillout/project-files": "^0.4.2",
     "@brillout/require-gold": "^0.1.1",
     "@brillout/webpack-config-mod": "0.5.3",
     "@rebuild/build": "0.5.3",

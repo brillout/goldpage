@@ -6,7 +6,7 @@
   "dependencies": {
     "@brillout/autoload": "0.5.3",
     "@brillout/cli-theme": "0.5.3",
-    "@brillout/project-files": "^0.4.1",
+    "@brillout/project-files": "^0.4.2",
     "@brillout/reassert": "^0.1.1",
     "@brillout/reconfig": "0.5.3",
     "@goldpage/browser": "0.5.3",
