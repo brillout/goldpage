@@ -1,0 +1,16 @@
+{
+  "name": "example_custom-autoreload-port",
+  "private": true,
+  "version": "0.5.3",
+  "scripts": {
+    "dev": "goldpage dev ./server.js"
+  },
+  "dependencies": {
+    "@goldpage/express": "0.5.3",
+    "@goldpage/react": "0.5.3",
+    "express": "^4.17.1",
+    "goldpage": "0.5.3",
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6"
+  }
+}
