@@ -23,6 +23,7 @@
     "lerna": "^3.16.4"
   },
   "workspaces": [
+    "examples/404-page",
     "examples/async-data",
     "examples/babel",
     "examples/basics",

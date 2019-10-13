@@ -1,0 +1,25 @@
+body {
+  margin: 0;
+}
+
+html {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.pageContent {
+  text-align: center;
+}
+
+code {
+  background-color: #eee;
+  padding: 2px 4px;
+  border-radius: 5px;
+}
+
+h1 {
+  font-size: 5em;
+  color: #333;
+}
