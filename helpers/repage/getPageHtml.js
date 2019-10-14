@@ -5,24 +5,10 @@ const parseUrl = require('@brillout/parse-url');
 module.exports = getPageHtml;
 
 async function getPageHtml({pageConfigs, url, htmlRender, router, requestObject}) {
-    const urlProps = parseUrl(url);
-    const pageMatches = (
-        pageConfigs
-        .filter(pageConfig => router.doesMatchUrl(urlProps, pageConfig))
-    );
+    const pageConfig = getMatchingPageConfig({pageConfigs, router, url});
 
-    if( pageMatches.length===0 ) {
-        return null;
-    }
-
-    let pageConfig;
-    if( pageMatches.length===1 ) {
-      pageConfig = pageMatches[0];
-    } else {
-      const routes = pageMatches.map(pageConfig => pageConfig.route);
-      const idx = determineMatch({routes, router, urlProps});
-      pageConfig = pageMatches[idx];
-      assert.internal(pageConfig);
+    if( pageConfig===null ){
+      return null;
     }
 
     assert.warning(
@@ -35,90 +21,79 @@ async function getPageHtml({pageConfigs, url, htmlRender, router, requestObject}
     return html;
 }
 
+function getMatchingPageConfig({pageConfigs, router, url}) {
+  assert_logic({router});
 
+  const routes = pageConfigs.map(({route}) => route);
+  const idx = getMatchingRoute({routes, router, url});
 
-// The most specific route should win:
-// - `/a-static-route` over `/:org`
-// - `/:org/:username` over `/:org`
-// - `/hello` over `/:catch-all` or `*`
+  if( idx===null ) return null;
 
-// Note that the catch-all route `/:catch-all` and the Wildcard route `*` are equivalent;
-// having both at the same time doesn't make sense.
+  assert.internal(idx>=0);
+  const pageConfig = pageConfigs[idx];
+  assert.internal(pageConfig);
 
-function determineMatch({routes, router, urlProps}) {
-  assert.internal(routes.length>=2);
+  return pageConfig;
+}
 
-  routes = (
+function assert_logic({router}) {
+  // The most specific route should win:
+  [
+    [['*', '/'], '/', 1],
+    [['*', '/a-static-route'], '/a-static-route', 1],
+    [['/:param', '/a-static-route'], '/a-static-route', 1],
+    [['/:p1/:p2', '/a-static/route'], '/a-static/route', 1],
+    [['/:p1/:p2', '/:p1'], '/reframejs', 1],
+    [['/:p1', '/:p1/:p2'], '/reframejs/goldpage', 1],
+    [['/:p1/:p2', '*'], '/reframejs', 1],
+    [['*', '/:p1/:p2'], '/reframejs/goldpage', 1],
+    [['/:p1/:p2', '/reframejs/:p2'], '/reframejs/goldpage', 1],
+    [['/:p1/goldpage', '/reframejs/:p2'], '/reframejs/goldpage', 0],
+  ].forEach(([routes, url, idx]) => {
+    assert.internal(getMatchingRoute({routes, router, url})===idx, {routes, url, idx});
+  });
+}
+
+function getMatchingRoute({routes, router, url}) {
+  const urlProps = parseUrl(url);
+
+  const routes_matched = (
     routes
     .map((route, idx) => {
+      const isMatch = router.doesMatchUrl(urlProps, {route});
+
       assert.internal(route.constructor===String);
       const routeArguments = router.getRouteArguments(urlProps, {route});
-      const numberOfArgs = Object.keys(routeArguments).length;
+
+      const numberOfArgs = Object.keys(routeArguments||{}).length;
+
+      const numberOfParts = route.split('/').filter(Boolean).length || 1;
+      assert.internal(numberOfParts>=1, {route});
+
+      const numberOfStaticParts = numberOfParts - numberOfArgs;
+      assert.internal(numberOfStaticParts>=0, {route});
+
       return {
+        isMatch,
         route,
         idx,
+        numberOfParts,
+        numberOfStaticParts,
         numberOfArgs,
       };
     })
+    .filter(({isMatch}) => isMatch)
+    .sort((route1, route2) => {
+      if( route1.numberOfStaticParts !== route2.numberOfStaticParts ) {
+        return route2.numberOfStaticParts - route1.numberOfStaticParts;
+      }
+      return route2.numberOfParts - route1.numberOfParts;
+    })
   );
 
-  // Return the static route, if there is one
-  const idx = getStaticRoute({routes, router, urlProps});
-  if( idx ) {
-    return idx;
+  if( routes_matched.length===0 ) {
+    return null;
   }
 
-  // Return the route that has the max number of parameters
-  return getMaxRoute({routes, router, urlProps});
-}
-
-function getStaticRoute({routes, router, urlProps}) {
-  const routes__static = routes.filter(({numberOfArgs}) => numberOfArgs===0);
-
-  const {url} = urlProps;
-  assert.internal(url.constructor===String);
-  assert.internal(
-    routes__static.length<=1,
-    {routes, url},
-    "Unexpected error; open a GitHub issue and copy this error in the GitHub issue."
-  );
-
-  if( routes__static.length===1 ) {
-    return routes__static[0].idx;
-  }
-
-  assert.internal(routes__static.length===0);
-  return null;
-}
-
-function getMaxRoute({routes, router, urlProps}) {
-  let maxNumberOfArgs = 0;
-  routes.forEach(({numberOfArgs}) => maxNumberOfArgs = Math.max(maxNumberOfArgs, numberOfArgs));
-  assert.internal(maxNumberOfArgs>0);
-
-  const routes__max_params = (
-    routes
-    .filter(({numberOfArgs}) =>
-      numberOfArgs===maxNumberOfArgs)
-  );
-  assert.internal(routes__max_params.length>0);
-
-  const {url} = urlProps;
-  assert.internal(url.constructor===String);
-  assert.usage(
-    routes__max_params.length===1,
-    "The following routes are conflicting:",
-    routes__max_params.map(({route}) => route),
-    "",
-    "It doesn't make sense to have routes that always match the same URLs.",
-    "Which seems to be the case with the above printed routes.",
-    "Do your routes make sense?",
-    "",
-    "If your routes actually do make sense then open a GitHub issue and copy this error in the GitHub issue.",
-    "",
-    "All routes that match `"+url+"`:",
-    routes,
-  );
-
-  return routes__max_params[0].idx;
+  return routes_matched[0].idx;
 }

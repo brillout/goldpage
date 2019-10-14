@@ -66,7 +66,7 @@ function get_route_args(urlProps, pageInfo) {
 
 function assert_pageInfo(pageInfo) {
   const pageConfig = pageInfo.pageConfig || pageInfo;
-  const pageConfigPath = pageInfo.pageFile && (' `'+pageInfo.pageFile+'`');
+  const pageConfigPath = pageInfo.pageFile && (' `'+pageInfo.pageFile+'`') || '';
   const {route} = pageConfig;
   assert.usage(
     route,
