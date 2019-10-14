@@ -600,7 +600,7 @@ function get_entries(webpack_config) {
             source_entry_points = [source_entry_points];
         }
         source_entry_points = source_entry_points.map(src_entry => {
-            if( src_entry.startsWith('/') ) {
+            if( path_module.isAbsolute(src_entry) ) {
                 return src_entry;
             }
             const {context} = webpack_config;
@@ -611,7 +611,7 @@ function get_entries(webpack_config) {
                 "The webpack configuration in question is printed above."
             );
             assert_usage(
-                context.constructor===String && context.startsWith('/'),
+                context.constructor===String && path_module.isAbsolute(context),
                 webpack_config,
                 "We expect the `context` property of the webpack configuration above to be an absolute path."
             );
@@ -677,7 +677,7 @@ function get_asset_type(filename, ep) {
 }
 
 function fs__write_file(file_path, file_content) {
-    assert_internal(file_path.startsWith('/'));
+    assert_internal(path_module.isAbsolute(file_path));
     mkdirp.sync(path_module.dirname(file_path));
     fs.writeFileSync(file_path, file_content);
 }

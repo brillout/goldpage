@@ -10,7 +10,7 @@ module.exports = watchDir;
 
 function watchDir(path) {
     const path_absolute = (
-        path.startsWith('/') ? (
+        path_module.isAbsolute(path) ? (
             path
         ) : (
             path_module.join(path_module.dirname(parent_module()), path)
