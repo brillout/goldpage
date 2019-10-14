@@ -1,7 +1,7 @@
 {
   "name": "example_async-data",
   "private": true,
-  "version": "0.5.4",
+  "version": "0.5.5",
   "scripts": {
     "dev": "goldpage dev ./server.js",
     "build": "goldpage build ./server.js",
@@ -10,10 +10,10 @@
   },
   "dependencies": {
     "@brillout/fetch": "^0.1.2",
-    "@goldpage/express": "0.5.4",
-    "@goldpage/react": "0.5.4",
+    "@goldpage/express": "0.5.5",
+    "@goldpage/react": "0.5.5",
     "express": "^4.17.1",
-    "goldpage": "0.5.4",
+    "goldpage": "0.5.5",
     "react": "^16.8.6",
     "react-dom": "^16.8.6"
   }

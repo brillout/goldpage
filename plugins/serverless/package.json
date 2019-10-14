@@ -1,10 +1,10 @@
 {
   "name": "@goldpage/serverless",
-  "version": "0.5.4",
+  "version": "0.5.5",
   "@brillout/autoload": true,
   "dependencies": {
-    "@brillout/reconfig": "0.5.4",
-    "@goldpage/server": "0.5.4"
+    "@brillout/reconfig": "0.5.5",
+    "@goldpage/server": "0.5.5"
   },
   "publishConfig": {
     "access": "public"

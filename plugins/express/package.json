@@ -1,10 +1,10 @@
 {
   "name": "@goldpage/express",
-  "version": "0.5.4",
+  "version": "0.5.5",
   "@brillout/autoload": true,
   "dependencies": {
     "@brillout/reassert": "^0.1.0",
-    "@brillout/reconfig": "0.5.4",
+    "@brillout/reconfig": "0.5.5",
     "@universal-adapter/express": "^0.4.2"
   },
   "publishConfig": {

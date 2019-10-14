@@ -1,11 +1,11 @@
 {
   "name": "@goldpage/webpack",
-  "version": "0.5.4",
+  "version": "0.5.5",
   "@brillout/autoload": true,
   "dependencies": {
-    "@brillout/reconfig": "0.5.4",
+    "@brillout/reconfig": "0.5.5",
     "reassert": "^1.1.12",
-    "webpack-ssr": "0.5.4"
+    "webpack-ssr": "0.5.5"
   },
   "publishConfig": {
     "access": "public"
