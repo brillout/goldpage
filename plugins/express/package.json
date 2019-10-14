@@ -5,7 +5,7 @@
   "dependencies": {
     "@brillout/reassert": "^0.1.0",
     "@brillout/reconfig": "0.5.4",
-    "@universal-adapter/express": "^0.4.1"
+    "@universal-adapter/express": "^0.4.2"
   },
   "publishConfig": {
     "access": "public"
