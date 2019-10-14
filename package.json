@@ -6,9 +6,9 @@
     "docs": "mdocs",
     "upgrade-deps": "node ./helpers/dev-utils/package-management/dependency-management/upgradeDeps.js",
 
+    "release": "npm run release-prepare && npm run release-check && npm run release-deploy && npm run release-clean && npm run release-check",
     "release-prepare": "lerna publish --force-publish=* --npm-tag=next",
     "release-check": "node ./helpers/dev-utils/package-management/npm-registry/checkIfCorrectlyPublished.js",
-    "release": "npm run release-deploy && npm run release-clean",
     "release-deploy": "node ./helpers/dev-utils/package-management/npm-registry/setNpmTag.js latest",
     "release-clean": "node ./helpers/dev-utils/package-management/npm-registry/removeNpmTags.js next",
 
