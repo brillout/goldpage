@@ -7,6 +7,8 @@ export default {
       Pages:
       <Page pathname="/express-route"/>
       <Page pathname="/about"/>
+      <Page pathname="/org/reframejs"/>
+      <Page pathname="/reframejs/goldpage"/>
       <br/>
       404 Pages:
       <Page pathname="/doesn't-exist"/>
