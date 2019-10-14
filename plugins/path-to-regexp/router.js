@@ -14,23 +14,17 @@ const router = {
 module.exports = router;
 
 function doesMatchUrl(urlProps, pageInfo) {
-    assert_pageInfo(pageInfo);
-    const match_info = get_match_info(urlProps, pageInfo);
-    return !!match_info;
-    if( ! match_info ) {
-        return false;
-    }
+    const routeArgs = get_route_args(urlProps, pageInfo);
+    return !!routeArgs;
 }
 
 function getRouteArguments(urlProps, pageInfo) {
-    const match_info = get_match_info(urlProps, pageInfo);
-    assert_pageInfo(pageInfo);
-    if( ! match_info ) {
+    const routeArgs = get_route_args(urlProps, pageInfo);
+    if( !routeArgs ) {
         return null;
     }
-    const {params} = match_info;
-    assert.internal(params && params.constructor === Object, {pageInfo, urlProps, params});
-    return match_info.params;
+    assert.internal(routeArgs.constructor === Object, {pageInfo, urlProps, routeArgs});
+    return routeArgs;
 }
 
 function getRouteUrl(routeArguments, pageInfo) {
@@ -43,11 +37,20 @@ function getRouteUrl(routeArguments, pageInfo) {
     return urlPartial;
 }
 
-function get_match_info(urlProps, pageInfo) {
+function get_route_args(urlProps, pageInfo) {
+    assert_pageInfo(pageInfo);
     const route = pageInfo && pageInfo.route;
     if( ! route ) {
         return null;
     }
+
+    assert_urlProps(urlProps);
+    const {pathname} = urlProps;
+
+    if( isWildcardRoute(route) ) {
+        return {pathname};
+    }
+
     assert.usage([String, Object].includes(route.constructor));
     const options = (
         route.constructor===String ? (
@@ -56,30 +59,31 @@ function get_match_info(urlProps, pageInfo) {
             Object.assign({exact: true}, route)
         )
     );
-    assert_urlProps(urlProps);
-    const {pathname} = urlProps;
-    return matchPath(pathname, options);
+    const match_info = matchPath(pathname, options);
+    const routeArgs = match_info && match_info.params;
+    return routeArgs;
 }
 
 function assert_pageInfo(pageInfo) {
   const pageConfig = pageInfo.pageConfig || pageInfo;
   const pageConfigPath = pageInfo.pageFile && (' `'+pageInfo.pageFile+'`');
+  const {route} = pageConfig;
   assert.usage(
-    pageConfig.route,
+    route,
     {pageConfig},
     "Your page config"+pageConfigPath+" is missing a `route`.",
   );
   assert.usage(
-    pageConfig.route.startsWith,
-    {pageConfig},
-    "The `route` of your page config"+pageConfigPath+" is `"+pageConfig.route+"` but it should be a string.",
+    route.startsWith,
+    {route, pageConfig},
+    "The `route` of your page config"+pageConfigPath+" is `"+pageConfig.route+"` but it should be a String.",
   );
   assert.usage(
-    pageConfig.route.startsWith('/'),
-    {pageConfig},
-    "The `route` of your page config"+pageConfigPath+" is `"+pageConfig.route+"` but it should start with a leading `/`, e.g. `/hello/:name`.",
+    route.startsWith('/') || isWildcardRoute(route),
+    {route, pageConfig},
+    "The `route` of your page config"+pageConfigPath+" is `"+route+"`,",
+    "but it should start with a leading `/` (e.g. `/hello/:name`) or be the wildcard route `*`.",
   );
-  assert.internal(pageInfo.route.startsWith('/'));
 }
 
 function assert_urlProps(urlProps) {
@@ -100,4 +104,9 @@ function getRouteString() {
     // Should be possible with pathToRegexp.compile('/user/:id')
     //  - https://github.com/pillarjs/path-to-regexp#compile-reverse-path-to-regexp
     //  - available at path-to-regexp@^1.7.0 ?
+}
+
+function isWildcardRoute(route) {
+  assert.internal(route.constructor===String);
+  return ['/*', '*'].includes(route);
 }
