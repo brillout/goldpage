@@ -31,7 +31,17 @@ function create_ssr() {
 
   applyGoldpageConfig();
 
+//reloadBrowser();
+
   return ssr;
+
+  function reloadBrowser() {
+    const {goldpageIsBuilding, pagesNotBuilt} = config.goldpage.getBuildInfo();
+
+    if( !goldpageIsBuilding && !pagesNotBuilt ){
+      config.goldpage.reloadBrowser();
+    }
+  }
 
   function SSR() {
 

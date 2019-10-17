@@ -2,7 +2,7 @@ const assert_internal = require('reassert/internal');
 const assert_usage = require('reassert/usage');
 const {IsoBuilder} = require('@rebuild/iso');
 const {Logger} = require('@rebuild/build/utils/Logger');
-const reloadBrowser = require('@rebuild/serve/utils/autoreload/reloadBrowser');
+const reloadBrowser = require('./reloadBrowser');
 const autoreloadClientPath = require.resolve('@rebuild/serve/utils/autoreload/client');
 const pathModule = require('path');
 const getDefaultBrowserConfig = require('./getDefaultBrowserConfig');
@@ -15,6 +15,7 @@ const fs = require('fs');
 const get_timestamp = require('./get_timestamp');
 const createTmpFile = require('./createTmpFile');
 
+const DEFAULT_AUTO_RELOAD_PORT = require('./DEFAULT_AUTO_RELOAD_PORT');
 const GOLDPAGE_BUILD_INFO_DIR = require('./GOLDPAGE_BUILD_INFO_DIR');
 const STAMP_PATH_GOLDPAGE_IS_BUILDING = require('./STAMP_PATH_GOLDPAGE_IS_BUILDING');
 const SOURCE_CODE_OUTPUT_DIR = 'generated-source-code';
@@ -68,8 +69,7 @@ function BuildInstance() {
     const fileSets = new FileSets({pathBase: outputDir});
 
     const autoReloadEnabled = process.env.NODE_ENV !== 'production' && ! this.doNotWatchBuildFiles;
-    const {autoReloadPort} = this;
-    assert_usage(autoReloadPort, "The auto-reload port cannot be undefined.", {autoReloadPort});
+    const {autoReloadPort=DEFAULT_AUTO_RELOAD_PORT} = this;
 
     const that = this;
 

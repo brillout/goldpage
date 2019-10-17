@@ -8,7 +8,7 @@ module.exports = reloadBrowser;
 let reloadSocket;
 
 function reloadBrowser({autoReloadPort}) {
-    assert_internal(autoReloadPort);
+    assert_internal(autoReloadPort && autoReloadPort.constructor===Number, {autoReloadPort});
     if( ! reloadSocket ) {
         reloadSocket = new WebSocket.Server({port: autoReloadPort});
     }
@@ -35,12 +35,12 @@ function improveErrorHandling(reloadSocket, autoReloadPort) {
             "Because the port "+autoReloadPort+" is already in use.",
             colorEmphasis('Either make the port '+autoReloadPort+' available or change the auto-reload port.'),
             'You can change the auto-reload port by setting `autoReloadPort` in your `goldpage.config.js`. For example:',
-            '  ~~~js',
-            '  // This is the `golgpage.config.js` file at the project root directory.',
-            '  module.exports = {',
-            "    autoReloadPort: '3219', // We use another auto-reload port because the default auto-reload port `3128` is already in use.",
-            '  };',
-            '  ~~~',
+            '~~~js',
+            '// This is the `golgpage.config.js` file at the project root directory.',
+            'module.exports = {',
+            "  autoReloadPort: '3219', // We use another auto-reload port because the default auto-reload port `3128` is already in use.",
+            '};',
+            '~~~',
             '',
             '',
         );

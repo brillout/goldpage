@@ -33,7 +33,7 @@ function runBuild() {
     getPageBrowserEntriesFile,
     transpileServerCode,
     serverEntryFile,
-    autoReloadPort=3128,
+    autoReloadPort,
   } = reconfig.goldpage;
 
   const getPageHtmls = require(getPageHtmlsFile);
