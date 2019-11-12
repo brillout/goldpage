@@ -137,7 +137,7 @@ Goldpage is a tiny do-one-thing-do-it-well library (~4K LOCs) with a simple inte
   For increased productivity and performance.
 
 
-## !HOW_IT_WORKS
+## !VAR HOW_IT_WORKS
 
 Goldpage uses Webpack to transpile and bundle your pages. Its Webpack config is minimal allowing you to easily modify and extend it.
 
