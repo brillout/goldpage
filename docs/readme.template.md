@@ -127,11 +127,10 @@ Goldpage is a tiny do-one-thing-do-it-well library (~4K LOCs) with a simple inte
   you can start writing your prototype and decide later which app type is right for you.
   No more endless research whether you should go for a static website or SSR.
 - **Any view tool** -
-  Goldpage can be used any view framework (React, Vue, RNW, Svelte, ...),
-  any view library (Redux, Vuex, GraphQL, ...)
-  and any server framewok (Express, Koa, Hapi, ...).
+  Goldpage can be used any view framework (React, Vue, RNW, Svelte, ...)
+  any view library (Redux, Vuex, GraphQL, ...).
 - **Backend First Apps** -
-  Goldpage introduces app type &mdash; the [Backend First App (BFA)](/docs/bfa.md#readme).
+  Goldpage introduces a new app type &mdash; the [Backend First App (BFA)](/docs/bfa.md#readme).
   A BFA uses the view framework (React, Vue, ...) primarly as an HTML template engine
   and interactivity is used scarcely.
   For increased productivity and performance.
