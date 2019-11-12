@@ -1,6 +1,6 @@
-Goldpage is a tiny wrapper on top of Webpack that makes building a frontend super easy. It is powerful yet without getting in your way.
+Goldpage is a tiny Webpack wrapper that makes building a frontend easy. It is powerful and doesn't get in your way.
 
-You define so-called page configs:
+You define pages:
 
 ~~~jsx
 // A page config
@@ -20,13 +20,13 @@ And the Goldpage CLI takes care of the rest:
 $ goldpage build
 ~~~
 
-Your pages are built at `.build/browser/`.
-If your pages are static then simply deploy `.build/browser/` to a static host such as Netlify and you are done.
+Your pages are built at `.build/browser/`
+and, if your pages are static, then simply deploy `.build/browser/` to a static host such as Netlify and you are done.
 
 For server-side rendering simply add the Goldpage middleware:
 
 ~~~js
-// Goldpage can be used with any server (Express/Koa/Hapi/...)
+// Goldpage can be used with any server (Express, Koa, Hapi, ...)
 const express = require('express');
 const goldpage = require('goldpage');
 
@@ -44,3 +44,14 @@ Goldpage is a tiny do-one-thing-do-it-well library (~4K LOCs) with a simple inte
 
 
 ## How it works
+
+At the heart of Goldpage's design revolves around 
+full control over how and where your pages are rendered.
+
+You control where your pages are rendered with these two page options:
+- `renderToDom: Boolean` - Whether your pages is rendered to the DOM.
+- `renderToHtml: Boolean` - Whether your page is rendered to HTML.
+
+A page with `renderToDom: true` and `renderToHtml: true` 
+
+the full freedom to use any view tool you want.
