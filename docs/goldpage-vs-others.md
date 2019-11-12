@@ -82,7 +82,7 @@
 </p>
 <br/>
 
-# Goldpage VS Others
+# Goldpage VS Others (CRA, Next.js, Nuxt.js, Gatsby, Vue CLI, etc.)
 
 > :information_source:
 > You can use Goldpage without reading this document.
