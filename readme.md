@@ -171,13 +171,13 @@ The Goldpage CLI takes care of the rest:
 $ goldpage build
 ~~~
 
-Your pages are built at `.build/browser/`.
-If your pages are static, deploy `.build/browser/` to a static host such as Netlify, and you are done.
+Your pages are built at `.build/browser/`;
+if your pages are static, deploy `.build/browser/` to a static host such as Netlify and you are done.
 
-For server-side rendering add the Goldpage middleware:
+For server-side rendering, use a Node.js server and add the Goldpage middleware:
 
 ~~~js
-// Goldpage can be used with any server framework (Express, Koa, Hapi, ...)
+// Goldpage can be used with any Node.js server framework (Express, Koa, Hapi, ...)
 const express = require('express');
 const goldpage = require('goldpage');
 
@@ -198,13 +198,13 @@ Goldpage is a tiny do-one-thing-do-it-well library (~4K LOCs) with a simple inte
   you can start writing your prototype and decide later which app type is right for you.
   No more endless research whether you should go for a static website or SSR.
 - **Any view tool** -
-  Goldpage can be used any view framework (React, Vue, RNW, Svelte, ...)
+  Goldpage can be used any view framework (React, Vue, RNW, Svelte, ...) and
   any view library (Redux, Vuex, GraphQL, ...).
 - **Backend First Apps** -
   Goldpage introduces a new app type &mdash; the [Backend First App (BFA)](/docs/bfa.md#readme).
   A BFA uses the view framework (React, Vue, ...) primarly as an HTML template engine
-  and interactivity is used scarcely.
-  For increased productivity and performance.
+  and only secondarily to implement interactive views.
+  Increasing productivity and performance.
 
 
 ## How it Works
@@ -213,7 +213,7 @@ Goldpage uses Webpack to transpile and bundle your pages. Its Webpack config is 
 
 Goldpage is designed to give you full control over how and where your pages are rendered.
 
-You control *where* your page is rendered with two page configs:
+You control where a page is rendered with two page configs:
 - `renderToDom` - If set to true, your page is rendered to the DOM (browser).
 - `renderToHtml` - If set to true, your page is rendered to HTML (Node.js).
 
@@ -223,7 +223,7 @@ You can also set `renderToHtml: true` and `renderToDom: false` for a page
 to be rendered only to HTML with zero browser-side JavaScript.
 (Good old plain HTML like in the 90s!)
 
-You can control *how* your pages are rendered by defining the render functions `htmlRender` and `domRender`:
+You can control how your pages are rendered by defining the render functions `htmlRender` and `domRender`:
 
 ~~~js
 // We can use any view framework here (React, Vue, RNW, ...)
@@ -257,13 +257,13 @@ async function htmlRender({page, initialProps, CONTAINER_ID}) {
 }
 ~~~
 
-This render control enables you to:
-- Build any app type (SPA, SSR, static website, ...).
+Goldpage's render control enables you to:
+- Build any app type. (SPA, SSR, static website, ...)
 - Build new kinds of apps, such as [Backend First Apps](/docs/bfa.md#readme).
-- Use any view framework (React, Vue, RNW, ...).
-- Use any view library (React Router, Vuex, GraphQL, ...).
+- Use any view framework. (React, Vue, RNW, ...)
+- Use any view library. (React Router, Vuex, GraphQL, ...)
 
-For server-side rendering, we offer a server middleware that can be used with any server framework (Express, Koa, Hapi, ...).
+For server-side rendering, we provide a server middleware that can be used with any server framework. (Express, Koa, Hapi, ...)
 
 
 <br/>
@@ -301,8 +301,8 @@ Learning material.
   <br/>
   Introduction to BFAs.
   A BFA uses the view framework (React, Vue, ...) primarly as an HTML template engine
-  and interactivity is used scarcely.
-  For increased productivity and performance.
+  and only secondarily to implement interactive views.
+  Increasing productivity and performance.
 - [Goldpage VS Others (CRA, Next.js, Nuxt.js, Gatsby, Vue CLI, etc.)](/docs/goldpage-vs-others.md#readme)
   <br/>
   Explains what makes Goldpage different from other tools (CRA, Next.js, Nuxt.js, Gatsby, Vue CLI, etc.)
@@ -311,7 +311,7 @@ Learning material.
   Explains what CSR and SSR are.
 - [Client-side Rendering (CSR) VS Server-side Rendering (SSR)](/docs/csr-vs-ssr.md#readme)
   <br/>
-  Helps you decide to choose between CSR and SSR.
+  Helps you choose between CSR and SSR.
 - [Plugins](/plugins#readme)
   <br/>
   List of Goldpage plugins.
@@ -348,7 +348,7 @@ We enjoy talking with our users :-).
 
 This getting started adds Goldpage to an exisiting app.
 If you don't have an app yet or if you just want to try out Goldpage,
-then use a [Goldpage starter](https://github.com/topics/goldpage-stack).
+then use a [Goldpage starter](https://github.com/topics/goldpage-starter).
 
 0. Install Goldpage.
 
