@@ -78,7 +78,7 @@
 
 ## !VAR WHAT_IS_GOLDPAGE
 
-Goldpage is a tool to build a frontend.
+Goldpage makes it easy to create a modern frontend.
 
 You define pages:
 
@@ -100,8 +100,8 @@ The Goldpage CLI takes care of the rest:
 $ goldpage build
 ~~~
 
-Your pages are built at `.build/browser/`;
-if your pages are static, deploy `.build/browser/` to a static host such as Netlify and you are done.
+Your pages are built at `.build/browser/`.
+If your pages are static, deploy `.build/browser/` to a static host such as Netlify and you are done.
 
 For server-side rendering, use a Node.js server and add the Goldpage middleware:
 
