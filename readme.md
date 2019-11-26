@@ -190,21 +190,28 @@ app.use(goldpage.express);
 Goldpage is a tiny do-one-thing-do-it-well library (~4K LOCs) with a simple interface. Yet it is powerful:
 - **Render Control** -
   You can choose when and where your pages are rendered:
-  one page can be rendered to HTML and to the DOM (classic SSR),
-  another page can be rendered to HTML only (no browser-side JavaScript for a blazing fast mobile page),
-  and a third page can be rendered to the DOM only.
-- **Any app type** (SPA, SSR, Static Website, ...) -
-  Goldpage supports all app types and switching from one app type to another is easy;
-  you can start writing your prototype and decide later which app type is right for you.
-  No more endless research whether you should go for a static website or SSR.
+  one page can be rendered to both HTML and the DOM (classic SSR),
+  another page can be rendered to HTML only (good old plain HTML like in the 90s!),
+  and a third page can be rendered to the DOM only (classic SPA).
 - **Any view tool** -
-  Goldpage can be used any view framework (React, Vue, RNW, Svelte, ...) and
+  Goldpage can be used with
+  any view framework (React, Vue, RNW, Svelte, ...) and
   any view library (Redux, Vuex, GraphQL, ...).
+- **HTML-only for mobile** -
+  You can choose to render a page to HTML only with
+  no browser-side JavaScript.
+  Removing browser-side JavaScript is an effective
+  way to achieve high performance on mobile.
+- **Any app type** -
+  Goldpage supports all app types
+  (SPA, SSR, Static Website, ...)
+  and switching from one app type to another is easy;
+  you can start writing a prototype and decide later which app type is right for you.
+  No more endless research whether you should go for a static website or SSR!
 - **Backend First Apps** -
   Goldpage introduces a new app type &mdash; the [Backend First App (BFA)](/docs/bfa.md#readme).
   A BFA uses the view framework (React, Vue, ...) primarly as an HTML template engine
   and only secondarily to implement interactive views.
-  Increasing productivity and performance.
 
 
 ## How it Works
