@@ -468,7 +468,7 @@ then:
 
 Note that an MPA is usually better than an SPA.
 You most likely want an MPA instead of an SPA.
-(An MPA is basically the same than an SPA but with server-side routing and code-splitting.)
+(An MPA is basically the same as an SPA but with server-side routing and code-splitting.)
 
 FYI, an SPA is what you get when you use create-react-app, vue-cli, Webpack, or Parcel.
 
