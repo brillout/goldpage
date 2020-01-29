@@ -1,0 +1,18 @@
+{
+  "name": "example-mdx",
+  "private": true,
+  "version": "0.5.5",
+  "scripts": {
+    "dev": "goldpage dev ./server.js"
+  },
+  "dependencies": {
+    "@goldpage/express": "0.5.5",
+    "@goldpage/mdx": "0.5.5",
+    "@goldpage/react": "0.5.5",
+    "@mdx-js/loader": "^1.5.5",
+    "express": "^4.17.1",
+    "goldpage": "0.5.5",
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6"
+  }
+}
