@@ -71,7 +71,11 @@ function getMatchingRoute({routes, router, url}) {
       assert.internal(numberOfParts>=1, {route});
 
       const numberOfStaticParts = numberOfParts - numberOfArgs;
-      assert.internal(numberOfStaticParts>=0, {route});
+      assert.internal(
+        numberOfStaticParts>=0,
+        {routeArguments},
+        {route, numberOfStaticParts, numberOfParts, numberOfArgs},
+      );
 
       return {
         isMatch,

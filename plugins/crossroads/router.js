@@ -28,6 +28,11 @@ function getRouteArguments(urlProps, pageInfo) {
         return null;
     }
     const routeArguments = route_crossroad._getParamsObject(urlProps.pathname);
+
+    // Remove crossroad fields
+    delete routeArguments.request_;
+    delete routeArguments.vals_;
+
     assert_internal(routeArguments.constructor===Object, routeArguments);
     return routeArguments;
 }
