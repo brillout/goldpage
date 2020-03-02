@@ -890,7 +890,7 @@ See [/examples/babel](/examples/babel) for an example of configuring babel.
 Goldpage currently uses Webpack.
 This means that for custom transpilations beyond babel, modifications to Goldpage's webpack config are required.
 Instead of modifying Goldpage's webpack config yourself,
-see if there is a [transpilation plugin](/plugins!VAR|ANCHOR PLUGINS_TRANSPILATION) [transpilation plugin]
+see if there is a [transpilation plugin](/plugins!VAR|ANCHOR PLUGINS_TRANSPILATION)
 that modifies Goldpage's webpack config for you.
 For exampe, for TypeScript, you can use the [TypeScript plugin](/plugins/typescript).
 If there is no plugin for what you need, then open a GitHub issue and we'll create one together.
