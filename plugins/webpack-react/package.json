@@ -1,10 +1,10 @@
 {
   "name": "@goldpage/webpack-react",
-  "version": "0.5.5",
+  "version": "0.5.6",
   "@brillout/autoload": true,
   "dependencies": {
     "@babel/preset-react": "^7.0.0",
-    "@brillout/reconfig": "0.5.5"
+    "@brillout/reconfig": "0.5.6"
   },
   "publishConfig": {
     "access": "public"

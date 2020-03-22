@@ -1,9 +1,9 @@
 {
   "name": "@goldpage/render-react",
-  "version": "0.5.5",
+  "version": "0.5.6",
   "@brillout/autoload": true,
   "dependencies": {
-    "@brillout/reconfig": "0.5.5"
+    "@brillout/reconfig": "0.5.6"
   },
   "peerDependencies": {
     "react": "*",

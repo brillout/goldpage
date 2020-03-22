@@ -1,14 +1,16 @@
 {
   "name": "@goldpage/mdx",
-  "version": "0.5.5",
+  "version": "0.5.6",
   "@brillout/autoload": true,
   "dependencies": {
-    "@brillout/reconfig": "0.5.5"
+    "@brillout/reconfig": "0.5.6"
   },
   "peerDependencies": {
     "@mdx-js/loader": "*",
     "babel-loader": "*"
   },
-  "publishConfig": { "access": "public" },
+  "publishConfig": {
+    "access": "public"
+  },
   "repository": "github:reframejs/goldpage"
 }

@@ -1,7 +1,7 @@
 {
   "name": "example_crossroads",
   "private": true,
-  "version": "0.5.5",
+  "version": "0.5.6",
   "scripts": {
     "dev": "goldpage dev ./server.js",
     "build": "goldpage build ./server.js",
@@ -9,10 +9,10 @@
     "start": "export NODE_ENV='production' && node ./.build/nodejs/server"
   },
   "dependencies": {
-    "@goldpage/crossroads": "0.5.5",
-    "@goldpage/express": "0.5.5",
-    "@goldpage/react": "0.5.5",
-    "goldpage": "0.5.5",
+    "@goldpage/crossroads": "0.5.6",
+    "@goldpage/express": "0.5.6",
+    "@goldpage/react": "0.5.6",
+    "goldpage": "0.5.6",
     "react": "^16.8.6",
     "react-dom": "^16.8.6"
   }
