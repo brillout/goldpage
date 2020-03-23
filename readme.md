@@ -1245,7 +1245,7 @@ async function htmlRender({page, initialProps, CONTAINER_ID}) {
   //   ],
   //   body: [
   //     '<div>Some additional HTML</div>',
-  //     '<div id='+CONTAINER_ID+'>'+html+'</div>',
+  //     '<div id="'+CONTAINER_ID+'">'+html+'</div>',
   //   ]
   // };
 

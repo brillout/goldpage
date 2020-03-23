@@ -10,7 +10,7 @@ async function htmlRender({page, initialProps, CONTAINER_ID}) {
   let viewHtml;
   try {
     viewHtml = (
-      '<div id='+CONTAINER_ID+'>'+
+      '<div id="'+CONTAINER_ID+'">'+
       ReactDOMServer.renderToStaticMarkup(
         sheet.collectStyles(
           React.createElement(

@@ -7,7 +7,7 @@ module.exports = htmlRender;
 async function htmlRender({page, initialProps, CONTAINER_ID}) {
   const {store} = initialProps;
   const viewHtml = (
-    '<div id='+CONTAINER_ID+'>'+
+    '<div id="'+CONTAINER_ID+'">'+
       ReactDOMServer.renderToStaticMarkup(
         React.createElement(
           Provider,
