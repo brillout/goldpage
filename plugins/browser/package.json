@@ -1,11 +1,11 @@
 {
   "name": "@goldpage/browser",
-  "version": "0.5.6",
+  "version": "0.5.7",
   "@brillout/autoload": true,
   "dependencies": {
-    "@brillout/browser-config": "0.5.6",
-    "@brillout/reconfig": "0.5.6",
-    "@brillout/repage": "0.5.6"
+    "@brillout/browser-config": "0.5.7",
+    "@brillout/reconfig": "0.5.7",
+    "@brillout/repage": "0.5.7"
   },
   "publishConfig": {
     "access": "public"

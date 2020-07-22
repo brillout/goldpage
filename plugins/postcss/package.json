@@ -1,9 +1,9 @@
 {
   "name": "@goldpage/postcss",
-  "version": "0.5.6",
+  "version": "0.5.7",
   "@brillout/autoload": true,
   "dependencies": {
-    "@brillout/reconfig": "0.5.6",
+    "@brillout/reconfig": "0.5.7",
     "css-loader": "^2.1.1",
     "mini-css-extract-plugin": "^0.6.0",
     "postcss-loader": "^3.0.0"
