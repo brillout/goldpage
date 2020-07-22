@@ -1891,6 +1891,11 @@
     npmlog "^4.1.2"
     write-file-atomic "^2.3.0"
 
+"@lsos/donation-reminder@^0.1.1":
+  version "0.1.1"
+  resolved "https://registry.npmjs.org/@lsos/donation-reminder/-/donation-reminder-0.1.1.tgz#a6e2873a96b719c0443a944de04368f3aec3c84e"
+  integrity sha512-PJ3X84W8BiulR4/pjDyi4zeRgKNyq29PZBNRaA7G57dTsV+ED52KYRuK4I95Vj1IPD/YG7RnCJxheo3uUe6+Sg==
+
 "@mdx-js/loader@^1.5.5":
   version "1.6.13"
   resolved "https://registry.npmjs.org/@mdx-js/loader/-/loader-1.6.13.tgz#3696057e98a170180d6e13af90e07359cba74742"

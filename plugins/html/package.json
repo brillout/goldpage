@@ -7,6 +7,7 @@
     "@brillout/html": "^0.3.1",
     "@brillout/reassert": "0.0.1",
     "@brillout/reconfig": "0.5.6",
+    "@lsos/donation-reminder": "^0.1.1",
     "devalue": "^2.0.0"
   },
   "publishConfig": {
