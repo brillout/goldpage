@@ -1,7 +1,7 @@
 {
   "name": "example_vue",
   "private": true,
-  "version": "0.5.7",
+  "version": "0.5.8",
   "scripts": {
     "dev": "goldpage dev ./server.js",
     "build": "goldpage build ./server.js",
@@ -9,10 +9,10 @@
     "start": "export NODE_ENV='production' && node ./.build/nodejs/server"
   },
   "dependencies": {
-    "@goldpage/express": "0.5.7",
-    "@goldpage/vue": "0.5.7",
+    "@goldpage/express": "0.5.8",
+    "@goldpage/vue": "0.5.8",
     "express": "^4.17.1",
-    "goldpage": "0.5.7",
+    "goldpage": "0.5.8",
     "vue": "^2.6.10",
     "vue-loader": "^15.7.0",
     "vue-server-renderer": "^2.6.10",

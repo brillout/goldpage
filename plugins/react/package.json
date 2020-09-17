@@ -1,11 +1,11 @@
 {
   "name": "@goldpage/react",
-  "version": "0.5.7",
+  "version": "0.5.8",
   "@brillout/autoload": true,
   "dependencies": {
-    "@goldpage/html": "0.5.7",
-    "@goldpage/render-react": "0.5.7",
-    "@goldpage/webpack-react": "0.5.7"
+    "@goldpage/html": "0.5.8",
+    "@goldpage/render-react": "0.5.8",
+    "@goldpage/webpack-react": "0.5.8"
   },
   "publishConfig": {
     "access": "public"

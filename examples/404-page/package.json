@@ -1,15 +1,15 @@
 {
   "name": "example_404-page",
   "private": true,
-  "version": "0.5.7",
+  "version": "0.5.8",
   "scripts": {
     "dev": "goldpage dev ./server.js"
   },
   "dependencies": {
-    "@goldpage/express": "0.5.7",
-    "@goldpage/react": "0.5.7",
+    "@goldpage/express": "0.5.8",
+    "@goldpage/react": "0.5.8",
     "express": "^4.17.1",
-    "goldpage": "0.5.7",
+    "goldpage": "0.5.8",
     "react": "^16.8.6",
     "react-dom": "^16.8.6"
   }
