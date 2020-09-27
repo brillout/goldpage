@@ -423,7 +423,7 @@ async function writeHtmlFiles({pageModules, getPageHtmls, fileSets}) {
 
     function get_file_path(pathname) {
         assert_internal(pathname.startsWith('/'));
-        const filePath__relative = (pathname === '/' ? 'index' : pathname.slice(1))+'.html'
+        const filePath__relative = pathname === '/' ? 'index.html' : (pathname.slice(1)+'/index.html')
         const filePath = pathModule.join(BROWSER_OUTPUT_DIR, filePath__relative)
         return filePath;
     }

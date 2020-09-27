@@ -77,7 +77,7 @@ function getCacheHeader(filePath, fileContent) {
 function getFilePath({staticAssetsDir, pathname}) {
     const filename = (
         pathname.endsWith('/') && pathname+'index.html' ||
-        pathname.split('/').slice(-1)[0].split('.').length===1 && pathname+'.html' ||
+        pathname.split('/').slice(-1)[0].split('.').length===1 && pathname+'/index.html' ||
         pathname
     );
 
