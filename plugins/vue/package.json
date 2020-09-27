@@ -1,10 +1,10 @@
 {
   "name": "@goldpage/vue",
-  "version": "0.5.8",
+  "version": "0.5.9",
   "@brillout/autoload": true,
   "dependencies": {
-    "@brillout/reconfig": "0.5.8",
-    "@goldpage/html": "0.5.8"
+    "@brillout/reconfig": "0.5.9",
+    "@goldpage/html": "0.5.9"
   },
   "peerDependencies": {
     "vue": "*",

@@ -1,6 +1,6 @@
 {
   "name": "@brillout/browser-config",
-  "version": "0.5.8",
+  "version": "0.5.9",
   "publishConfig": {
     "access": "public"
   },

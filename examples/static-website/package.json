@@ -1,16 +1,16 @@
 {
   "name": "example_static-website",
   "private": true,
-  "version": "0.5.8",
+  "version": "0.5.9",
   "scripts": {
     "dev": "goldpage dev",
     "build": "goldpage build",
     "start": "export NODE_ENV='production' && node ./.build/nodejs/server"
   },
   "dependencies": {
-    "@goldpage/react": "0.5.8",
-    "@goldpage/serverless": "0.5.8",
-    "goldpage": "0.5.8",
+    "@goldpage/react": "0.5.9",
+    "@goldpage/serverless": "0.5.9",
+    "goldpage": "0.5.9",
     "react": "^16.8.6",
     "react-dom": "^16.8.6"
   }
