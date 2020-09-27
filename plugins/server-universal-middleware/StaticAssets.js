@@ -75,13 +75,21 @@ function getCacheHeader(filePath, fileContent) {
 }
 
 function getFilePath({staticAssetsDir, pathname}) {
-    const filename = (
-        pathname.endsWith('/') && pathname+'index.html' ||
-        pathname.split('/').slice(-1)[0].split('.').length===1 && pathname+'.html' ||
-        pathname
-    );
+    let filename;
+    if( pathname.startsWith('/.well-known/acme-challenge/') ) {
+      // letsencrypt.org SSL challenge
+      filename = pathname;
+    } else if(pathname.endsWith('/')) {
+      // `pathname` is a directory path
+      filename = pathname+'index.html';
+    } else if(pathname.split('/').slice(-1)[0].split('.').length===1){
+      // `pathname` doens't end with a file suffix
+      filename = pathname+'.html';
+    } else {
+      filename = pathname;
+    }
 
-    assert_internal(pathname.startsWith('/'));
+    assert_internal(filename.startsWith('/'));
     const filePath = pathModule.join(staticAssetsDir, filename);
 
     // Security: Make sure that `filePath` is confined within `staticAssetsDir`
