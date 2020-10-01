@@ -1,7 +1,7 @@
 {
   "name": "example_goldpage.config.js",
   "private": true,
-  "version": "0.5.9",
+  "version": "0.5.10",
   "main": "dev.js",
   "scripts": {
     "dev": "goldpage dev ./server.js",
@@ -10,10 +10,10 @@
     "start": "export NODE_ENV='production' && node ./.build/nodejs/server"
   },
   "dependencies": {
-    "@goldpage/express": "0.5.9",
-    "@goldpage/react": "0.5.9",
+    "@goldpage/express": "0.5.10",
+    "@goldpage/react": "0.5.10",
     "express": "^4.17.1",
-    "goldpage": "0.5.9",
+    "goldpage": "0.5.10",
     "hapi": "^18.1.0",
     "react": "^16.8.6",
     "react-dom": "^16.8.6"

@@ -1,7 +1,7 @@
 {
   "name": "example_react-native-web",
   "private": true,
-  "version": "0.5.9",
+  "version": "0.5.10",
   "scripts": {
     "dev": "goldpage dev ./server.js",
     "build": "goldpage build ./server.js",
@@ -9,9 +9,9 @@
     "start": "export NODE_ENV='production' && node ./.build/nodejs/server"
   },
   "dependencies": {
-    "@goldpage/express": "0.5.9",
-    "@goldpage/react-native-web": "0.5.9",
-    "goldpage": "0.5.9",
+    "@goldpage/express": "0.5.10",
+    "@goldpage/react-native-web": "0.5.10",
+    "goldpage": "0.5.10",
     "react": "^16.8.6",
     "react-art": "^16.8.6",
     "react-native-web": "^0.11.4"
