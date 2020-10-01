@@ -1060,10 +1060,21 @@
   dependencies:
     path-to-regexp "^1.7.0"
 
-"@brillout/project-files@^0.4.0", "@brillout/project-files@^0.4.2":
+"@brillout/project-files@^0.4.0":
   version "0.4.2"
   resolved "https://registry.npmjs.org/@brillout/project-files/-/project-files-0.4.2.tgz#af0c4313ae8035493f8a5af53fd4646fd3a80583"
   integrity sha512-TVZ0sz/q7uITLppwY6yGUSKu1Uvd40Xe3eLhNtUEqxnhy0i5YBYHduvx/28iIkNRHzQ/tZTJ4tlBfSOmI7++vw==
+  dependencies:
+    "@brillout/reassert" "^0.1.0"
+    callsites "^2.0.0"
+    find-up "^4.0.0"
+    glob-gitignore "^1.0.14"
+    ignore "^5.1.1"
+
+"@brillout/project-files@^0.5.0":
+  version "0.5.0"
+  resolved "https://registry.npmjs.org/@brillout/project-files/-/project-files-0.5.0.tgz#02fe18041999dca2ff54f5fc4c49dab6a5283155"
+  integrity sha512-j0oMnJ0fROSsIgDplWjcNKne5VKvG1ef0LHkVJdIBnObdAXTHq+zun3zRNwtffUzHoavdxSj/U2i2n7Uf3WDdw==
   dependencies:
     "@brillout/reassert" "^0.1.0"
     callsites "^2.0.0"
