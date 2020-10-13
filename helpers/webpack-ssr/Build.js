@@ -2,6 +2,7 @@ const assert_internal = require('reassert/internal');
 const assert_usage = require('reassert/usage');
 const {IsoBuilder} = require('@rebuild/iso');
 const {Logger} = require('@rebuild/build/utils/Logger');
+const {webpackModule} = require('@rebuild/build/webpackModule');
 const reloadBrowser = require('./reloadBrowser');
 const autoreloadClientPath = require.resolve('@rebuild/serve/utils/autoreload/client');
 const pathModule = require('path');
@@ -33,6 +34,8 @@ const CSS_ONLY = '-CSS_ONLY';
 
 const ENTRY_NAME__AUTORELOAD = 'autoreload-client';
 const ENTRY_NAME__SERVER = 'server';
+
+Object.assign(webpackConfigMod, {webpackModule});
 
 /*
 global.DEBUG = {
