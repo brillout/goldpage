@@ -10,8 +10,10 @@
     "@brillout/reconfig": "0.5.10",
     "find-up": "^3.0.0",
     "fork-ts-checker-webpack-plugin": "^1.1.0",
-    "reassert": "^1.1.12",
-    "typescript": "^3.4.4"
+    "reassert": "^1.1.12"
+  },
+  "peerDependencies": {
+    "typescript": "*"
   },
   "publishConfig": {
     "access": "public"
