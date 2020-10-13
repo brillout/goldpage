@@ -1,10 +1,10 @@
 {
   "name": "@goldpage/hapi",
-  "version": "0.5.10",
+  "version": "0.5.11",
   "@brillout/autoload": true,
   "dependencies": {
     "@brillout/reassert": "^0.1.0",
-    "@brillout/reconfig": "0.5.10",
+    "@brillout/reconfig": "0.5.11",
     "@universal-adapter/hapi": "^0.4.2"
   },
   "publishConfig": {
