@@ -1,4 +1,3 @@
-const { printDonationReminder } = require("@lsos/donation-reminder");
 const browserConfig = require("@brillout/browser-config");
 const CONTAINER_ID = require("./CONTAINER_ID");
 const assert = require("@brillout/reassert");
