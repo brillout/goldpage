@@ -1006,12 +1006,12 @@
     reassert "^1.1.14"
     string-width "^2.1.1"
 
-"@brillout/html@^0.3.1":
-  version "0.3.1"
-  resolved "https://registry.npmjs.org/@brillout/html/-/html-0.3.1.tgz#409bb14d621a5d6ee00651cc16305f3cd8831a7b"
-  integrity sha512-Dd8q8D0zqpYXdWBg4W2FY8ciQFFV0qYTuelKk+8oTiBQCNQrov5D7mHlMaljoV1Y8K/T/IG6EiV0sXgXQ8uhLA==
+"@brillout/html@^0.3.2":
+  version "0.3.2"
+  resolved "https://registry.npmjs.org/@brillout/html/-/html-0.3.2.tgz#c875385871759718d6850f9fe632d8742a115257"
+  integrity sha512-hfW47cD/9pcrdBqM5Jz0gVya3zUKiOmyjp/BUU3gb8Q33c4z+wcNVkSKHMO6K3ib4pqKUzYFbayUWNGG3RXL2w==
   dependencies:
-    "@brillout/project-files" "^0.4.0"
+    "@brillout/project-files" "^0.5.1"
     "@brillout/reassert" "^0.1.1"
 
 "@brillout/mdocs@^0.1.30":
@@ -1038,18 +1038,7 @@
   dependencies:
     path-to-regexp "^1.7.0"
 
-"@brillout/project-files@^0.4.0":
-  version "0.4.2"
-  resolved "https://registry.npmjs.org/@brillout/project-files/-/project-files-0.4.2.tgz#af0c4313ae8035493f8a5af53fd4646fd3a80583"
-  integrity sha512-TVZ0sz/q7uITLppwY6yGUSKu1Uvd40Xe3eLhNtUEqxnhy0i5YBYHduvx/28iIkNRHzQ/tZTJ4tlBfSOmI7++vw==
-  dependencies:
-    "@brillout/reassert" "^0.1.0"
-    callsites "^2.0.0"
-    find-up "^4.0.0"
-    glob-gitignore "^1.0.14"
-    ignore "^5.1.1"
-
-"@brillout/project-files@^0.5.0":
+"@brillout/project-files@^0.5.0", "@brillout/project-files@^0.5.1":
   version "0.5.1"
   resolved "https://registry.npmjs.org/@brillout/project-files/-/project-files-0.5.1.tgz#ac97d5edb4a3ff1a657342acb6eac10fa1a85e5c"
   integrity sha512-X/J0SBY95iJEsA9KpAEEAV+jlpE69CMLmS5AdlO/e73Yx8FNCDhvPkNl16acsPdT4bAYEE0y/mLZ9hd237TDJQ==

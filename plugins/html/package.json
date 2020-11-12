@@ -4,7 +4,7 @@
   "@brillout/autoload": true,
   "dependencies": {
     "@brillout/browser-config": "0.5.11",
-    "@brillout/html": "^0.3.1",
+    "@brillout/html": "^0.3.2",
     "@brillout/reassert": "0.0.1",
     "@brillout/reconfig": "0.5.11",
     "@lsos/donation-reminder": "^0.1.7",
