@@ -1,11 +1,11 @@
 {
   "name": "@goldpage/server",
-  "version": "0.5.12",
+  "version": "0.5.13",
   "@brillout/autoload": true,
   "dependencies": {
-    "@brillout/reconfig": "0.5.12",
-    "@goldpage/hapi": "0.5.12",
-    "goldpage": "0.5.12",
+    "@brillout/reconfig": "0.5.13",
+    "@goldpage/hapi": "0.5.13",
+    "goldpage": "0.5.13",
     "hapi": "^18.1.0"
   },
   "publishConfig": {

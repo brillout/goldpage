@@ -1,11 +1,11 @@
 {
   "name": "example_rebuild",
   "private": true,
-  "version": "0.5.12",
+  "version": "0.5.13",
   "dependencies": {
-    "@rebuild/build": "0.5.12",
-    "@rebuild/config": "0.5.12",
-    "@rebuild/serve": "0.5.12",
+    "@rebuild/build": "0.5.13",
+    "@rebuild/config": "0.5.13",
+    "@rebuild/serve": "0.5.13",
     "reassert": "^1.1.12"
   },
   "repository": "github:reframejs/goldpage"

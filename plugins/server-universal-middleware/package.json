@@ -1,11 +1,11 @@
 {
   "name": "@goldpage/server-universal-middleware",
-  "version": "0.5.12",
+  "version": "0.5.13",
   "@brillout/autoload": true,
   "dependencies": {
     "@brillout/parse-url": "^0.2.1",
-    "@brillout/reconfig": "0.5.12",
-    "@brillout/repage": "0.5.12",
+    "@brillout/reconfig": "0.5.13",
+    "@brillout/repage": "0.5.13",
     "fs-extra": "^7.0.1",
     "mimos": "^4.0.0",
     "reassert": "^1.1.12"
