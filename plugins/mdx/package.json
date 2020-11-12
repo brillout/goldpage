@@ -12,5 +12,6 @@
   "publishConfig": {
     "access": "public"
   },
-  "repository": "github:reframejs/goldpage"
+  "repository": "github:reframejs/goldpage",
+  "gitHead": "c1ced1944bfc29734ed6da2d7a6326564ae89612"
 }
