@@ -1,11 +1,11 @@
 {
   "name": "@goldpage/react-native-web",
-  "version": "0.5.11",
+  "version": "0.5.12",
   "@brillout/autoload": true,
   "dependencies": {
-    "@brillout/reconfig": "0.5.11",
-    "@goldpage/html": "0.5.11",
-    "@goldpage/webpack-react": "0.5.11",
+    "@brillout/reconfig": "0.5.12",
+    "@goldpage/html": "0.5.12",
+    "@goldpage/webpack-react": "0.5.12",
     "babel-plugin-react-native-web": "^0.11.4"
   },
   "peerDependencies": {
