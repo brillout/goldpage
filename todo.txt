@@ -1,0 +1,1 @@
+- Assert `title` functions to always return a non-empty string.
